@@ -5,16 +5,19 @@
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
 #If using the sequencer, point SNCSEQ at its top directory:
-SNCSEQ=/corvette/home/epics/synApps5-1beta/seq/2-0-9beta
+SNCSEQ=$(SUPPORT)/seq/2-0-8
 
 # For transform record
-CALC=/corvette/home/epics/synApps5-1beta/calc
+CALC=$(SUPPORT)/calc/2-4
 
 # For busy record
-SSCAN=/corvette/home/epics/synApps5-1beta/sscan
+SSCAN=$(SUPPORT)/sscan/2-4
+
+# for serial support
+ASYN=$(SUPPORT)/asyn/4-1
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=/corvette/usr/local/epics/base-3.14.6
+EPICS_BASE=$(GATEWAY)/epics/base-3.14.7
 
 #Capfast users may need the following definitions
 #CAPFAST_TEMPLATES=
