@@ -40,10 +40,10 @@
  * .18  10/07/01 tmm  v5.11: Add support for Newport 5-motor table geometry
  * .19  10/19/01 tmm  v5.12: Fix Newport 5&6-motor geometry
  * .20  01/10/02 tmm  v5.13: Add PNC geometry (SRI with M0 and M1 swapped)
- * .21  07/03/03 rls  v5.13: Port to R3.14
+ * .21  07/03/03 rls  v5.14: Port to R3.14
 */
 
-#define VERSION 5.13
+#define VERSION 5.14
 
 #include	<stdlib.h>
 #include	<stdio.h>
