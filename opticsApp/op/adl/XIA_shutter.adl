@@ -1,13 +1,13 @@
 
 file {
-	name="C:\Program Files\EPICS WIN32 Extensions\synApps_4_3_adl\XIA_shutter.adl"
-	version=020306
+	name="/home/epics/synApps5-1/optics/opticsApp/op/adl/XIA_shutter.adl"
+	version=030000
 }
 display {
 	object {
-		x=192
-		y=31
-		width=280
+		x=114
+		y=39
+		width=325
 		height=320
 	}
 	clr=14
@@ -87,11 +87,59 @@ display {
 		1a7309,
 	}
 }
+text {
+	object {
+		x=275
+		y=185
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=62
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(S)Status4"
+	}
+	textix="In"
+}
+text {
+	object {
+		x=275
+		y=165
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=62
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(S)Status3"
+	}
+	textix="In"
+}
+text {
+	object {
+		x=275
+		y=145
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=62
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(S)Status2"
+	}
+	textix="In"
+}
 rectangle {
 	object {
 		x=0
 		y=0
-		width=280
+		width=325
 		height=25
 	}
 	"basic attribute" {
@@ -132,7 +180,7 @@ polyline {
 	object {
 		x=0
 		y=25
-		width=281
+		width=324
 		height=3
 	}
 	"basic attribute" {
@@ -141,7 +189,7 @@ polyline {
 	}
 	points {
 		(1,26)
-		(279,26)
+		(322,26)
 	}
 }
 "text update" {
@@ -490,19 +538,6 @@ polyline {
 	label="Clear Short Error"
 	press_msg="Z"
 }
-text {
-	object {
-		x=0
-		y=5
-		width=280
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="XIA Shutter"
-	align="horiz. centered"
-}
 "message button" {
 	object {
 		x=10
@@ -565,8 +600,8 @@ text {
 }
 "related display" {
 	object {
-		x=190
-		y=30
+		x=275
+		y=295
 		width=40
 		height=20
 	}
@@ -579,4 +614,133 @@ text {
 	clr=0
 	bclr=63
 	label="-Less"
+}
+menu {
+	object {
+		x=238
+		y=42
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(S)poll.SCAN"
+		clr=14
+		bclr=3
+	}
+}
+composite {
+	object {
+		x=275
+		y=125
+		width=35
+		height=20
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=275
+				y=125
+				width=35
+				height=20
+			}
+			"basic attribute" {
+				clr=20
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)$(S)Status1"
+			}
+			textix="Out"
+		}
+		text {
+			object {
+				x=275
+				y=125
+				width=35
+				height=20
+			}
+			"basic attribute" {
+				clr=62
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(S)Status1"
+			}
+			textix="In"
+		}
+	}
+}
+text {
+	object {
+		x=275
+		y=145
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(S)Status2"
+	}
+	textix="Out"
+}
+text {
+	object {
+		x=275
+		y=165
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(S)Status3"
+	}
+	textix="Out"
+}
+text {
+	object {
+		x=275
+		y=185
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(S)Status4"
+	}
+	textix="Out"
+}
+text {
+	object {
+		x=244
+		y=30
+		width=66
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status poll"
+}
+text {
+	object {
+		x=0
+		y=5
+		width=325
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="XIA Shutter"
+	align="horiz. centered"
 }
