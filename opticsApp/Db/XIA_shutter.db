@@ -46,13 +46,13 @@ grecord(scalcout,"$(P)$(S)do") {
 	field(AA,"024CFHLOPUZ")
 }
 grecord(stringout,"$(P)$(S)sout") {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(S)getReply.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
+	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
 }
 grecord(stringin,"$(P)$(S)getReply") {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=0d")
 }
 
 grecord(scalcout,"$(P)$(S)expose") {
@@ -66,15 +66,15 @@ grecord(scalcout,"$(P)$(S)expose") {
 	field(AA,"024CFHLOPUZ")
 }
 grecord(stringout,"$(P)$(S)sout1") {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(SDIS,"0")
 	field(FLNK,"$(P)$(S)getAck.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
+	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
 }
 grecord(stringin,"$(P)$(S)getAck") {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(S)busyOn.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=0d")
 }
 grecord(bo,"$(P)$(S)busyOn") {
 	field(DTYP,"Soft Channel")
@@ -82,12 +82,11 @@ grecord(bo,"$(P)$(S)busyOn") {
 	field(DOL,"1")
 	field(OUT,"$(P)$(S)busy.VAL  PP MS")
 }
-grecord(serial,"$(P)$(S)serial") {
+grecord(asyn,"$(P)$(S)serial") {
 	field(DESC,"XIA shutter serial")
-	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S)wait.VAL  PP MS")
 	field(TMOD,"Read")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(seq,"$(P)$(S)wait") {
 	field(PREC,"3")
