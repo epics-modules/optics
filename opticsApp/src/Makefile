@@ -52,7 +52,6 @@ optics_LIBS += seq pv
 seq_DIR    = $(SNCSEQ_LIB)
 pv_DIR     = $(SNCSEQ_LIB)
 
-#optics_LIBS += mpf mpfEpics gpib
 optics_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 
