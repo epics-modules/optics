@@ -1,12 +1,12 @@
 
 file {
-	name="/home/beams/BCDA/epics/synApps_T202_R3_13_5_R4_4/support/std/stdApp/op/adl/table_setup_GEOCARS.adl"
-	version=030003
+	name="/home/oxygen4/MOONEY/epics/synApps_5_1/support/optics/cvs/opticsApp/op/adl/table_setup_GEOCARS.adl"
+	version=030004
 }
 display {
 	object {
-		x=29
-		y=134
+		x=36
+		y=25
 		width=700
 		height=455
 	}
@@ -1744,7 +1744,7 @@ composite {
 "text entry" {
 	object {
 		x=495
-		y=93
+		y=117
 		width=60
 		height=18
 	}
@@ -1759,7 +1759,7 @@ composite {
 "text entry" {
 	object {
 		x=495
-		y=111
+		y=135
 		width=60
 		height=18
 	}
@@ -1774,7 +1774,7 @@ composite {
 "text entry" {
 	object {
 		x=615
-		y=91
+		y=115
 		width=60
 		height=18
 	}
@@ -1789,7 +1789,7 @@ composite {
 "text entry" {
 	object {
 		x=615
-		y=131
+		y=155
 		width=60
 		height=18
 	}
@@ -1804,7 +1804,7 @@ composite {
 "text entry" {
 	object {
 		x=615
-		y=111
+		y=135
 		width=60
 		height=18
 	}
@@ -1814,89 +1814,6 @@ composite {
 		bclr=51
 	}
 	limits {
-	}
-}
-composite {
-	object {
-		x=460
-		y=91
-		width=140
-		height=60
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=460
-				y=91
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=30
-			}
-			textix="Rx'"
-		}
-		text {
-			object {
-				x=460
-				y=131
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=30
-			}
-			textix="Rz'"
-		}
-		text {
-			object {
-				x=460
-				y=111
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=30
-			}
-			textix="Ry'"
-		}
-		text {
-			object {
-				x=580
-				y=91
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=30
-			}
-			textix="Sx'"
-		}
-		text {
-			object {
-				x=580
-				y=131
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=30
-			}
-			textix="Sz'"
-		}
-		text {
-			object {
-				x=580
-				y=111
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=30
-			}
-			textix="Sy'"
-		}
 	}
 }
 composite {
@@ -2217,7 +2134,7 @@ composite {
 "text entry" {
 	object {
 		x=495
-		y=131
+		y=155
 		width=60
 		height=18
 	}
@@ -2228,4 +2145,159 @@ composite {
 	}
 	limits {
 	}
+}
+"text update" {
+	object {
+		x=580
+		y=58
+		width=95
+		height=14
+	}
+	monitor {
+		chan="$(P)$(Q)fpSelect.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+menu {
+	object {
+		x=580
+		y=75
+		width=95
+		height=20
+	}
+	control {
+		chan="$(P)$(Q)fpSelect"
+		clr=14
+		bclr=51
+	}
+}
+"related display" {
+	object {
+		x=580
+		y=35
+		width=95
+		height=20
+	}
+	display[5] {
+		label="Fixed points"
+		name="table_fixedPoints.adl"
+		args="P=$(P),Q=$(Q),T=$(T)"
+	}
+	clr=0
+	bclr=17
+	label="-Fixed points"
+}
+composite {
+	object {
+		x=460
+		y=115
+		width=30
+		height=60
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=460
+				y=115
+				width=30
+				height=20
+			}
+			"basic attribute" {
+				clr=30
+			}
+			textix="Rx'"
+		}
+		text {
+			object {
+				x=460
+				y=155
+				width=30
+				height=20
+			}
+			"basic attribute" {
+				clr=30
+			}
+			textix="Rz'"
+		}
+		text {
+			object {
+				x=460
+				y=135
+				width=30
+				height=20
+			}
+			"basic attribute" {
+				clr=30
+			}
+			textix="Ry'"
+		}
+	}
+}
+composite {
+	object {
+		x=580
+		y=115
+		width=30
+		height=60
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=580
+				y=115
+				width=30
+				height=20
+			}
+			"basic attribute" {
+				clr=30
+			}
+			textix="Sx'"
+		}
+		text {
+			object {
+				x=580
+				y=155
+				width=30
+				height=20
+			}
+			"basic attribute" {
+				clr=30
+			}
+			textix="Sz'"
+		}
+		text {
+			object {
+				x=580
+				y=135
+				width=30
+				height=20
+			}
+			"basic attribute" {
+				clr=30
+			}
+			textix="Sy'"
+		}
+	}
+}
+"related display" {
+	object {
+		x=585
+		y=95
+		width=85
+		height=15
+	}
+	display[0] {
+		name="table_setup_GEOCARS_refresh.adl"
+		args="P=$(P),Q=$(Q),T=$(T)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=17
+	label="-REFRESH MENU"
 }
