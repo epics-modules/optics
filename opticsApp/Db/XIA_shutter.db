@@ -48,11 +48,11 @@ grecord(scalcout,"$(P)$(S)do") {
 grecord(stringout,"$(P)$(S)sout") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(S)getReply.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringin,"$(P)$(S)getReply") {
 	field(DTYP,"asyn si stringParm")
-	field(INP,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(INP,"@asyn($(PORT))TERM=0d")
 }
 
 grecord(scalcout,"$(P)$(S)expose") {
@@ -69,12 +69,12 @@ grecord(stringout,"$(P)$(S)sout1") {
 	field(DTYP,"asyn so stringParm")
 	field(SDIS,"0")
 	field(FLNK,"$(P)$(S)getAck.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringin,"$(P)$(S)getAck") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(S)busyOn.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(INP,"@asyn($(PORT))TERM=0d")
 }
 grecord(bo,"$(P)$(S)busyOn") {
 	field(DTYP,"Soft Channel")
