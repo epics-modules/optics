@@ -1,3 +1,13 @@
+grecord(stringout,"$(P)$(S)init") {
+	field(PINI,"YES")
+	field(DTYP,"Soft Channel")
+	field(VAL,"2")
+	field(OUT,"$(P)$(S)sendCommand.VAL  PP MS")
+}
+grecord(longout,"$(P)$(S)address") {
+	field(DTYP,"Soft Channel")
+	field(VAL,"$(ADDRESS)")
+}
 grecord(ao,"$(P)$(S)exposeTime") {
 	field(DESC,"exposure time (s)")
 	field(DTYP,"Soft Channel")
@@ -7,46 +17,15 @@ grecord(ao,"$(P)$(S)exposeTime") {
 	field(DRVH,"6553")
 	field(DRVL,".01")
 }
-grecord(bo,"$(P)$(S)busyOn") {
-	field(DTYP,"Soft Channel")
-	field(FLNK,"$(P)$(S)serial.VAL  PP MS")
-	field(DOL,"1")
-	field(OUT,"$(P)$(S)busy.VAL  PP MS")
-}
 grecord(calcout,"$(P)$(S)waitTime") {
 	field(SDIS,"0")
 	field(CALC,"(A+1)*1000")
 	field(OUT,"$(P)$(S)serial.TMOT  NPP MS")
 }
-grecord(fanout,"$(P)$(S)after") {
-}
-grecord(longout,"$(P)$(S)address") {
-	field(DTYP,"Soft Channel")
-}
-grecord(seq,"$(P)$(S)wait") {
-	field(PREC,"3")
-	field(DLY1,"0.1")
-	field(DOL1,"0")
-	field(LNK1,"$(P)$(S)busy.VAL  PP MS")
-}
-grecord(stringin,"$(P)$(S)getAck") {
-	field(DTYP,"Hideos si stringParm")
-	field(FLNK,"$(P)$(S)busyOn.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
-}
-grecord(stringin,"$(P)$(S)getReply") {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
-}
+
 grecord(stringout,"$(P)$(S)closeShutter") {
 	field(DTYP,"Soft Channel")
 	field(VAL,"C")
-	field(OUT,"$(P)$(S)sendCommand.VAL  PP MS")
-}
-grecord(stringout,"$(P)$(S)init") {
-	field(PINI,"YES")
-	field(DTYP,"Soft Channel")
-	field(VAL,"2")
 	field(OUT,"$(P)$(S)sendCommand.VAL  PP MS")
 }
 grecord(stringout,"$(P)$(S)openShutter") {
@@ -54,27 +33,10 @@ grecord(stringout,"$(P)$(S)openShutter") {
 	field(VAL,"O")
 	field(OUT,"$(P)$(S)sendCommand.VAL  PP MS")
 }
+
 grecord(stringout,"$(P)$(S)sendCommand") {
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)$(S)do.AA  PP MS")
-}
-grecord(stringout,"$(P)$(S)sout") {
-	field(DTYP,"Hideos so stringParm")
-	field(FLNK,"$(P)$(S)getReply.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
-}
-grecord(stringout,"$(P)$(S)sout1") {
-	field(DTYP,"Hideos so stringParm")
-	field(SDIS,"0")
-	field(FLNK,"$(P)$(S)getAck.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
-}
-grecord(serial,"$(P)$(S)serial") {
-	field(DESC,"XIA shutter serial")
-	field(DTYP,"Hideos/MPF Serial")
-	field(FLNK,"$(P)$(S)wait.VAL  PP MS")
-	field(TMOD,"Read")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
 }
 grecord(scalcout,"$(P)$(S)do") {
 	field(DESC,"0 argument command builder")
@@ -83,6 +45,16 @@ grecord(scalcout,"$(P)$(S)do") {
 	field(OUT,"$(P)$(S)sout.VAL  PP MS")
 	field(AA,"024CFHLOPUZ")
 }
+grecord(stringout,"$(P)$(S)sout") {
+	field(DTYP,"MPF so stringParm")
+	field(FLNK,"$(P)$(S)getReply.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
+}
+grecord(stringin,"$(P)$(S)getReply") {
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
+}
+
 grecord(scalcout,"$(P)$(S)expose") {
 	field(DESC,"0 argument command builder")
 	field(SDIS,"$(P)$(S)busy.VAL  NPP MS")
@@ -93,7 +65,74 @@ grecord(scalcout,"$(P)$(S)expose") {
 	field(ODLY,"0.1")
 	field(AA,"024CFHLOPUZ")
 }
-grecord(scalcout,"$(P)$(S)parse") {
+grecord(stringout,"$(P)$(S)sout1") {
+	field(DTYP,"MPF so stringParm")
+	field(SDIS,"0")
+	field(FLNK,"$(P)$(S)getAck.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
+}
+grecord(stringin,"$(P)$(S)getAck") {
+	field(DTYP,"MPF si stringParm")
+	field(FLNK,"$(P)$(S)busyOn.VAL  PP MS")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
+}
+grecord(bo,"$(P)$(S)busyOn") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)$(S)serial.VAL  PP MS")
+	field(DOL,"1")
+	field(OUT,"$(P)$(S)busy.VAL  PP MS")
+}
+grecord(serial,"$(P)$(S)serial") {
+	field(DESC,"XIA shutter serial")
+	field(DTYP,"MPF Serial")
+	field(FLNK,"$(P)$(S)wait.VAL  PP MS")
+	field(TMOD,"Read")
+	field(INP,"#C$(C) S0 @$(SERVER)")
+}
+grecord(seq,"$(P)$(S)wait") {
+	field(PREC,"3")
+	field(DLY1,"0.1")
+	field(DOL1,"0")
+	field(LNK1,"$(P)$(S)busy.VAL  PP MS")
 }
 grecord(busy,"$(P)$(S)busy") {
+}
+
+# Poll the filter status
+grecord(seq,"$(P)$(S)poll") {
+        field(SCAN,"1 second")
+	field(DLY1,"0.0")
+	field(DOL1,"1")
+	field(LNK1,"$(P)$(S)pollFilter.PROC  PP MS")
+	field(DLY2,"0.2")
+	field(DOL2,"1")
+	field(LNK2,"$(P)$(S)Status1.PROC  PP MS")
+}
+grecord(stringout,"$(P)$(S)pollFilter") {
+        field(DTYP,"Soft Channel")
+        field(VAL,"F")
+        field(OUT,"$(P)$(S)sendCommand.VAL  PP MS")
+}
+grecord(scalcout,"$(P)$(S)Status1") {
+	field(DESC,"Filter 1 status")
+	field(CALC,"SSCANF(AA, '%*11c%1d')")
+	field(INAA,"$(P)$(S)getReply.VAL  NPP NMS")
+	field(FLNK,"$(P)$(S)Status2.PROC  PP MS")
+}
+grecord(scalcout,"$(P)$(S)Status2") {
+	field(DESC,"Filter 2 status")
+	field(CALC,"SSCANF(AA, '%*12c%1d')")
+	field(INAA,"$(P)$(S)getReply.VAL  NPP NMS")
+	field(FLNK,"$(P)$(S)Status3.PROC  PP MS")
+}
+grecord(scalcout,"$(P)$(S)Status3") {
+	field(DESC,"Filter 3 status")
+	field(CALC,"SSCANF(AA, '%*13c%1d')")
+	field(INAA,"$(P)$(S)getReply.VAL  NPP NMS")
+	field(FLNK,"$(P)$(S)Status4.PROC  PP MS")
+}
+grecord(scalcout,"$(P)$(S)Status4") {
+	field(DESC,"Filter 4 status")
+	field(CALC,"SSCANF(AA, '%*14c%1d')")
+	field(INAA,"$(P)$(S)getReply.VAL  NPP NMS")
 }
