@@ -401,8 +401,10 @@ ss orient {
 				if (OMTX_exists == 1) PUTMSG("Successful OMTX calc");
 			} else {
 				PVPUT(OMTX_exists, 2);
-				PVPUT(motPut_Auto, 0);
-				PUTALERT("Bad OMTX calc; motPut_Auto set to Manual");
+				if (motPut_Auto != 0) {
+					PVPUT(motPut_Auto, 0);
+					PUTALERT("Bad OMTX calc; motPut_Auto set to Manual");
+				}
 			}
 		} state init
 
