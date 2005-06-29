@@ -38,6 +38,9 @@ optics_SRCS   += xiahsc.st
 # customized version that works with sscan record
 optics_SRCS   += xia_slit.st
 
+# Support for orientation matrix, four-circle diffractometer
+optics_SRCS   += matrix3.c, orient.c, orient_st.st
+
 optics_LIBS += seq pv
 
 optics_LIBS += $(EPICS_BASE_IOC_LIBS)
