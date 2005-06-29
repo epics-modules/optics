@@ -1019,10 +1019,9 @@ ss readback {
 
 	state rbv_monitor {
 		when ((A0_exists != 1) || (OMTX_exists != 1)) {
-			PVPUT(motTTH_RBV, 0);
-			PVPUT(motTH_RBV, 0);
-			PVPUT(motCHI_RBV, 0);
-			PVPUT(motPHI_RBV, 0);
+			if (H_RBV != 0) PVPUT(H_RBV, 0);
+			if (K_RBV != 0) PVPUT(K_RBV, 0);
+			if (L_RBV != 0) PVPUT(L_RBV, 0);
 		} state rbv_monitor_wait
 
 		when (efTest(motTTH_RBV_mon) || efTest(motTH_RBV_mon) || efTest(motCHI_RBV_mon) || efTest(motPHI_RBV_mon)) {
