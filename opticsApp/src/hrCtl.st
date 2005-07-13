@@ -973,7 +973,7 @@ state tweak
 			}
 		} state lChanged
 
-		when (th1TweakInc || th1TweakInc) {
+		when (th1TweakInc || th1TweakDec) {
 			if (th1TweakInc) {
 				temp = theta1 + th1TweakVal;
 			} else {
