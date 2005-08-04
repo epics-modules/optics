@@ -1,3 +1,5 @@
+/* set your tab width to 4 */
+
 #include <math.h>
 #include <stdio.h>
 #include <errno.h>
@@ -6,17 +8,20 @@
 #include "orient.h"
 
 volatile int orientDebug = 0;
+
 #ifndef M_PI
 #define M_PI 3.14159265358
 #endif
 #define D2R (M_PI/180.)
 #define SMALL 1.e-11
 
+/* avoid division by zero */
 double checkSmall(double x) {
 	if (fabs(x) < SMALL) x = (x <= -1e-14) ? -SMALL : SMALL;
 	return(x);
 }
 
+/*** rotation matrices ***/
 /* r = rot_z(a) */
 void calc_rotZ(double a, double r[3][3]) {
 	r[0][0] = cos(a);	r[0][1] = sin(a);	r[0][2] = 0;
@@ -70,11 +75,9 @@ int angles_to_HKL(double angles_arg[4], double omtx_inv[3][3], double a0_inv[3][
 	return(0);
 }
 
-#define OLD_HKL2angles 0
 /* 
- * Calc angles (in degrees) from HKL, A0, and OMTX, according to
- * constraint. If constraint == PHI_CONST, this routine uses angles[_PHI_]
- * as supplied.
+ * Calc angles (in degrees) from HKL, A0, and OMTX, according to constraint.
+ * If constraint == PHI_CONST, this routine uses angles[_PHI_] as supplied.
  */
 int HKL_to_angles(double hkl[3], double a0[3][3], double omtx[3][3],
 		double angles_arg[4], int constraint) {
@@ -107,18 +110,14 @@ int HKL_to_angles(double hkl[3], double a0[3][3], double omtx[3][3],
 		calc_rotZ(angles[_PHI_], rz);
 		multArrayVector(rz, hklp, tmp);
 		multArrayVector(ry, tmp, tmp);
-#if OLD_HKL2angles
-		angles[_TH_] = acos(tmp[_H_]/R) * (hklp[_K_]>0 ? 1 : -1);
-#else
 		if (orientDebug) printVector(tmp, "HKL_to_angles:Ry X Rz X OMTX X A0 X HKL");
 		angles[_TH_] = atan2(tmp[_K_], tmp[_H_]) + angles[_TTH_]/2;
-#endif
 		break;
 	case OMEGA_ZERO:
 	default:
 		angles[_TH_] = angles[_TTH_]/2;
 		xx = checkSmall(sqrt(hklp[_H_]*hklp[_H_]+hklp[_K_]*hklp[_K_]));
-		angles[_CHI_] = atan(hklp[_L_]/sqrt(hklp[_H_]*hklp[_H_]+hklp[_K_]*hklp[_K_]));
+		angles[_CHI_] = atan(hklp[_L_]/xx);
 		xx = checkSmall(hklp[_H_]);
 		angles[_PHI_] = atan2(hklp[_K_], xx); /* i.e., atan(K/H) in [-PI, PI] */
 		break;
@@ -132,9 +131,9 @@ int HKL_to_angles(double hkl[3], double a0[3][3], double omtx[3][3],
 }
 
 /*
- * Calc A0 matrix from lattice parameters and wavelength, and return it as r[][]
- * lattice spacings a,b,c and wavelength lambda are in same (arbitrary) units.
- * lattice angles alpha, beta, gamma are in units of degrees.
+ * Calc A0 matrix from lattice parameters and wavelength, and return it as r[][].
+ * Lattice spacings a,b,c and wavelength lambda are in same (arbitrary) units.
+ * Lattice angles alpha, beta, gamma are in units of degrees.
  */
 int calc_A0(double a, double b, double c,
               double alpha_arg, double beta_arg, double gamma_arg,
@@ -201,6 +200,7 @@ int calc_A0(double a, double b, double c,
 	return(0);
 }
 
+/* Calculate orientation matrix */
 int calc_OMTX(double v1_hkl[3], double v1_angles[4], double v2_hkl[3], double v2_angles[4],
                 double a0[3][3], double a0_i[3][3], double o[3][3], double o_i[3][3]) {
 	double v1p[3], v2p[3], v3p[3];
@@ -228,15 +228,9 @@ int calc_OMTX(double v1_hkl[3], double v1_angles[4], double v2_hkl[3], double v2
 	if (orientDebug) printVector(v3p, "calc_OMTX: v3p");
 	/* Vp array columns are v<i>p */
 	for (i=0; i<3; i++) {
-#if 0
-		Vp[i][0] = v1p[i];
-		Vp[i][1] = v2p[i];
-		Vp[i][2] = v3p[i];
-#else
 		Vp[0][i] = v1p[i];
 		Vp[1][i] = v2p[i];
 		Vp[2][i] = v3p[i];
-#endif
 	}
 	if (orientDebug) printArray(Vp, "calc_OMTX: Vp\n");
 
@@ -255,15 +249,9 @@ int calc_OMTX(double v1_hkl[3], double v1_angles[4], double v2_hkl[3], double v2
 
 	/* Vpp array columns are v<i>pp */
 	for (i=0; i<3; i++) {
-#if 0
-		Vpp[i][0] = v1pp[i];
-		Vpp[i][1] = v2pp[i];
-		Vpp[i][2] = v3pp[i];
-#else
 		Vpp[0][i] = v1pp[i];
 		Vpp[1][i] = v2pp[i];
 		Vpp[2][i] = v3pp[i];
-#endif
 	}
 	if (orientDebug) printArray(Vp, "calc_OMTX: Vp");
 
@@ -295,6 +283,7 @@ error:
 	return(-1);
 }
 
+/* Check orientation matrix. */
 double checkOMTX(double v2_hkl[3], double v2_angles_arg[4], double a0[3][3],
 	double a0_inv[3][3], double o[3][3], double o_inv[3][3])
 {
@@ -322,21 +311,3 @@ double checkOMTX(double v2_hkl[3], double v2_angles_arg[4], double a0[3][3],
 	err_angles = acos(dot(v2p, v2pp)) / D2R;
 	return(err_angles);
 }
-
-/*
-* int main() {
-* 	double a[3] = {1,2,3};
-* 	double r[3][3] = {{0,1,2},{5,4,3},{2,7,1}};
-* 	double r_i[3][3], ident[3][3], tmp[3][3];
-* 	printVector(a, "a");
-* 	printArray(r, "r");
-* 	invertArray(r, r_i);
-* 	printArray(r_i, "r_i");
-* 	multArrayArray(r,r_i,ident);
-* 	printArray(ident, "ident");
-* 	multArrayArray(r,r,tmp);
-* 	printArray(tmp,"r*r");
-* 	calc_rotZ(M_PI/10,r);
-* 	printf("r[0][0]=%f\n", r[0][0]);
-* }
-*/
