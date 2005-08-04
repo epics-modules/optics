@@ -1,19 +1,67 @@
+/* set your tab width to 4 */
+
 program orient  ("P=xxx:orient1,PM=xxx:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12")
 
-/* arguments on the command line  :
- * 
- * ex.  seq &orient, "P=xxx:orient1:,PM=xxx:,mTTH=xxx:m9,mTH=m10,mCHI=m11,mPHI=m12"
- *
- *     P    - non-motor PV names start with this string
- *     PM   - motor PV names start with this string
- *     mTTH - name of PV to which TTH is written
- *     mTH  - name of PV to which TH is written
- *     mCHI - name of PV to which CHI is written
- *     mPHI - name of PV to which PHI is written
- */
+/******************************************************************************
 
-/* General Purpose PV's used by sequence */
+This code is part of the implementation of synApps' orientation-matrix support,
+which allows a user to specify a geometrical plane (actually, a set of
+parallel, equally spaced planes) in a crystalline sample, and arranges sample
+and detector orientation so that incident x-rays of a specified wavelength will
+diffract from those planes into the detector.  To do this, the software must
+know the x-ray wavelength, the crystal structure, and the crystal's orientation
+in space.
 
+The wavelength (or energy) and crystal structure are given by the user via
+EPICS PV's.  From this information the software constructs a matrix named "A0".
+
+The crystal's orientation in space can be inferred from the angles at which it
+diffracts x rays: two diffraction conditions, and the identities of the crystal
+planes involved in those diffractions, normally are sufficient to determine the
+crystal's orientation. The user is responsible for finding those diffraction
+conditions (x-ray wavelength, and the crystal angles TTH, TH, PHI, CHI), and
+naming the planes that were involved (H,K,L).  This is done by specifying two
+sets of numbers:
+
+	H1, K1, L1, TTH1, TH1, CHI1, PHI1 - "the primary reflection"
+
+	H2, K2, L2, TTH2, TH2, CHI2, PHI2 - "the secondary reflection"
+
+From the primary and secondary reflections, and using the matrix A0, the
+software constructs the orientation matrix, "OMTX".  Using this matrix, a
+vector (H, K, L) can be transformed to a family of angle vectors (TTH, TH, PHI,
+CHI).  A mathematical constraint (e.g., TH = TTH/2) selects a single member of
+this family for use.  It is also possible for the user directly to set matrix
+elements of the A0 and/or OMTX matrices.
+
+This code monitors PV's by which the user changes and uses the orientation
+matrix; it arranges for the calculation of special-purpose vectors and matrices
+as they are required, calling functions in orient.c to perform those
+calculations; it writes to and monitors motor PV's that move sample and
+detector, and detects the completion of those moves; it writes readback
+information derived from those motor PV's.
+
+This code also allows the motor PV's to be moved by an external agent, and
+manually or automatically synchronizes (H, K, L) drive values to agree with the
+new motor positions.
+
+This code is invoked as follows:
+
+seq &orient, "P=xxx:orient1:,PM=yyy:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12"
+
+ where
+
+ P    - non-motor PV names start with this string
+ PM   - motor PV names start with this string
+ mTTH - name of PV to which TTH is written
+ mTH  - name of PV to which TH is written
+ mCHI - name of PV to which CHI is written
+ mPHI - name of PV to which PHI is written
+ 
+*******************************************************************************/
+
+
+/* Some help to simplify SNL's wordy syntax */
 
 #define ASSIGN(TYPE, LOCAL_VAR, PV) \
         TYPE LOCAL_VAR;             \
@@ -29,7 +77,6 @@ program orient  ("P=xxx:orient1,PM=xxx:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12")
         sync   LOCAL_VAR LOCAL_FLAG;
 
 #define PVPUT(PV,VAL)  {(PV) = (VAL);  pvPut(PV);}
-
 #define PVPUTSTR(MSG,TEXT)  {strcpy((MSG), (TEXT)); pvPut(MSG);}
 #define PUTMSG(LINE1)  {strcpy(Msg, (LINE1)); pvPut(Msg); if (orientDebug) printf("orient: %s\n", Msg);}
 #define PUTALERT(LINE1)  {strcpy(Msg, (LINE1)); pvPut(Msg); PVPUT(Alert, 1); printf("orient: %s\n", Msg);}
@@ -37,14 +84,12 @@ program orient  ("P=xxx:orient1,PM=xxx:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12")
 char tmpstr[100];
 char *cp;
 
-#define CHECK_MOT_NAME(name) \
-		if ((cp = strstr(name, ".DESC"))) { \
-			strcpy(cp, ".VAL"); \
-			pvPut(name); \
-		}
+#define SMALL 1.0e-9
+#define DIFFERENT(a,b) (fabs((a)-(b)) > SMALL)
+
+/* General Purpose PV's */
 
 ASSIGN_MONITOR(short, orientDebug, "{P}Debug")
-
 ASSIGN(string, Msg, "{P}Msg")
 ASSIGN(short, Alert, "{P}Alert")
 ASSIGN_MONITOR(short, opAck, "{P}OperAck")
@@ -55,27 +100,36 @@ ASSIGN_MONITOR_FLAG(short, Mode, "{P}Mode", Mode_mon)
 /* {P}motPut is the user's "Move" button.  If {P}motPut_Auto==0, user
  * can write whatever values he wants to whatever fields without anything
  * propagating to actual motors, and then set {P}motPut=1 to say "make it so".
- * If {P}motPut_Auto==1, this happens whenever local angle values change.
+ * If {P}motPut_Auto==1, this happens whenever the local angle values change.
+ * Note that local angle values are themselves driven by (H,K,L) changes,
+ * which, in turn, are driven by OMTX and A0 matrix changes, and A0 is driven
+ * by changes in crystal parameters and energy/wavelength.  This means that
+ * {P}motPut_Auto is the only gatekeeper between user input and motors.
  */
 ASSIGN_MONITOR_FLAG(short, motPut, "{P}motPut", motPut_mon)
 ASSIGN_MONITOR(short, motPut_Auto, "{P}motPut_Auto")
 ASSIGN(short, load_motPut, "{P}load_motPut")
 
-/* {P}motGet causes motor positions to be read from actual motors to local
- * copies [TTH, TH, CHI, PHI].  If {P}motGet_Auto==1, this will happen whenever
- * the actual motor values change.
+/* {P}motGet causes motor positions to be read from actual motors to local copies
+ * [TTH, TH, CHI, PHI] (and from there automatically back transformd to [H, K, L]
+ * values).  If {P}motGet_Auto==1, this will happen whenever the actual motor
+ * drive values change.  Note that this switch applies only to drive values;
+ * readback values are always back transformd, if the A0 and OMTX matrices exist.
  */
 ASSIGN_MONITOR_FLAG(short, motGet, "{P}motGet", motGet_mon)
 ASSIGN_MONITOR(short, motGet_Auto, "{P}motGet_Auto")
 
-ASSIGN_MONITOR_FLAG(string, motTTH_name, "{P}motTTH_name", motTTH_name_mon)
-ASSIGN_MONITOR_FLAG(string, motTH_name, "{P}motTH_name", motTH_name_mon)
-ASSIGN_MONITOR_FLAG(string, motCHI_name, "{P}motCHI_name", motCHI_name_mon)
-ASSIGN_MONITOR_FLAG(string, motPHI_name, "{P}motPHI_name", motPHI_name_mon)
+/* Motor PV's */
+ASSIGN_MONITOR(string, motTTH_name, "{P}motTTH_name")
+ASSIGN_MONITOR(string, motTH_name, "{P}motTH_name")
+ASSIGN_MONITOR(string, motCHI_name, "{P}motCHI_name")
+ASSIGN_MONITOR(string, motPHI_name, "{P}motPHI_name")
+
 ASSIGN_MONITOR_FLAG(double, motTTH, "{PM}{mTTH}", motTTH_mon)
 ASSIGN_MONITOR_FLAG(double, motTH, "{PM}{mTH}", motTH_mon)
 ASSIGN_MONITOR_FLAG(double, motCHI, "{PM}{mCHI}", motCHI_mon)
 ASSIGN_MONITOR_FLAG(double, motPHI, "{PM}{mPHI}", motPHI_mon)
+
 ASSIGN_MONITOR_FLAG(double, motTTH_RBV, "", motTTH_RBV_mon)
 ASSIGN_MONITOR_FLAG(double, motTH_RBV, "", motTH_RBV_mon)
 ASSIGN_MONITOR_FLAG(double, motCHI_RBV, "", motCHI_RBV_mon)
@@ -87,13 +141,18 @@ ASSIGN(int, motTH_stop, "")
 ASSIGN(int, motCHI_stop, "")
 ASSIGN(int, motPHI_stop, "")
 ASSIGN_MONITOR(int, stopMotors, "{P}stopMotors")
+
 ASSIGN(int, motTTH_Connected, "{P}motTTH_Connected")
 ASSIGN(int, motTH_Connected, "{P}motTH_Connected")
 ASSIGN(int, motCHI_Connected, "{P}motCHI_Connected")
 ASSIGN(int, motPHI_Connected, "{P}motPHI_Connected")
 
+/* User's command to calculate the orientaion matrix */
 ASSIGN_MONITOR(short, OMTX_Calc, "{P}OMTX_Calc")
 
+/* PV to implement completion detection.  The database sets this 
+ * PV, we clear it when we've determined that everything's done.
+ */
 ASSIGN_MONITOR(short, Busy, "{P}Busy")
 
 /* HKL */
@@ -118,7 +177,7 @@ ASSIGN(double, L_RBV, "{P}L_RBV")
 double hkl[3];
 double rbv_hkl[3];
 
-/* angles */
+/* angles (trial motor positions) */
 ASSIGN_MONITOR(double, TTH, "{P}TTH")
 ASSIGN_MONITOR_FLAG(double, TTH_event, "{P}TTH_event", TTH_mon)
 ASSIGN_MONITOR(short, TTH_busy, "{P}TTH_busy")
@@ -142,7 +201,6 @@ ASSIGN(double, loadPHI, "{P}loadPHI")
 double angles[4];
 
 /* primary and secondary reflections */
-/* HKL */
 ASSIGN_MONITOR_FLAG(double, H1, "{P}H1", H1_mon)
 ASSIGN_MONITOR_FLAG(double, K1, "{P}K1", K1_mon)
 ASSIGN_MONITOR_FLAG(double, L1, "{P}L1", L1_mon)
@@ -170,9 +228,19 @@ ASSIGN_MONITOR_FLAG(double, c, "{P}c", c_mon)
 ASSIGN_MONITOR_FLAG(double, alpha, "{P}alpha", alpha_mon)
 ASSIGN_MONITOR_FLAG(double, beta, "{P}beta", beta_mon)
 ASSIGN_MONITOR_FLAG(double, Gamma, "{P}gamma", Gamma_mon)
-ASSIGN_MONITOR_FLAG(double, lambda, "{P}lambda", lambda_mon)
 
-/* A0 matrix elements */
+/* energy and wavelength */
+ASSIGN_MONITOR(double, lambda, "{P}lambda")
+ASSIGN_MONITOR_FLAG(double, lambda_event, "{P}lambda_event", lambda_mon)
+ASSIGN(double, load_lambda, "{P}load_lambda")
+
+ASSIGN_MONITOR(double, energy, "{P}energy")
+ASSIGN_MONITOR_FLAG(double, energy_event, "{P}energy_event", energy_mon)
+ASSIGN(double, load_energy, "{P}load_energy")
+
+double hc = 12.3984244; /* energy (keV) = hc / lambda (Angstroms) */
+
+/* A0 matrix and its elements */
 double A0[3][3];
 double A0_i[3][3];
 
@@ -188,7 +256,10 @@ ASSIGN_MONITOR_FLAG(double, A0_31, "{P}A0_31", A0_31_mon)
 ASSIGN_MONITOR_FLAG(double, A0_32, "{P}A0_32", A0_32_mon)
 ASSIGN_MONITOR_FLAG(double, A0_33, "{P}A0_33", A0_33_mon)
 
-/* OMTX matrix elements */
+/* OMTX matrix and its elements */
+double OMTX[3][3];
+double OMTX_i[3][3];
+
 ASSIGN_MONITOR_FLAG(double, OMTX_11, "{P}OMTX_11", OMTX_11_mon)
 ASSIGN_MONITOR_FLAG(double, OMTX_12, "{P}OMTX_12", OMTX_12_mon)
 ASSIGN_MONITOR_FLAG(double, OMTX_13, "{P}OMTX_13", OMTX_13_mon)
@@ -201,16 +272,15 @@ ASSIGN_MONITOR_FLAG(double, OMTX_31, "{P}OMTX_31", OMTX_31_mon)
 ASSIGN_MONITOR_FLAG(double, OMTX_32, "{P}OMTX_32", OMTX_32_mon)
 ASSIGN_MONITOR_FLAG(double, OMTX_33, "{P}OMTX_33", OMTX_33_mon)
 
+/* check for OMTX calculation */
 ASSIGN(double, errAngle, "{P}errAngle")
 ASSIGN_MONITOR(double, errAngleThresh, "{P}errAngleThresh")
-
-double OMTX[3][3];
-double OMTX_i[3][3];
 
 %%#include <string.h>
 %%#include <math.h>
 %%#include "matrix3.h"
 %%#include "orient.h"
+
 
 double v1_hkl[3];
 double v1_angles[4];
@@ -218,6 +288,7 @@ double v2_hkl[3];
 double v2_angles[4];
 int i;
 
+/* state PV's */ 
 ASSIGN(short, newHKL, "{P}newHKL")
 ASSIGN(short, newAngles, "{P}newAngles")
 ASSIGN(short, newMotors, "{P}newMotors")
@@ -228,15 +299,21 @@ ASSIGN_MONITOR(short, waiting4motCHI, "{P}waiting4motCHI")
 ASSIGN_MONITOR(short, waiting4motPHI, "{P}waiting4motPHI")
 int old_connect_state;
 
-ASSIGN_MONITOR(long, A0_exists, "{P}A0_exists")
-ASSIGN_MONITOR(long, OMTX_exists, "{P}OMTX_exists")
+ASSIGN_MONITOR(long, A0_state, "{P}A0_state")
+ASSIGN_MONITOR(long, OMTX_state, "{P}OMTX_state")
 
 ASSIGN_MONITOR(int, weWrote_motTTH, "{P}weWrote_motTTH")
 ASSIGN_MONITOR(int, weWrote_motTH , "{P}weWrote_motTH")
 ASSIGN_MONITOR(int, weWrote_motCHI, "{P}weWrote_motCHI")
 ASSIGN_MONITOR(int, weWrote_motPHI, "{P}weWrote_motPHI")
 
+#define CALC_NEEDED    0
+#define CALC_SUCCEEDED 1
+#define CALC_FAILED    2
+
 int startup = 1;
+
+/* for macro-substitution */
 %%char *orient_pmac_PM;
 %%char *orient_pmac_mTTH;
 %%char *orient_pmac_mTH;
@@ -244,16 +321,35 @@ int startup = 1;
 %%char *orient_pmac_mPHI;
 
 
+/*
+ * We have four state sets
+ * orient      - initializes and does most of the work
+ * connections - periodically checks PV connections and reports to user
+ * readback    - monitors motor readback values, back transforms HKL,
+ *               and shows user
+ * stop        - monitors stop button and stops all motors
+ */
 
 ss orient {
 
+	/******************/
+	/* Initialization */
+	/******************/
+
+	/* If A0 or OMTX calculation failed, wait before retrying */ 
 	state init_wait {
 		when (delay(1)) {
-			if (A0_exists == 2) PVPUT(A0_exists, 0);
-			if (OMTX_exists == 2) PVPUT(OMTX_exists, 0);
+			if (A0_state == CALC_FAILED) PVPUT(A0_state, CALC_NEEDED);
+			if (OMTX_state == CALC_FAILED) PVPUT(OMTX_state, CALC_NEEDED);
 		} state init
 	}
 
+	/*
+	 * Make motor-PV names and CA connections
+	 * Do initial A0 and OMTX matrix calculations (we don't leave
+	 * until both have succeeded)
+	 * Keep energy and wavelength synchronized
+	 */
 	state init {
 		when (startup) {
 			/* Construct motor PV names from macro arguments */
@@ -331,14 +427,41 @@ ss orient {
 					pvAssign(motPHI_RBV, tmpstr);
 				}
 			}
+			hc = 12.3984244; /* energy (keV) = hc / lambda (Angstroms) */ 
 			startup = 0;
 		} state init
 
-		when (A0_exists == 0) {
+		/* We always have to keep energy and wavelength synchronized */
+		when (efTest(lambda_mon)||efTest(energy_mon)) {
+			if (efTest(lambda_mon)) {
+				energy = hc / lambda;
+				/* Write to energy without triggering event flag or setting Busy */
+				PVPUT(load_energy, energy);
+			} else if (efTest(energy_mon)) {
+				lambda = hc / energy;
+				/* Write to wavelength without triggering event flag or setting Busy */
+				PVPUT(load_lambda, lambda);
+			}
+			efClear(lambda_mon); efClear(energy_mon);
+			PVPUT(A0_state, CALC_NEEDED);
+		} state init
+
+		when (A0_state == CALC_NEEDED) {
 			/*
-			 * Attempt to calculate A0 matrix (depends on crystal structure and x-ray wavelength).
-			 * If successful, A0_exists -> 1; else A0_exists -> 2, which should result in a retry.
+			 * Calculate A0 matrix (depends on crystal structure and x-ray wavelength).
+			 * If successful, A0_state -> CALC_SUCCEEDED; else A0_state -> CALC_FAILED,
+			 * which should result in a retry.
 			 */
+			if (lambda > SMALL) {
+				energy = hc/lambda;
+				/* Write to energy without triggering event flag or setting Busy */
+				PVPUT(load_energy, energy);
+				if (orientDebug) PUTMSG("calculated energy");
+			} else if (energy > SMALL) {
+				lambda = hc/energy;
+				/* Write to wavelength without triggering event flag or setting Busy */
+				PVPUT(load_lambda, lambda);
+			}
 			if ((a!=0) && (b!=0) && (c!=0) && (alpha!=0) && (beta!=0) && (Gamma!=0) && (lambda!=0)) {
 				if (orientDebug) PUTMSG("calling calc_A0");
 				%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
@@ -349,18 +472,18 @@ ss orient {
 				pvPut(A0_11); pvPut(A0_12); pvPut(A0_13);
 				pvPut(A0_21); pvPut(A0_22); pvPut(A0_23);
 				pvPut(A0_31); pvPut(A0_32); pvPut(A0_33);
-				PVPUT(A0_exists, (i==0 ? 1 : 2));
-				if (A0_exists == 1) PUTMSG("Successful A0 calc");
+				PVPUT(A0_state, (i==0 ? CALC_SUCCEEDED : CALC_FAILED));
+				if (A0_state == CALC_SUCCEEDED) PUTMSG("Successful A0 calc");
 			} else {
-				PVPUT(A0_exists, 2);
+				PVPUT(A0_state, CALC_FAILED);
 			}
 		} state init
 
-		when (A0_exists == 2) {
+		when (A0_state == CALC_FAILED) {
 			/* A0 calculation failed.  Wait and retry. */
 		} state init_wait
 
-		when (A0_exists == 1 && (OMTX_exists == 0)) {
+		when ((A0_state == CALC_SUCCEEDED) && (OMTX_state == CALC_NEEDED)) {
 			/*
 			 * Attempt to calculate orientation matrix OMTX -- this defines the orientation of the crystal,
 			 * which is determined by user-entered locations (TTH, TH, CHI, PHI) of primary and secondary
@@ -391,16 +514,17 @@ ss orient {
 				i = -1;
 			}
 			/*
-			 * If calculation returned an error, or secondary reflection was not accurately reproduced, 
-			 * declare failure (OMTX_Exists -> 2), which should result in a retry, and set motor-drive
-			 * switch to manual, so we don't automatically drive into a ditch.
+			 * If calculation returned an error, or secondary reflection was not accurately
+			 * reproduced, declare failure (OMTX_state -> CALC_FAILED), which should result
+			 * in a retry, and set motor-drive switch to manual, so we don't automatically
+			 * drive into a ditch.
 			 */ 
 			if ((i==0) && (fabs(errAngle) < errAngleThresh)) {
 				/* good calculation */
-				PVPUT(OMTX_exists, 1);
-				if (OMTX_exists == 1) PUTMSG("Successful OMTX calc");
+				PVPUT(OMTX_state, CALC_SUCCEEDED);
+				if (OMTX_state == CALC_SUCCEEDED) PUTMSG("Successful OMTX calc");
 			} else {
-				PVPUT(OMTX_exists, 2);
+				PVPUT(OMTX_state, CALC_FAILED);
 				if (motPut_Auto != 0) {
 					PVPUT(motPut_Auto, 0);
 					PUTALERT("Bad OMTX calc; motPut_Auto set to Manual");
@@ -408,23 +532,28 @@ ss orient {
 			}
 		} state init
 
-		when (OMTX_exists == 2) {
+		when (OMTX_state == CALC_FAILED) {
 			/* OMTX calculation failed.  Wait and retry. */
 		} state init_wait
 
-		when (A0_exists == 1 && (OMTX_exists == 1)) {
+		when (A0_state == CALC_SUCCEEDED && (OMTX_state == CALC_SUCCEEDED)) {
 			/* Success.  We graduate from the sandbox to the real world. */
 		} state enter_monitor_all
 
 	}
 
+	/*********************/
+	/* Monitor & respond */
+	/*********************/
+
 	state ref_show {
 		/*
 		 * Implement part of the user interface: user pushed a button to get or put a
 		 * primary or secondary reflection from or to active HKL/Angle PV's.  Hold the
-		 * value for a little while so MEDM display can show user what the button did.
+		 * value for a little while so MEDM display can show user arrows, or something,
+		 * describing what the button did.
 		 * (It would be nicer if we could show user what the button is going to do before
-		 * s/he commits to doing it, but I can't figure out how to do this with MEDM.)
+		 * he commits to doing it, but I can't figure out how to do this with MEDM.)
 		 */
 		when (delay(.5)) {
 			PVPUT(refGet1, 0); PVPUT(refGet2, 0);
@@ -434,9 +563,9 @@ ss orient {
 
 	state enter_monitor_all {
 		when (delay(10)) {
-			/* clear all event flags */
+			/* clear event flags */
 			efClear(a_mon); efClear(b_mon); efClear(c_mon); efClear(alpha_mon);
-			efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon);
+			efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon); efClear(energy_mon);
 			efClear(A0_11_mon); efClear(A0_12_mon); efClear(A0_13_mon);
 			efClear(A0_21_mon); efClear(A0_22_mon); efClear(A0_23_mon);
 			efClear(A0_31_mon); efClear(A0_32_mon); efClear(A0_33_mon);
@@ -457,37 +586,8 @@ ss orient {
 		} state monitor_all
 	}
 
+	/* Watch everything and direct responses to a variety of specific conditions. */
 	state monitor_all { 
-
-#if 0
-		when(efTest(motTTH_name_mon)) {
-			CHECK_MOT_NAME(motTTH_name)
-			pvAssign(motTTH, "");
-			pvAssign(motTTH, motTTH_name);
-			efClear(motTTH_name_mon);
-		} state monitor_all
-
-		when(efTest(motTH_name_mon)) {
-			CHECK_MOT_NAME(motTH_name)
-			pvAssign(motTH, "");
-			pvAssign(motTH, motTH_name);
-			efClear(motTH_name_mon);
-		} state monitor_all
-
-		when(efTest(motCHI_name_mon)) {
-			CHECK_MOT_NAME(motCHI_name)
-			pvAssign(motCHI, "");
-			pvAssign(motCHI, motCHI_name);
-			efClear(motCHI_name_mon);
-		} state monitor_all
-
-		when(efTest(motPHI_name_mon)) {
-			CHECK_MOT_NAME(motPHI_name)
-			pvAssign(motPHI, "");
-			pvAssign(motPHI, motPHI_name);
-			efClear(motPHI_name_mon);
-		} state monitor_all
-#endif
 
 		/*
 		 * Check connections to motor PV's.  These are allowed to be in a different IOC from
@@ -507,20 +607,8 @@ ss orient {
 			PUTMSG("Waiting for motor-stop connection(s)");
 		} state monitor_all_delay
 
-		when (A0_exists == 0) {
-			/* User must have caused a recalculation of A0, and the recalc failed.  Try again. */
-			if (orientDebug) PUTMSG("Recalculating A0");
-			%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
-			%%A0_11 = A0[0][0]; A0_12 = A0[0][1]; A0_13 = A0[0][2];
-			%%A0_21 = A0[1][0]; A0_22 = A0[1][1]; A0_23 = A0[1][2];
-			%%A0_31 = A0[2][0]; A0_32 = A0[2][1]; A0_33 = A0[2][2];
-			pvPut(A0_11); pvPut(A0_12); pvPut(A0_13);
-			pvPut(A0_21); pvPut(A0_22); pvPut(A0_23);
-			pvPut(A0_31); pvPut(A0_32); pvPut(A0_33);
-			PVPUT(A0_exists, (i==0 ? 1 : 2));
-		} state monitor_all
-
-		when (A0_exists == 1 && (OMTX_exists == 0 || OMTX_Calc)) {
+		/* Detect user command to recalculate OMTX matrix */
+		when ((A0_state == CALC_SUCCEEDED) && OMTX_Calc) {
 			/* A0 is ok, but either OMTX is broken or user wants it to be recalculated */
 			if (orientDebug) PUTMSG("Recalculating OMTX");
 			%%v1_hkl[_H_] = H1; v1_hkl[_K_] = K1; v1_hkl[_L_] = L1;
@@ -536,14 +624,14 @@ ss orient {
 			pvPut(OMTX_11); pvPut(OMTX_12); pvPut(OMTX_13);
 			pvPut(OMTX_21); pvPut(OMTX_22); pvPut(OMTX_23);
 			pvPut(OMTX_31); pvPut(OMTX_32); pvPut(OMTX_33);
-			if (OMTX_Calc)  {OMTX_Calc = 0; pvPut(OMTX_Calc);}
+			PVPUT(OMTX_Calc, 0);
 			errAngle = checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
 			pvPut(errAngle);
 			if ((i==0) && (fabs(errAngle) < errAngleThresh)) {
 				/* good calculation */
-				PVPUT(OMTX_exists, 1);
+				PVPUT(OMTX_state, CALC_SUCCEEDED);
 			} else {
-				PVPUT(OMTX_exists, 2);
+				PVPUT(OMTX_state, CALC_FAILED);
 				PVPUT(motPut_Auto, 0);
 				PUTALERT("Bad OMTX calc; motPut_Auto set to Manual");
 			}
@@ -551,9 +639,18 @@ ss orient {
 
 		/* Detect any change that will require us to recalculate A0 */
 		when (efTest(a_mon)||efTest(b_mon)||efTest(c_mon)||efTest(alpha_mon)||
-				efTest(beta_mon)||efTest(Gamma_mon)||efTest(lambda_mon)) {
+				efTest(beta_mon)||efTest(Gamma_mon)||efTest(lambda_mon)||efTest(energy_mon)) {
+			if (efTest(lambda_mon)) {
+				energy = hc / lambda;
+				/* Write to energy without triggering event flag or setting Busy */
+				PVPUT(load_energy, energy);
+			} else if (efTest(energy_mon)) {
+				lambda = hc / energy;
+				/* Write to wavelength without triggering event flag or setting Busy */
+				PVPUT(load_lambda, lambda);
+			}
 			efClear(a_mon); efClear(b_mon); efClear(c_mon); efClear(alpha_mon);
-			efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon);
+			efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon); efClear(energy_mon);
 			if (orientDebug) PUTMSG("new XTAL parameters");
 			%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
 			%%A0_11 = A0[0][0]; A0_12 = A0[0][1]; A0_13 = A0[0][2];
@@ -562,22 +659,22 @@ ss orient {
 			pvPut(A0_11); pvPut(A0_12); pvPut(A0_13);
 			pvPut(A0_21); pvPut(A0_22); pvPut(A0_23);
 			pvPut(A0_31); pvPut(A0_32); pvPut(A0_33);
-			PVPUT(A0_exists, (i==0 ? 1 : 2));
-			if (A0_exists == 1) {
+			PVPUT(A0_state, (i==0 ? CALC_SUCCEEDED : CALC_FAILED));
+			if (A0_state == CALC_SUCCEEDED) {
 				PUTMSG("Successful A0 calc");
 			} else {
 				PUTALERT("A0 calc failed");
 			}
 		} state newHKL
 
-		/* Detect and handle direct user input of A0 */
+		/* Detect and handle direct user input of A0 matrix element */
 		when (efTest(A0_11_mon) || efTest(A0_12_mon) || efTest(A0_13_mon) ||
 				efTest(A0_21_mon) || efTest(A0_22_mon) || efTest(A0_23_mon) ||
 				efTest(A0_31_mon) || efTest(A0_32_mon) || efTest(A0_33_mon)) {
 			efClear(A0_11_mon); efClear(A0_12_mon); efClear(A0_13_mon);
 			efClear(A0_21_mon); efClear(A0_22_mon); efClear(A0_23_mon);
 			efClear(A0_31_mon); efClear(A0_32_mon); efClear(A0_33_mon);
-			if (orientDebug) PUTMSG("new A0 element(s)");
+			if (orientDebug) PUTMSG("new A0 precursor(s)");
 			/* Copy to internal array and calculate matrix inverse */
 			%%A0[0][0] = A0_11; A0[0][1] = A0_12; A0[0][2] = A0_13;
 			%%A0[1][0] = A0_21; A0[1][1] = A0_22; A0[1][2] = A0_23;
@@ -585,11 +682,11 @@ ss orient {
 			i = invertArray(A0, A0_i);
 			if (i == -1) {
 				PUTMSG("Could not invert A0 array");
-				A0_exists = 2;
+				A0_state = CALC_FAILED;
 			}
 		} state newA0
 
-		/* Detect and handle direct user input of OMTX */
+		/* Detect and handle direct user input of OMTX matrix element */
 		when (efTest(OMTX_11_mon) || efTest(OMTX_12_mon) || efTest(OMTX_13_mon) ||
 				efTest(OMTX_21_mon) || efTest(OMTX_22_mon) || efTest(OMTX_23_mon) ||
 				efTest(OMTX_31_mon) || efTest(OMTX_32_mon) || efTest(OMTX_33_mon)) {
@@ -604,19 +701,19 @@ ss orient {
 			i = invertArray(OMTX, OMTX_i);
 			if (i == -1) {
 				PUTMSG("Could not invert OMTX array");
-				OMTX_exists = 2;
-			} else if (A0_exists != 1) {
+				OMTX_state = CALC_FAILED;
+			} else if (A0_state != CALC_SUCCEEDED) {
 				PUTMSG("Can't check or use OMTX array (No A0)");
-				OMTX_exists = 2;
+				OMTX_state = CALC_FAILED;
 			} else {
 				errAngle = checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
 				pvPut(errAngle);
 				if (fabs(errAngle) < errAngleThresh) {
 					/* good calculation */
-					PVPUT(OMTX_exists, 1);
+					PVPUT(OMTX_state, CALC_SUCCEEDED);
 					if (orientDebug) PUTMSG("User's OMTX passes test");
 				} else {
-					PVPUT(OMTX_exists, 2);
+					PVPUT(OMTX_state, CALC_FAILED);
 					if (orientDebug) PUTMSG("User's OMTX fails test");
 				}
 			}
@@ -642,7 +739,7 @@ ss orient {
 		} state newHKL
 
 
-		/* Detect user entry of diffractometer angles (note these are not motors). */
+		/* Detect user entry of diffractometer angles. */
 		when (efTest(TTH_mon)) {
 			if (orientDebug) {printf("\norient: client wrote TTH\n");}
 			if (!Busy) PVPUT(Busy, 1);
@@ -673,8 +770,8 @@ ss orient {
 		 * We try to distinguish these event types, using three pieces of information:
 		 * A) weWrote_motXXX        - a flag we set when we write to the motor
 		 * B) waiting4motXXX        - a flag we set when we write to the motor
-		 * C) pvPutComplete(motXXX) - returns true after pvPut(<motor>, ASYNC), and continues
-		 *                            to return true until the EPICS calls SNL back to say the
+		 * C) pvPutComplete(motXXX) - returns false after pvPut(<motor>, ASYNC), and continues
+		 *                            to return false until the EPICS calls SNL back to say the
 		 *                            motor (and any processing it may have triggered) is done.
 		 *
 		 * If the event is a new value, there are three possibilities:
@@ -704,7 +801,7 @@ ss orient {
 			 * monitor event.
 			 */ 
 			if (weWrote_motTTH) PVPUT(weWrote_motTTH, 0);
-		} state checkNewMotorValues
+		} state checkDone
 		when (efTest(motTTH_mon) && weWrote_motTTH) {
 			if (orientDebug) {printf("orient: We wrote motTTH\n");}
 			efClear(motTTH_mon); PVPUT(weWrote_motTTH, 0);
@@ -712,13 +809,13 @@ ss orient {
 		when (efTest(motTTH_mon) && !weWrote_motTTH) {
 			if (orientDebug) {printf("orient: client wrote motTTH\n");}
 			efClear(motTTH_mon);
-		} state checkNewMotorValues
+		} state newMotors
 
 		when (efTest(motTH_mon) && waiting4motTH && pvPutComplete(motTH)) {
 			if (orientDebug) {printf("orient: motTH done moving\n");}
 			efClear(motTH_mon); PVPUT(waiting4motTH, 0);
 			if (weWrote_motTH) PVPUT(weWrote_motTH, 0);
-		} state checkNewMotorValues
+		} state checkDone
 		when (efTest(motTH_mon) && weWrote_motTH) {
 			if (orientDebug) {printf("orient: We wrote motTH\n");}
 			efClear(motTH_mon); PVPUT(weWrote_motTH, 0);
@@ -726,13 +823,13 @@ ss orient {
 		when (efTest(motTH_mon) && !weWrote_motTH) {
 			if (orientDebug) {printf("orient: client wrote motTH\n");}
 			efClear(motTH_mon);
-		} state checkNewMotorValues
+		} state newMotors
 
 		when (efTest(motCHI_mon) && waiting4motCHI && pvPutComplete(motCHI)) {
 			if (orientDebug) {printf("orient: motCHI done moving\n");}
 			efClear(motCHI_mon); PVPUT(waiting4motCHI, 0);
 			if (weWrote_motCHI) PVPUT(weWrote_motCHI, 0);
-		} state checkNewMotorValues
+		} state checkDone
 		when (efTest(motCHI_mon) && weWrote_motCHI) {
 			if (orientDebug) {printf("orient: We wrote motCHI\n");}
 			efClear(motCHI_mon); PVPUT(weWrote_motCHI, 0);
@@ -740,13 +837,13 @@ ss orient {
 		when (efTest(motCHI_mon) && !weWrote_motCHI) {
 			if (orientDebug) {printf("orient: client wrote motCHI\n");}
 			efClear(motCHI_mon);
-		} state checkNewMotorValues
+		} state newMotors
 
 		when (efTest(motPHI_mon) && waiting4motPHI && pvPutComplete(motPHI)) {
 			if (orientDebug) {printf("orient: motPHI done moving\n");}
 			efClear(motPHI_mon); PVPUT(waiting4motPHI, 0);
 			if (weWrote_motPHI) PVPUT(weWrote_motPHI, 0);
-		} state checkNewMotorValues
+		} state checkDone
 		when (efTest(motPHI_mon) && weWrote_motPHI) {
 			if (orientDebug) {printf("orient: We wrote motPHI\n");}
 			efClear(motPHI_mon); PVPUT(weWrote_motPHI, 0);
@@ -754,8 +851,9 @@ ss orient {
 		when (efTest(motPHI_mon) && !weWrote_motPHI) {
 			if (orientDebug) {printf("orient: client wrote motPHI\n");}
 			efClear(motPHI_mon);
-		} state checkNewMotorValues
-		
+		} state newMotors
+
+		/* Detect completion of all motors involved in a move */
 		when (Busy && waiting4Mot && (waiting4motTTH==0) && (waiting4motTH==0) &&
 				(waiting4motCHI==0) && (waiting4motPHI==0)) {
 			PVPUT(waiting4Mot, 0);
@@ -770,6 +868,7 @@ ss orient {
 			if (orientDebug) {printf("motors done\n");}
 		} state monitor_all
 
+		/* New constraint governing (H,K,L) <--> (TTH,TH,CHI,PHI) transform */
 		when (efTest(Mode_mon)) {
 			efClear(Mode_mon);
 			if (orientDebug) {
@@ -778,19 +877,26 @@ ss orient {
 			}
 		} state newHKL
 
+		/* User says "Move" -- i.e., send trial-angle values to the motors */
 		when (motPut) {
 			if (orientDebug) {printf("orient: motPut==%d\n", motPut);}
 			PVPUT(weWrote_motTTH, 1); motTTH = TTH; PVPUT(waiting4motTTH, 1); pvPut(motTTH, ASYNC);
 			PVPUT(weWrote_motTH,  1); motTH  = TH;  PVPUT(waiting4motTH,  1); pvPut(motTH, ASYNC);
 			PVPUT(weWrote_motCHI, 1); motCHI = CHI; PVPUT(waiting4motCHI, 1); pvPut(motCHI, ASYNC);
 			PVPUT(weWrote_motPHI, 1); motPHI = PHI; PVPUT(waiting4motPHI, 1); pvPut(motPHI, ASYNC);
+			/* Write to motPut without triggering event flag or setting Busy */
 			motPut = 0; PVPUT(load_motPut, motPut);
 			PVPUT(waiting4Mot, 1);
 		} state monitor_all
 
+		/*
+		 * User says "Read" -- copy motor positions to trial-angle values, and back transform
+		 * to (H,K,L).
+		 */
 		when (motGet) {
-		} state checkNewMotorValues
+		} state newMotors
 
+		/* User says copy current (H,K,L) and (TTH,TH,CHI,PHI) to primary/secondary reflection */
 		when (refGet1) {
 			PVPUT(H1, H); PVPUT(K1, K); PVPUT(L1, L);
 			PVPUT(TTH1, TTH); PVPUT(TH1, TH); PVPUT(CHI1, CHI); PVPUT(PHI1, PHI);
@@ -801,6 +907,7 @@ ss orient {
 			PVPUT(TTH2, TTH); PVPUT(TH2, TH); PVPUT(CHI2, CHI); PVPUT(PHI2, PHI);
 		} state ref_show
 
+		/* User says copy primary/secondary reflection to current (H,K,L) and (TTH,TH,CHI,PHI) */
 		when (refPut1) {
 			PVPUT(H, H1); PVPUT(K, K1); PVPUT(L, L1);
 			PVPUT(TTH, TTH1); PVPUT(TH, TH1); PVPUT(CHI, CHI1); PVPUT(PHI, PHI1);
@@ -811,6 +918,7 @@ ss orient {
 			PVPUT(TTH, TTH2); PVPUT(TH, TH2); PVPUT(CHI, CHI2); PVPUT(PHI, PHI2);
 		} state ref_show
 
+		/* User wants to erase message area and clear alert */
 		when (opAck) {
 			PUTMSG("");
 			PVPUT(opAck, 0);
@@ -818,28 +926,46 @@ ss orient {
 		} state monitor_all
 	}
 
+
+	/********************/
+	/* Specific actions */
+	/********************/
+
+
+	/* A0 matrix was just recalculated.  Recalculate everything that depends on it. */
 	state newA0 {
-		when (A0_exists != 1) {
+		when (A0_state != CALC_SUCCEEDED) {
 		} state monitor_all
-		when (A0_exists == 1) {
+		when (A0_state == CALC_SUCCEEDED) {
 		} state newHKL
 	}
 
+	/*
+	 * OMTX matrix was just recalculated.  Recalculate everything that depends on it.
+	 * If calculation failed, disconnect motors from automatic drive.
+	 */
 	state newOMTX {
-		when (OMTX_exists == 1) {
+		when (OMTX_state == CALC_SUCCEEDED) {
 		} state newHKL
-		when (OMTX_exists != 1) {
+		when (OMTX_state != CALC_SUCCEEDED) {
 			PVPUT(motPut_Auto, 0);
 			PUTALERT("Bad OMTX calc; motPut_Auto set to Manual");
 		} state monitor_all
 	}
 
+	/* 
+	 * (H,K,L) vector was written to, or its meaning has changed because something in
+	 * the calculation path between (H,K,L) and trial angles has changed.  If H, K, or L
+	 * was written, wait a bit to see if other elements of the vector are also written,
+	 * so we don't launch motors separately on each element of what was intended to be
+	 * a vector write.
+	 */
 	state newHKL {
-		when ((A0_exists == 0) || (OMTX_exists == 0)) {
-			if (A0_exists == 0) {
-				PUTALERT("A0 has not been calculated");
+		when ((A0_state != CALC_SUCCEEDED) || (OMTX_state != CALC_SUCCEEDED)) {
+			if (A0_state != CALC_SUCCEEDED) {
+				PUTALERT("We don't have a good A0 matrix");
 			} else {
-				PUTALERT("OMTX has not been calculated");
+				PUTALERT("We don't have a good OMTX matrix");
 			}
 		} state monitor_all
 		when (delay(.02)) {
@@ -851,7 +977,7 @@ ss orient {
 			%%angles[_TTH_] = TTH; angles[_TH_] = TH;
 			%%angles[_CHI_] = CHI; angles[_PHI_] = PHI;
 			%%i = HKL_to_angles(hkl, A0, OMTX, angles, (int)Mode);
-			if (i == 0 && ((H != 0) || (K != 0) || (L != 0))) {
+			if (i == 0) {
 				%%TTH = angles[_TTH_]; TH = angles[_TH_]; CHI = angles[_CHI_]; PHI = angles[_PHI_];
 				PVPUT(newAngles, 1);
 				if (motPut_Auto) PVPUT(newMotors, 1);
@@ -861,12 +987,17 @@ ss orient {
 		} state putAll
 	}
 
+	/*
+	 * A trial-angle was written to.  Wait a bit to see if other elements of the trial-angle
+	 * vector (TTH, TH, CHI, PHI) are also written, so we don't launch motors separately on
+	 * each element of what was intended to be a vector write.
+	 */
 	state newAngles {
-		when ((A0_exists == 0) || (OMTX_exists == 0)) {
-			if (A0_exists == 0) {
-				PUTALERT("A0 has not been calculated");
+		when ((A0_state != CALC_SUCCEEDED) || (OMTX_state != CALC_SUCCEEDED)) {
+			if (A0_state != CALC_SUCCEEDED) {
+				PUTALERT("We don't have a good A0 matrix");
 			} else {
-				PUTALERT("OMTX has not been calculated");
+				PUTALERT("We don't have a good OMTX matrix");
 			}
 		} state monitor_all
 		when (delay(.02)) {
@@ -886,16 +1017,26 @@ ss orient {
 		} state putAll
 	}
 
-	state checkNewMotorValues {
-		when (motTTH==0 && motTH==0 && motCHI==0 && motPHI==0) {
-			/* ignore all-zeroes posting */
-			if (motGet) PVPUT(motGet, 0);
-		} state monitor_all
-		when () {
-			if (orientDebug) {printf("orient:checkNewMotorValues: values OK\n");}
+	state checkDone {
+		/* Detect completion of all motors involved in a move */
+		when (Busy && waiting4Mot && (waiting4motTTH==0) && (waiting4motTH==0) &&
+				(waiting4motCHI==0) && (waiting4motPHI==0)) {
+			PVPUT(waiting4Mot, 0);
+			PVPUT(Busy, 0);
+			if (H_busy) PVPUT(H_busy, 0);
+			if (K_busy) PVPUT(K_busy, 0);
+			if (L_busy) PVPUT(L_busy, 0);
+			if (TTH_busy) PVPUT(TTH_busy, 0);
+			if (TH_busy) PVPUT(TH_busy, 0);
+			if (CHI_busy) PVPUT(CHI_busy, 0);
+			if (PHI_busy) PVPUT(PHI_busy, 0);
+			if (orientDebug) {printf("motors done\n");}
 		} state newMotors
+		when () {
+		} state monitor_all
 	}
 
+	/* A motor drive value has changed.  Update trial-angle values and back transform to (H,K,L). */
 	state newMotors {
 		when () {
 			if (orientDebug) {printf("orient:newMotors: motGet=%d\n", motGet);}
@@ -915,10 +1056,20 @@ ss orient {
 		} state putAll
 	}
 
+	/***************************************************/
+	/* Write to drive PV's; handle trivial completion  */
+	/***************************************************/
+
+/*
+ * What if motor isn't allowed to go where we want it to go?  What notification
+ * do we get?  Maybe we need to monitor motor limits and back transform to (H,K,L)
+ * limits. 
+ */
 	state putAll {
 		when () {
 			if (newHKL) {
 				if (orientDebug) {printf("orient:putAll: writing HKL\n");}
+				/* Write to (H,K,L) without triggering event flag or setting Busy */
 				PVPUT(loadH, H);
 				PVPUT(loadK, K);
 				PVPUT(loadL, L);
@@ -926,6 +1077,7 @@ ss orient {
 			}
 			if (newAngles) {
 				if (orientDebug) {printf("orient:putAll: writing Angles\n");}
+				/* Write to (TTH,TH,CHI,PHI) without triggering event flag or setting Busy */
 				PVPUT(loadTTH, TTH);
 				PVPUT(loadTH,  TH);
 				PVPUT(loadCHI, CHI);
@@ -933,27 +1085,26 @@ ss orient {
 				PVPUT(newAngles, 0);
 			}
 			if (newMotors) {
-				if (orientDebug) {printf("orient:putAll: writing Motors\n");}
+				if (orientDebug) {printf("orient:putAll: comparing new/old Motor values\n");}
 				if (motTTH_Connected && motTH_Connected && motCHI_Connected && motPHI_Connected) {
-					if (orientDebug) {
-						printf("putAll:newMotors: TTH=%8.4f, motTTH=%8.4f, H=%8.4f\n", TTH, motTTH, H);
-						printf("putAll:newMotors:  TH=%8.4f,  motTH=%8.4f, K=%8.4f\n", TH, motTH, K);
-						printf("putAll:newMotors: CHI=%8.4f, motCHI=%8.4f, L=%8.4f\n", CHI, motCHI, L);
-						printf("putAll:newMotors: PHI=%8.4f, motPHI=%8.4f\n", PHI, motPHI);
-					}
-					if (motTTH != TTH) {
+					if (orientDebug) printf("putAll:newMotors: H=%8.4f, K=%8.4f, L=%8.4f\n", H, K, L);
+					if (DIFFERENT(motTTH, TTH)) {
+						if (orientDebug) printf("putAll:newMotors: TTH=%8.4f, motTTH=%8.4f\n", TTH, motTTH);
 						PVPUT(weWrote_motTTH, 1); PVPUT(waiting4motTTH, 1);
 						motTTH = TTH; pvPut(motTTH, ASYNC);
 					}
-					if (motTH != TH) {
+					if (DIFFERENT(motTH, TH)) {
+						if (orientDebug) printf("putAll:newMotors:  TH=%8.4f,  motTH=%8.4f\n", TH, motTH);
 						PVPUT(weWrote_motTH,  1); PVPUT(waiting4motTH,  1);
 						motTH = TH; pvPut(motTH, ASYNC);
 					}
-					if (motCHI != CHI) {
+					if (DIFFERENT(motCHI, CHI)) {
+						if (orientDebug) printf("putAll:newMotors: CHI=%8.4f, motCHI=%8.4f\n", CHI, motCHI);
 						PVPUT(weWrote_motCHI , 1); PVPUT(waiting4motCHI, 1);
 						motCHI = CHI; pvPut(motCHI, ASYNC);
 					}
-					if (motPHI != PHI) {
+					if (DIFFERENT(motPHI, PHI)) {
+						if (orientDebug) printf("putAll:newMotors: PHI=%8.4f, motPHI=%8.4f\n", PHI, motPHI);
 						PVPUT(weWrote_motPHI, 1); PVPUT(waiting4motPHI, 1);
 						motPHI = PHI; pvPut(motPHI, ASYNC);
 					}
@@ -966,8 +1117,9 @@ ss orient {
 					PUTALERT("Motors not connected");
 					PVPUT(newMotors, 0);
 				}
-				
-			} else if (!waiting4Mot) {
+			}
+
+			if (!waiting4Mot) {
 				if (Busy) PVPUT(Busy, 0);
 				if (H_busy) PVPUT(H_busy, 0);
 				if (K_busy) PVPUT(K_busy, 0);
@@ -982,6 +1134,8 @@ ss orient {
 	}
 }
 
+
+/* Monitor connections to motor-drive values; show user */
 ss connections {
 	state check {
 		/* Report connection state of motor PV's */
@@ -1005,6 +1159,7 @@ ss connections {
 	}
 }
 
+/* Handle motor-readback values */
 ss readback {
 	state rbv_monitor_throttle {
 		when (delay(.1)) {
@@ -1012,7 +1167,7 @@ ss readback {
 	}
 
 	state rbv_monitor_wait {
-		when ((A0_exists == 1) && (OMTX_exists == 1)) {
+		when ((A0_state == CALC_SUCCEEDED) && (OMTX_state == CALC_SUCCEEDED)) {
 		} state rbv_monitor
 
 		when (delay(5)) {
@@ -1020,7 +1175,7 @@ ss readback {
 	}
 
 	state rbv_monitor {
-		when ((A0_exists != 1) || (OMTX_exists != 1)) {
+		when ((A0_state != CALC_SUCCEEDED) || (OMTX_state != CALC_SUCCEEDED)) {
 			if (H_RBV != 0) PVPUT(H_RBV, 0);
 			if (K_RBV != 0) PVPUT(K_RBV, 0);
 			if (L_RBV != 0) PVPUT(L_RBV, 0);
@@ -1038,6 +1193,7 @@ ss readback {
 	}
 }
 
+/* Make sure we send stop promptly */
 ss stop {
 	state stop_all {
 		when (stopMotors) {
