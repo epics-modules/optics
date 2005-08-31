@@ -76,6 +76,11 @@ seq &orient, "P=xxx:orient1:,PM=yyy:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12"
         evflag LOCAL_FLAG;                               \
         sync   LOCAL_VAR LOCAL_FLAG;
 
+/* As abovem but using already defined event flag */
+#define ASSIGN_MONITOR_eFLAG(TYPE, LOCAL_VAR, PV, LOCAL_FLAG) \
+        ASSIGN_MONITOR(TYPE, LOCAL_VAR, PV)              \
+        sync   LOCAL_VAR LOCAL_FLAG;
+
 #define PVPUT(PV,VAL)  {(PV) = (VAL);  pvPut(PV);}
 #define PVPUTSTR(MSG,TEXT)  {strcpy((MSG), (TEXT)); pvPut(MSG);}
 #define PUTMSG(LINE1)  {strcpy(Msg, (LINE1)); pvPut(Msg); if (orientDebug) printf("orient: %s\n", Msg);}
@@ -139,10 +144,10 @@ ASSIGN_MONITOR_FLAG(double, motTH, "{PM}{mTH}", motTH_mon)
 ASSIGN_MONITOR_FLAG(double, motCHI, "{PM}{mCHI}", motCHI_mon)
 ASSIGN_MONITOR_FLAG(double, motPHI, "{PM}{mPHI}", motPHI_mon)
 
-ASSIGN_MONITOR_FLAG(double, motTTH_RBV, "", motTTH_RBV_mon)
-ASSIGN_MONITOR_FLAG(double, motTH_RBV, "", motTH_RBV_mon)
-ASSIGN_MONITOR_FLAG(double, motCHI_RBV, "", motCHI_RBV_mon)
-ASSIGN_MONITOR_FLAG(double, motPHI_RBV, "", motPHI_RBV_mon)
+ASSIGN_MONITOR_FLAG(double, motTTH_RBV, "", motRBV_mon)
+ASSIGN_MONITOR_eFLAG(double, motTH_RBV, "", motRBV_mon)
+ASSIGN_MONITOR_eFLAG(double, motCHI_RBV, "", motRBV_mon)
+ASSIGN_MONITOR_eFLAG(double, motPHI_RBV, "", motRBV_mon)
 double rbv_angles[4];
 
 ASSIGN(int, motTTH_stop, "")
@@ -155,7 +160,8 @@ ASSIGN(int, motTTH_Connected, "{P}motTTH_Connected")
 ASSIGN(int, motTH_Connected, "{P}motTH_Connected")
 ASSIGN(int, motCHI_Connected, "{P}motCHI_Connected")
 ASSIGN(int, motPHI_Connected, "{P}motPHI_Connected")
-int motorsConnected, motorStopsConnected;
+int motorsConnected;
+int motorStopsConnected;
 
 /* User's command to calculate the orientaion matrix */
 ASSIGN_MONITOR(short, OMTX_Calc, "{P}OMTX_Calc")
@@ -211,33 +217,33 @@ ASSIGN(double, loadPHI, "{P}loadPHI")
 double angles[4];
 
 /* primary and secondary reflections */
-ASSIGN_MONITOR_FLAG(double, H1, "{P}H1", H1_mon)
-ASSIGN_MONITOR_FLAG(double, K1, "{P}K1", K1_mon)
-ASSIGN_MONITOR_FLAG(double, L1, "{P}L1", L1_mon)
-ASSIGN_MONITOR_FLAG(double, TTH1, "{P}TTH1", TTH1_mon)
-ASSIGN_MONITOR_FLAG(double, TH1, "{P}TH1", TH1_mon)
-ASSIGN_MONITOR_FLAG(double, CHI1, "{P}CHI1", CHI1_mon)
-ASSIGN_MONITOR_FLAG(double, PHI1, "{P}PHI1", PHI1_mon)
+ASSIGN_MONITOR(double, H1, "{P}H1")
+ASSIGN_MONITOR(double, K1, "{P}K1")
+ASSIGN_MONITOR(double, L1, "{P}L1")
+ASSIGN_MONITOR(double, TTH1, "{P}TTH1")
+ASSIGN_MONITOR(double, TH1, "{P}TH1")
+ASSIGN_MONITOR(double, CHI1, "{P}CHI1")
+ASSIGN_MONITOR(double, PHI1, "{P}PHI1")
 ASSIGN_MONITOR(short, refGet1, "{P}refGet1")
 ASSIGN_MONITOR(short, refPut1, "{P}refPut1")
 
-ASSIGN_MONITOR_FLAG(double, H2, "{P}H2", H2_mon)
-ASSIGN_MONITOR_FLAG(double, K2, "{P}K2", K2_mon)
-ASSIGN_MONITOR_FLAG(double, L2, "{P}L2", L2_mon)
-ASSIGN_MONITOR_FLAG(double, TTH2, "{P}TTH2", TTH2_mon)
-ASSIGN_MONITOR_FLAG(double, TH2, "{P}TH2", TH2_mon)
-ASSIGN_MONITOR_FLAG(double, CHI2, "{P}CHI2", CHI2_mon)
-ASSIGN_MONITOR_FLAG(double, PHI2, "{P}PHI2", PHI2_mon)
+ASSIGN_MONITOR(double, H2, "{P}H2")
+ASSIGN_MONITOR(double, K2, "{P}K2")
+ASSIGN_MONITOR(double, L2, "{P}L2")
+ASSIGN_MONITOR(double, TTH2, "{P}TTH2")
+ASSIGN_MONITOR(double, TH2, "{P}TH2")
+ASSIGN_MONITOR(double, CHI2, "{P}CHI2")
+ASSIGN_MONITOR(double, PHI2, "{P}PHI2")
 ASSIGN_MONITOR(short, refGet2, "{P}refGet2")
 ASSIGN_MONITOR(short, refPut2, "{P}refPut2")
 
 /* crystal parameters */
-ASSIGN_MONITOR_FLAG(double, a, "{P}a", a_mon)
-ASSIGN_MONITOR_FLAG(double, b, "{P}b", b_mon)
-ASSIGN_MONITOR_FLAG(double, c, "{P}c", c_mon)
-ASSIGN_MONITOR_FLAG(double, alpha, "{P}alpha", alpha_mon)
-ASSIGN_MONITOR_FLAG(double, beta, "{P}beta", beta_mon)
-ASSIGN_MONITOR_FLAG(double, Gamma, "{P}gamma", Gamma_mon)
+ASSIGN_MONITOR_FLAG(double, a, "{P}a", xtalParm_mon)
+ASSIGN_MONITOR_eFLAG(double, b, "{P}b", xtalParm_mon)
+ASSIGN_MONITOR_eFLAG(double, c, "{P}c", xtalParm_mon)
+ASSIGN_MONITOR_eFLAG(double, alpha, "{P}alpha", xtalParm_mon)
+ASSIGN_MONITOR_eFLAG(double, beta, "{P}beta", xtalParm_mon)
+ASSIGN_MONITOR_eFLAG(double, Gamma, "{P}gamma", xtalParm_mon)
 
 /* energy and wavelength */
 ASSIGN_MONITOR(double, lambda, "{P}lambda")
@@ -254,33 +260,33 @@ double hc = 12.3984244; /* energy (keV) = hc / lambda (Angstroms) */
 double A0[3][3];
 double A0_i[3][3];
 
-ASSIGN_MONITOR_FLAG(double, A0_11, "{P}A0_11", A0_11_mon)
-ASSIGN_MONITOR_FLAG(double, A0_12, "{P}A0_12", A0_12_mon)
-ASSIGN_MONITOR_FLAG(double, A0_13, "{P}A0_13", A0_13_mon)
+ASSIGN_MONITOR_FLAG(double, A0_11, "{P}A0_11", A0_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_12, "{P}A0_12", A0_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_13, "{P}A0_13", A0_mon)
 
-ASSIGN_MONITOR_FLAG(double, A0_21, "{P}A0_21", A0_21_mon)
-ASSIGN_MONITOR_FLAG(double, A0_22, "{P}A0_22", A0_22_mon)
-ASSIGN_MONITOR_FLAG(double, A0_23, "{P}A0_23", A0_23_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_21, "{P}A0_21", A0_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_22, "{P}A0_22", A0_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_23, "{P}A0_23", A0_mon)
 
-ASSIGN_MONITOR_FLAG(double, A0_31, "{P}A0_31", A0_31_mon)
-ASSIGN_MONITOR_FLAG(double, A0_32, "{P}A0_32", A0_32_mon)
-ASSIGN_MONITOR_FLAG(double, A0_33, "{P}A0_33", A0_33_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_31, "{P}A0_31", A0_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_32, "{P}A0_32", A0_mon)
+ASSIGN_MONITOR_eFLAG(double, A0_33, "{P}A0_33", A0_mon)
 
 /* OMTX matrix and its elements */
 double OMTX[3][3];
 double OMTX_i[3][3];
 
-ASSIGN_MONITOR_FLAG(double, OMTX_11, "{P}OMTX_11", OMTX_11_mon)
-ASSIGN_MONITOR_FLAG(double, OMTX_12, "{P}OMTX_12", OMTX_12_mon)
-ASSIGN_MONITOR_FLAG(double, OMTX_13, "{P}OMTX_13", OMTX_13_mon)
+ASSIGN_MONITOR_FLAG(double, OMTX_11, "{P}OMTX_11", OMTX_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_12, "{P}OMTX_12", OMTX_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_13, "{P}OMTX_13", OMTX_mon)
 
-ASSIGN_MONITOR_FLAG(double, OMTX_21, "{P}OMTX_21", OMTX_21_mon)
-ASSIGN_MONITOR_FLAG(double, OMTX_22, "{P}OMTX_22", OMTX_22_mon)
-ASSIGN_MONITOR_FLAG(double, OMTX_23, "{P}OMTX_23", OMTX_23_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_21, "{P}OMTX_21", OMTX_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_22, "{P}OMTX_22", OMTX_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_23, "{P}OMTX_23", OMTX_mon)
 
-ASSIGN_MONITOR_FLAG(double, OMTX_31, "{P}OMTX_31", OMTX_31_mon)
-ASSIGN_MONITOR_FLAG(double, OMTX_32, "{P}OMTX_32", OMTX_32_mon)
-ASSIGN_MONITOR_FLAG(double, OMTX_33, "{P}OMTX_33", OMTX_33_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_31, "{P}OMTX_31", OMTX_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_32, "{P}OMTX_32", OMTX_mon)
+ASSIGN_MONITOR_eFLAG(double, OMTX_33, "{P}OMTX_33", OMTX_mon)
 
 /* check for OMTX calculation */
 ASSIGN(double, errAngle, "{P}errAngle")
@@ -475,8 +481,7 @@ ss orient {
 				PVPUT(load_lambda, lambda);
 			}
 			if ((a!=0) && (b!=0) && (c!=0) && (alpha!=0) && (beta!=0) && (Gamma!=0) && (lambda!=0)) {
-				efClear(a_mon); efClear(b_mon); efClear(c_mon); efClear(alpha_mon);
-				efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon); efClear(energy_mon);
+				efClear(xtalParm_mon); efClear(lambda_mon); efClear(energy_mon);
 				if (orientDebug) PUTMSG("calling calc_A0");
 				%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
 				/* Copy from array to individual matrix-element PV's, and show them to user */
@@ -578,12 +583,7 @@ ss orient {
 	state enter_monitor_all {
 		when (delay(10)) {
 			/* clear any event flags resulting from pvPut's we did earlier */
-			efClear(A0_11_mon); efClear(A0_12_mon); efClear(A0_13_mon);
-			efClear(A0_21_mon); efClear(A0_22_mon); efClear(A0_23_mon);
-			efClear(A0_31_mon); efClear(A0_32_mon); efClear(A0_33_mon);
-			efClear(OMTX_11_mon); efClear(OMTX_12_mon); efClear(OMTX_13_mon);
-			efClear(OMTX_21_mon); efClear(OMTX_22_mon); efClear(OMTX_23_mon);
-			efClear(OMTX_31_mon); efClear(OMTX_32_mon); efClear(OMTX_33_mon);
+			efClear(A0_mon); efClear(OMTX_mon);
 			efClear(H_mon); efClear(K_mon); efClear(L_mon);
 			efClear(TTH_mon); efClear(TH_mon); efClear(CHI_mon); efClear(PHI_mon);
 			efClear(Mode_mon);
@@ -643,8 +643,7 @@ ss orient {
 		} state newOMTX
 
 		/* Detect any change that will require us to recalculate A0 */
-		when (efTest(a_mon)||efTest(b_mon)||efTest(c_mon)||efTest(alpha_mon)||
-				efTest(beta_mon)||efTest(Gamma_mon)||efTest(lambda_mon)||efTest(energy_mon)) {
+		when (efTest(xtalParm_mon) || efTest(lambda_mon) || efTest(energy_mon)) {
 			if (efTest(lambda_mon)) {
 				energy = hc / lambda;
 				/* Write to energy without triggering event flag or setting Busy */
@@ -654,8 +653,7 @@ ss orient {
 				/* Write to wavelength without triggering event flag or setting Busy */
 				PVPUT(load_lambda, lambda);
 			}
-			efClear(a_mon); efClear(b_mon); efClear(c_mon); efClear(alpha_mon);
-			efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon); efClear(energy_mon);
+			efClear(xtalParm_mon); efClear(lambda_mon); efClear(energy_mon);
 			if (orientDebug) PUTMSG("new XTAL parameters");
 			%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
 			%%A0_11 = A0[0][0]; A0_12 = A0[0][1]; A0_13 = A0[0][2];
@@ -673,12 +671,8 @@ ss orient {
 		} state newHKL
 
 		/* Detect and handle direct user input of A0 matrix element */
-		when (efTest(A0_11_mon) || efTest(A0_12_mon) || efTest(A0_13_mon) ||
-				efTest(A0_21_mon) || efTest(A0_22_mon) || efTest(A0_23_mon) ||
-				efTest(A0_31_mon) || efTest(A0_32_mon) || efTest(A0_33_mon)) {
-			efClear(A0_11_mon); efClear(A0_12_mon); efClear(A0_13_mon);
-			efClear(A0_21_mon); efClear(A0_22_mon); efClear(A0_23_mon);
-			efClear(A0_31_mon); efClear(A0_32_mon); efClear(A0_33_mon);
+		when (efTest(A0_mon)) {
+			efClear(A0_mon);
 			if (orientDebug) PUTMSG("new A0 precursor(s)");
 			/* Copy to internal array and calculate matrix inverse */
 			%%A0[0][0] = A0_11; A0[0][1] = A0_12; A0[0][2] = A0_13;
@@ -692,12 +686,8 @@ ss orient {
 		} state newA0
 
 		/* Detect and handle direct user input of OMTX matrix element */
-		when (efTest(OMTX_11_mon) || efTest(OMTX_12_mon) || efTest(OMTX_13_mon) ||
-				efTest(OMTX_21_mon) || efTest(OMTX_22_mon) || efTest(OMTX_23_mon) ||
-				efTest(OMTX_31_mon) || efTest(OMTX_32_mon) || efTest(OMTX_33_mon)) {
-			efClear(OMTX_11_mon); efClear(OMTX_12_mon); efClear(OMTX_13_mon);
-			efClear(OMTX_21_mon); efClear(OMTX_22_mon); efClear(OMTX_23_mon);
-			efClear(OMTX_31_mon); efClear(OMTX_32_mon); efClear(OMTX_33_mon);
+		when (efTest(OMTX_mon)) {
+			efClear(OMTX_mon);
 			if (orientDebug) PUTMSG("new OMTX element(s)");
 			/* Copy to internal array; invert and check OMTX */
 			%%OMTX[0][0] = OMTX_11; OMTX[0][1] = OMTX_12; OMTX[0][2] = OMTX_13;
@@ -1162,7 +1152,7 @@ ss connections {
 			if (old_connect_state != motPHI_Connected) pvPut(motPHI_Connected);
 			
 			motorsConnected = motTTH_Connected && motTH_Connected && motCHI_Connected &&
-				motPHI_Connected);
+				motPHI_Connected;
 			
 			motorStopsConnected = pvAssigned(motTTH_stop) && pvConnected(motTTH_stop) &&
 				pvAssigned(motTH_stop) && pvConnected(motTH_stop) && 
@@ -1194,8 +1184,8 @@ ss readback {
 			if (L_RBV != 0) PVPUT(L_RBV, 0);
 		} state rbv_monitor_wait
 
-		when (efTest(motTTH_RBV_mon) || efTest(motTH_RBV_mon) || efTest(motCHI_RBV_mon) || efTest(motPHI_RBV_mon)) {
-			efClear(motTTH_RBV_mon); efClear(motTH_RBV_mon); efClear(motCHI_RBV_mon); efClear(motPHI_RBV_mon);
+		when (efTest(motRBV_mon)) {
+			efClear(motRBV_mon);
 			/* calc HKL */
 			%%rbv_angles[TTH_INDEX] = motTTH_RBV; rbv_angles[TH_INDEX] = motTH_RBV;
 			%%rbv_angles[CHI_INDEX] = motCHI_RBV; rbv_angles[PHI_INDEX] = motPHI_RBV;
