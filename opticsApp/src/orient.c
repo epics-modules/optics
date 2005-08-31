@@ -10,14 +10,13 @@
 volatile int orientDebug = 0;
 
 #ifndef M_PI
-#define M_PI 3.14159265358
+#define M_PI 3.14159265359
 #endif
 #define D2R (M_PI/180.)
-#define SMALL 1.e-11
 
 /* avoid division by zero */
 double checkSmall(double x) {
-	if (fabs(x) < SMALL) x = (x <= -1e-14) ? -SMALL : SMALL;
+	if (fabs(x) < SMALL) x = (x < 0) ? -SMALL : SMALL;
 	return(x);
 }
 
@@ -47,13 +46,13 @@ int angles_to_HKL(double angles_arg[4], double omtx_inv[3][3], double a0_inv[3][
 
 	for (i=0; i<4; i++) angles[i] = angles_arg[i]*D2R;
 
-	vec[0] = sin(angles[_TTH_]/2); vec[1] = 0; vec[2] = 0;
+	vec[0] = sin(angles[TTH_INDEX]/2); vec[1] = 0; vec[2] = 0;
 
-	calc_rotZ(angles[_TH_]-angles[_TTH_]/2, r1);
+	calc_rotZ(angles[TH_INDEX]-angles[TTH_INDEX]/2, r1);
 	if (orientDebug) printArray(r1, "angles_to_HKL:rotZ");
-	calc_rotY(angles[_CHI_], r2);
+	calc_rotY(angles[CHI_INDEX], r2);
 	if (orientDebug) printArray(r2, "angles_to_HKL:rotY");
-	calc_rotZ(angles[_PHI_], r3);
+	calc_rotZ(angles[PHI_INDEX], r3);
 	if (orientDebug) printArray(r3, "angles_to_HKL:rotZ");
 	multArrayArray(r1, r2, rot);
 	multArrayArray(rot, r3, rot);
@@ -77,7 +76,7 @@ int angles_to_HKL(double angles_arg[4], double omtx_inv[3][3], double a0_inv[3][
 
 /* 
  * Calc angles (in degrees) from HKL, A0, and OMTX, according to constraint.
- * If constraint == PHI_CONST, this routine uses angles[_PHI_] as supplied.
+ * If constraint == PHI_CONST, this routine uses angles[PHI_INDEX] as supplied.
  */
 int HKL_to_angles(double hkl[3], double a0[3][3], double omtx[3][3],
 		double angles_arg[4], int constraint) {
@@ -94,32 +93,33 @@ int HKL_to_angles(double hkl[3], double a0[3][3], double omtx[3][3],
 	if (orientDebug) printVector(hklp, "HKL_to_angles:A0 X HKL");
 	multArrayVector(omtx, hklp, hklp);
 	if (orientDebug) printVector(hklp, "HKL_to_angles:OMTX X A0 X HKL");
-	R = sqrt(hklp[_H_]*hklp[_H_]+hklp[_K_]*hklp[_K_]+hklp[_L_]*hklp[_L_]);
-	angles[_TTH_] = 2 * asin(R);
+	/* length of HKL vector */
+	R = sqrt(hklp[H_INDEX]*hklp[H_INDEX]+hklp[K_INDEX]*hklp[K_INDEX]+hklp[L_INDEX]*hklp[L_INDEX]);
+	angles[TTH_INDEX] = 2 * asin(R);
 	switch (constraint) {
 	case MIN_CHI_PHIm90:
-		angles[_PHI_] = atan(-hklp[_H_]*hklp[_K_] / (hklp[_L_]*hklp[_L_] + hklp[_K_]*hklp[_K_]));
+		angles[PHI_INDEX] = atan(-hklp[H_INDEX]*hklp[K_INDEX] / (hklp[L_INDEX]*hklp[L_INDEX] + hklp[K_INDEX]*hklp[K_INDEX]));
 		/* fall through */
 	case PHI_CONST:
-		if (orientDebug) printf("HKL_to_angles:PHI = %f\n", angles_arg[_PHI_]);
-		xx = checkSmall(hklp[_L_]);
+		if (orientDebug) printf("HKL_to_angles:PHI = %f\n", angles_arg[PHI_INDEX]);
+		xx = checkSmall(hklp[L_INDEX]);
 		if (orientDebug) printf("HKL_to_angles:arg of atan = %f\n",
-			-(hklp[_H_]*cos(angles[_PHI_]) + hklp[_K_]*sin(angles[_PHI_])) / xx);
-		angles[_CHI_] = M_PI/2 + atan(-(hklp[_H_]*cos(angles[_PHI_]) + hklp[_K_]*sin(angles[_PHI_])) / xx);
-		calc_rotY(angles[_CHI_], ry);
-		calc_rotZ(angles[_PHI_], rz);
+			-(hklp[H_INDEX]*cos(angles[PHI_INDEX]) + hklp[K_INDEX]*sin(angles[PHI_INDEX])) / xx);
+		angles[CHI_INDEX] = M_PI/2 + atan(-(hklp[H_INDEX]*cos(angles[PHI_INDEX]) + hklp[K_INDEX]*sin(angles[PHI_INDEX])) / xx);
+		calc_rotY(angles[CHI_INDEX], ry);
+		calc_rotZ(angles[PHI_INDEX], rz);
 		multArrayVector(rz, hklp, tmp);
 		multArrayVector(ry, tmp, tmp);
 		if (orientDebug) printVector(tmp, "HKL_to_angles:Ry X Rz X OMTX X A0 X HKL");
-		angles[_TH_] = atan2(tmp[_K_], tmp[_H_]) + angles[_TTH_]/2;
+		angles[TH_INDEX] = atan2(tmp[K_INDEX], tmp[H_INDEX]) + angles[TTH_INDEX]/2;
 		break;
 	case OMEGA_ZERO:
 	default:
-		angles[_TH_] = angles[_TTH_]/2;
-		xx = checkSmall(sqrt(hklp[_H_]*hklp[_H_]+hklp[_K_]*hklp[_K_]));
-		angles[_CHI_] = atan(hklp[_L_]/xx);
-		xx = checkSmall(hklp[_H_]);
-		angles[_PHI_] = atan2(hklp[_K_], xx); /* i.e., atan(K/H) in [-PI, PI] */
+		angles[TH_INDEX] = angles[TTH_INDEX]/2;
+		xx = checkSmall(sqrt(hklp[H_INDEX]*hklp[H_INDEX]+hklp[K_INDEX]*hklp[K_INDEX]));
+		angles[CHI_INDEX] = atan(hklp[L_INDEX]/xx);
+		xx = checkSmall(hklp[H_INDEX]);
+		angles[PHI_INDEX] = atan2(hklp[K_INDEX], xx); /* i.e., atan(K/H) in [-PI, PI] */
 		break;
 	}
 	for (i=0; i<4; i++) {
@@ -160,7 +160,7 @@ int calc_A0(double a, double b, double c,
 	tmp = (cos(alpha) - cos(beta)*cos(gamma))/sin(gamma);
 	C[0] = c * cos(beta);
 	C[1] = c * tmp;
-	C[2] = c * sqrt(1 - pow(cos(beta),2) - pow(tmp,2));
+	C[2] = c * sqrt(1 - cos(beta)*cos(beta) - tmp*tmp);
 	if (orientDebug) printVector(C, "calc_A0:C");
 
 	/* r = factor * |BxC, CxA, AxB| */
@@ -285,14 +285,11 @@ error:
 
 /* Check orientation matrix. */
 double checkOMTX(double v2_hkl[3], double v2_angles_arg[4], double a0[3][3],
-	double a0_inv[3][3], double o[3][3], double o_inv[3][3])
+	double a0_inv[3][3], double o_inv[3][3])
 {
-	double v2_angles[3];
 	double v2p[3], v2pp[3];
 	double norm, err_angles;
 	int i;
-
-	for (i=0; i<4; i++) v2_angles[i] = v2_angles_arg[i]*D2R;
 
 	multArrayVector(a0, v2_hkl, v2p);
 	norm = sqrt(dot(v2p,v2p));
