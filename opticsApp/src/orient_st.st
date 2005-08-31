@@ -1,6 +1,6 @@
 /* set your tab width to 4 */
 
-program orient  ("P=xxx:orient1,PM=xxx:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12")
+program orient  ("P=xxx:orient1:,PM=xxx:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12")
 
 /******************************************************************************
 
@@ -87,6 +87,15 @@ char *cp;
 #define SMALL 1.0e-9
 #define DIFFERENT(a,b) (fabs((a)-(b)) > SMALL)
 
+/*
+ * The maximum time we're willing to wait to wait for all elements of a vector write to
+ * arrive.  (If user writes (H,K,L), we don't want to launch motors three times,
+ * but would rather wait for all three elements to be written, and launch once.)  I don't
+ * yet know how to determine an optimal time interval, so I'm going with something that
+ * just feels right, and seems to work well on vxWorks.
+ */
+#define SYNC_WAIT_SECS 0.02
+
 /* General Purpose PV's */
 
 ASSIGN_MONITOR(short, orientDebug, "{P}Debug")
@@ -94,7 +103,7 @@ ASSIGN(string, Msg, "{P}Msg")
 ASSIGN(short, Alert, "{P}Alert")
 ASSIGN_MONITOR(short, opAck, "{P}OperAck")
 
-/* Mode is the constraint according to which HKL gets transleted into TTH, TH, CHI, PHI. */
+/* Mode is the constraint according to which HKL gets translated into TTH, TH, CHI, PHI. */
 ASSIGN_MONITOR_FLAG(short, Mode, "{P}Mode", Mode_mon)
 
 /* {P}motPut is the user's "Move" button.  If {P}motPut_Auto==0, user
@@ -146,6 +155,7 @@ ASSIGN(int, motTTH_Connected, "{P}motTTH_Connected")
 ASSIGN(int, motTH_Connected, "{P}motTH_Connected")
 ASSIGN(int, motCHI_Connected, "{P}motCHI_Connected")
 ASSIGN(int, motPHI_Connected, "{P}motPHI_Connected")
+int motorsConnected, motorStopsConnected;
 
 /* User's command to calculate the orientaion matrix */
 ASSIGN_MONITOR(short, OMTX_Calc, "{P}OMTX_Calc")
@@ -352,6 +362,8 @@ ss orient {
 	 */
 	state init {
 		when (startup) {
+			motorsConnected = 0;
+			motorStopsConnected = 0;
 			/* Construct motor PV names from macro arguments */
 			%%orient_pmac_PM = seq_macValueGet(ssId, "PM");
 			%%orient_pmac_mTTH = seq_macValueGet(ssId, "mTTH");
@@ -463,6 +475,8 @@ ss orient {
 				PVPUT(load_lambda, lambda);
 			}
 			if ((a!=0) && (b!=0) && (c!=0) && (alpha!=0) && (beta!=0) && (Gamma!=0) && (lambda!=0)) {
+				efClear(a_mon); efClear(b_mon); efClear(c_mon); efClear(alpha_mon);
+				efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon); efClear(energy_mon);
 				if (orientDebug) PUTMSG("calling calc_A0");
 				%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
 				/* Copy from array to individual matrix-element PV's, and show them to user */
@@ -495,12 +509,12 @@ ss orient {
 			 */
 			if ((H1!=0 || K1!=0 || L1!=0) && (H2!=0 || K2!=0 || L2!=0)) {
 				if (orientDebug) PUTMSG("calling calc_OMTX");
-				%%v1_hkl[_H_] = H1; v1_hkl[_K_] = K1; v1_hkl[_L_] = L1;
-				%%v1_angles[_TTH_] = TTH1; v1_angles[_TH_] = TH1;
-				%%v1_angles[_CHI_] = CHI1; v1_angles[_PHI_] = PHI1;
-				%%v2_hkl[_H_] = H2; v2_hkl[_K_] = K2; v2_hkl[_L_] = L2;
-				%%v2_angles[_TTH_] = TTH2; v2_angles[_TH_] = TH2;
-				%%v2_angles[_CHI_] = CHI2; v2_angles[_PHI_] = PHI2;
+				%%v1_hkl[H_INDEX] = H1; v1_hkl[K_INDEX] = K1; v1_hkl[L_INDEX] = L1;
+				%%v1_angles[TTH_INDEX] = TTH1; v1_angles[TH_INDEX] = TH1;
+				%%v1_angles[CHI_INDEX] = CHI1; v1_angles[PHI_INDEX] = PHI1;
+				%%v2_hkl[H_INDEX] = H2; v2_hkl[K_INDEX] = K2; v2_hkl[L_INDEX] = L2;
+				%%v2_angles[TTH_INDEX] = TTH2; v2_angles[TH_INDEX] = TH2;
+				%%v2_angles[CHI_INDEX] = CHI2; v2_angles[PHI_INDEX] = PHI2;
 				%%i = calc_OMTX(v1_hkl, v1_angles, v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
 				%%OMTX_11 = OMTX[0][0]; OMTX_12 = OMTX[0][1]; OMTX_13 = OMTX[0][2];
 				%%OMTX_21 = OMTX[1][0]; OMTX_22 = OMTX[1][1]; OMTX_23 = OMTX[1][2];
@@ -509,7 +523,7 @@ ss orient {
 				pvPut(OMTX_21); pvPut(OMTX_22); pvPut(OMTX_23);
 				pvPut(OMTX_31); pvPut(OMTX_32); pvPut(OMTX_33);
 				if (OMTX_Calc)  PVPUT(OMTX_Calc, 0);
-				PVPUT(errAngle, checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i));
+				PVPUT(errAngle, checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX_i));
 			} else {
 				i = -1;
 			}
@@ -522,7 +536,7 @@ ss orient {
 			if ((i==0) && (fabs(errAngle) < errAngleThresh)) {
 				/* good calculation */
 				PVPUT(OMTX_state, CALC_SUCCEEDED);
-				if (OMTX_state == CALC_SUCCEEDED) PUTMSG("Successful OMTX calc");
+				PUTMSG("Successful OMTX calc");
 			} else {
 				PVPUT(OMTX_state, CALC_FAILED);
 				if (motPut_Auto != 0) {
@@ -563,9 +577,7 @@ ss orient {
 
 	state enter_monitor_all {
 		when (delay(10)) {
-			/* clear event flags */
-			efClear(a_mon); efClear(b_mon); efClear(c_mon); efClear(alpha_mon);
-			efClear(beta_mon); efClear(Gamma_mon); efClear(lambda_mon); efClear(energy_mon);
+			/* clear any event flags resulting from pvPut's we did earlier */
 			efClear(A0_11_mon); efClear(A0_12_mon); efClear(A0_13_mon);
 			efClear(A0_21_mon); efClear(A0_22_mon); efClear(A0_23_mon);
 			efClear(A0_31_mon); efClear(A0_32_mon); efClear(A0_33_mon);
@@ -574,7 +586,6 @@ ss orient {
 			efClear(OMTX_31_mon); efClear(OMTX_32_mon); efClear(OMTX_33_mon);
 			efClear(H_mon); efClear(K_mon); efClear(L_mon);
 			efClear(TTH_mon); efClear(TH_mon); efClear(CHI_mon); efClear(PHI_mon);
-			/* efClear(motTTH_mon); efClear(motTH_mon); efClear(motCHI_mon); efClear(motPHI_mon); */
 			efClear(Mode_mon);
 			PUTMSG("Initialization complete; going live");
 		} state monitor_all
@@ -593,17 +604,11 @@ ss orient {
 		 * Check connections to motor PV's.  These are allowed to be in a different IOC from
 		 * the rest of our stuff.
 		 */
-		when ((pvAssigned(motTTH) && !pvConnected(motTTH)) ||
-				(pvAssigned(motTH) && !pvConnected(motTH)) ||
-				(pvAssigned(motCHI) && !pvConnected(motCHI)) ||
-				(pvAssigned(motPHI) && !pvConnected(motPHI))) {
+		when (motorsConnected == 0) {
 			PUTMSG("Waiting for motor connection(s)");
 		} state monitor_all_delay
 
-		when ((pvAssigned(motTTH_stop) && !pvConnected(motTTH_stop)) ||
-				(pvAssigned(motTH_stop) && !pvConnected(motTH_stop)) ||
-				(pvAssigned(motCHI_stop) && !pvConnected(motCHI_stop)) ||
-				(pvAssigned(motPHI_stop) && !pvConnected(motPHI_stop))) {
+		when (motorStopsConnected == 0) {
 			PUTMSG("Waiting for motor-stop connection(s)");
 		} state monitor_all_delay
 
@@ -611,12 +616,12 @@ ss orient {
 		when ((A0_state == CALC_SUCCEEDED) && OMTX_Calc) {
 			/* A0 is ok, but either OMTX is broken or user wants it to be recalculated */
 			if (orientDebug) PUTMSG("Recalculating OMTX");
-			%%v1_hkl[_H_] = H1; v1_hkl[_K_] = K1; v1_hkl[_L_] = L1;
-			%%v1_angles[_TTH_] = TTH1; v1_angles[_TH_] = TH1;
-			%%v1_angles[_CHI_] = CHI1; v1_angles[_PHI_] = PHI1;
-			%%v2_hkl[_H_] = H2; v2_hkl[_K_] = K2; v2_hkl[_L_] = L2;
-			%%v2_angles[_TTH_] = TTH2; v2_angles[_TH_] = TH2;
-			%%v2_angles[_CHI_] = CHI2; v2_angles[_PHI_] = PHI2;
+			%%v1_hkl[H_INDEX] = H1; v1_hkl[K_INDEX] = K1; v1_hkl[L_INDEX] = L1;
+			%%v1_angles[TTH_INDEX] = TTH1; v1_angles[TH_INDEX] = TH1;
+			%%v1_angles[CHI_INDEX] = CHI1; v1_angles[PHI_INDEX] = PHI1;
+			%%v2_hkl[H_INDEX] = H2; v2_hkl[K_INDEX] = K2; v2_hkl[L_INDEX] = L2;
+			%%v2_angles[TTH_INDEX] = TTH2; v2_angles[TH_INDEX] = TH2;
+			%%v2_angles[CHI_INDEX] = CHI2; v2_angles[PHI_INDEX] = PHI2;
 			%%i = calc_OMTX(v1_hkl, v1_angles, v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
 			%%OMTX_11 = OMTX[0][0]; OMTX_12 = OMTX[0][1]; OMTX_13 = OMTX[0][2];
 			%%OMTX_21 = OMTX[1][0]; OMTX_22 = OMTX[1][1]; OMTX_23 = OMTX[1][2];
@@ -625,7 +630,7 @@ ss orient {
 			pvPut(OMTX_21); pvPut(OMTX_22); pvPut(OMTX_23);
 			pvPut(OMTX_31); pvPut(OMTX_32); pvPut(OMTX_33);
 			PVPUT(OMTX_Calc, 0);
-			errAngle = checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
+			errAngle = checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX_i);
 			pvPut(errAngle);
 			if ((i==0) && (fabs(errAngle) < errAngleThresh)) {
 				/* good calculation */
@@ -682,7 +687,7 @@ ss orient {
 			i = invertArray(A0, A0_i);
 			if (i == -1) {
 				PUTMSG("Could not invert A0 array");
-				A0_state = CALC_FAILED;
+				PVPUT(A0_state, CALC_FAILED);
 			}
 		} state newA0
 
@@ -701,12 +706,12 @@ ss orient {
 			i = invertArray(OMTX, OMTX_i);
 			if (i == -1) {
 				PUTMSG("Could not invert OMTX array");
-				OMTX_state = CALC_FAILED;
+				PVPUT(OMTX_state, CALC_FAILED);
 			} else if (A0_state != CALC_SUCCEEDED) {
 				PUTMSG("Can't check or use OMTX array (No A0)");
-				OMTX_state = CALC_FAILED;
+				PVPUT(OMTX_state, CALC_FAILED);
 			} else {
-				errAngle = checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
+				errAngle = checkOMTX(v2_hkl, v2_angles, A0, A0_i, OMTX_i);
 				pvPut(errAngle);
 				if (fabs(errAngle) < errAngleThresh) {
 					/* good calculation */
@@ -968,17 +973,17 @@ ss orient {
 				PUTALERT("We don't have a good OMTX matrix");
 			}
 		} state monitor_all
-		when (delay(.02)) {
+		when (delay(SYNC_WAIT_SECS)) {
 			if (efTest(H_mon)) {efClear(H_mon); if (orientDebug) printf("orient:newHKL: client also wrote H\n");}
 			if (efTest(K_mon)) {efClear(K_mon); if (orientDebug) printf("orient:newHKL: client also wrote K\n");}
 			if (efTest(L_mon)) {efClear(L_mon); if (orientDebug) printf("orient:newHKL: client also wrote L\n");}
 			/* calc angles */
-			%%hkl[_H_] = H; hkl[_K_] = K; hkl[_L_] = L;
-			%%angles[_TTH_] = TTH; angles[_TH_] = TH;
-			%%angles[_CHI_] = CHI; angles[_PHI_] = PHI;
+			%%hkl[H_INDEX] = H; hkl[K_INDEX] = K; hkl[L_INDEX] = L;
+			%%angles[TTH_INDEX] = TTH; angles[TH_INDEX] = TH;
+			%%angles[CHI_INDEX] = CHI; angles[PHI_INDEX] = PHI;
 			%%i = HKL_to_angles(hkl, A0, OMTX, angles, (int)Mode);
 			if (i == 0) {
-				%%TTH = angles[_TTH_]; TH = angles[_TH_]; CHI = angles[_CHI_]; PHI = angles[_PHI_];
+				%%TTH = angles[TTH_INDEX]; TH = angles[TH_INDEX]; CHI = angles[CHI_INDEX]; PHI = angles[PHI_INDEX];
 				PVPUT(newAngles, 1);
 				if (motPut_Auto) PVPUT(newMotors, 1);
 			} else if (i) {
@@ -1000,16 +1005,16 @@ ss orient {
 				PUTALERT("We don't have a good OMTX matrix");
 			}
 		} state monitor_all
-		when (delay(.02)) {
+		when (delay(SYNC_WAIT_SECS)) {
 			if (efTest(TTH_mon)) {efClear(TTH_mon); if (orientDebug) printf("orient:newAngles: client also wrote TTH\n");}
 			if (efTest(TH_mon)) {efClear(TH_mon); if (orientDebug) printf("orient:newAngles: client also wrote TH\n");}
 			if (efTest(CHI_mon)) {efClear(CHI_mon); if (orientDebug) printf("orient:newAngles: client also wrote CHI\n");}
 			if (efTest(PHI_mon)) {efClear(PHI_mon); if (orientDebug) printf("orient:newAngles: client also wrote PHI\n");}
 			/* calc HKL */
-			%%angles[_TTH_] = TTH; angles[_TH_] = TH;
-			%%angles[_CHI_] = CHI; angles[_PHI_] = PHI;
+			%%angles[TTH_INDEX] = TTH; angles[TH_INDEX] = TH;
+			%%angles[CHI_INDEX] = CHI; angles[PHI_INDEX] = PHI;
 			%%angles_to_HKL(angles, OMTX_i, A0_i, hkl);
-			%%H = hkl[_H_]; K = hkl[_K_]; L = hkl[_L_];
+			%%H = hkl[H_INDEX]; K = hkl[K_INDEX]; L = hkl[L_INDEX];
 			PVPUT(newHKL, 1);
 			if (motPut_Auto) {
 				PVPUT(newMotors, 1);
@@ -1040,16 +1045,16 @@ ss orient {
 	state newMotors {
 		when () {
 			if (orientDebug) {printf("orient:newMotors: motGet=%d\n", motGet);}
-			if (motGet || motGet_Auto) {
+			if (motGet || (motGet_Auto && !waiting4Mot)) {
 				/* get angles */
 				if (orientDebug) {printf("orient:newMotors: getting values\n");}
 				TTH = motTTH; TH = motTH; CHI = motCHI; PHI = motPHI;
 				PVPUT(newAngles, 1);
 				/* calc HKL */
-				%%angles[_TTH_] = TTH; angles[_TH_] = TH;
-				%%angles[_CHI_] = CHI; angles[_PHI_] = PHI;
+				%%angles[TTH_INDEX] = TTH; angles[TH_INDEX] = TH;
+				%%angles[CHI_INDEX] = CHI; angles[PHI_INDEX] = PHI;
 				%%angles_to_HKL(angles, OMTX_i, A0_i, hkl);
-				%%H = hkl[_H_]; K = hkl[_K_]; L = hkl[_L_];
+				%%H = hkl[H_INDEX]; K = hkl[K_INDEX]; L = hkl[L_INDEX];
 				PVPUT(newHKL, 1);
 				if (motGet) PVPUT(motGet, 0);
 			}
@@ -1155,6 +1160,14 @@ ss connections {
 			old_connect_state = motPHI_Connected;
 			motPHI_Connected = pvAssigned(motPHI) ? pvConnected(motPHI) : 0;
 			if (old_connect_state != motPHI_Connected) pvPut(motPHI_Connected);
+			
+			motorsConnected = motTTH_Connected && motTH_Connected && motCHI_Connected &&
+				motPHI_Connected);
+			
+			motorStopsConnected = pvAssigned(motTTH_stop) && pvConnected(motTTH_stop) &&
+				pvAssigned(motTH_stop) && pvConnected(motTH_stop) && 
+				pvAssigned(motCHI_stop) && pvConnected(motCHI_stop) &&
+				pvAssigned(motPHI_stop) && pvConnected(motPHI_stop);
 		} state check
 	}
 }
@@ -1184,10 +1197,10 @@ ss readback {
 		when (efTest(motTTH_RBV_mon) || efTest(motTH_RBV_mon) || efTest(motCHI_RBV_mon) || efTest(motPHI_RBV_mon)) {
 			efClear(motTTH_RBV_mon); efClear(motTH_RBV_mon); efClear(motCHI_RBV_mon); efClear(motPHI_RBV_mon);
 			/* calc HKL */
-			%%rbv_angles[_TTH_] = motTTH_RBV; rbv_angles[_TH_] = motTH_RBV;
-			%%rbv_angles[_CHI_] = motCHI_RBV; rbv_angles[_PHI_] = motPHI_RBV;
+			%%rbv_angles[TTH_INDEX] = motTTH_RBV; rbv_angles[TH_INDEX] = motTH_RBV;
+			%%rbv_angles[CHI_INDEX] = motCHI_RBV; rbv_angles[PHI_INDEX] = motPHI_RBV;
 			%%angles_to_HKL(rbv_angles, OMTX_i, A0_i, rbv_hkl);
-			%%H_RBV = rbv_hkl[_H_]; K_RBV = rbv_hkl[_K_]; L_RBV = rbv_hkl[_L_];
+			%%H_RBV = rbv_hkl[H_INDEX]; K_RBV = rbv_hkl[K_INDEX]; L_RBV = rbv_hkl[L_INDEX];
 			pvPut(H_RBV); pvPut(K_RBV); pvPut(L_RBV);
 		} state rbv_monitor_throttle
 	}
