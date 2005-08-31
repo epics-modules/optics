@@ -7,7 +7,7 @@ volatile int matrix3Debug = 0;
 void printVector(double v[3], char *name) {
 	printf("%s = (%.5f,%.5f,%.5f)\n",name,v[0],v[1],v[2]);
 }
-void print4Vector(double v[3], char *name) {
+void print4Vector(double v[4], char *name) {
 	printf("%s = (%.5f,%.5f,%.5f,%.5f)\n",name,v[0],v[1],v[2],v[3]);
 }
 void printArray(double a[3][3], char *name) {
@@ -86,7 +86,7 @@ int invertArray(double a[3][3], double r[3][3]) {
 	double det = determinant(a);
 	int i, j;
 
-	if (fabs(det) > 1.e-9) {
+	if (fabs(det) > SMALL) {
 		t[0][0] = a[1][1]*a[2][2]-a[1][2]*a[2][1];
 		t[0][1] = -(a[0][1]*a[2][2]-a[2][1]*a[0][2]);
 		t[0][2] = a[0][1]*a[1][2]-a[1][1]*a[0][2];
