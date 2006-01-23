@@ -60,6 +60,7 @@ seq &orient, "P=xxx:orient1:,PM=yyy:,mTTH=m9,mTH=m10,mCHI=m11,mPHI=m12"
  
 *******************************************************************************/
 
+option +r;	/* allow more than one copy of the program */
 
 /* Some help to simplify SNL's wordy syntax */
 
@@ -254,7 +255,7 @@ ASSIGN_MONITOR(double, energy, "{P}energy")
 ASSIGN_MONITOR_FLAG(double, energy_event, "{P}energy_event", energy_mon)
 ASSIGN(double, load_energy, "{P}load_energy")
 
-double hc = 12.3984244; /* energy (keV) = hc / lambda (Angstroms) */
+double hc; /* energy (keV) = hc / lambda (Angstroms) */
 
 /* A0 matrix and its elements */
 double A0[3][3];
@@ -327,14 +328,15 @@ ASSIGN_MONITOR(int, weWrote_motPHI, "{P}weWrote_motPHI")
 #define CALC_SUCCEEDED 1
 #define CALC_FAILED    2
 
-int startup = 1;
+#define BEEN_THERE 12345
+int startup;
 
 /* for macro-substitution */
-%%char *orient_pmac_PM;
-%%char *orient_pmac_mTTH;
-%%char *orient_pmac_mTH;
-%%char *orient_pmac_mCHI;
-%%char *orient_pmac_mPHI;
+char *orient_pmac_PM;
+char *orient_pmac_mTTH;
+char *orient_pmac_mTH;
+char *orient_pmac_mCHI;
+char *orient_pmac_mPHI;
 
 
 /*
@@ -367,86 +369,86 @@ ss orient {
 	 * Keep energy and wavelength synchronized
 	 */
 	state init {
-		when (startup) {
+		when (startup != BEEN_THERE) {
+			hc = 12.3984244; /* energy (keV) = hc / lambda (Angstroms) */
 			motorsConnected = 0;
 			motorStopsConnected = 0;
 			/* Construct motor PV names from macro arguments */
-			%%orient_pmac_PM = seq_macValueGet(ssId, "PM");
-			%%orient_pmac_mTTH = seq_macValueGet(ssId, "mTTH");
-			%%orient_pmac_mTH = seq_macValueGet(ssId, "mTH");
-			%%orient_pmac_mCHI = seq_macValueGet(ssId, "mCHI");
-			%%orient_pmac_mPHI = seq_macValueGet(ssId, "mPHI");
+			%%pVar->orient_pmac_PM = seq_macValueGet(ssId, "PM");
+			%%pVar->orient_pmac_mTTH = seq_macValueGet(ssId, "mTTH");
+			%%pVar->orient_pmac_mTH = seq_macValueGet(ssId, "mTH");
+			%%pVar->orient_pmac_mCHI = seq_macValueGet(ssId, "mCHI");
+			%%pVar->orient_pmac_mPHI = seq_macValueGet(ssId, "mPHI");
 			if (orient_pmac_PM == 0) {
 				PUTALERT("motor prefix (PM) not specified");
 			} else {
-				%%strcpy(motTTH_name, orient_pmac_PM);
-				%%strcpy(motTH_name, orient_pmac_PM);
-				%%strcpy(motCHI_name, orient_pmac_PM);
-				%%strcpy(motPHI_name, orient_pmac_PM);
+				%%strcpy(pVar->motTTH_name, pVar->orient_pmac_PM);
+				%%strcpy(pVar->motTH_name, pVar->orient_pmac_PM);
+				%%strcpy(pVar->motCHI_name, pVar->orient_pmac_PM);
+				%%strcpy(pVar->motPHI_name, pVar->orient_pmac_PM);
 				if (orient_pmac_mTTH == 0) {
 					PUTALERT("orient: TTH motor name (mTTH) not specified");
 				} else {
-					%%strcat(motTTH_name, orient_pmac_mTTH);
+					%%strcat(pVar->motTTH_name, pVar->orient_pmac_mTTH);
 					pvPut(motTTH_name);
 					/* Construct name of motor-stop PV and assign. */
-					%%strcpy(tmpstr, motTTH_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".STOP");
+					%%strcpy(pVar->tmpstr, pVar->motTTH_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".STOP");
 					pvAssign(motTTH_stop, tmpstr);
 					/* Construct name of motor-rbv PV and assign. */
-					%%strcpy(tmpstr, motTTH_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".RBV");
+					%%strcpy(pVar->tmpstr, pVar->motTTH_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".RBV");
 					pvAssign(motTTH_RBV, tmpstr);
 				}
 				if (orient_pmac_mTH == 0) {
 					PUTALERT("orient: TH motor name (mTH) not specified");
 				} else {
-					%%strcat(motTH_name, orient_pmac_mTH);
+					%%strcat(pVar->motTH_name, pVar->orient_pmac_mTH);
 					pvPut(motTH_name);
-					%%strcpy(tmpstr, motTH_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".STOP");
+					%%strcpy(pVar->tmpstr, pVar->motTH_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".STOP");
 					pvAssign(motTH_stop, tmpstr);
 					/* Construct name of motor-rbv PV and assign. */
-					%%strcpy(tmpstr, motTH_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".RBV");
+					%%strcpy(pVar->tmpstr, pVar->motTH_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".RBV");
 					pvAssign(motTH_RBV, tmpstr);
 				}
 				if (orient_pmac_mCHI == 0) {
 					PUTALERT("orient: CHI motor name (mCHI) not specified");
 				} else {
-					%%strcat(motCHI_name, orient_pmac_mCHI);
+					%%strcat(pVar->motCHI_name, pVar->orient_pmac_mCHI);
 					pvPut(motCHI_name);
-					%%strcpy(tmpstr, motCHI_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".STOP");
+					%%strcpy(pVar->tmpstr, pVar->motCHI_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".STOP");
 					pvAssign(motCHI_stop, tmpstr);
 					/* Construct name of motor-rbv PV and assign. */
-					%%strcpy(tmpstr, motCHI_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".RBV");
+					%%strcpy(pVar->tmpstr, pVar->motCHI_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".RBV");
 					pvAssign(motCHI_RBV, tmpstr);
 				}
 				if (orient_pmac_mPHI == 0) {
 					PUTALERT("orient: PHI motor name (mPHI) not specified");
 				} else {
-					%%strcat(motPHI_name, orient_pmac_mPHI);
+					%%strcat(pVar->motPHI_name, pVar->orient_pmac_mPHI);
 					pvPut(motPHI_name);
-					%%strcpy(tmpstr, motPHI_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".STOP");
+					%%strcpy(pVar->tmpstr, pVar->motPHI_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".STOP");
 					pvAssign(motPHI_stop, tmpstr);
 					/* Construct name of motor-rbv PV and assign. */
-					%%strcpy(tmpstr, motPHI_name);
-					%%if ((cp = strrchr(tmpstr, (int)'.'))) *cp = '\0';
-					%%strcat(tmpstr, ".RBV");
+					%%strcpy(pVar->tmpstr, pVar->motPHI_name);
+					%%if ((pVar->cp = strrchr(pVar->tmpstr, (int)'.'))) pVar->cp[0] = '\0';
+					%%strcat(pVar->tmpstr, ".RBV");
 					pvAssign(motPHI_RBV, tmpstr);
 				}
 			}
-			hc = 12.3984244; /* energy (keV) = hc / lambda (Angstroms) */ 
-			startup = 0;
+			startup = BEEN_THERE;
 		} state init
 
 		/* We always have to keep energy and wavelength synchronized */
@@ -483,11 +485,12 @@ ss orient {
 			if ((a!=0) && (b!=0) && (c!=0) && (alpha!=0) && (beta!=0) && (Gamma!=0) && (lambda!=0)) {
 				efClear(xtalParm_mon); efClear(lambda_mon); efClear(energy_mon);
 				if (orientDebug) PUTMSG("calling calc_A0");
-				%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
+				%%pVar->i = calc_A0(pVar->a, pVar->b, pVar->c, pVar->alpha, pVar->beta, pVar->Gamma,
+				%%		pVar->lambda, pVar->A0, pVar->A0_i);
 				/* Copy from array to individual matrix-element PV's, and show them to user */
-				%%A0_11 = A0[0][0]; A0_12 = A0[0][1]; A0_13 = A0[0][2];
-				%%A0_21 = A0[1][0]; A0_22 = A0[1][1]; A0_23 = A0[1][2];
-				%%A0_31 = A0[2][0]; A0_32 = A0[2][1]; A0_33 = A0[2][2];
+				%%pVar->A0_11 = pVar->A0[0][0]; pVar->A0_12 = pVar->A0[0][1]; pVar->A0_13 = pVar->A0[0][2];
+				%%pVar->A0_21 = pVar->A0[1][0]; pVar->A0_22 = pVar->A0[1][1]; pVar->A0_23 = pVar->A0[1][2];
+				%%pVar->A0_31 = pVar->A0[2][0]; pVar->A0_32 = pVar->A0[2][1]; pVar->A0_33 = pVar->A0[2][2];
 				pvPut(A0_11); pvPut(A0_12); pvPut(A0_13);
 				pvPut(A0_21); pvPut(A0_22); pvPut(A0_23);
 				pvPut(A0_31); pvPut(A0_32); pvPut(A0_33);
@@ -514,16 +517,17 @@ ss orient {
 			 */
 			if ((H1!=0 || K1!=0 || L1!=0) && (H2!=0 || K2!=0 || L2!=0)) {
 				if (orientDebug) PUTMSG("calling calc_OMTX");
-				%%v1_hkl[H_INDEX] = H1; v1_hkl[K_INDEX] = K1; v1_hkl[L_INDEX] = L1;
-				%%v1_angles[TTH_INDEX] = TTH1; v1_angles[TH_INDEX] = TH1;
-				%%v1_angles[CHI_INDEX] = CHI1; v1_angles[PHI_INDEX] = PHI1;
-				%%v2_hkl[H_INDEX] = H2; v2_hkl[K_INDEX] = K2; v2_hkl[L_INDEX] = L2;
-				%%v2_angles[TTH_INDEX] = TTH2; v2_angles[TH_INDEX] = TH2;
-				%%v2_angles[CHI_INDEX] = CHI2; v2_angles[PHI_INDEX] = PHI2;
-				%%i = calc_OMTX(v1_hkl, v1_angles, v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
-				%%OMTX_11 = OMTX[0][0]; OMTX_12 = OMTX[0][1]; OMTX_13 = OMTX[0][2];
-				%%OMTX_21 = OMTX[1][0]; OMTX_22 = OMTX[1][1]; OMTX_23 = OMTX[1][2];
-				%%OMTX_31 = OMTX[2][0]; OMTX_32 = OMTX[2][1]; OMTX_33 = OMTX[2][2];
+				%%pVar->v1_hkl[H_INDEX] = pVar->H1; pVar->v1_hkl[K_INDEX] = pVar->K1; pVar->v1_hkl[L_INDEX] = pVar->L1;
+				%%pVar->v1_angles[TTH_INDEX] = pVar->TTH1; pVar->v1_angles[TH_INDEX] = pVar->TH1;
+				%%pVar->v1_angles[CHI_INDEX] = pVar->CHI1; pVar->v1_angles[PHI_INDEX] = pVar->PHI1;
+				%%pVar->v2_hkl[H_INDEX] = pVar->H2; pVar->v2_hkl[K_INDEX] = pVar->K2; pVar->v2_hkl[L_INDEX] = pVar->L2;
+				%%pVar->v2_angles[TTH_INDEX] = pVar->TTH2; pVar->v2_angles[TH_INDEX] = pVar->TH2;
+				%%pVar->v2_angles[CHI_INDEX] = pVar->CHI2; pVar->v2_angles[PHI_INDEX] = pVar->PHI2;
+				%%pVar->i = calc_OMTX(pVar->v1_hkl, pVar->v1_angles, pVar->v2_hkl, pVar->v2_angles,
+				%%	pVar->A0, pVar->A0_i, pVar->OMTX, pVar->OMTX_i);
+				%%pVar->OMTX_11 = pVar->OMTX[0][0]; pVar->OMTX_12 = pVar->OMTX[0][1]; pVar->OMTX_13 = pVar->OMTX[0][2];
+				%%pVar->OMTX_21 = pVar->OMTX[1][0]; pVar->OMTX_22 = pVar->OMTX[1][1]; pVar->OMTX_23 = pVar->OMTX[1][2];
+				%%pVar->OMTX_31 = pVar->OMTX[2][0]; pVar->OMTX_32 = pVar->OMTX[2][1]; pVar->OMTX_33 = pVar->OMTX[2][2];
 				pvPut(OMTX_11); pvPut(OMTX_12); pvPut(OMTX_13);
 				pvPut(OMTX_21); pvPut(OMTX_22); pvPut(OMTX_23);
 				pvPut(OMTX_31); pvPut(OMTX_32); pvPut(OMTX_33);
@@ -616,16 +620,17 @@ ss orient {
 		when ((A0_state == CALC_SUCCEEDED) && OMTX_Calc) {
 			/* A0 is ok, but either OMTX is broken or user wants it to be recalculated */
 			if (orientDebug) PUTMSG("Recalculating OMTX");
-			%%v1_hkl[H_INDEX] = H1; v1_hkl[K_INDEX] = K1; v1_hkl[L_INDEX] = L1;
-			%%v1_angles[TTH_INDEX] = TTH1; v1_angles[TH_INDEX] = TH1;
-			%%v1_angles[CHI_INDEX] = CHI1; v1_angles[PHI_INDEX] = PHI1;
-			%%v2_hkl[H_INDEX] = H2; v2_hkl[K_INDEX] = K2; v2_hkl[L_INDEX] = L2;
-			%%v2_angles[TTH_INDEX] = TTH2; v2_angles[TH_INDEX] = TH2;
-			%%v2_angles[CHI_INDEX] = CHI2; v2_angles[PHI_INDEX] = PHI2;
-			%%i = calc_OMTX(v1_hkl, v1_angles, v2_hkl, v2_angles, A0, A0_i, OMTX, OMTX_i);
-			%%OMTX_11 = OMTX[0][0]; OMTX_12 = OMTX[0][1]; OMTX_13 = OMTX[0][2];
-			%%OMTX_21 = OMTX[1][0]; OMTX_22 = OMTX[1][1]; OMTX_23 = OMTX[1][2];
-			%%OMTX_31 = OMTX[2][0]; OMTX_32 = OMTX[2][1]; OMTX_33 = OMTX[2][2];
+			%%pVar->v1_hkl[H_INDEX] = pVar->H1; pVar->v1_hkl[K_INDEX] = pVar->K1; pVar->v1_hkl[L_INDEX] = pVar->L1;
+			%%pVar->v1_angles[TTH_INDEX] = pVar->TTH1; pVar->v1_angles[TH_INDEX] = pVar->TH1;
+			%%pVar->v1_angles[CHI_INDEX] = pVar->CHI1; pVar->v1_angles[PHI_INDEX] = pVar->PHI1;
+			%%pVar->v2_hkl[H_INDEX] = pVar->H2; pVar->v2_hkl[K_INDEX] = pVar->K2; pVar->v2_hkl[L_INDEX] = pVar->L2;
+			%%pVar->v2_angles[TTH_INDEX] = pVar->TTH2; pVar->v2_angles[TH_INDEX] = pVar->TH2;
+			%%pVar->v2_angles[CHI_INDEX] = pVar->CHI2; pVar->v2_angles[PHI_INDEX] = pVar->PHI2;
+			%%pVar->i = calc_OMTX(pVar->v1_hkl, pVar->v1_angles, pVar->v2_hkl, pVar->v2_angles,
+			%%	pVar->A0, pVar->A0_i, pVar->OMTX, pVar->OMTX_i);
+			%%pVar->OMTX_11 = pVar->OMTX[0][0]; pVar->OMTX_12 = pVar->OMTX[0][1]; pVar->OMTX_13 = pVar->OMTX[0][2];
+			%%pVar->OMTX_21 = pVar->OMTX[1][0]; pVar->OMTX_22 = pVar->OMTX[1][1]; pVar->OMTX_23 = pVar->OMTX[1][2];
+			%%pVar->OMTX_31 = pVar->OMTX[2][0]; pVar->OMTX_32 = pVar->OMTX[2][1]; pVar->OMTX_33 = pVar->OMTX[2][2];
 			pvPut(OMTX_11); pvPut(OMTX_12); pvPut(OMTX_13);
 			pvPut(OMTX_21); pvPut(OMTX_22); pvPut(OMTX_23);
 			pvPut(OMTX_31); pvPut(OMTX_32); pvPut(OMTX_33);
@@ -655,10 +660,11 @@ ss orient {
 			}
 			efClear(xtalParm_mon); efClear(lambda_mon); efClear(energy_mon);
 			if (orientDebug) PUTMSG("new XTAL parameters");
-			%%i = calc_A0(a, b, c, alpha, beta, Gamma, lambda, A0, A0_i);
-			%%A0_11 = A0[0][0]; A0_12 = A0[0][1]; A0_13 = A0[0][2];
-			%%A0_21 = A0[1][0]; A0_22 = A0[1][1]; A0_23 = A0[1][2];
-			%%A0_31 = A0[2][0]; A0_32 = A0[2][1]; A0_33 = A0[2][2];
+			%%pVar->i = calc_A0(pVar->a, pVar->b, pVar->c, pVar->alpha, pVar->beta,
+			%%	pVar->Gamma, pVar->lambda, pVar->A0, pVar->A0_i);
+			%%pVar->A0_11 = pVar->A0[0][0]; pVar->A0_12 = pVar->A0[0][1]; pVar->A0_13 = pVar->A0[0][2];
+			%%pVar->A0_21 = pVar->A0[1][0]; pVar->A0_22 = pVar->A0[1][1]; pVar->A0_23 = pVar->A0[1][2];
+			%%pVar->A0_31 = pVar->A0[2][0]; pVar->A0_32 = pVar->A0[2][1]; pVar->A0_33 = pVar->A0[2][2];
 			pvPut(A0_11); pvPut(A0_12); pvPut(A0_13);
 			pvPut(A0_21); pvPut(A0_22); pvPut(A0_23);
 			pvPut(A0_31); pvPut(A0_32); pvPut(A0_33);
@@ -675,9 +681,9 @@ ss orient {
 			efClear(A0_mon);
 			if (orientDebug) PUTMSG("new A0 precursor(s)");
 			/* Copy to internal array and calculate matrix inverse */
-			%%A0[0][0] = A0_11; A0[0][1] = A0_12; A0[0][2] = A0_13;
-			%%A0[1][0] = A0_21; A0[1][1] = A0_22; A0[1][2] = A0_23;
-			%%A0[2][0] = A0_31; A0[2][1] = A0_32; A0[2][2] = A0_33;
+			%%pVar->A0[0][0] = pVar->A0_11; pVar->A0[0][1] = pVar->A0_12; pVar->A0[0][2] = pVar->A0_13;
+			%%pVar->A0[1][0] = pVar->A0_21; pVar->A0[1][1] = pVar->A0_22; pVar->A0[1][2] = pVar->A0_23;
+			%%pVar->A0[2][0] = pVar->A0_31; pVar->A0[2][1] = pVar->A0_32; pVar->A0[2][2] = pVar->A0_33;
 			i = invertArray(A0, A0_i);
 			if (i == -1) {
 				PUTMSG("Could not invert A0 array");
@@ -690,9 +696,9 @@ ss orient {
 			efClear(OMTX_mon);
 			if (orientDebug) PUTMSG("new OMTX element(s)");
 			/* Copy to internal array; invert and check OMTX */
-			%%OMTX[0][0] = OMTX_11; OMTX[0][1] = OMTX_12; OMTX[0][2] = OMTX_13;
-			%%OMTX[1][0] = OMTX_21; OMTX[1][1] = OMTX_22; OMTX[1][2] = OMTX_23;
-			%%OMTX[2][0] = OMTX_31; OMTX[2][1] = OMTX_32; OMTX[2][2] = OMTX_33;
+			%%pVar->OMTX[0][0] = pVar->OMTX_11; pVar->OMTX[0][1] = pVar->OMTX_12; pVar->OMTX[0][2] = pVar->OMTX_13;
+			%%pVar->OMTX[1][0] = pVar->OMTX_21; pVar->OMTX[1][1] = pVar->OMTX_22; pVar->OMTX[1][2] = pVar->OMTX_23;
+			%%pVar->OMTX[2][0] = pVar->OMTX_31; pVar->OMTX[2][1] = pVar->OMTX_32; pVar->OMTX[2][2] = pVar->OMTX_33;
 			i = invertArray(OMTX, OMTX_i);
 			if (i == -1) {
 				PUTMSG("Could not invert OMTX array");
@@ -968,12 +974,15 @@ ss orient {
 			if (efTest(K_mon)) {efClear(K_mon); if (orientDebug) printf("orient:newHKL: client also wrote K\n");}
 			if (efTest(L_mon)) {efClear(L_mon); if (orientDebug) printf("orient:newHKL: client also wrote L\n");}
 			/* calc angles */
-			%%hkl[H_INDEX] = H; hkl[K_INDEX] = K; hkl[L_INDEX] = L;
-			%%angles[TTH_INDEX] = TTH; angles[TH_INDEX] = TH;
-			%%angles[CHI_INDEX] = CHI; angles[PHI_INDEX] = PHI;
-			%%i = HKL_to_angles(hkl, A0, OMTX, angles, (int)Mode);
+			%%pVar->hkl[H_INDEX] = pVar->H; pVar->hkl[K_INDEX] = pVar->K; pVar->hkl[L_INDEX] = pVar->L;
+			%%pVar->angles[TTH_INDEX] = pVar->TTH; pVar->angles[TH_INDEX] = pVar->TH;
+			%%pVar->angles[CHI_INDEX] = pVar->CHI; pVar->angles[PHI_INDEX] = pVar->PHI;
+			%%pVar->i = HKL_to_angles(pVar->hkl, pVar->A0, pVar->OMTX, pVar->angles, (int)pVar->Mode);
 			if (i == 0) {
-				%%TTH = angles[TTH_INDEX]; TH = angles[TH_INDEX]; CHI = angles[CHI_INDEX]; PHI = angles[PHI_INDEX];
+				%%pVar->TTH = pVar->angles[TTH_INDEX];
+				%%pVar->TH = pVar->angles[TH_INDEX];
+				%%pVar->CHI = pVar->angles[CHI_INDEX];
+				%%pVar->PHI = pVar->angles[PHI_INDEX];
 				PVPUT(newAngles, 1);
 				if (motPut_Auto) PVPUT(newMotors, 1);
 			} else if (i) {
@@ -1001,10 +1010,10 @@ ss orient {
 			if (efTest(CHI_mon)) {efClear(CHI_mon); if (orientDebug) printf("orient:newAngles: client also wrote CHI\n");}
 			if (efTest(PHI_mon)) {efClear(PHI_mon); if (orientDebug) printf("orient:newAngles: client also wrote PHI\n");}
 			/* calc HKL */
-			%%angles[TTH_INDEX] = TTH; angles[TH_INDEX] = TH;
-			%%angles[CHI_INDEX] = CHI; angles[PHI_INDEX] = PHI;
-			%%angles_to_HKL(angles, OMTX_i, A0_i, hkl);
-			%%H = hkl[H_INDEX]; K = hkl[K_INDEX]; L = hkl[L_INDEX];
+			%%pVar->angles[TTH_INDEX] = pVar->TTH; pVar->angles[TH_INDEX] = pVar->TH;
+			%%pVar->angles[CHI_INDEX] = pVar->CHI; pVar->angles[PHI_INDEX] = pVar->PHI;
+			%%angles_to_HKL(pVar->angles, pVar->OMTX_i, pVar->A0_i, pVar->hkl);
+			%%pVar->H = pVar->hkl[H_INDEX]; pVar->K = pVar->hkl[K_INDEX]; pVar->L = pVar->hkl[L_INDEX];
 			PVPUT(newHKL, 1);
 			if (motPut_Auto) {
 				PVPUT(newMotors, 1);
@@ -1041,10 +1050,10 @@ ss orient {
 				TTH = motTTH; TH = motTH; CHI = motCHI; PHI = motPHI;
 				PVPUT(newAngles, 1);
 				/* calc HKL */
-				%%angles[TTH_INDEX] = TTH; angles[TH_INDEX] = TH;
-				%%angles[CHI_INDEX] = CHI; angles[PHI_INDEX] = PHI;
-				%%angles_to_HKL(angles, OMTX_i, A0_i, hkl);
-				%%H = hkl[H_INDEX]; K = hkl[K_INDEX]; L = hkl[L_INDEX];
+				%%pVar->angles[TTH_INDEX] = pVar->TTH; pVar->angles[TH_INDEX] = pVar->TH;
+				%%pVar->angles[CHI_INDEX] = pVar->CHI; pVar->angles[PHI_INDEX] = pVar->PHI;
+				%%angles_to_HKL(pVar->angles, pVar->OMTX_i, pVar->A0_i, pVar->hkl);
+				%%pVar->H = pVar->hkl[H_INDEX]; pVar->K = pVar->hkl[K_INDEX]; pVar->L = pVar->hkl[L_INDEX];
 				PVPUT(newHKL, 1);
 				if (motGet) PVPUT(motGet, 0);
 			}
@@ -1187,10 +1196,10 @@ ss readback {
 		when (efTest(motRBV_mon)) {
 			efClear(motRBV_mon);
 			/* calc HKL */
-			%%rbv_angles[TTH_INDEX] = motTTH_RBV; rbv_angles[TH_INDEX] = motTH_RBV;
-			%%rbv_angles[CHI_INDEX] = motCHI_RBV; rbv_angles[PHI_INDEX] = motPHI_RBV;
-			%%angles_to_HKL(rbv_angles, OMTX_i, A0_i, rbv_hkl);
-			%%H_RBV = rbv_hkl[H_INDEX]; K_RBV = rbv_hkl[K_INDEX]; L_RBV = rbv_hkl[L_INDEX];
+			%%pVar->rbv_angles[TTH_INDEX] = pVar->motTTH_RBV; pVar->rbv_angles[TH_INDEX] = pVar->motTH_RBV;
+			%%pVar->rbv_angles[CHI_INDEX] = pVar->motCHI_RBV; pVar->rbv_angles[PHI_INDEX] = pVar->motPHI_RBV;
+			%%angles_to_HKL(pVar->rbv_angles, pVar->OMTX_i, pVar->A0_i, pVar->rbv_hkl);
+			%%pVar->H_RBV = pVar->rbv_hkl[H_INDEX]; pVar->K_RBV = pVar->rbv_hkl[K_INDEX]; pVar->L_RBV = pVar->rbv_hkl[L_INDEX];
 			pvPut(H_RBV); pvPut(K_RBV); pvPut(L_RBV);
 		} state rbv_monitor_throttle
 	}
