@@ -1,14 +1,14 @@
 
 file {
-	name="/home/beams/BCDA/epics/synApps_R3.13.1.1_R4.2/share/stdApp/op/adl/xia_slit_full.adl"
-	version=020306
+	name="C:\Documents and Settings\mooney\Desktop\Work\epics\synApps\adl\xia_slit_full.adl"
+	version=030004
 }
 display {
 	object {
-		x=483
-		y=381
+		x=551
+		y=337
 		width=300
-		height=440
+		height=460
 	}
 	clr=14
 	bclr=3
@@ -1633,23 +1633,6 @@ text {
 }
 "text update" {
 	object {
-		x=120
-		y=168
-		width=60
-		height=20
-	}
-	monitor {
-		chan="$(P)$(HSC)Busy"
-		clr=30
-		bclr=14
-	}
-	align="horiz. centered"
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
 		x=75
 		y=45
 		width=20
@@ -1804,4 +1787,145 @@ text {
 	}
 	clr=14
 	bclr=51
+}
+text {
+	object {
+		x=11
+		y=442
+		width=59
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="debug:"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=75
+		y=440
+		width=30
+		height=18
+	}
+	control {
+		chan="$(P)$(HSC)debug"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=99
+		y=50
+		width=100
+		height=75
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)v_Busy"
+	}
+}
+rectangle {
+	object {
+		x=99
+		y=225
+		width=100
+		height=75
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)v_Busy"
+	}
+}
+rectangle {
+	object {
+		x=19
+		y=125
+		width=100
+		height=82
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)h_Busy"
+	}
+}
+rectangle {
+	object {
+		x=179
+		y=125
+		width=100
+		height=82
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)h_Busy"
+	}
+}
+composite {
+	object {
+		x=120
+		y=154
+		width=60
+		height=46
+	}
+	"composite name"=""
+	children {
+		"text update" {
+			object {
+				x=120
+				y=154
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)$(HSC)h_Busy"
+				clr=30
+				bclr=14
+			}
+			align="horiz. centered"
+			format="string"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=120
+				y=180
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)$(HSC)v_Busy"
+				clr=30
+				bclr=14
+			}
+			align="horiz. centered"
+			format="string"
+			limits {
+			}
+		}
+	}
 }

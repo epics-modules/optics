@@ -1,12 +1,12 @@
 
 file {
-	name="/home/beams/BCDA/epics/synApps_R3.13.1.1_R4.2/share/stdApp/op/adl/xia_slit.adl"
-	version=020306
+	name="/home/oxygen4/MOONEY/epics/synApps_T202_E3_14_7_R5_1/support/optics/opticsApp/src/../op/adl/xia_slit.adl"
+	version=030004
 }
 display {
 	object {
-		x=205
-		y=182
+		x=541
+		y=187
 		width=300
 		height=340
 	}
@@ -237,74 +237,52 @@ rectangle {
 		width=2
 	}
 }
-composite {
+rectangle {
 	object {
 		x=99
 		y=200
 		width=100
 		height=100
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=99
-				y=200
-				width=100
-				height=100
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		rectangle {
-			object {
-				x=99
-				y=200
-				width=100
-				height=100
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-		}
+	"basic attribute" {
+		clr=0
 	}
 }
-composite {
+rectangle {
+	object {
+		x=99
+		y=200
+		width=100
+		height=100
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+}
+rectangle {
 	object {
 		x=99
 		y=50
 		width=100
 		height=100
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=99
-				y=50
-				width=100
-				height=100
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		rectangle {
-			object {
-				x=99
-				y=50
-				width=100
-				height=100
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-		}
+	"basic attribute" {
+		clr=0
+	}
+}
+rectangle {
+	object {
+		x=99
+		y=50
+		width=100
+		height=100
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
 	}
 }
 rectangle {
@@ -656,51 +634,6 @@ text {
 	limits {
 	}
 }
-"message button" {
-	object {
-		x=175
-		y=104
-		width=20
-		height=19
-	}
-	control {
-		chan="$(P)$(HSC)t_tweak.B"
-		clr=14
-		bclr=55
-	}
-	label="UP"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=124
-		y=105
-		width=50
-		height=16
-	}
-	control {
-		chan="$(P)$(HSC)t_tweakVal.VAL"
-		clr=14
-		bclr=55
-	}
-	limits {
-	}
-}
-"message button" {
-	object {
-		x=104
-		y=104
-		width=20
-		height=19
-	}
-	control {
-		chan="$(P)$(HSC)t_tweak.A"
-		clr=14
-		bclr=55
-	}
-	label="DN"
-	press_msg="1"
-}
 "text update" {
 	object {
 		x=109
@@ -721,7 +654,7 @@ text {
 	object {
 		x=109
 		y=63
-		width=60
+		width=80
 		height=14
 	}
 	monitor {
@@ -795,7 +728,7 @@ text {
 }
 "message button" {
 	object {
-		x=175
+		x=174
 		y=279
 		width=20
 		height=19
@@ -1445,12 +1378,12 @@ text {
 "text update" {
 	object {
 		x=120
-		y=168
+		y=155
 		width=60
 		height=20
 	}
 	monitor {
-		chan="$(P)$(HSC)Busy"
+		chan="$(P)$(HSC)h_Busy"
 		clr=30
 		bclr=14
 	}
@@ -1600,4 +1533,134 @@ text {
 	}
 	label="STOP"
 	press_msg="1"
+}
+"text update" {
+	object {
+		x=120
+		y=181
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)$(HSC)v_Busy"
+		clr=30
+		bclr=14
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=174
+		y=104
+		width=20
+		height=19
+	}
+	control {
+		chan="$(P)$(HSC)t_tweak.B"
+		clr=14
+		bclr=55
+	}
+	label="UP"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=124
+		y=105
+		width=50
+		height=16
+	}
+	control {
+		chan="$(P)$(HSC)t_tweakVal.VAL"
+		clr=14
+		bclr=55
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=104
+		y=104
+		width=20
+		height=19
+	}
+	control {
+		chan="$(P)$(HSC)t_tweak.A"
+		clr=14
+		bclr=55
+	}
+	label="DN"
+	press_msg="1"
+}
+rectangle {
+	object {
+		x=99
+		y=50
+		width=100
+		height=75
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)v_Busy"
+	}
+}
+rectangle {
+	object {
+		x=99
+		y=225
+		width=100
+		height=75
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)v_Busy"
+	}
+}
+rectangle {
+	object {
+		x=19
+		y=125
+		width=100
+		height=82
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)h_Busy"
+	}
+}
+rectangle {
+	object {
+		x=179
+		y=125
+		width=100
+		height=82
+	}
+	"basic attribute" {
+		clr=15
+		fill="outline"
+		width=4
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(HSC)h_Busy"
+	}
 }
