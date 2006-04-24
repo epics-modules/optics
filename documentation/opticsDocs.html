@@ -8,18 +8,21 @@ content="text/html; charset=iso-8859-1">
 
 <body bgcolor="#FFFFFF">
 
-<h1 align="center">optics module documentation</h1> The optics module contains
+<h1 align="center">The synApps Optics module </h1> The optics module contains
 support for devices used to modify the x-ray beam from a synchrotron source and
 apply it in experimentally useful ways, including a variety of monochromators,
 slits, filters, mirrors, diffractometers, and optical tables.
 
-	<H3>Monochromators</H3> synApps supports two geometries of high-heat-load,
-	non-dispersive double-crystal monochromator: Kohzu/PSL geometry 1, and
-	Kohzu geometry 2.  In geometry 1, the monochromator crystals rotate about a
-	point vertically midway between the entrance and exit beams; in geometry 2,
-	the crystals rotate about a point on the surface of the first crystal.  One
-	or both crystals also translate, as they rotate, to keep the exit beam at a
-	fixed height above the entrance beam
+	<H3>Monochromators</H3> synApps supports the following monochromator types/geometries:
+	<ul>
+	<li>non-dispersive double-crystal with symmetric offset -- rotates about a
+	point midway between the entrance and exit beams.
+	<li>non-dispersive double-crystal with asymmetric offset  -- rotates about a
+	point on the first crystal's surface.
+	<li>dispersive double crystal -- nested geometry
+	<li>dispersive double crystal -- symmetric geometry
+	<li>spherical grating
+	</ul>
 
 	<H4>Kohzu/PSL geometry 1 (Theta, Y1, Z2)</H4>
 
@@ -108,7 +111,7 @@ slits, filters, mirrors, diffractometers, and optical tables.
 
 	</table></UL>
 
-	<HR>
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
 
 	<H4>Kohzu geometry 2 (Theta, Y2, Z2)</H4>
 	
@@ -150,7 +153,7 @@ slits, filters, mirrors, diffractometers, and optical tables.
 	attempt may not succeed, however, because the motors have high and low
 	speed limits, and will refuse commands to violate them.
 
-	<HR>
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
 
 	<H4>High-resolution double-crystal (Theta<sub>1</sub>,
 	Theta<sub>2</sub>)</H4> synApps currently supports two geometries of a high
@@ -256,55 +259,92 @@ slits, filters, mirrors, diffractometers, and optical tables.
 	<center><IMG SRC="hrSeqCtl_All_symmetric.adl.gif"> <br>hrSeqCtl_All.adl
 	(symmetric geometry)</img></center>
 
-	<P>Description
-
+	<P>This display shows the symmetric geometry in use.
+	
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
+	
 	<H4>Spherical Grating (Phi, r<sub>entrance</sub>, r<sub>exit</sub>)</H4>
 
-	<P><center><IMG SRC="SGM.adl.html">SGM.adl</IMG> </center>
+	<P><center><IMG SRC="SGM.adl.jpg"><br>SGM.adl</IMG> </center>
 
-	<P>Description
+	<P><center><IMG SRC="SGM_tiny.adl.jpg"><br>SGM_tiny.adl</A></center>
 
-	<HR>
-	<IMG SRC="SGM_tiny.adl.html">SGM_tiny.adl</A>
-	<P>Description
+	<P>These are the control displays for a spherical grating monochromator.
+	The supported geometry comprises an input slit, a grating driven by a
+	tangent arm, and an exit slit.  The angle between the incoming and outgoing
+	beams is fixed.  The grating may have up to 16 stripes, whose properties
+	are specified in the following control display:
 
-	<HR>
+	<P><center><IMG SRC="SGM_gratings.adl.jpg"><br>SGM_gratings.adl</A></center>
+
+	<P><table border>
+	<tr><td>Description<td>Anything the user wants to write
+	<tr><td>Diffraction order<td>"Grating", as used here, means a physical grating
+	stripe and a particular diffraction order
+	<tr><td>Line density<td>Number of gratings lines per mm.
+	<tr><td>Radius of curvature<td>stripes can have different radii
+	<tr><td>Wavelength low limit<td>Smallest wavelength for which this
+	stripe should be used. 
+	<tr><td>Wavelength high limit<td>Largest wavelength for which this
+	stripe should be used.
+	<tr><td>Grating index<td>Position of the grating-translation motor that
+	will put this stripe into the incoming beam.
+	<tr><td>Grating-motor offset<td>Correction to be applied to the calculated
+	tangent-arm motor while this stripe is in use.
+	<tr><td>OK to use<td>If this field is zero, the user will not be permitted to
+	select this stripe for use.
+	</table>
+
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
 
 	<H3>Slits</H3>
-		<TABLE CELLSPACING=0 CELLPADDING=0>
-		<TR VALIGN=TOP><TD><A HREF="2slit.adl.html">2slit.adl</A> <TD>2-leaf slit: (X<sub>+</sub>, X<sub>-</sub>, X<sub>center</sub>, X<sub>width</sub>)
-		<TR VALIGN=TOP><TD><A HREF="4slitGraphic.adl.html">4slitGraphic.adl~</A> <TD>4-leaf slit (horiz & vert 2-leaf slits)
-		<TR VALIGN=TOP><TD><A HREF="trs.adl.html">trs.adl~</A> <TD>2-leaf slit: (cylinders on a rotation stage) on a translation stage
-		</TABLE>
+	
+		<P><center><IMG SRC="2slit.adl.jpg"><br>2slit.adl</A></center>
+		<P><center><IMG SRC="4slitGraphic.adl.jpg"><br>4slitGraphic.adl</A></center>
+		<P><center><IMG SRC="xia_slit_full.adl.jpg"><br>xia_slit_full.adl</A></center>
+
+
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
 
 	<H3>Mirrors</H3>
-		<TABLE CELLSPACING=0 CELLPADDING=0>
-		<TR VALIGN=TOP><TD><A HREF="2postMirror.adl.html">2postMirror.adl~</A> <TD>Y<sub>upstream</sub>, Y<sub>downstream</sub>, Y<sub>average</sub>, Theta<sub>X</sub>
-		</TABLE>
+		<P><center><IMG SRC="2postMirror.adl.jpg"><br>2postMirror.adl</A></center>
+
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
 
 	<H3>Filters</H3>
-		<TABLE CELLSPACING=0 CELLPADDING=0>
-		<TR VALIGN=TOP><TD><A HREF="2filter.adl.html">2filter.adl</A> <TD>Two five-filter banks, with locking-solenoid control
-		<TR VALIGN=TOP><TD><A HREF="2filter_setup.adl.html">2filter_setup.adl</A> <TD>specify filter materials, and the motor positions that put them into the beam
-		<TR VALIGN=TOP><TD><A HREF="4filter.adl.adl.html">4filter.adl~</A> <TD>Four five-filter banks, with locking-solenoid control
-		<TR VALIGN=TOP><TD><A HREF="4filter_setup.adl.html">4filter_setup.adl~</A> <TD>specify filter materials, and the motor positions that put them into the beam
-		</TABLE>
+		<P><center><IMG SRC="2filter.adl.jpg"><br>2filter.adl</A></center>
+		<P><center><IMG SRC="2filter_setup.adl.jpg"><br>2filter_setup.adl</A></center>
+
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
 
 	<H3>Optical table</H3>
-		<TABLE CELLSPACING=0 CELLPADDING=0>
-		<TR VALIGN=TOP><TD><A HREF="tableRecord.html">tableRecord.html</A> <TD>The table record
-		<TR VALIGN=TOP><TD><A HREF="table.adl.html">table.adl</A>~ <TD>x,y,z rotations and translations (virtual motors)
-		<TR VALIGN=TOP><TD><A HREF="table_tiny.adl.html">table_tiny.adl~</A> <TD>like motorx_tiny.adl for virtual motors
-		<TR VALIGN=TOP><TD><A HREF="table_full.adl.html">table_full.adl~</A> <TD>virtual and actual motors
-		<TR VALIGN=TOP><TD><A HREF="table_help.adl.html">table_help.adl~</A> <TD>old docs
-		<TR VALIGN=TOP><TD><A HREF="table_setup.adl.html">table_setup.adl~</A> <TD>specify dimensions, orientation, and location of the point fixed under rotations
-		</TABLE>
+		The optical-table software is documented separately.  See <A HREF="tableRecord.html">tableRecord.html</A>
+
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
+
+	<H3>Orientation matrix (diffractometer control)</H3>
+		<P><center><IMG SRC="orient_full.adl.jpg"><br>orient_full.adl</A></center>
+		<P><center><IMG SRC="orient_XTALS.adl.jpg"><br>orient_XTALS.adl</A></center>
+
+	<P><center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
+	<center><IMG SRC="colorLine.gif"></IMG> </center>
 
 <address>
     Suggestions and Comments to: <br>
     <a HREF="mailto:mooney@aps.anl.gov">Tim Mooney </a>:
     (mooney@aps.anl.gov) <br>
-    Last modified: July 1, 2005 
+    Last modified: April 24, 2006 
 </address>
 </body>
 </html>
