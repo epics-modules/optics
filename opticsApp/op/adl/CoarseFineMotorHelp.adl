@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/xxx/xxxApp/op/adl/CoarseFineMotorHelp.adl"
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/CoarseFineMotorHelp.adl"
 	version=030004
 }
 display {
@@ -8,7 +8,7 @@ display {
 		x=327
 		y=507
 		width=400
-		height=205
+		height=225
 	}
 	clr=14
 	bclr=2
@@ -181,7 +181,7 @@ rectangle {
 		x=5
 		y=23
 		width=390
-		height=178
+		height=158
 	}
 	"basic attribute" {
 		clr=14
@@ -193,7 +193,7 @@ polyline {
 		x=89
 		y=43
 		width=0
-		height=158
+		height=138
 	}
 	"basic attribute" {
 		clr=14
@@ -201,7 +201,7 @@ polyline {
 	}
 	points {
 		(89,43)
-		(89,201)
+		(89,181)
 	}
 }
 text {
@@ -325,41 +325,17 @@ composite {
 		}
 	}
 }
-composite {
+text {
 	object {
 		x=5
 		y=185
-		width=395
+		width=390
 		height=14
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=5
-				y=185
-				width=80
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="COARSE ONLY"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=100
-				y=185
-				width=300
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Do not move fine motor"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="For coarse-only, or fine-only motions, use the coarse"
 }
 polyline {
 	object {
@@ -406,21 +382,6 @@ polyline {
 		(395,162)
 	}
 }
-polyline {
-	object {
-		x=5
-		y=182
-		width=390
-		height=0
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(5,182)
-		(395,182)
-	}
-}
 text {
 	object {
 		x=100
@@ -432,4 +393,16 @@ text {
 		clr=14
 	}
 	textix="the fine motor"
+}
+text {
+	object {
+		x=5
+		y=200
+		width=390
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="or fine motor directly.  This software will cooperate."
 }
