@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/xxx/xxxApp/op/adl/CoarseFineMotorShow.adl"
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/CoarseFineMotorShow.adl"
 	version=030004
 }
 display {
@@ -153,27 +153,6 @@ text {
 	bclr=63
 	label="-?"
 }
-"related display" {
-	object {
-		x=5
-		y=80
-		width=55
-		height=20
-	}
-	display[0] {
-		label="Combined (soft) motor"
-		name="motorx.adl"
-		args="P=$(P),M=MOT"
-	}
-	display[1] {
-		label="Actual motors"
-		name="motor2x.adl"
-		args="P=$(PM),M1=$(CM),M2=$(FM)"
-	}
-	clr=0
-	bclr=63
-	label="-Motors"
-}
 composite {
 	object {
 		x=163
@@ -193,7 +172,7 @@ composite {
 			monitor {
 				chan="$(PM)$(CM).RBV"
 				clr=14
-				bclr=2
+				bclr=51
 			}
 			label="no decorations"
 			limits {
@@ -209,7 +188,7 @@ composite {
 			monitor {
 				chan="$(PM)$(FM).RBV"
 				clr=14
-				bclr=2
+				bclr=51
 			}
 			label="no decorations"
 			limits {
@@ -245,9 +224,9 @@ composite {
 }
 "related display" {
 	object {
-		x=455
+		x=430
 		y=85
-		width=15
+		width=40
 		height=15
 	}
 	display[0] {
@@ -280,24 +259,56 @@ composite {
 		name="yyCalcoutRecord.adl"
 		args="P=$(P),C=RBV"
 	}
-	clr=0
-	bclr=63
-	label="-*"
+	clr=10
+	bclr=2
+	label="-DEBUG"
 }
-"related display" {
+composite {
 	object {
-		x=90
-		y=80
-		width=40
+		x=5
+		y=75
+		width=125
 		height=20
 	}
-	display[0] {
-		label="Small display"
-		name="CoarseFineMotor.adl"
-		args="P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)"
-		policy="replace display"
+	"composite name"=""
+	children {
+		"related display" {
+			object {
+				x=5
+				y=75
+				width=55
+				height=20
+			}
+			display[0] {
+				label="Combined (soft) motor"
+				name="motorx.adl"
+				args="P=$(P),M=MOT"
+			}
+			display[1] {
+				label="Actual motors"
+				name="motor2x.adl"
+				args="P=$(PM),M1=$(CM),M2=$(FM)"
+			}
+			clr=0
+			bclr=63
+			label="-Motors"
+		}
+		"related display" {
+			object {
+				x=90
+				y=75
+				width=40
+				height=20
+			}
+			display[0] {
+				label="Small display"
+				name="CoarseFineMotor.adl"
+				args="P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)"
+				policy="replace display"
+			}
+			clr=0
+			bclr=17
+			label="-Less"
+		}
 	}
-	clr=0
-	bclr=17
-	label="-Less"
 }
