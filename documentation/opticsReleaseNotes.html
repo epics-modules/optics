@@ -10,23 +10,30 @@ content="text/html; charset=iso-8859-1">
 
 <h1 align="center">optics Release Notes</h1>
 
-<h2 align="center">Release 2-5</h2>
-Added diffractometer support (orientation matrix)
+<h2 align="center">Release 2-5-1</h2>
+<ul>
+<li>Added CoarseFineMotor database and MEDM display files
+<li>fixed minor problems with xia_slit MEDM display
+</ul>
 
-Added some documentation for slits, mirrors, filters, spherical grating
+<h2 align="center">Release 2-5</h2>
+<ul>
+<li>Added diffractometer support (orientation matrix)
+
+<li>Added some documentation for slits, mirrors, filters, spherical grating
 monochromator, high-energy-resolution monochromator.
 
-Ported xia slit to EPICS 3.14, and improved its behavior when driven by
+<li>Ported xia slit to EPICS 3.14, and improved its behavior when driven by
 ca_put_callback().
-
+</ul>
 <h2 align="center">Release 2-4</h2>
-Added table of fixed points (points about which an optical table rotates) to table database,
+<ul>
+<li>Added table of fixed points (points about which an optical table rotates) to table database,
 request file, and medm displays
 
-<P>The save_restore include file, table_settings.req, now requires the additional macro argument 'Q'.  This is
+<li>The save_restore include file, table_settings.req, now requires the additional macro argument 'Q'.  This is
 the same macro argument required by table.db.
-
-<P><a href="cvsLog.txt">cvs log</a>
+</ul>
 
 <h2 align="center">Release 2-3</h2>
 
