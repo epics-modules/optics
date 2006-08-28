@@ -4,20 +4,22 @@
 
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
+SUPPORT=/home/epicsioc/dev/synApps/support
+
 #If using the sequencer, point SNCSEQ at its top directory:
 SNCSEQ=$(SUPPORT)/seq/2-0-11
 
 # For transform record
-CALC=$(SUPPORT)/calc
+CALC=$(SUPPORT)/calc/2-5
 
 # For busy record
-SSCAN=$(SUPPORT)/sscan
+SSCAN=$(SUPPORT)/sscan/2-5-1
 
 # for serial support
-ASYN=$(SUPPORT)/asyn
+ASYN=$(SUPPORT)/asyn/4-6
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=$(GATEWAY)/epics/base-3.14.8.2
+EPICS_BASE=/home/epicsioc/dev/base
 
 #Capfast users may need the following definitions
 #CAPFAST_TEMPLATES=

@@ -1,0 +1,1738 @@
+
+file {
+	name="/home/epics/EPICS/ioc/sector/32-com/usaxs/op/adl/pf4dual_more.adl"
+	version=030003
+}
+display {
+	object {
+		x=177
+		y=254
+		width=305
+		height=553
+	}
+	clr=14
+	bclr=2
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+text {
+	object {
+		x=49
+		y=3
+		width=180
+		height=18
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="Dual XIA filter box"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=114
+		y=54
+		width=108
+		height=25
+	}
+	control {
+		chan="$(PV)E_using"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=16
+		y=58
+		width=95
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="using"
+	align="horiz. right"
+}
+"choice button" {
+	object {
+		x=12
+		y=45
+		width=55
+		height=36
+	}
+	control {
+		chan="$(PV)useMono"
+		clr=14
+		bclr=3
+	}
+}
+"related display" {
+	object {
+		x=0
+		y=0
+		width=40
+		height=20
+	}
+	display[0] {
+		label="small"
+		name="pf4dual_small.adl"
+		args="PV=$(PV),MONO=$(MONO)"
+		policy="replace display"
+	}
+	clr=14
+	bclr=2
+	label="-less"
+}
+text {
+	object {
+		x=16
+		y=29
+		width=95
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Energy"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=114
+		y=25
+		width=108
+		height=24
+	}
+	monitor {
+		chan="$(MONO)"
+		clr=14
+		bclr=51
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=184
+		y=1
+		width=120
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="pf4Dual_more.adl"
+	align="horiz. right"
+}
+polyline {
+	object {
+		x=0
+		y=195
+		width=306
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(PV)calc"
+	}
+	points {
+		(1,196)
+		(305,196)
+	}
+}
+composite {
+	object {
+		x=16
+		y=133
+		width=258
+		height=18
+	}
+	"composite name"=""
+	children {
+		"text update" {
+			object {
+				x=225
+				y=135
+				width=49
+				height=15
+			}
+			monitor {
+				chan="$(PV)filterAl.EGU"
+				clr=14
+				bclr=2
+			}
+			format="string"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=16
+				y=135
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Aluminum"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=114
+				y=133
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(PV)filterAl"
+				clr=14
+				bclr=31
+			}
+			align="horiz. right"
+			format="compact"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=16
+		y=153
+		width=258
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=16
+				y=155
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Titanium"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=114
+				y=153
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(PV)filterTi"
+				clr=14
+				bclr=31
+			}
+			align="horiz. right"
+			format="compact"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=225
+				y=155
+				width=49
+				height=15
+			}
+			monitor {
+				chan="$(PV)filterTi.EGU"
+				clr=14
+				bclr=2
+			}
+			format="string"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=16
+		y=86
+		width=206
+		height=39
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=16
+				y=107
+				width=206
+				height=18
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=16
+						y=109
+						width=95
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="1/transmission"
+					align="horiz. right"
+				}
+				"text update" {
+					object {
+						x=114
+						y=107
+						width=108
+						height=18
+					}
+					monitor {
+						chan="$(PV)invTrans"
+						clr=14
+						bclr=60
+					}
+					align="horiz. right"
+					format="compact"
+					limits {
+					}
+				}
+			}
+		}
+		"text update" {
+			object {
+				x=114
+				y=86
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(PV)trans"
+				clr=14
+				bclr=60
+			}
+			align="horiz. right"
+			format="exponential"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=16
+				y=88
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="transmission"
+			align="horiz. right"
+		}
+	}
+}
+text {
+	object {
+		x=204
+		y=12
+		width=100
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="2005-05-24 (prj)"
+	align="horiz. right"
+}
+"related display" {
+	object {
+		x=2
+		y=23
+		width=60
+		height=14
+	}
+	display[0] {
+		label="all"
+		name="pf4dual_config.adl"
+		args="PV=$(PV),MONO=$(MONO)"
+	}
+	clr=0
+	bclr=9
+	label="-configure"
+}
+rectangle {
+	object {
+		x=4
+		y=201
+		width=64
+		height=346
+	}
+	"basic attribute" {
+		clr=44
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(PV)fPosA"
+	}
+}
+rectangle {
+	object {
+		x=4
+		y=201
+		width=64
+		height=346
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(PV)fPosA"
+	}
+}
+rectangle {
+	object {
+		x=4
+		y=201
+		width=64
+		height=346
+	}
+	"basic attribute" {
+		clr=21
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(PV)bankA"
+	}
+}
+byte {
+	object {
+		x=8
+		y=205
+		width=10
+		height=336
+	}
+	monitor {
+		chan="$(PV)bitFlagA"
+		clr=38
+		bclr=2
+	}
+	direction="up"
+	sbit=0
+	ebit=15
+}
+composite {
+	object {
+		x=160
+		y=201
+		width=64
+		height=346
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=160
+				y=201
+				width=64
+				height=346
+			}
+			"basic attribute" {
+				clr=44
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(PV)fPosB"
+			}
+		}
+		rectangle {
+			object {
+				x=160
+				y=201
+				width=64
+				height=346
+			}
+			"basic attribute" {
+				clr=16
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(PV)fPosB"
+			}
+		}
+		rectangle {
+			object {
+				x=160
+				y=201
+				width=64
+				height=346
+			}
+			"basic attribute" {
+				clr=21
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(PV)bankB"
+			}
+		}
+		byte {
+			object {
+				x=164
+				y=205
+				width=10
+				height=336
+			}
+			monitor {
+				chan="$(PV)bitFlagB"
+				clr=38
+				bclr=2
+			}
+			direction="up"
+			sbit=0
+			ebit=15
+		}
+	}
+}
+composite {
+	object {
+		x=22
+		y=207
+		width=120
+		height=334
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=72
+				y=207
+				width=70
+				height=330
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=72
+						y=270
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.THST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=249
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.TWST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=228
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.ONST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=207
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.ZRST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=292
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.FRST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=313
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.FVST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=334
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.SXST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=355
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.SVST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=376
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.EIST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=397
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.NIST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=418
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.TEST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=439
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.ELST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=460
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.TVST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=481
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.TTST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=502
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.FTST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=72
+						y=523
+						width=70
+						height=14
+					}
+					monitor {
+						chan="$(PV)fPosA.FFST"
+						clr=14
+						bclr=2
+					}
+					clrmod="discrete"
+					format="exponential"
+					limits {
+					}
+				}
+			}
+		}
+		"message button" {
+			object {
+				x=22
+				y=207
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 0"
+			release_msg="0"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=228
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 1"
+			release_msg="1"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=249
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 2"
+			release_msg="2"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=270
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 3"
+			release_msg="3"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=292
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 4"
+			release_msg="4"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=313
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 5"
+			release_msg="5"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=334
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 6"
+			release_msg="6"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=355
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 7"
+			release_msg="7"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=376
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 8"
+			release_msg="8"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=397
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 9"
+			release_msg="9"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=418
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 10"
+			release_msg="10"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=439
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 11"
+			release_msg="11"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=460
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 12"
+			release_msg="12"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=481
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 13"
+			release_msg="13"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=502
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 14"
+			release_msg="14"
+			clrmod="discrete"
+		}
+		"message button" {
+			object {
+				x=22
+				y=523
+				width=40
+				height=18
+			}
+			control {
+				chan="$(PV)fPosA"
+				clr=14
+				bclr=2
+			}
+			label="A 15"
+			release_msg="15"
+			clrmod="discrete"
+		}
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=270
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.THST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=249
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.TWST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=228
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.ONST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=207
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.ZRST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=292
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.FRST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=313
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.FVST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=334
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.SXST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=355
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.SVST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=376
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.EIST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=397
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.NIST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=418
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.TEST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=439
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.ELST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=460
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.TVST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=481
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.TTST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=502
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.FTST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=228
+		y=523
+		width=70
+		height=14
+	}
+	monitor {
+		chan="$(PV)fPosB.FFST"
+		clr=14
+		bclr=2
+	}
+	clrmod="discrete"
+	format="exponential"
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=178
+		y=207
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 0"
+	release_msg="0"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=228
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 1"
+	release_msg="1"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=249
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 2"
+	release_msg="2"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=270
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 3"
+	release_msg="3"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=292
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 4"
+	release_msg="4"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=313
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 5"
+	release_msg="5"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=334
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 6"
+	release_msg="6"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=355
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 7"
+	release_msg="7"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=376
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 8"
+	release_msg="8"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=397
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 9"
+	release_msg="9"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=418
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 10"
+	release_msg="10"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=439
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 11"
+	release_msg="11"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=460
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 12"
+	release_msg="12"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=481
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 13"
+	release_msg="13"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=502
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 14"
+	release_msg="14"
+	clrmod="discrete"
+}
+"message button" {
+	object {
+		x=178
+		y=523
+		width=40
+		height=18
+	}
+	control {
+		chan="$(PV)fPosB"
+		clr=14
+		bclr=2
+	}
+	label="B 15"
+	release_msg="15"
+	clrmod="discrete"
+}
+text {
+	object {
+		x=228
+		y=58
+		width=49
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="keV"
+}
+text {
+	object {
+		x=228
+		y=29
+		width=49
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="keV"
+}
+composite {
+	object {
+		x=16
+		y=173
+		width=258
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=16
+				y=175
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Glass"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=114
+				y=173
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(PV)filterGlass"
+				clr=14
+				bclr=31
+			}
+			align="horiz. right"
+			format="compact"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=225
+				y=175
+				width=49
+				height=15
+			}
+			monitor {
+				chan="$(PV)filterGlass.EGU"
+				clr=14
+				bclr=2
+			}
+			format="string"
+			limits {
+			}
+		}
+	}
+}
