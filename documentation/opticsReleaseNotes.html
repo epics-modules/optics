@@ -1,68 +1,80 @@
-<html>
-
-<head>
-<meta http-equiv="Content-Type"
-content="text/html; charset=iso-8859-1">
-<title>opticsReleaseNotes</title>
-</head>
-
-<body bgcolor="#FFFFFF">
-
-<h1 align="center">optics Release Notes</h1>
-
-<h2 align="center">Release 2-5-1</h2>
-<ul>
-<li>Added CoarseFineMotor database and MEDM display files
-<li>fixed minor problems with xia_slit MEDM display
-</ul>
-
-<h2 align="center">Release 2-5</h2>
-<ul>
-<li>Added diffractometer support (orientation matrix)
-
-<li>Added some documentation for slits, mirrors, filters, spherical grating
-monochromator, high-energy-resolution monochromator.
-
-<li>Ported xia slit to EPICS 3.14, and improved its behavior when driven by
-ca_put_callback().
-</ul>
-<h2 align="center">Release 2-4</h2>
-<ul>
-<li>Added table of fixed points (points about which an optical table rotates) to table database,
-request file, and medm displays
-
-<li>The save_restore include file, table_settings.req, now requires the additional macro argument 'Q'.  This is
-the same macro argument required by table.db.
-</ul>
-
-<h2 align="center">Release 2-3</h2>
-
-<p align="left">This is the first release of the synApps optics module.
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE>opticsReleaseNotes</TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice 7  (Solaris Sparc)">
+	<META NAME="CREATED" CONTENT="20060828;8592600">
+	<META NAME="CHANGED" CONTENT="20060828;9000600">
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<H1 ALIGN=CENTER>optics Release Notes</H1>
+<H2 ALIGN=CENTER>Release 2-5-1</H2>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Added CoarseFineMotor database and
+	MEDM display files 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">fixed minor problems with xia_slit
+	MEDM display.</P>
+	<LI><P STYLE="margin-bottom: 0in">Added support for XIA PF4 dual
+	filters.</P>
+</UL>
+<H2 ALIGN=CENTER>Release 2-5</H2>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Added diffractometer support
+	(orientation matrix) 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Added some documentation for
+	slits, mirrors, filters, spherical grating monochromator,
+	high-energy-resolution monochromator. 
+	</P>
+	<LI><P>Ported xia slit to EPICS 3.14, and improved its behavior when
+	driven by ca_put_callback(). 
+	</P>
+</UL>
+<H2 ALIGN=CENTER>Release 2-4</H2>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Added table of fixed points
+	(points about which an optical table rotates) to table database,
+	request file, and medm displays 
+	</P>
+	<LI><P>The save_restore include file, table_settings.req, now
+	requires the additional macro argument 'Q'. This is the same macro
+	argument required by table.db. 
+	</P>
+</UL>
+<H2 ALIGN=CENTER>Release 2-3</H2>
+<P ALIGN=LEFT>This is the first release of the synApps optics module.
 Version numbering for this module begins with 2.3 because this module
 was split from version 2.2 of the std module, and I wanted to retain
-the CVS histories of module contents.</p>
-
-This version is intended to build with EPICS base 3.14.5, mpf 2.4.2, and std 2.3.
-
-Differences from software as previously released in std 2.2:
-<ul>
-<li>Converted to EPICS 3.14
-<li>Docs updated and moved to optics/documentation
-<li>SGM.db - removed forward links pointing nowhere (gdct artifacts).
-<li>kohzuSeq.db - added debug PV $(P)KohzuCtlDebug.  Fixed long-standing bug:
-if the theta motor was moved by a very small amount (by external client
-not working through kohzuCtl) this software would sometimes ignore the
-notification it received from EPICS.
-<li>hrSeq.db - added debug PV $(P)HR$(N)CtlDebug. Fixed long-standing bug:
-if a theta motor was moved by a very small amount (by external client
-not working through hrCtl) this software would sometimes ignore the
-notification it received from EPICS.
-</ul>
-<address>
-    Suggestions and Comments to: <br>
-    <a href="mailto:mooney@aps.anl.gov">Tim Mooney </a>:
-    (mooney@aps.anl.gov) <br>
-    Last modified: January 6, 2005 
-</address>
-</body>
-</html>
+the CVS histories of module contents.</P>
+<P>This version is intended to build with EPICS base 3.14.5, mpf
+2.4.2, and std 2.3. Differences from software as previously released
+in std 2.2: 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Converted to EPICS 3.14 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Docs updated and moved to
+	optics/documentation 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">SGM.db - removed forward links
+	pointing nowhere (gdct artifacts). 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">kohzuSeq.db - added debug PV
+	$(P)KohzuCtlDebug. Fixed long-standing bug: if the theta motor was
+	moved by a very small amount (by external client not working through
+	kohzuCtl) this software would sometimes ignore the notification it
+	received from EPICS. 
+	</P>
+	<LI><P>hrSeq.db - added debug PV $(P)HR$(N)CtlDebug. Fixed
+	long-standing bug: if a theta motor was moved by a very small amount
+	(by external client not working through hrCtl) this software would
+	sometimes ignore the notification it received from EPICS. 
+	</P>
+</UL>
+<ADDRESS>Suggestions and Comments to: <BR><A HREF="mailto:mooney@aps.anl.gov">Tim
+Mooney </A>: (mooney@aps.anl.gov) <BR>Last modified: January 6, 2005 
+</ADDRESS>
+</BODY>
+</HTML>
