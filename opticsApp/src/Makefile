@@ -43,7 +43,8 @@ optics_SRCS   += xia_slit.st
 optics_SRCS   += matrix3.c, orient.c, orient_st.st
 
 # Support for XIA PF4 filter (dual)
-#optics_SRCS += pf4dual.stt
+#optics_SNCFLAGS += +d -c +r -w
+#optics_SRCS += pf4dual.st
 
 optics_LIBS += seq pv
 optics_LIBS += $(EPICS_BASE_IOC_LIBS)
