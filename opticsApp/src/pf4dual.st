@@ -8,40 +8,7 @@ program pf4Dual
  *                  work with the vxWorks cross-compiler.
  */
 #define DEBUGGING 1
-
-#define PV(t,v,pv,o) t   v; assign v to pv o (v)
-#define NoMon(v)	/* this macro intentionally left blank :P */
-#define Monitor(v) ; monitor v
-#define EvFlag(v) Monitor (v); evflag v##_mon; sync v v##_mon
-#define PVPUT(v,ex) {v = (ex); pvPut(v,SYNC); }
-#define PVPUTSTR(s,ex) {strcpy(s,ex); pvPut(s,SYNC); }
-
-#if defined(NO_DEBUGGING_OUTPUT)
-#define DEBUG_PRINT(DEBUG_LEVEL, MSG) ;
-#else
-
-#define DEBUG_PRINT_HEADER(DEBUG_LEVEL)		\
-   printf("<%s,%d,%s,%d> ",			\
-   	__FILE__, __LINE__, 			\
-	SNLtaskName, DEBUG_LEVEL);
-
-#define DEBUG_PRINT(DEBUG_LEVEL, MSG)		\
-    if (debug_flag >= DEBUG_LEVEL) {		\
-        DEBUG_PRINT_HEADER (DEBUG_LEVEL);	\
-        printf("%s\n", MSG);			\
-        epicsThreadSleep(0.01);			\
-    }
-
-#define DEBUG_PRINT1(DEBUG_LEVEL, MSG, _V1_)	\
-    if (debug_flag >= DEBUG_LEVEL) {		\
-        DEBUG_PRINT_HEADER (DEBUG_LEVEL);	\
-        printf(MSG, _V1_);			\
-        printf("\n");				\
-        epicsThreadSleep(0.01);			\
-    }
-
-#endif
-
+#include "seqPVmacros.h"
 
 /*
  Usage:
