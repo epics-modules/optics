@@ -593,7 +593,7 @@ ss xiahsc {
         READ_HSC();		/* process generic serial port */
         INPUT_TO_FIFO();	/* put input string into FIFO */
       }
-    } state idle
+    } state init_limits
   }
 
   state init_limits {
