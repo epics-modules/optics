@@ -1,12 +1,12 @@
 
 file {
-	name="C:\Program Files\EPICS WIN32 Extensions\synApps_4_3_adl\XIA_shutter_small.adl"
-	version=020306
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/XIA_shutter_small.adl"
+	version=030101
 }
 display {
 	object {
-		x=192
-		y=31
+		x=420
+		y=707
 		width=280
 		height=90
 	}
@@ -106,7 +106,7 @@ rectangle {
 		height=20
 	}
 	control {
-		chan="$(P)$(S)openShutter.PROC"
+		chan="$(P)$(S):openShutter.PROC"
 		clr=14
 		bclr=51
 	}
@@ -121,7 +121,7 @@ rectangle {
 		height=20
 	}
 	control {
-		chan="$(P)$(S)closeShutter.PROC"
+		chan="$(P)$(S):closeShutter.PROC"
 		clr=14
 		bclr=51
 	}
@@ -143,93 +143,6 @@ polyline {
 		(1,26)
 		(279,26)
 	}
-}
-composite {
-	object {
-		x=15
-		y=30
-		width=50
-		height=10
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=15
-				y=30
-				width=50
-				height=10
-			}
-			"basic attribute" {
-				clr=30
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(S)busy"
-			}
-			textix="BUSY"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=15
-				y=30
-				width=50
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(S)busy"
-			}
-			textix="DONE"
-			align="horiz. centered"
-		}
-	}
-}
-"message button" {
-	object {
-		x=15
-		y=40
-		width=50
-		height=20
-	}
-	control {
-		chan="$(P)$(S)expose.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Expose"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=65
-		y=40
-		width=50
-		height=20
-	}
-	control {
-		chan="$(P)$(S)exposeTime"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=115
-		y=42
-		width=10
-		height=16
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="(s)"
 }
 text {
 	object {
@@ -260,4 +173,102 @@ text {
 	clr=0
 	bclr=63
 	label="-More"
+}
+composite {
+	object {
+		x=15
+		y=40
+		width=205
+		height=20
+	}
+	"composite name"=""
+	children {
+		"message button" {
+			object {
+				x=15
+				y=40
+				width=50
+				height=20
+			}
+			control {
+				chan="$(P)$(S):expose.PROC"
+				clr=14
+				bclr=51
+			}
+			label="Expose"
+			press_msg="1"
+		}
+		"text entry" {
+			object {
+				x=65
+				y=40
+				width=50
+				height=20
+			}
+			control {
+				chan="$(P)$(S):exposeTime"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=115
+				y=42
+				width=10
+				height=16
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="(s)"
+		}
+		composite {
+			object {
+				x=140
+				y=40
+				width=80
+				height=20
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=140
+						y=40
+						width=80
+						height=20
+					}
+					"basic attribute" {
+						clr=17
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(P)$(S):busy"
+					}
+					textix="EXPOSING"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=140
+						y=40
+						width=80
+						height=20
+					}
+					"basic attribute" {
+						clr=54
+					}
+					"dynamic attribute" {
+						vis="if zero"
+						chan="$(P)$(S):busy"
+					}
+					textix="DONE"
+					align="horiz. centered"
+				}
+			}
+		}
+	}
 }
