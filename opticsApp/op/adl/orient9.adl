@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/orient9.adl"
+	name="/APSshare/epics/synApps_cvs/support/optics/opticsApp/op/adl/orient9.adl"
 	version=030004
 }
 display {
@@ -235,8 +235,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_p1,PM=$(PM),mTTH=m_p1TTH,mTH=m_p1TH,mCHI=m_p1CHI,mPHI=m_p1PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_p1"
 	}
 	clr=0
 	bclr=17
@@ -251,8 +251,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_p2,PM=$(PM),mTTH=m_p2TTH,mTH=m_p2TH,mCHI=m_p2CHI,mPHI=m_p2PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_p2"
 	}
 	clr=0
 	bclr=17
@@ -267,8 +267,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_p3,PM=$(PM),mTTH=m_p3TTH,mTH=m_p3TH,mCHI=m_p3CHI,mPHI=m_p3PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_p3"
 	}
 	clr=0
 	bclr=17
@@ -283,8 +283,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_p4,PM=$(PM),mTTH=m_p4TTH,mTH=m_p4TH,mCHI=m_p4CHI,mPHI=m_p4PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_p4"
 	}
 	clr=0
 	bclr=17
@@ -602,7 +602,7 @@ composite {
 		height=15
 	}
 	monitor {
-		chan="$(PM)$(mTTH).RBV"
+		chan="$(P)orient1:TTH"
 		clr=54
 		bclr=2
 	}
@@ -618,7 +618,7 @@ composite {
 		height=15
 	}
 	monitor {
-		chan="$(PM)$(mTH).RBV"
+		chan="$(P)orient1:TH"
 		clr=54
 		bclr=2
 	}
@@ -634,7 +634,7 @@ composite {
 		height=15
 	}
 	monitor {
-		chan="$(PM)$(mCHI).RBV"
+		chan="$(P)orient1:CHI"
 		clr=54
 		bclr=2
 	}
@@ -650,7 +650,7 @@ composite {
 		height=15
 	}
 	monitor {
-		chan="$(PM)$(mPHI).RBV"
+		chan="$(P)orient1:PHI"
 		clr=54
 		bclr=2
 	}
@@ -668,7 +668,7 @@ composite {
 	display[2] {
 		label="Orientation matrix"
 		name="orient.adl"
-		args="P=$(P),O=_0,PM=$(PM),mTTH=$(mTTH),mTH=$(mTH),mCHI=$(mCHI),mPHI=$(mPHI)"
+		args="P=$(P),O=1,PM=$(PM),mTTH=$(mTTH),mTH=$(mTH),mCHI=$(mCHI),mPHI=$(mPHI)"
 	}
 	display[3] {
 		label="Motors"
@@ -679,65 +679,54 @@ composite {
 	bclr=17
 	label="-0"
 }
-composite {
+rectangle {
 	object {
 		x=313
 		y=145
 		width=84
 		height=24
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=313
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=20
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="A=0"
-				chan="$(P)orient$(O):motTTH_Connected"
-			}
-		}
-		"text entry" {
-			object {
-				x=315
-				y=147
-				width=80
-				height=20
-			}
-			control {
-				chan="$(PM)$(mTTH)"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=313
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):waiting4motTTH"
-			}
-		}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A=0"
+		chan="$(P)orient$(O):motTTH_Connected"
+	}
+}
+"text entry" {
+	object {
+		x=315
+		y=147
+		width=80
+		height=20
+	}
+	control {
+		chan="$(PM)$(mTTH)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=313
+		y=145
+		width=84
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):waiting4motTTH"
 	}
 }
 "related display" {
@@ -749,8 +738,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_m1,PM=$(PM),mTTH=m_m1TTH,mTH=m_m1TH,mCHI=m_m1CHI,mPHI=m_m1PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_m1"
 	}
 	clr=0
 	bclr=17
@@ -765,8 +754,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_m2,PM=$(PM),mTTH=m_m2TTH,mTH=m_m2TH,mCHI=m_m2CHI,mPHI=m_m2PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_m2"
 	}
 	clr=0
 	bclr=17
@@ -781,8 +770,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_m3,PM=$(PM),mTTH=m_m3TTH,mTH=m_m3TH,mCHI=m_m3CHI,mPHI=m_m3PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_m3"
 	}
 	clr=0
 	bclr=17
@@ -797,8 +786,8 @@ composite {
 	}
 	display[2] {
 		label="More"
-		name="orient.adl"
-		args="P=$(P),O=_m4,PM=$(PM),mTTH=m_m4TTH,mTH=m_m4TH,mCHI=m_m4CHI,mPHI=m_m4PHI"
+		name="orient_slave.adl"
+		args="P=$(P),O=_m4"
 	}
 	clr=0
 	bclr=17
@@ -1426,187 +1415,154 @@ rectangle {
 	limits {
 	}
 }
-composite {
+rectangle {
 	object {
 		x=403
 		y=145
 		width=84
 		height=24
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=403
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=20
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="A=0"
-				chan="$(P)orient$(O):motTH_Connected"
-			}
-		}
-		"text entry" {
-			object {
-				x=405
-				y=147
-				width=80
-				height=20
-			}
-			control {
-				chan="$(PM)$(mTTH)"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=403
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):waiting4motTH"
-			}
-		}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A=0"
+		chan="$(P)orient$(O):motTH_Connected"
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=405
+		y=147
+		width=80
+		height=20
+	}
+	control {
+		chan="$(PM)$(mTH)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=403
+		y=145
+		width=84
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):waiting4motTH"
+	}
+}
+rectangle {
 	object {
 		x=493
 		y=145
 		width=84
 		height=24
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=493
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=20
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="A=0"
-				chan="$(P)orient$(O):motCHI_Connected"
-			}
-		}
-		"text entry" {
-			object {
-				x=495
-				y=147
-				width=80
-				height=20
-			}
-			control {
-				chan="$(PM)$(mCHI)"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=493
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):waiting4motCHI"
-			}
-		}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A=0"
+		chan="$(P)orient$(O):motCHI_Connected"
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=495
+		y=147
+		width=80
+		height=20
+	}
+	control {
+		chan="$(PM)$(mCHI)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=493
+		y=145
+		width=84
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):waiting4motCHI"
+	}
+}
+rectangle {
 	object {
 		x=583
 		y=145
 		width=84
 		height=24
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=583
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=20
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="A=0"
-				chan="$(P)orient$(O):motPHI_Connected"
-			}
-		}
-		"text entry" {
-			object {
-				x=585
-				y=147
-				width=80
-				height=20
-			}
-			control {
-				chan="$(PM)$(mPHI)"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=583
-				y=145
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):waiting4motPHI"
-			}
-		}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A=0"
+		chan="$(P)orient$(O):motPHI_Connected"
+	}
+}
+"text entry" {
+	object {
+		x=585
+		y=147
+		width=80
+		height=20
+	}
+	control {
+		chan="$(PM)$(mPHI)"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=583
+		y=145
+		width=84
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):waiting4motPHI"
 	}
 }
 "message button" {
