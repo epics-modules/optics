@@ -48,6 +48,10 @@ optics_SRCS   += matrix3.c, orient.c, orient_st.st
 optics_SNCFLAGS += +d -c +r -w
 optics_SRCS += pf4dual.st
 
+# Pete Jemian's (SNL program) support for
+#    Oxford Quad X-ray Beam Position Monitor
+optics_SRCS   += sncqxbpm.st
+ 
 optics_LIBS += seq pv
 optics_LIBS += $(EPICS_BASE_IOC_LIBS)
 
