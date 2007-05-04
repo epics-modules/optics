@@ -3,6 +3,7 @@
  * seqPVmacros.h -- PV-related macros for EPICS State Notation
  *     Language (SNL) code development
  *
+ * 2003-Oct-01	[jemian] changed errlogPrintf to printf (can't use in interrupts)
  * 2003-Mar-20	[jemian] changed pvSet to PVPUT (and pvSetStr to PVPUTSTR)
  * 2003-Mar-19	[jemian] changed printf to errlogPrintf
  * 2002-Sep-24	[tischler] added pvSetStr and DEBUG_PRINT (a la Jemian)
