@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=74
-		y=98
+		x=114
+		y=39
 		width=325
-		height=340
+		height=320
 	}
 	clr=14
 	bclr=3
@@ -87,6 +87,54 @@ display {
 		1a7309,
 	}
 }
+text {
+	object {
+		x=275
+		y=185
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=62
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(S)Status4"
+	}
+	textix="In"
+}
+text {
+	object {
+		x=275
+		y=165
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=62
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(S)Status3"
+	}
+	textix="In"
+}
+text {
+	object {
+		x=275
+		y=145
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=62
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(S)Status2"
+	}
+	textix="In"
+}
 rectangle {
 	object {
 		x=0
@@ -97,6 +145,36 @@ rectangle {
 	"basic attribute" {
 		clr=0
 	}
+}
+"message button" {
+	object {
+		x=140
+		y=105
+		width=130
+		height=20
+	}
+	control {
+		chan="$(P)$(S)openShutter.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Open shutter"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=10
+		y=105
+		width=120
+		height=20
+	}
+	control {
+		chan="$(P)$(S)closeShutter.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Close shutter"
+	press_msg="1"
 }
 polyline {
 	object {
@@ -122,12 +200,114 @@ polyline {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(S):UserCmd_IO.AINP"
+		chan="$(P)$(S):writeRead.AINP"
 		clr=14
 		bclr=2
 	}
 	limits {
 	}
+}
+composite {
+	object {
+		x=15
+		y=30
+		width=50
+		height=10
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=15
+				y=30
+				width=50
+				height=10
+			}
+			"basic attribute" {
+				clr=30
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(S)busy"
+			}
+			textix="BUSY"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=15
+				y=30
+				width=50
+				height=10
+			}
+			"basic attribute" {
+				clr=14
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)$(S)busy"
+			}
+			textix="DONE"
+			align="horiz. centered"
+		}
+	}
+}
+"message button" {
+	object {
+		x=15
+		y=40
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)$(S)expose.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Expose"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=65
+		y=40
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)$(S)exposeTime"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=115
+		y=42
+		width=10
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(s)"
+}
+"message button" {
+	object {
+		x=235
+		y=80
+		width=30
+		height=15
+	}
+	control {
+		chan="$(P)$(S)serial.PROC"
+		clr=14
+		bclr=51
+	}
+	label="READ"
+	press_msg="1"
 }
 "message button" {
 	object {
@@ -137,7 +317,7 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
@@ -152,7 +332,7 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
@@ -167,7 +347,7 @@ polyline {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(S):expose_IO.AINP"
+		chan="$(P)$(S)getAck.VAL"
 		clr=14
 		bclr=2
 	}
@@ -178,16 +358,76 @@ polyline {
 	object {
 		x=10
 		y=80
-		width=255
+		width=225
 		height=14
 	}
 	monitor {
-		chan="$(P)$(S):exposeDone_IO.AINP"
+		chan="$(P)$(S)serial.AINP"
 		clr=14
 		bclr=2
 	}
 	limits {
 	}
+}
+"message button" {
+	object {
+		x=10
+		y=125
+		width=120
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Insert Filter 1"
+	press_msg="I1"
+}
+"message button" {
+	object {
+		x=10
+		y=145
+		width=120
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Insert Filter 2"
+	press_msg="I2"
+}
+"message button" {
+	object {
+		x=140
+		y=125
+		width=130
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Remove Filter 1"
+	press_msg="R1"
+}
+"message button" {
+	object {
+		x=140
+		y=145
+		width=130
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Remove Filter 2"
+	press_msg="R2"
 }
 polyline {
 	object {
@@ -216,7 +456,7 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
@@ -231,7 +471,7 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
@@ -246,7 +486,7 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
@@ -261,7 +501,7 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
@@ -276,7 +516,7 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
@@ -291,17 +531,77 @@ polyline {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):sendCommand.VAL"
+		chan="$(P)$(S)sendCommand.VAL"
 		clr=14
 		bclr=51
 	}
 	label="Clear Short Error"
 	press_msg="Z"
 }
+"message button" {
+	object {
+		x=10
+		y=165
+		width=120
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Insert Filter 3"
+	press_msg="I3"
+}
+"message button" {
+	object {
+		x=10
+		y=185
+		width=120
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Insert Filter 4"
+	press_msg="I4"
+}
+"message button" {
+	object {
+		x=140
+		y=165
+		width=130
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Remove Filter 3"
+	press_msg="R3"
+}
+"message button" {
+	object {
+		x=140
+		y=185
+		width=130
+		height=20
+	}
+	control {
+		chan="$(P)$(S)sendCommand.VAL"
+		clr=14
+		bclr=51
+	}
+	label="Remove Filter 4"
+	press_msg="R4"
+}
 "related display" {
 	object {
-		x=285
-		y=300
+		x=275
+		y=295
 		width=40
 		height=20
 	}
@@ -323,10 +623,101 @@ menu {
 		height=20
 	}
 	control {
-		chan="$(P)$(S):poll.SCAN"
+		chan="$(P)$(S)poll.SCAN"
 		clr=14
-		bclr=51
+		bclr=3
 	}
+}
+composite {
+	object {
+		x=275
+		y=125
+		width=35
+		height=20
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=275
+				y=125
+				width=35
+				height=20
+			}
+			"basic attribute" {
+				clr=20
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)$(S)Status1"
+			}
+			textix="Out"
+		}
+		text {
+			object {
+				x=275
+				y=125
+				width=35
+				height=20
+			}
+			"basic attribute" {
+				clr=62
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(S)Status1"
+			}
+			textix="In"
+		}
+	}
+}
+text {
+	object {
+		x=275
+		y=145
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(S)Status2"
+	}
+	textix="Out"
+}
+text {
+	object {
+		x=275
+		y=165
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(S)Status3"
+	}
+	textix="Out"
+}
+text {
+	object {
+		x=275
+		y=185
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(S)Status4"
+	}
+	textix="Out"
 }
 text {
 	object {
@@ -352,452 +743,4 @@ text {
 	}
 	textix="XIA Shutter"
 	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=70
-		y=320
-		width=50
-		height=20
-	}
-	control {
-		chan="$(P)$(S):address"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=15
-		y=320
-		width=50
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="MODULE"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=15
-		y=330
-		width=50
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="ADDRESS"
-	align="horiz. centered"
-}
-"related display" {
-	object {
-		x=285
-		y=320
-		width=40
-		height=20
-	}
-	display[0] {
-		label="filterStatus asyn"
-		name="asynOctet.adl"
-		args="P=$(P),R=$(S):writeRead"
-	}
-	display[1] {
-		label="exposeCmd asyn"
-		name="asynOctet.adl"
-		args="P=$(P),R=$(S):expose_IO"
-	}
-	display[2] {
-		label="UserCmd_IO"
-		name="asynOctet.adl"
-		args="P=$(P),R=$(S):UserCmd_IO"
-	}
-	display[3] {
-		label="exposeDone asyn"
-		name="asynOctet.adl"
-		args="P=$(P),R=$(S):exposeDone_IO"
-	}
-	clr=0
-	bclr=63
-	label="-More"
-}
-composite {
-	object {
-		x=15
-		y=40
-		width=205
-		height=20
-	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=15
-				y=40
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(S):expose.PROC"
-				clr=14
-				bclr=51
-			}
-			label="Expose"
-			press_msg="1"
-		}
-		"text entry" {
-			object {
-				x=65
-				y=40
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(S):exposeTime"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=115
-				y=42
-				width=10
-				height=16
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="(s)"
-		}
-		composite {
-			object {
-				x=140
-				y=40
-				width=80
-				height=20
-			}
-			"composite name"=""
-			children {
-				text {
-					object {
-						x=140
-						y=40
-						width=80
-						height=20
-					}
-					"basic attribute" {
-						clr=17
-					}
-					"dynamic attribute" {
-						vis="if not zero"
-						chan="$(P)$(S):busy"
-					}
-					textix="EXPOSING"
-					align="horiz. centered"
-				}
-				text {
-					object {
-						x=140
-						y=40
-						width=80
-						height=20
-					}
-					"basic attribute" {
-						clr=54
-					}
-					"dynamic attribute" {
-						vis="if zero"
-						chan="$(P)$(S):busy"
-					}
-					textix="DONE"
-					align="horiz. centered"
-				}
-			}
-		}
-	}
-}
-text {
-	object {
-		x=275
-		y=185
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=62
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S):Status4"
-	}
-	textix="In"
-}
-text {
-	object {
-		x=275
-		y=165
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=62
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S):Status3"
-	}
-	textix="In"
-}
-text {
-	object {
-		x=275
-		y=145
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=62
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S):Status2"
-	}
-	textix="In"
-}
-"message button" {
-	object {
-		x=140
-		y=105
-		width=130
-		height=20
-	}
-	control {
-		chan="$(P)$(S):openShutter.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Open shutter"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=10
-		y=105
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(S):closeShutter.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Close shutter"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=10
-		y=125
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Insert Filter 1"
-	press_msg="I1"
-}
-"message button" {
-	object {
-		x=10
-		y=145
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Insert Filter 2"
-	press_msg="I2"
-}
-"message button" {
-	object {
-		x=140
-		y=125
-		width=130
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Remove Filter 1"
-	press_msg="R1"
-}
-"message button" {
-	object {
-		x=140
-		y=145
-		width=130
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Remove Filter 2"
-	press_msg="R2"
-}
-"message button" {
-	object {
-		x=10
-		y=165
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Insert Filter 3"
-	press_msg="I3"
-}
-"message button" {
-	object {
-		x=10
-		y=185
-		width=120
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Insert Filter 4"
-	press_msg="I4"
-}
-"message button" {
-	object {
-		x=140
-		y=165
-		width=130
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Remove Filter 3"
-	press_msg="R3"
-}
-"message button" {
-	object {
-		x=140
-		y=185
-		width=130
-		height=20
-	}
-	control {
-		chan="$(P)$(S):sendCommand.VAL"
-		clr=14
-		bclr=51
-	}
-	label="Remove Filter 4"
-	press_msg="R4"
-}
-text {
-	object {
-		x=275
-		y=125
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=20
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S):Status1"
-	}
-	textix="Out"
-}
-text {
-	object {
-		x=275
-		y=125
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=62
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S):Status1"
-	}
-	textix="In"
-}
-text {
-	object {
-		x=275
-		y=145
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=20
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S):Status2"
-	}
-	textix="Out"
-}
-text {
-	object {
-		x=275
-		y=165
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=20
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S):Status3"
-	}
-	textix="Out"
-}
-text {
-	object {
-		x=275
-		y=185
-		width=35
-		height=20
-	}
-	"basic attribute" {
-		clr=20
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S):Status4"
-	}
-	textix="Out"
 }
