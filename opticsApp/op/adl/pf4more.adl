@@ -1,14 +1,14 @@
 
 file {
-	name="/home/epics/EPICS/ioc/sector/32-com/usaxs/op/adl/pf4dual_more.adl"
+	name="/home/epicsioc/dev/ioc/sector/32-com/usaxs/op/adl/pf4more.adl"
 	version=030003
 }
 display {
 	object {
-		x=177
-		y=254
+		x=95
+		y=325
 		width=305
-		height=553
+		height=578
 	}
 	clr=14
 	bclr=2
@@ -90,7 +90,7 @@ display {
 text {
 	object {
 		x=49
-		y=3
+		y=27
 		width=180
 		height=18
 	}
@@ -103,12 +103,12 @@ text {
 "text entry" {
 	object {
 		x=114
-		y=54
+		y=78
 		width=108
 		height=25
 	}
 	control {
-		chan="$(PV)E_using"
+		chan="$(P)$(H)E:local"
 		clr=14
 		bclr=51
 	}
@@ -118,7 +118,7 @@ text {
 text {
 	object {
 		x=16
-		y=58
+		y=82
 		width=95
 		height=14
 	}
@@ -131,12 +131,12 @@ text {
 "choice button" {
 	object {
 		x=12
-		y=45
+		y=69
 		width=55
 		height=36
 	}
 	control {
-		chan="$(PV)useMono"
+		chan="$(P)$(H)useMono"
 		clr=14
 		bclr=3
 	}
@@ -144,14 +144,14 @@ text {
 "related display" {
 	object {
 		x=0
-		y=0
+		y=24
 		width=40
 		height=20
 	}
 	display[0] {
 		label="small"
-		name="pf4dual_small.adl"
-		args="PV=$(PV),MONO=$(MONO)"
+		name="pf4small.adl"
+		args="P=$(P),H=$(H),A=$(A),B=$(B),MONO=$(MONO)"
 		policy="replace display"
 	}
 	clr=14
@@ -161,7 +161,7 @@ text {
 text {
 	object {
 		x=16
-		y=29
+		y=53
 		width=95
 		height=14
 	}
@@ -174,7 +174,7 @@ text {
 "text update" {
 	object {
 		x=114
-		y=25
+		y=49
 		width=108
 		height=24
 	}
@@ -187,23 +187,10 @@ text {
 	limits {
 	}
 }
-text {
-	object {
-		x=184
-		y=1
-		width=120
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="pf4Dual_more.adl"
-	align="horiz. right"
-}
 polyline {
 	object {
 		x=0
-		y=195
+		y=220
 		width=306
 		height=2
 	}
@@ -212,233 +199,24 @@ polyline {
 		width=2
 	}
 	"dynamic attribute" {
-		chan="$(PV)calc"
+		chan="$(P)$(H)calc"
 	}
 	points {
-		(1,196)
-		(305,196)
+		(1,221)
+		(305,221)
 	}
-}
-composite {
-	object {
-		x=16
-		y=133
-		width=258
-		height=18
-	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=225
-				y=135
-				width=49
-				height=15
-			}
-			monitor {
-				chan="$(PV)filterAl.EGU"
-				clr=14
-				bclr=2
-			}
-			format="string"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=16
-				y=135
-				width=95
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Aluminum"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=114
-				y=133
-				width=108
-				height=18
-			}
-			monitor {
-				chan="$(PV)filterAl"
-				clr=14
-				bclr=31
-			}
-			align="horiz. right"
-			format="compact"
-			limits {
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=16
-		y=153
-		width=258
-		height=18
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=16
-				y=155
-				width=95
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Titanium"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=114
-				y=153
-				width=108
-				height=18
-			}
-			monitor {
-				chan="$(PV)filterTi"
-				clr=14
-				bclr=31
-			}
-			align="horiz. right"
-			format="compact"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=225
-				y=155
-				width=49
-				height=15
-			}
-			monitor {
-				chan="$(PV)filterTi.EGU"
-				clr=14
-				bclr=2
-			}
-			format="string"
-			limits {
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=16
-		y=86
-		width=206
-		height=39
-	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=16
-				y=107
-				width=206
-				height=18
-			}
-			"composite name"=""
-			children {
-				text {
-					object {
-						x=16
-						y=109
-						width=95
-						height=14
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="1/transmission"
-					align="horiz. right"
-				}
-				"text update" {
-					object {
-						x=114
-						y=107
-						width=108
-						height=18
-					}
-					monitor {
-						chan="$(PV)invTrans"
-						clr=14
-						bclr=60
-					}
-					align="horiz. right"
-					format="compact"
-					limits {
-					}
-				}
-			}
-		}
-		"text update" {
-			object {
-				x=114
-				y=86
-				width=108
-				height=18
-			}
-			monitor {
-				chan="$(PV)trans"
-				clr=14
-				bclr=60
-			}
-			align="horiz. right"
-			format="exponential"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=16
-				y=88
-				width=95
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="transmission"
-			align="horiz. right"
-		}
-	}
-}
-text {
-	object {
-		x=204
-		y=12
-		width=100
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="2005-05-24 (prj)"
-	align="horiz. right"
 }
 "related display" {
 	object {
 		x=2
-		y=23
+		y=47
 		width=60
 		height=14
 	}
 	display[0] {
 		label="all"
-		name="pf4dual_config.adl"
-		args="PV=$(PV),MONO=$(MONO)"
+		name="pf4config.adl"
+		args="P=$(P),H=$(H),A=$(A),B=$(B),MONO=$(MONO)"
 	}
 	clr=0
 	bclr=9
@@ -447,7 +225,7 @@ text {
 rectangle {
 	object {
 		x=4
-		y=201
+		y=225
 		width=64
 		height=346
 	}
@@ -456,13 +234,13 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV)fPosA"
+		chan="$(P)$(H)fPos$(A)"
 	}
 }
 rectangle {
 	object {
 		x=4
-		y=201
+		y=225
 		width=64
 		height=346
 	}
@@ -471,13 +249,13 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(PV)fPosA"
+		chan="$(P)$(H)fPos$(A)"
 	}
 }
 rectangle {
 	object {
 		x=4
-		y=201
+		y=225
 		width=64
 		height=346
 	}
@@ -486,18 +264,18 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if zero"
-		chan="$(PV)bankA"
+		chan="$(P)$(H)bank$(A)"
 	}
 }
 byte {
 	object {
 		x=8
-		y=205
+		y=229
 		width=10
 		height=336
 	}
 	monitor {
-		chan="$(PV)bitFlagA"
+		chan="$(P)$(H)bitFlag$(A)"
 		clr=38
 		bclr=2
 	}
@@ -508,7 +286,7 @@ byte {
 composite {
 	object {
 		x=160
-		y=201
+		y=225
 		width=64
 		height=346
 	}
@@ -517,7 +295,7 @@ composite {
 		rectangle {
 			object {
 				x=160
-				y=201
+				y=225
 				width=64
 				height=346
 			}
@@ -526,13 +304,13 @@ composite {
 			}
 			"dynamic attribute" {
 				vis="if not zero"
-				chan="$(PV)fPosB"
+				chan="$(P)$(H)fPos$(B)"
 			}
 		}
 		rectangle {
 			object {
 				x=160
-				y=201
+				y=225
 				width=64
 				height=346
 			}
@@ -541,13 +319,13 @@ composite {
 			}
 			"dynamic attribute" {
 				vis="if zero"
-				chan="$(PV)fPosB"
+				chan="$(P)$(H)fPos$(B)"
 			}
 		}
 		rectangle {
 			object {
 				x=160
-				y=201
+				y=225
 				width=64
 				height=346
 			}
@@ -556,18 +334,18 @@ composite {
 			}
 			"dynamic attribute" {
 				vis="if zero"
-				chan="$(PV)bankB"
+				chan="$(P)$(H)bank$(B)"
 			}
 		}
 		byte {
 			object {
 				x=164
-				y=205
+				y=229
 				width=10
 				height=336
 			}
 			monitor {
-				chan="$(PV)bitFlagB"
+				chan="$(P)$(H)bitFlag$(B)"
 				clr=38
 				bclr=2
 			}
@@ -580,7 +358,7 @@ composite {
 composite {
 	object {
 		x=22
-		y=207
+		y=231
 		width=120
 		height=334
 	}
@@ -589,7 +367,7 @@ composite {
 		composite {
 			object {
 				x=72
-				y=207
+				y=231
 				width=70
 				height=330
 			}
@@ -598,12 +376,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=270
+						y=294
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.THST"
+						chan="$(P)$(H)fPos$(A).THST"
 						clr=14
 						bclr=2
 					}
@@ -615,12 +393,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=249
+						y=273
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.TWST"
+						chan="$(P)$(H)fPos$(A).TWST"
 						clr=14
 						bclr=2
 					}
@@ -632,12 +410,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=228
+						y=252
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.ONST"
+						chan="$(P)$(H)fPos$(A).ONST"
 						clr=14
 						bclr=2
 					}
@@ -649,12 +427,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=207
+						y=231
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.ZRST"
+						chan="$(P)$(H)fPos$(A).ZRST"
 						clr=14
 						bclr=2
 					}
@@ -666,12 +444,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=292
+						y=316
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.FRST"
+						chan="$(P)$(H)fPos$(A).FRST"
 						clr=14
 						bclr=2
 					}
@@ -683,12 +461,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=313
+						y=337
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.FVST"
+						chan="$(P)$(H)fPos$(A).FVST"
 						clr=14
 						bclr=2
 					}
@@ -700,12 +478,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=334
+						y=358
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.SXST"
+						chan="$(P)$(H)fPos$(A).SXST"
 						clr=14
 						bclr=2
 					}
@@ -717,12 +495,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=355
+						y=379
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.SVST"
+						chan="$(P)$(H)fPos$(A).SVST"
 						clr=14
 						bclr=2
 					}
@@ -734,12 +512,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=376
+						y=400
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.EIST"
+						chan="$(P)$(H)fPos$(A).EIST"
 						clr=14
 						bclr=2
 					}
@@ -751,12 +529,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=397
+						y=421
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.NIST"
+						chan="$(P)$(H)fPos$(A).NIST"
 						clr=14
 						bclr=2
 					}
@@ -768,12 +546,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=418
+						y=442
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.TEST"
+						chan="$(P)$(H)fPos$(A).TEST"
 						clr=14
 						bclr=2
 					}
@@ -785,12 +563,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=439
+						y=463
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.ELST"
+						chan="$(P)$(H)fPos$(A).ELST"
 						clr=14
 						bclr=2
 					}
@@ -802,12 +580,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=460
+						y=484
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.TVST"
+						chan="$(P)$(H)fPos$(A).TVST"
 						clr=14
 						bclr=2
 					}
@@ -819,12 +597,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=481
+						y=505
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.TTST"
+						chan="$(P)$(H)fPos$(A).TTST"
 						clr=14
 						bclr=2
 					}
@@ -836,12 +614,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=502
+						y=526
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.FTST"
+						chan="$(P)$(H)fPos$(A).FTST"
 						clr=14
 						bclr=2
 					}
@@ -853,12 +631,12 @@ composite {
 				"text update" {
 					object {
 						x=72
-						y=523
+						y=547
 						width=70
 						height=14
 					}
 					monitor {
-						chan="$(PV)fPosA.FFST"
+						chan="$(P)$(H)fPos$(A).FFST"
 						clr=14
 						bclr=2
 					}
@@ -872,12 +650,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=207
+				y=231
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -888,12 +666,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=228
+				y=252
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -904,12 +682,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=249
+				y=273
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -920,12 +698,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=270
+				y=294
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -936,12 +714,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=292
+				y=316
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -952,12 +730,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=313
+				y=337
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -968,12 +746,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=334
+				y=358
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -984,12 +762,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=355
+				y=379
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1000,12 +778,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=376
+				y=400
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1016,12 +794,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=397
+				y=421
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1032,12 +810,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=418
+				y=442
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1048,12 +826,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=439
+				y=463
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1064,12 +842,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=460
+				y=484
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1080,12 +858,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=481
+				y=505
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1096,12 +874,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=502
+				y=526
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1112,12 +890,12 @@ composite {
 		"message button" {
 			object {
 				x=22
-				y=523
+				y=547
 				width=40
 				height=18
 			}
 			control {
-				chan="$(PV)fPosA"
+				chan="$(P)$(H)fPos$(A)"
 				clr=14
 				bclr=2
 			}
@@ -1130,12 +908,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=270
+		y=294
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.THST"
+		chan="$(P)$(H)fPos$(B).THST"
 		clr=14
 		bclr=2
 	}
@@ -1147,12 +925,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=249
+		y=273
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.TWST"
+		chan="$(P)$(H)fPos$(B).TWST"
 		clr=14
 		bclr=2
 	}
@@ -1164,12 +942,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=228
+		y=252
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.ONST"
+		chan="$(P)$(H)fPos$(B).ONST"
 		clr=14
 		bclr=2
 	}
@@ -1181,12 +959,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=207
+		y=231
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.ZRST"
+		chan="$(P)$(H)fPos$(B).ZRST"
 		clr=14
 		bclr=2
 	}
@@ -1198,12 +976,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=292
+		y=316
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.FRST"
+		chan="$(P)$(H)fPos$(B).FRST"
 		clr=14
 		bclr=2
 	}
@@ -1215,12 +993,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=313
+		y=337
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.FVST"
+		chan="$(P)$(H)fPos$(B).FVST"
 		clr=14
 		bclr=2
 	}
@@ -1232,12 +1010,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=334
+		y=358
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.SXST"
+		chan="$(P)$(H)fPos$(B).SXST"
 		clr=14
 		bclr=2
 	}
@@ -1249,12 +1027,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=355
+		y=379
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.SVST"
+		chan="$(P)$(H)fPos$(B).SVST"
 		clr=14
 		bclr=2
 	}
@@ -1266,12 +1044,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=376
+		y=400
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.EIST"
+		chan="$(P)$(H)fPos$(B).EIST"
 		clr=14
 		bclr=2
 	}
@@ -1283,12 +1061,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=397
+		y=421
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.NIST"
+		chan="$(P)$(H)fPos$(B).NIST"
 		clr=14
 		bclr=2
 	}
@@ -1300,12 +1078,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=418
+		y=442
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.TEST"
+		chan="$(P)$(H)fPos$(B).TEST"
 		clr=14
 		bclr=2
 	}
@@ -1317,12 +1095,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=439
+		y=463
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.ELST"
+		chan="$(P)$(H)fPos$(B).ELST"
 		clr=14
 		bclr=2
 	}
@@ -1334,12 +1112,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=460
+		y=484
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.TVST"
+		chan="$(P)$(H)fPos$(B).TVST"
 		clr=14
 		bclr=2
 	}
@@ -1351,12 +1129,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=481
+		y=505
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.TTST"
+		chan="$(P)$(H)fPos$(B).TTST"
 		clr=14
 		bclr=2
 	}
@@ -1368,12 +1146,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=502
+		y=526
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.FTST"
+		chan="$(P)$(H)fPos$(B).FTST"
 		clr=14
 		bclr=2
 	}
@@ -1385,12 +1163,12 @@ composite {
 "text update" {
 	object {
 		x=228
-		y=523
+		y=547
 		width=70
 		height=14
 	}
 	monitor {
-		chan="$(PV)fPosB.FFST"
+		chan="$(P)$(H)fPos$(B).FFST"
 		clr=14
 		bclr=2
 	}
@@ -1402,12 +1180,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=207
+		y=231
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1418,12 +1196,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=228
+		y=252
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1434,12 +1212,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=249
+		y=273
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1450,12 +1228,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=270
+		y=294
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1466,12 +1244,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=292
+		y=316
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1482,12 +1260,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=313
+		y=337
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1498,12 +1276,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=334
+		y=358
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1514,12 +1292,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=355
+		y=379
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1530,12 +1308,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=376
+		y=400
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1546,12 +1324,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=397
+		y=421
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1562,12 +1340,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=418
+		y=442
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1578,12 +1356,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=439
+		y=463
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1594,12 +1372,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=460
+		y=484
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1610,12 +1388,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=481
+		y=505
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1626,12 +1404,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=502
+		y=526
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1642,12 +1420,12 @@ composite {
 "message button" {
 	object {
 		x=178
-		y=523
+		y=547
 		width=40
 		height=18
 	}
 	control {
-		chan="$(PV)fPosB"
+		chan="$(P)$(H)fPos$(B)"
 		clr=14
 		bclr=2
 	}
@@ -1658,7 +1436,7 @@ composite {
 text {
 	object {
 		x=228
-		y=58
+		y=82
 		width=49
 		height=15
 	}
@@ -1670,7 +1448,7 @@ text {
 text {
 	object {
 		x=228
-		y=29
+		y=53
 		width=49
 		height=15
 	}
@@ -1679,10 +1457,116 @@ text {
 	}
 	textix="keV"
 }
+text {
+	object {
+		x=10
+		y=2
+		width=200
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="pf4more.adl"
+}
+text {
+	object {
+		x=10
+		y=14
+		width=200
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="2006-Oct-23 (DMK)"
+}
 composite {
 	object {
 		x=16
-		y=173
+		y=110
+		width=206
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=16
+				y=112
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="transmission"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=114
+				y=110
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(P)$(H)trans"
+				clr=14
+				bclr=60
+			}
+			align="horiz. right"
+			format="exponential"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=16
+		y=131
+		width=206
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=16
+				y=133
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="1/transmission"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=114
+				y=131
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(P)$(H)invTrans"
+				clr=14
+				bclr=60
+			}
+			align="horiz. right"
+			format="compact"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=16
+		y=157
 		width=258
 		height=18
 	}
@@ -1691,7 +1575,121 @@ composite {
 		text {
 			object {
 				x=16
-				y=175
+				y=159
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Aluminum"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=114
+				y=157
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(P)$(H)filterAl"
+				clr=14
+				bclr=31
+			}
+			align="horiz. right"
+			format="compact"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=225
+				y=159
+				width=49
+				height=15
+			}
+			monitor {
+				chan="$(P)$(H)filterAl.EGU"
+				clr=14
+				bclr=2
+			}
+			format="string"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=16
+		y=177
+		width=258
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=16
+				y=179
+				width=95
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Titanium"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=114
+				y=177
+				width=108
+				height=18
+			}
+			monitor {
+				chan="$(P)$(H)filterTi"
+				clr=14
+				bclr=31
+			}
+			align="horiz. right"
+			format="compact"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=225
+				y=179
+				width=49
+				height=15
+			}
+			monitor {
+				chan="$(P)$(H)filterTi.EGU"
+				clr=14
+				bclr=2
+			}
+			format="string"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=16
+		y=197
+		width=258
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=16
+				y=199
 				width=95
 				height=14
 			}
@@ -1704,12 +1702,12 @@ composite {
 		"text update" {
 			object {
 				x=114
-				y=173
+				y=197
 				width=108
 				height=18
 			}
 			monitor {
-				chan="$(PV)filterGlass"
+				chan="$(P)$(H)filterGlass"
 				clr=14
 				bclr=31
 			}
@@ -1721,12 +1719,12 @@ composite {
 		"text update" {
 			object {
 				x=225
-				y=175
+				y=199
 				width=49
 				height=15
 			}
 			monitor {
-				chan="$(PV)filterGlass.EGU"
+				chan="$(P)$(H)filterGlass.EGU"
 				clr=14
 				bclr=2
 			}

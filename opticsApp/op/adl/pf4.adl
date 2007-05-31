@@ -1,14 +1,14 @@
 
 file {
-	name="/home/epics/EPICS/ioc/sector/32-com/usaxs/op/adl/pf4dual.adl"
+	name="/home/epicsioc/dev/ioc/sector/32-com/usaxs/op/adl/pf4.adl"
 	version=030003
 }
 display {
 	object {
-		x=503
-		y=131
+		x=620
+		y=46
 		width=314
-		height=263
+		height=257
 	}
 	clr=14
 	bclr=2
@@ -97,7 +97,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="pf4dual.adl"
+	textix="pf4.adl"
 }
 text {
 	object {
@@ -109,7 +109,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="last edited: 2006-Jul-27 (DMK) "
+	textix="2006-Oct-23 (DMK)"
 }
 text {
 	object {
@@ -121,7 +121,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(PV1)"
+	textix="$(P)$(H)"
 	align="horiz. centered"
 }
 text {
@@ -146,8 +146,8 @@ text {
 	}
 	display[0] {
 		label="PF4 mono filter computed controls"
-		name="pf4dual_more.adl"
-		args="PV=$(PV1),MONO=$(MONO)"
+		name="pf4more.adl"
+		args="P=$(P),H=$(H),A=$(A),B=$(B),MONO=$(MONO)"
 	}
 	clr=14
 	bclr=51
@@ -161,7 +161,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(PV1)trans"
+		chan="$(P)$(H)trans"
 		clr=14
 		bclr=60
 	}
@@ -190,7 +190,7 @@ text {
 		height=12
 	}
 	monitor {
-		chan="$(PV1)filterAl"
+		chan="$(P)$(H)filterAl"
 		clr=14
 		bclr=31
 	}
@@ -218,7 +218,7 @@ text {
 		height=12
 	}
 	monitor {
-		chan="$(PV1)filterTi"
+		chan="$(P)$(H)filterTi"
 		clr=14
 		bclr=31
 	}
@@ -258,7 +258,7 @@ text {
 		height=12
 	}
 	monitor {
-		chan="$(PV1)filterGlass"
+		chan="$(P)$(H)filterGlass"
 		clr=14
 		bclr=31
 	}
@@ -292,7 +292,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo08"
+		chan="$(PV)bo08"
 	}
 	points {
 		(26,141)
@@ -315,7 +315,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo07"
+		chan="$(PV)bo07"
 	}
 	points {
 		(56,141)
@@ -338,7 +338,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo06"
+		chan="$(PV)bo06"
 	}
 	points {
 		(86,141)
@@ -361,7 +361,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo05"
+		chan="$(PV)bo05"
 	}
 	points {
 		(116,141)
@@ -384,7 +384,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo04"
+		chan="$(PV)bo04"
 	}
 	points {
 		(169,141)
@@ -407,7 +407,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo03"
+		chan="$(PV)bo03"
 	}
 	points {
 		(199,141)
@@ -430,7 +430,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo01"
+		chan="$(PV)bo01"
 	}
 	points {
 		(259,141)
@@ -453,7 +453,7 @@ polygon {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(PV2)bo02"
+		chan="$(PV)bo02"
 	}
 	points {
 		(229,141)
@@ -462,4 +462,30 @@ polygon {
 		(229,108)
 		(229,141)
 	}
+}
+text {
+	object {
+		x=25
+		y=153
+		width=100
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="bank B"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=180
+		y=153
+		width=100
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="bank A"
+	align="horiz. centered"
 }
