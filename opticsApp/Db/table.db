@@ -9,6 +9,9 @@ record(ao, "$(P)$(Q):ax_tweakVal") {
   field(PREC, "3")
   field(DRVH, "1000")
   field(HOPR, "1000")
+  field(STAT, "NO_ALARM")
+  field(SEVR, "NO_ALARM")
+  field(UDF, "0")
 }
 
 record(ao, "$(P)$(Q):ay_tweakVal") {
@@ -16,6 +19,9 @@ record(ao, "$(P)$(Q):ay_tweakVal") {
   field(PREC, "3")
   field(DRVH, "1000")
   field(HOPR, "1000")
+  field(STAT, "NO_ALARM")
+  field(SEVR, "NO_ALARM")
+  field(UDF, "0")
 }
 
 record(ao, "$(P)$(Q):az_tweakVal") {
@@ -23,6 +29,9 @@ record(ao, "$(P)$(Q):az_tweakVal") {
   field(PREC, "3")
   field(DRVH, "1000")
   field(HOPR, "1000")
+  field(STAT, "NO_ALARM")
+  field(SEVR, "NO_ALARM")
+  field(UDF, "0")
 }
 
 record(ao, "$(P)$(Q):x_tweakVal") {
@@ -30,6 +39,9 @@ record(ao, "$(P)$(Q):x_tweakVal") {
   field(PREC, "3")
   field(DRVH, "1000")
   field(HOPR, "1000")
+  field(STAT, "NO_ALARM")
+  field(SEVR, "NO_ALARM")
+  field(UDF, "0")
 }
 
 record(ao, "$(P)$(Q):y_tweakVal") {
@@ -37,6 +49,9 @@ record(ao, "$(P)$(Q):y_tweakVal") {
   field(PREC, "3")
   field(DRVH, "1000")
   field(HOPR, "1000")
+  field(STAT, "NO_ALARM")
+  field(SEVR, "NO_ALARM")
+  field(UDF, "0")
 }
 
 record(ao, "$(P)$(Q):z_tweakVal") {
@@ -44,6 +59,9 @@ record(ao, "$(P)$(Q):z_tweakVal") {
   field(PREC, "3")
   field(DRVH, "1000")
   field(HOPR, "1000")
+  field(SEVR,"NO_ALARM")
+  field(STAT,"NO_ALARM")
+  field(UDF,"0") 
 }
 
 record(bo, "$(P)$(Q):doSync") {
@@ -91,6 +109,7 @@ record(calcout, "$(P)$(Q):dmov") {
   field(INPD, "$(P)$(M2X).DMOV  CP MS")
   field(INPE, "$(P)$(M2Y).DMOV  CP MS")
   field(INPF, "$(P)$(M2Z).DMOV  CP MS")
+  field(CALC, "0")
 }
 
 record(calcout, "$(P)$(Q):done") {
@@ -207,6 +226,9 @@ record(transform, "$(P)$(Q):ay_tweak") {
   field(CMTE, "put new value")
   field(CMTF, "zero tweak button")
   field(CMTG, "zero tweak button")
+  field(SEVR,"NO_ALARM")
+  field(STAT,"NO_ALARM")
+  field(UDF,"0") 
 }
 
 record(transform, "$(P)$(Q):az_tweak") {
