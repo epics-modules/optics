@@ -1,19 +1,19 @@
 /*  XIA PF4 Filter Control
     Calling seqeunce:
-        seq &pf4,"name=pf41,P=,H=,F=,B1=,B2=,B3=,B4=,MONO="
+        seq &pf4,"name=pf41,P=,H=,F=,B1=,B2=,B3=,B4=,M="
  
     Where:
-        P    = prefix of database and sequencer
-        H    = hardware (i.e. pf401)
-        B    = bank indicator (i.e. A,B)
-        B1   = Filter control bit 0
-        B2   = Filter control bit 1
-        B3   = Filter control bit 2
-        B4   = Fitler control bit 3
-        MONO = Monochromatic energy
+        P  = prefix of database and sequencer
+        H  = hardware (i.e. pf401)
+        B  = bank indicator (i.e. A,B)
+        B1 = Filter control bit 0
+        B2 = Filter control bit 1
+        B3 = Filter control bit 2
+        B4 = Fitler control bit 3
+        M  = Monochromatic energy
 
  */
-program pf4("name=pf4,P=,H=,F=,B1=,B2=,B3=,B4=,MONO=")
+program pf4("name=pf4,P=,H=,F=,B1=,B2=,B3=,B4=,M=")
 
 option +d;
 option -c;
@@ -38,7 +38,7 @@ PV(int,b1,"{B1}",EvFlag);               /* filter control bit0 */
 PV(int,b2,"{B2}",EvFlag);               /* filter control bit1 */
 PV(int,b3,"{B3}",EvFlag);               /* filter control bit2 */
 PV(int,b4,"{B4}",EvFlag);               /* filter control bit3 */
-PV(double,monoenergy,"{MONO}",EvFlag);  /* monochromator energy */
+PV(double,monoenergy,"{M}",EvFlag);     /* monochromator energy */
 
 
 /*****************************************************************************
