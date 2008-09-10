@@ -10,6 +10,21 @@
 <BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
 <H1 ALIGN=CENTER>optics Release Notes</H1>
 
+<H2 ALIGN=CENTER>Release 2-6</H2>
+<UL>
+<li>New support for XIA PF4 filter/shutter: rewritten to use asyn records
+instead of stringin/out records with stringParm device support.  Also waitTime
+calc (for serial record) was in milliseconds, but the serial record was
+replaced by an asyn record, whose timeout is specified in seconds.
+Database converted to vdct.
+<li>Oxford 4-channel x-ray beam position monitor
+<li>New support for an ASRP optical table
+<li>optics/opticsApp/Db/2slit.db: deleted gate-related  PV's
+<li>optics/opticsApp/Db/table.db: Fixed problems that were causing motor
+records to be put into alarm: tweakVal records had UDF==1; calcout record had
+empty CALC expression.
+</ul>
+
 <H2 ALIGN=CENTER>Release 2-5-2</H2>
 <UL>
 	<LI><P STYLE="margin-bottom: 0in">Added MEDM display files for XIA PF4
