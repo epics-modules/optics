@@ -4,22 +4,22 @@
 
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
-SUPPORT=/home/epicsioc/dev/synApps/support
+SUPPORT=/home/oxygen/MOONEY/epics/synApps/support
 
 #If using the sequencer, point SNCSEQ at its top directory:
-SNCSEQ=$(SUPPORT)/seq/2-0-11
+SNCSEQ=/home/oxygen/MOONEY/epics/synApps/support/seq/2-0-12
 
-# For transform record
-CALC=$(SUPPORT)/calc/2-5
+# For transform record (not needed to build)
+CALC=/home/oxygen/MOONEY/epics/synApps/support/calc
 
-# For busy record
-SSCAN=$(SUPPORT)/sscan/2-5-1
+# For busy record (not needed to build)
+BUSY=/home/oxygen/MOONEY/epics/synApps/support/busy
 
 # for serial support
-ASYN=$(SUPPORT)/asyn/4-6
+ASYN=/home/oxygen/MOONEY/epics/synApps/support/asyn/4-10
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=/home/epicsioc/dev/base
+EPICS_BASE=/home/oxygen/MOONEY/epics/base-3.14.10
 
 #Capfast users may need the following definitions
 #CAPFAST_TEMPLATES=
