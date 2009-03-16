@@ -1,14 +1,14 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/XIA_shutter.adl"
-	version=030101
+	name="/net/s11bmdserv/xorApps/epics/synApps_5_3/ioc/11bm/11bmbApp/op/adl/XIA_shutter.adl"
+	version=030102
 }
 display {
 	object {
 		x=114
 		y=39
 		width=325
-		height=320
+		height=346
 	}
 	clr=14
 	bclr=3
@@ -195,12 +195,12 @@ polyline {
 "text update" {
 	object {
 		x=10
-		y=300
+		y=301
 		width=255
 		height=14
 	}
 	monitor {
-		chan="$(P)$(S):writeRead.AINP"
+		chan="$(P)$(S)writeRead.AINP"
 		clr=14
 		bclr=2
 	}
@@ -598,23 +598,6 @@ polyline {
 	label="Remove Filter 4"
 	press_msg="R4"
 }
-"related display" {
-	object {
-		x=275
-		y=295
-		width=40
-		height=20
-	}
-	display[0] {
-		label="XIA shutter (small)"
-		name="XIA_shutter_more.adl"
-		args="P=$(P),S=$(S)"
-		policy="replace display"
-	}
-	clr=0
-	bclr=63
-	label="-Less"
-}
 menu {
 	object {
 		x=238
@@ -743,4 +726,36 @@ text {
 	}
 	textix="XIA Shutter"
 	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=10
+		y=320
+		width=255
+		height=14
+	}
+	monitor {
+		chan="$(P)$(S)Status.AINP"
+		clr=14
+		bclr=2
+	}
+	limits {
+	}
+}
+"related display" {
+	object {
+		x=275
+		y=315
+		width=40
+		height=20
+	}
+	display[0] {
+		label="XIA shutter (small)"
+		name="XIA_shutter_more.adl"
+		args="P=$(P),S=$(S)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=63
+	label="-Less"
 }
