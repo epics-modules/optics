@@ -111,8 +111,6 @@ grecord(ao,"$(P)SGM$(N):phiRBV") {
 }
 grecord(ao,"$(P)SGM$(N):xOff") {
 	field(DTYP,"Soft Channel")
-	field(FLNK,"0")
-	field(OUT,"0")
 	field(PREC,"3")
 }
 grecord(bi,"$(P)SGM$(N):saveAuto") {
@@ -511,7 +509,6 @@ grecord(seq,"$(P)SGM$(N):sel_xOff_2") {
 	field(LNK6,"$(P)SGM$(N):xOff.VAL  PP MS")
 }
 grecord(seq,"$(P)SGM$(N):sync") {
-	field(SDIS,"0")
 	field(DOL1,"1")
 	field(LNK1,"$(P)SGM$(N):hold.VAL  PP MS")
 	field(DOL2,"$(P)SGM$(N):phiRBV.VAL  NPP MS")
@@ -603,7 +600,6 @@ grecord(transform,"$(P)SGM$(N):T1") {
 	field(CLCK,"j==0?1e9:12398.4244/j")
 	field(OUTG,"$(P)SGM$(N):phiB.VAL  PP MS")
 	field(OUTH,"$(P)SGM$(N):T2.H  PP MS")
-	field(OUTI,"0")
 	field(OUTJ,"$(P)SGM$(N):LambdaB.VAL  PP MS")
 	field(OUTK,"$(P)SGM$(N):EnergyB.VAL  PP MS")
 	field(PREC,"6")
@@ -663,7 +659,6 @@ grecord(transform,"$(P)SGM$(N):T3") {
 	field(INPD,"$(P)SGM$(N):T1.D  CP MS")
 	field(INPF,"$(P)SGM$(N):xOff.VAL  CP MS")
 	field(INPG,"$(P)$(M_x).RBV  CP MS")
-	field(INPH,"0")
 	field(OUTI,"$(P)SGM$(N):phiRBV.VAL  PP MS")
 	field(OUTJ,"$(P)SGM$(N):LambdaRBV.VAL  PP MS")
 	field(OUTK,"$(P)SGM$(N):EnergyRBV.VAL  PP MS")
