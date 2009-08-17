@@ -40,8 +40,10 @@ mirrors, diffractometers, and optical tables.
 	</P>
 	<LI><P>spherical grating 
 	</P>
+	<LI><P>multilayer 
+	</P>
 </UL>
-<H4>Kohzu/PSL geometry 1 (Theta, Y1, Z2)</H4>
+<H4>Kohzu/PSL geometry 1 (Theta, Y<sub>1</sub>, Z<sub>2</sub>)</H4>
 <P ALIGN=CENTER><IMG SRC="kohzuGraphic.adl.gif" NAME="Graphic1" ALIGN=BOTTOM WIDTH=452 HEIGHT=371 BORDER=0><BR>kohzuGraphic.adl</P>
 <P>This MEDM display is a picture of Kohzu/PSL geometry 1, with white
 beam entering from the left, monochromatized radiation diffracting
@@ -60,7 +62,7 @@ normally translate, as the plate rotates, to keep the first crystal
 in the incident beam, and to maintain the exiting beam at constant
 height. 
 </P>
-<P>As the monochromator rotates from a Bragg angle ('Theta&quot;) of
+<P>As the monochromator rotates from a Bragg angle (Theta) of
 zero, the first crystal moves away from the rotation point along a
 line normal to its diffracting planes, executing the equation 
 </P>
@@ -171,7 +173,7 @@ the following options:
 </DL>
 <P ALIGN=CENTER><IMG SRC="colorLine.gif" NAME="Graphic3" ALIGN=BOTTOM WIDTH=576 HEIGHT=5 BORDER=0>
 </P>
-<H4>Kohzu geometry 2 (Theta, Y2, Z2)</H4>
+<H4>Kohzu geometry 2 (Theta, Y<sub>2</sub>, Z<sub>2</sub>)</H4>
 <P ALIGN=CENTER><IMG SRC="kohzu2Graphic.adl.gif" NAME="Graphic4" ALIGN=BOTTOM WIDTH=452 HEIGHT=371 BORDER=0>
 <BR>kohzu2Graphic.adl</P>
 <P>This MEDM display is a picture of Kohzu/PSL geometry 2, with white
@@ -187,7 +189,7 @@ different from that of the Kohzu 1 geometry.) The second crystal
 normally translates, as the plate monochromator rotates, to maintain
 the exiting beam at constant height. 
 </P>
-<P>As the monochromator rotates from a Bragg angle ('Theta&quot;) of
+<P>As the monochromator rotates from a Bragg angle (Theta) of
 zero, the second crystal moves upward along a line normal to its
 diffracting planes, executing the equation 
 </P>
@@ -228,7 +230,7 @@ with three sets of variables:
 	<TABLE BORDER=0 CELLPADDING=2 CELLSPACING=2>
 		<TR VALIGN=TOP>
 			<TD>
-				<P>Theta</P>
+				<P>Theta<sub>n</sub></P>
 			</TD>
 			<TD>
 				<P>-</P>
@@ -455,6 +457,31 @@ display:
 		</TD>
 	</TR>
 </TABLE>
+
+
+
+<P ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="colorLine.gif" NAME="Graphic14" ALIGN=BOTTOM WIDTH=576 HEIGHT=5 BORDER=0>
+</P>
+<H4>Multilayer (Theta<SUB>1</SUB>, Theta<SUB>2</SUB>, Y<SUB>2</SUB>, Z<SUB>2</SUB>)</H4>
+<P ALIGN=CENTER><IMG SRC="ml_monoGraphic.adl.gif" NAME="Graphic46" ALIGN=BOTTOM WIDTH=412 HEIGHT=431 BORDER=0><BR>ml_monoGraphic.adl
+</P>
+<P ALIGN=CENTER><IMG SRC="ml_monoSeqCtl.adl.gif" NAME="Graphic47" ALIGN=BOTTOM WIDTH=647 HEIGHT=373 BORDER=0><BR>ml_monoSeqCtl.adl.gif</P>
+
+<P>These are the control displays for a multilayer monochromator, comprised of two
+independently supported multilayers with the same <b>d</b> spacing and diffraction
+order, in a nondispersive configuration .  Both multilayers have Theta, X, Y, Z, and Chi
+motors; the downstream multilayer also has Phi and bend motors.  The software drives
+Theta motors to an angle calculated from the multilayer <b>d</b> spacing and
+diffraction-order number, reads the Y offset as the position of the second multilayer's
+Y motor, and drives the second multilayer's Z motor so that beam diffracted from the
+first multilayer intersects the second multilayer in the same spot, as the selected beam
+energy is varied.</P>
+
+
+
+
+
+
 <P ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="colorLine.gif" NAME="Graphic14" ALIGN=BOTTOM WIDTH=576 HEIGHT=5 BORDER=0>
 </P>
 <P ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="colorLine.gif" NAME="Graphic15" ALIGN=BOTTOM WIDTH=576 HEIGHT=5 BORDER=0>
@@ -532,3 +559,4 @@ Mooney </A>: (mooney@aps.anl.gov) <BR>Last modified: October 8, 2006
 </ADDRESS>
 </BODY>
 </HTML>
+
