@@ -4,13 +4,22 @@
 
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
+SUPPORT=J:/epics/support
+
 #If using the sequencer, point SNCSEQ at its top directory:
-SNCSEQ=h:/epics/seq-2.0.4
+SNCSEQ=J:/epics/support/seq/2-0-12
+
+# For transform record (not needed to build)
+CALC=J:/epics/support/calc/2-7
+
+# For busy record (not needed to build)
+BUSY=J:/epics/support/busy/1-2
+
+# for serial support
+ASYN=J:/epics/support/asyn/4-12
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=h:/epics/base-3.14.2
-STD=j:/epics/3.14/std
-MPF=j:/epics/3.14/mpf2-2
+EPICS_BASE=H:/epics/base-3.14.10
 
 #Capfast users may need the following definitions
 #CAPFAST_TEMPLATES=
