@@ -1300,7 +1300,7 @@ MotorToLocalUserAngles(tableRecord *ptbl, double *m, double *u)
 	double p1x = p1[X], p1y = p1[Y], p1z = p1[Z];
 	double p2x = p2[X], p2y = p2[Y], p2z = p2[Z];
 	double p10x = p1[X]-p0[X], p10y = p1[Y]-p0[Y], p10z = p1[Z]-p0[Z];
-	double p01x = p0[X]-p1[X], p01y = p0[Y]-p1[Y], p01z = p0[Z]-p1[Z];
+	/*double p01x = p0[X]-p1[X], p01y = p0[Y]-p1[Y], p01z = p0[Z]-p1[Z]; */
 	double p20x = p2[X]-p0[X], p20y = p2[Y]-p0[Y], p20z = p2[Z]-p0[Z];
 	double p02x = p0[X]-p2[X], p02y = p0[Y]-p2[Y], p02z = p0[Z]-p2[Z];
 	double p02x_2 = p02x * p02x, p02y_2 = p02y * p02y, p02z_2 = p02z * p02z;
@@ -1506,9 +1506,10 @@ LocalUserToPivotPointVector(tableRecord *ptbl, double *u, double *pp0,
 {
 	short i, j, k;
 	double *ppo0 = ptbl->ppo0, *ppo1 = ptbl->ppo1, *ppo2 = ptbl->ppo2;
-	double **a = ptbl->a, m2x, m2y;
-    struct private    *p = (struct private *)ptbl->dpvt;
-    struct linkStatus *lnkStat = p->lnkStat;
+	double **a = ptbl->a;
+    /*double *m2x, m2y; */
+    /*struct private    *p = (struct private *)ptbl->dpvt;*/
+    /*struct linkStatus *lnkStat = p->lnkStat;*/
 
 	Debug(5, "tableRecord(%s):LocalUserToPivotPointVector:entry\n", ptbl->name);
 	MakeRotationMatrix(ptbl, u);
