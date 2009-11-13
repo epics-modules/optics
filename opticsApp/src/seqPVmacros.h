@@ -53,9 +53,9 @@
  *----------------------------------------------------------------
  */
 
-#define PV(_TYPE_,_VAR_,_PV_,_OTHER_)	\
-  _TYPE_   _VAR_;			\
-  assign   _VAR_ to _PV_		\
+#define PV(_TYPE_,_VAR_,_PV_,_OTHER_)   \
+  _TYPE_   _VAR_;			            \
+  assign   _VAR_ to _PV_		        \
   _OTHER_ (_VAR_)
 
 /*----------------------------------------------------------------
@@ -81,9 +81,9 @@
  *----------------------------------------------------------------
  */
 
-#define PVA(_TYPE_,_VAR_,_NELEM_,_PV_,_OTHER_)	\
-  _TYPE_   _VAR_ [ _NELEM_ ];			\
-  assign   _VAR_ to _PV_			\
+#define PVA(_TYPE_,_VAR_,_NELEM_,_PV_,_OTHER_)  \
+  _TYPE_   _VAR_ [ _NELEM_ ];			        \
+  assign   _VAR_ to _PV_			            \
   _OTHER_ (_VAR_)
 
 /*----------------------------------------------------------------
@@ -106,9 +106,9 @@
  *----------------------------------------------------------------
  */
 
-#define PVAA(_TYPE_,_VAR_,_NREC_,_NELEM_,_PV_,_OTHER_)	\
-  _TYPE_   _VAR_ [ _NREC_ ] [ _NELEM_ ];		\
-  assign   _VAR_ to _PV_				\
+#define PVAA(_TYPE_,_VAR_,_NREC_,_NELEM_,_PV_,_OTHER_)  \
+  _TYPE_   _VAR_ [ _NREC_ ] [ _NELEM_ ];		        \
+  assign   _VAR_ to _PV_				                \
   _OTHER_ (_VAR_)
 
 /*----------------------------------------------------------------
@@ -154,21 +154,21 @@
  *    PVPUT (foo, 3);
  *      expands to:
  *        foo = 3;
- *        pvPut(foo,SYNC);
+ *        pvPut(foo);
  *
  *    PVPUT (bar, xyz + 2);
  *      expands to:
  *        bar = xyz + 2;
- *        pvPut(bar,SYNC);
+ *        pvPut(bar);
  *
  *----------------------------------------------------------------
  */
 
-#define PVPUT(_VAR_,_EXPR_)	\
-  {				\
-    _VAR_ = ( _EXPR_ );		\
-    pvPut(_VAR_,SYNC);		\
-  }
+#define PVPUT(_VAR_,_EXPR_) \
+{                           \
+    _VAR_ = ( _EXPR_ );     \
+    pvPut(_VAR_,SYNC);      \
+}
 
 /*----------------------------------------------------------------
  * PVPUTSTR() -- string assign and pvPut() in one
@@ -187,16 +187,17 @@
  *    PVPUTSTR (foo, "error message");
  *      expands to:
  *        strcpy(foo,"error message");
- *        pvPut(foo,SYNC);
+ *        pvPut(foo);
  *
  *----------------------------------------------------------------
  */
 
-#define PVPUTSTR(_STR_,_EXPR_)	\
-  {				\
-    strcpy(_STR_,_EXPR_);	\
-    pvPut(_STR_,SYNC);		\
-  }
+#define PVPUTSTR(_STR_,_EXPR_)  \
+{                               \
+    strcpy(_STR_,_EXPR_);       \
+    pvPut(_STR_,SYNC);          \
+    epicsThreadSleep(0.01);     \
+}
 
 /*================================================================*/
 /*================================================================*/
@@ -224,24 +225,24 @@
 #define DEBUG_PRINT(DEBUG_LEVEL, MSG) ;
 #else
 
-#define DEBUG_PRINT_HEADER(DEBUG_LEVEL)		\
-   printf("<%s,%d,%s,%d> ",			\
-   	__FILE__, __LINE__, 			\
+#define DEBUG_PRINT_HEADER(DEBUG_LEVEL) \
+   printf("<%s,%d,%s,%d> ",			    \
+   	__FILE__, __LINE__, 			    \
 	SNLtaskName, DEBUG_LEVEL);
 
 #define DEBUG_PRINT(DEBUG_LEVEL, MSG)		\
     if (debug_flag >= DEBUG_LEVEL) {		\
-        DEBUG_PRINT_HEADER (DEBUG_LEVEL);	\
-        printf("%s\n", MSG);			\
-        epicsThreadSleep(0.01);			\
+        DEBUG_PRINT_HEADER (DEBUG_LEVEL);   \
+        printf("%s\n", MSG);			    \
+        epicsThreadSleep(0.01);			    \
     }
 
-#define DEBUG_PRINT1(DEBUG_LEVEL, MSG, _V1_)	\
-    if (debug_flag >= DEBUG_LEVEL) {		\
-        DEBUG_PRINT_HEADER (DEBUG_LEVEL);	\
-        printf(MSG, _V1_);			\
-        printf("\n");				\
-        epicsThreadSleep(0.01);			\
+#define DEBUG_PRINT1(DEBUG_LEVEL, MSG, _V1_)    \
+    if (debug_flag >= DEBUG_LEVEL) {		    \
+        DEBUG_PRINT_HEADER (DEBUG_LEVEL);	    \
+        printf(MSG, _V1_);			            \
+        printf("\n");				            \
+        epicsThreadSleep(0.01);			        \
     }
 
 #endif
