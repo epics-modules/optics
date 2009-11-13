@@ -2,595 +2,858 @@
 #! DBDSTART
 #! DBDEND
 
-
-record(stringout, "$(P)$(HSC)port") {
-  field(DESC, "name of serial port")
+## HSC-1 horizontal status PVs
+record(mbbi,"$(P)$(HSC)hStatPwrMI")
+{
+    field(DESC, "Power level")
+    field(SCAN, "Passive")
+    field(ZRST, "Low")
+    field(ONST, "Medium")
+    field(TWST, "High")
+    field(THST, "High")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)hStatLmtsBI")
+{
+	field(DESC, "Limits checked")
+    field(SCAN, "Passive")
+    field(ZNAM, "Dis")
+    field(ONAM, "Ena")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)hStatBanBI")
+{
+	field(DESC, "Banner printed")
+    field(SCAN, "Passive")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)hStatEchoBI")
+{
+	field(DESC, "Command echo")
+    field(SCAN, "Passive")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)hStatLockBI")
+{
+	field(DESC, "Lock buttons")
+    field(SCAN, "Passive")
+    field(ZNAM, "Dis")
+    field(ONAM, "Ena")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)hStatAliasBI")
+{
+	field(DESC, "Use alias")
+    field(SCAN, "Passive")
+    field(ZNAM, "Dis")
+    field(ONAM, "Ena")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)hStatTextBI")
+{
+	field(DESC, "Error text")
+    field(SCAN, "Passive")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(DTYP, "Soft Channel")
 }
 
-record(stringout, "$(P)$(HSC)hID") {
-  field(DESC, "horizontal slit ID")
+## HSC-1 vertical status PVs
+record(mbbi,"$(P)$(HSC)vStatPwrMI")
+{
+    field(DESC, "Power level")
+    field(SCAN, "Passive")
+    field(ZRST, "Low")
+    field(ONST, "Medium")
+    field(TWST, "High")
+    field(THST, "High")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)vStatLmtsBI")
+{
+	field(DESC, "Limits checked")
+    field(SCAN, "Passive")
+    field(ZNAM, "Dis")
+    field(ONAM, "Ena")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)vStatBanBI")
+{
+	field(DESC, "Banner printed")
+    field(SCAN, "Passive")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)vStatEchoBI")
+{
+	field(DESC, "Command echo")
+    field(SCAN, "Passive")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)vStatLockBI")
+{
+	field(DESC, "Lock buttons")
+    field(SCAN, "Passive")
+    field(ZNAM, "Dis")
+    field(ONAM, "Ena")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)vStatAliasBI")
+{
+	field(DESC, "Use alias")
+    field(SCAN, "Passive")
+    field(ZNAM, "Dis")
+    field(ONAM, "Ena")
+    field(DTYP, "Soft Channel")
+}
+record(bi,"$(P)$(HSC)vStatTextBI")
+{
+	field(DESC, "Error text")
+    field(SCAN, "Passive")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(DTYP, "Soft Channel")
 }
 
-record(stringout, "$(P)$(HSC)vID") {
-  field(DESC, "vertical slit ID")
+## HSC-1 memory data PVs
+record(longin,"$(P)$(HSC)hOuterLimitLI")
+{
+    field(DESC, "Outer limit")
+    field(EGU,  "steps")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+}
+record(longin,"$(P)$(HSC)vOuterLimitLI")
+{
+    field(DESC, "Outer limit")
+    field(EGU,  "steps")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
 }
 
-record(bo, "$(P)$(HSC)hOrient") {
-  field(DESC, "horizontal orientation")
-  field(ZNAM, "LR")
-  field(ONAM, "RL")
+record(longin,"$(P)$(HSC)hOriginLI")
+{
+    field(DESC, "Origin position")
+    field(EGU,  "steps")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+}
+record(longin,"$(P)$(HSC)vOriginLI")
+{
+    field(DESC, "Origin position")
+    field(EGU,  "steps")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
 }
 
-record(bo, "$(P)$(HSC)vOrient") {
-  field(DESC, "vertical orientation")
-  field(ZNAM, "TB")
-  field(ONAM, "BT")
+record(longin,"$(P)$(HSC)hStepDelayLI")
+{
+    field(DESC, "Step delay")
+    field(EGU,  "unit")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+}
+record(longin,"$(P)$(HSC)vStepDelayLI")
+{
+    field(DESC, "Step delay")
+    field(EGU,  "unit")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
 }
 
-record(bo, "$(P)$(HSC)init") {
-  field(DESC, "initialize flag")
-  field(ZNAM, "off")
-  field(ONAM, "init")
+record(longin,"$(P)$(HSC)hGearBacklashLI")
+{
+    field(DESC, "Gear backlash")
+    field(SCAN, "Passive")
+    field(EGU,  "steps")
+    field(DTYP, "Soft Channel")
+}
+record(longin,"$(P)$(HSC)vGearBacklashLI")
+{
+    field(DESC, "Gear backlash")
+    field(SCAN, "Passive")
+    field(EGU,  "steps")
+    field(DTYP, "Soft Channel")
 }
 
-record(bo, "$(P)$(HSC)enable") {
-  field(DESC, "enable flag")
-  field(ZNAM, "disable")
-  field(ONAM, "enable")
+record(stringout, "$(P)$(HSC)port")
+{
+    field(DESC, "name of serial port")
 }
 
-record(bo, "$(P)$(HSC)locate") {
-  field(DESC, "locate positions")
-  field(ZNAM, "off")
-  field(ONAM, "locate")
+record(stringout, "$(P)$(HSC)hID")
+{
+    field(DESC, "horizontal slit ID")
 }
 
-record(bo, "$(P)$(HSC)calib") {
-  field(DESC, "calibrate flag")
-  field(ZNAM, "off")
-  field(ONAM, "calibrate")
+record(stringout, "$(P)$(HSC)vID")
+{
+    field(DESC, "vertical slit ID")
 }
 
-record(ao, "$(P)$(HSC)t") {
-  field(DESC, "top")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
-  field(FLNK, "$(P)$(HSC)t_event")
+record(bo, "$(P)$(HSC)hOrient")
+{
+    field(DESC, "horizontal orientation")
+    field(ZNAM, "LR")
+    field(ONAM, "RL")
 }
 
-record(ao, "$(P)$(HSC)tRB") {
-  field(DESC, "top readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
+record(bo, "$(P)$(HSC)vOrient")
+{
+    field(DESC, "vertical orientation")
+    field(ZNAM, "TB")
+    field(ONAM, "BT")
 }
 
-record(ao, "$(P)$(HSC)l") {
-  field(DESC, "left")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
-  field(FLNK, "$(P)$(HSC)l_event")
+record(bo, "$(P)$(HSC)init")
+{
+    field(DESC, "initialize flag")
+    field(ZNAM, "off")
+    field(ONAM, "init")
 }
 
-record(ao, "$(P)$(HSC)lRB") {
-  field(DESC, "left readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
+record(bo, "$(P)$(HSC)enable")
+{
+    field(DESC, "enable flag")
+    field(ZNAM, "disable")
+    field(ONAM, "enable")
 }
 
-record(ao, "$(P)$(HSC)b") {
-  field(DESC, "bottom")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
-  field(FLNK, "$(P)$(HSC)b_event")
+record(bo, "$(P)$(HSC)locate")
+{
+    field(DESC, "locate positions")
+    field(ZNAM, "off")
+    field(ONAM, "locate")
 }
 
-record(ao, "$(P)$(HSC)bRB") {
-  field(DESC, "bottom readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
+record(bo, "$(P)$(HSC)calib")
+{
+    field(DESC, "calibrate flag")
+    field(ZNAM, "off")
+    field(ONAM, "calibrate")
 }
 
-record(ao, "$(P)$(HSC)r") {
-  field(DESC, "right")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
-  field(FLNK, "$(P)$(HSC)r_event")
+record(ao, "$(P)$(HSC)t")
+{
+    field(DESC, "top")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
+    field(FLNK, "$(P)$(HSC)t_event")
 }
 
-record(ao, "$(P)$(HSC)rRB") {
-  field(DESC, "right readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(ASLO, "0.0025")
-  field(AOFF, "-1")
-  field(HOPR, "10")
-  field(LOPR, "-1")
-  field(DRVH, "10")
-  field(DRVL, "-1")
+record(ao, "$(P)$(HSC)tRB")
+{
+    field(DESC, "top readback")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
 }
 
-record(ao, "$(P)$(HSC)width") {
-  field(DESC, "width")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "20")
-  field(LOPR, "0")
-  field(DRVH, "20")
-  field(DRVL, "0")
-  field(FLNK, "$(P)$(HSC)width_event")
+record(ao, "$(P)$(HSC)l")
+{
+    field(DESC, "left")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
+    field(FLNK, "$(P)$(HSC)l_event")
 }
 
-record(ao, "$(P)$(HSC)widthRB") {
-  field(DESC, "width readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "20")
-  field(LOPR, "0")
-  field(DRVH, "20")
-  field(DRVL, "0")
+record(ao, "$(P)$(HSC)lRB")
+{
+    field(DESC, "left readback")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
 }
 
-record(ao, "$(P)$(HSC)height") {
-  field(DESC, "height")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "20")
-  field(LOPR, "0")
-  field(DRVH, "20")
-  field(DRVL, "0")
-  field(FLNK, "$(P)$(HSC)height_event")
+record(ao, "$(P)$(HSC)b")
+{
+    field(DESC, "bottom")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
+    field(FLNK, "$(P)$(HSC)b_event")
 }
 
-record(ao, "$(P)$(HSC)heightRB") {
-  field(DESC, "height readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "20")
-  field(LOPR, "0")
-  field(DRVH, "20")
-  field(DRVL, "0")
+record(ao, "$(P)$(HSC)bRB")
+{
+    field(DESC, "bottom readback")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
 }
 
-record(ao, "$(P)$(HSC)h0") {
-  field(DESC, "hor center")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "5.5")
-  field(LOPR, "-5.5")
-  field(DRVH, "5.5")
-  field(DRVL, "-5.5")
-  field(FLNK, "$(P)$(HSC)h0_event")
+record(ao, "$(P)$(HSC)r")
+{
+    field(DESC, "right")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
+    field(FLNK, "$(P)$(HSC)r_event")
 }
 
-record(ao, "$(P)$(HSC)h0RB") {
-  field(DESC, "hor center readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "5.5")
-  field(LOPR, "-5.5")
-  field(DRVH, "5.5")
-  field(DRVL, "-5.5")
+record(ao, "$(P)$(HSC)rRB")
+{
+    field(DESC, "right readback")
+    field(EGU, "mm")
+    field(PREC, "4")
+    field(ASLO, "0.0025")
+    field(AOFF, "-1")
+    field(HOPR, "10")
+    field(LOPR, "-1")
+    field(DRVH, "10")
+    field(DRVL, "-1")
 }
 
-record(ao, "$(P)$(HSC)v0") {
-  field(DESC, "ver center")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "5.5")
-  field(LOPR, "-5.5")
-  field(DRVH, "5.5")
-  field(DRVL, "-5.5")
-  field(FLNK, "$(P)$(HSC)v0_event")
+record(ao, "$(P)$(HSC)width")
+{
+    field(DESC, "width")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(HOPR, "20")
+    field(LOPR, "0")
+    field(DRVH, "20")
+    field(DRVL, "0")
+    field(FLNK, "$(P)$(HSC)width_event")
 }
 
-record(ao, "$(P)$(HSC)v0RB") {
-  field(DESC, "ver center readback")
-  field(EGU, "mm")
-  field(PREC, "4")
-  field(HOPR, "5.5")
-  field(LOPR, "-5.5")
-  field(DRVH, "5.5")
-  field(DRVL, "-5.5")
+record(ao, "$(P)$(HSC)widthRB")
+{
+    field(DESC, "width readback")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(HOPR, "20")
+    field(LOPR, "0")
+    field(DRVH, "20")
+    field(DRVL, "0")
 }
 
-record(bo, "$(P)$(HSC)stop") {
-  field(DESC, "stop all axes")
-  field(ZNAM, "idle")
-  field(ONAM, "STOP")
+record(ao, "$(P)$(HSC)height")
+{
+    field(DESC, "height")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(HOPR, "20")
+    field(LOPR, "0")
+    field(DRVH, "20")
+    field(DRVL, "0")
+    field(FLNK, "$(P)$(HSC)height_event")
 }
 
-record(longout, "$(P)$(HSC)debug") {
-  field(DESC, "debug flag")
-  field(HOPR, "10")
-  field(LOPR, "0")
+record(ao, "$(P)$(HSC)heightRB")
+{
+    field(DESC, "height readback")
+    field(EGU, "mm")
+    field(PREC, "4")
+    field(HOPR, "20")
+    field(LOPR, "0")
+    field(DRVH, "20")
+    field(DRVL, "0")
 }
 
-record(longout, "$(P)$(HSC)error") {
-  field(DESC, "error code")
+record(ao, "$(P)$(HSC)h0")
+{
+    field(DESC, "hor center")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(HOPR, "5.5")
+    field(LOPR, "-5.5")
+    field(DRVH, "5.5")
+    field(DRVL, "-5.5")
+    field(FLNK, "$(P)$(HSC)h0_event")
 }
 
-record(stringout, "$(P)$(HSC)errMsg") {
-  field(DESC, "error message")
+record(ao, "$(P)$(HSC)h0RB")
+{
+    field(DESC, "hor center readback")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(HOPR, "5.5")
+    field(LOPR, "-5.5")
+    field(DRVH, "5.5")
+    field(DRVL, "-5.5")
 }
 
-record(stringout, "$(P)$(HSC)msg1") {
-  field(DESC, "message #1")
+record(ao, "$(P)$(HSC)v0")
+{
+    field(DESC, "ver center")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(HOPR, "5.5")
+    field(LOPR, "-5.5")
+    field(DRVH, "5.5")
+    field(DRVL, "-5.5")
+    field(FLNK, "$(P)$(HSC)v0_event")
 }
 
-record(stringout, "$(P)$(HSC)msg2") {
-  field(DESC, "message #2")
+record(ao, "$(P)$(HSC)v0RB")
+{
+    field(DESC, "ver center readback")
+    field(EGU,  "mm")
+    field(PREC, "4")
+    field(HOPR, "5.5")
+    field(LOPR, "-5.5")
+    field(DRVH, "5.5")
+    field(DRVL, "-5.5")
 }
 
-record(stringout, "$(P)$(HSC)msg3") {
-  field(DESC, "message #3")
+record(bo, "$(P)$(HSC)stop")
+{
+    field(DESC, "stop all axes")
+    field(ZNAM, "idle")
+    field(ONAM, "STOP")
 }
 
-record(bo, "$(P)$(HSC)hBusy") {
+record(longout, "$(P)$(HSC)debug")
+{
+    field(DESC, "debug flag")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+record(longout, "$(P)$(HSC)error")
+{
+    field(DESC, "error code")
+}
+
+record(stringout, "$(P)$(HSC)errMsg")
+{
+    field(DESC, "error message")
+}
+
+record(stringout, "$(P)$(HSC)msg1")
+{
+    field(DESC, "message #1")
+}
+
+record(stringout, "$(P)$(HSC)msg2")
+{
+    field(DESC, "message #2")
+}
+
+record(stringout, "$(P)$(HSC)msg3")
+{
+    field(DESC, "message #3")
+}
+
+record(bo, "$(P)$(HSC)hBusy")
+{
   field(DESC, "horizontal axes busy")
   field(ZNAM, "idle")
   field(ONAM, "busy")
 }
 
-record(bo, "$(P)$(HSC)vBusy") {
+record(bo, "$(P)$(HSC)vBusy")
+{
   field(DESC, "vertical axes busy")
   field(ZNAM, "idle")
   field(ONAM, "busy")
 }
 
-record(ao, "$(P)$(HSC)width_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+
+record(ao, "$(P)$(HSC)width_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)width_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)width.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)width_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)width_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)width_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)width.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)width_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)width.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)width_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)width_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)width_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)width.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(ao, "$(P)$(HSC)v0_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+record(ao, "$(P)$(HSC)v0_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)v0_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)v0.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)v0_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)v0_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)v0_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)v0.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)v0_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)v0.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)v0_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)v0_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)v0_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)v0.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(ao, "$(P)$(HSC)t_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+record(ao, "$(P)$(HSC)t_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)t_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)t.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)t_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)t_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)t_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)t.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)t_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)t.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)t_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)t_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)t_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)t.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(ao, "$(P)$(HSC)r_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+record(ao, "$(P)$(HSC)r_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)r_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)r.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)r_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)r_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)r_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)r.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)r_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)r.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)r_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)r_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)r_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)r.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(ao, "$(P)$(HSC)l_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+record(ao, "$(P)$(HSC)l_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)l_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)l.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)l_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)l_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)l_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)l.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)l_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)l.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)l_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)l_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)l_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)l.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(ao, "$(P)$(HSC)height_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+record(ao, "$(P)$(HSC)height_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)height_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)height.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)height_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)height_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)height_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)height.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)height_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)height.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)height_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)height_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)height_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)height.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(ao, "$(P)$(HSC)h0_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+record(ao, "$(P)$(HSC)h0_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)h0_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)h0.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)h0_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)h0_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)h0_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)h0.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)h0_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)h0.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)h0_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)h0_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)h0_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)h0.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(ao, "$(P)$(HSC)b_tweakVal") {
-  field(DOL, "0.1")
-  field(HOPR, "1")
-  field(LOPR, ".0025")
-  field(DRVH, "1")
-  field(DRVL, ".0025")
-  field(PREC, "4")
+record(ao, "$(P)$(HSC)b_tweakVal")
+{
+    field(DOL, "0.1")
+    field(HOPR, "1")
+    field(LOPR, ".0025")
+    field(DRVH, "1")
+    field(DRVL, ".0025")
+    field(PREC, "4")
 }
 
-record(transform, "$(P)$(HSC)b_tweak") {
-  field(CLCG, "a?c-d:b?c+d:c")
-  field(INPC, "$(P)$(HSC)b.VAL  NPP MS")
-  field(INPD, "$(P)$(HSC)b_tweakVal NPP NMS")
-  field(OUTE, "$(P)$(HSC)b_tweak.A  NPP MS")
-  field(OUTF, "$(P)$(HSC)b_tweak.B  NPP MS")
-  field(OUTG, "$(P)$(HSC)b.VAL  PP MS")
-  field(EGU, "mm")
-  field(PREC, "4")
+record(transform, "$(P)$(HSC)b_tweak")
+{
+    field(CLCG, "a?c-d:b?c+d:c")
+    field(INPC, "$(P)$(HSC)b.VAL  NPP MS")
+    field(INPD, "$(P)$(HSC)b_tweakVal NPP NMS")
+    field(OUTE, "$(P)$(HSC)b_tweak.A  NPP MS")
+    field(OUTF, "$(P)$(HSC)b_tweak.B  NPP MS")
+    field(OUTG, "$(P)$(HSC)b.VAL  PP MS")
+    field(EGU, "mm")
+    field(PREC, "4")
 }
 
-record(busy, "$(P)$(HSC)h_Busy") {
+record(busy, "$(P)$(HSC)h_Busy")
+{
 }
 
-record(bo, "$(P)$(HSC)h_BusyDisable") {
+record(bo, "$(P)$(HSC)h_BusyDisable")
+{
 }
 
-record(seq, "$(P)$(HSC)h_BusyOff") {
-  field(DO1, "0")
-  field(LNK1, "$(P)$(HSC)h_Busy PP")
+record(bo, "$(P)$(HSC)h_BusyOff")
+{
+    field(DOL,  "0")
+    field(OUT,  "$(P)$(HSC)h_Busy PP")
 }
 
-record(bo, "$(P)$(HSC)h_BusyOn") {
-  field(SDIS, "$(P)$(HSC)h_BusyDisable")
-  field(DOL, "1")
-  field(OUT, "$(P)$(HSC)h_Busy PP")
+record(bo, "$(P)$(HSC)h_BusyOn")
+{
+    field(SDIS, "$(P)$(HSC)h_BusyDisable")
+    field(DOL,  "1")
+    field(OUT,  "$(P)$(HSC)h_Busy PP")
 }
 
-record(bo, "$(P)$(HSC)v_BusyDisable") {
+record(busy, "$(P)$(HSC)v_Busy")
+{
 }
 
-record(bo, "$(P)$(HSC)v_BusyOn") {
-  field(SDIS, "$(P)$(HSC)v_BusyDisable.VAL")
-  field(DOL, "1")
-  field(OUT, "$(P)$(HSC)v_Busy.VAL PP")
+record(bo, "$(P)$(HSC)v_BusyDisable")
+{
 }
 
-record(seq, "$(P)$(HSC)v_BusyOff") {
-  field(DO1, "0")
-  field(LNK1, "$(P)$(HSC)v_Busy.VAL PP")
+record(bo, "$(P)$(HSC)v_BusyOff")
+{
+    field(DOL,  "0")
+    field(OUT,  "$(P)$(HSC)v_Busy PP")
 }
 
-record(busy, "$(P)$(HSC)v_Busy") {
+record(bo, "$(P)$(HSC)v_BusyOn")
+{
+    field(SDIS, "$(P)$(HSC)v_BusyDisable")
+    field(DOL,  "1")
+    field(OUT,  "$(P)$(HSC)v_Busy PP")
 }
 
-record(ao, "$(P)$(HSC)b_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)v_BusyOn")
+record(ao, "$(P)$(HSC)b_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)v_BusyOn")
 }
 
-record(ao, "$(P)$(HSC)v0_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)v_BusyOn")
+record(ao, "$(P)$(HSC)v0_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)v_BusyOn")
 }
 
-record(ao, "$(P)$(HSC)height_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)v_BusyOn")
+record(ao, "$(P)$(HSC)height_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)v_BusyOn")
 }
 
-record(ao, "$(P)$(HSC)t_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)v_BusyOn")
+record(ao, "$(P)$(HSC)t_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)v_BusyOn")
 }
 
-record(ao, "$(P)$(HSC)width_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)h_BusyOn")
+record(ao, "$(P)$(HSC)width_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)h_BusyOn")
 }
 
-record(ao, "$(P)$(HSC)h0_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)h_BusyOn")
+record(ao, "$(P)$(HSC)h0_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)h_BusyOn")
 }
 
-record(longout, "$(P)$(HSC)l_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)h_BusyOn")
+record(longout, "$(P)$(HSC)l_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)h_BusyOn")
 }
 
-record(ao, "$(P)$(HSC)r_event") {
-  field(MDEL, "-1")
-  field(VAL, "1")
-  field(UDF, "0")
-  field(FLNK, "$(P)$(HSC)h_BusyOn")
+record(ao, "$(P)$(HSC)r_event")
+{
+    field(MDEL, "-1")
+    field(VAL,  "1")
+    field(UDF,  "0")
+    field(FLNK, "$(P)$(HSC)h_BusyOn")
 }
 
-record(transform, "$(P)$(HSC)load_r") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)r_event.DISA")
-  field(OUTB, "$(P)$(HSC)r PP")
-  field(OUTC, "$(P)$(HSC)r_event.DISA")
+record(transform, "$(P)$(HSC)load_r")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)r_event.DISA")
+    field(OUTB, "$(P)$(HSC)r PP")
+    field(OUTC, "$(P)$(HSC)r_event.DISA")
 }
 
-record(transform, "$(P)$(HSC)load_l") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)l_event.DISA")
-  field(OUTB, "$(P)$(HSC)l PP")
-  field(OUTC, "$(P)$(HSC)l_event.DISA")
+record(transform, "$(P)$(HSC)load_l")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)l_event.DISA")
+    field(OUTB, "$(P)$(HSC)l PP")
+    field(OUTC, "$(P)$(HSC)l_event.DISA")
 }
 
-record(transform, "$(P)$(HSC)load_h0") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)h0_event.DISA")
-  field(OUTB, "$(P)$(HSC)h0 PP")
-  field(OUTC, "$(P)$(HSC)h0_event.DISA")
+record(transform, "$(P)$(HSC)load_h0")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)h0_event.DISA")
+    field(OUTB, "$(P)$(HSC)h0 PP")
+    field(OUTC, "$(P)$(HSC)h0_event.DISA")
 }
 
-record(transform, "$(P)$(HSC)load_width") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)width_event.DISA")
-  field(OUTB, "$(P)$(HSC)width PP")
-  field(OUTC, "$(P)$(HSC)width_event.DISA")
+record(transform, "$(P)$(HSC)load_width")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)width_event.DISA")
+    field(OUTB, "$(P)$(HSC)width PP")
+    field(OUTC, "$(P)$(HSC)width_event.DISA")
 }
 
-record(transform, "$(P)$(HSC)load_t") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)t_event.DISA")
-  field(OUTB, "$(P)$(HSC)t PP")
-  field(OUTC, "$(P)$(HSC)t_event.DISA")
+record(transform, "$(P)$(HSC)load_t")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)t_event.DISA")
+    field(OUTB, "$(P)$(HSC)t PP")
+    field(OUTC, "$(P)$(HSC)t_event.DISA")
 }
 
-record(transform, "$(P)$(HSC)load_b") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)b_event.DISA")
-  field(OUTB, "$(P)$(HSC)b PP")
-  field(OUTC, "$(P)$(HSC)b_event.DISA")
+record(transform, "$(P)$(HSC)load_b")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)b_event.DISA")
+    field(OUTB, "$(P)$(HSC)b PP")
+    field(OUTC, "$(P)$(HSC)b_event.DISA")
 }
 
-record(transform, "$(P)$(HSC)load_v0") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)v0_event.DISA")
-  field(OUTB, "$(P)$(HSC)v0 PP")
-  field(OUTC, "$(P)$(HSC)v0_event.DISA")
+record(transform, "$(P)$(HSC)load_v0")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)v0_event.DISA")
+    field(OUTB, "$(P)$(HSC)v0 PP")
+    field(OUTC, "$(P)$(HSC)v0_event.DISA")
 }
 
-record(transform, "$(P)$(HSC)load_height") {
-  field(INPA, "1")
-  field(INPC, "0")
-  field(OUTA, "$(P)$(HSC)height_event.DISA")
-  field(OUTB, "$(P)$(HSC)height PP")
-  field(OUTC, "$(P)$(HSC)height_event.DISA")
+record(transform, "$(P)$(HSC)load_height")
+{
+    field(INPA, "1")
+    field(INPC, "0")
+    field(OUTA, "$(P)$(HSC)height_event.DISA")
+    field(OUTB, "$(P)$(HSC)height PP")
+    field(OUTC, "$(P)$(HSC)height_event.DISA")
 }
 
 #! Further lines contain data used by VisualDCT
