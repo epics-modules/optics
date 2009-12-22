@@ -930,7 +930,7 @@ ss xiahsc {
       h_isMoving = 1;
       efSet (wait_H_input);		/* could enable a timeout on the move */
       efClear (start_H_move);		/* OK, we told it to move now */
-//if (ainp_fifo_read != ainp_fifo_write) printf("start_H_move: fifo not empty\n");
+/*if (ainp_fifo_read != ainp_fifo_write) printf("start_H_move: fifo not empty\n"); */
       while (!s_sevr) {		/* read until no more input data */
         READ_HSC();		/* process generic serial port */
         /* discard possibly outdated messages involving hID */
@@ -963,7 +963,7 @@ ss xiahsc {
       v_isMoving = 1;
       efSet (wait_V_input);		/* could enable a timeout on the move */
       efClear (start_V_move);
-//if (ainp_fifo_read != ainp_fifo_write) printf("start_V_move: fifo not empty\n");
+/*if (ainp_fifo_read != ainp_fifo_write) printf("start_V_move: fifo not empty\n"); */
       while (!s_sevr) {		/* read until no more input data */
         READ_HSC();		/* process generic serial port */
         /* discard possibly outdated messages involving vID */
