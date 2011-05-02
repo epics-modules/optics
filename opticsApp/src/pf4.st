@@ -200,6 +200,11 @@ ss pf4
     {
         when()
         {
+			PVPUT(displayBit1, b1);
+			PVPUT(displayBit2, b2);
+			PVPUT(displayBit3, b3);
+			PVPUT(displayBit4, b4);
+
             PVPUT(filpos,numInArray(16,bits,((b4<<3)|(b3<<2)|(b2<<1)|b1)));
             PVPUT(bitflg,(1 << filpos));
             PVPUT(bitsts,bits[filpos]);
