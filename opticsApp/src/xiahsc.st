@@ -164,10 +164,12 @@ ASSIGN_MONITOR (int,  xiahscDebug, "{P}{HSC}debug")
 char   scratch[256];
 char   myChar;
 double dScratch;
-long   numWords;
+/*long   numWords; tmm changed to int for 64-bit linux */
+int   numWords;
 string word1;         string word2; string word3; 
 string word4;         string word5; string word6;
-long   pos_a;         long   pos_b;
+/*long   pos_a;         long   pos_b; tmm changed to int for 64-bit linux */
+int   pos_a;         int   pos_b;
 double pos_ag;        double pos_bg;
 string id;            short  hasID;
 string hscErrors[14];
@@ -435,14 +437,14 @@ ss xiahsc {
         PVPUTSTR (errMsg, "H & V IDs must be different");
         error++;
       }
-      if (sscanf (hID, "XIAHSC-%c-%ld%s", &myChar, &numWords, scratch) != 2) { 
-        if (sscanf (hID, "%c-%ld%s", &myChar, &numWords, scratch) != 2) { 
+      if (sscanf (hID, "XIAHSC-%c-%d%s", &myChar, &numWords, scratch) != 2) { 
+        if (sscanf (hID, "%c-%d%s", &myChar, &numWords, scratch) != 2) { 
 	  PVPUTSTR (errMsg, "H ID not a valid HSC ID");
           error++;
         }
       }
-      if (sscanf (vID, "XIAHSC-%c-%ld%s", &myChar, &numWords, scratch) != 2) { 
-        if (sscanf (vID, "%c-%ld%s", &myChar, &numWords, scratch) != 2) { 
+      if (sscanf (vID, "XIAHSC-%c-%d%s", &myChar, &numWords, scratch) != 2) { 
+        if (sscanf (vID, "%c-%d%s", &myChar, &numWords, scratch) != 2) { 
           PVPUTSTR (errMsg, "V ID not a valid HSC ID");
           error++;
         }
@@ -690,7 +692,7 @@ ss xiahsc {
         pos_a = DIAL_TO_RAW (pos_ag, vOrigin);
         pos_b = DIAL_TO_RAW (pos_bg, vOrigin);
       }
-      sprintf (scratch, "M %ld %ld", pos_a, pos_b);
+      sprintf (scratch, "M %d %d", pos_a, pos_b);
       WRITE_HSC(TMOD_WRITE, word1, scratch);
       PVPUT (locate, 1);		/* expect a readback */
     } state idle
@@ -775,7 +777,7 @@ ss xiahsc {
        * horizontal axis
        */
       WRITE_READ_HSC(hID, HSC1_POSITION_INQUIRY);
-      if (sscanf (hsc_response, "%*s %*s %ld %ld", &pos_a, &pos_b) == 2) {
+      if (sscanf (hsc_response, "%*s %*s %d %d", &pos_a, &pos_b) == 2) {
         pos_ag = RAW_TO_DIAL(pos_a, hOrigin);
         pos_bg = RAW_TO_DIAL(pos_b, hOrigin);
         if (hOrient == ORIENT_LEFT_RIGHT) {
@@ -813,7 +815,7 @@ ss xiahsc {
        * vertical axis
        */
       WRITE_READ_HSC(vID, HSC1_POSITION_INQUIRY);
-      if (sscanf (hsc_response, "%*s %*s %ld %ld", &pos_a, &pos_b) == 2) {
+      if (sscanf (hsc_response, "%*s %*s %d %d", &pos_a, &pos_b) == 2) {
         pos_ag = RAW_TO_DIAL(pos_a, vOrigin);
         pos_bg = RAW_TO_DIAL(pos_b, vOrigin);
         if (vOrient == ORIENT_TOP_BOTTOM) {

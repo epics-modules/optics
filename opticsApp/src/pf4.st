@@ -69,7 +69,8 @@ PV(double,trans,"{P}{H}trans{B}",NoMon);
 PV(double,invtrans,"{P}{H}invTrans{B}",NoMon);
 PV(int,debug_flag,"{P}{H}debug{B}",EvFlag);
 
-PV(long,bitflg,"{P}{H}bitFlag{B}",NoMon);
+/*PV(long,bitflg,"{P}{H}bitFlag{B}",NoMon);*/
+PV(int,bitflg,"{P}{H}bitFlag{B}",NoMon);
 PV(short,bitsts,"{P}{H}status{B}",NoMon);
 PV(short,bankctl,"{P}{H}bank{B}",EvFlag);
 
@@ -132,7 +133,8 @@ static double AlAbsorptionLength(double);
 static int isLegalOther(char *s);
 static double OtherAbsorptionLength(double keV, char *species);
 static int fillShowArrays(char *species, int N, float *E, float *T);
-static long numInArray(long,short*,short);
+/*static long numInArray(long,short*,short);*/
+static int numInArray(int,short*,short);
 static void sortDecreasing(int,double*,short*,int);
 static double thickZ(int,int,int,int,int,int,int,int,int,int,double,double,double,double);
 static void RecalcFilters(double,short*,double*,int,int,int,int,int,int,double,double,double,double, char *, char *, char *, char *);
@@ -784,7 +786,8 @@ double thickZ(int z,int b,int b1,int b2,int b3,int b4,int z1,int z2,int z3,
 
 
 /* find the arrays element contianing value, return index, arr[i]==value */
-long numInArray(long N,short arr[],short value)
+/*long numInArray(long N,short arr[],short value)*/
+int numInArray(int N,short arr[],short value)
 {
     int i;
 

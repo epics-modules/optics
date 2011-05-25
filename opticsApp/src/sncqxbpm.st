@@ -201,11 +201,18 @@ PV (double,   current_a,       "{P}current:a",       NoMon);
 PV (double,   current_b,       "{P}current:b",       NoMon);
 PV (double,   current_c,       "{P}current:c",       NoMon);
 PV (double,   current_d,       "{P}current:d",       NoMon);
+/*
 PV (unsigned long,     raw_a,	       "{P}current:a:raw",   NoMon);
 PV (unsigned long,     raw_b,	       "{P}current:b:raw",   NoMon);
 PV (unsigned long,     raw_c,	       "{P}current:c:raw",   NoMon);
 PV (unsigned long,     raw_d,	       "{P}current:d:raw",   NoMon);
-PV (long,     current_low_raw, "{P}current:low:raw", Monitor);
+*/
+PV (unsigned int,     raw_a,	       "{P}current:a:raw",   NoMon);
+PV (unsigned int,     raw_b,	       "{P}current:b:raw",   NoMon);
+PV (unsigned int,     raw_c,	       "{P}current:c:raw",   NoMon);
+PV (unsigned int,     raw_d,	       "{P}current:d:raw",   NoMon);
+/*PV (long,     current_low_raw, "{P}current:low:raw", Monitor);*/
+PV (int,     current_low_raw, "{P}current:low:raw", Monitor);
 PV (short,    current_low,     "{P}current:low",     NoMon);
 PV (short,    current_ok,      "{P}current:ok",      NoMon);
 PV (short,    signal_mode,     "{P}mode",            EvFlag);
@@ -255,7 +262,8 @@ PVA (string, signal_modeStr, 3, PVA_signal_modeStr, Monitor);
 }
 
 PVA (double, gainTrim, 24, PVA_gainTrim, Monitor);
-PVA (long,   offset,   24, PVA_offset,   Monitor);
+/*PVA (long,   offset,   24, PVA_offset,   Monitor);*/
+PVA (int,   offset,   24, PVA_offset,   Monitor);
 
   /*  */
 /*------------------------------------------------
@@ -274,7 +282,8 @@ int	 oldGain;
 int	 newGain;
 int	 channel;
 double   factor;
-long     long_internal;
+/*long     long_internal;*/
+int     long_internal;
 string	 debug_str;
 
 %% #include <math.h>
@@ -461,7 +470,7 @@ ss sncqxbpm {
       sprintf (debug_str, "serial.SEVR: %d", s_sevr);
       DEBUG_PRINT (5, debug_str);
       if (!s_sevr) {
-        sscanf(bpm_response, "%lu%lu%lu%lu", &raw_a, &raw_b, &raw_c, &raw_d);
+        sscanf(bpm_response, "%u%u%u%u", &raw_a, &raw_b, &raw_c, &raw_d);
 	pvPut (raw_a);
 	pvPut (raw_b);
 	pvPut (raw_c);
@@ -469,7 +478,7 @@ ss sncqxbpm {
         sprintf (debug_str, "bpm_command=<%s>  bpm_response=<%s>", 
           bpm_command, bpm_response);
  	DEBUG_PRINT (12, debug_str);
-        sprintf (debug_str, "raw: a=%ld  b=%ld  c=%ld  d=%ld", 
+        sprintf (debug_str, "raw: a=%d  b=%d  c=%d  d=%d", 
           raw_a, raw_b, raw_c, raw_d);
  	DEBUG_PRINT (12, debug_str);
         PVPUT(current_a, DIODE_CURRENT(raw_a, gain, CHAN_A));
