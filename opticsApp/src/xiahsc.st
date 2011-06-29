@@ -189,6 +189,8 @@ int    hOuterLimit;  int    vOuterLimit;
 string hsc_command;
 string hsc_response;
 int    hsc_timeout;
+int    h_valid;
+int    v_valid;
 
 
 %% #include <math.h>
@@ -197,6 +199,8 @@ int    hsc_timeout;
 /*
 %% static int i;
 */
+
+%% int validateResponse(char *out, char *in);
 
 /*------------------------------------------------ 
   ------------------------------------------------   macros
@@ -777,76 +781,87 @@ ss xiahsc {
        * horizontal axis
        */
       WRITE_READ_HSC(hID, HSC1_POSITION_INQUIRY);
-      if (sscanf (hsc_response, "%*s %*s %d %d", &pos_a, &pos_b) == 2) {
-        pos_ag = RAW_TO_DIAL(pos_a, hOrigin);
-        pos_bg = RAW_TO_DIAL(pos_b, hOrigin);
-        if (hOrient == ORIENT_LEFT_RIGHT) {
-          if (pos_ag != l_RB) { PVPUT (l_RB, pos_ag) };
-          if (pos_bg != r_RB) { PVPUT (r_RB, pos_bg) };
-        } else {
-          if (pos_ag != r_RB) { PVPUT (r_RB, pos_ag) };
-          if (pos_bg != l_RB) { PVPUT (l_RB, pos_bg) };
-        }
-	if (hBusy) PVPUT (hBusy, MOTOR_IDLE);
-        /*
-	 * also, update width and center readbacks
-	 */
-        PVPUT (width_RB, l_RB+r_RB);
-        PVPUT (h0_RB, (r_RB-l_RB)/2);
-        efSet (new_H_RB);	/* new readback data available */
-        /*
-         * keep track of last known good values
-         * to impose motor limits
-         */
-        l_old = l_RB;	r_old = r_RB;
-        h0_old = h0_RB;	width_old = width_RB;
-      } else
-        if (sscanf (hsc_response, "%*s %*s %s", scratch) == 1) {
-          DEBUG_PRINT3(5, "axis=%s, command=<%s>, response=%s", "H", hsc_command, hsc_response);
-	  if (!strcmp (scratch, "BUSY;")) {
-	    if (!hBusy) PVPUT (hBusy, MOTOR_BUSY);
-	  } else {
-            DEBUG_PRINT1(20, "could not understand %s", hsc_response);
+      h_valid = validateResponse(hsc_command, hsc_response);
+      DEBUG_PRINT1(2, "validateResponse (H): %i", h_valid);
+      if (h_valid) {
+      	if (sscanf (hsc_response, "%*s %*s %d %d", &pos_a, &pos_b) == 2) {
+      	  pos_ag = RAW_TO_DIAL(pos_a, hOrigin);
+      	  pos_bg = RAW_TO_DIAL(pos_b, hOrigin);
+      	  if (hOrient == ORIENT_LEFT_RIGHT) {
+      	    if (pos_ag != l_RB) { PVPUT (l_RB, pos_ag) };
+      	    if (pos_bg != r_RB) { PVPUT (r_RB, pos_bg) };
+      	  } else {
+      	    if (pos_ag != r_RB) { PVPUT (r_RB, pos_ag) };
+      	    if (pos_bg != l_RB) { PVPUT (l_RB, pos_bg) };
+      	  }
+	  if (hBusy) PVPUT (hBusy, MOTOR_IDLE);
+      	  /*
+	   * also, update width and center readbacks
+	   */
+      	  PVPUT (width_RB, l_RB+r_RB);
+      	  PVPUT (h0_RB, (r_RB-l_RB)/2);
+      	  efSet (new_H_RB);	  /* new readback data available */
+      	  /*
+      	   * keep track of last known good values
+      	   * to impose motor limits
+      	   */
+      	  l_old = l_RB;   r_old = r_RB;
+      	  h0_old = h0_RB; width_old = width_RB;
+      	} else
+      	  if (sscanf (hsc_response, "%*s %*s %s", scratch) == 1) {
+      	    DEBUG_PRINT3(5, "axis=%s, command=<%s>, response=%s", "H", hsc_command, hsc_response);
+	    if (!strcmp (scratch, "BUSY;")) {
+	      if (!hBusy) PVPUT (hBusy, MOTOR_BUSY);
+	    } else {
+      	      DEBUG_PRINT1(20, "could not understand %s", hsc_response);
+	    }
 	  }
-	}
-
+      } else {
+        DEBUG_PRINT1(2, "incorrect response:  %s", hsc_response);
+      }
 
       /*
        * vertical axis
        */
       WRITE_READ_HSC(vID, HSC1_POSITION_INQUIRY);
-      if (sscanf (hsc_response, "%*s %*s %d %d", &pos_a, &pos_b) == 2) {
-        pos_ag = RAW_TO_DIAL(pos_a, vOrigin);
-        pos_bg = RAW_TO_DIAL(pos_b, vOrigin);
-        if (vOrient == ORIENT_TOP_BOTTOM) {
-          if (pos_ag != t_RB) { PVPUT (t_RB, pos_ag) };
-          if (pos_bg != b_RB) { PVPUT (b_RB, pos_bg) };
-        } else {
-          if (pos_ag != b_RB) { PVPUT (b_RB, pos_ag) };
-          if (pos_bg != t_RB) { PVPUT (t_RB, pos_bg) };
-        }
-	if (vBusy) PVPUT (vBusy, MOTOR_IDLE);
-        /*
-	 * also, update height and center readbacks
-	 */
-        PVPUT (height_RB, t_RB+b_RB);
-        PVPUT (v0_RB, (t_RB-b_RB)/2);
-        efSet (new_V_RB);	/* new readback data available */
-        /*
-         * keep track of last known good values
-         * to impose motor limits
-         */
-        t_old = t_RB;	b_old = b_RB;
-        v0_old = v0_RB;	height_old = height_RB;
-      } else
-        if (sscanf (hsc_response, "%*s %*s %s", scratch) == 1) {
-          DEBUG_PRINT3(5, "axis=%s, command=<%s>, response=%s", "V", hsc_command, hsc_response);
-	  if (!strcmp (scratch, "BUSY;")) {
-	    if (!vBusy) PVPUT (vBusy, MOTOR_BUSY);
-	  } else {
-            DEBUG_PRINT1(20, "could not understand %s", hsc_response);
+      v_valid = validateResponse(hsc_command, hsc_response);
+      DEBUG_PRINT1(2, "validateResponse (V): %i", v_valid);
+      if (v_valid) {      
+      	if (sscanf (hsc_response, "%*s %*s %d %d", &pos_a, &pos_b) == 2) {
+      	  pos_ag = RAW_TO_DIAL(pos_a, vOrigin);
+      	  pos_bg = RAW_TO_DIAL(pos_b, vOrigin);
+      	  if (vOrient == ORIENT_TOP_BOTTOM) {
+      	    if (pos_ag != t_RB) { PVPUT (t_RB, pos_ag) };
+      	    if (pos_bg != b_RB) { PVPUT (b_RB, pos_bg) };
+      	  } else {
+      	    if (pos_ag != b_RB) { PVPUT (b_RB, pos_ag) };
+      	    if (pos_bg != t_RB) { PVPUT (t_RB, pos_bg) };
+      	  }
+	  if (vBusy) PVPUT (vBusy, MOTOR_IDLE);
+      	  /*
+	   * also, update height and center readbacks
+	   */
+      	  PVPUT (height_RB, t_RB+b_RB);
+      	  PVPUT (v0_RB, (t_RB-b_RB)/2);
+      	  efSet (new_V_RB);	  /* new readback data available */
+      	  /*
+      	   * keep track of last known good values
+      	   * to impose motor limits
+      	   */
+      	  t_old = t_RB;   b_old = b_RB;
+      	  v0_old = v0_RB; height_old = height_RB;
+      	} else
+      	  if (sscanf (hsc_response, "%*s %*s %s", scratch) == 1) {
+      	    DEBUG_PRINT3(5, "axis=%s, command=<%s>, response=%s", "V", hsc_command, hsc_response);
+	    if (!strcmp (scratch, "BUSY;")) {
+	      if (!vBusy) PVPUT (vBusy, MOTOR_BUSY);
+	    } else {
+      	      DEBUG_PRINT1(20, "could not understand %s", hsc_response);
+	    }
 	  }
-	}
+      } else {
+          DEBUG_PRINT1(2, "incorrect response:  %s", hsc_response);
+      }
 
     } state idle
   }
@@ -956,3 +971,37 @@ ss xiahsc {
   }
 
 }
+
+%{
+
+int validateResponse(char *out, char *in)
+{
+	int return_val;
+	/* start with second char, since 1st isn't important */
+	int k=1;
+
+	if (strlen(in) == 0)
+	{
+		return_val = 0;
+	}
+	else
+	{
+		while (out[k] != ' ')
+		{
+			if (out[k] != in[k])
+			{
+				return_val = 0;
+				break;
+			}
+			else
+			{
+				return_val = 1;
+				k += 1;
+			}
+		}
+	}
+
+	return return_val;
+}
+
+}%
