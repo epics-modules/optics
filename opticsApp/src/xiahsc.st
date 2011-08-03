@@ -618,7 +618,7 @@ ss xiahsc {
     when (!enable) {} state disable
     when (s_sevr)  {
       PVPUT(error, ERROR_COMM_ERROR);
-      sprintf (scratch, "communications error: %d", s_sevr);
+      %%sprintf (pVar->scratch, "communications error: %d", pVar->s_sevr);
       PVPUTSTR (errMsg, scratch);
     } state comm_error
     when (efTest (hID_mon)     || efTest (vID_mon))     {} state init
