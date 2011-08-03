@@ -50,9 +50,9 @@ option +d;  /* turn ON run-time debugging messages */
 #define CHAN_D 4
 #define ARR_INDEX(_G_,_C_) ((_G_)*4 + (_C_) - 1)
   /* circumvent cygwin problem when RAW < offset */
+
 #define DIODE_CURRENT(_RAW_,_G_,_C_)                  \
-  long_internal = _RAW_ - offset[ARR_INDEX(_G_,_C_)], \
-  gainTrim[ARR_INDEX(_G_,_C_)]*( long_internal )
+  gainTrim[ARR_INDEX(_G_,_C_)]*( _RAW_ - offset[ARR_INDEX(_G_,_C_)] )
 
 #define NUM_GAINS         6
 #define NUM_CHANNELS      4
@@ -282,8 +282,6 @@ int	 oldGain;
 int	 newGain;
 int	 channel;
 double   factor;
-/*long     long_internal;*/
-int     long_internal;
 string	 debug_str;
 
 %% #include <math.h>
@@ -546,7 +544,7 @@ ss sncqxbpm_tools {
 	PVPUT(offset[ARR_INDEX(gain,4)], raw_d);
 	for (channel=1; channel <= NUM_CHANNELS; channel++) {
  	  sprintf (debug_str, 
-	     "  offset[%d]=%ld", 
+	     "  offset[%d]=%d", 
 	     channel,offset[ARR_INDEX(gain,channel)]);
  	  DEBUG_PRINT (19, debug_str);
 	}
