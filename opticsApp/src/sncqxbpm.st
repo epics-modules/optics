@@ -81,8 +81,8 @@ option +d;  /* turn ON run-time debugging messages */
 #define  BPM_TIMEOUT_TICKS 0.25   /* wait up to 0.25 seconds */
 #define  NUM_RETRIES       3
 
-#define  BPM_COMM(MODE, FMT, ...) {                              \
-  sprintf(bpm_command, FMT, bpm_address, __VA_ARGS__);                   \
+#define  BPM_COMM(MODE, FMT, V1, V2, V3) {                              \
+  sprintf(bpm_command, FMT, bpm_address, V1, V2, V3);                   \
   sprintf(debug_str, "BPM_COMM: <%s> (%d) <-- <%s>", s_aout, MODE, bpm_command);  \
   DEBUG_PRINT(15, debug_str);						\
   if (s_tmod != MODE) PVPUT(s_tmod,  MODE);   taskDelay (1);            \
@@ -118,7 +118,7 @@ option +d;  /* turn ON run-time debugging messages */
 #define  VARTYPE_FLOAT  1
 
 #define  BPM_READ(TYPE, BPM_VAR, LOCAL_VAR, PUT_FLAG) {                 \
-  BPM_COMM(TMOD_WRITE_READ, BPM_FMT_READ_VARIABLE, BPM_VAR);       \
+  BPM_COMM(TMOD_WRITE_READ, BPM_FMT_READ_VARIABLE, BPM_VAR, 0,0);       \
   if (!s_sevr) {                                                        \
     if (TYPE == VARTYPE_FLOAT) {                                        \
       sscanf(bpm_response, "%lg", &LOCAL_VAR);                          \
@@ -361,7 +361,7 @@ ss sncqxbpm {
       /*
        * Oxford BPM configuration
        */
-      BPM_COMM(TMOD_WRITE, BPM_FMT_RESET, 0);
+      BPM_COMM(TMOD_WRITE, BPM_FMT_RESET,     0,0,0);
       taskDelay(6);
       efSet(gain_mon);
       efSet(signal_mode_mon);
@@ -419,7 +419,7 @@ ss sncqxbpm {
     when (efTestAndClear(gain_mon))  {
       sprintf (debug_str, "gain changed to %s (%d)", gainStr[gain],gain);
       DEBUG_PRINT (5, debug_str);
-      BPM_COMM(TMOD_WRITE, BPM_FMT_SET_RANGE, gain+1);
+      BPM_COMM(TMOD_WRITE, BPM_FMT_SET_RANGE, gain+1, 0,0);
       /*
        * allow device to settle in after a gain (range) change
        * before processing currents again
@@ -439,19 +439,19 @@ ss sncqxbpm {
         sprintf (debug_str, "gain changed to %s (%d)",
           signal_modeStr[signal_mode], signal_mode);
         DEBUG_PRINT (5, debug_str);
-        BPM_COMM(TMOD_WRITE, BPM_FMT_INPUT_SINGLE, 0);
+        BPM_COMM(TMOD_WRITE, BPM_FMT_INPUT_SINGLE, 0,0,0);
       }
       if (signal_mode == BPM_SIGNAL_MODE_AVERAGE) {
         sprintf (debug_str, "gain changed to %s (%d) with buffer length = %d",
           signal_modeStr[signal_mode], signal_mode, buflen);
         DEBUG_PRINT (5, debug_str);
-        BPM_COMM(TMOD_WRITE, BPM_FMT_INPUT_AVG, buflen);
+        BPM_COMM(TMOD_WRITE, BPM_FMT_INPUT_AVG, buflen, 0,0);
       }
       if (signal_mode == BPM_SIGNAL_MODE_WINDOW) {
         sprintf (debug_str, "gain changed to %s (%d) with buffer length = %d",
           signal_modeStr[signal_mode], signal_mode, buflen);
         DEBUG_PRINT (5, debug_str);
-        BPM_COMM(TMOD_WRITE, BPM_FMT_INPUT_WINDOW, buflen);
+        BPM_COMM(TMOD_WRITE, BPM_FMT_INPUT_WINDOW, buflen, 0,0);
       }
     } state idle
 
@@ -464,7 +464,7 @@ ss sncqxbpm {
 
     /* update the diode current and beam position when idle */
     when (delay(period_s - BASE_SAMPLE_TIME + updateDelay))  {
-      BPM_COMM(TMOD_WRITE_READ, BPM_FMT_READ_ALL_CURRENT, 0);
+      BPM_COMM(TMOD_WRITE_READ, BPM_FMT_READ_ALL_CURRENT, 0,0,0);
       sprintf (debug_str, "serial.SEVR: %d", s_sevr);
       DEBUG_PRINT (5, debug_str);
       if (!s_sevr) {
@@ -585,3 +585,5 @@ ss sncqxbpm_tools {
   } /* state: idle */
 
 }
+
+
