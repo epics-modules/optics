@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <title>EPICS ePID controls for feedback</title>
@@ -6,10 +7,13 @@
     <meta name="author" content="Argonne National Laboratory"/>
   </head>
   <body>
-    <h1 class="UNI_headline">EPICS ePID controls for feedback</h1>
-    <p><strong>Purpose</strong>: use the EPICS epid record for generic software feedback</p>
+    <h1>EPICS ePID controls for feedback</h1>
+    <p><strong>Purpose</strong>: use the EPICS 
+    <a href="http://cars9.uchicago.edu/software/epics/epidRecord.html"
+          >epid</a> record for generic software feedback</p>
     <p><strong>Author</strong>: Pete R. Jemian </p>
-    <p>subversion property $Id$</p>
+    <p><strong>SVN</strong>: <tt>$Id$</tt></p>
+
     <h2>Theory of operation</h2>
     <ol>
       <li>A signal is available as an EPICS process variable (<strong>IN</strong>). The signal
@@ -34,6 +38,7 @@
         The feedback software must be prepared to start moving the positioner from its present
         location.</li>
     </ol>
+
     <h2>Related information</h2>
     <ul>
       <li>calc (EPICS Record): <a href="http://www.aps.anl.gov/bcda/synApps/calc/calc.html"
@@ -43,22 +48,43 @@
       <li>swait (EPICS Record): <a
           href="http://www.aps.anl.gov/bcda/synApps/calc/R2-4/swaitRecord.html"
           >http://www.aps.anl.gov/bcda/synApps/calc/R2-4/swaitRecord.html</a></li>
-      <li>source code components: <ul>
-          <li>EPICS MEDM screen: <a href="source/fb_epid.adl">fb_epid.adl</a></li>
-          <li>EPICS database: <a href="source/fb_epid.db">fb_epid.db</a></li>
-          <li>EPICS template: <a href="source/fb_epid_example.template"
-            >fb_epid_example.template</a></li>
-          <li>EPICS IOC configuration: <a href="source/fb_epid_example_st.cmd"
-              >fb_epid_example_st.cmd</a></li>
-          <li>EPICS autosave/restore request: <a href="source/fb_epid_example_auto_sr.req"
-              >fb_epid_example_auto_sr.req</a></li>
-          <li>EPICS autosave/restore example data: <a href="source/fb_epid_example_auto_sr.sav"
-              >fb_epid_example_auto_sr.sav</a></li>
-        </ul></li>
+      <li>source code components: 
+        <table border="2">
+            <tr>
+              <th>file</th>
+              <th>description</th>
+            </tr>
+            <tr>
+              <td><a href="source/fb_epid.adl">fb_epid.adl</a></td>
+              <td>EPICS MEDM screen</td>
+            </tr>
+            <tr>
+              <td><a href="source/fb_epid.db">fb_epid.db</a></td>
+              <td>EPICS database</td>
+            </tr>
+            <tr>
+              <td><a href="source/fb_epid_example.template" >fb_epid_example.template</a></td>
+              <td>EPICS database substitutions template</td>
+            </tr>
+          <tr>
+            <td><a href="source/fb_epid_example_st.cmd">fb_epid_example_st.cmd</a></td>
+            <td>EPICS IOC configuration</td>
+          </tr>
+          <tr>
+            <td><a href="source/fb_epid_example_auto_sr.req">fb_epid_example_auto_sr.req</a></td>
+            <td>EPICS autosave/restore request</td>
+          </tr>
+          <tr>
+            <td><a href="source/fb_epid_example_auto_sr.sav">fb_epid_example_auto_sr.sav</a></td>
+            <td>EPICS autosave/restore example data</td>
+          </tr>
+        </table>
+      </li>
       <li>
         <a href="docv1.html">previous observations</a>
       </li>
     </ul>
+
     <h2>MEDM control screen </h2>
     <table>
       <caption>fb_epid database GUI </caption>
@@ -81,7 +107,9 @@
         </td>
       </tr>
     </table>
-    <h1 class="UNI_headline">Information for the EPICS System Administrator</h1>
+
+    <h1>Information for the EPICS System Administrator</h1>
+
     <h2>How to use the database </h2>
     <p> Use one instance of this database for each feedback channel. If two different methods for
       feedback are desired for a given axis, call two instances of this database. For example, on
@@ -185,6 +213,7 @@
         </td>
       </tr>
     </table>
+
     <h2>Database flow chart </h2>
     <p>The present database was constructed after a brief period of <a href="tests">development
         testing</a>.</p>
@@ -239,9 +268,8 @@
 
     <h3>Setting the limits on the output</h3>
     <p> To prevent the epid record from driving the control variable out of bounds, there are limits
-      for low and high. The software will not allow the positioner to drive outside of these limits.
-        <strong style="color: red">Editor: Is this correct or is it a clamp on the output or a reset
-        if the value is found to go outside the range?</strong>
+      for low and high (using the epid record's .DRVL and .DRVH field). 
+      The epid record software will not allow the positioner to drive outside of these limits.
     </p>
 
     <h2>Tuning of the epid record</h2>
@@ -250,20 +278,20 @@
         >http://cars9.uchicago.edu/software/epics/epidRecord.html</a>. There is a special discussion
       on <a href="http://cars9.uchicago.edu/software/epics/epidRecord.html#Feedback%20Tuning"
         >feedback tuning</a> in PID mode.</p>
-    <p>The epid record can run in either Max/Min or PID mode. Max/Min is used to maximize a positive
-      input signal or minimize a negative input signal such as from a beam line detector. PID mode
-      is used to keep the input signal at constant value such as holding a sample's temperature
+    <p>The epid record can run in either Max/Min or PID mode. 
+      Max/Min is used to maximize a positive
+      input signal or minimize a negative input signal such as 
+      from a beam line detector.
+      PID mode is used to keep the input signal at constant value 
+      such as holding a sample's temperature
       constant. </p>
-    <p>
-      <strong style="color: red">Editor: What is the role of the <em>Set Point</em> in PID
-        mode?</strong> Probably need to check the epid record source code for this information. </p>
 
     <h3>Max/Min mode</h3>
     <p>Max/Min mode is useful for monochromator feedback or other situations where a positive signal
       is to be maximized (or a negative signal is to be minimized). The online <tt>epid</tt> record
       documentation is lacking details about this mode so one is referred to inspecting the <a
         href="https://subversion.xor.aps.anl.gov/trac/synApps/browser/trunk/support/std/vstub/stdApp/src/devEpidSoft.c"
-        >source code</a>.</p>
+        >source code</a>.   (Note:  In Max/Min mode, the Set Point is ignored.)</p>
 
     <h3>PID mode</h3>
     <p>PID mode is useful for holding the input signal to the <em>Set Point</em> by adjusting the
@@ -341,5 +369,11 @@
         <td>PV name: boolean value to permit operations; value becomes <tt>$(P):enable.E</tt></td>
       </tr>
     </table>
+
+    <h1>Simulator</h1>
+    <p>Use of the simulator is described 
+      <a href="simulator.html">next</a>.
+    </p>
+
   </body>
 </html>

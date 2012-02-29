@@ -1,6 +1,12 @@
+########### SVN repository information ###################
+# $Date$
+# $Author$
+# $Revision$
+# $URL$
+# $Id$
+########### SVN repository information ###################
 #
 # file:     fb_epid.db
-# date:     22 September 2004
 # purpose:  use the epid record for software feedback
 
 #------------------------------------------
@@ -225,3 +231,42 @@ grecord(swait, "$(P):enable") {
         # drive the epid FBON field
         field(OUTN, "$(P).FBON")
 }
+
+
+#--------------------------------------------
+# simulate a temperature sensor and heater
+#----------------------
+# A : minimum "temperature" allowed
+# B : cooling rate parameter
+# C : heater power
+# D : output of PID loop
+# E : heater relay closes when D > E
+# F : current "temperature"
+#----------------------
+# PID loop terms:
+#   $(P):in.INAN = "$(P):sim"
+#   $(P):out.OUTN = "$(P):sim.D"
+#   $(P):enable.INAN = "$(P):on.VAL"
+#   $(P).KP = "1.0"
+#   $(P).KI = "0.1"
+#   $(P).I = "0.0"
+#   $(P).KD = "0.0"
+#   $(P).DRVL = "0.0"
+#   $(P).DRVH = "1.0"
+#   $(P).FMOD = "PID"
+#----------------------
+grecord(swait, "$(P):sim") {
+        field(DESC, "EPID Temperature Controller simulator")
+        field(PREC, "5")
+        field(SCAN, ".1 second")
+        field(CALC, "max(A,F*(1-B)+C*D*G)")
+	field(A,    "0.1")	# minimum "temperature"
+	field(B,    "0.05")	# cooling rate parameter
+	field(C,    "30")	# heater power
+	field(D,    "0")	# driven by epid loop
+	field(E,    "0.8")	# relay close threshold
+	field(INFN, "$(P):sim.VAL")
+	field(INGN, "$(P).FBON")# is feedback ON?
+}
+# What about this cycling the relay too often?
+# Can there be some hysteresis added?
