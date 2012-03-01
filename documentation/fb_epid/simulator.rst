@@ -1,18 +1,21 @@
 .. $Id$
   -
   build the HTML documentation using this command:
-  cmd> rst2html simulator.rst simulator.html
+  cmd> rst2html -s -d simulator.rst simulator.html
 
 ================================================
 ``fb_epid`` simulator
 ================================================
 
+.. sectnum::
+
+.. contents::
 
 Example use of the ``fb_epid`` simulator
 ------------------------------------------
 
 The support database has a simulator to help learn how 
-to use the ``epid`` support.  The simulator models the 
+to use the ``fb_epid`` support.  The simulator models the 
 temperature of something which is subject to some cooling.
 There is support for heating power to be applied, as 
 directed by the output of the ``epid`` record.  The cooling 
@@ -62,7 +65,33 @@ supplied ``fb_epid.substitutions`` file.
 Interface Screens
 ++++++++++++++++++++
 
-to be written
+start a MEDM session with a command such as::
+
+    medm -x -macro "P=xxx:epid1,C=:sim" fb_epid_sim.adl &
+
+This screen provides access to the simulator,
+the ``swait`` calculation record, and 
+the ``fb_epid`` controls that support it.
+
+.. figure:: fb_epid_sim_adl.png
+   :alt: main MEDM control screen for simulator
+
+   Figure: ``fb_epid`` temperature simulator controls
+
+The ``calc`` button brings up this screen:
+
+.. figure:: userCalc_adl.png
+   :alt: simulator calculation
+
+   Figure: temperature simulator calculation
+
+The ``controls`` button brings up the standard ``fb_epid`` controls:
+
+.. figure:: fb_epid_adl.png
+   :alt: simulator calculation
+
+   Figure: `fb_epid`` main control screen
+
 
 Operation
 ++++++++++++++++++++
@@ -76,4 +105,4 @@ to be written
 .. -----------------
 
 .. [#swait] EPICS ``swait`` record:
-   http://www.aps.anl.gov/bcda/synApps/calc/R2-4/swaitRecord.html
+   http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html

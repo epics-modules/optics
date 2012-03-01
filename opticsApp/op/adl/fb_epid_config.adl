@@ -1,12 +1,12 @@
 
 file {
-	name="/home/jemian/epics/ioc/prj/prjApp/op/adl/fb_epid_config.adl"
+	name="/usr/local/epics/ioc/prj/prjApp/op/adl/fb_epid_config.adl"
 	version=030104
 }
 display {
 	object {
-		x=90
-		y=82
+		x=106
+		y=140
 		width=650
 		height=340
 	}
@@ -89,6 +89,18 @@ display {
 }
 text {
 	object {
+		x=42
+		y=290
+		width=500
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="The <output buffer calc> is for internal use.  Do not use it!"
+}
+text {
+	object {
 		x=16
 		y=4
 		width=200
@@ -109,7 +121,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="last update: 2012-02-28 (prj)"
+	textix="last update: 2012-03-01 (prj)"
 }
 text {
 	object {
@@ -377,17 +389,6 @@ text {
 text {
 	object {
 		x=42
-		y=290
-		width=500
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-}
-text {
-	object {
-		x=42
 		y=310
 		width=500
 		height=14
@@ -395,6 +396,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
+	textix="The <resume calc> is for internal use.  Do not use it!"
 }
 "text entry" {
 	object {

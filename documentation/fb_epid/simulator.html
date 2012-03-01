@@ -312,14 +312,25 @@ ul.auto-toc {
 <body>
 <div class="document" id="fb-epid-simulator">
 <h1 class="title"><tt class="docutils literal">fb_epid</tt> simulator</h1>
-<h2 class="subtitle" id="example-use-of-the-fb-epid-simulator">Example use of the <tt class="docutils literal">fb_epid</tt> simulator</h2>
 
-<!-- $Id: $
+<!-- $Id: simulator.rst 14504 2012-02-29 21:11:18Z jemian $
 -
 build the HTML documentation using this command:
-cmd> rst2html simulator.rst simulator.html -->
+cmd> rst2html -s -d simulator.rst simulator.html -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#example-use-of-the-fb-epid-simulator" id="id2">1&nbsp;&nbsp;&nbsp;Example use of the <tt class="docutils literal">fb_epid</tt> simulator</a><ul class="auto-toc">
+<li><a class="reference internal" href="#interface-screens" id="id3">1.1&nbsp;&nbsp;&nbsp;Interface Screens</a></li>
+<li><a class="reference internal" href="#operation" id="id4">1.2&nbsp;&nbsp;&nbsp;Operation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="example-use-of-the-fb-epid-simulator">
+<h1><a class="toc-backref" href="#id2">1&nbsp;&nbsp;&nbsp;Example use of the <tt class="docutils literal">fb_epid</tt> simulator</a></h1>
 <p>The support database has a simulator to help learn how
-to use the <tt class="docutils literal">epid</tt> support.  The simulator models the
+to use the <tt class="docutils literal">fb_epid</tt> support.  The simulator models the
 temperature of something which is subject to some cooling.
 There is support for heating power to be applied, as
 directed by the output of the <tt class="docutils literal">epid</tt> record.  The cooling
@@ -408,7 +419,7 @@ The fields are assigned as follows:</p>
 <p>This configuration is defined in the
 supplied <tt class="docutils literal">fb_epid.substitutions</tt> file.</p>
 <pre class="literal-block">
-# $Id: fb_epid.substitutions 1773 2012-02-28 23:24:40Z jemian $
+# $Id: fb_epid.substitutions 14504 2012-02-29 21:11:18Z jemian $
 
 file &quot;$(OPTICS)/opticsApp/Db/fb_epid.db&quot;
   {
@@ -427,11 +438,31 @@ file &quot;$(OPTICS)/opticsApp/Db/fb_epid.db&quot;
 
 </pre>
 <div class="section" id="interface-screens">
-<h1>Interface Screens</h1>
-<p>to be written</p>
+<h2><a class="toc-backref" href="#id3">1.1&nbsp;&nbsp;&nbsp;Interface Screens</a></h2>
+<p>start a MEDM session with a command such as:</p>
+<pre class="literal-block">
+medm -x -macro &quot;P=xxx:epid1,C=:sim&quot; fb_epid_sim.adl &amp;
+</pre>
+<p>This screen provides access to the simulator,
+the <tt class="docutils literal">swait</tt> calculation record, and
+the <tt class="docutils literal">fb_epid</tt> controls that support it.</p>
+<div class="figure">
+<img alt="main MEDM control screen for simulator" src="fb_epid_sim_adl.png" />
+<p class="caption">Figure: <tt class="docutils literal">fb_epid</tt> temperature simulator controls</p>
+</div>
+<p>The <tt class="docutils literal">calc</tt> button brings up this screen:</p>
+<div class="figure">
+<img alt="simulator calculation" src="userCalc_adl.png" />
+<p class="caption">Figure: temperature simulator calculation</p>
+</div>
+<p>The <tt class="docutils literal">controls</tt> button brings up the standard <tt class="docutils literal">fb_epid</tt> controls:</p>
+<div class="figure">
+<img alt="simulator calculation" src="fb_epid_adl.png" />
+<p class="caption">Figure: <cite>fb_epid`</cite> main control screen</p>
+</div>
 </div>
 <div class="section" id="operation">
-<h1>Operation</h1>
+<h2><a class="toc-backref" href="#id4">1.2&nbsp;&nbsp;&nbsp;Operation</a></h2>
 <p>to be written</p>
 <p class="rubric">Footnotes</p>
 <!-- References -->
@@ -440,10 +471,17 @@ file &quot;$(OPTICS)/opticsApp/Db/fb_epid.db&quot;
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>EPICS <tt class="docutils literal">swait</tt> record:
-<a class="reference external" href="http://www.aps.anl.gov/bcda/synApps/calc/R2-4/swaitRecord.html">http://www.aps.anl.gov/bcda/synApps/calc/R2-4/swaitRecord.html</a></td></tr>
+<a class="reference external" href="http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html">http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html</a></td></tr>
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="simulator.rst">View document source</a>.
+Generated on: 2012-03-01.
+
 </div>
 </body>
 </html>

@@ -247,7 +247,7 @@ grecord(swait, "$(P):enable") {
 #   $(P):in.INAN = "$(P):sim"
 #   $(P):out.OUTN = "$(P):sim.D"
 #   $(P):enable.INAN = "$(P):on.VAL"
-#   $(P).KP = "1.0"
+#   $(P).KP = "0.01"
 #   $(P).KI = "0.1"
 #   $(P).I = "0.0"
 #   $(P).KD = "0.0"
@@ -268,5 +268,3 @@ grecord(swait, "$(P):sim") {
 	field(INFN, "$(P):sim.VAL")
 	field(INGN, "$(P).FBON")# is feedback ON?
 }
-# What about this cycling the relay too often?
-# Can there be some hysteresis added?
