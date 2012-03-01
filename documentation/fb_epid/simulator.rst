@@ -1,7 +1,7 @@
 .. $Id$
-  -
-  build the HTML documentation using this command:
-  cmd> rst2html -s -d simulator.rst simulator.html
+   .
+   build the HTML documentation using this command:
+   cmd> rst2html -s -d simulator.rst simulator.html
 
 ================================================
 ``fb_epid`` simulator

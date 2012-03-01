@@ -1,4 +1,4 @@
-.. $Id $
+.. $Id$
    .
    cmd>  rst2html -s -dindex.rst index.html
 
