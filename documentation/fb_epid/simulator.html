@@ -313,10 +313,27 @@ ul.auto-toc {
 <div class="document" id="fb-epid-simulator">
 <h1 class="title"><tt class="docutils literal">fb_epid</tt> simulator</h1>
 
-<!-- $Id: simulator.rst 14536 2012-03-01 22:56:26Z jemian $
+<!-- $Id: simulator.rst 14555 2012-03-02 20:21:10Z jemian $
 .
 build the HTML documentation using this command:
-cmd> rst2html -s -d simulator.rst simulator.html -->
+cmd>  rst2html -s -d simulator.{rst,html} -->
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>Purpose</strong></td>
+<td>describe the simulator in the <tt class="docutils literal">fb_epid</tt> support</td>
+</tr>
+<tr><td><strong>Author</strong></td>
+<td>Pete R. Jemian</td>
+</tr>
+<tr><td><strong>SVN</strong></td>
+<td>$Id: simulator.rst 14555 2012-03-02 20:21:10Z jemian $</td>
+</tr>
+</tbody>
+</table>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="auto-toc simple">
@@ -326,6 +343,14 @@ cmd> rst2html -s -d simulator.rst simulator.html -->
 </ul>
 </li>
 </ul>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">About ...</p>
+<p class="last">This simulator is part of the <tt class="docutils literal">fb_epid</tt> support in
+the synApps
+<a class="reference external" href="http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html">optics</a>
+module.  See <a class="reference external" href="index.html">here</a> for documentation
+of the <tt class="docutils literal">fb_epid</tt> support.</p>
 </div>
 <div class="section" id="example-use-of-the-fb-epid-simulator">
 <h1><a class="toc-backref" href="#id2">1&nbsp;&nbsp;&nbsp;Example use of the <tt class="docutils literal">fb_epid</tt> simulator</a></h1>
@@ -441,7 +466,7 @@ file &quot;$(OPTICS)/opticsApp/Db/fb_epid.db&quot;
 <h2><a class="toc-backref" href="#id3">1.1&nbsp;&nbsp;&nbsp;Interface Screens</a></h2>
 <p>start a MEDM session with a command such as:</p>
 <pre class="literal-block">
-medm -x -macro &quot;P=xxx:epid1,C=:sim&quot; fb_epid_sim.adl &amp;
+medm -x -macro &quot;P=prj:epid1,C=:sim&quot; fb_epid_sim.adl &amp;
 </pre>
 <p>This screen provides access to the simulator,
 the <tt class="docutils literal">swait</tt> calculation record, and
@@ -480,7 +505,7 @@ the <tt class="docutils literal">fb_epid</tt> controls that support it.</p>
 <div class="footer">
 <hr class="footer" />
 <a class="reference external" href="simulator.rst">View document source</a>.
-Generated on: 2012-03-01.
+Generated on: 2012-03-02.
 
 </div>
 </body>
