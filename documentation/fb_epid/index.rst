@@ -1,6 +1,6 @@
 .. $Id$
    .
-   cmd>  rst2html -s -dindex.rst index.html
+   cmd>  rst2html -s -d index.{rst,html}
 
 
 ========================================================
@@ -16,6 +16,11 @@ EPICS ``fb_epid`` feedback controls
 .. sectnum::
 
 .. contents::
+
+.. sidebar:: About ...
+
+   This simulator is part of the ``fb_epid`` support in 
+   the synApps optics [#optics]_ module.
 
 Overview
 -----------------
@@ -36,18 +41,20 @@ optics [#optics]_ module.
 Theory of operation
 ++++++++++++++++++++++
 
-#. A signal is available as an EPICS process variable (IN). 
-   The signal source can be in the same VME with the feedback 
+#. A signal is provided as an EPICS process variable (macro parameter IN). 
+   The signal source can be in the same IOC with the feedback 
    software or in another EPICS IOC available on the network.
-#. An input calculation (swait record) is used to allow some 
+   The variable should be a floating point.  (In principle, it
+   *could* be an integer but the feedback may not be so smooth.)
+#. The input calculation (swait record) provides some 
    flexibility for conditioning the input signal to the feedback.
-#. An epid record is used to provide real-time feedback and 
+#. An epid record provides real-time feedback and 
    recalculate the output variable.
 #. The output from the epid record is buffered by the ``obuf``
    calculation which watches the Feedback ON (FBON) switch 
    and retains the previous output value if the feedback 
    software is switched off.
-#. An output calculation is used to allow some flexibility 
+#. The output calculation allows some flexibility 
    for conditioning the output signal to the positioner (OUT). 
    The conditioned epid result is pushed to the positioner.
 #. A positioner responds to the result from the epid record 
@@ -92,7 +99,7 @@ Follow these steps to install the ``fb_epid`` support:
 modify the IOC's ``st.cmd`` file
 ++++++++++++++++++++++++++++++++++++++
 
-To install this software, make changes in the IOC's ``st.cmd` file,
+To install this software, make changes in the IOC's ``st.cmd`` file,
 adding this line anywhere between the calls to 
 ``dbLoadDatabase`` and ``iocInit``::
 
@@ -177,21 +184,21 @@ widget in MEDM::
    	   display[0] {
    		   label="fb_epid"
    		   name="fb_epid.adl"
-   		   args="P=xxx:epid1"
+   		   args="P=prj:epid1"
    	   }
    	   display[1] {
    		   label="simulator"
    		   name="fb_epid_sim.adl"
-   		   args="P=xxx:epid1,C=sim"
+   		   args="P=prj:epid1,C=sim"
    	   }
    	   clr=0
    	   bclr=17
-   	   label="-xxx:epid1"
+   	   label="-prj:epid1"
    }
 
 Or start MEDM using a command line such as::
 
-    medm -x -macro "P=xxx:epid1" fb_epid.adl &
+    medm -x -macro "P=prj:epid1" fb_epid.adl &
 
 
 Macro substitutions in the ``fb_epid.adl`` file
@@ -388,9 +395,10 @@ will not allow the positioner to drive outside of these limits.
 Tuning of the epid record
 ++++++++++++++++++++++++++++++++++++++
 
-For more information about the EPICS epid record, 
-see http://cars9.uchicago.edu/software/epics/epidRecord.html. 
-There is a special discussion on feedback tuning in PID mode.
+In the ``epid`` record documentation [#epid]_,
+there is a special discussion on feedback tuning in PID mode.
+Refer to the documentation for more information on the 
+EPICS ``epid`` record.
 
 The epid record can run in either Max/Min or PID mode. 
 Max/Min is used to maximize a positive input signal or 
@@ -420,8 +428,8 @@ of how to set the PID constants.
 Example using the simulator
 ++++++++++++++++++++++++++++++++++++++
 
-(TODO: write this section or learn how to link from .rst to the
-simulator.html document in the same directory.)
+An example demonstrating the simulator is provided in the
+`simulator documentation <simulator.html>`_.
 
 Example DCM feedback from X-ray Beam Position Monitor
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -446,19 +454,19 @@ This example shows the startup configuration used to maintain
 the XBPM vertical beam position by controlling the DCM second 
 crystal PZT voltage.
 
-========   ========================  ========================================
-macro	   configured value          meaning
-========   ========================  ========================================
-P	   iad:fbe:xbpm:y            PV of this ``fb_epid`` instance
-IN	   iad:xbpm:pos:y            Y position from the XBPM
-OUT	   iad:540:c0:out0	     control voltage of the PZT
-MODE	   PID			     hold position steady using PID
-CALC	   A&&B&&C		     only when EPID is ON and both permits
-PERMIT1    iad:beamAvailable.VAL     require X-ray beam to be ready
-PERMIT2    iad:xbpm:current:ok.VAL   require XBPM signal to be valid
-PERMIT3 			     unused
-PERMIT4 			     unused
-========   ========================  ========================================
+========   ================================   ========================================
+macro	   configured value		      meaning
+========   ================================   ========================================
+P	   ``iad:fbe:xbpm:y``		      PV of this ``fb_epid`` instance
+IN	   ``iad:xbpm:pos:y``		      Y position from the XBPM
+OUT	   ``iad:540:c0:out0``		      control voltage of the PZT
+MODE	   ``PID``				      hold position steady using PID
+CALC	   ``A&&B&&C``			      only when EPID is ON and both permits
+PERMIT1    ``iad:beamAvailable.VAL``	      require X-ray beam to be ready
+PERMIT2    ``iad:xbpm:current:ok.VAL``	      require XBPM signal to be valid
+PERMIT3 				      unused
+PERMIT4 				      unused
+========   ================================   ========================================
 
 Example Monochromator feedback from beam intensity monitor
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -468,32 +476,29 @@ intensity (reported as a floating-point or large integer number).
 A list of suitable such monitors might include ionization chambers 
 graphite foils, or fluorescent materials with photodiodes.
 
-========   ========================  ========================================
-macro	   configured value          meaning
-========   ========================  ========================================
-P	   iad:fbe:D3:y 	     PV of this ``fb_epid`` instance
-IN	   iad:540:c0:in10	     signal from the beam intensity monitor
-OUT	   iad:540:c0:out0	     control voltage of the PZT
-MODE	   Max/Min		     maximize beam intensity
-CALC	   A&&B 		     only when EPID is ON and one permit
-PERMIT1    iad:beamAvailable.VAL     require X-ray beam to be ready
-PERMIT2 	 		     unused
-PERMIT3 	 		     unused
-PERMIT4 	 		     unused
-========   ========================  ========================================
+========   ===========================  ========================================
+macro	   configured value		meaning
+========   ===========================  ========================================
+P	   ``iad:fbe:D3:y``		PV of this ``fb_epid`` instance
+IN	   ``iad:540:c0:in10``		signal from the beam intensity monitor
+OUT	   ``iad:540:c0:out0``		control voltage of the PZT
+MODE	   ``Max/Min``			maximize beam intensity
+CALC	   ``A&&B``			only when EPID is ON and one permit
+PERMIT1    ``iad:beamAvailable.VAL``	require X-ray beam to be ready
+PERMIT2 				unused
+PERMIT3 				unused
+PERMIT4 				unused
+========   ===========================  ========================================
 
 
-Previous observations (during initial development)
+Previous observations During Initial Development
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-provide links to these two documents:
+Notes from the early stages of development show motivations for
+the construction of this database support.
 
-* docv1.html
-* tests/index.html
-
-.. TODO: docv1.html
-
-.. TODO: tests/index.html
+#. `Notes from initial epid record testing in 2004-06 <tests/index.html>`_
+#. `Early notes on the fb_epid support from 2004-06 <docv1.html>`_
 
 
 Infrastructure
@@ -527,18 +532,20 @@ The records of the database are defined in this table:
 ===========  ===============  ================================================
 record type  name             description
 ===========  ===============  ================================================
-epid	     ``$(P)``	      .epid record instance
-swait	     ``$(P):in``      .input signal collector
-swait	     ``$(P):obuf``    .for internal use
-swait	     ``$(P):out``     .output signal collector
-sseq	     ``$(P):outpv``   .part of bumpless start feature
-swait	     ``$(P):resume``  .part of bumpless start feature
-bo	     ``$(P):on``      .disconnects epid from output (turns epid OFF)
-swait	     ``$(P):enable``  .automatic ON/OFF feature
-swait	     ``$(P):sim``     .simulated temperature reading and heater
+epid	     ``$(P)``	      Epid record instance
+swait	     ``$(P):in``      Input signal collector
+swait	     ``$(P):obuf``    Enforces ``$(P).FBON`` to disconnect epid 
+                              record from output so ``$(OUT)`` is not changed
+swait	     ``$(P):out``     Output signal collector
+sseq	     ``$(P):outpv``   Part of bumpless start feature
+swait	     ``$(P):resume``  Part of bumpless start feature
+bo	     ``$(P):on``      User switch to turn epid ON or OFF
+swait	     ``$(P):enable``  Automatic ON/OFF feature
+swait	     ``$(P):sim``     Simulated temperature reading and heater
 ===========  ===============  ================================================
 
 A figure was produced to show how these records are connected.
+Note that the simulator record (``$(P):sim``)is not shown in this figure.
 
 
 .. figure:: fb_epid.png
@@ -562,8 +569,7 @@ record was added to simulate the temperature reading of an object
 that is exposed to some cooling power.  A heater with adjustable power
 may applied, either as adjustable power or as a switched power.
 
-See <simulator.html>_
-Until the link can be made, see the file:  simulator.html
+Documentation of the simulator is provided on a `related page <simulator.html>`_.
 
 
 
@@ -572,6 +578,6 @@ Until the link can be made, see the file:  simulator.html
 .. [#calc]     EPICS calc Record:	    http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html
 .. [#epid]     EPICS epid Record:	    http://cars9.uchicago.edu/software/epics/epidRecord.html
 .. [#epid_source] epid source code:         https://subversion.xor.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c
-.. [#optics]   EPICS synApps optics module: http://www.aps.anl.gov/bcda/synApps/optics
+.. [#optics]   EPICS synApps optics module: http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html
 .. [#swait]    EPICS swait Record:	    http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html
 .. [#synApps]  EPICS synApps:		    http://www.aps.anl.gov/bcda/synApps

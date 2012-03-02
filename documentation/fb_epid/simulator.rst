@@ -1,15 +1,29 @@
 .. $Id$
    .
    build the HTML documentation using this command:
-   cmd> rst2html -s -d simulator.rst simulator.html
+   cmd>  rst2html -s -d simulator.{rst,html}
 
 ================================================
 ``fb_epid`` simulator
 ================================================
 
+=========== ================================================================
+**Purpose** describe the simulator in the ``fb_epid`` support
+**Author**  Pete R. Jemian
+**SVN**     $Id$
+=========== ================================================================
+
 .. sectnum::
 
 .. contents::
+
+.. sidebar:: About ...
+
+   This simulator is part of the ``fb_epid`` support in 
+   the synApps 
+   `optics <http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html>`_ 
+   module.  See `here <index.html>`_ for documentation
+   of the ``fb_epid`` support.
 
 Example use of the ``fb_epid`` simulator
 ------------------------------------------
@@ -67,7 +81,7 @@ Interface Screens
 
 start a MEDM session with a command such as::
 
-    medm -x -macro "P=xxx:epid1,C=:sim" fb_epid_sim.adl &
+    medm -x -macro "P=prj:epid1,C=:sim" fb_epid_sim.adl &
 
 This screen provides access to the simulator,
 the ``swait`` calculation record, and 
