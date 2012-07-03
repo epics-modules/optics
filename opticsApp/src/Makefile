@@ -59,4 +59,6 @@ optics_LIBS += $(EPICS_BASE_IOC_LIBS)
 include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
-
+# Parallel build sometimes fails.
+# Make dependences on tableRecord.h explicit.
+tableRecord$(OBJ): $(COMMON_DIR)/tableRecord.h
