@@ -15,10 +15,10 @@ double density[NUM_SPECIES] = {
 struct filterMaterial {
 	int Z;
 	char *name;
-	double density;
+	float density;			/* g/cm^3 */
 	int numEntries;
-	double keV[NUM_ENTRIES];
-	double mu[NUM_ENTRIES];
+	float keV[NUM_ENTRIES];
+	float mu[NUM_ENTRIES];	/* cm^2/g */
 } filt[NUM_SPECIES] = {
 	{
 		4,
