@@ -1,4 +1,5 @@
-grecord(ao,"$(P)SGM$(N):2Theta") {
+
+record(ao,"$(P)SGM$(N):2Theta") {
 	field(DESC,"included angle")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T1.D  PP MS")
@@ -7,48 +8,56 @@ grecord(ao,"$(P)SGM$(N):2Theta") {
 	field(EGU,"degrees")
 	field(DRVH,"180")
 }
-grecord(ao,"$(P)SGM$(N):Energy") {
+
+record(ao,"$(P)SGM$(N):Energy") {
 	field(DESC,"SGM$(N):Energy")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T1.E  PP MS")
 	field(PREC,"3")
 	field(EGU,"eV")
 }
-grecord(ao,"$(P)SGM$(N):EnergyB") {
+
+record(ao,"$(P)SGM$(N):EnergyB") {
 	field(DTYP,"Soft Channel")
 	field(SDIS,"$(P)SGM$(N):Energy.PACT  NPP MS")
 	field(OUT,"$(P)SGM$(N):Energy.VAL  PP MS")
 }
-grecord(ao,"$(P)SGM$(N):EnergyRBV") {
+
+record(ao,"$(P)SGM$(N):EnergyRBV") {
 	field(DESC,"Energy readback")
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
 	field(EGU,"eV")
 }
-grecord(ao,"$(P)SGM$(N):GrMotorVal") {
+
+record(ao,"$(P)SGM$(N):GrMotorVal") {
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):GrMotPut1.A  PP MS")
 	field(PREC,"3")
 }
-grecord(ao,"$(P)SGM$(N):Lambda") {
+
+record(ao,"$(P)SGM$(N):Lambda") {
 	field(DESC,"SGM$(N):Wavelength")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T1.F  PP MS")
 	field(PREC,"6")
 	field(EGU,"Angstroms")
 }
-grecord(ao,"$(P)SGM$(N):LambdaB") {
+
+record(ao,"$(P)SGM$(N):LambdaB") {
 	field(DTYP,"Soft Channel")
 	field(SDIS,"$(P)SGM$(N):Lambda.PACT  NPP MS")
 	field(OUT,"$(P)SGM$(N):Lambda.VAL  PP MS")
 }
-grecord(ao,"$(P)SGM$(N):LambdaRBV") {
+
+record(ao,"$(P)SGM$(N):LambdaRBV") {
 	field(DESC,"Wavelength readback")
 	field(DTYP,"Soft Channel")
 	field(PREC,"6")
 	field(EGU,"Angstroms")
 }
-grecord(ao,"$(P)SGM$(N):R") {
+
+record(ao,"$(P)SGM$(N):R") {
 	field(DESC,"radius of curvature")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T2.B  PP MS")
@@ -57,11 +66,13 @@ grecord(ao,"$(P)SGM$(N):R") {
 	field(EGU,"m")
 	field(DRVH,"1.e6")
 }
-grecord(ao,"$(P)SGM$(N):StripeWidth") {
+
+record(ao,"$(P)SGM$(N):StripeWidth") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
 }
-grecord(ao,"$(P)SGM$(N):d") {
+
+record(ao,"$(P)SGM$(N):d") {
 	field(DESC,"grating-line spacing")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T1.B  PP MS")
@@ -71,7 +82,8 @@ grecord(ao,"$(P)SGM$(N):d") {
 	field(EGU,"Angstroms")
 	field(DRVH,"1.e7")
 }
-grecord(ao,"$(P)SGM$(N):gDensity") {
+
+record(ao,"$(P)SGM$(N):gDensity") {
 	field(DESC,"grating-line density")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):dCalc.A  PP MS")
@@ -80,7 +92,8 @@ grecord(ao,"$(P)SGM$(N):gDensity") {
 	field(EGU,"1/mm")
 	field(DRVH,"1.e7")
 }
-grecord(ao,"$(P)SGM$(N):len") {
+
+record(ao,"$(P)SGM$(N):len") {
 	field(DESC,"tangent-arm length")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T1.C  PP MS")
@@ -89,7 +102,8 @@ grecord(ao,"$(P)SGM$(N):len") {
 	field(EGU,"m")
 	field(DRVH,"1.")
 }
-grecord(ao,"$(P)SGM$(N):phi") {
+
+record(ao,"$(P)SGM$(N):phi") {
 	field(DESC,"SGM$(N):grating angle")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T1.G  PP MS")
@@ -98,51 +112,61 @@ grecord(ao,"$(P)SGM$(N):phi") {
 	field(DRVH,"20")
 	field(DRVL,"-20")
 }
-grecord(ao,"$(P)SGM$(N):phiB") {
+
+record(ao,"$(P)SGM$(N):phiB") {
 	field(DTYP,"Soft Channel")
 	field(SDIS,"$(P)SGM$(N):phi.PACT  NPP MS")
 	field(OUT,"$(P)SGM$(N):phi.VAL  PP MS")
 }
-grecord(ao,"$(P)SGM$(N):phiRBV") {
+
+record(ao,"$(P)SGM$(N):phiRBV") {
 	field(DESC,"phi readback")
 	field(DTYP,"Soft Channel")
 	field(PREC,"6")
 	field(EGU,"degrees")
 }
-grecord(ao,"$(P)SGM$(N):xOff") {
+
+record(ao,"$(P)SGM$(N):xOff") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
 }
-grecord(bi,"$(P)SGM$(N):saveAuto") {
+
+record(bi,"$(P)SGM$(N):saveAuto") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)SGM$(N):toManual.VAL  PP MS")
 	field(INP,"$(P)SGM$(N):auto.VAL  NPP NMS")
 	field(ZNAM,"Manual")
 	field(ONAM,"Auto")
 }
-grecord(bo,"$(P)SGM$(N):auto") {
+
+record(bo,"$(P)SGM$(N):auto") {
 	field(DESC,"manual/auto switch")
 	field(DTYP,"Soft Channel")
 	field(ZNAM,"Manual")
 	field(ONAM,"Auto")
 }
-grecord(bo,"$(P)SGM$(N):autoMove") {
+
+record(bo,"$(P)SGM$(N):autoMove") {
 	field(DTYP,"Soft Channel")
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):auto.VAL  NPP NMS")
 	field(FLNK,"$(P)SGM$(N):move.VAL  PP MS")
 }
-grecord(bo,"$(P)SGM$(N):exists") {
+
+record(bo,"$(P)SGM$(N):exists") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)SGM$(N):gratingPut.VAL  PP MS")
 }
-grecord(bo,"$(P)SGM$(N):hold") {
+
+record(bo,"$(P)SGM$(N):hold") {
 	field(DTYP,"Soft Channel")
 }
-grecord(bo,"$(P)SGM$(N):moving") {
+
+record(bo,"$(P)SGM$(N):moving") {
 	field(DTYP,"Soft Channel")
 }
-grecord(bo,"$(P)SGM$(N):restoreAuto") {
+
+record(bo,"$(P)SGM$(N):restoreAuto") {
 	field(DTYP,"Soft Channel")
 	field(OMSL,"closed_loop")
 	field(DOL,"$(P)SGM$(N):saveAuto.VAL  NPP MS")
@@ -150,47 +174,55 @@ grecord(bo,"$(P)SGM$(N):restoreAuto") {
 	field(ZNAM,"Manual")
 	field(ONAM,"Auto")
 }
-grecord(bo,"$(P)SGM$(N):set") {
+
+record(bo,"$(P)SGM$(N):set") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)SGM$(N):set1.VAL  PP MS")
 	field(OUT,"$(P)$(M_x).SET  PP MS")
 	field(ZNAM,"Use")
 	field(ONAM,"Set")
 }
-grecord(bo,"$(P)SGM$(N):set1") {
+
+record(bo,"$(P)SGM$(N):set1") {
 	field(DTYP,"Soft Channel")
 	field(OMSL,"closed_loop")
 	field(DOL,"$(P)SGM$(N):set.VAL  PP MS")
 	field(OUT,"$(P)$(M_rOut).SET  PP MS")
 }
-grecord(bo,"$(P)SGM$(N):toManual") {
+
+record(bo,"$(P)SGM$(N):toManual") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)SGM$(N):selBank.VAL  PP MS")
 	field(DOL,"0")
 	field(OUT,"$(P)SGM$(N):auto.VAL  PP MS")
 }
-grecord(calc,"$(P)SGM$(N):dCalc") {
+
+record(calc,"$(P)SGM$(N):dCalc") {
 	field(DESC,"cvt lines/mm to A/line")
 	field(FLNK,"$(P)SGM$(N):d.VAL  PP MS")
 	field(CALC,"1.e7/a")
 	field(EGU,"Angstroms")
 	field(PREC,"6")
 }
-grecord(calc,"$(P)SGM$(N):selBank") {
+
+record(calc,"$(P)SGM$(N):selBank") {
 	field(FLNK,"$(P)SGM$(N):selVal.VAL  PP MS")
 	field(CALC,"a>9?1:0")
 	field(INPA,"$(P)SGM$(N):grating.VAL  PP MS")
 }
-grecord(calc,"$(P)SGM$(N):selVal") {
+
+record(calc,"$(P)SGM$(N):selVal") {
 	field(FLNK,"$(P)SGM$(N):checkExists.VAL  PP MS")
 	field(CALC,"a%10+1")
 	field(INPA,"$(P)SGM$(N):grating.VAL  PP MS")
 }
-grecord(fanout,"$(P)SGM$(N):checkExists") {
+
+record(fanout,"$(P)SGM$(N):checkExists") {
 	field(LNK1,"$(P)SGM$(N):sel_exists_1.VAL  PP MS")
 	field(LNK2,"$(P)SGM$(N):sel_exists_2.VAL  PP MS")
 }
-grecord(fanout,"$(P)SGM$(N):gPut_1") {
+
+record(fanout,"$(P)SGM$(N):gPut_1") {
 	field(FLNK,"$(P)SGM$(N):gPut_2.VAL  PP MS")
 	field(LNK1,"$(P)SGM$(N):sel_R_1.VAL  PP MS")
 	field(LNK2,"$(P)SGM$(N):sel_R_2.VAL  PP MS")
@@ -199,14 +231,16 @@ grecord(fanout,"$(P)SGM$(N):gPut_1") {
 	field(LNK5,"$(P)SGM$(N):sel_Whigh_1.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):sel_Whigh_2.VAL  PP MS")
 }
-grecord(fanout,"$(P)SGM$(N):gPut_2") {
+
+record(fanout,"$(P)SGM$(N):gPut_2") {
 	field(FLNK,"$(P)SGM$(N):init.PROC  PP MS")
 	field(LNK1,"$(P)SGM$(N):sel_loc_1.VAL  PP MS")
 	field(LNK2,"$(P)SGM$(N):sel_loc_2.VAL  PP MS")
 	field(LNK3,"$(P)SGM$(N):sel_xOff_1.VAL  PP MS")
 	field(LNK4,"$(P)SGM$(N):sel_xOff_2.VAL  PP MS")
 }
-grecord(fanout,"$(P)SGM$(N):gratingPut") {
+
+record(fanout,"$(P)SGM$(N):gratingPut") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):exists.VAL  NPP MS")
 	field(FLNK,"$(P)SGM$(N):gPut_1.VAL  PP MS")
@@ -217,14 +251,16 @@ grecord(fanout,"$(P)SGM$(N):gratingPut") {
 	field(LNK5,"$(P)SGM$(N):sel_den_1.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):sel_den_2.VAL  PP MS")
 }
-grecord(longout,"$(P)SGM$(N):m") {
+
+record(longout,"$(P)SGM$(N):m") {
 	field(DESC,"diffraction order")
 	field(DTYP,"Soft Channel")
 	field(OUT,"$(P)SGM$(N):T1.A  PP MS")
 	field(DOL,"1")
 	field(HOPR,"20")
 }
-grecord(mbbo,"$(P)SGM$(N):grating") {
+
+record(mbbo,"$(P)SGM$(N):grating") {
 	field(PINI,"YES")
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)SGM$(N):saveAuto.PROC  PP MS")
@@ -245,7 +281,8 @@ grecord(mbbo,"$(P)SGM$(N):grating") {
 	field(FTST,"grating 15")
 	field(FFST,"grating 16")
 }
-grecord(mbbo,"$(P)SGM$(N):rTrack") {
+
+record(mbbo,"$(P)SGM$(N):rTrack") {
 	field(DTYP,"Raw Soft Channel")
 	field(NOBT,"3")
 	field(ZRVL,"7")
@@ -253,7 +290,8 @@ grecord(mbbo,"$(P)SGM$(N):rTrack") {
 	field(ZRST,"TRACK")
 	field(ONST,"LOCK")
 }
-grecord(seq,"$(P)SGM$(N):init") {
+
+record(seq,"$(P)SGM$(N):init") {
 	field(LNK1,"$(P)SGM$(N):m.PROC  PP MS")
 	field(LNK2,"$(P)SGM$(N):gDensity.PROC  PP MS")
 	field(LNK3,"$(P)SGM$(N):len.PROC  PP MS")
@@ -263,7 +301,8 @@ grecord(seq,"$(P)SGM$(N):init") {
 	field(LNK6,"$(P)SGM$(N):sync.PROC  PP MS")
 	field(LNK7,"$(P)SGM$(N):restoreAuto.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):move") {
+
+record(seq,"$(P)SGM$(N):move") {
 	field(SDIS,"$(P)SGM$(N):hold.VAL  NPP MS")
 	field(SELM,"Mask")
 	field(SELL,"$(P)SGM$(N):rTrack.RVAL  NPP MS")
@@ -274,13 +313,15 @@ grecord(seq,"$(P)SGM$(N):move") {
 	field(DOL3,"$(P)SGM$(N):T2.I  NPP MS")
 	field(LNK3,"$(P)$(M_x).VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):rTrackInit") {
+
+record(seq,"$(P)SGM$(N):rTrackInit") {
 	field(PINI,"YES")
 	field(DOL1,"1")
 	field(LNK1,"$(P)SGM$(N):rTrack.VAL  PP MS")
 	field(LNK2,"$(P)SGM$(N):rTrack.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_R_1") {
+
+record(seq,"$(P)SGM$(N):sel_R_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP MS")
@@ -296,7 +337,8 @@ grecord(seq,"$(P)SGM$(N):sel_R_1") {
 	field(LNK9,"$(P)SGM$(N):R.VAL  PP MS")
 	field(LNKA,"$(P)SGM$(N):R.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_R_2") {
+
+record(seq,"$(P)SGM$(N):sel_R_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
@@ -309,7 +351,8 @@ grecord(seq,"$(P)SGM$(N):sel_R_2") {
 	field(LNK5,"$(P)SGM$(N):R.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):R.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_Whigh_1") {
+
+record(seq,"$(P)SGM$(N):sel_Whigh_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP MS")
@@ -325,7 +368,8 @@ grecord(seq,"$(P)SGM$(N):sel_Whigh_1") {
 	field(LNK9,"$(P)SGM$(N):limits.A  PP MS")
 	field(LNKA,"$(P)SGM$(N):limits.A  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_Whigh_2") {
+
+record(seq,"$(P)SGM$(N):sel_Whigh_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
@@ -338,7 +382,8 @@ grecord(seq,"$(P)SGM$(N):sel_Whigh_2") {
 	field(LNK5,"$(P)SGM$(N):limits.A  PP MS")
 	field(LNK6,"$(P)SGM$(N):limits.A  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_Wlow_1") {
+
+record(seq,"$(P)SGM$(N):sel_Wlow_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP MS")
@@ -354,7 +399,8 @@ grecord(seq,"$(P)SGM$(N):sel_Wlow_1") {
 	field(LNK9,"$(P)SGM$(N):limits.B  PP MS")
 	field(LNKA,"$(P)SGM$(N):limits.B  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_Wlow_2") {
+
+record(seq,"$(P)SGM$(N):sel_Wlow_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
@@ -367,7 +413,8 @@ grecord(seq,"$(P)SGM$(N):sel_Wlow_2") {
 	field(LNK5,"$(P)SGM$(N):limits.B  PP MS")
 	field(LNK6,"$(P)SGM$(N):limits.B  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_den_1") {
+
+record(seq,"$(P)SGM$(N):sel_den_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP NMS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP NMS")
@@ -383,7 +430,8 @@ grecord(seq,"$(P)SGM$(N):sel_den_1") {
 	field(LNK9,"$(P)SGM$(N):gDensity.VAL  PP MS")
 	field(LNKA,"$(P)SGM$(N):gDensity.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_den_2") {
+
+record(seq,"$(P)SGM$(N):sel_den_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP NMS")
 	field(SELM,"Specified")
@@ -396,7 +444,8 @@ grecord(seq,"$(P)SGM$(N):sel_den_2") {
 	field(LNK5,"$(P)SGM$(N):gDensity.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):gDensity.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_exists_1") {
+
+record(seq,"$(P)SGM$(N):sel_exists_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP MS")
@@ -411,7 +460,8 @@ grecord(seq,"$(P)SGM$(N):sel_exists_1") {
 	field(LNK9,"$(P)SGM$(N):exists.VAL  PP MS")
 	field(LNKA,"$(P)SGM$(N):exists.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_exists_2") {
+
+record(seq,"$(P)SGM$(N):sel_exists_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
@@ -423,7 +473,8 @@ grecord(seq,"$(P)SGM$(N):sel_exists_2") {
 	field(LNK5,"$(P)SGM$(N):exists.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):exists.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_loc_1") {
+
+record(seq,"$(P)SGM$(N):sel_loc_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP MS")
@@ -439,7 +490,8 @@ grecord(seq,"$(P)SGM$(N):sel_loc_1") {
 	field(LNK9,"$(P)SGM$(N):GrMotorVal.VAL  PP MS")
 	field(LNKA,"$(P)SGM$(N):GrMotorVal.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_loc_2") {
+
+record(seq,"$(P)SGM$(N):sel_loc_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
@@ -452,7 +504,8 @@ grecord(seq,"$(P)SGM$(N):sel_loc_2") {
 	field(LNK5,"$(P)SGM$(N):GrMotorVal.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):GrMotorVal.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_m_1") {
+
+record(seq,"$(P)SGM$(N):sel_m_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP NMS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP NMS")
@@ -467,7 +520,8 @@ grecord(seq,"$(P)SGM$(N):sel_m_1") {
 	field(LNK9,"$(P)SGM$(N):m.VAL  PP MS")
 	field(LNKA,"$(P)SGM$(N):m.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_m_2") {
+
+record(seq,"$(P)SGM$(N):sel_m_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP NMS")
 	field(SELM,"Specified")
@@ -479,7 +533,8 @@ grecord(seq,"$(P)SGM$(N):sel_m_2") {
 	field(LNK5,"$(P)SGM$(N):m.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):m.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_xOff_1") {
+
+record(seq,"$(P)SGM$(N):sel_xOff_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP MS")
@@ -495,7 +550,8 @@ grecord(seq,"$(P)SGM$(N):sel_xOff_1") {
 	field(LNK9,"$(P)SGM$(N):xOff.VAL  PP MS")
 	field(LNKA,"$(P)SGM$(N):xOff.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sel_xOff_2") {
+
+record(seq,"$(P)SGM$(N):sel_xOff_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP MS")
 	field(SELM,"Specified")
@@ -508,7 +564,8 @@ grecord(seq,"$(P)SGM$(N):sel_xOff_2") {
 	field(LNK5,"$(P)SGM$(N):xOff.VAL  PP MS")
 	field(LNK6,"$(P)SGM$(N):xOff.VAL  PP MS")
 }
-grecord(seq,"$(P)SGM$(N):sync") {
+
+record(seq,"$(P)SGM$(N):sync") {
 	field(DOL1,"1")
 	field(LNK1,"$(P)SGM$(N):hold.VAL  PP MS")
 	field(DOL2,"$(P)SGM$(N):phiRBV.VAL  NPP MS")
@@ -519,10 +576,12 @@ grecord(seq,"$(P)SGM$(N):sync") {
 	field(LNK4,"$(P)SGM$(N):Energy.VAL  PP MS")
 	field(LNK5,"$(P)SGM$(N):hold.VAL  PP MS")
 }
-grecord(stringout,"$(P)SGM$(N):stripeDesc") {
+
+record(stringout,"$(P)SGM$(N):stripeDesc") {
 	field(DTYP,"Soft Channel")
 }
-grecord(transform,"$(P)SGM$(N):EnergyTweak") {
+
+record(transform,"$(P)SGM$(N):EnergyTweak") {
 	field(CLCE,"a?d+(c?c:f):b?d-(c?c:f):d")
 	field(INPD,"$(P)SGM$(N):Energy.VAL  NPP MS")
 	field(INPF,"$(P)SGM$(N):delta.K  NPP MS")
@@ -540,7 +599,8 @@ grecord(transform,"$(P)SGM$(N):EnergyTweak") {
 	field(CMTG,"reset tweak +")
 	field(CMTH,"reset tweak -")
 }
-grecord(transform,"$(P)SGM$(N):GrMotPut1") {
+
+record(transform,"$(P)SGM$(N):GrMotPut1") {
 	field(CLCD,"a>c?a+b/2:g")
 	field(CLCE,"a<c?a-b/2:h")
 	field(CLCF,"a")
@@ -559,7 +619,8 @@ grecord(transform,"$(P)SGM$(N):GrMotPut1") {
 	field(CMTE,"provisional lo limit")
 	field(CMTF,"desired loc (for output)")
 }
-grecord(transform,"$(P)SGM$(N):GrMotPut2") {
+
+record(transform,"$(P)SGM$(N):GrMotPut2") {
 	field(CLCC,"a+b/2")
 	field(CLCD,"a-b/2")
 	field(INPA,"$(P)SGM$(N):GrMotPut1.A  NPP NMS")
@@ -572,7 +633,8 @@ grecord(transform,"$(P)SGM$(N):GrMotPut2") {
 	field(CMTC,"high limit")
 	field(CMTD,"low limit")
 }
-grecord(transform,"$(P)SGM$(N):LambdaTweak") {
+
+record(transform,"$(P)SGM$(N):LambdaTweak") {
 	field(CLCE,"a?d+(c?c:f):b?d-(c?c:f):d")
 	field(INPD,"$(P)SGM$(N):Lambda.VAL  NPP MS")
 	field(INPF,"$(P)SGM$(N):delta.J  NPP MS")
@@ -590,7 +652,8 @@ grecord(transform,"$(P)SGM$(N):LambdaTweak") {
 	field(CMTG,"reset tweak +")
 	field(CMTH,"reset tweak -")
 }
-grecord(transform,"$(P)SGM$(N):T1") {
+
+record(transform,"$(P)SGM$(N):T1") {
 	field(DESC,"e,lambda,x --> x")
 	field(CLCE,"f==0?1e9:12398.4244/f")
 	field(CLCF,"e==0?1e9:12398.4244/e")
@@ -615,7 +678,8 @@ grecord(transform,"$(P)SGM$(N):T1") {
 	field(CMTJ,"Lambda writeback")
 	field(CMTK,"Energy writeback")
 }
-grecord(transform,"$(P)SGM$(N):T2") {
+
+record(transform,"$(P)SGM$(N):T2") {
 	field(DESC,"calc r'")
 	field(SDIS,"1")
 	field(FLNK,"$(P)SGM$(N):autoMove.VAL  PP MS")
@@ -647,7 +711,8 @@ grecord(transform,"$(P)SGM$(N):T2") {
 	field(CMTM,"M_rOut calc at limit")
 	field(CMTN,"M_rOut drive value")
 }
-grecord(transform,"$(P)SGM$(N):T3") {
+
+record(transform,"$(P)SGM$(N):T3") {
 	field(DESC,"calc readbacks")
 	field(CLCH,"g+f")
 	field(CLCI,"asin((h/1000)/sqrt(c*c+h*h/1.e6))*r2d")
@@ -670,7 +735,8 @@ grecord(transform,"$(P)SGM$(N):T3") {
 	field(CMTJ,"Lambda readback out")
 	field(CMTK,"Energy readback out")
 }
-grecord(transform,"$(P)SGM$(N):delta") {
+
+record(transform,"$(P)SGM$(N):delta") {
 	field(DESC,"calc 1-step deltas")
 	field(PINI,"YES")
 	field(CLCI,"R2D*B/(1000*C+A*A/(1000*C))")
@@ -694,7 +760,8 @@ grecord(transform,"$(P)SGM$(N):delta") {
 	field(CMTG,"M_phi readback")
 	field(CMTH,"Lambda readback")
 }
-grecord(transform,"$(P)SGM$(N):limits") {
+
+record(transform,"$(P)SGM$(N):limits") {
 	field(CLCF,"0")
 	field(CLCG,"0")
 	field(CLCH,"C/(2*D*COS(D2R*E/2))")
@@ -721,7 +788,8 @@ grecord(transform,"$(P)SGM$(N):limits") {
 	field(CMTI,"phi high limit (degrees)")
 	field(CMTJ,"phi low limit (degrees)")
 }
-grecord(transform,"$(P)SGM$(N):phiTweak") {
+
+record(transform,"$(P)SGM$(N):phiTweak") {
 	field(CLCE,"a?d+(c?c:f):b?d-(c?c:f):d")
 	field(INPD,"$(P)SGM$(N):phi.VAL  NPP MS")
 	field(INPF,"$(P)SGM$(N):delta.I  NPP MS")
@@ -739,14 +807,16 @@ grecord(transform,"$(P)SGM$(N):phiTweak") {
 	field(CMTG,"reset tweak +")
 	field(CMTH,"reset tweak -")
 }
-grecord(swait,"$(P)SGM$(N):GrMotPut") {
+
+record(swait,"$(P)SGM$(N):GrMotPut") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)SGM$(N):GrMotPut2.VAL  PP MS")
 	field(OUTN,"$(P)$(M_g).VAL")
 	field(CALC,"a")
 	field(PREC,"3")
 }
-grecord(swait,"$(P)SGM$(N):rOutWait") {
+
+record(swait,"$(P)SGM$(N):rOutWait") {
 	field(SCAN,"I/O Intr")
 	field(DTYP,"Soft Channel")
 	field(DISV,"0")
@@ -756,7 +826,8 @@ grecord(swait,"$(P)SGM$(N):rOutWait") {
 	field(CALC,"!A")
 	field(OOPT,"Transition To Zero")
 }
-grecord(swait,"$(P)SGM$(N):xWait") {
+
+record(swait,"$(P)SGM$(N):xWait") {
 	field(SCAN,"I/O Intr")
 	field(DTYP,"Soft Channel")
 	field(SDIS,"$(P)SGM$(N):rTrack.VAL  NPP MS")
@@ -765,7 +836,8 @@ grecord(swait,"$(P)SGM$(N):xWait") {
 	field(CALC,"!A")
 	field(OOPT,"Transition To Zero")
 }
-grecord(sseq,"$(P)SGM$(N):sel_desc_1") {
+
+record(sseq,"$(P)SGM$(N):sel_desc_1") {
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP NMS")
 	field(SELM,"Specified")
 	field(SELL,"$(P)SGM$(N):selVal.VAL  NPP NMS")
@@ -780,7 +852,8 @@ grecord(sseq,"$(P)SGM$(N):sel_desc_1") {
 	field(LNK9,"$(P)SGM$(N):stripeDesc.VAL  PP MS")
 	field(LNKA,"$(P)SGM$(N):stripeDesc.VAL  PP MS")
 }
-grecord(sseq,"$(P)SGM$(N):sel_desc_2") {
+
+record(sseq,"$(P)SGM$(N):sel_desc_2") {
 	field(DISV,"0")
 	field(SDIS,"$(P)SGM$(N):selBank.VAL  NPP NMS")
 	field(SELM,"Specified")
