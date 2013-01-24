@@ -178,6 +178,9 @@ assign  OUTLINK to {"","","","","","","","","","","","","","","","",
 int     OUT[MAX_FILTERS];
 assign  OUT to {"","","","","","","","","","","","","","","","",
                 "","","","","","","","","","","","","","","",""};
+evflag  externalIO;
+monitor OUT;
+sync OUT externalIO;
 
 char     *name;
 char     *prefix;
@@ -389,8 +392,15 @@ static double calcTrans(double keV,
           sprintf(str, "%s%sFi%d:Set.OUT", prefix, record, i+1);
           pvAssign(OUTLINK[i], str);
         }
+      } state connectOUT
+    }
 
-        epicsThreadSleep(1.0); /* wait for OUTLINK[i] to connect */
+    state connectOUT {
+      entry {
+        printf("%s: waiting for OUTLINK, so we can connect OUT[]\n", name);
+      }
+
+      when(pvConnectCount() == pvAssignCount()) {
         /* get the OUT PV names, and dynamically assign the OUT PVs */
         for(i = 0; i < nFltrs; i++) {
           pvGet(OUTLINK[i]);
@@ -413,7 +423,6 @@ static double calcTrans(double keV,
 
       } state init
     }
-
 
 /*------------*/
     state init {
@@ -448,6 +457,7 @@ static double calcTrans(double keV,
         ** are in sync with the SET bo PVs */
         for(i = 0; i < nFltrs; i++) {
           pvGet(OUT[i]);
+          efClear(externalIO);  /* Is this needed?  If so, it probably should not be. */
           pvGet(SET[i]);
           if (SET[i] != OUT[i]) {
             /* We mustn't write to SET[i] unless OUT[i] is different, because writing processes, which
@@ -565,6 +575,10 @@ static double calcTrans(double keV,
       when(STATUS_BUSY){
         changeFlag = 1;
       } state update_filters
+
+      when (efTestAndClear(externalIO)) {
+      } state update_filters
+
     }
 
 
