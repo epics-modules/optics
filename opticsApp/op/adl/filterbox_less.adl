@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=972
-		y=546
+		x=1591
+		y=254
 		width=140
 		height=110
 	}
@@ -96,585 +96,84 @@ composite {
 	}
 	"composite name"=""
 	children {
-		rectangle {
+		composite {
 			object {
 				x=5
 				y=5
 				width=130
 				height=100
 			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=102
-		y=10
-		width=26
-		height=89
-	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=108
-				y=10
-				width=14
-				height=14
-			}
 			"composite name"=""
 			children {
-				"message button" {
+				rectangle {
 					object {
-						x=108
-						y=10
-						width=14
-						height=14
+						x=5
+						y=5
+						width=130
+						height=100
 					}
-					control {
-						chan="$(P)$(R)Fi$(N1):Lock"
+					"basic attribute" {
 						clr=14
-						bclr=21
+						fill="outline"
+						width=2
 					}
-					label="L"
-					press_msg="0"
 				}
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N1):Lock"
-			}
-		}
-		text {
-			object {
-				x=105
-				y=26
-				width=20
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N1)"
-			align="horiz. centered"
-		}
-		rectangle {
-			object {
-				x=111
-				y=38
-				width=8
-				height=16
-			}
-			"basic attribute" {
-				clr=20
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="(A<1)&(B>0)"
-				chan="$(P)$(R)Fi$(N1):Set"
-				chanB="$(P)$(R)Fi$(N1):Enable"
-			}
-		}
-		rectangle {
-			object {
-				x=111
-				y=50
-				width=8
-				height=16
-			}
-			"basic attribute" {
-				clr=15
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="(A>0)&(B>0)"
-				chan="$(P)$(R)Fi$(N1):Set"
-				chanB="$(P)$(R)Fi$(N1):Enable"
-			}
-		}
-		"choice button" {
-			object {
-				x=102
-				y=71
-				width=26
-				height=28
-			}
-			control {
-				chan="$(P)$(R)Fi$(N1):Set"
-				clr=14
-				bclr=51
 			}
 		}
 		composite {
-			object {
-				x=108
-				y=10
-				width=14
-				height=14
-			}
-			"composite name"=""
-			children {
-				composite {
-					object {
-						x=108
-						y=10
-						width=14
-						height=14
-					}
-					"composite name"=""
-					children {
-						"message button" {
-							object {
-								x=108
-								y=10
-								width=14
-								height=14
-							}
-							control {
-								chan="$(P)$(R)Fi$(N1):Lock"
-								clr=14
-								bclr=15
-							}
-							label="F"
-							press_msg="1"
-						}
-					}
-					"dynamic attribute" {
-						vis="if zero"
-						chan="$(P)$(R)Fi$(N1):Lock"
-					}
-				}
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=72
-		y=10
-		width=26
-		height=89
-	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=78
-				y=10
-				width=14
-				height=14
-			}
-			"composite name"=""
-			children {
-				"message button" {
-					object {
-						x=78
-						y=10
-						width=14
-						height=14
-					}
-					control {
-						chan="$(P)$(R)Fi$(N2):Lock"
-						clr=14
-						bclr=21
-					}
-					label="L"
-					press_msg="0"
-				}
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N2):Lock"
-			}
-		}
-		text {
-			object {
-				x=75
-				y=26
-				width=20
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N2)"
-			align="horiz. centered"
-		}
-		rectangle {
-			object {
-				x=81
-				y=38
-				width=8
-				height=16
-			}
-			"basic attribute" {
-				clr=20
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="(A<1)&(B>0)"
-				chan="$(P)$(R)Fi$(N2):Set"
-				chanB="$(P)$(R)Fi$(N2):Enable"
-			}
-		}
-		rectangle {
-			object {
-				x=81
-				y=50
-				width=8
-				height=16
-			}
-			"basic attribute" {
-				clr=15
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="(A>0)&(B>0)"
-				chan="$(P)$(R)Fi$(N2):Set"
-				chanB="$(P)$(R)Fi$(N2):Enable"
-			}
-		}
-		"choice button" {
-			object {
-				x=72
-				y=71
-				width=26
-				height=28
-			}
-			control {
-				chan="$(P)$(R)Fi$(N2):Set"
-				clr=14
-				bclr=51
-			}
-		}
-		composite {
-			object {
-				x=78
-				y=10
-				width=14
-				height=14
-			}
-			"composite name"=""
-			children {
-				composite {
-					object {
-						x=78
-						y=10
-						width=14
-						height=14
-					}
-					"composite name"=""
-					children {
-						"message button" {
-							object {
-								x=78
-								y=10
-								width=14
-								height=14
-							}
-							control {
-								chan="$(P)$(R)Fi$(N2):Lock"
-								clr=14
-								bclr=15
-							}
-							label="F"
-							press_msg="1"
-						}
-					}
-					"dynamic attribute" {
-						vis="if zero"
-						chan="$(P)$(R)Fi$(N2):Lock"
-					}
-				}
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=42
-		y=10
-		width=26
-		height=89
-	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=48
-				y=10
-				width=14
-				height=14
-			}
-			"composite name"=""
-			children {
-				"message button" {
-					object {
-						x=48
-						y=10
-						width=14
-						height=14
-					}
-					control {
-						chan="$(P)$(R)Fi$(N3):Lock"
-						clr=14
-						bclr=21
-					}
-					label="L"
-					press_msg="0"
-				}
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N3):Lock"
-			}
-		}
-		text {
-			object {
-				x=45
-				y=26
-				width=20
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N3)"
-			align="horiz. centered"
-		}
-		rectangle {
-			object {
-				x=51
-				y=38
-				width=8
-				height=16
-			}
-			"basic attribute" {
-				clr=20
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="(A<1)&(B>0)"
-				chan="$(P)$(R)Fi$(N3):Set"
-				chanB="$(P)$(R)Fi$(N3):Enable"
-			}
-		}
-		rectangle {
-			object {
-				x=51
-				y=50
-				width=8
-				height=16
-			}
-			"basic attribute" {
-				clr=15
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="(A>0)&(B>0)"
-				chan="$(P)$(R)Fi$(N3):Set"
-				chanB="$(P)$(R)Fi$(N3):Enable"
-			}
-		}
-		"choice button" {
-			object {
-				x=42
-				y=71
-				width=26
-				height=28
-			}
-			control {
-				chan="$(P)$(R)Fi$(N3):Set"
-				clr=14
-				bclr=51
-			}
-		}
-		composite {
-			object {
-				x=48
-				y=10
-				width=14
-				height=14
-			}
-			"composite name"=""
-			children {
-				composite {
-					object {
-						x=48
-						y=10
-						width=14
-						height=14
-					}
-					"composite name"=""
-					children {
-						"message button" {
-							object {
-								x=48
-								y=10
-								width=14
-								height=14
-							}
-							control {
-								chan="$(P)$(R)Fi$(N3):Lock"
-								clr=14
-								bclr=15
-							}
-							label="F"
-							press_msg="1"
-						}
-					}
-					"dynamic attribute" {
-						vis="if zero"
-						chan="$(P)$(R)Fi$(N3):Lock"
-					}
-				}
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=12
-		y=11
-		width=26
-		height=88
-	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=18
-				y=11
-				width=14
-				height=14
-			}
-			"composite name"=""
-			children {
-				"message button" {
-					object {
-						x=18
-						y=11
-						width=14
-						height=14
-					}
-					control {
-						chan="$(P)$(R)Fi$(N4):Lock"
-						clr=14
-						bclr=21
-					}
-					label="L"
-					press_msg="0"
-				}
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N4):Lock"
-			}
-		}
-		text {
-			object {
-				x=15
-				y=27
-				width=20
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N4)"
-			align="horiz. centered"
-		}
-		rectangle {
-			object {
-				x=21
-				y=50
-				width=8
-				height=16
-			}
-			"basic attribute" {
-				clr=15
-			}
-			"dynamic attribute" {
-				vis="calc"
-				calc="(A>0)&(B>0)"
-				chan="$(P)$(R)Fi$(N4):Set"
-				chanB="$(P)$(R)Fi$(N4):Enable"
-			}
-		}
-		"choice button" {
 			object {
 				x=12
-				y=71
+				y=11
 				width=26
-				height=28
+				height=88
 			}
-			control {
-				chan="$(P)$(R)Fi$(N4):Set"
-				clr=14
-				bclr=51
+			"composite name"=""
+			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N4)"
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(R)Fi$(N4):Enable"
 			}
 		}
 		composite {
 			object {
-				x=18
+				x=43
 				y=11
-				width=14
-				height=14
+				width=26
+				height=88
 			}
 			"composite name"=""
-			children {
-				composite {
-					object {
-						x=18
-						y=11
-						width=14
-						height=14
-					}
-					"composite name"=""
-					children {
-						"message button" {
-							object {
-								x=18
-								y=11
-								width=14
-								height=14
-							}
-							control {
-								chan="$(P)$(R)Fi$(N4):Lock"
-								clr=14
-								bclr=15
-							}
-							label="F"
-							press_msg="1"
-						}
-					}
-					"dynamic attribute" {
-						vis="if zero"
-						chan="$(P)$(R)Fi$(N4):Lock"
-					}
-				}
+			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N3)"
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(R)Fi$(N3):Enable"
 			}
 		}
-		rectangle {
+		composite {
 			object {
-				x=21
-				y=38
-				width=8
-				height=16
+				x=74
+				y=11
+				width=26
+				height=88
 			}
-			"basic attribute" {
-				clr=20
-			}
+			"composite name"=""
+			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N2)"
 			"dynamic attribute" {
-				vis="calc"
-				calc="(A<1)&(B>0)"
-				chan="$(P)$(R)Fi$(N4):Set"
-				chanB="$(P)$(R)Fi$(N4):Enable"
+				vis="if not zero"
+				chan="$(P)$(R)Fi$(N2):Enable"
+			}
+		}
+		composite {
+			object {
+				x=105
+				y=11
+				width=26
+				height=88
+			}
+			"composite name"=""
+			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N1)"
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(R)Fi$(N1):Enable"
 			}
 		}
 	}
