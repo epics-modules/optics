@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/filter_8_0_more.adl"
+	name="/xorApps/epics/synApps_5_6/ioc/33bmTEST/33bmTESTApp/op/adl/filter_8_0_more.adl"
 	version=030102
 }
 display {
 	object {
-		x=590
-		y=26
+		x=1079
+		y=545
 		width=510
 		height=355
 	}
@@ -732,7 +732,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="2013-01-16 (CMS)"
+	textix="2013-01-24 (CMS)"
 }
 "related display" {
 	object {
@@ -759,6 +759,9 @@ text {
 	}
 	display[0] {
 		label="less"
+		name="filter_8_0_less.adl"
+		args="P=$(P),R=$(R)"
+		policy="replace display"
 	}
 	clr=0
 	bclr=49
