@@ -5,10 +5,10 @@
 # C.M. Schlepuetz
 # December 21, 2012
 #
-# $Revision: $
-# $Date: $
-# $Author: $
-# $URL: $
+# $Revision: 5042 $
+# $Date: 2013-01-31 16:46:29 -0600 (Thu, 31 Jan 2013) $
+# $Author: cschlep $
+# $URL: https://subversion.xray.aps.anl.gov/bcdaioc/33bmTEST/33bmTESTApp/Db/filterBladeNoSensor.db $
 #
 ##############################################################################
 # Required substitutions:
@@ -24,10 +24,10 @@
 record(bo, "$(P)$(R)Fi$(N):Set") {
   field (DESC, "$(DESC) actuator")
   field (DTYP, "Soft Channel")
-  field (OUT,  "$(OUT)")
+  field (OUT,  "$(OUT) PP NMS")
   field (ZNAM, "Out")
   field (ONAM, "In")
-  field (FLNK, "$(P)$(R)SetUpdate")
+  field (FLNK, "$(P)$(R)SetBusy.PROC")
 }
 
 # Define the "Enable" record.
@@ -42,7 +42,7 @@ record(bo, "$(P)$(R)Fi$(N):Enable") {
   field(OSV, "NO_ALARM")
   field(SCAN, "Passive")
   field(VAL,  "1")
-  field (FLNK, "$(P)$(R)SetUpdate")
+  field (FLNK, "$(P)$(R)SetBusy.PROC")
 }
 
 # Define the "Lock" record.
@@ -54,7 +54,7 @@ record(bo, "$(P)$(R)Fi$(N):Lock") {
   field(ONAM, "Lock")
   field(SCAN, "Passive")
   field(VAL,  "0")
-  field (FLNK, "$(P)$(R)SetUpdate")
+  field (FLNK, "$(P)$(R)SetBusy.PROC")
 }
 
 # The filter thickness
@@ -62,7 +62,7 @@ record(ao, "$(P)$(R)Fi$(N):Thickness") {
   field(DESC, "$(DESC) thickness [um]")
   field(PREC, "2")
   field(VAL, "100")
-  field (FLNK, "$(P)$(R)SetUpdate")
+  field (FLNK, "$(P)$(R)SetBusy.PROC")
 }
 
 # The filter material list
@@ -101,7 +101,7 @@ record(mbbo, "$(P)$(R)Fi$(N):Material") {
   field(FFVL, "15")
   field(FFST, "Pb")  
   field(VAL,  "1")
-  field (FLNK, "$(P)$(R)SetUpdate")
+  field (FLNK, "$(P)$(R)SetBusy.PROC")
 }
 
 # The filter transmission

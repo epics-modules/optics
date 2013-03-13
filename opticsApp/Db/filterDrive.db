@@ -3,10 +3,10 @@
 # C.M. Schlepuetz
 # December 21, 2012
 #
-# $Revision: $
-# $Date: $
-# $Author: $
-# $URL: $
+# $Revision: 5042 $
+# $Date: 2013-01-31 16:46:29 -0600 (Thu, 31 Jan 2013) $
+# $Author: cschlep $
+# $URL: https://subversion.xray.aps.anl.gov/bcdaioc/33bmTEST/33bmTESTApp/Db/filterDrive.db $
 #
 ##############################################################################
 # Required substitutions:
@@ -36,25 +36,6 @@ record(bo,"$(P)$(R)SetBusy") {
   field(VAL,  "1")
 }
 
-record(bo, "$(P)$(R)Update") {
-  field(DESC, "$(DESC) update required")
-  field(ZNAM, "Done")
-  field(ONAM, "Updating")
-  field(ZSV,  "NO_ALARM")
-  field(OSV,  "MINOR")
-  field(VAL,  "0")
-  field(FLNK, "$(P)$(R)SetBusy")
-}
-
-# Set the update record
-record(bo,"$(P)$(R)SetUpdate") {
-  field(DESC, "$(DESC) set update")
-  field(OUT,  "$(P)$(R)Update PP MS")
-  field(ZNAM, "Done")
-  field(ONAM, "Set")
-  field(VAL,  "1")
-}
-
 # The description
 record(stringin, "$(P)$(R)Description"){
   field(DESC, "$(DESC) description")
@@ -69,6 +50,15 @@ record(ao, "$(P)$(R)TransmissionSetpoint"){
   field(DRVL, "0.0")
   field(FLNK, "$(P)$(R)SetBusy")
   field(PREC, "5")
+  field(MDEL, "-1")
+}
+
+# The filter mask setpoint
+record(ao, "$(P)$(R)FilterMaskSetpoint"){
+  field(DESC, "$(DESC) mask setpoint")
+  field(VAL,  "0.0")
+  field(FLNK, "$(P)$(R)SetBusy")
+  field(PREC, "0")
   field(MDEL, "-1")
 }
 
@@ -159,7 +149,7 @@ record(ao, "$(P)$(R)WaitTime"){
   field(PREC, "4")
 }
 
-# Debug level, presently only {0,1,2}, but room for more
+# Debug level
 record(ao,"$(P)$(R)Debug"){
   field(DESC, "$(DESC) debug level")
   field(VAL,"0")
@@ -176,4 +166,25 @@ record(ai, "$(P)$(R)Transmission"){
 record(ai, "$(P)$(R)FilterMask"){
   field(DESC, "$(DESC) filter mask")
   field(VAL,  "0")
+}
+
+# The overall transmission of the next step up
+record(ai, "$(P)$(R)TransmissionUp"){
+  field(DESC, "$(DESC) transm value up")
+  field(VAL,  "1.0")
+  field(PREC, "4")
+}
+
+# The overall transmission of the next step down
+record(ai, "$(P)$(R)TransmissionDown"){
+  field(DESC, "$(DESC) transm value down")
+  field(VAL,  "1.0")
+  field(PREC, "4")
+}
+
+# The total number of filters
+record(ai, "$(P)$(R)NumFilters"){
+  field(DESC, "$(DESC) number of filters")
+  field(VAL,  "0")
+  field(PREC, "0")
 }
