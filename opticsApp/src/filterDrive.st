@@ -44,10 +44,10 @@ program filterDrive("NAME=filterDrive, P=TEST:, R=filter:, NUM_FILTERS=8")
 **
 **  Created: 2013-01-16 by C.M. Schlepuetz @ APS
 ** 
-**  $Revision: $
-**  $Date: $
-**  $Author: $
-**  $URL: $
+**  $Revision: 5064 $
+**  $Date: 2013-02-08 12:06:55 -0600 (Fri, 08 Feb 2013) $
+**  $Author: cschlep $
+**  $URL: https://subversion.xray.aps.anl.gov/bcdaioc/33bmTEST/33bmTESTApp/src/filterDrive.st $
 **==========================================================================*/
 
 /* Ensure we are translated reentrantly */
@@ -55,13 +55,13 @@ option +r;
 
 %%#include <string.h>
 %%#include <math.h>
-%%#include <stdlib.h> /* malloc */
 %%#include "chantler.h"
 
 /* Maximum number of filters supported.  Note MAX_PERMS = 1<<MAX_ENABLED */
 #define MAX_FILTERS 32
 #define MAX_ENABLED 16
 #define MAX_PERMS 65536
+#define SMALL_FRAC 1e-8
 
 
 /*----------------------------------------------------------------------------
@@ -73,10 +73,9 @@ int STATUS_BUSY;
 assign STATUS_BUSY to "{P}{R}Status";
 monitor STATUS_BUSY;
 
-/* The update flag */
-int STATUS_UPDATE;
-assign STATUS_UPDATE to "{P}{R}Update";
-monitor STATUS_UPDATE;
+/* The number of filters */
+int NFILTERS;
+assign NFILTERS to "{P}{R}NumFilters";
 
 /* Debug Level:
 ** If non-zero, it causes debug printout:
@@ -93,6 +92,14 @@ monitor DEBUG;
 double TRANSMISSION;
 assign TRANSMISSION to "{P}{R}Transmission";
 
+/* Next higher transmission readback value */
+double TRANSMISSION_UP;
+assign TRANSMISSION_UP to "{P}{R}TransmissionUp";
+
+/* Next higher transmission readback value */
+double TRANSMISSION_DOWN;
+assign TRANSMISSION_DOWN to "{P}{R}TransmissionDown";
+
 /* The FilterMask readback value */
 int FILTER_MASK;
 assign FILTER_MASK to "{P}{R}FilterMask";
@@ -103,6 +110,13 @@ double  TRANSM_SETPT;
 assign  TRANSM_SETPT to "{P}{R}TransmissionSetpoint";
 monitor TRANSM_SETPT;
 sync    TRANSM_SETPT EvFlgTRANSM_SETPT;
+
+/* The FilterMask setpoint*/
+evflag  EvFlgFILTERMASK_SETPT;
+int     FILTERMASK_SETPT;                        
+assign  FILTERMASK_SETPT to "{P}{R}FilterMaskSetpoint";
+monitor FILTERMASK_SETPT;
+sync    FILTERMASK_SETPT EvFlgFILTERMASK_SETPT;
 
 /* Transmission step up */
 int     TRANSM_UP;                          
@@ -185,20 +199,30 @@ sync OUT externalIO;
 char     *name;
 char     *prefix;
 char     *record;
-int      firstTime;
 int      changeFlag;
-int      updateFlag;
+int      doWait;
 int      nFltrs;
 int      nEnabled;
 int      nPerms;
 int      ind;
 int      indNow;
+int      fltrsInNow;
+double   transNow;
+int      indUp;
+int      fltrsInUp;
+double   transUp;
+int      indDown;
+int      fltrsInDown;
+double   transDown;
+double   trans;
+int      indMin;
+double   transMin;
 int      i;
 int      j;
 int      k;
 int      myAction;
-double   transNow;
-int      fltrsInNow;
+int      fltrsReq;
+int      fltrsSetpt;
 char     str[64];
 double   transMis[MAX_PERMS];
 int      fltrsIn[MAX_PERMS];
@@ -210,63 +234,6 @@ string   buff1;
 ** C-code (enclosed in "%{" ... "}%")
 **==========================================================================*/
 %{
-
-/*----------------------------------------------------------------------------
-**  A Merge Sort (ref: http://en.wikipedia.org/wiki/Merge_sort)
-**--------------------------------------------------------------------------*/
-static void Merge(double v[], 
-                  int    w[],
-                  int    start,
-                  int    mid,
-                  int    end)
-{
-  int     i, j, k;
-  double *tmpd = malloc(sizeof(double) * (end - start));
-  int    *tmpi = malloc(sizeof(int)    * (end - start));
-
-  i = start;
-  j = mid;
-  k = 0;
-  while((i < mid) && (j < end)) {
-    if(v[i] <= v[j]) {
-      tmpd[k]   = v[i];
-      tmpi[k++] = w[i++];
-    } else {
-      tmpd[k]   = v[j];
-      tmpi[k++] = w[j++];
-    }
-  }
-  while(i < mid) {
-    tmpd[k]   = v[i];
-    tmpi[k++] = w[i++];
-  }
-  while(j < end) {
-    tmpd[k]   = v[j];
-    tmpi[k++] = w[j++];
-  }
-  for(i = 0; i < (end-start); i++) {
-    v[start+i] = tmpd[i];
-    w[start+i] = tmpi[i];
-  }
-  free(tmpd); 
-  free(tmpi); 
-}
-
-/*--------------------------------------------------------------------------*/
-static void Sort(double arr0[],
-                 int    arr1[],
-                 int    begin,
-                 int    end) {
-
-  int mid;
-
-  if(begin == end) return; 
-  if(begin == end - 1) return;
-  mid = (begin + end) / 2;
-  Sort(arr0, arr1, begin, mid);
-  Sort(arr0, arr1, mid, end);
-  Merge(arr0, arr1, begin, mid, end);
-}
 
 /*----------------------------------------------------------------------------
 **  cvtToBin - convert an integer to a binary representation.
@@ -316,7 +283,8 @@ static double calcTrans(double keV,
     return(0.);
   }
   if(debug & 4) printf("  species = '%s', index = %d\n", species, i);
-  if(debug & 4) printf("  density = %.4e gm/cm3, thickness = %.4e um\n", matdensity[i], thickness);
+  if(debug & 4) printf("  density = %.4e gm/cm3, thickness = %.4e um\n", \
+      matdensity[i], thickness);
   if(debug & 4) printf("  energy = %.4e\n", keV);
 
   for(j=0; j<filtermat[i].numEntries; j++) {
@@ -337,8 +305,10 @@ static double calcTrans(double keV,
   transm = exp(-(thickness/absLen));
 
   if(debug & 8){
-    printf("  E1 = %.4e keV, mu1 = %.4e\n", filtermat[i].keV[j-1], filtermat[i].mu[j-1]);
-    printf("  E2 = %.4e keV, mu2 = %.4e\n", filtermat[i].keV[j], filtermat[i].mu[j]);
+    printf("  E1 = %.4e keV, mu1 = %.4e\n", \
+        filtermat[i].keV[j-1], filtermat[i].mu[j-1]);
+    printf("  E2 = %.4e keV, mu2 = %.4e\n", \
+        filtermat[i].keV[j], filtermat[i].mu[j]);
     printf("  frac = %.4f, mu = %.4e\n", frac, mu);
   }
 
@@ -363,7 +333,6 @@ static double calcTrans(double keV,
     state start {
       when() {
         /* Show that we are starting up. */
-        firstTime = 1;
         changeFlag = 1;
         
         /* Wait a bit to let things settle down */
@@ -392,9 +361,11 @@ static double calcTrans(double keV,
           sprintf(str, "%s%sFi%d:Set.OUT", prefix, record, i+1);
           pvAssign(OUTLINK[i], str);
         }
+
       } state connectOUT
     }
-
+	
+/*------------------*/
     state connectOUT {
       entry {
         printf("%s: waiting for OUTLINK, so we can connect OUT[]\n", name);
@@ -408,12 +379,16 @@ static double calcTrans(double keV,
            /* strip trailing' NPP NMS' from link string */
           for (j=0; j<39; j++) {
             if (str[j]==' ') {
-              str[j] = '\0';
+              str[j] = 0;
               break;
             }
           }
+          if (DEBUG & 0x1) printf("  Assigning OUT[%d] to %s\n", i, str);
           pvAssign(OUT[i], str);
         }
+
+        NFILTERS = nFltrs;
+        pvPut(NFILTERS);
 
         printf("%s: SNL program started for %s%s\n", name, prefix, record);
         printf("%s:   # of filters = %d\n", name, nFltrs);
@@ -428,89 +403,14 @@ static double calcTrans(double keV,
     state init {
       /* Ensure everything is connected */
       when(pvConnectCount() == pvAssignCount()) {
-
-        /* If not first time through, there must have been a channel
-        ** disconnection. So wait a bit to (hopefully) let things settle
-        ** down.
-        */
-        if(!firstTime){
-          epicsThreadSleep(2.0);
-        }
+    
+        epicsThreadSleep(2.0);
 
         sprintf(MSGE, "Initialising ..."); pvPut(MSGE); strcpy(MSGE, "");
         efClear(EvFlgTRANSM_SETPT);
         TRANSM_UP = 0; pvPut(TRANSM_UP);
         TRANSM_DN = 0; pvPut(TRANSM_DN);
         efSet(needRecalc);
-      } state waiting
-    }
-
-
-/*----------------------*/
-    state update_filters {
-      entry {
-        if (DEBUG & 0x1) printf("state: update_filters\n");
-      }
-
-      when(){
-        /* Make sure the physical binary PVs of the actuators
-        ** are in sync with the SET bo PVs */
-        for(i = 0; i < nFltrs; i++) {
-          pvGet(OUT[i]);
-          efClear(externalIO);  /* Is this needed?  If so, it probably should not be. */
-          pvGet(SET[i]);
-          if (SET[i] != OUT[i]) {
-            /* We mustn't write to SET[i] unless OUT[i] is different, because writing processes, which
-             * sets STATUS_UPDATE, which brings us back here, causing an infinite loop.
-             */
-            SET[i] = OUT[i];
-            pvPut(SET[i]);
-            sprintf(MSGE, "Filter state set by external agent.");
-            pvPut(MSGE); strcpy(MSGE, "");
-          }
-        }
-
-        /* Update the readback values */
-        transNow = 1.0;
-        fltrsInNow = 0;
-        nEnabled = 0;
-        for(i = 0; i < nFltrs; i++) {
-          /* calculate the individual filter blade transmissions */
-          if(DEBUG & 0x4) printf("%s: Calculating transmission for blade %d.\n", name, i);
-          TRANSM[i] = calcTrans(ENERGY, THICK[i], MATER[i], DEBUG);
-          pvPut(TRANSM[i]);
-
-          /* update combined transmission, enable count, ... */
-          if(SET[i] && ENBL[i]){            
-            fltrsInNow |= (1 << i);
-            transNow *= TRANSM[i];
-          }
-          if((LOCK[i] == 0) && ENBL[i]) {
-            nEnabled += 1;
-          }
-        }
-
-        TRANSMISSION = transNow; pvPut(TRANSMISSION);
-        FILTER_MASK = fltrsInNow; pvPut(FILTER_MASK);
-
-        /* Clear the busy record */
-        if(changeFlag){
-          if(DEBUG & 0x1) printf("%s: clearing busy record.\n", name);
-          changeFlag = 0;
-
-          STATUS_BUSY = 0;
-          pvPut(STATUS_BUSY);
-        }
-
-        /* Clear the update flag */
-        if(updateFlag){
-          if(DEBUG & 0x1) printf("%s: clearing update flag.\n", name);
-          updateFlag = 0;
-
-          STATUS_UPDATE = 0;
-          pvPut(STATUS_UPDATE);
-        }
-
       } state waiting
     }
 
@@ -523,29 +423,19 @@ static double calcTrans(double keV,
         printf ("%s: channel connection lost.\n", name);
       } state init
       
-      /* First run after startup */
-      when(firstTime){
-        firstTime = 0;
+      /* Energy changed */
+      when(efTestAndClear(newEnergy)) {
+        if (DEBUG & 0x1) printf("%s: Energy change detected\n", name);
       } state update_filters
 
-      when(efTestAndClear(newEnergy)) {
-        TRANSMISSION = 1.0;
-        for(i = 0; i < nFltrs; i++) {
-          /* calculate the individual filter blade transmissions */
-          TRANSM[i] = calcTrans(ENERGY, THICK[i], MATER[i], DEBUG);
-          pvPut(TRANSM[i]);
+      /* Configuration changed - recalculation required */
+      when(efTestAndClear(needRecalc)) {
+        if (DEBUG & 0x1) printf("%s: Configuration change detected\n", name);
+      } state update_filters
 
-          /* update combined transmission, enable count, ... */
-          if(SET[i] && ENBL[i]){            
-            TRANSMISSION *= TRANSM[i];
-          }
-        }
-        pvPut(TRANSMISSION);
-      } state waiting
-
-      /* Setpoint changed */
+      /* Transmission setpoint changed */
       when(efTestAndClear(EvFlgTRANSM_SETPT)) {
-        if(DEBUG & 0x1) printf("%s: setpoint changed.\n", name);
+        if(DEBUG & 0x1) printf("%s: transmission setpoint changed.\n", name);
         myAction = 0;
       } state action
 
@@ -565,46 +455,86 @@ static double calcTrans(double keV,
         myAction = 2;
       } state action
 
-      when(STATUS_UPDATE){
-        if(DEBUG & 0x1){
-          printf("%s: Configuration change detected: Updating values.\n", name);
-        }
-        updateFlag = 1;
-      } state update_filters
+      /* Filter Mask Setpoint changed */
+      when(efTestAndClear(EvFlgFILTERMASK_SETPT)) {
+        if(DEBUG & 0x1) printf("%s: filter mask setpoint changed.\n", name);
+        myAction = 3;
+      } state action      
 
+      /* Something triggered the status to be busy */
       when(STATUS_BUSY){
+        if (DEBUG & 0x1) printf("%s: Busy record was set\n", name);
         changeFlag = 1;
       } state update_filters
 
+      /* Filters were changed by external agent */
       when (efTestAndClear(externalIO)) {
+        if (DEBUG & 0x1) printf("%s: External IO event flag was set\n", name);
       } state update_filters
 
     }
 
 
-/*--------------*/
-    state action {
+/*----------------------*/
+    state update_filters {
+      entry {
+        if (DEBUG & 0x1) printf("%s: entering state: update_filters\n", name);
+        pvPut(MSGE); strcpy(MSGE, "OK");
+      }
 
-      /* Can only deal with up to MAX_ENABLED unlocked filters */
-      when(nEnabled > MAX_ENABLED){
-        if(DEBUG & 0x1){
-          printf("%s: ERROR: Too many filters unlocked (%d/%d).\n", name, nEnabled, MAX_ENABLED);
+      when(){
+        /* Make sure the physical binary PVs of the actuators
+        ** are in sync with the SET bo PVs */
+        for(i = 0; i < nFltrs; i++) {
+          pvGet(OUT[i]);
+          efClear(externalIO);  /* Is this needed?  It probably should not be. */
+          pvGet(SET[i]);
+          if (SET[i] != OUT[i]) {
+            /* We mustn't write to SET[i] unless OUT[i] is different, because
+	     * writing processes, which sets STATUS_UPDATE, which brings us back
+             * here, causing an infinite loop.
+             */
+            SET[i] = OUT[i];
+            pvPut(SET[i]);
+            sprintf(MSGE, "Filter state set by external agent.");
+            pvPut(MSGE);
+          }
         }
-        sprintf(MSGE, "ERROR: Too many unlocked (%d/%d)", nEnabled, MAX_ENABLED);
-        pvPut(MSGE); strcpy(MSGE, "");
-      } state update_filters
 
-      when() {
+        /* Update the readback values */
+        transNow = 1.0;
+        fltrsInNow = 0;
+        nEnabled = 0;
+        for(i = 0; i < nFltrs; i++) {
+          /* calculate the individual filter blade transmissions */
+          if(DEBUG & 0x4){
+            printf("%s: Calculating transmission for blade %d.\n", name, i);
+          }
+          TRANSM[i] = calcTrans(ENERGY, THICK[i], MATER[i], DEBUG);
+          pvPut(TRANSM[i]);
 
-        /* signal that we are changing something */
-        changeFlag = 1;
-
-        if(DEBUG & 0x1){
-          sprintf(MSGE, "Action = %d", myAction); pvPut(MSGE);
-          printf("Action = %d\n", myAction);
-          epicsThreadSleep(1.0);
+          /*  update combined transmission, enable count, ... */
+          if(SET[i] && ENBL[i]){            
+            fltrsInNow |= (1 << i);
+            transNow *= TRANSM[i];
+          }
+          if((LOCK[i] == 0) && ENBL[i]) {
+            nEnabled += 1;
+          }
         }
-        strcpy(MSGE, "");      
+
+        TRANSMISSION = transNow; pvPut(TRANSMISSION);
+        FILTER_MASK = fltrsInNow; pvPut(FILTER_MASK);
+
+        /* Can only deal with up to MAX_ENABLED unlocked filters */
+        if(nEnabled > MAX_ENABLED){
+          if(DEBUG & 0x1){
+            printf("%s: ERROR: Too many filters unlocked (%d/%d).\n", \
+                name, nEnabled, MAX_ENABLED);
+          }
+          sprintf(MSGE, "ERROR: Too many unlocked (%d/%d)", nEnabled, MAX_ENABLED);
+          pvPut(MSGE);
+        }
 
         /* Calculate array of all possible transmissions
         ** and the corresponding pattern of filters.
@@ -618,7 +548,7 @@ static double calcTrans(double keV,
             if(ENBL[j]){
               if(LOCK[j] == 1){
                 if(SET[j]){
-                  /* take transmission into account for Locked and inserted filters */
+                  /* Take transmission into account for locked inserted filters */
                   transMis[i] *= TRANSM[j];
                   fltrsIn[i] |= (1 << j);
                 }
@@ -633,7 +563,7 @@ static double calcTrans(double keV,
           }
         }
         if(DEBUG & 0x2){
-          printf("%s: <#-enabled> = %d, <#-permutations> = %d, transmission = %e\n", 
+          printf("%s: <#-enabled>=%d, <#-permutations>=%d, transmission=%e\n", 
               name, nEnabled, nPerms, transNow);
           for(i = 0; ((i < nPerms) && (i < 100)); i++){
             printf("  %s: %s    %e\n",
@@ -643,122 +573,225 @@ static double calcTrans(double keV,
           }
         }
         
-        /* Sort the permutations into ascending order */
-        if(nPerms > 0) {
-          if(DEBUG & 0x1) {
-            strcpy(MSGE, "Starting sort ..."); pvPut(MSGE); strcpy(MSGE, "");
-            printf("Starting sort ...\n");
-            epicsThreadSleep(1.0);
-          }
-          Sort(transMis, fltrsIn, 0, nPerms);
-          if(DEBUG & 0x1) {
-            sprintf(MSGE, "Finished sort"); pvPut(MSGE); strcpy(MSGE, "");
-            printf("Finished sort ...\n");
-            epicsThreadSleep(1.0);
+        /* Find the current filter combination index */
+        indNow = -1;
+        for(ind = 0; ind < nPerms; ind++) {
+          if(transMis[ind] == transNow) indNow = ind;
+        }
+        if(indNow < 0){
+          printf("ERROR: Could not find current filter index\n");
+        }
+        if(DEBUG & 0x2){
+          printf("%s: Current index = %d\n", name, indNow);
+        }
+    
+        /* Update the transmission up readback values and index */
+        indUp = -1;
+        transUp = 10.0;
+        for(ind = 0; ind < nPerms; ind++) {
+          if( (transMis[ind] > (transNow * (1 + SMALL_FRAC))) &	\
+              (transMis[ind] < transUp) ){
+            transUp = transMis[ind];
+            indUp = ind; 
           }
         }
-        if(DEBUG & 0x2) {
-          printf("%s: Sorted transmissions:\n", name);
-          for(i = 0; ((i < nPerms) && (i < 100)); i++) {
-            printf("      %s    %e\n",
-                cvtToBin(buff1, fltrsIn[i], nFltrs), transMis[i]);
-          }
+        if(transUp > 1.0){
+          transUp = transNow;
+          indUp = indNow;
+        }
+        fltrsInUp = fltrsIn[indUp];
+        TRANSMISSION_UP = transUp;
+        pvPut(TRANSMISSION_UP);
+        if(DEBUG & 0x2){
+          printf("%s: Filter up: index = %d, transm = %e\n", \
+	      name, indUp, transUp);
         }
 
-        /* Now we are ready to do the work! */
+        /* Update the transmission down readback values and index */
+        indDown = -1;
+        transDown = -1.0;
+        for(ind = 0; ind < nPerms; ind++) {
+          if( (transMis[ind] < (transNow * (1 - SMALL_FRAC))) &	\
+              (transMis[ind] > transDown) ){
+            transDown = transMis[ind];
+            indDown = ind; 
+          }
+        }
+        if(transDown < 0.0){
+          transDown = transNow;
+          indDown = indNow;
+        }
+        fltrsInDown = fltrsIn[indDown];
+        TRANSMISSION_DOWN = transDown;
+        pvPut(TRANSMISSION_DOWN);        
+        if(DEBUG & 0x2){
+          printf("%s: Filter down: index = %d, transm = %e\n", \
+              name, indDown, transDown);
+        }
+
+        /* Clear the busy record */
+        if(changeFlag){
+          if(DEBUG & 0x1) printf("%s: clearing busy record.\n", name);
+          changeFlag = 0;
+
+          STATUS_BUSY = 0;
+          pvPut(STATUS_BUSY);
+        }
+
+      } state waiting
+    }
+
+
+/*--------------*/
+    state action {
+
+      when() {
+
+        strcpy(MSGE, ""); pvPut(MSGE);
+
+        /* signal that we are changing something */
+        changeFlag = 1;
+
+        if(DEBUG & 0x1){
+          sprintf(MSGE, "Action = %d", myAction); pvPut(MSGE);
+          printf("Action = %d\n", myAction);
+          /*epicsThreadSleep(1.0);*/
+        }
+        strcpy(MSGE, "");      
+
         if(myAction == 0) {
 
-          /* find the current filter combination index */
-          indNow = -1;
-          if(transNow >= 0.99999) {
-            indNow = nPerms - 1;
-          } else {
-            indNow = 0;                             
-            for(k = 1; k < nPerms; k++) {
-              if(transMis[k] <= transNow) indNow = k;
-            }
-          }
-          
           /* Set the transmission to the next lower or equal transmission as
           ** requested in the setpoint
           */
-          ind = -1;
           if(DEBUG & 0x1){
             printf("%s: Required transmission = %e\n", name, TRANSM_SETPT);
           }
-          if(TRANSM_SETPT >= 0.99999) {
-            ind = nPerms - 1;
-          } else {
-            ind = 0;                             
-            for(k = 1; k < nPerms; k++) {
-              if(transMis[k] <= TRANSM_SETPT) ind = k;
+
+          trans = -1.0;
+          transMin = 1.0;
+          for(k = 0; k < nPerms; k++) {
+            if( (transMis[k] <= (TRANSM_SETPT)) & \
+                (transMis[k] > trans) ){
+              ind = k;
+              trans = transMis[k];
+            }
+            if(transMis[k] < transMin){
+              transMin = transMis[k];
+              indMin = k;
             }
           }
+          if(trans < transMin){
+            ind = indMin;
+          }
+
           if(DEBUG & 0x1) {
+            printf("%s: New filter index: %d\n", name, ind);
             printf("%s: Selected filters are: %s   Transmission = %e\n",
               name, cvtToBin(buff1, fltrsIn[ind], nFltrs), transMis[ind]);
           }
-          if(ind == indNow){
+
+          if(transMis[ind] == transNow){
             if(DEBUG & 0x1) printf("NO CHANGE! Current settings are best.\n");
-            strcpy(MSGE, "NO CHANGE! Transm. unavailable.");
-            pvPut(MSGE); strcpy(MSGE, "");
+            strcpy(MSGE, "OK - No change");
+            pvPut(MSGE);
           } else {
-            strcpy(MSGE, ""); pvPut(MSGE);
+            strcpy(MSGE, "OK"); pvPut(MSGE);
           }
 		  
         } else if(myAction == 1){
+
           /* Set the transmission to the next available step up */
-          k = -1;
-          ind = -1;
-          for(i = 0; i < nPerms; i++) {
-            if(fltrsIn[i] == fltrsInNow) k = i;
-          }
-          if(k < 0) {
-            printf("%s: Cannot find current filter pattern!\n", name);
+
+          ind = indUp;
+          if(transUp == transNow) {
+            strcpy(MSGE, "NO CHANGE! Step unavailable.");
+            pvPut(MSGE);
+            if(DEBUG & 0x1) printf("%s: No more steps up available!\n", name);
           } else {
-            if(transMis[k] >= transMis[nPerms-1]) {
-              strcpy(MSGE, "NO CHANGE! Step unavailable.");
-              pvPut(MSGE); strcpy(MSGE, "");
-              if(DEBUG & 0x1) printf("%s: No more steps up available!\n", name);
-            } else {
-              strcpy(MSGE, ""); pvPut(MSGE);
-              for(ind = k; ind < (nPerms - 1); ind++) {
-                if(transMis[ind] > transNow) break;
-              }
-              if(DEBUG & 0x1){
-                printf("%s: Next filter pattern is %s,  Transmission = %e\n",
-                name, cvtToBin(buff1, fltrsIn[ind], nFltrs), transMis[ind]);
+            strcpy(MSGE, "OK"); pvPut(MSGE);
+          }
+          if(DEBUG & 0x1){
+            printf("%s: Next filter pattern is %s,  Transmission = %e\n",
+            name, cvtToBin(buff1, fltrsIn[ind], nFltrs), transMis[ind]);
+          }
+
+        } else if(myAction == 2) {
+
+          /* Set the transmission to the next available step down */
+ 
+          ind = indDown;
+          if(transDown == transNow) {
+            strcpy(MSGE, "NO CHANGE! Step unavailable.");
+            pvPut(MSGE);
+            if(DEBUG & 0x1) printf("%s: No more steps down available!\n", name);
+          } else {
+            strcpy(MSGE, "OK"); pvPut(MSGE);
+          }
+          if(DEBUG & 0x1){
+            printf("%s: Next filter pattern is %s,  Transmission = %e\n",
+            name, cvtToBin(buff1, fltrsIn[ind], nFltrs), transMis[ind]);
+          }
+
+        } else if(myAction == 3){
+
+          /* Set filter according to the requested filtermask */
+          fltrsSetpt = FILTERMASK_SETPT;
+
+          /* Check validity of filterMask */
+          if( (fltrsSetpt < 0) | (fltrsSetpt > ((1 << nFltrs) - 1)) ){
+            ind = indNow;
+	    strcpy(MSGE, "ERROR! Invalid mask.");
+            pvPut(MSGE);
+            if(DEBUG & 0x1){
+	      printf("%s: ERROR! Invalid filter mask: %d\n", name, fltrsSetpt);
+              printf("%s:   Valid masks are in the range (0 - %d)\n", \
+		 name, ((1 << nFltrs) - 1));
+            }
+	  } else {
+
+            /* Adjust the requested filter mask to ignore locked filters */
+            fltrsReq = 0;
+            for(j = 0; j < nFltrs; j++){
+              if(ENBL[j]){
+                if(LOCK[j] == 1){
+                  if(SET[j]){
+                    /* Take locked and inserted filters into account */
+                    fltrsReq |= (1 << j);
+                  }
+                } else {
+                  fltrsReq |= (1 << j) & fltrsSetpt;
+                }
               }
             }
-          }
-        } else if(myAction == 2) {
-          /* Set the transmission to the next available step up */
-          k = -1;
-          ind = -1;
-          for(i = 0; i < nPerms; i++) {
-            if(fltrsIn[i] == fltrsInNow) k = i;
-          }
-          if(k < 0) {
-            printf("%s: Cannot find current filter pattern!\n", name);
-          } else {
-            if(transMis[k] <= transMis[0]) {
-              strcpy(MSGE, "NO CHANGE! Step unavailable.");
-              pvPut(MSGE); strcpy(MSGE, "");
-              if(DEBUG & 0x1) printf("%s: No more steps down available!\n", name);
-            } else {
+            if(DEBUG & 0x1){
+              printf("%s: Required filter mask: %x\n", name, fltrsSetpt);
+              printf("%s: Adjusted filter mask: %x\n", name, fltrsReq);
+            }
+	    
+            ind = -1;
+            for(i = 0; i < nPerms; i++) {
+              if(fltrsIn[i] == fltrsReq) ind = i;
+            }
+            if(ind < 0) {
+              printf("%s: Cannot find the requested filter pattern!\n", name);
+              strcpy(MSGE, "ERROR! Filter Mask not found.");
               pvPut(MSGE);
-              for(ind = k; ind >= 0; ind--) {
-                if(transMis[ind] < transNow) break;
-              }
-              if(DEBUG & 0x1){
-                printf("%s: Next filter pattern is %s,  Transmission = %e\n",
-                name, cvtToBin (buff1, fltrsIn[ind], nFltrs), transMis[ind]);
-              }
+            } else {
+              strcpy(MSGE, "OK"); pvPut(MSGE);
+            }
+	    
+            if(DEBUG & 0x1){
+              printf("%s: Next filter pattern is %s,  Transmission = %e\n",
+              name, cvtToBin (buff1, fltrsIn[ind], nFltrs), transMis[ind]);
             }
           }
         }
+
+        /* clear the filter up/down push buttons */
         TRANSM_UP = 0; pvPut(TRANSM_UP);
         TRANSM_DN = 0; pvPut(TRANSM_DN);
+
       } state change_filters
     }
 
@@ -767,35 +800,40 @@ static double calcTrans(double keV,
       when() {
         if(ind >=0){
 
-          /* Signal that filters need updating */
-          updateFlag = 1;
-
           /* Start by putting in filters */
+          doWait = 0;
           for(j = 0; j < nFltrs; j++) {        
             if(fltrsIn[ind] & (1 << j)) {
+              if(SET[j] == 0) doWait = 1;
               SET[j] = 1; pvPut(SET[j]);
             }
           }
 
-          /* Give them time to get in */
-          pvGet(FILTER_WAIT_TIME);
-          epicsThreadSleep(FILTER_WAIT_TIME);
-        
+          /* Give them time to get in if something changed */
+          if(doWait){
+            pvGet(FILTER_WAIT_TIME);
+            epicsThreadSleep(FILTER_WAIT_TIME);
+          }
+
           /* Then take out the others */
+          doWait = 0;
           for(j = 0; j < nFltrs; j++) {           
             if((fltrsIn[ind] & (1 << j)) == 0) {
+              if(SET[j] == 1) doWait = 1;
               SET[j] = 0; pvPut(SET[j]);
             }
           }
 
-          /* Give them time to get out */
-          pvGet(FILTER_WAIT_TIME);
-          epicsThreadSleep(FILTER_WAIT_TIME);
-
+          /* Give them time to get out if something changed*/
+          if(doWait){
+            pvGet(FILTER_WAIT_TIME);
+            epicsThreadSleep(FILTER_WAIT_TIME);
+          }
         }
       } state waiting
     }
   }
 
-
-/*============================================= End of filterDrive.st ====*/
+/*==============================================================================
+** End of $ Id: $
+==============================================================================*/
