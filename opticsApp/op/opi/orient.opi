@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <display typeId="org.csstudio.opibuilder.Display" version="1.0">
   <auto_zoom_to_fit_all>false</auto_zoom_to_fit_all>
   <macros>
     <include_parent_macros>true</include_parent_macros>
   </macros>
-  <wuid>-db7ea2d:13a08078d9e:-239d</wuid>
+  <wuid>39872d87:13e14015f61:391c</wuid>
   <boy_version>3.1.2.20120830</boy_version>
   <scripts />
   <show_ruler>true</show_ruler>
@@ -32,72 +31,6 @@
   <actions hook="false" hook_all="false" />
   <y>81</y>
   <x>82</x>
-  <widget typeId="org.csstudio.opibuilder.widgets.polyline" version="1.0">
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <fill_arrow>true</fill_arrow>
-    <arrow_length>20</arrow_length>
-    <visible>true</visible>
-    <fill_level>0.0</fill_level>
-    <wuid>-db7ea2d:13a08078d9e:-235d</wuid>
-    <rotation_angle>0.0</rotation_angle>
-    <scripts />
-    <arrows>0</arrows>
-    <height>1</height>
-    <anti_alias>true</anti_alias>
-    <name>Polyline</name>
-    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-    <alpha>255</alpha>
-    <scale_options>
-      <width_scalable>true</width_scalable>
-      <height_scalable>true</height_scalable>
-      <keep_wh_ratio>true</keep_wh_ratio>
-    </scale_options>
-    <points>
-      <point x="350" y="121" />
-      <point x="257" y="121" />
-    </points>
-    <transparent>false</transparent>
-    <pv_name></pv_name>
-    <background_color>
-      <color name="MEDM_COLOR_17" red="51" green="153" blue="0" />
-    </background_color>
-    <foreground_color>
-      <color red="255" green="0" blue="0" />
-    </foreground_color>
-    <widget_type>Polyline</widget_type>
-    <enabled>true</enabled>
-    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-    <font>
-      <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
-    </font>
-    <width>94</width>
-    <line_style>0</line_style>
-    <border_style>0</border_style>
-    <rules>
-      <rule name="Visibility" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0||">
-          <value>true</value>
-        </exp>
-        <exp bool_exp="!(pv0||)">
-          <value>false</value>
-        </exp>
-        <pv trig="true">$(P)orient$(O):motPut</pv>
-        <pv trig="true">$(P)orient$(O):motPut_Auto</pv>
-      </rule>
-    </rules>
-    <pv_value />
-    <border_width>1</border_width>
-    <line_width>6</line_width>
-    <horizontal_fill>true</horizontal_fill>
-    <border_color>
-      <color red="0" green="128" blue="255" />
-    </border_color>
-    <actions hook="false" hook_all="false" />
-    <y>121</y>
-    <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-    <x>257</x>
-  </widget>
   <widget typeId="org.csstudio.opibuilder.widgets.Rectangle" version="1.0">
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
@@ -105,7 +38,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color red="128" green="0" blue="255" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-239c</wuid>
+    <wuid>39872d87:13e14015f61:391d</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -123,7 +56,7 @@ $(pv_value)</tooltip>
     <transparent>false</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="Gray_0" red="255" green="255" blue="255" />
@@ -162,7 +95,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color red="128" green="0" blue="255" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-239b</wuid>
+    <wuid>39872d87:13e14015f61:391e</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -180,7 +113,7 @@ $(pv_value)</tooltip>
     <transparent>false</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="ioc_read_fg" red="10" green="0" blue="184" />
@@ -219,7 +152,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-239a</wuid>
+    <wuid>39872d87:13e14015f61:3926</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -237,7 +170,7 @@ $(pv_value)</tooltip>
     <transparent>true</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -286,7 +219,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-2399</wuid>
+    <wuid>39872d87:13e14015f61:392b</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -304,7 +237,7 @@ $(pv_value)</tooltip>
     <transparent>true</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -353,7 +286,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-2398</wuid>
+    <wuid>39872d87:13e14015f61:392c</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -371,7 +304,7 @@ $(pv_value)</tooltip>
     <transparent>true</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -420,7 +353,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-2397</wuid>
+    <wuid>39872d87:13e14015f61:392d</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -438,7 +371,7 @@ $(pv_value)</tooltip>
     <transparent>true</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -487,7 +420,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color name="alarm" red="253" green="0" blue="0" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-2396</wuid>
+    <wuid>39872d87:13e14015f61:3935</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -505,7 +438,7 @@ $(pv_value)</tooltip>
     <transparent>true</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="alarm" red="253" green="0" blue="0" />
@@ -554,7 +487,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-2395</wuid>
+    <wuid>39872d87:13e14015f61:393b</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -572,7 +505,7 @@ $(pv_value)</tooltip>
     <transparent>true</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -621,7 +554,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-2394</wuid>
+    <wuid>39872d87:13e14015f61:3944</wuid>
     <bg_gradient_color>
       <color red="255" green="255" blue="255" />
     </bg_gradient_color>
@@ -639,7 +572,7 @@ $(pv_value)</tooltip>
     <transparent>true</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -686,7 +619,7 @@ $(pv_value)</tooltip>
       <include_parent_macros>true</include_parent_macros>
     </macros>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-2393</wuid>
+    <wuid>39872d87:13e14015f61:3930</wuid>
     <scripts />
     <height>34</height>
     <name>Grouping Container</name>
@@ -695,7 +628,7 @@ $(pv_value)</tooltip>
       <height_scalable>true</height_scalable>
       <keep_wh_ratio>false</keep_wh_ratio>
     </scale_options>
-    <transparent>false</transparent>
+    <transparent>true</transparent>
     <show_scrollbar>false</show_scrollbar>
     <background_color>
       <color red="218" green="218" blue="218" />
@@ -724,7 +657,7 @@ $(pv_value)</tooltip>
       <border_alarm_sensitive>false</border_alarm_sensitive>
       <visible>true</visible>
       <actions_from_pv>true</actions_from_pv>
-      <wuid>-db7ea2d:13a08078d9e:-2392</wuid>
+      <wuid>39872d87:13e14015f61:3931</wuid>
       <scripts />
       <height>14</height>
       <name>Menu Button</name>
@@ -758,6 +691,7 @@ $(pv_value)</tooltip>
         <color red="0" green="128" blue="255" />
       </border_color>
       <y>0</y>
+      <actions hook="false" hook_all="false" />
       <tooltip>$(pv_name)
 $(pv_value)</tooltip>
       <x>0</x>
@@ -765,7 +699,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
       <border_alarm_sensitive>false</border_alarm_sensitive>
       <visible>true</visible>
-      <wuid>-db7ea2d:13a08078d9e:-2391</wuid>
+      <wuid>39872d87:13e14015f61:3932</wuid>
       <scripts />
       <height>20</height>
       <name>Action Button</name>
@@ -819,7 +753,7 @@ $(pv_value)</tooltip>
       <include_parent_macros>true</include_parent_macros>
     </macros>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-2390</wuid>
+    <wuid>39872d87:13e14015f61:393d</wuid>
     <scripts />
     <height>24</height>
     <name>Grouping Container</name>
@@ -828,7 +762,7 @@ $(pv_value)</tooltip>
       <height_scalable>true</height_scalable>
       <keep_wh_ratio>false</keep_wh_ratio>
     </scale_options>
-    <transparent>false</transparent>
+    <transparent>true</transparent>
     <show_scrollbar>false</show_scrollbar>
     <background_color>
       <color red="218" green="218" blue="218" />
@@ -860,7 +794,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-238f</wuid>
+      <wuid>39872d87:13e14015f61:3940</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -878,7 +812,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -923,7 +857,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
-      <wuid>-db7ea2d:13a08078d9e:-238e</wuid>
+      <wuid>39872d87:13e14015f61:393e</wuid>
       <auto_size>false</auto_size>
       <scripts />
       <height>20</height>
@@ -945,7 +879,7 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text>K</text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>10</width>
       <border_style>0</border_style>
@@ -978,16 +912,16 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text></text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>80</width>
       <border_style>3</border_style>
       <pv_value />
       <border_width>1</border_width>
-      <maximum>1.7976931348623157E308</maximum>
-      <minimum>-1.7976931348623157E308</minimum>
+      <maximum>Infinity</maximum>
+      <minimum>-Infinity</minimum>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-238d</wuid>
+      <wuid>39872d87:13e14015f61:393f</wuid>
       <rotation_angle>0.0</rotation_angle>
       <name>Text Input</name>
       <scale_options>
@@ -1023,7 +957,7 @@ $(pv_value)</tooltip>
       <include_parent_macros>true</include_parent_macros>
     </macros>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-238c</wuid>
+    <wuid>39872d87:13e14015f61:3945</wuid>
     <scripts />
     <height>37</height>
     <name>Grouping Container</name>
@@ -1032,7 +966,7 @@ $(pv_value)</tooltip>
       <height_scalable>true</height_scalable>
       <keep_wh_ratio>false</keep_wh_ratio>
     </scale_options>
-    <transparent>false</transparent>
+    <transparent>true</transparent>
     <show_scrollbar>false</show_scrollbar>
     <background_color>
       <color red="218" green="218" blue="218" />
@@ -1057,78 +991,12 @@ $(pv_value)</tooltip>
     <y>145</y>
     <tooltip></tooltip>
     <x>252</x>
-    <widget typeId="org.csstudio.opibuilder.widgets.polyline" version="1.0">
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-      <fill_arrow>true</fill_arrow>
-      <arrow_length>20</arrow_length>
-      <visible>true</visible>
-      <fill_level>0.0</fill_level>
-      <wuid>-db7ea2d:13a08078d9e:-2388</wuid>
-      <rotation_angle>0.0</rotation_angle>
-      <scripts />
-      <arrows>0</arrows>
-      <height>2</height>
-      <anti_alias>true</anti_alias>
-      <name>Polyline</name>
-      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
-      <alpha>255</alpha>
-      <scale_options>
-        <width_scalable>true</width_scalable>
-        <height_scalable>true</height_scalable>
-        <keep_wh_ratio>true</keep_wh_ratio>
-      </scale_options>
-      <points>
-        <point x="15" y="24" />
-        <point x="108" y="23" />
-      </points>
-      <transparent>false</transparent>
-      <pv_name></pv_name>
-      <background_color>
-        <color name="MEDM_COLOR_17" red="51" green="153" blue="0" />
-      </background_color>
-      <foreground_color>
-        <color red="255" green="0" blue="0" />
-      </foreground_color>
-      <widget_type>Polyline</widget_type>
-      <enabled>true</enabled>
-      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
-      <font>
-        <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
-      </font>
-      <width>94</width>
-      <line_style>0</line_style>
-      <border_style>0</border_style>
-      <rules>
-        <rule name="Visibility" prop_id="visible" out_exp="false">
-          <exp bool_exp="pv0||">
-            <value>true</value>
-          </exp>
-          <exp bool_exp="!(pv0||)">
-            <value>false</value>
-          </exp>
-          <pv trig="true">$(P)orient$(O):motGet</pv>
-          <pv trig="true">$(P)orient$(O):motGet_Auto</pv>
-        </rule>
-      </rules>
-      <pv_value />
-      <border_width>1</border_width>
-      <line_width>6</line_width>
-      <horizontal_fill>true</horizontal_fill>
-      <border_color>
-        <color red="0" green="128" blue="255" />
-      </border_color>
-      <actions hook="false" hook_all="false" />
-      <y>23</y>
-      <tooltip>$(pv_name)
-$(pv_value)</tooltip>
-      <x>15</x>
-    </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0">
       <macros>
         <include_parent_macros>true</include_parent_macros>
       </macros>
       <visible>true</visible>
-      <wuid>-db7ea2d:13a08078d9e:-238b</wuid>
+      <wuid>39872d87:13e14015f61:3946</wuid>
       <scripts />
       <height>34</height>
       <name>Grouping Container</name>
@@ -1137,7 +1005,7 @@ $(pv_value)</tooltip>
         <height_scalable>true</height_scalable>
         <keep_wh_ratio>false</keep_wh_ratio>
       </scale_options>
-      <transparent>false</transparent>
+      <transparent>true</transparent>
       <show_scrollbar>false</show_scrollbar>
       <background_color>
         <color red="218" green="218" blue="218" />
@@ -1166,7 +1034,7 @@ $(pv_value)</tooltip>
         <border_alarm_sensitive>false</border_alarm_sensitive>
         <visible>true</visible>
         <actions_from_pv>true</actions_from_pv>
-        <wuid>-db7ea2d:13a08078d9e:-238a</wuid>
+        <wuid>39872d87:13e14015f61:3947</wuid>
         <scripts />
         <height>14</height>
         <name>Menu Button</name>
@@ -1200,6 +1068,7 @@ $(pv_value)</tooltip>
           <color red="0" green="128" blue="255" />
         </border_color>
         <y>0</y>
+        <actions hook="false" hook_all="false" />
         <tooltip>$(pv_name)
 $(pv_value)</tooltip>
         <x>0</x>
@@ -1207,7 +1076,7 @@ $(pv_value)</tooltip>
       <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
         <border_alarm_sensitive>false</border_alarm_sensitive>
         <visible>true</visible>
-        <wuid>-db7ea2d:13a08078d9e:-2389</wuid>
+        <wuid>39872d87:13e14015f61:3948</wuid>
         <scripts />
         <height>20</height>
         <name>Action Button</name>
@@ -1256,6 +1125,72 @@ $(pv_value)</tooltip>
         <x>0</x>
       </widget>
     </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.polyline" version="1.0">
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <fill_arrow>true</fill_arrow>
+      <arrow_length>20</arrow_length>
+      <visible>true</visible>
+      <fill_level>100.0</fill_level>
+      <wuid>39872d87:13e14015f61:3949</wuid>
+      <rotation_angle>0.0</rotation_angle>
+      <scripts />
+      <arrows>0</arrows>
+      <height>2</height>
+      <anti_alias>true</anti_alias>
+      <name>Polyline</name>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alpha>255</alpha>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <points>
+        <point x="15" y="24" />
+        <point x="108" y="23" />
+      </points>
+      <transparent>true</transparent>
+      <pv_name></pv_name>
+      <background_color>
+        <color red="30" green="144" blue="255" />
+      </background_color>
+      <foreground_color>
+        <color name="MEDM_COLOR_17" red="51" green="153" blue="0" />
+      </foreground_color>
+      <widget_type>Polyline</widget_type>
+      <enabled>true</enabled>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <font>
+        <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+      </font>
+      <width>94</width>
+      <line_style>0</line_style>
+      <border_style>0</border_style>
+      <rules>
+        <rule name="Visibility" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0||">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="!(pv0||)">
+            <value>false</value>
+          </exp>
+          <pv trig="true">$(P)orient$(O):motGet</pv>
+          <pv trig="true">$(P)orient$(O):motGet_Auto</pv>
+        </rule>
+      </rules>
+      <pv_value />
+      <border_width>1</border_width>
+      <line_width>1</line_width>
+      <horizontal_fill>true</horizontal_fill>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <actions hook="false" hook_all="false" />
+      <y>23</y>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <x>15</x>
+    </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.polygon" version="1.0">
       <border_alarm_sensitive>false</border_alarm_sensitive>
       <visible>true</visible>
@@ -1263,7 +1198,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color red="128" green="0" blue="255" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-2387</wuid>
+      <wuid>39872d87:13e14015f61:394a</wuid>
       <rotation_angle>0.0</rotation_angle>
       <scripts />
       <height>27</height>
@@ -1285,7 +1220,7 @@ $(pv_value)</tooltip>
       <transparent>false</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="MEDM_COLOR_17" red="51" green="153" blue="0" />
@@ -1330,7 +1265,7 @@ $(pv_value)</tooltip>
       <include_parent_macros>true</include_parent_macros>
     </macros>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-2386</wuid>
+    <wuid>39872d87:13e14015f61:3950</wuid>
     <scripts />
     <height>20</height>
     <name>Grouping Container</name>
@@ -1339,7 +1274,7 @@ $(pv_value)</tooltip>
       <height_scalable>true</height_scalable>
       <keep_wh_ratio>false</keep_wh_ratio>
     </scale_options>
-    <transparent>false</transparent>
+    <transparent>true</transparent>
     <show_scrollbar>false</show_scrollbar>
     <background_color>
       <color red="218" green="218" blue="218" />
@@ -1367,7 +1302,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
       <border_alarm_sensitive>false</border_alarm_sensitive>
       <visible>true</visible>
-      <wuid>-db7ea2d:13a08078d9e:-2385</wuid>
+      <wuid>39872d87:13e14015f61:3951</wuid>
       <scripts />
       <height>20</height>
       <name>Action Button</name>
@@ -1418,7 +1353,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
       <border_alarm_sensitive>false</border_alarm_sensitive>
       <visible>true</visible>
-      <wuid>-db7ea2d:13a08078d9e:-2384</wuid>
+      <wuid>39872d87:13e14015f61:3952</wuid>
       <scripts />
       <height>20</height>
       <name>Action Button</name>
@@ -1483,16 +1418,16 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text></text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>40</width>
       <border_style>3</border_style>
       <pv_value />
       <border_width>1</border_width>
-      <maximum>1.7976931348623157E308</maximum>
-      <minimum>-1.7976931348623157E308</minimum>
+      <maximum>Infinity</maximum>
+      <minimum>-Infinity</minimum>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-2383</wuid>
+      <wuid>39872d87:13e14015f61:3953</wuid>
       <rotation_angle>0.0</rotation_angle>
       <name>Text Input</name>
       <scale_options>
@@ -1528,7 +1463,7 @@ $(pv_value)</tooltip>
       <include_parent_macros>true</include_parent_macros>
     </macros>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-2382</wuid>
+    <wuid>39872d87:13e14015f61:3954</wuid>
     <scripts />
     <height>20</height>
     <name>Grouping Container</name>
@@ -1537,7 +1472,7 @@ $(pv_value)</tooltip>
       <height_scalable>true</height_scalable>
       <keep_wh_ratio>false</keep_wh_ratio>
     </scale_options>
-    <transparent>false</transparent>
+    <transparent>true</transparent>
     <show_scrollbar>false</show_scrollbar>
     <background_color>
       <color red="218" green="218" blue="218" />
@@ -1565,7 +1500,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
       <border_alarm_sensitive>false</border_alarm_sensitive>
       <visible>true</visible>
-      <wuid>-db7ea2d:13a08078d9e:-2381</wuid>
+      <wuid>39872d87:13e14015f61:3955</wuid>
       <scripts />
       <height>20</height>
       <name>Action Button</name>
@@ -1616,7 +1551,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
       <border_alarm_sensitive>false</border_alarm_sensitive>
       <visible>true</visible>
-      <wuid>-db7ea2d:13a08078d9e:-2380</wuid>
+      <wuid>39872d87:13e14015f61:3956</wuid>
       <scripts />
       <height>20</height>
       <name>Action Button</name>
@@ -1681,16 +1616,16 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text></text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>40</width>
       <border_style>3</border_style>
       <pv_value />
       <border_width>1</border_width>
-      <maximum>1.7976931348623157E308</maximum>
-      <minimum>-1.7976931348623157E308</minimum>
+      <maximum>Infinity</maximum>
+      <minimum>-Infinity</minimum>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-237f</wuid>
+      <wuid>39872d87:13e14015f61:3957</wuid>
       <rotation_angle>0.0</rotation_angle>
       <name>Text Input</name>
       <scale_options>
@@ -1726,7 +1661,7 @@ $(pv_value)</tooltip>
       <include_parent_macros>true</include_parent_macros>
     </macros>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-237e</wuid>
+    <wuid>39872d87:13e14015f61:3958</wuid>
     <scripts />
     <height>177</height>
     <name>Grouping Container</name>
@@ -1735,7 +1670,7 @@ $(pv_value)</tooltip>
       <height_scalable>true</height_scalable>
       <keep_wh_ratio>false</keep_wh_ratio>
     </scale_options>
-    <transparent>false</transparent>
+    <transparent>true</transparent>
     <show_scrollbar>false</show_scrollbar>
     <background_color>
       <color red="218" green="218" blue="218" />
@@ -1767,7 +1702,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="alarm" red="253" green="0" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-237d</wuid>
+      <wuid>39872d87:13e14015f61:395a</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -1785,7 +1720,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="alarm" red="253" green="0" blue="0" />
@@ -1834,7 +1769,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-237c</wuid>
+      <wuid>39872d87:13e14015f61:395c</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -1852,7 +1787,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -1901,7 +1836,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="alarm" red="253" green="0" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-237b</wuid>
+      <wuid>39872d87:13e14015f61:395d</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -1919,7 +1854,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="alarm" red="253" green="0" blue="0" />
@@ -1968,7 +1903,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-237a</wuid>
+      <wuid>39872d87:13e14015f61:395e</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -1986,7 +1921,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -2035,7 +1970,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="alarm" red="253" green="0" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-2379</wuid>
+      <wuid>39872d87:13e14015f61:3962</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -2053,7 +1988,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="alarm" red="253" green="0" blue="0" />
@@ -2102,7 +2037,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-2378</wuid>
+      <wuid>39872d87:13e14015f61:3964</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -2120,7 +2055,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -2169,7 +2104,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="alarm" red="253" green="0" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-2377</wuid>
+      <wuid>39872d87:13e14015f61:3967</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -2187,7 +2122,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="alarm" red="253" green="0" blue="0" />
@@ -2236,7 +2171,7 @@ $(pv_value)</tooltip>
       <line_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
       </line_color>
-      <wuid>-db7ea2d:13a08078d9e:-2376</wuid>
+      <wuid>39872d87:13e14015f61:3969</wuid>
       <bg_gradient_color>
         <color red="255" green="255" blue="255" />
       </bg_gradient_color>
@@ -2254,7 +2189,7 @@ $(pv_value)</tooltip>
       <transparent>true</transparent>
       <pv_name></pv_name>
       <background_color>
-        <color red="0" green="0" blue="255" />
+        <color red="30" green="144" blue="255" />
       </background_color>
       <foreground_color>
         <color name="MEDM_COLOR_16" red="30" green="187" blue="0" />
@@ -2301,7 +2236,7 @@ $(pv_value)</tooltip>
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-2375</wuid>
+      <wuid>39872d87:13e14015f61:3959</wuid>
       <auto_size>false</auto_size>
       <rotation_angle>0.0</rotation_angle>
       <scripts />
@@ -2364,16 +2299,16 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text></text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>80</width>
       <border_style>3</border_style>
       <pv_value />
       <border_width>1</border_width>
-      <maximum>1.7976931348623157E308</maximum>
-      <minimum>-1.7976931348623157E308</minimum>
+      <maximum>Infinity</maximum>
+      <minimum>-Infinity</minimum>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-2374</wuid>
+      <wuid>39872d87:13e14015f61:395b</wuid>
       <rotation_angle>0.0</rotation_angle>
       <name>Text Input</name>
       <scale_options>
@@ -2408,7 +2343,7 @@ $(pv_value)</tooltip>
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-2373</wuid>
+      <wuid>39872d87:13e14015f61:395f</wuid>
       <auto_size>false</auto_size>
       <rotation_angle>0.0</rotation_angle>
       <scripts />
@@ -2471,16 +2406,16 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text></text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>80</width>
       <border_style>3</border_style>
       <pv_value />
       <border_width>1</border_width>
-      <maximum>1.7976931348623157E308</maximum>
-      <minimum>-1.7976931348623157E308</minimum>
+      <maximum>Infinity</maximum>
+      <minimum>-Infinity</minimum>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-2372</wuid>
+      <wuid>39872d87:13e14015f61:3960</wuid>
       <rotation_angle>0.0</rotation_angle>
       <name>Text Input</name>
       <scale_options>
@@ -2515,7 +2450,7 @@ $(pv_value)</tooltip>
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-2371</wuid>
+      <wuid>39872d87:13e14015f61:3961</wuid>
       <auto_size>false</auto_size>
       <rotation_angle>0.0</rotation_angle>
       <scripts />
@@ -2578,16 +2513,16 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text></text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>80</width>
       <border_style>3</border_style>
       <pv_value />
       <border_width>1</border_width>
-      <maximum>1.7976931348623157E308</maximum>
-      <minimum>-1.7976931348623157E308</minimum>
+      <maximum>Infinity</maximum>
+      <minimum>-Infinity</minimum>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-2370</wuid>
+      <wuid>39872d87:13e14015f61:3963</wuid>
       <rotation_angle>0.0</rotation_angle>
       <name>Text Input</name>
       <scale_options>
@@ -2620,7 +2555,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
-      <wuid>-db7ea2d:13a08078d9e:-236f</wuid>
+      <wuid>39872d87:13e14015f61:3965</wuid>
       <auto_size>false</auto_size>
       <scripts />
       <height>20</height>
@@ -2642,7 +2577,7 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text>Moving</text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>84</width>
       <border_style>0</border_style>
@@ -2673,7 +2608,7 @@ $(pv_value)</tooltip>
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-236e</wuid>
+      <wuid>39872d87:13e14015f61:3966</wuid>
       <auto_size>false</auto_size>
       <rotation_angle>0.0</rotation_angle>
       <scripts />
@@ -2736,16 +2671,16 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text></text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>80</width>
       <border_style>3</border_style>
       <pv_value />
       <border_width>1</border_width>
-      <maximum>1.7976931348623157E308</maximum>
-      <minimum>-1.7976931348623157E308</minimum>
+      <maximum>Infinity</maximum>
+      <minimum>-Infinity</minimum>
       <show_units>false</show_units>
-      <wuid>-db7ea2d:13a08078d9e:-236d</wuid>
+      <wuid>39872d87:13e14015f61:3968</wuid>
       <rotation_angle>0.0</rotation_angle>
       <name>Text Input</name>
       <scale_options>
@@ -2778,7 +2713,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
-      <wuid>-db7ea2d:13a08078d9e:-236c</wuid>
+      <wuid>39872d87:13e14015f61:396a</wuid>
       <auto_size>false</auto_size>
       <scripts />
       <height>20</height>
@@ -2800,7 +2735,7 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text>TTH</text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>30</width>
       <border_style>0</border_style>
@@ -2819,7 +2754,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
-      <wuid>-db7ea2d:13a08078d9e:-236b</wuid>
+      <wuid>39872d87:13e14015f61:396b</wuid>
       <auto_size>false</auto_size>
       <scripts />
       <height>20</height>
@@ -2841,7 +2776,7 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text>TH</text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>30</width>
       <border_style>0</border_style>
@@ -2860,7 +2795,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
-      <wuid>-db7ea2d:13a08078d9e:-236a</wuid>
+      <wuid>39872d87:13e14015f61:396c</wuid>
       <auto_size>false</auto_size>
       <scripts />
       <height>20</height>
@@ -2882,7 +2817,7 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text>CHI</text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>30</width>
       <border_style>0</border_style>
@@ -2901,7 +2836,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
       <visible>true</visible>
       <vertical_alignment>1</vertical_alignment>
-      <wuid>-db7ea2d:13a08078d9e:-2369</wuid>
+      <wuid>39872d87:13e14015f61:396d</wuid>
       <auto_size>false</auto_size>
       <scripts />
       <height>20</height>
@@ -2923,7 +2858,7 @@ $(pv_value)</tooltip>
       <enabled>true</enabled>
       <text>PHI</text>
       <font>
-        <fontdata fontName="Sans" height="14" style="0" />
+        <fontdata fontName="Sans" height="11" style="0" />
       </font>
       <width>30</width>
       <border_style>0</border_style>
@@ -2943,7 +2878,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-2368</wuid>
+    <wuid>39872d87:13e14015f61:391f</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>20</height>
@@ -2965,7 +2900,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text>Diffractometer $(P)orient$(O)</text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>490</width>
     <border_style>0</border_style>
@@ -2984,7 +2919,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-2367</wuid>
+    <wuid>39872d87:13e14015f61:3920</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>10</height>
@@ -3026,7 +2961,7 @@ $(pv_value)</tooltip>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
     <actions_from_pv>true</actions_from_pv>
-    <wuid>-db7ea2d:13a08078d9e:-2366</wuid>
+    <wuid>39872d87:13e14015f61:3921</wuid>
     <scripts />
     <height>20</height>
     <name>Menu Button</name>
@@ -3060,6 +2995,7 @@ $(pv_value)</tooltip>
       <color red="0" green="128" blue="255" />
     </border_color>
     <y>75</y>
+    <actions hook="false" hook_all="false" />
     <tooltip>$(pv_name)
 $(pv_value)</tooltip>
     <x>132</x>
@@ -3081,16 +3017,16 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text></text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>80</width>
     <border_style>3</border_style>
     <pv_value />
     <border_width>1</border_width>
-    <maximum>1.7976931348623157E308</maximum>
-    <minimum>-1.7976931348623157E308</minimum>
+    <maximum>Infinity</maximum>
+    <minimum>-Infinity</minimum>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2365</wuid>
+    <wuid>39872d87:13e14015f61:3922</wuid>
     <rotation_angle>0.0</rotation_angle>
     <name>Text Input</name>
     <scale_options>
@@ -3137,16 +3073,16 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text></text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>80</width>
     <border_style>3</border_style>
     <pv_value />
     <border_width>1</border_width>
-    <maximum>1.7976931348623157E308</maximum>
-    <minimum>-1.7976931348623157E308</minimum>
+    <maximum>Infinity</maximum>
+    <minimum>-Infinity</minimum>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2364</wuid>
+    <wuid>39872d87:13e14015f61:3923</wuid>
     <rotation_angle>0.0</rotation_angle>
     <name>Text Input</name>
     <scale_options>
@@ -3193,16 +3129,16 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text></text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>80</width>
     <border_style>3</border_style>
     <pv_value />
     <border_width>1</border_width>
-    <maximum>1.7976931348623157E308</maximum>
-    <minimum>-1.7976931348623157E308</minimum>
+    <maximum>Infinity</maximum>
+    <minimum>-Infinity</minimum>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2363</wuid>
+    <wuid>39872d87:13e14015f61:3924</wuid>
     <rotation_angle>0.0</rotation_angle>
     <name>Text Input</name>
     <scale_options>
@@ -3249,16 +3185,16 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text></text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>80</width>
     <border_style>3</border_style>
     <pv_value />
     <border_width>1</border_width>
-    <maximum>1.7976931348623157E308</maximum>
-    <minimum>-1.7976931348623157E308</minimum>
+    <maximum>Infinity</maximum>
+    <minimum>-Infinity</minimum>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2362</wuid>
+    <wuid>39872d87:13e14015f61:3925</wuid>
     <rotation_angle>0.0</rotation_angle>
     <name>Text Input</name>
     <scale_options>
@@ -3291,7 +3227,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-2361</wuid>
+    <wuid>39872d87:13e14015f61:3927</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>20</height>
@@ -3313,7 +3249,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text>TTH</text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>30</width>
     <border_style>0</border_style>
@@ -3332,7 +3268,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-2360</wuid>
+    <wuid>39872d87:13e14015f61:3928</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>20</height>
@@ -3354,7 +3290,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text>TH</text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>30</width>
     <border_style>0</border_style>
@@ -3373,7 +3309,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-235f</wuid>
+    <wuid>39872d87:13e14015f61:3929</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>20</height>
@@ -3395,7 +3331,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text>CHI</text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>30</width>
     <border_style>0</border_style>
@@ -3414,7 +3350,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-235e</wuid>
+    <wuid>39872d87:13e14015f61:392a</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>20</height>
@@ -3436,7 +3372,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text>PHI</text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>30</width>
     <border_style>0</border_style>
@@ -3452,6 +3388,72 @@ $(pv_value)</tooltip>
     <tooltip></tooltip>
     <x>131</x>
   </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.polyline" version="1.0">
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <fill_arrow>true</fill_arrow>
+    <arrow_length>20</arrow_length>
+    <visible>true</visible>
+    <fill_level>100.0</fill_level>
+    <wuid>39872d87:13e14015f61:392e</wuid>
+    <rotation_angle>0.0</rotation_angle>
+    <scripts />
+    <arrows>0</arrows>
+    <height>1</height>
+    <anti_alias>true</anti_alias>
+    <name>Polyline</name>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <alpha>255</alpha>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>true</keep_wh_ratio>
+    </scale_options>
+    <points>
+      <point x="350" y="121" />
+      <point x="257" y="121" />
+    </points>
+    <transparent>true</transparent>
+    <pv_name></pv_name>
+    <background_color>
+      <color red="30" green="144" blue="255" />
+    </background_color>
+    <foreground_color>
+      <color name="MEDM_COLOR_17" red="51" green="153" blue="0" />
+    </foreground_color>
+    <widget_type>Polyline</widget_type>
+    <enabled>true</enabled>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <font>
+      <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+    </font>
+    <width>94</width>
+    <line_style>0</line_style>
+    <border_style>0</border_style>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0||">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="!(pv0||)">
+          <value>false</value>
+        </exp>
+        <pv trig="true">$(P)orient$(O):motPut</pv>
+        <pv trig="true">$(P)orient$(O):motPut_Auto</pv>
+      </rule>
+    </rules>
+    <pv_value />
+    <border_width>1</border_width>
+    <line_width>1</line_width>
+    <horizontal_fill>true</horizontal_fill>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <actions hook="false" hook_all="false" />
+    <y>121</y>
+    <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+    <x>257</x>
+  </widget>
   <widget typeId="org.csstudio.opibuilder.widgets.polygon" version="1.0">
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
@@ -3459,7 +3461,7 @@ $(pv_value)</tooltip>
     <line_color>
       <color red="128" green="0" blue="255" />
     </line_color>
-    <wuid>-db7ea2d:13a08078d9e:-235c</wuid>
+    <wuid>39872d87:13e14015f61:392f</wuid>
     <rotation_angle>0.0</rotation_angle>
     <scripts />
     <height>27</height>
@@ -3481,7 +3483,7 @@ $(pv_value)</tooltip>
     <transparent>false</transparent>
     <pv_name></pv_name>
     <background_color>
-      <color red="0" green="0" blue="255" />
+      <color red="30" green="144" blue="255" />
     </background_color>
     <foreground_color>
       <color name="MEDM_COLOR_17" red="51" green="153" blue="0" />
@@ -3523,7 +3525,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-235b</wuid>
+    <wuid>39872d87:13e14015f61:3933</wuid>
     <scripts />
     <height>28</height>
     <name>Action Button</name>
@@ -3574,7 +3576,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-235a</wuid>
+    <wuid>39872d87:13e14015f61:3934</wuid>
     <scripts />
     <height>20</height>
     <name>Action Button</name>
@@ -3627,7 +3629,7 @@ $(pv_value)</tooltip>
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2359</wuid>
+    <wuid>39872d87:13e14015f61:3936</wuid>
     <auto_size>false</auto_size>
     <rotation_angle>0.0</rotation_angle>
     <scripts />
@@ -3678,7 +3680,7 @@ $(pv_value)</tooltip>
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2358</wuid>
+    <wuid>39872d87:13e14015f61:3937</wuid>
     <auto_size>false</auto_size>
     <rotation_angle>0.0</rotation_angle>
     <scripts />
@@ -3706,7 +3708,7 @@ $(pv_value)</tooltip>
     <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
     <precision>0</precision>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>55</width>
     <border_style>0</border_style>
@@ -3729,7 +3731,7 @@ $(pv_value)</tooltip>
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2357</wuid>
+    <wuid>39872d87:13e14015f61:3938</wuid>
     <auto_size>false</auto_size>
     <rotation_angle>0.0</rotation_angle>
     <scripts />
@@ -3778,7 +3780,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-2356</wuid>
+    <wuid>39872d87:13e14015f61:3939</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>20</height>
@@ -3800,7 +3802,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text>L</text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>10</width>
     <border_style>0</border_style>
@@ -3833,16 +3835,16 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text></text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>80</width>
     <border_style>3</border_style>
     <pv_value />
     <border_width>1</border_width>
-    <maximum>1.7976931348623157E308</maximum>
-    <minimum>-1.7976931348623157E308</minimum>
+    <maximum>Infinity</maximum>
+    <minimum>-Infinity</minimum>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2355</wuid>
+    <wuid>39872d87:13e14015f61:393a</wuid>
     <rotation_angle>0.0</rotation_angle>
     <name>Text Input</name>
     <scale_options>
@@ -3877,7 +3879,7 @@ $(pv_value)</tooltip>
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2354</wuid>
+    <wuid>39872d87:13e14015f61:393c</wuid>
     <auto_size>false</auto_size>
     <rotation_angle>0.0</rotation_angle>
     <scripts />
@@ -3928,7 +3930,7 @@ $(pv_value)</tooltip>
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2353</wuid>
+    <wuid>39872d87:13e14015f61:3941</wuid>
     <auto_size>false</auto_size>
     <rotation_angle>0.0</rotation_angle>
     <scripts />
@@ -3991,16 +3993,16 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text></text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>80</width>
     <border_style>3</border_style>
     <pv_value />
     <border_width>1</border_width>
-    <maximum>1.7976931348623157E308</maximum>
-    <minimum>-1.7976931348623157E308</minimum>
+    <maximum>Infinity</maximum>
+    <minimum>-Infinity</minimum>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-2352</wuid>
+    <wuid>39872d87:13e14015f61:3942</wuid>
     <rotation_angle>0.0</rotation_angle>
     <name>Text Input</name>
     <scale_options>
@@ -4033,7 +4035,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
     <visible>true</visible>
     <vertical_alignment>1</vertical_alignment>
-    <wuid>-db7ea2d:13a08078d9e:-2351</wuid>
+    <wuid>39872d87:13e14015f61:3943</wuid>
     <auto_size>false</auto_size>
     <scripts />
     <height>20</height>
@@ -4055,7 +4057,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text>H</text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>10</width>
     <border_style>0</border_style>
@@ -4075,7 +4077,7 @@ $(pv_value)</tooltip>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
     <actions_from_pv>false</actions_from_pv>
-    <wuid>-db7ea2d:13a08078d9e:-2350</wuid>
+    <wuid>39872d87:13e14015f61:394b</wuid>
     <scripts />
     <height>20</height>
     <name>Menu Button</name>
@@ -4140,7 +4142,7 @@ $(pv_value)</tooltip>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
     <actions_from_pv>false</actions_from_pv>
-    <wuid>-db7ea2d:13a08078d9e:-234f</wuid>
+    <wuid>39872d87:13e14015f61:394c</wuid>
     <scripts />
     <height>21</height>
     <name>Menu Button</name>
@@ -4191,7 +4193,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-234e</wuid>
+    <wuid>39872d87:13e14015f61:394d</wuid>
     <scripts />
     <height>20</height>
     <name>Action Button</name>
@@ -4242,7 +4244,7 @@ $(pv_value)</tooltip>
   <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <visible>true</visible>
-    <wuid>-db7ea2d:13a08078d9e:-234d</wuid>
+    <wuid>39872d87:13e14015f61:394e</wuid>
     <scripts />
     <height>20</height>
     <name>Action Button</name>
@@ -4307,16 +4309,16 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <text></text>
     <font>
-      <fontdata fontName="Sans" height="14" style="0" />
+      <fontdata fontName="Sans" height="11" style="0" />
     </font>
     <width>40</width>
     <border_style>3</border_style>
     <pv_value />
     <border_width>1</border_width>
-    <maximum>1.7976931348623157E308</maximum>
-    <minimum>-1.7976931348623157E308</minimum>
+    <maximum>Infinity</maximum>
+    <minimum>-Infinity</minimum>
     <show_units>false</show_units>
-    <wuid>-db7ea2d:13a08078d9e:-234c</wuid>
+    <wuid>39872d87:13e14015f61:394f</wuid>
     <rotation_angle>0.0</rotation_angle>
     <name>Text Input</name>
     <scale_options>
