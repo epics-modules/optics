@@ -12,22 +12,44 @@
 #
 ##############################################################################
 # Required substitutions:
-#   P    = Prefix, usually the IOC name, e.g.: "iocA:"
-#   R    = Record, the name of the filter record, e.g.: "filter:"
-#   N    = Filter number, the identifier for the filter blade, e.g.: "1"
-#   DESC = Description of the filter blade, e.g.: "Filter 1"
-#   OUT  = Name of the binary output channel, e.g.: "iocA:9440:c0:Out0"
+#   P          = Prefix, usually the IOC name, e.g.: "iocA:"
+#   R          = Record, the name of the filter record, e.g.: "filter:"
+#   N          = Filter number, the identifier for the filter blade, e.g.: "1"
+#   DESC       = Description of the filter blade, e.g.: "Filter 1"
+#   OUT        = Name of the binary output channel, e.g.: "iocA:9440:c0:Out0"
+#   OUT_STRING = String value of the ouput channel when the filter is OUT
+#   IN_STRING  = String value of the ouput channel when the filter is IN
 ##############################################################################
 
 
 # Define the actuator "Set" record.
+#   0 = filter is out
+#   1 = filter is in
 record(bo, "$(P)$(R)Fi$(N):Set") {
   field (DESC, "$(DESC) actuator")
   field (DTYP, "Soft Channel")
-  field (OUT,  "$(OUT) PP NMS")
   field (ZNAM, "Out")
   field (ONAM, "In")
-  field (FLNK, "$(P)$(R)SetBusy.PROC")
+  field (FLNK, "$(P)$(R)Fi$(N):OutSet.PROC")
+}
+
+# Set the actual output channel value:
+#   Set == 0 --> OutSet = $(OUT_STRING)
+#   Set == 1 --> OutSet = $(IN_STRING)
+record(scalcout, "$(P)$(R)Fi$(N):OutSet") {
+  field (AA,  "$(OUT_STRING)")
+  field (BB,  "$(IN_STRING)")
+  field (INPA,"$(P)$(R)Fi$(N):Set NPP NMS")
+  field (CALC,"A?BB:AA")
+  field (OUT, "$(OUT) PP NMS")
+  field (FLNK,"$(P)$(R)SetBusy.PROC")
+}
+
+# Read back the filter position from actual ouput channel
+record(scalcout, "$(P)$(R)Fi$(N):OutGet") {
+  field (BB,  "$(IN_STRING)")
+  field (INAA, "$(OUT) CP")
+  field (CALC, "AA==BB?1:0")
 }
 
 # Define the "Enable" record.
@@ -42,7 +64,7 @@ record(bo, "$(P)$(R)Fi$(N):Enable") {
   field(OSV, "NO_ALARM")
   field(SCAN, "Passive")
   field(VAL,  "1")
-  field (FLNK, "$(P)$(R)SetBusy.PROC")
+  field(FLNK, "$(P)$(R)SetBusy.PROC")
 }
 
 # Define the "Lock" record.
