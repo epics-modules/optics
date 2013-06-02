@@ -184,17 +184,19 @@ assign  ENBL to {"","","","","","","","","","","","","","","","",
 monitor ENBL;
 sync ENBL needRecalc;
 
-/* Define array of PV links to the actual output channels */
-string  OUTLINK[MAX_FILTERS];
-assign  OUTLINK to {"","","","","","","","","","","","","","","","",
-                "","","","","","","","","","","","","","","",""};
-/* Define array for the actual output channels */
+/* Define array for the output channels */
 int     OUT[MAX_FILTERS];
 assign  OUT to {"","","","","","","","","","","","","","","","",
                 "","","","","","","","","","","","","","","",""};
+                
+/* Define array for the readback of the output channels */
+int     OUTGET[MAX_FILTERS];
+assign  OUTGET to {"","","","","","","","","","","","","","","","",
+                "","","","","","","","","","","","","","","",""};
+                
 evflag  externalIO;
-monitor OUT;
-sync OUT externalIO;
+monitor OUTGET;
+sync OUTGET externalIO;
 
 char     *name;
 char     *prefix;
@@ -358,33 +360,11 @@ static double calcTrans(double keV,
           pvAssign(SET[i], str);
           sprintf(str, "%s%sFi%d:Enable", prefix, record, i+1);
           pvAssign(ENBL[i], str);
-          sprintf(str, "%s%sFi%d:Set.OUT", prefix, record, i+1);
-          pvAssign(OUTLINK[i], str);
-        }
-
-      } state connectOUT
-    }
-	
-/*------------------*/
-    state connectOUT {
-      entry {
-        printf("%s: waiting for OUTLINK, so we can connect OUT[]\n", name);
-      }
-
-      when(pvConnectCount() == pvAssignCount()) {
-        /* get the OUT PV names, and dynamically assign the OUT PVs */
-        for(i = 0; i < nFltrs; i++) {
-          pvGet(OUTLINK[i]);
-          strcpy(str, OUTLINK[i]);
-           /* strip trailing' NPP NMS' from link string */
-          for (j=0; j<39; j++) {
-            if (str[j]==' ') {
-              str[j] = 0;
-              break;
-            }
-          }
-          if (DEBUG & 0x1) printf("  Assigning OUT[%d] to %s\n", i, str);
+          sprintf(str, "%s%sFi%d:Set", prefix, record, i+1);
           pvAssign(OUT[i], str);
+          sprintf(str, "%s%sFi%d:OutGet", prefix, record, i+1);
+          pvAssign(OUTGET[i], str);
+          
         }
 
         NFILTERS = nFltrs;
@@ -398,6 +378,7 @@ static double calcTrans(double keV,
 
       } state init
     }
+    
 
 /*------------*/
     state init {
@@ -486,15 +467,15 @@ static double calcTrans(double keV,
         /* Make sure the physical binary PVs of the actuators
         ** are in sync with the SET bo PVs */
         for(i = 0; i < nFltrs; i++) {
-          pvGet(OUT[i]);
+          pvGet(OUTGET[i]);
           efClear(externalIO);  /* Is this needed?  It probably should not be. */
           pvGet(SET[i]);
-          if (SET[i] != OUT[i]) {
+          if (SET[i] != OUTGET[i]) {
             /* We mustn't write to SET[i] unless OUT[i] is different, because
 	     * writing processes, which sets STATUS_UPDATE, which brings us back
              * here, causing an infinite loop.
              */
-            SET[i] = OUT[i];
+            SET[i] = OUTGET[i];
             pvPut(SET[i]);
             sprintf(MSGE, "Filter state set by external agent.");
             pvPut(MSGE);
@@ -800,12 +781,14 @@ static double calcTrans(double keV,
       when() {
         if(ind >=0){
 
-          /* Start by putting in filters */
+          /* Start by putting in enabled filters */
           doWait = 0;
-          for(j = 0; j < nFltrs; j++) {        
-            if(fltrsIn[ind] & (1 << j)) {
-              if(SET[j] == 0) doWait = 1;
-              SET[j] = 1; pvPut(SET[j]);
+          for(j = 0; j < nFltrs; j++) {
+            if(ENBL[j]){
+              if(fltrsIn[ind] & (1 << j)) {
+                if(SET[j] == 0) doWait = 1;
+                SET[j] = 1; pvPut(SET[j]);
+              }
             }
           }
 
@@ -815,12 +798,14 @@ static double calcTrans(double keV,
             epicsThreadSleep(FILTER_WAIT_TIME);
           }
 
-          /* Then take out the others */
+          /* Then take out the other enabled filters */
           doWait = 0;
-          for(j = 0; j < nFltrs; j++) {           
-            if((fltrsIn[ind] & (1 << j)) == 0) {
-              if(SET[j] == 1) doWait = 1;
-              SET[j] = 0; pvPut(SET[j]);
+          for(j = 0; j < nFltrs; j++) {
+            if(ENBL[j]){
+              if((fltrsIn[ind] & (1 << j)) == 0) {
+                if(SET[j] == 1) doWait = 1;
+                SET[j] = 0; pvPut(SET[j]);
+              }
             }
           }
 
