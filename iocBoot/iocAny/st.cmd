@@ -88,6 +88,6 @@ iocInit
 #seq pf4,"name=pf2,P=xxx:,H=pf4:,B=B,M=xxx:BraggEAO,B1=xxx:Unidig1Bo7,B2=xxx:Unidig1Bo8,B3=xxx:Unidig1Bo9,B4=xxx:Unidig1Bo10"
 
 # Alternative pf4 filter seq program
-seq filterDrive,"NAME=filterDrive,P=xxx:,R=filter:,NUM_FILTERS=16"
+seq &filterDrive,"NAME=filterDrive,P=xxx:,R=filter:,NUM_FILTERS=16"
 
 dbcar(0,1)
