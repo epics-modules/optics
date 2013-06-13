@@ -510,7 +510,7 @@ static double calcTrans(double keV,
         /* Can only deal with up to MAX_ENABLED unlocked filters */
         if(nEnabled > MAX_ENABLED){
           if(DEBUG & 0x1){
-            printf("%s: ERROR: Too many filters unlocked (%d/%d).\n", \
+            printf("%s: ERROR: Too many filters unlocked (%d/%d).\n",
                 name, nEnabled, MAX_ENABLED);
           }
           sprintf(MSGE, "ERROR: Too many unlocked (%d/%d)", nEnabled, MAX_ENABLED);
@@ -570,7 +570,7 @@ static double calcTrans(double keV,
         indUp = -1;
         transUp = 10.0;
         for(ind = 0; ind < nPerms; ind++) {
-          if( (transMis[ind] > (transNow * (1 + SMALL_FRAC))) &	\
+          if( (transMis[ind] > (transNow * (1 + SMALL_FRAC))) &
               (transMis[ind] < transUp) ){
             transUp = transMis[ind];
             indUp = ind; 
@@ -584,15 +584,15 @@ static double calcTrans(double keV,
         TRANSMISSION_UP = transUp;
         pvPut(TRANSMISSION_UP);
         if(DEBUG & 0x2){
-          printf("%s: Filter up: index = %d, transm = %e\n", \
-	      name, indUp, transUp);
+          printf("%s: Filter up: index = %d, transm = %e\n",
+	          name, indUp, transUp);
         }
 
         /* Update the transmission down readback values and index */
         indDown = -1;
         transDown = -1.0;
         for(ind = 0; ind < nPerms; ind++) {
-          if( (transMis[ind] < (transNow * (1 - SMALL_FRAC))) &	\
+          if( (transMis[ind] < (transNow * (1 - SMALL_FRAC))) &	
               (transMis[ind] > transDown) ){
             transDown = transMis[ind];
             indDown = ind; 
@@ -606,7 +606,7 @@ static double calcTrans(double keV,
         TRANSMISSION_DOWN = transDown;
         pvPut(TRANSMISSION_DOWN);        
         if(DEBUG & 0x2){
-          printf("%s: Filter down: index = %d, transm = %e\n", \
+          printf("%s: Filter down: index = %d, transm = %e\n",
               name, indDown, transDown);
         }
 
@@ -652,7 +652,7 @@ static double calcTrans(double keV,
           trans = -1.0;
           transMin = 1.0;
           for(k = 0; k < nPerms; k++) {
-            if( (transMis[k] <= (TRANSM_SETPT)) & \
+            if( (transMis[k] <= (TRANSM_SETPT)) &
                 (transMis[k] > trans) ){
               ind = k;
               trans = transMis[k];
@@ -726,7 +726,7 @@ static double calcTrans(double keV,
             pvPut(MSGE);
             if(DEBUG & 0x1){
 	      printf("%s: ERROR! Invalid filter mask: %d\n", name, fltrsSetpt);
-              printf("%s:   Valid masks are in the range (0 - %d)\n", \
+              printf("%s:   Valid masks are in the range (0 - %d)\n",
 		 name, ((1 << nFltrs) - 1));
             }
 	  } else {
