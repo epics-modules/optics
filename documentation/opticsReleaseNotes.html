@@ -10,6 +10,20 @@
 <BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
 <H1 ALIGN=CENTER>optics Release Notes</H1>
 
+<h2 ALIGN=CENTER>Release 2-9-1</h2>
+<ul>
+
+<li>filterDrive.st: Added OUTGET for separate readback of outputs; only move
+enabled filters.  Removed trailing backslash characters from several lines,
+caused compiler failure on Windows.
+<li>filterBladeNoSensor.db: Added OutGet and OutSet records and OUT_STRING and
+IN_STRING macro parameters so the database does not assume blade in=1 and blade
+out=0.
+<li>filter.substitutions: Added OUT_STRING and IN_STRING macro parameters
+
+</ul>
+
+
 <h2 ALIGN=CENTER>Release 2-9</h2>
 <ul>
 
