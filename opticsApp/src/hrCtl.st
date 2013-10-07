@@ -816,6 +816,9 @@ ss hr_Ctl
 		when (efTest(hr_Moving_mon)) {
 			efClear(hr_Moving_mon);
 		} state checkAutoMode
+		
+		when ((!phi1Dmov || !phi2Dmov) && delay(.1)) {
+		} state updateRdbk
 	}
 
 	state checkAutoMode {
@@ -1314,22 +1317,6 @@ ss hr_Ctl
 			if (!phi1PutComplete) phi1PutComplete = pvPutComplete(phi1MotCmd);
 			if (!phi2PutComplete) phi2PutComplete = pvPutComplete(phi2MotCmd);
 		}
-		/* when (phi1Dmov && phi2Dmov) { */
-		when (phi1PutComplete && phi2PutComplete) {
-			if (hrCtlDebug) %%printf("hrCtl:updateRdbk: motors stopped\n");
-			/* Calc and put readback values. */
-			%%hrCtl_calcReadback(pVar);        
-			pvPut(phi1Rdbk);
-			pvPut(theta1Rdbk);
-			if (opMode != 0) {
-				pvPut(phi2Rdbk);
-				pvPut(theta2Rdbk);
-			}
-			pvPut(lambdaRdbk);
-			pvPut(ERdbk);
-			hr_Done = 1;
-		} state motorsStopped
-
 		when (phi1Hls || phi1Lls || phi2Hls || phi2Lls) {
 			if (phi1Hls || phi1Lls) {
 				sprintf(seqMsg1, "Theta 1 motor hit a limit switch !");
@@ -1347,7 +1334,8 @@ ss hr_Ctl
 			pvPut(seqMsg2);
 		} state stopHR
 
-		when ((!phi1Dmov || !phi2Dmov) && delay(.1)) {
+		when (!phi1Dmov || !phi2Dmov) {
+			if (hrCtlDebug) %%printf("hrCtl:updateRdbk: a motor is moving\n");
 			hr_Moving = 1;
 			pvPut(hr_Moving);
             
@@ -1361,10 +1349,10 @@ ss hr_Ctl
 			}
 			pvPut(lambdaRdbk);
 			pvPut(ERdbk);
-		} state updateRdbk
+		} state updateRdbkAfterDelay
 
-		when (phi1Dmov && phi2Dmov) {
-			if (hrCtlDebug) %%printf("hrCtl:updateRdbk: motors not moving\n");
+		when (phi1PutComplete && phi2PutComplete) {
+			if (hrCtlDebug) %%printf("hrCtl:updateRdbk: motors stopped\n");
 			/* Calc and put readback values. */
 			%%hrCtl_calcReadback(pVar);        
 			pvPut(phi1Rdbk);
@@ -1375,7 +1363,13 @@ ss hr_Ctl
 			}
 			pvPut(lambdaRdbk);
 			pvPut(ERdbk);
-		} state waitForCmndEnter
+			hr_Done = 1;
+		} state motorsStopped
+	}
+
+	state updateRdbkAfterDelay {
+		when (delay(.1)) {
+		} state updateRdbk
 	}
 
 	state motorsStopped {
