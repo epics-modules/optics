@@ -845,14 +845,12 @@ ss hr_Ctl
 				theta1Lo = phi1Lo;
 				if (theta1Hi > thetaMax) {
 					theta1Hi = thetaMax;
-					sprintf(seqMsg2, "Theta1HiLim > %f deg. (Using %f deg.)",
-						thetaMax, thetaMax);
+					sprintf(seqMsg2, "Theta1HiLim clipped at %.3f", thetaMax);
 					pvPut(seqMsg2);
 				}
 				if (theta1Lo < thetaMin) {
 					theta1Lo = thetaMin;
-					sprintf(seqMsg2, "Theta1LoLim < %f deg. (Using %f deg.)",
-						thetaMin, thetaMin);
+					sprintf(seqMsg2, "Theta1LoLim clipped at %.3f", thetaMin);
 					pvPut(seqMsg2);
 				}
 				pvPut(theta1Hi);
@@ -872,14 +870,12 @@ ss hr_Ctl
 				}
 				if (theta2Hi > thetaMax) {
 					theta2Hi = thetaMax;
-					sprintf(seqMsg2, "Theta2HiLim > %f deg. (Using %f deg.)",
-						thetaMax,thetaMax);
+					sprintf(seqMsg2, "Theta2HiLim clipped at %.3f", thetaMax);
 					pvPut(seqMsg2);
 				}
 				if (theta2Lo < thetaMin) {
 					theta2Lo = thetaMin;
-					sprintf(seqMsg2, "Theta2LoLim < %f deg. (Using %f deg.)",
-						thetaMin, thetaMin);
+					sprintf(seqMsg2, "Theta2LoLim clipped at %.3f", thetaMin);
 					pvPut(seqMsg2);
 				}
 				pvPut(theta2Hi);
