@@ -10,6 +10,24 @@
 <BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
 <H1 ALIGN=CENTER>optics Release Notes</H1>
 
+<h2 ALIGN=CENTER>Release 2-9-2</h2>
+<ul>
+
+<li>hrSeq.db: Crystal species wasn't implemented right (seq record needed TypeMO.RVAL,
+instead of TyoeMO.VAL)
+
+<li>hrCtl.st: phi1MotRdbk wasn't converted to degrees before being used to init Phi1. 
+Theta2 init wasn't honoring Geom switch.  Fixed "when" statements that included
+expressions like "efTestAndClear() && delay(.1)", which can fail because delay hasn't
+expired, and then fail because flag was cleared.  Use pvPut(, ASYNC) instead of motor.DMOV
+fields to check for completion.
+
+<li>hrCtl.st: When motors moved by third party, drive "Moving", and set to Manual mode
+when motors stop.
+
+<li>orient_st.st: User messages were overflowing string fields.
+</ul>
+
 <h2 ALIGN=CENTER>Release 2-9-1</h2>
 <ul>
 
