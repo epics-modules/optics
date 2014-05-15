@@ -55,14 +55,6 @@ QWidget#centralWidget {background: rgba(218, 218, 218, 255);}
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
-            <property name="geometry">
-                <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>130</width>
-                    <height>20</height>
-                </rect>
-            </property>
             <property name="foreground">
                 <color alpha="255">
                     <red>0</red>
@@ -81,10 +73,18 @@ QWidget#centralWidget {background: rgba(218, 218, 218, 255);}
                 <string>PF4 filter</string>
             </property>
             <property name="fontScaleMode">
-                <enum>ESimpleLabel::Height</enum>
+                <enum>ESimpleLabel::WidthAndHeight</enum>
             </property>
             <property name="alignment">
                 <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>130</width>
+                    <height>20</height>
+                </rect>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_0">
@@ -133,7 +133,7 @@ QWidget#centralWidget {background: rgba(218, 218, 218, 255);}
                 </rect>
             </property>
             <property name="fontScaleMode">
-                <enum>caLineEdit::Height</enum>
+                <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
                 <string>$(P)$(H)trans$(A)</string>

@@ -37,7 +37,7 @@ QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
                     </rect>
                 </property>
                 <property name="fontScaleMode">
-                    <enum>EPushButton::Height</enum>
+                    <enum>EPushButton::WidthAndHeight</enum>
                 </property>
                 <property name="channel">
                     <string>$(P)$(R)Fi$(N):Lock</string>
@@ -77,14 +77,6 @@ QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
             <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
             </property>
-            <property name="geometry">
-                <rect>
-                    <x>3</x>
-                    <y>16</y>
-                    <width>20</width>
-                    <height>10</height>
-                </rect>
-            </property>
             <property name="foreground">
                 <color alpha="255">
                     <red>0</red>
@@ -103,10 +95,18 @@ QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
                 <string>$(N)</string>
             </property>
             <property name="fontScaleMode">
-                <enum>ESimpleLabel::Height</enum>
+                <enum>ESimpleLabel::WidthAndHeight</enum>
             </property>
             <property name="alignment">
                 <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>3</x>
+                    <y>16</y>
+                    <width>24</width>
+                    <height>10</height>
+                </rect>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_0">
@@ -206,7 +206,7 @@ QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
                         </rect>
                     </property>
                     <property name="fontScaleMode">
-                        <enum>EPushButton::Height</enum>
+                        <enum>EPushButton::WidthAndHeight</enum>
                     </property>
                     <property name="channel">
                         <string>$(P)$(R)Fi$(N):Lock</string>
