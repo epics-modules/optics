@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/MLLV.adl"
+	name="/home/oxygen4/MOONEY/epics/synAppsSVN/support/optics/opticsApp/op/adl/MLLV.adl"
 	version=030107
 }
 display {
@@ -163,6 +163,11 @@ composite {
 		label="misc"
 		name="MLLV_misc.adl"
 		args="P=$(P),Q=$(Q)"
+	}
+	display[12] {
+		label="softPut"
+		name="yySeq.adl"
+		args="P=$(P),S=$(Q)softPut"
 	}
 	clr=0
 	bclr=17
