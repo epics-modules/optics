@@ -23,7 +23,7 @@ expired, and then fail because flag was cleared.  Use pvPut(, ASYNC) instead of 
 fields to check for completion.
 
 <li>hrCtl.st: When motors moved by third party, drive "Moving", and set to Manual mode
-when motors stop.
+when motors stop.  sprintf overwrote end of string.
 
 <li>orient_st.st: User messages were overflowing string fields.
 
