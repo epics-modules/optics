@@ -155,6 +155,7 @@ static void     checkLinks(tableRecord *ptbl);
 			  printf(FMT,V); } }
 #endif
 volatile int    tableRecordDebug = 0;
+epicsExportAddress(int, tableRecordDebug);
 
 /* Create RSET - Record Support Entry Table*/
 #define report NULL
@@ -925,31 +926,28 @@ MotorLimitViol(tableRecord *ptbl)
 	return (0);
 }
 
-
 static long 
 UserLimitViol(tableRecord *ptbl)
 {
 	short	i;
-	double	*hlax = &ptbl->hlax, *llax = &ptbl->llax;
+	double	*uhax = &ptbl->uhax, *ulax = &ptbl->ulax;
 	double	*ax = &ptbl->ax, *ax0 = &ptbl->ax0;
 	double	u;
 
 	/* check against user's limits */
-	for (i=0; i<6; i++, hlax++, llax++, ax++, ax0++) {
-		/*if ((*hlax != 0.0) || (*llax != 0.0)) {*/
-		if ((fabs(*hlax) > SMALL) || (fabs(*llax) > SMALL)) {
-			u = *ax + *ax0;
-			if ((u < *llax) || (u > *hlax)) {
+	for (i=0; i<6; i++, uhax++, ulax++, ax++, ax0++) {
+		if ((fabs(*uhax) > SMALL) || (fabs(*ulax) > SMALL)) {
+			u = *ax;
+			if ((u < *ulax) || (u > *uhax)) {
 				if (tableRecordDebug >= 1)
 					printf("UserLimitViol: user[%d]=%f, l=%f, h=%f\n",
-						i, u, *llax, *hlax);
+						i, u, *ulax, *uhax);
 				return(1);
 			}
 		}
 	}
 	return(0);
 }
-
 
 static long 
 GetReadback(tableRecord *ptbl, double *r)
