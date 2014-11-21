@@ -155,7 +155,6 @@ static void     checkLinks(tableRecord *ptbl);
 			  printf(FMT,V); } }
 #endif
 volatile int    tableRecordDebug = 0;
-epicsExportAddress(int, tableRecordDebug);
 
 /* Create RSET - Record Support Entry Table*/
 #define report NULL
@@ -926,28 +925,31 @@ MotorLimitViol(tableRecord *ptbl)
 	return (0);
 }
 
+
 static long 
 UserLimitViol(tableRecord *ptbl)
 {
 	short	i;
-	double	*uhax = &ptbl->uhax, *ulax = &ptbl->ulax;
+	double	*hlax = &ptbl->hlax, *llax = &ptbl->llax;
 	double	*ax = &ptbl->ax, *ax0 = &ptbl->ax0;
 	double	u;
 
 	/* check against user's limits */
-	for (i=0; i<6; i++, uhax++, ulax++, ax++, ax0++) {
-		if ((fabs(*uhax) > SMALL) || (fabs(*ulax) > SMALL)) {
-			u = *ax;
-			if ((u < *ulax) || (u > *uhax)) {
+	for (i=0; i<6; i++, hlax++, llax++, ax++, ax0++) {
+		/*if ((*hlax != 0.0) || (*llax != 0.0)) {*/
+		if ((fabs(*hlax) > SMALL) || (fabs(*llax) > SMALL)) {
+			u = *ax + *ax0;
+			if ((u < *llax) || (u > *hlax)) {
 				if (tableRecordDebug >= 1)
 					printf("UserLimitViol: user[%d]=%f, l=%f, h=%f\n",
-						i, u, *ulax, *uhax);
+						i, u, *llax, *hlax);
 				return(1);
 			}
 		}
 	}
 	return(0);
 }
+
 
 static long 
 GetReadback(tableRecord *ptbl, double *r)
@@ -1416,7 +1418,13 @@ MotorToLocalUserAngles(tableRecord *ptbl, double *m, double *u)
 	tmp1 = sqrt(1 - (Rxx*Rxx + Rxz*Rxz));
 	if (tableRecordDebug >= 6) printf("MotorToLocalUserAngles: Rxy = %f or %f (abs val should be near %f)\n",
 		Rxy, tmp, tmp1);
-	if (fabs(fabs(tmp)-tmp1) < fabs(fabs(Rxy)-tmp1)) Rxy = tmp;
+	if (fabs(fabs(fabs(tmp)-tmp1) - fabs(fabs(Rxy)-tmp1)) > 1e-6) {
+		if (fabs(fabs(tmp)-tmp1) < fabs(fabs(Rxy)-tmp1)) {
+			Rxy = tmp;
+			/* This should never happen. */
+			printf("MotorToLocalUserAngles: choosing Rxy = %f\n", Rxz);
+		}
+	}
 
 	if (tableRecordDebug >= 5) printf("Rxx=%f, Rxy=%f, Rxz=%f\n", Rxx, Rxy, Rxz);
 
@@ -2132,3 +2140,5 @@ checkLinks(tableRecord *ptbl)
 			lnkStat[i].can_RW_speed = 0;
     }
 }
+
+
