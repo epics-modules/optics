@@ -153,6 +153,9 @@ static void     checkLinks(tableRecord *ptbl);
 #define Debug(l,FMT,V) {  if(l <= tableRecordDebug) \
 			{ printf("%s(%d):",__FILE__,__LINE__); \
 			  printf(FMT,V); } }
+#define Debug2(l,FMT,V,V2) {  if(l <= tableRecordDebug) \
+			{ printf("%s(%d):",__FILE__,__LINE__); \
+			  printf(FMT,V,V2); } }
 #endif
 volatile int    tableRecordDebug = 0;
 epicsExportAddress(int, tableRecordDebug);
@@ -217,6 +220,10 @@ struct saveTable {
 	double eax,eay,eaz,ex,ey,ez;
  	double ax0,ay0,az0,x0,y0,z0;
 	double axl,ayl,azl,xl,yl,zl;
+	double uhax, uhay, uhaz, uhx, uhy, uhz;
+	double uhaxr, uhayr, uhazr, uhxr, uhyr, uhzr;
+	double ulax, ulay, ulaz, ulx, uly, ulz;
+	double ulaxr, ulayr, ulazr, ulxr, ulyr, ulzr;
 	short lvio;
 };
 
@@ -242,6 +249,10 @@ SaveRecordValues(tableRecord *ptbl)
 	double *eax = &ptbl->eax;
 	double *ax0 = &ptbl->ax0;
 	double *axl = &ptbl->axl;
+	double *uhax = &ptbl->uhax;	/* user limit (absolute) */
+	double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
+	double *ulax = &ptbl->ulax;	/* user limit (absolute) */
+	double *ulaxr = &ptbl->ulaxr;	/* user limit (varies with offset) */
 	double *Sax = &savTbl->ax;
 	double *Saxrb = &savTbl->axrb;
 	double *Shlax = &savTbl->hlax;
@@ -251,6 +262,10 @@ SaveRecordValues(tableRecord *ptbl)
 	double *Seax = &savTbl->eax;
 	double *Sax0 = &savTbl->ax0;
 	double *Saxl = &savTbl->axl;
+	double *Suhax = &savTbl->uhax;	/* user limit (absolute) */
+	double *Suhaxr = &savTbl->uhaxr;	/* user limit (varies with offset) */
+	double *Sulax = &savTbl->ulax;	/* user limit (absolute) */
+	double *Sulaxr = &savTbl->ulaxr;	/* user limit (varies with offset) */
 
 	for (i=0; i<6; i++) {
 		*Sax++   = *ax++;
@@ -262,6 +277,10 @@ SaveRecordValues(tableRecord *ptbl)
 		*Seax++  = *eax++;
 		*Sax0++  = *ax0++;
 		*Saxl++  = *axl++;
+		*Suhax++ = *uhax++;
+		*Suhaxr++ = *uhaxr++;
+		*Sulax++ = *ulax++;
+		*Sulaxr++ = *ulaxr++;
 	}
 	savTbl->lvio = ptbl->lvio;
 }
@@ -277,6 +296,10 @@ init_record(tableRecord *ptbl, int pass)
 	double *ax0 = &ptbl->ax0;
 	double *axl = &ptbl->axl;
 	double *r0x = &ptbl->r0x;
+	double *uhax = &ptbl->uhax;	/* user limit (absolute) */
+	double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
+	double *ulax = &ptbl->ulax;	/* user limit (absolute) */
+	double *ulaxr = &ptbl->ulaxr;	/* user limit (varies with offset) */
 
 	Debug(5, "init_record: pass = %d\n", pass);
 
@@ -333,6 +356,8 @@ init_record(tableRecord *ptbl, int pass)
 			ax[i] = 0.0;
 			axl[i] = ax0[i];
 			m0x[i] = 0.0;
+			uhaxr[i] = uhax[i] - ax0[i];
+			ulaxr[i] = ulax[i] - ax0[i];
 		}
 
 		return (0);
@@ -383,6 +408,10 @@ process(tableRecord *ptbl)
 	double *ax0 = &ptbl->ax0;	/* user-coordinate offsets (e.g., via SET field) */
 	double *axl = &ptbl->axl;	/* previous user-coordinate drive values (ignore offsets) */
 	double *r0x = &ptbl->r0x;	/* motor readback values */
+	double *uhax = &ptbl->uhax;	/* user limit (absolute) */
+	double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
+	double *ulax = &ptbl->ulax;	/* user limit (absolute) */
+	double *ulaxr = &ptbl->ulaxr;	/* user limit (varies with offset) */
 
 	Debug(5, "tableRecord(%s):process:entry\n", ptbl->name);
 
@@ -436,7 +465,14 @@ process(tableRecord *ptbl)
 
 		Debug0(5, "process: init\n");
 		/** read motors and set initial user-coordinate values **/
-		for (i=0; i<6; i++) {ax0[i] = 0;}
+		for (i=0; i<6; i++) {
+			ax0[i] = 0;
+			uhaxr[i] = uhax[i] - ax0[i];
+			ulaxr[i] = ulax[i] - ax0[i];
+			Debug2(5, "process:init: uhaxr[%d]=%f\n", i, uhaxr[i]);
+			Debug2(5, "process:init: ulaxr[%d]=%f\n", i, ulaxr[i]);
+
+		}
 		(void) GetReadback(ptbl, &ptbl->r0x);
 		MotorToUser(ptbl, &ptbl->r0x, &ptbl->axrb);
 		/* accept these values for drive and readback fields; zero offsets. */
@@ -451,7 +487,13 @@ process(tableRecord *ptbl)
 	} else if (ptbl->set) {
 
 		Debug0(5, "process: set\n");
-		for (i=0; i<6; i++) {ax0[i] = axl[i] - ax[i];}
+		for (i=0; i<6; i++) {
+			ax0[i] = axl[i] - ax[i];
+			uhaxr[i] = uhax[i] - ax0[i];
+			ulaxr[i] = ulax[i] - ax0[i];
+			Debug2(5, "process:init: uhaxr[%d]=%f\n", i, uhaxr[i]);
+			Debug2(5, "process:init: ulaxr[%d]=%f\n", i, ulaxr[i]);
+		}
 
 	} else {
 
@@ -547,7 +589,7 @@ special(struct dbAddr *paddr, int after)
 	tableRecord *ptbl = (tableRecord *) (paddr->precord);
     int fieldIndex = dbGetFieldIndex(paddr);
 
-	Debug(5, "special: after = %d\n", after);
+	Debug2(5, "special: after = %d, fieldIndex=%d\n", after, fieldIndex);
 	if (ptbl->pact) {
 		printf("%s(%d): special: Record is active.\n",__FILE__,__LINE__);
 		return(0);
@@ -570,6 +612,26 @@ special(struct dbAddr *paddr, int after)
 			LocalToLab(ptbl, &ptbl->ax0, &ptbl->ax0);
 			ptbl->sync = 1;
 		}
+	} else if (after && (fieldIndex >= tableRecordUHAX) &&
+			(fieldIndex <= tableRecordULZ)) {
+		/* absolute user limit */
+		int i = fieldIndex - tableRecordUHAX;
+		double *uhax = &ptbl->uhax;	/* user limit (absolute) */
+		double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
+		double *ax0 = &ptbl->ax0;	/* user-coordinate offsets (e.g., via SET field) */
+		uhaxr[i] = uhax[i] - ax0[i%6]; /* 12 limits, 6 drive values */
+		db_post_events(ptbl, &(uhaxr[i]), DBE_VALUE);
+		Debug2(5, "special: uhaxr[%d]=%f\n", i, uhaxr[i]);
+	} else if (after && (fieldIndex >= tableRecordUHAXR) &&
+			(fieldIndex <= tableRecordULZR)) {
+		/* relative user limit */
+		int i = fieldIndex - tableRecordUHAXR;
+		double *uhax = &ptbl->uhax;	/* user limit (absolute) */
+		double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
+		double *ax0 = &ptbl->ax0;	/* user-coordinate offsets (e.g., via SET field) */
+		uhax[i] = uhaxr[i] + ax0[i%6]; /* 12 limits, 6 drive values */
+		db_post_events(ptbl, &(uhax[i]), DBE_VALUE);
+		Debug2(5, "special: uhax[%d]=%f\n", i, uhax[i]);
 	} else if (after) {
 		switch (fieldIndex) {
 		case tableRecordSSET:
@@ -741,6 +803,10 @@ monitor(tableRecord *ptbl)
 	double *eax = &ptbl->eax;
 	double *ax0 = &ptbl->ax0;
 	double *axl = &ptbl->axl;
+	double *uhax = &ptbl->uhax;	/* user limit (absolute) */
+	double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
+	double *ulax = &ptbl->ulax;	/* user limit (absolute) */
+	double *ulaxr = &ptbl->ulaxr;	/* user limit (varies with offset) */
 	double *Sax = &savTbl->ax;
 	double *Saxrb = &savTbl->axrb;
 	double *Shlax = &savTbl->hlax;
@@ -750,6 +816,10 @@ monitor(tableRecord *ptbl)
 	double *Seax = &savTbl->eax;
 	double *Sax0 = &savTbl->ax0;
 	double *Saxl = &savTbl->axl;
+	double *Suhax = &savTbl->uhax;	/* user limit (absolute) */
+	double *Suhaxr = &savTbl->uhaxr;	/* user limit (varies with offset) */
+	double *Sulax = &savTbl->ulax;	/* user limit (absolute) */
+	double *Sulaxr = &savTbl->ulaxr;	/* user limit (varies with offset) */
 
 	Debug0(5, "monitor: entry\n");
 
@@ -775,6 +845,14 @@ monitor(tableRecord *ptbl)
 		ax0++;
 		if (*Saxl++ != *axl) db_post_events(ptbl, axl, monitor_mask);
 		axl++;
+		if (*Suhax++ != *uhax) db_post_events(ptbl, uhax, monitor_mask);
+		uhax++;
+		if (*Suhaxr++ != *uhaxr) db_post_events(ptbl, uhaxr, monitor_mask);
+		uhaxr++;
+		if (*Sulax++ != *ulax) db_post_events(ptbl, ulax, monitor_mask);
+		ulax++;
+		if (*Sulaxr++ != *ulaxr) db_post_events(ptbl, ulaxr, monitor_mask);
+		ulaxr++;
 	}
 
 	if (savTbl->lvio != ptbl->lvio)
@@ -939,9 +1017,12 @@ UserLimitViol(tableRecord *ptbl)
 	for (i=0; i<6; i++, hlax++, llax++, ax++, ax0++) {
 		/*if ((*hlax != 0.0) || (*llax != 0.0)) {*/
 		if ((fabs(*hlax) > SMALL) || (fabs(*llax) > SMALL)) {
-			u = *ax + *ax0;
+			u = *ax;
+			if (tableRecordDebug >= 1)
+				printf("UserLimitViol: ax=%f, ax0=%f, user[%d]=%f, l=%f, h=%f\n",
+						*ax, *ax0, i, u, *llax, *hlax);
 			if ((u < *llax) || (u > *hlax)) {
-				if (tableRecordDebug >= 1)
+				if (tableRecordDebug >= 2)
 					printf("UserLimitViol: user[%d]=%f, l=%f, h=%f\n",
 						i, u, *llax, *hlax);
 				return(1);
@@ -1417,8 +1498,9 @@ MotorToLocalUserAngles(tableRecord *ptbl, double *m, double *u)
 	tmp = (a - (p02z * Ryx - p02x * Ryz) * sqrt(b)) / c;
 	/* Use rotation-matrix identity to choose the right root. */
 	tmp1 = sqrt(1 - (Rxx*Rxx + Rxz*Rxz));
-	if (tableRecordDebug >= 6) printf("MotorToLocalUserAngles: Rxy = %f or %f (abs val should be near %f)\n",
+	if (tableRecordDebug >= 6) printf("MotorToLocalUserAngles: Rxy = %.10f or %.10f (abs val should be near %.10f)\n",
 		Rxy, tmp, tmp1);
+
 	if (fabs(fabs(fabs(tmp)-tmp1) - fabs(fabs(Rxy)-tmp1)) > 1e-6) {
 		if (fabs(fabs(tmp)-tmp1) < fabs(fabs(Rxy)-tmp1)) {
 			Rxy = tmp;
@@ -1700,11 +1782,17 @@ ZeroTable(tableRecord *ptbl)
 {
 	short i;
 	double *ax = &ptbl->ax, *ax0 = &ptbl->ax0, *axl = &ptbl->axl;
+	double *uhax = &ptbl->uhax, *uhaxr = &ptbl->uhaxr;
+	double *ulax = &ptbl->ulax, *ulaxr = &ptbl->ulaxr;
 
 	/* Make current rotation/translation appear as zero. */
-	for (i=0; i<6; i++) {
-		*ax++ = 0;
-		*ax0++ = *axl++;
+	for (i=0; i<6; i++, ax++, ax0++, axl++, uhaxr++, uhax++, ulaxr++, ulax++) {
+		*ax = 0;
+		*ax0 = *axl;
+		*uhaxr = *uhax - *ax0;
+		*ulaxr = *ulax - *ax0;
+		Debug2(5, "ZeroTable: uhaxr[%d]=%f\n", i, uhaxr[i]);
+		Debug2(5, "ZeroTable: ulaxr[%d]=%f\n", i, ulaxr[i]);
 	}
 }
 
@@ -1911,6 +1999,8 @@ CalcLocalUserLimits(tableRecord *ptbl)
 		lu[Z_6] = MAX(lu[Z_6], u[Z_6] + pp2l[Z]-pp2[Z]);
 	}
 	for (i=X_6; i<=Z_6; i++) {
+		hu[i] -= ax0[i];
+		lu[i] -= ax0[i];
 		if (hu[i] == LARGE) hu[i] = u[i] + SMALL;
 		if (lu[i] == -LARGE) lu[i] = u[i] - SMALL;
 	}
@@ -2060,35 +2150,55 @@ CalcUserLimits(tableRecord *ptbl)
 	unsigned short  i;
 	double	*hu = &ptbl->hlax, *lu = &ptbl->llax;
 	double	*uhax = &ptbl->uhax, *ulax = &ptbl->ulax;
-	double	*ax0 = &ptbl->ax0;
+	double	*uhaxr = &ptbl->uhaxr, *ulaxr = &ptbl->ulaxr;
 	int saveTableRecordDebug = tableRecordDebug;
 
 	Debug(5, "tableRecord(%s):CalcUserLimits:entry\n", ptbl->name);
+
+	if (tableRecordDebug >= 5) {
+		printf("CalcUserLimits: before CalcLocalUserLimits\n");
+		for (i=0; i<6; i++) {
+			printf("\t%f %f\n", hu[i], lu[i]);
+		}
+	}
 	if (tableRecordDebug >= 10) {
 		PrintValues(ptbl);
 	} else {
-		tableRecordDebug=0;	/* CalcUserLimits produces too much output */
+		tableRecordDebug=0;	/* CalcLocalUserLimits produces too much output */
+	}
+	CalcLocalUserLimits(ptbl);
+	tableRecordDebug = saveTableRecordDebug;
+	if (tableRecordDebug >= 5) {
+		printf("CalcUserLimits: after CalcLocalUserLimits\n");
+		for (i=0; i<6; i++) {
+			printf("\t%f %f\n", hu[i], lu[i]);
+		}
 	}
 
-	CalcLocalUserLimits(ptbl);
 	UserLimits_LocalToLab(ptbl);
 
-	/* Enforce user's limits; subtract offsets */
-	for (i=0; i<6; i++) {
-		/*if ((uhax[i] != 0.0) || (ulax[i] != 0.0)) {*/
-		if ((fabs(uhax[i]) > SMALL) || (fabs(ulax[i]) > SMALL)) {
-			hu[i] = MIN(hu[i], uhax[i]);
-			lu[i] = MAX(lu[i], ulax[i]);
+	if (tableRecordDebug >= 5) {
+		printf("CalcUserLimits: after UserLimits_LocalToLab\n");
+		for (i=0; i<6; i++) {
+			printf("\t%f %f\n", hu[i], lu[i]);
 		}
-		hu[i] -= ax0[i];
-		lu[i] -= ax0[i];
+	}
+
+
+	/* Enforce user's limits */
+	for (i=0; i<6; i++) {
+		Debug2(5, "CalcUserLimits: before: hu[%d]=%f\n", i, hu[i]);
+		if ((fabs(uhax[i]) > SMALL) || (fabs(ulax[i]) > SMALL)) {
+			hu[i] = MIN(hu[i], uhaxr[i]);
+			lu[i] = MAX(lu[i], ulaxr[i]);
+		}
+		Debug2(5, "CalcUserLimits: after: hu[%d]=%f\n", i, hu[i]);
 	}
 	if (tableRecordDebug >= 10) {
 		printf("CalcUserLimits:done\n");
 		PrintValues(ptbl);
 	}
 
-	tableRecordDebug = saveTableRecordDebug;
 }
 
 
