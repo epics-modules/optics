@@ -155,6 +155,7 @@ static void     checkLinks(tableRecord *ptbl);
 			  printf(FMT,V); } }
 #endif
 volatile int    tableRecordDebug = 0;
+epicsExportAddress(int, tableRecordDebug);
 
 /* Create RSET - Record Support Entry Table*/
 #define report NULL
