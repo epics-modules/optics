@@ -1,14 +1,14 @@
 
 file {
-	name="/home/oxygen4/MOONEY/epics/synApps_5_1/support/optics/cvs/opticsApp/op/adl/table_setup_NEWPORT.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/table_setup_NEWPORT.adl"
+	version=030107
 }
 display {
 	object {
 		x=33
 		y=504
 		width=700
-		height=455
+		height=500
 	}
 	clr=14
 	bclr=3
@@ -508,18 +508,6 @@ composite {
 }
 text {
 	object {
-		x=0
-		y=446
-		width=30
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="V5.1"
-}
-text {
-	object {
 		x=415
 		y=351
 		width=280
@@ -574,360 +562,6 @@ text {
 		chan="$(P)$(Q):geomIsNEWPORT"
 	}
 	textix="This display is for the NEWPORT geometry"
-}
-text {
-	object {
-		x=5
-		y=376
-		width=110
-		height=20
-	}
-	"basic attribute" {
-		clr=0
-	}
-	textix="User limits"
-}
-polyline {
-	object {
-		x=0
-		y=371
-		width=709
-		height=2
-	}
-	"basic attribute" {
-		clr=14
-		width=2
-	}
-	points {
-		(1,372)
-		(708,372)
-	}
-}
-"text entry" {
-	object {
-		x=110
-		y=401
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).UHX"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=195
-		y=401
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).UHY"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-text {
-	object {
-		x=60
-		y=401
-		width=40
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="High"
-}
-"text entry" {
-	object {
-		x=110
-		y=421
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).ULX"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=195
-		y=421
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).ULY"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-text {
-	object {
-		x=60
-		y=421
-		width=20
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Low"
-}
-"text entry" {
-	object {
-		x=280
-		y=421
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).ULZ"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=280
-		y=401
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).UHZ"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-text {
-	object {
-		x=110
-		y=381
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="X"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=195
-		y=381
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Y"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=280
-		y=381
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Z"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=405
-		y=421
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).ULAX"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=405
-		y=401
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).UHAX"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=490
-		y=421
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).ULAY"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=490
-		y=401
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).UHAY"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=575
-		y=421
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).ULAZ"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=575
-		y=401
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)$(T).UHAZ"
-		clr=14
-		bclr=51
-	}
-	format="compact"
-	limits {
-	}
-}
-text {
-	object {
-		x=405
-		y=381
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="AX"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=490
-		y=381
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="AY"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=575
-		y=381
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="AZ"
-	align="horiz. centered"
-}
-"text update" {
-	object {
-		x=475
-		y=441
-		width=115
-		height=15
-	}
-	monitor {
-		chan="$(P)$(T).AEGU"
-		clr=54
-		bclr=3
-	}
-	align="horiz. centered"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=175
-		y=441
-		width=115
-		height=15
-	}
-	monitor {
-		chan="$(P)$(T).LEGU"
-		clr=54
-		bclr=3
-	}
-	align="horiz. centered"
-	limits {
-	}
 }
 composite {
 	object {
@@ -2338,4 +1972,14 @@ composite {
 			}
 		}
 	}
+}
+composite {
+	object {
+		x=0
+		y=371
+		width=701
+		height=129
+	}
+	"composite name"=""
+	"composite file"="table_limits.adl;P=$(P),T=$(T)"
 }
