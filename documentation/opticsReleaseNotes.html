@@ -14,7 +14,13 @@
 <ul>
 
 <li>tableRecord.c: User-limit was broken, which in some cases prevented
-effective use of "Set/Use" and "Zero" features.
+effective use of "Set/Use" and "Zero" features.  As part of the fix, relative
+user limits (e.g., UHAXR) have been added to supplement the previously supported
+absolute limits (e.g., UHAX).
+
+<li>tableRecord.c: Newport geometry sometimes gave unphysical angle readbacks
+when M0Y and M2Y had exactly the same value.  Thanks to Mark Rivers for
+isolating the condition in which this occurred.
 
 <li>table_settings.req: wasn't including tweak values.
 
