@@ -32,7 +32,7 @@ program filterDrive("NAME=filterDrive, P=TEST:, R=filter:, NUM_FILTERS=8")
 **    $(P)$(R)Fi$(N)
 **
 **  The filter transmission calculations are based on the filter material
-**  and thickness, using the Chanter Tables to interpolate the material's
+**  and thickness, using the Chantler Tables to interpolate the material's
 **  absorption coefficient for the requested energy:
 **    C.T. Chantler, Journal of Physical and Chemical Reference Data 24,
 **    71 (1995).
