@@ -14,6 +14,7 @@
         <string>
 
 QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
+QPushButton::menu-indicator {image: url(none.png); width: 0}
 
 </string>
     </property>
@@ -4755,6 +4756,82 @@ QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
                 <string>P=$(P),T=$(T)</string>
             </property>
         </widget>
+        <widget class="caFrame" name="caFrame_16">
+            <property name="geometry">
+                <rect>
+                    <x>205</x>
+                    <y>345</y>
+                    <width>207</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <widget class="caMenu" name="caMenu_2">
+                <property name="geometry">
+                    <rect>
+                        <x>85</x>
+                        <y>0</y>
+                        <width>120</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="channel">
+                    <string>$(P)$(T).AUNIT</string>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="background">
+                    <color alpha="255">
+                        <red>115</red>
+                        <green>223</green>
+                        <blue>255</blue>
+                    </color>
+                </property>
+                <property name="colorMode">
+                    <enum>caMenu::Static</enum>
+                </property>
+            </widget>
+            <widget class="caLabel" name="caLabel_35">
+                <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="background">
+                    <color alpha="0">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="text">
+                    <string>Angle units</string>
+                </property>
+                <property name="fontScaleMode">
+                    <enum>ESimpleLabel::WidthAndHeight</enum>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>3</y>
+                        <width>92</width>
+                        <height>14</height>
+                    </rect>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+            </widget>
+        </widget>
         <zorder>caGraphics_0</zorder>
         <zorder>caRectangle_0</zorder>
         <zorder>caPolyLine_0</zorder>
@@ -4875,6 +4952,8 @@ QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
         <zorder>caFrame_14</zorder>
         <zorder>caFrame_13</zorder>
         <zorder>caInclude_15</zorder>
+        <zorder>caLabel_35</zorder>
+        <zorder>caFrame_16</zorder>
         <zorder>caTextEntry_0</zorder>
         <zorder>caMenu_0</zorder>
         <zorder>caTextEntry_1</zorder>
@@ -4890,6 +4969,7 @@ QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
         <zorder>caTextEntry_7</zorder>
         <zorder>caTextEntry_8</zorder>
         <zorder>caTextEntry_9</zorder>
+        <zorder>caMenu_2</zorder>
     </widget>
 </widget>
 </ui>
