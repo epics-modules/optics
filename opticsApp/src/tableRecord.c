@@ -48,6 +48,7 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<string.h>
+#include	<strings.h>
 #include	<math.h>
 
 #include	<alarm.h>
@@ -71,7 +72,7 @@
 #endif
 #define LT_EPICSBASE(V,R,M,P) (EPICS_VERSION_INT < VERSION_INT((V),(R),(M),(P)))
 
-double D2R;	/* set in init_record() */
+double D2R;			/* set in init_record() */
 
 #define MAX(a,b) ((a)>(b)?(a):(b))
 #define MIN(a,b) ((a)<(b)?(a):(b))
@@ -304,7 +305,16 @@ init_record(tableRecord *ptbl, int pass)
 	Debug(5, "init_record: pass = %d\n", pass);
 
 	if (pass == 0) {
+		if (ptbl->aunit == tableAUNIT_DEGREES) {
+			strncpy(ptbl->aegu, "degrees", 15);
+			ptbl->torad = atan(1.0)/45.0;
+		} else {
+			/* microradians */
+			strncpy(ptbl->aegu, "ur", 15);
+			ptbl->torad = 1.e-6;
+		}
 		D2R = atan(1.0)/45.0;
+		Debug2(1, "init_record(%s): ptbl->torad = %f\n", ptbl->name, ptbl->torad);
 		/*
 		 * Allocate link-status structure and hang on dpvt.  We can get
 		 * away with this because there's no possibility of device support.
@@ -658,6 +668,19 @@ special(struct dbAddr *paddr, int after)
 		case tableRecordREAD:
 	        /* Let a put of any value to the READ field cause a read. */
 			ptbl->read = 1; db_post_events(ptbl,&ptbl->read,DBE_VALUE);
+			break;
+		case tableRecordAUNIT:
+			if (ptbl->aunit == tableAUNIT_DEGREES) {
+				strncpy(ptbl->aegu, "degrees", 15);
+				ptbl->torad = atan(1.0)/45.0;
+			} else {
+				/* microradians */
+				strncpy(ptbl->aegu, "ur", 15);
+				ptbl->torad = 1.e-6;
+			}
+			db_post_events(ptbl, &ptbl->aegu, DBE_VALUE);
+			/* sync to motors to make new units effective */
+			ptbl->sync = 1;
 			break;
 		default:
 			break;
@@ -1376,9 +1399,9 @@ PivotPointVectorToLocalUserAngles(tableRecord *ptbl, double *q0, double *q1,
 	 * changes, the next three lines may also have to change.
 	 */
 	u[AY_6] = asin(-kp[X]); /* a[X][Z] */
-	u[AX_6] = asin(kp[Y]/cos(u[AY_6])) / D2R; /* a[Y][Z] */
-	u[AZ_6] = asin(jp[X]/cos(u[AY_6])) / D2R; /* a[X][Y] */
-	u[AY_6] /= D2R;	/* user angles are in degrees, not radians */
+	u[AX_6] = asin(kp[Y]/cos(u[AY_6])) / ptbl->torad; /* a[Y][Z] */
+	u[AZ_6] = asin(jp[X]/cos(u[AY_6])) / ptbl->torad; /* a[X][Y] */
+	u[AY_6] /= ptbl->torad;	/* user angles are in degrees or microradians, not radians */
 }
 
 
@@ -1513,9 +1536,9 @@ MotorToLocalUserAngles(tableRecord *ptbl, double *m, double *u)
 
 	/* Now we have the right matrix elements to pick out user angles easily. */
 	u[AY_6] = asin(-Rxz);
-	u[AX_6] = asin(Ryz/cos(u[AY_6])) / D2R;
-	u[AZ_6] = asin(Rxy/cos(u[AY_6])) / D2R;
-	u[AY_6] /= D2R;
+	u[AX_6] = asin(Ryz/cos(u[AY_6])) / ptbl->torad;
+	u[AZ_6] = asin(Rxy/cos(u[AY_6])) / ptbl->torad;
+	u[AY_6] /= ptbl->torad;
 }
 
 
@@ -1728,9 +1751,9 @@ MakeRotationMatrix(tableRecord *ptbl, double *u)
 	double **a = ptbl->a;
 	double cx, cy, cz, sx, sy, sz;
 
-	cx = cos(D2R * u[AX_6]); sx = sin(D2R * u[AX_6]);
-	cy = cos(D2R * u[AY_6]); sy = sin(D2R * u[AY_6]);
-	cz = cos(D2R * u[AZ_6]); sz = sin(D2R * u[AZ_6]);
+	cx = cos(ptbl->torad * u[AX_6]); sx = sin(ptbl->torad * u[AX_6]);
+	cy = cos(ptbl->torad * u[AY_6]); sy = sin(ptbl->torad * u[AY_6]);
+	cz = cos(ptbl->torad * u[AZ_6]); sz = sin(ptbl->torad * u[AZ_6]);
 
 	/* Make rotation matrix */
 	a[0][0] = cy*cz;            a[0][1] = cy*sz;            a[0][2] = -sy;
@@ -1945,7 +1968,6 @@ FindLimit(tableRecord *ptbl, struct trajectory *t, int n, double *userLimit)
 }
 
 
-#define DELTA_INIT 5
 static void
 CalcLocalUserLimits(tableRecord *ptbl)
 {
@@ -1961,7 +1983,9 @@ CalcLocalUserLimits(tableRecord *ptbl)
 	struct	trajectory t[NTRAJ]; 
     struct	private *p = (struct private *)ptbl->dpvt;
     struct	linkStatus *lnkStat = p->lnkStat;
+	double delta_init = 5*D2R/ptbl->torad; /* we should hit a limit if we move 5 degrees */
 
+	if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: entry, delta_init=%f\n", delta_init);
 	UserToMotor(ptbl, ax, m0x);
 
 	/*** get limits for user translations ***/
@@ -1998,11 +2022,19 @@ CalcLocalUserLimits(tableRecord *ptbl)
 		hu[Z_6] = MIN(hu[Z_6], u[Z_6] + pp2h[Z]-pp2[Z]);
 		lu[Z_6] = MAX(lu[Z_6], u[Z_6] + pp2l[Z]-pp2[Z]);
 	}
+	/* add offsets and limit */
 	for (i=X_6; i<=Z_6; i++) {
 		hu[i] -= ax0[i];
 		lu[i] -= ax0[i];
-		if (hu[i] == LARGE) hu[i] = u[i] + SMALL;
-		if (lu[i] == -LARGE) lu[i] = u[i] - SMALL;
+		if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: hu[%d]=%f, lu[%d]=%f\n", i, hu[i], i, lu[i]);
+		if (hu[i] >= LARGE) {
+			hu[i] = u[i] + SMALL;
+			if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: hu[%d] == LARGE, set to %f\n", i, hu[i]);
+		}
+		if (lu[i] <= -LARGE) {
+			lu[i] = u[i] - SMALL;
+			if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: lu[%d] == -LARGE, set to %f\n", i, lu[i]);
+		}
 	}
 
 	/*** get limits for user rotations ***/
@@ -2015,14 +2047,15 @@ CalcLocalUserLimits(tableRecord *ptbl)
 			ax[i] = 0;
 			UserToMotor(ptbl, ax, m0x);
 			if (MotorLimitViol(ptbl)) {
+				if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d limit violation\n", i);
 				hu[i] = lu[i] = ax[i] = save;
 				UserToMotor(ptbl, ax, m0x);
 				continue;
 			}
 		}
-		for (ii=0, lim=&hu[i], delta=DELTA_INIT;
+		for (ii=0, lim=&hu[i], delta=delta_init;
 				ii<=1;
-				ii++, lim=&lu[i], delta = -DELTA_INIT) {
+				ii++, lim=&lu[i], delta = -delta_init) {
 			InitTrajectory(t, NTRAJ);
 			limitCrossings = 0;
 			for (j=0; j<NTRAJ && limitCrossings<2; j++) {

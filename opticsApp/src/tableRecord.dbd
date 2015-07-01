@@ -8,6 +8,10 @@ menu(tableGEOM) {
 	choice(tableGEOM_NEWPORT,"NEWPORT")
 	choice(tableGEOM_PNC,"PNC")
 }
+menu(tableAUNIT) {
+	choice(tableAUNIT_DEGREES,"degrees")
+	choice(tableAUNIT_MICRORADIANS,"ur")
+}
 recordtype(table) {
 	include "dbCommon.dbd" 
 	field(VERS,DBF_FLOAT) {
@@ -905,5 +909,17 @@ recordtype(table) {
 		special(SPC_MOD)
 		pp(TRUE)
 		menu(tableGEOM)
+	}
+	field(TORAD,DBF_DOUBLE) {
+        special(SPC_NOMOD)
+        interest(3)
+        prompt("conversion to radians")
+	}
+	field(AUNIT,DBF_MENU) {
+		prompt("Angle units")
+		promptgroup(GUI_COMMON)
+		special(SPC_MOD)
+		pp(TRUE)
+		menu(tableAUNIT)
 	}
 }
