@@ -1753,6 +1753,11 @@ MakeRotationMatrix(tableRecord *ptbl, double *u)
 	cx = cos(ptbl->torad * u[AX_6]); sx = sin(ptbl->torad * u[AX_6]);
 	cy = cos(ptbl->torad * u[AY_6]); sy = sin(ptbl->torad * u[AY_6]);
 	cz = cos(ptbl->torad * u[AZ_6]); sz = sin(ptbl->torad * u[AZ_6]);
+	if (tableRecordDebug >= 10) {
+		printf("MakeRotationMatrix:\n");
+		printf("cx=%f, cy=%f, cz=%f\n", cx, cy, cz);
+		printf("sx=%f, sy=%f, sz=%f\n", sx, sy, sz);
+	}
 
 	/* Make rotation matrix */
 	a[0][0] = cy*cz;            a[0][1] = cy*sz;            a[0][2] = -sy;
@@ -1760,6 +1765,7 @@ MakeRotationMatrix(tableRecord *ptbl, double *u)
 	a[2][0] = cx*sy*cz + sx*sz; a[2][1] = cx*sy*sz - sx*cz; a[2][2] = cx*cy;
 
 	if (tableRecordDebug >= 5) {
+		printf("MakeRotationMatrix:\n");
 		printf("    [%9.6f %9.6f %9.6f]\n", a[0][0], a[0][1], a[0][2]);
 		printf("a = [%9.6f %9.6f %9.6f]\n", a[1][0], a[1][1], a[1][2]);
 		printf("    [%9.6f %9.6f %9.6f]\n", a[2][0], a[2][1], a[2][2]);
@@ -1868,8 +1874,9 @@ SortTrajectory(struct trajectory *t, int n)
 	}
 }
 
+#define DELTA_START 40
 /* From Numerical Recipes in C */
-#define NTRAJ 10
+#define NTRAJ 13
 static int
 polint(double *xa, double *ya, int n, double x, double *y, double *dy)
 {
@@ -1966,7 +1973,6 @@ FindLimit(tableRecord *ptbl, struct trajectory *t, int n, double *userLimit)
 	return(failed);
 }
 
-
 static void
 CalcLocalUserLimits(tableRecord *ptbl)
 {
@@ -1982,7 +1988,7 @@ CalcLocalUserLimits(tableRecord *ptbl)
 	struct	trajectory t[NTRAJ]; 
     struct	private *p = (struct private *)ptbl->dpvt;
     struct	linkStatus *lnkStat = p->lnkStat;
-	double delta_init = 5*D2R/ptbl->torad; /* we should hit a limit if we move 5 degrees */
+	double delta_init = DELTA_START*D2R/ptbl->torad; /* we should hit a limit if we move DELTA_START degrees */
 
 	if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: entry, delta_init=%f\n", delta_init);
 	UserToMotor(ptbl, ax, m0x);
@@ -2069,6 +2075,7 @@ CalcLocalUserLimits(tableRecord *ptbl)
 					if (limitCrossings) delta *= 0.5;
 				}
 				ax[i] += delta;
+				if (fabs(ax[i]) > 89) ax[i] = 89 * ax[i]/fabs(ax[i]);
 				UserToMotor(ptbl, ax, m0x);
 			}
 			if (tableRecordDebug >= 10) {
