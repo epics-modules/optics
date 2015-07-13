@@ -230,6 +230,7 @@ struct saveTable {
 struct private {
 	struct linkStatus lnkStat[6];
 	struct saveTable savTbl;
+	epicsEnum16 curr_aunit;
 };
 
 
@@ -300,10 +301,18 @@ init_record(tableRecord *ptbl, int pass)
 	double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
 	double *ulax = &ptbl->ulax;	/* user limit (absolute) */
 	double *ulaxr = &ptbl->ulaxr;	/* user limit (varies with offset) */
+	struct private *recPvt;
 
 	Debug(5, "init_record: pass = %d\n", pass);
 
 	if (pass == 0) {
+		/*
+		 * Allocate link-status structure and hang on dpvt.  We can get
+		 * away with this because there's no possibility of device support.
+		 */
+		ptbl->dpvt = (void *)calloc(1, sizeof(struct private));
+		recPvt = ptbl->dpvt;
+
 		if (ptbl->aunit == tableAUNIT_DEGREES) {
 			strncpy(ptbl->aegu, "degrees", 15);
 			ptbl->torad = atan(1.0)/45.0;
@@ -313,12 +322,10 @@ init_record(tableRecord *ptbl, int pass)
 			ptbl->torad = 1.e-6;
 		}
 		D2R = atan(1.0)/45.0;
-		Debug2(1, "init_record(%s): ptbl->torad = %f\n", ptbl->name, ptbl->torad);
-		/*
-		 * Allocate link-status structure and hang on dpvt.  We can get
-		 * away with this because there's no possibility of device support.
-		 */
-		ptbl->dpvt = (void *)calloc(1, sizeof(struct private));
+		recPvt->curr_aunit = ptbl->aunit;
+		if (tableRecordDebug >= 1) {
+			printf("init_record(%s): ptbl->torad = %f, curr_aunit=%d\n", ptbl->name, ptbl->torad, recPvt->curr_aunit);
+		}
 	}
 
 	/* Save current values of selected fields. */
@@ -597,6 +604,7 @@ special(struct dbAddr *paddr, int after)
 {
 	tableRecord *ptbl = (tableRecord *) (paddr->precord);
     int fieldIndex = dbGetFieldIndex(paddr);
+	struct private *recPvt = ptbl->dpvt;
 
 	Debug2(5, "special: after = %d, fieldIndex=%d\n", after, fieldIndex);
 	if (ptbl->pact) {
@@ -678,8 +686,32 @@ special(struct dbAddr *paddr, int after)
 				ptbl->torad = 1.e-6;
 			}
 			db_post_events(ptbl, &ptbl->aegu, DBE_VALUE);
+			/* convert user limits */
+			if (recPvt->curr_aunit != ptbl->aunit) {
+				int i;
+				double *uhax = &ptbl->uhax;	/* user limit (absolute) */
+				double *uhaxr = &ptbl->uhaxr;	/* user limit (varies with offset) */
+				double *ulax = &ptbl->ulax;	/* user limit (absolute) */
+				double *ulaxr = &ptbl->ulaxr;	/* user limit (varies with offset) */
+				double *ax0 = &ptbl->ax0;	/* user-coordinate offsets (e.g., via SET field) */
+				double convertFact = (recPvt->curr_aunit==tableAUNIT_DEGREES) ? 1.e6 * atan(1.0)/45.0 : 1.e-6 / (atan(1.0)/45.0);
+				for (i = 0; i < 3; i++) {
+					uhax[i] *= convertFact;
+					db_post_events(ptbl, &(uhax[i]), DBE_VALUE);
+					ulax[i] *= convertFact;
+					db_post_events(ptbl, &(ulax[i]), DBE_VALUE);
+					uhaxr[i] *= convertFact;
+					db_post_events(ptbl, &(uhaxr[i]), DBE_VALUE);
+					ulaxr[i] *= convertFact;
+					db_post_events(ptbl, &(ulaxr[i]), DBE_VALUE);
+					ax0[i] *= convertFact;
+					db_post_events(ptbl, &(ax0[i]), DBE_VALUE);
+				}
+			}
+
 			/* sync to motors to make new units effective */
 			ptbl->sync = 1;
+			recPvt->curr_aunit = ptbl->aunit;
 			break;
 		default:
 			break;
@@ -1874,7 +1906,7 @@ SortTrajectory(struct trajectory *t, int n)
 	}
 }
 
-#define DELTA_START 40
+#define DELTA_START 80
 /* From Numerical Recipes in C */
 #define NTRAJ 13
 static int
@@ -2044,19 +2076,25 @@ CalcLocalUserLimits(tableRecord *ptbl)
 
 	/*** get limits for user rotations ***/
 	for (i=AX_6; i<=AZ_6; i++) {
+		if (tableRecordDebug >= 5) printf("\n******\nCalcLocalUserLimits: find limits for ax[%d]\n", i);
 		/* save user coordinate */
 		save = ax[i];
 
 		/* try to find a legal value for this coordinate */
 		if (MotorLimitViol(ptbl)) {
+			if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: Limit violation at ax[%d]=%f\n", i, i, ax[i]);
 			ax[i] = 0;
 			UserToMotor(ptbl, ax, m0x);
 			if (MotorLimitViol(ptbl)) {
-				if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d limit violation\n", i);
+				if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: Limit violation at ax[%d]=%f\n", i, i, ax[i]);
 				hu[i] = lu[i] = ax[i] = save;
 				UserToMotor(ptbl, ax, m0x);
 				continue;
+			} else {
+				if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: No limit violation at ax[%d]=%f\n", i, i, ax[i]);
 			}
+		} else {
+			if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: No limit violation at ax[%d]=%f\n", i, i, ax[i]);
 		}
 		for (ii=0, lim=&hu[i], delta=delta_init;
 				ii<=1;
@@ -2067,6 +2105,11 @@ CalcLocalUserLimits(tableRecord *ptbl)
 				t[j].user = ax[i];
 				for (k=0; k<6; k++) {t[j].motor[k] = m0x[k];}
 				t[j].lvio = MotorLimitViol(ptbl);
+				if (t[j].lvio) {
+					if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: Limit violation at ax[%d]=%f\n", i, i, ax[i]);
+				} else {
+					if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: No limit violation at ax[%d]=%f\n", i, i, ax[i]);
+				}
 				if (j) {
 					if (t[j].lvio != t[j-1].lvio) {
 						limitCrossings++;
@@ -2075,7 +2118,13 @@ CalcLocalUserLimits(tableRecord *ptbl)
 					if (limitCrossings) delta *= 0.5;
 				}
 				ax[i] += delta;
-				if (fabs(ax[i]) > 89) ax[i] = 89 * ax[i]/fabs(ax[i]);
+				if (ptbl->aunit == tableAUNIT_DEGREES) {
+					if (fabs(ax[i]) > 89) ax[i] = 89 * ax[i]/fabs(ax[i]);
+				} else {
+					/* microradians */
+					if (fabs(ax[i]) > 1.55e6) ax[i] = 1.55e6 * ax[i]/fabs(ax[i]);
+				}
+				if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: Trying ax[%d]=%f\n", i, i, ax[i]);
 				UserToMotor(ptbl, ax, m0x);
 			}
 			if (tableRecordDebug >= 10) {
@@ -2085,7 +2134,15 @@ CalcLocalUserLimits(tableRecord *ptbl)
 			if (limitCrossings && !(FindLimit(ptbl, t, j, &limit))) {
 				*lim = limit;
 			} else {
-				*lim = save;
+				/* couldn't find a limit violation */
+				if (tableRecordDebug >= 5) printf("CalcLocalUserLimits: userCoord %d: Couldn't find a limit violation\n", i);
+				if (ptbl->aunit == tableAUNIT_DEGREES) {
+					*lim = 89;
+				} else {
+					/* microradians */
+					*lim = 1.55e6;
+				}
+				if (ii) *lim = -(*lim);
 			}
 			/* restore user coordinate */
 			ax[i] = save;
@@ -2182,7 +2239,6 @@ PrintValues(tableRecord *ptbl)
 	printf("    [%9.6f %9.6f %9.6f]\n", a[2][0], a[2][1], a[2][2]);
 }
 
-
 static void 
 CalcUserLimits(tableRecord *ptbl)
 {
@@ -2203,7 +2259,7 @@ CalcUserLimits(tableRecord *ptbl)
 	if (tableRecordDebug >= 10) {
 		PrintValues(ptbl);
 	} else {
-		tableRecordDebug=0;	/* CalcLocalUserLimits produces too much output */
+		/*tableRecordDebug=0*/;	/* CalcLocalUserLimits produces too much output */
 	}
 	CalcLocalUserLimits(ptbl);
 	tableRecordDebug = saveTableRecordDebug;
