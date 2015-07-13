@@ -1906,7 +1906,7 @@ SortTrajectory(struct trajectory *t, int n)
 	}
 }
 
-#define DELTA_START 80
+#define DELTA_START 45
 /* From Numerical Recipes in C */
 #define NTRAJ 13
 static int
