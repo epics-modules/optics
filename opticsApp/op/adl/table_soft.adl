@@ -565,46 +565,35 @@ rectangle {
 	}
 	stacking="column"
 }
-composite {
+"message button" {
 	object {
 		x=0
 		y=370
-		width=100
+		width=50
 		height=20
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=0
-				y=370
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(T).SYNC"
-				clr=14
-				bclr=51
-			}
-			label="Sync"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=50
-				y=370
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(T).INIT"
-				clr=14
-				bclr=51
-			}
-			label="Init"
-			press_msg="1"
-		}
+	control {
+		chan="$(P)$(Q):sync"
+		clr=14
+		bclr=51
 	}
+	label="Sync"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=50
+		y=370
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)$(Q):init"
+		clr=14
+		bclr=51
+	}
+	label="Init"
+	press_msg="1"
 }
 "message button" {
 	object {
@@ -614,7 +603,7 @@ composite {
 		height=20
 	}
 	control {
-		chan="$(P)$(T).ZERO"
+		chan="$(P)$(Q):zero"
 		clr=14
 		bclr=51
 	}
