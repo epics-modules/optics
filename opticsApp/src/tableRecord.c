@@ -940,7 +940,8 @@ ProcessOutputLinks(tableRecord *ptbl, unsigned short motor_move_mask)
 	}
 	/* move motors */
 	for (i=0; i<6; i++) {
-		if ((motor_move_mask & 1<<i) && lnkStat[i].can_RW_drive) {
+		/*if ((motor_move_mask & 1<<i) && lnkStat[i].can_RW_drive) {*/
+		if (lnkStat[i].can_RW_drive) {
 			err = dbPutLink(&m0xl[i], DBR_DOUBLE, &m0x[i], 1);
 			if (!RTN_SUCCESS(err)) {
 				Debug(5,"dbPutLink (drive motor) failed for motor %d\n", i);
