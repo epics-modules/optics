@@ -21,6 +21,10 @@ iocxxxLinux_registerRecordDeviceDriver(pdbbase)
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit.db","P=xxx:,SLIT=Slit1V,mXp=m3,mXn=m4")
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit.db","P=xxx:,SLIT=Slit1H,mXp=m5,mXn=m6")
 
+### soft motor slits
+dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2V,mXp=m3,mXn=m4")
+dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2H,mXp=m5,mXn=m6")
+
 # X-ray Instrumentation Associates Huber Slit Controller
 # supported by a customized version of the SNL program written by Pete Jemian
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/xia_slit.db", "P=xxx:, HSC=hsc1:")
@@ -40,12 +44,22 @@ iocxxxLinux_registerRecordDeviceDriver(pdbbase)
 #tableRecordDebug=1
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/table.db","P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI")
 
+# table with soft motors in front
+epicsEnvSet("DIR", "$(OPTICS)/opticsApp/Db")
+configstr = malloc(300)
+strcpy configstr, "P=xxx:,Q=Table1s,T=table1s,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI,PREC=4"
+#dbLoadRecords("$(DIR)/table_soft.vdb", configstr)
+
 ### Monochromator support ###
 # Kohzu and PSL monochromators: Bragg and theta/Y/Z motors
 # standard geometry (geometry 1)
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq.db","P=xxx:,M_THETA=m1,M_Y=m2,M_Z=m3,yOffLo=17.4999,yOffHi=17.5001")
 # modified geometry (geometry 2)
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq.db","P=xxx:,M_THETA=m1,M_Y=m2,M_Z=m2,yOffLo=4,yOffHi=36")
+
+# monochromator support with soft-motor-record front end
+#dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq_soft.db","P=xxx:,MONO=Kohzu1:,M_THETA=m1,M_Y=m2,M_Z=m3,yOffLo=17.4999,yOffHi=17.5001")
+#doAfterIocInit("seq &kohzuCtl_soft, 'P=xxx:, MONO=Kohzu1:, M_THETA=m1, M_Y=m2, M_Z=m3, GEOM=1, logfile=kohzuCtl.log'")
 
 # Spherical grating monochromator
 dbLoadRecords("$(OPTICS)/opticsApp/Db/SGM.db","P=xxx:,N=1,M_x=m7,M_rIn=m6,M_rOut=m8,M_g=m9")
