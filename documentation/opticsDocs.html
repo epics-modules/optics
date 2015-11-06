@@ -43,6 +43,7 @@ mirrors, diffractometers, and optical tables.
 	<LI><P>multilayer 
 	</P>
 </UL>
+
 <H4>Kohzu/PSL geometry 1 (Theta, Y<sub>1</sub>, Z<sub>2</sub>)</H4>
 <P ALIGN=CENTER><IMG SRC="kohzuGraphic.adl.gif" NAME="Graphic1" ALIGN=BOTTOM WIDTH=452 HEIGHT=371 BORDER=0><BR>kohzuGraphic.adl</P>
 <P>This MEDM display is a picture of Kohzu/PSL geometry 1, with white
@@ -170,7 +171,16 @@ the following options:
 			</TD>
 		</TR>
 	</TABLE>
-</DL>
+</DL> 
+
+<P>The display pictured above uses EPICS analog output records for virtual
+motors such as Energy, Lambda, etc.  Taking Energy as an example, the PV names
+for drive and readback are "$(P)BraggEAO" and "$(P)BraggERdbkAO".  These PV
+names are inconvenient for users (particularly, spec users) who would prefer
+to talk to soft motor records, rather than separate ao records.  There is a
+second version of the Kohzu monochromator software that uses soft motor records
+for virtual motions.  See kohzu*soft* in src, Db, and op directories.
+
 <P ALIGN=CENTER><IMG SRC="colorLine.gif" NAME="Graphic3" ALIGN=BOTTOM WIDTH=576 HEIGHT=5 BORDER=0>
 </P>
 <H4>Kohzu geometry 2 (Theta, Y<sub>2</sub>, Z<sub>2</sub>)</H4>
@@ -490,6 +500,15 @@ energy is varied.</P>
 </P>
 <H3>Slits</H3>
 <P ALIGN=CENTER><IMG SRC="2slit.adl.jpg" NAME="Graphic17" ALIGN=BOTTOM WIDTH=447 HEIGHT=236 BORDER=0><BR>2slit.adl</P>
+
+<P>The display pictured above uses EPICS analog output records for virtual
+motors "-", "+", "size", and "center".  Taking "size" as an example, the PV
+names for drive and readback are "$(P)$(SLIT)xn" and "$(P)$(SLIT)t2.B".  These
+PV names are inconvenient for users (particularly, spec users) who would prefer
+to talk to soft motor records, rather than separate ao records.  There is a
+second version of the 2slit software that uses soft motor records
+for virtual motions.  See 2slit*soft* in src, Db, and op directories.
+
 <P ALIGN=CENTER><IMG SRC="4slitGraphic.adl.jpg" NAME="Graphic18" ALIGN=BOTTOM WIDTH=292 HEIGHT=356 BORDER=0><BR>4slitGraphic.adl</P>
 <P ALIGN=CENTER><IMG SRC="xia_slit_full.adl.jpg" NAME="Graphic19" ALIGN=BOTTOM WIDTH=312 HEIGHT=491 BORDER=0><BR>xia_slit_full.adl</P>
 <P ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="colorLine.gif" NAME="Graphic20" ALIGN=BOTTOM WIDTH=576 HEIGHT=5 BORDER=0>
@@ -700,7 +719,15 @@ Arguments: P=xxx:,R=filter
 
 <H3>Optical table</H3>
 <P>The optical-table software is documented separately. See
-<A HREF="tableRecord.html">tableRecord.html</A> 
+<A HREF="tableRecord.html">tableRecord.html</A>
+
+<P>Note that there are two versions of the optical table software.  The original
+version uses EPICS analog output records for virtual motors.  This is
+inconvenient for users (particularly, spec users) who would prefer to talk to
+soft motor records, rather than separate ao records.  There is a new version of
+the optical table software software that uses soft motor records for virtual
+motions.  See table*soft* in src, Db, and op directories.
+
 </P>
 <P ALIGN=CENTER STYLE="margin-bottom: 0in"><IMG SRC="colorLine.gif" NAME="Graphic32" ALIGN=BOTTOM WIDTH=576 HEIGHT=5 BORDER=0>
 </P>
