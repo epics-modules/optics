@@ -10,6 +10,20 @@
 <BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
 <H1 ALIGN=CENTER>optics Release Notes</H1>
 
+<h2 ALIGN=CENTER>Release 2-11</h2>
+<ul>
+
+<li>Added support for slits, optical table, and Kohzu monochromator with soft
+motor record front ends: 2slit_soft, table*soft, kohzuCtl_soft.
+
+<li>Added support for MultiLayer Laue stage: MLLH, MLLV.
+
+<li>Modified tableRecord.c to write to all motors every time. 
+table_soft.vdb depends on this; table.db doesn't care.
+
+</ul>
+
+
 <h2 ALIGN=CENTER>Release 2-10</h2>
 <ul>
 
