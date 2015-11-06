@@ -29,7 +29,7 @@ optics_SRCS += tableRecord.c
 
 ### The following builds SNL programs as components of optics
 # NOTE: for suffix .st, code is run through cpp; for .stt, it's not
-optics_SRCS += kohzuCtl.st
+optics_SRCS += kohzuCtl.st kohzuCtl_soft.st
 optics_SRCS += hrCtl.st
 optics_SRCS += ml_monoCtl.st
 
