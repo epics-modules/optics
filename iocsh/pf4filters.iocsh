@@ -1,0 +1,28 @@
+# ### pf4filters.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- INSTANCE         - Instance Prefix
+#- OPTICS           - Location of optics module
+#- CALC             - Location of calc module
+#- ###################################################
+
+### Load database records for dual PF4 filters
+dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4common.db","P=$(PREFIX),H=$(INSTANCE):,A=A,B=B")
+dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4bank.db","P=$(PREFIX),H=$(INSTANCE):,B=A")
+dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4bank.db","P=$(PREFIX),H=$(INSTANCE):,B=B")
+dbLoadRecords("$(CALC)/calcApp/Db/userTransform.db","P=$(PREFIX),N=$(INSTANCE)")
+
+#- Start PF4 filter sequence programs
+#-        name = what user will call it
+#-        P    = prefix of database and sequencer
+#-        H    = hardware (i.e. pf4)
+#-        B    = bank indicator (i.e. A,B)
+#-        M    = Monochromatic-beam energy PV
+#-        BP   = Filter control bit PV prefix
+#-        B1   = Filter control bit 0 number
+#-        B2   = Filter control bit 1 number
+#-        B3   = Filter control bit 2 number
+#-        B4   = Filter control bit 3 number
+doAfterIocInit("seq pf4,'name=$(INSTANCE)_1,P=$(PREFIX),H=$(INSTANCE):,B=A,M=$(PREFIX)userTran$(INSTANCE).I,B1=$(PREFIX)userTran$(INSTANCE).A,B2=$(PREFIX)userTran$(INSTANCE).B,B3=$(PREFIX)userTran$(INSTANCE).C,B4=$(PREFIX)userTran$(INSTANCE).D'")
+doAfterIocInit("seq pf4,'name=$(INSTANCE)_2,P=$(PREFIX),H=$(INSTANCE):,B=B,M=$(PREFIX)userTran$(INSTANCE).I,B1=$(PREFIX)userTran$(INSTANCE).E,B2=$(PREFIX)userTran$(INSTANCE).F,B3=$(PREFIX)userTran$(INSTANCE).G,B4=$(PREFIX)userTran$(INSTANCE).H'")
