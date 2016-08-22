@@ -1,0 +1,25 @@
+# ### kohzu_mono.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- M_Y              - Y Motor
+#- M_Z              - Z Motor
+#- M_THETA          - Theta motor
+#- OPTICS           - Location of optics module
+#- GEOM             - Optional: Geometry type (1- standard, 2-modified)
+#-                    Default: 1
+#-
+#- LOG              - Optional: Logfile
+#-                    Default: kohzuCtl.log
+#-
+#- YOFF_HI          - Optional: Y Offset High
+#-                    Default: 0
+#-
+#- YOFF_LO          - Optional: Y Offset Low
+#-                    Default: 0
+#- ###################################################
+
+### Monochromator support ###
+# Kohzu and PSL monochromators: Bragg and theta/Y/Z motors
+dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq.db","P=$(PREFIX),M_THETA=$(M_THETA),M_Y=$(M_Y),M_Z=$(M_Z),yOffLo=$(YOFF_LO),yOffHi=$(YOFF_HI=0)")
+doAfterIocInit("seq &kohzuCtl, 'P=$(PREFIX), M_THETA=$(M_THETA), M_Y=$(M_Y), M_Z=$(M_Z), GEOM=$(GEOM=1), logfile=$(LOG=kohzuCtl.log)'")

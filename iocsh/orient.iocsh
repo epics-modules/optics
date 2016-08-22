@@ -1,0 +1,19 @@
+# ### orient.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- INSTANCE         - Instance Prefix, should match $(O) in substitutions file
+#- M_TTH            - TTH Motor
+#- M_TH             - TH  Motor
+#- M_CHI            - Chi Motor
+#- M_PHI            - Phi Motor
+#- SUB              - xtals substitions file, Macros O, P, and PREC will be set for you.
+#- OPTICS           - Location of the optics module
+#- PREC             - Optional: Digits of precision
+#-                    Default: 6
+#- ###################################################
+
+### Orientation matrix, four-circle diffractometer (see seq program 'orient' below)
+dbLoadRecords("$(OPTICS)/opticsApp/Db/orient.db", "P=$(PREFIX),O=$(INSTANCE),PREC=$(PREC=6)")
+dbLoadTemplate("$(SUB)", "P=$(PREFIX), O=$(INSTANCE), PREC=$(PREC)")
+doAfterIocInit("seq &orient, 'P=$(PREFIX)orient$(INSTANCE):,PM=$(PREFIX),mTTH=$(M_TTH),mTH=$(M_TH),mCHI=$(M_CHI),mPHI=$(M_PHI)'")

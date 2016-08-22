@@ -1,0 +1,14 @@
+# ### Huber_xia.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- INSTANCE         - Instance
+#- ASYN_REC         - Asyn record for communication
+#- OPTICS           - Location of optics module
+#- ###################################################
+
+#- X-ray Instrumentation Associates Huber Slit Controller
+#- supported by a customized version of the SNL program written by Pete Jemian
+#- (Uses asyn record loaded separately)
+dbLoadRecords("$(OPTICS)/opticsApp/Db/xia_slit.db", "P=$(PREFIX), HSC=$(INSTANCE):")
+doAfterIocInit("seq  &xia_slit, 'name=$(INSTANCE), P=$(PREFIX), HSC=$(INSTANCE):, S=$(ASYN_REC)'")

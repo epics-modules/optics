@@ -1,0 +1,19 @@
+# ### ml_mono.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- M_Y              - Y Motor
+#- M_Z              - Z Motor
+#- M_THETA1         - Theta motor 1
+#- M_THETA2         - Theta motor 2
+#- OPTICS           - Location of optics module
+#- GEOM             - Optional: Geometry type (1- standard, 2-modified)
+#-                    Default: 1
+#-
+#- YOFF             - Optional: Y Offset
+#-                    Default: 0
+#- ###################################################
+
+### multilayer monochromator: Bragg and theta/Y/Z motors
+dbLoadRecords("$(OPTICS)/opticsApp/Db/ml_monoSeq.db","P=$(PREFIX)")
+doAfterIocInit("seq &ml_monoCtl, 'P=$(PREFIX), M_THETA=$(M_THETA1), M_THETA2=$(M_THETA2), M_Y=$(M_Y), M_Z=$(M_Z), Y_OFF=$(YOFF=0), GEOM=$(GEOM=1)'")

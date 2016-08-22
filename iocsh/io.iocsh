@@ -1,0 +1,12 @@
+# ### io.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- MONO             - Monochrometer positioner field
+#- VSC              - Associated scan record
+#- OPTICS           - Location of optics module
+#- ###################################################
+
+#- Io calculation
+dbLoadRecords("$(OPTICS)/opticsApp/Db/Io.db","P=$(PREFIX)Io:")
+doAfterIocInit("seq &Io, 'P=$(PREFIX)Io:,MONO=$(MONO),VSC=$(VSC)'")
