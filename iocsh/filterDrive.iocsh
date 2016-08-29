@@ -1,0 +1,16 @@
+# ### filterDrive.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- INSTANCE         - Instance Prefix
+#- KEV              - Name of PV channel giving beam energy in keV.
+#- NUM_FILTERS      - Number of filter records loaded in substitutions file
+#- SUB              - Filter settings substitutions file (filterBladeNoSensor.db)
+#-                    Macros P and R will be set automatically
+#- OPTICS           - Location of optics module
+#- ###################################################
+
+
+dbLoadTemplate("$(SUB)", "P=$(PREFIX), R=$(INSTANCE):")
+dbLoadRecords("$(OPTICS)/opticsApp/Db/filterDrive.db", "P=$(PREFIX), R=$(INSTANCE):, DESC=Filters, KEV=$(KEV)")
+doAfterIocInit("seq filterDrive,'NAME=$(INSTANCE),P=$(PREFIX),R=$(INSTANCE):,NUM_FILTERS=$(NUM_FILTERS)'")
