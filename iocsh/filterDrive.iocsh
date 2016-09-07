@@ -12,6 +12,6 @@
 #- ###################################################
 
 
-dbLoadTemplate("$(SUB=EXAMPLE_filterDrive.substitutions)", "P=$(PREFIX), R=$(INSTANCE):")
+dbLoadTemplate("$(SUB=$(OPTICS)/iocsh/EXAMPLE_filterDrive.substitutions)", "P=$(PREFIX), R=$(INSTANCE):")
 dbLoadRecords("$(OPTICS)/opticsApp/Db/filterDrive.db", "P=$(PREFIX), R=$(INSTANCE):, DESC=Filters, KEV=$(KEV)")
 doAfterIocInit("seq filterDrive,'NAME=$(INSTANCE),P=$(PREFIX),R=$(INSTANCE):,NUM_FILTERS=$(NUM_FILTERS)'")
