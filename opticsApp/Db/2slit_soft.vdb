@@ -26,11 +26,15 @@ record(dfanout, "$(P)$(SLIT)stop") {
   field(OUTB, "$(P)$(SLIT)xn.STOP  CA MS")
   field(OUTC, "$(P)$(SLIT)size.STOP  CA MS")
   field(OUTD, "$(P)$(SLIT)center.STOP  CA MS")
+  field(OUTE, "$(P)$(mXn).STOP  CA MS")
+  field(OUTF, "$(P)$(mXp).STOP  CA MS")
   field(DOL, "1")
 }
 
 record(motor, "$(P)$(SLIT)xp") {
   field(DESC, "$(SLIT) X+")
+  # spec might be able to use this alias
+  alias("$(P)$(SLIT)m2")
   field(DTYP, "Soft Channel")
   field(OUT, "$(P)$(SLIT)tFwd.A  PP MS")
   field(RDBL, "$(P)$(SLIT)tRev.A  NPP MS")
@@ -52,6 +56,7 @@ record(ao, "$(P)$(SLIT)xpBPut") {
 
 record(motor, "$(P)$(SLIT)xn") {
   field(DESC, "$(SLIT) X-")
+  alias("$(P)$(SLIT)m1")
   field(DTYP, "Soft Channel")
   field(OUT, "$(P)$(SLIT)tFwd.B  PP MS")
   field(RDBL, "$(P)$(SLIT)tRev.B  NPP MS")
@@ -67,6 +72,7 @@ record(motor, "$(P)$(SLIT)xn") {
 
 record(motor, "$(P)$(SLIT)size") {
   field(DESC, "$(SLIT) Size")
+  alias("$(P)$(SLIT)m3")
   field(DTYP, "Soft Channel")
   field(OUT, "$(P)$(SLIT)tFwd.C  PP MS")
   field(RDBL, "$(P)$(SLIT)tRev.C  NPP MS")
@@ -82,6 +88,7 @@ record(motor, "$(P)$(SLIT)size") {
 
 record(motor, "$(P)$(SLIT)center") {
   field(DESC, "$(SLIT) Center")
+  alias("$(P)$(SLIT)m4")
   field(DTYP, "Soft Channel")
   field(OUT, "$(P)$(SLIT)tFwd.D  PP MS")
   field(RDBL, "$(P)$(SLIT)tRev.D  NPP MS")
