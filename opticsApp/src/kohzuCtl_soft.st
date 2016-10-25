@@ -440,9 +440,9 @@ assign  yOffsetLo to "{P}{MONO}yOffset.DRVL";
 %%#include <math.h>
 
 %%double kohzuCtl_soft_calc2dSpacing();
-%%char *kohzuCtl_pmacP;
-%%char *kohzuCtl_pmacM;
-%%char *kohzuCtl_pmacGEOM;
+%%char *kohzuCtl_soft_pmacP;
+%%char *kohzuCtl_soft_pmacM;
+%%char *kohzuCtl_soft_pmacGEOM;
 short geom;
 
 short  causedMove;
@@ -475,31 +475,31 @@ state initSequence {
 		opAck = 0;
 		pvPut(opAck);
 %{
-		kohzuCtl_pmacP = seq_macValueGet(ssId,"P");
-		kohzuCtl_pmacM = seq_macValueGet(ssId,"M_THETA");
-		if (kohzuCtl_pmacP == 0 || kohzuCtl_pmacM == 0) {
+		kohzuCtl_soft_pmacP = seq_macValueGet(ssId,"P");
+		kohzuCtl_soft_pmacM = seq_macValueGet(ssId,"M_THETA");
+		if (kohzuCtl_soft_pmacP == 0 || kohzuCtl_soft_pmacM == 0) {
 			sprintf(thetaMotName,"??????");
 		} else {
-			strcpy(thetaMotName, kohzuCtl_pmacP);
-			strcat(thetaMotName, kohzuCtl_pmacM);
+			strcpy(thetaMotName, kohzuCtl_soft_pmacP);
+			strcat(thetaMotName, kohzuCtl_soft_pmacM);
 		}
-		kohzuCtl_pmacM = seq_macValueGet(ssId,"M_Y");
-		if (kohzuCtl_pmacP == 0 || kohzuCtl_pmacM == 0) {
+		kohzuCtl_soft_pmacM = seq_macValueGet(ssId,"M_Y");
+		if (kohzuCtl_soft_pmacP == 0 || kohzuCtl_soft_pmacM == 0) {
 			sprintf(yMotName,"??????");
 		} else {
-			strcpy(yMotName, kohzuCtl_pmacP);
-			strcat(yMotName, kohzuCtl_pmacM);
+			strcpy(yMotName, kohzuCtl_soft_pmacP);
+			strcat(yMotName, kohzuCtl_soft_pmacM);
 		}
-		kohzuCtl_pmacM = seq_macValueGet(ssId,"M_Z");
-		if (kohzuCtl_pmacP == 0 || kohzuCtl_pmacM == 0) {
+		kohzuCtl_soft_pmacM = seq_macValueGet(ssId,"M_Z");
+		if (kohzuCtl_soft_pmacP == 0 || kohzuCtl_soft_pmacM == 0) {
 			sprintf(zMotName,"??????");
 		} else {
-			strcpy(zMotName, kohzuCtl_pmacP);
-			strcat(zMotName, kohzuCtl_pmacM);
+			strcpy(zMotName, kohzuCtl_soft_pmacP);
+			strcat(zMotName, kohzuCtl_soft_pmacM);
 		}
-		kohzuCtl_pmacGEOM = seq_macValueGet(ssId,"GEOM");
+		kohzuCtl_soft_pmacGEOM = seq_macValueGet(ssId,"GEOM");
 		geom = 1;
-		if (*kohzuCtl_pmacGEOM == '2') geom = 2;
+		if (*kohzuCtl_soft_pmacGEOM == '2') geom = 2;
 }%
 		if (geom == 1) {
 			yOffsetHi = 17.5 + .000001;
