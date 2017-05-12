@@ -10,7 +10,7 @@
 <BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
 <H1 ALIGN=CENTER>optics Release Notes</H1>
 
-<h2 ALIGN=CENTER>Release 2-12 (unreleased)</h2>
+<h2 ALIGN=CENTER>Release 2-12</h2>
 <ul>
 <li>Added iocsh files for all support that require more than just a database.
 
@@ -19,7 +19,17 @@ substitutions file to demonstrate to users of orient.iocsh a functions sub file.
 
 <li>CONFIG_APP -> CONFIG_SITE, revamped configure from base-3.15.4 makeBaseApp example.
 <li>kohzuSeq: Enable/disable speed control via PV $(P)KohzuSpeedCtrl
-<li>2slit_soft: Stop also stops hard motors now.
+
+<li>Modified 2slit_soft.vdb and table_soft.vdb to allow more effective control
+by spec - especially in the setting (that is, recalibration) of soft motor
+values.  (kohzuSeq_soft.vdb does not have these changes.)  NOTE that these changes
+require a version of the motor record with the IGSET (ignore set) field. 
+Currently (5/12/2017), no released version of the motor module has this, but
+it's in the trunk as of 1/12/2017.)
+
+<li>Previously, kohzuCtl_soft.st used macro variables kohzuCtl_pmac*.  Now it
+uses kohzuCtl_soft_pmac*.
+
 </ul>
 
 <h2 ALIGN=CENTER>Release 2-11</h2>
