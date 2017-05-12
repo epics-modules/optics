@@ -308,7 +308,6 @@ text {
 		label="$(SLIT)xn (Tiny)"
 		name="motorx_tiny.adl"
 		args="P=$(P),M=$(SLIT)xn"
-		policy="replace display"
 	}
 	display[1] {
 		label="$(SLIT)xn (Help)"
@@ -774,7 +773,6 @@ text {
 		label="$(SLIT)xp (Tiny)"
 		name="motorx_tiny.adl"
 		args="P=$(P),M=$(SLIT)xp"
-		policy="replace display"
 	}
 	display[1] {
 		label="$(SLIT)xp (Help)"
@@ -1240,7 +1238,6 @@ text {
 		label="$(SLIT)size (Tiny)"
 		name="motorx_tiny.adl"
 		args="P=$(P),M=$(SLIT)size"
-		policy="replace display"
 	}
 	display[1] {
 		label="$(SLIT)size (Help)"
@@ -1706,7 +1703,6 @@ text {
 		label="$(SLIT)center (Tiny)"
 		name="motorx_tiny.adl"
 		args="P=$(P),M=$(SLIT)center"
-		policy="replace display"
 	}
 	display[1] {
 		label="$(SLIT)center (Help)"
@@ -1965,21 +1961,6 @@ text {
 	}
 	stacking="column"
 }
-"message button" {
-	object {
-		x=260
-		y=234
-		width=60
-		height=27
-	}
-	control {
-		chan="$(P)$(SLIT)stop.PROC"
-		clr=30
-		bclr=20
-	}
-	label="Stop"
-	press_msg="1"
-}
 "related display" {
 	object {
 		x=200
@@ -2006,6 +1987,31 @@ text {
 		label="calcDone"
 		name="yyCalcoutRecord.adl"
 		args="P=$(P),C=$(SLIT)calcDone"
+	}
+	display[4] {
+		label="monitorStop"
+		name="yyTransform_full.adl"
+		args="P=$(P),T=$(SLIT)monitorStop"
+	}
+	display[5] {
+		label="doStop"
+		name="yySeq_full.adl"
+		args="P=$(P),S=$(SLIT)doStop"
+	}
+	display[6] {
+		label="spectator"
+		name="yyTransform.adl"
+		args="P=$(P),T=$(SLIT)spectator"
+	}
+	display[7] {
+		label="syncCalc"
+		name="yyTransform.adl"
+		args="P=$(P),T=$(SLIT)tSyncCalc"
+	}
+	display[8] {
+		label="sync"
+		name="yyTransform.adl"
+		args="P=$(P),T=$(SLIT)tSync"
 	}
 	clr=0
 	bclr=17
