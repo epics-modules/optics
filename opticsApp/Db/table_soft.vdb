@@ -4,10 +4,23 @@
 #! DBDEND
 
 
+record(transform, "$(P)$(Q):setMonitor") {
+	field(INPA, "$(P)$(Q):x.SET CP")
+	field(INPB, "$(P)$(Q):y.SET CP")
+	field(INPC, "$(P)$(Q):z.SET CP")
+	field(INPD, "$(P)$(Q):ax.SET CP")
+	field(INPE, "$(P)$(Q):ay.SET CP")
+	field(INPF, "$(P)$(Q):az.SET CP")
+	field(CLCG, "a||b||c||d||e||f")
+	field(OUTG, "$(P)$(T).SET CA")
+}
 
+# We already have a mechanism for stopping the table when any soft motor's
+# STOP field is 1.  Reimplement existing table:stop PV to drive that mechanism
 record(bo, "$(P)$(Q):stop") {
   field(DTYP, "Soft Channel")
-  field(OUT, "$(P)$(Q):stop1.A  PP MS")
+  field(DOL, "1")
+  field(OUT, "$(P)$(Q):x.STOP  PP MS")
 }
 
 record(bo, "$(P)$(Q):update") {
@@ -34,7 +47,6 @@ record(calc, "$(P)$(Q):geomIsSRI") {
   field(CALC, "a=0")
   field(INPA, "$(P)$(T).GEOM  CP MS")
 }
-
 
 record(table, "$(P)$(T)") {
   field(DESC, "Optical Table")
@@ -90,6 +102,64 @@ record(table, "$(P)$(T)") {
   field(PREC, "4")
   field(GEOM, "$(GEOM)")
   field(FLNK, "$(P)$(Q):ifValuesWritten")
+}
+
+# We're going to monitor the STOP fields of the soft motors, so we know when
+# the user told a motor to stop.  We're also going to write to all of those
+# STOP fields when we detect that the user wants the table to stop.  We need
+# to distinguish our writes from the user's writes.
+record(bo, "$(P)$(Q):weSaidStop") {
+	#field(TPRO, "1")
+	field(ZNAM, "No")
+	field(ONAM, "Yes")
+}
+record(transform, "$(P)$(Q):monitorStop") {
+	#field(TPRO, "1")
+	field(SDIS, "$(P)$(Q):weSaidStop")
+	field(DISV, "1")
+	# listen to our soft motors' .STOP fields
+	field(INPA, "$(P)$(Q):x.STOP CP MS")
+	field(INPB, "$(P)$(Q):y.STOP CP MS")
+	field(INPC, "$(P)$(Q):z.STOP CP MS")
+	field(INPD, "$(P)$(Q):ax.STOP CP MS")
+	field(INPE, "$(P)$(Q):ay.STOP CP MS")
+	field(INPF, "$(P)$(Q):az.STOP CP MS")
+	# I==any soft motor was told to stop
+	field(CLCI, "a||b||c||d||e||f")
+	field(OUTI, "$(P)$(Q):weSaidStop PP MS")
+	# don't write to the .STOP field that triggered us to process
+	field(CMTJ, "bitmask for doStop")
+	field(CLCJ, "!a+!b*2+!c*4+!d*8+!e*16+!f*32+64+128")
+	field(OUTK, "$(P)$(Q):doStop.PROC PP")
+}
+record(seq, "$(P)$(Q):doStop") {
+	#field(TPRO, "1")
+	field(SDIS, "$(P)$(Q):weSaidStop")
+	field(DISV, "0")
+	field(SELL, "$(P)$(Q):monitorStop.J")
+	field(SELM, "Mask")
+	field(DOL1, "1")
+	field(LNK1, "$(P)$(Q):x.STOP PP")
+	field(DOL2, "1")
+	field(LNK2, "$(P)$(Q):y.STOP PP")
+	field(DOL3, "1")
+	field(LNK3, "$(P)$(Q):z.STOP PP")
+	field(DOL4, "1")
+	field(LNK4, "$(P)$(Q):ax.STOP PP")
+	field(DOL5, "1")
+	field(LNK5, "$(P)$(Q):ay.STOP PP")
+	field(DOL6, "1")
+	field(LNK6, "$(P)$(Q):az.STOP PP")
+	field(DOL7, "1")
+	field(LNK7, "$(P)$(Q):stop1.A PP")
+	# We need to wait for all the postings resulting from puts to stop_*
+	# fields to be received by monitorStop's CP links before enabling
+	# that record to respond to new postings of those fields.  Writing
+	# with a CA link should ensure that, but delaying by 0.1 s provides
+	# additional protection.
+	field(DOL8, "0")
+	field(DLY8, ".1")
+	field(LNK8, "$(P)$(Q):weSaidStop CA")
 }
 
 record(transform, "$(P)$(Q):stop1") {
@@ -371,19 +441,6 @@ record(fanout, "$(P)$(Q)fpInit1") {
   field(LNK5, "$(P)$(Q)fpSelect.PROC PP")
 }
 
-record(motor, "$(P)$(Q):x") {
-  field(DTYP, "Soft Channel")
-  field(OUT, "$(P)$(T).X PP")
-  field(RDBL, "$(P)$(T).EX")
-  field(MRES, ".00001")
-  field(RRES, "1")
-  field(URIP, "Yes")
-  field(PREC, "$(PREC=3)")
-  field(RTRY, "0")
-  field(DINP, "$(P)$(Q):done.VAL")
-}
-
-
 record(sseq, "$(P)$(Q):writeMotors") {
   field(DO1, "1")
   field(LNK1, "$(P)$(Q):startMove.DO1 PP")
@@ -418,8 +475,27 @@ record(dfanout, "$(P)$(Q):isSoftFan") {
   field(OUTF, "$(P)$(Q):az.LOCK")
 }
 
-record(motor, "$(P)$(Q):y") {
+record(motor, "$(P)$(Q):x") {
+  # alias is for spec, to make it easier to manage configuration of soft motors
+  alias("$(P)$(Q):m1")
   field(DTYP, "Soft Channel")
+  # ignore the SET field, we're going to implement it in the database, rather
+  # than in individual motor records
+  field(IGSET, "1")
+  field(OUT, "$(P)$(T).X PP")
+  field(RDBL, "$(P)$(T).EX")
+  field(MRES, ".00001")
+  field(RRES, "1")
+  field(URIP, "Yes")
+  field(PREC, "$(PREC=3)")
+  field(RTRY, "0")
+  field(DINP, "$(P)$(Q):done.VAL")
+}
+
+record(motor, "$(P)$(Q):y") {
+  alias("$(P)$(Q):m2")
+  field(DTYP, "Soft Channel")
+  field(IGSET, "1")
   field(OUT, "$(P)$(T).Y PP")
   field(RDBL, "$(P)$(T).EY")
   field(MRES, ".00001")
@@ -432,7 +508,9 @@ record(motor, "$(P)$(Q):y") {
 }
 
 record(motor, "$(P)$(Q):z") {
+  alias("$(P)$(Q):m3")
   field(DTYP, "Soft Channel")
+  field(IGSET, "1")
   field(OUT, "$(P)$(T).Z PP")
   field(RDBL, "$(P)$(T).EZ")
   field(MRES, ".00001")
@@ -445,7 +523,9 @@ record(motor, "$(P)$(Q):z") {
 }
 
 record(motor, "$(P)$(Q):ax") {
+  alias("$(P)$(Q):m4")
   field(DTYP, "Soft Channel")
+  field(IGSET, "1")
   field(OUT, "$(P)$(T).AX PP")
   field(RDBL, "$(P)$(T).EAX")
   field(MRES, ".00001")
@@ -458,7 +538,9 @@ record(motor, "$(P)$(Q):ax") {
 }
 
 record(motor, "$(P)$(Q):ay") {
+  alias("$(P)$(Q):m5")
   field(DTYP, "Soft Channel")
+  field(IGSET, "1")
   field(OUT, "$(P)$(T).AY PP")
   field(RDBL, "$(P)$(T).EAY")
   field(MRES, ".00001")
@@ -472,7 +554,9 @@ record(motor, "$(P)$(Q):ay") {
 
 
 record(motor, "$(P)$(Q):az") {
+  alias("$(P)$(Q):m6")
   field(DTYP, "Soft Channel")
+  field(IGSET, "1")
   field(OUT, "$(P)$(T).AZ PP")
   field(RDBL, "$(P)$(T).EAZ")
   field(MRES, ".00001")
@@ -612,6 +696,31 @@ record(calcout, "$(P)$(Q):done") {
   field(OOPT, "Transition To Non-zero")
 }
 
+# Strategy: We need to find out when all motors have finished executing a move
+# that we started.  To do this without a race condition, we set a gate PV to
+# "open", write to motors, and then have the last motor written to set the gate
+# PV to "closed" when it finishes.  But we don't know which motor will be the
+# last motor written to, because the table record can work with fewer than six
+# motors, and we don't know which motors don't actually exist.
+# $(P)$(Q):lastMotor figures this out at init time.
+
+# Evidently, $(P)$(Q):lastMotor's PINI==RUNNING field isn't getting
+# $(P)$(Q):closeGate.INPA initialized.  This seems bulletproof.
+record(scalcout, "$(P)$(Q):initLastMotor") {
+	#field(TPRO, "1")
+	field(SCAN, "10 second")
+	# Note that this must be a CA link so it can read a link field
+	field(INAA, "$(P)$(Q):closeGate.INPA CA")
+	field(CALC, "aa==''")
+	field(OOPT, "When Zero")
+	field(DOPT, "Use OCAL")
+	field(OCAL, "'Passive'")
+	field(OUT, "$(P)$(Q):initLastMotor.SCAN CA")
+	field(FLNK, "$(P)$(Q):lastMotor")
+}
+
+# Find the last motor that will be written to.  (Ignore motors that
+# don't actually exist.)  Write that motor's .DMOV PV
 record(scalcout, "$(P)$(Q):lastMotor") {
   field(CALC, "(f?ff:e?ee:d?dd:c?cc:b?bb:aa)[0,' ']+' CP'")
   field(INPA, "$(P)$(Q):dmov.INAV CA")
