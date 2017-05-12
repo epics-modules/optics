@@ -619,7 +619,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>P=$(P),M=$(SLIT)xn;P=$(P),M=$(SLIT)xn;P=$(P),M=$(SLIT)xn;P=$(P),M=$(SLIT)xn;P=$(P),Q=$(SLIT)xn,PV=$(SLIT)xn;P=$(P),M=$(SLIT)xn</string>
             </property>
             <property name="removeParent">
-                <string>true;false;false;false;false;false</string>
+                <string>false;false;false;false;false;false</string>
             </property>
         </widget>
         <widget class="caMessageButton" name="caMessageButton_4">
@@ -1827,7 +1827,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>P=$(P),M=$(SLIT)xp;P=$(P),M=$(SLIT)xp;P=$(P),M=$(SLIT)xp;P=$(P),M=$(SLIT)xp;P=$(P),Q=$(SLIT)xp,PV=$(SLIT)xp;P=$(P),M=$(SLIT)xp</string>
             </property>
             <property name="removeParent">
-                <string>true;false;false;false;false;false</string>
+                <string>false;false;false;false;false;false</string>
             </property>
         </widget>
         <widget class="caMessageButton" name="caMessageButton_10">
@@ -3035,7 +3035,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>P=$(P),M=$(SLIT)size;P=$(P),M=$(SLIT)size;P=$(P),M=$(SLIT)size;P=$(P),M=$(SLIT)size;P=$(P),Q=$(SLIT)size,PV=$(SLIT)size;P=$(P),M=$(SLIT)size</string>
             </property>
             <property name="removeParent">
-                <string>true;false;false;false;false;false</string>
+                <string>false;false;false;false;false;false</string>
             </property>
         </widget>
         <widget class="caMessageButton" name="caMessageButton_16">
@@ -4243,7 +4243,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>P=$(P),M=$(SLIT)center;P=$(P),M=$(SLIT)center;P=$(P),M=$(SLIT)center;P=$(P),M=$(SLIT)center;P=$(P),Q=$(SLIT)center,PV=$(SLIT)center;P=$(P),M=$(SLIT)center</string>
             </property>
             <property name="removeParent">
-                <string>true;false;false;false;false;false</string>
+                <string>false;false;false;false;false;false</string>
             </property>
         </widget>
         <widget class="caMessageButton" name="caMessageButton_22">
@@ -4884,45 +4884,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caChoice::Static</enum>
             </property>
         </widget>
-        <widget class="caMessageButton" name="caMessageButton_24">
-            <property name="geometry">
-                <rect>
-                    <x>260</x>
-                    <y>234</y>
-                    <width>60</width>
-                    <height>27</height>
-                </rect>
-            </property>
-            <property name="fontScaleMode">
-                <enum>EPushButton::WidthAndHeight</enum>
-            </property>
-            <property name="channel">
-                <string>$(P)$(SLIT)stop.PROC</string>
-            </property>
-            <property name="foreground">
-                <color alpha="255">
-                    <red>251</red>
-                    <green>243</green>
-                    <blue>74</blue>
-                </color>
-            </property>
-            <property name="background">
-                <color alpha="255">
-                    <red>253</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="label">
-                <string>Stop</string>
-            </property>
-            <property name="pressMessage">
-                <string>1</string>
-            </property>
-            <property name="colorMode">
-                <enum>caMessageButton::Static</enum>
-            </property>
-        </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_4">
             <property name="geometry">
                 <rect>
@@ -4953,16 +4914,16 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Menu</enum>
             </property>
             <property name="labels">
-                <string>drive transform;readback transform;limits transform;calcDone</string>
+                <string>drive transform;readback transform;limits transform;calcDone;monitorStop;doStop;spectator;syncCalc;sync</string>
             </property>
             <property name="files">
-                <string>yyTransform_full.adl;yyTransform_full.adl;yyTransform_full.adl;yyCalcoutRecord.adl</string>
+                <string>yyTransform_full.adl;yyTransform_full.adl;yyTransform_full.adl;yyCalcoutRecord.adl;yyTransform_full.adl;yySeq_full.adl;yyTransform.adl;yyTransform.adl;yyTransform.adl</string>
             </property>
             <property name="args">
-                <string>P=$(P),T=$(SLIT)tFwd;P=$(P),T=$(SLIT)tRev;P=$(P),T=$(SLIT)tLimits;P=$(P),C=$(SLIT)calcDone</string>
+                <string>P=$(P),T=$(SLIT)tFwd;P=$(P),T=$(SLIT)tRev;P=$(P),T=$(SLIT)tLimits;P=$(P),C=$(SLIT)calcDone;P=$(P),T=$(SLIT)monitorStop;P=$(P),S=$(SLIT)doStop;P=$(P),T=$(SLIT)spectator;P=$(P),T=$(SLIT)tSyncCalc;P=$(P),T=$(SLIT)tSync</string>
             </property>
             <property name="removeParent">
-                <string>false;false;false;false</string>
+                <string>false;false;false;false;false;false;false;false;false</string>
             </property>
         </widget>
         <widget class="caGraphics" name="caRectangle_36">
@@ -5375,7 +5336,6 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
         <zorder>caLineEdit_11</zorder>
         <zorder>caChoice_3</zorder>
         <zorder>caChoice_4</zorder>
-        <zorder>caMessageButton_24</zorder>
         <zorder>caRelatedDisplay_4</zorder>
         <zorder>caLineEdit_12</zorder>
         <zorder>caLineEdit_13</zorder>
