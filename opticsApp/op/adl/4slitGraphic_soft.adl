@@ -1,7 +1,7 @@
 
 file {
-	name="/home/oxygen4/MOONEY/epics/3.13.1.1/tmm/tmmApp/op/adl/4slitGraphic_soft_1.1.adl"
-	version=020306
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/4slitGraphic_soft.adl"
+	version=030107
 }
 display {
 	object {
@@ -1302,30 +1302,15 @@ text {
 "message button" {
 	object {
 		x=110
-		y=25
-		width=60
-		height=22
+		y=305
+		width=53
+		height=20
 	}
 	control {
-		chan="$(P)$(H)sync.PROC"
-		clr=14
-		bclr=51
+		chan="$(P)$(H)xn.STOP"
+		clr=31
+		bclr=20
 	}
-	label="Sync H"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=110
-		y=303
-		width=60
-		height=22
-	}
-	control {
-		chan="$(P)$(V)sync.PROC"
-		clr=14
-		bclr=55
-	}
-	label="Sync V"
+	label="STOP"
 	press_msg="1"
 }
