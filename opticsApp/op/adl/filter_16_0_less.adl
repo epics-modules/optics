@@ -1,12 +1,12 @@
 
 file {
-	name="/net/s33dserv/xorApps/epics/synApps_5_6/ioc/33bmTEST/33bmTESTApp/op/adl/filter_16_0_less.adl"
-	version=030107
+	name="/home/oxygen40/KPETERSN/development/github-forks/optics/opticsApp/op/adl/filter_16_0_less.adl"
+	version=030111
 }
 display {
 	object {
-		x=300
-		y=300
+		x=600
+		y=666
 		width=680
 		height=285
 	}
@@ -789,366 +789,355 @@ text {
 }
 composite {
 	object {
-		x=5
+		x=303
 		y=188
-		width=671
-		height=85
+		width=79
+		height=19
 	}
 	"composite name"=""
 	children {
 		composite {
 			object {
-				x=303
+				x=325
 				y=188
-				width=79
+				width=35
 				height=19
 			}
 			"composite name"=""
 			children {
+				text {
+					object {
+						x=326
+						y=197
+						width=21
+						height=10
+					}
+					"basic attribute" {
+						clr=19
+					}
+					textix="free"
+				}
 				composite {
 					object {
 						x=325
 						y=188
 						width=35
-						height=19
+						height=10
 					}
 					"composite name"=""
 					children {
 						text {
 							object {
-								x=326
-								y=197
+								x=325
+								y=188
 								width=21
 								height=10
 							}
 							"basic attribute" {
-								clr=19
+								clr=20
 							}
-							textix="free"
+							textix="lock"
 						}
-						composite {
+						text {
 							object {
-								x=325
+								x=350
 								y=188
-								width=35
+								width=10
 								height=10
 							}
-							"composite name"=""
-							children {
-								text {
-									object {
-										x=325
-										y=188
-										width=21
-										height=10
-									}
-									"basic attribute" {
-										clr=20
-									}
-									textix="lock"
-								}
-								text {
-									object {
-										x=350
-										y=188
-										width=10
-										height=10
-									}
-									"basic attribute" {
-										clr=14
-									}
-									textix="/"
-								}
+							"basic attribute" {
+								clr=14
 							}
+							textix="/"
 						}
-					}
-				}
-				polyline {
-					object {
-						x=303
-						y=193
-						width=19
-						height=1
-					}
-					"basic attribute" {
-						clr=14
-						width=1
-					}
-					points {
-						(303,193)
-						(321,193)
-					}
-				}
-				polyline {
-					object {
-						x=363
-						y=193
-						width=19
-						height=1
-					}
-					"basic attribute" {
-						clr=14
-						width=1
-					}
-					points {
-						(363,193)
-						(381,193)
 					}
 				}
 			}
 		}
+		polyline {
+			object {
+				x=303
+				y=193
+				width=19
+				height=1
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(303,193)
+				(321,193)
+			}
+		}
+		polyline {
+			object {
+				x=363
+				y=193
+				width=19
+				height=1
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(363,193)
+				(381,193)
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=5
+		y=226
+		width=671
+		height=15
+	}
+	"composite name"=""
+	children {
 		composite {
 			object {
 				x=5
 				y=226
-				width=671
+				width=20
 				height=15
 			}
 			"composite name"=""
 			children {
-				composite {
-					object {
-						x=5
-						y=226
-						width=20
-						height=15
-					}
-					"composite name"=""
-					children {
-						polyline {
-							object {
-								x=5
-								y=226
-								width=21
-								height=9
-							}
-							"basic attribute" {
-								clr=20
-								width=2
-							}
-							"dynamic attribute" {
-								chan="$(P)$(R)EnergyLocal"
-							}
-							points {
-								(6,234)
-								(25,227)
-							}
-						}
-						polyline {
-							object {
-								x=5
-								y=232
-								width=21
-								height=9
-							}
-							"basic attribute" {
-								clr=20
-								width=2
-							}
-							"dynamic attribute" {
-								chan="$(P)$(R)EnergyLocal"
-							}
-							points {
-								(6,233)
-								(25,240)
-							}
-						}
-					}
-				}
-				composite {
-					object {
-						x=335
-						y=226
-						width=20
-						height=15
-					}
-					"composite name"=""
-					children {
-						polyline {
-							object {
-								x=335
-								y=226
-								width=21
-								height=9
-							}
-							"basic attribute" {
-								clr=20
-								width=2
-							}
-							"dynamic attribute" {
-								chan="$(P)$(R)EnergyLocal"
-							}
-							points {
-								(336,234)
-								(355,227)
-							}
-						}
-						polyline {
-							object {
-								x=335
-								y=232
-								width=21
-								height=9
-							}
-							"basic attribute" {
-								clr=20
-								width=2
-							}
-							"dynamic attribute" {
-								chan="$(P)$(R)EnergyLocal"
-							}
-							points {
-								(336,233)
-								(355,240)
-							}
-						}
-					}
-				}
-				composite {
-					object {
-						x=651
-						y=226
-						width=20
-						height=15
-					}
-					"composite name"=""
-					children {
-						polyline {
-							object {
-								x=651
-								y=226
-								width=21
-								height=9
-							}
-							"basic attribute" {
-								clr=20
-								width=2
-							}
-							"dynamic attribute" {
-								chan="$(P)$(R)EnergyLocal"
-							}
-							points {
-								(652,234)
-								(671,227)
-							}
-						}
-						polyline {
-							object {
-								x=651
-								y=232
-								width=21
-								height=9
-							}
-							"basic attribute" {
-								clr=20
-								width=2
-							}
-							"dynamic attribute" {
-								chan="$(P)$(R)EnergyLocal"
-							}
-							points {
-								(652,233)
-								(671,240)
-							}
-						}
-					}
-				}
 				polyline {
 					object {
 						x=5
-						y=233
-						width=671
-						height=2
+						y=226
+						width=21
+						height=9
 					}
 					"basic attribute" {
 						clr=20
 						width=2
 					}
+					"dynamic attribute" {
+						chan="$(P)$(R)EnergyLocal"
+					}
 					points {
 						(6,234)
-						(675,234)
+						(25,227)
+					}
+				}
+				polyline {
+					object {
+						x=5
+						y=232
+						width=21
+						height=9
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						chan="$(P)$(R)EnergyLocal"
+					}
+					points {
+						(6,233)
+						(25,240)
 					}
 				}
 			}
 		}
 		composite {
 			object {
-				x=303
-				y=253
-				width=79
-				height=20
+				x=335
+				y=226
+				width=20
+				height=15
 			}
 			"composite name"=""
 			children {
 				polyline {
 					object {
-						x=303
-						y=260
-						width=19
-						height=1
+						x=335
+						y=226
+						width=21
+						height=9
 					}
 					"basic attribute" {
-						clr=14
-						width=1
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						chan="$(P)$(R)EnergyLocal"
 					}
 					points {
-						(303,260)
-						(321,260)
-					}
-				}
-				composite {
-					object {
-						x=320
-						y=253
-						width=45
-						height=20
-					}
-					"composite name"=""
-					children {
-						text {
-							object {
-								x=320
-								y=253
-								width=45
-								height=10
-							}
-							"basic attribute" {
-								clr=14
-							}
-							textix="remove"
-							align="horiz. centered"
-						}
-						text {
-							object {
-								x=320
-								y=263
-								width=45
-								height=10
-							}
-							"basic attribute" {
-								clr=14
-							}
-							textix="insert"
-							align="horiz. centered"
-						}
+						(336,234)
+						(355,227)
 					}
 				}
 				polyline {
 					object {
-						x=363
-						y=260
-						width=19
-						height=1
+						x=335
+						y=232
+						width=21
+						height=9
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						chan="$(P)$(R)EnergyLocal"
+					}
+					points {
+						(336,233)
+						(355,240)
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=651
+				y=226
+				width=20
+				height=15
+			}
+			"composite name"=""
+			children {
+				polyline {
+					object {
+						x=651
+						y=226
+						width=21
+						height=9
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						chan="$(P)$(R)EnergyLocal"
+					}
+					points {
+						(652,234)
+						(671,227)
+					}
+				}
+				polyline {
+					object {
+						x=651
+						y=232
+						width=21
+						height=9
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						chan="$(P)$(R)EnergyLocal"
+					}
+					points {
+						(652,233)
+						(671,240)
+					}
+				}
+			}
+		}
+		polyline {
+			object {
+				x=5
+				y=233
+				width=671
+				height=2
+			}
+			"basic attribute" {
+				clr=20
+				width=2
+			}
+			points {
+				(6,234)
+				(675,234)
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=303
+		y=253
+		width=79
+		height=20
+	}
+	"composite name"=""
+	children {
+		polyline {
+			object {
+				x=303
+				y=260
+				width=19
+				height=1
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(303,260)
+				(321,260)
+			}
+		}
+		composite {
+			object {
+				x=320
+				y=253
+				width=45
+				height=20
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=320
+						y=253
+						width=45
+						height=10
 					}
 					"basic attribute" {
 						clr=14
-						width=1
 					}
-					points {
-						(363,260)
-						(381,260)
-					}
+					textix="remove"
+					align="horiz. centered"
 				}
+				text {
+					object {
+						x=320
+						y=263
+						width=45
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="insert"
+					align="horiz. centered"
+				}
+			}
+		}
+		polyline {
+			object {
+				x=363
+				y=260
+				width=19
+				height=1
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(363,260)
+				(381,260)
 			}
 		}
 	}
