@@ -1,13 +1,13 @@
 
 file {
-	name="/xorApps/epics/synApps_5_6/ioc/33bmTEST/33bmTESTApp/op/adl/filter_blade.adl"
-	version=030102
+	name="/home/oxygen40/KPETERSN/development/github-forks/optics/opticsApp/op/adl/filter_blade.adl"
+	version=030111
 }
 display {
 	object {
 		x=990
 		y=150
-		width=26
+		width=72
 		height=88
 	}
 	clr=14
@@ -167,36 +167,25 @@ composite {
 	}
 	"composite name"=""
 	children {
-		composite {
+		"message button" {
 			object {
 				x=6
 				y=0
 				width=14
 				height=14
 			}
-			"composite name"=""
-			children {
-				"message button" {
-					object {
-						x=6
-						y=0
-						width=14
-						height=14
-					}
-					control {
-						chan="$(P)$(R)Fi$(N):Lock"
-						clr=14
-						bclr=15
-					}
-					label="F"
-					press_msg="1"
-				}
-			}
-			"dynamic attribute" {
-				vis="if zero"
+			control {
 				chan="$(P)$(R)Fi$(N):Lock"
+				clr=14
+				bclr=15
 			}
+			label="F"
+			press_msg="1"
 		}
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(R)Fi$(N):Lock"
 	}
 }
 rectangle {
