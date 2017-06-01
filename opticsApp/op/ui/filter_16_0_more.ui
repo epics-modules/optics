@@ -16,6 +16,104 @@
 QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
 QPushButton::menu-indicator {image: url(none.png); width: 0}
 
+caTable {
+       font: 10pt;
+       background: cornsilk;
+       alternate-background-color: wheat;
+}
+
+caLineEdit {
+     border-radius: 1px;
+     background: lightyellow;
+     color: black;
+ }
+
+caTextEntry {
+    color: rgb(127, 0, 63);
+    background-color: cornsilk;
+    selection-color: #0a214c;
+    selection-background-color: wheat;
+    border: 1px groove black;
+    border-radius: 1px;
+    padding: 1px;
+}
+
+caTextEntry:focus {
+    padding: 0px;
+    border: 2px groove darkred;
+    border-radius: 1px;
+}
+
+QPushButton {
+      border-color: #00b;
+      border-radius: 2px;
+      padding: 3px;
+      border-width: 1px;
+
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						   stop:0   rgba(224, 239, 255, 255),
+						   stop:0.5 rgba(199, 215, 230, 255),
+						   stop:1   rgba(184, 214, 236, 255));
+}
+QPushButton:hover {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(201, 226, 255, 255),
+						stop:0.5 rgba(177, 204, 230, 255),
+						stop:1   rgba(163, 205, 236, 255));
+}
+QPushButton:pressed {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+QPushButton:disabled {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+caChoice {
+      background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                  stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                  stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+}
+
+caChoice &gt; QPushButton {
+      text-align: left;
+      padding: 1px;
+}
+
+/* when font specified, no font sizing is done any more,  font: 10pt; is not bad. You could Enable this when you converted from .adl files
+caRelatedDisplay  &gt; QPushButton {
+font: 10pt;
+}
+
+caShellCommand  &gt; QPushButton {
+font: 10pt;
+}
+*/
+
+caSlider::groove:horizontal {
+border: 1px solid #bbb;
+background: lightgrey;
+height: 20px;
+border-radius: 4px;
+}
+
+caSlider::handle:horizontal {
+background: red;
+border: 1px solid #777;
+width: 13px;
+margin-top: -2px;
+margin-bottom: -2px;
+border-radius: 2px;
+}
+
+
+
 </string>
     </property>
     <widget class="QWidget" name="centralWidget">
@@ -239,7 +337,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>5</x>
                     <y>95</y>
-                    <width>120</width>
+                    <width>118</width>
                     <height>10</height>
                 </rect>
             </property>
@@ -367,614 +465,168 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>true</string>
             </property>
         </widget>
-        <widget class="caFrame" name="caFrame_0">
+        <widget class="caInclude" name="caInclude_0">
             <property name="geometry">
                 <rect>
-                    <x>5</x>
+                    <x>40</x>
                     <y>225</y>
-                    <width>673</width>
+                    <width>142</width>
                     <height>172</height>
                 </rect>
             </property>
-            <widget class="caInclude" name="caInclude_1">
-                <property name="geometry">
-                    <rect>
-                        <x>35</x>
-                        <y>0</y>
-                        <width>142</width>
-                        <height>172</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>35</x>
-                        <y>0</y>
-                        <width>140</width>
-                        <height>170</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>filterbox_more.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),R=$(R),N1=13,N2=14,N3=15,N4=16</string>
-                </property>
-            </widget>
-            <widget class="caInclude" name="caInclude_2">
-                <property name="geometry">
-                    <rect>
-                        <x>175</x>
-                        <y>0</y>
-                        <width>142</width>
-                        <height>172</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>175</x>
-                        <y>0</y>
-                        <width>140</width>
-                        <height>170</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>filterbox_more.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),R=$(R),N1=9,N2=10,N3=11,N4=12</string>
-                </property>
-            </widget>
-            <widget class="caInclude" name="caInclude_3">
-                <property name="geometry">
-                    <rect>
-                        <x>370</x>
-                        <y>0</y>
-                        <width>142</width>
-                        <height>172</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>370</x>
-                        <y>0</y>
-                        <width>140</width>
-                        <height>170</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>filterbox_more.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),R=$(R),N1=5,N2=6,N3=7,N4=8</string>
-                </property>
-            </widget>
-            <widget class="caInclude" name="caInclude_4">
-                <property name="geometry">
-                    <rect>
-                        <x>510</x>
-                        <y>0</y>
-                        <width>142</width>
-                        <height>172</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>510</x>
-                        <y>0</y>
-                        <width>140</width>
-                        <height>170</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>filterbox_more.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),R=$(R),N1=1,N2=2,N3=3,N4=4</string>
-                </property>
-            </widget>
+            <property name="geometry">
+                <rect>
+                    <x>40</x>
+                    <y>225</y>
+                    <width>140</width>
+                    <height>170</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>filterbox_more.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),R=$(R),N1=13,N2=14,N3=15,N4=16</string>
+            </property>
+        </widget>
+        <widget class="caInclude" name="caInclude_1">
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>225</y>
+                    <width>142</width>
+                    <height>172</height>
+                </rect>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>225</y>
+                    <width>140</width>
+                    <height>170</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>filterbox_more.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),R=$(R),N1=9,N2=10,N3=11,N4=12</string>
+            </property>
+        </widget>
+        <widget class="caInclude" name="caInclude_2">
+            <property name="geometry">
+                <rect>
+                    <x>375</x>
+                    <y>225</y>
+                    <width>142</width>
+                    <height>172</height>
+                </rect>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>375</x>
+                    <y>225</y>
+                    <width>140</width>
+                    <height>170</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>filterbox_more.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),R=$(R),N1=5,N2=6,N3=7,N4=8</string>
+            </property>
+        </widget>
+        <widget class="caInclude" name="caInclude_3">
+            <property name="geometry">
+                <rect>
+                    <x>515</x>
+                    <y>225</y>
+                    <width>142</width>
+                    <height>172</height>
+                </rect>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>515</x>
+                    <y>225</y>
+                    <width>140</width>
+                    <height>170</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>filterbox_more.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),R=$(R),N1=1,N2=2,N3=3,N4=4</string>
+            </property>
+        </widget>
+        <widget class="caFrame" name="caFrame_4">
+            <property name="geometry">
+                <rect>
+                    <x>303</x>
+                    <y>280</y>
+                    <width>81</width>
+                    <height>21</height>
+                </rect>
+            </property>
             <widget class="caFrame" name="caFrame_5">
                 <property name="geometry">
                     <rect>
-                        <x>0</x>
-                        <y>55</y>
-                        <width>673</width>
-                        <height>87</height>
+                        <x>22</x>
+                        <y>0</y>
+                        <width>37</width>
+                        <height>21</height>
                     </rect>
                 </property>
+                <widget class="caLabel" name="caLabel_3">
+                    <property name="frameShape">
+                        <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>33</red>
+                            <green>108</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="background">
+                        <color alpha="0">
+                            <red>33</red>
+                            <green>108</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="text">
+                        <string>free</string>
+                    </property>
+                    <property name="fontScaleMode">
+                        <enum>ESimpleLabel::WidthAndHeight</enum>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>1</x>
+                            <y>9</y>
+                            <width>21</width>
+                            <height>10</height>
+                        </rect>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                </widget>
                 <widget class="caFrame" name="caFrame_6">
                     <property name="geometry">
                         <rect>
-                            <x>298</x>
-                            <y>0</y>
-                            <width>81</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <widget class="caFrame" name="caFrame_7">
-                        <property name="geometry">
-                            <rect>
-                                <x>22</x>
-                                <y>0</y>
-                                <width>37</width>
-                                <height>21</height>
-                            </rect>
-                        </property>
-                        <widget class="caLabel" name="caLabel_3">
-                            <property name="frameShape">
-                                <enum>QFrame::NoFrame</enum>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>33</red>
-                                    <green>108</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="background">
-                                <color alpha="0">
-                                    <red>33</red>
-                                    <green>108</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="text">
-                                <string>free</string>
-                            </property>
-                            <property name="fontScaleMode">
-                                <enum>ESimpleLabel::WidthAndHeight</enum>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>1</x>
-                                    <y>9</y>
-                                    <width>24</width>
-                                    <height>10</height>
-                                </rect>
-                            </property>
-                            <property name="alignment">
-                                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
-                            </property>
-                        </widget>
-                        <widget class="caFrame" name="caFrame_8">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>37</width>
-                                    <height>12</height>
-                                </rect>
-                            </property>
-                            <widget class="caLabel" name="caLabel_4">
-                                <property name="frameShape">
-                                    <enum>QFrame::NoFrame</enum>
-                                </property>
-                                <property name="foreground">
-                                    <color alpha="255">
-                                        <red>253</red>
-                                        <green>0</green>
-                                        <blue>0</blue>
-                                    </color>
-                                </property>
-                                <property name="background">
-                                    <color alpha="0">
-                                        <red>253</red>
-                                        <green>0</green>
-                                        <blue>0</blue>
-                                    </color>
-                                </property>
-                                <property name="text">
-                                    <string>lock</string>
-                                </property>
-                                <property name="fontScaleMode">
-                                    <enum>ESimpleLabel::WidthAndHeight</enum>
-                                </property>
-                                <property name="geometry">
-                                    <rect>
-                                        <x>0</x>
-                                        <y>0</y>
-                                        <width>24</width>
-                                        <height>10</height>
-                                    </rect>
-                                </property>
-                                <property name="alignment">
-                                    <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                </property>
-                            </widget>
-                            <widget class="caLabel" name="caLabel_5">
-                                <property name="frameShape">
-                                    <enum>QFrame::NoFrame</enum>
-                                </property>
-                                <property name="foreground">
-                                    <color alpha="255">
-                                        <red>0</red>
-                                        <green>0</green>
-                                        <blue>0</blue>
-                                    </color>
-                                </property>
-                                <property name="background">
-                                    <color alpha="0">
-                                        <red>0</red>
-                                        <green>0</green>
-                                        <blue>0</blue>
-                                    </color>
-                                </property>
-                                <property name="text">
-                                    <string>/</string>
-                                </property>
-                                <property name="fontScaleMode">
-                                    <enum>ESimpleLabel::WidthAndHeight</enum>
-                                </property>
-                                <property name="geometry">
-                                    <rect>
-                                        <x>25</x>
-                                        <y>0</y>
-                                        <width>10</width>
-                                        <height>10</height>
-                                    </rect>
-                                </property>
-                                <property name="alignment">
-                                    <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                </property>
-                            </widget>
-                        </widget>
-                    </widget>
-                    <widget class="caPolyLine" name="caPolyLine_2">
-                        <property name="geometry">
-                            <rect>
-                                <x>0</x>
-                                <y>5</y>
-                                <width>19</width>
-                                <height>1</height>
-                            </rect>
-                        </property>
-                        <property name="lineSize">
-                            <number>1</number>
-                        </property>
-                        <property name="foreground">
-                            <color alpha="255">
-                                <red>0</red>
-                                <green>0</green>
-                                <blue>0</blue>
-                            </color>
-                        </property>
-                        <property name="fillstyle">
-                            <enum>Filled</enum>
-                        </property>
-                        <property name="lineColor">
-                            <color alpha="255">
-                                <red>0</red>
-                                <green>0</green>
-                                <blue>0</blue>
-                            </color>
-                        </property>
-                        <property name="linestyle">
-                            <enum>Solid</enum>
-                        </property>
-                        <property name="xyPairs">
-                            <string>0,0;18,0;</string>
-                        </property>
-                    </widget>
-                    <widget class="caPolyLine" name="caPolyLine_3">
-                        <property name="geometry">
-                            <rect>
-                                <x>60</x>
-                                <y>5</y>
-                                <width>19</width>
-                                <height>1</height>
-                            </rect>
-                        </property>
-                        <property name="lineSize">
-                            <number>1</number>
-                        </property>
-                        <property name="foreground">
-                            <color alpha="255">
-                                <red>0</red>
-                                <green>0</green>
-                                <blue>0</blue>
-                            </color>
-                        </property>
-                        <property name="fillstyle">
-                            <enum>Filled</enum>
-                        </property>
-                        <property name="lineColor">
-                            <color alpha="255">
-                                <red>0</red>
-                                <green>0</green>
-                                <blue>0</blue>
-                            </color>
-                        </property>
-                        <property name="linestyle">
-                            <enum>Solid</enum>
-                        </property>
-                        <property name="xyPairs">
-                            <string>0,0;18,0;</string>
-                        </property>
-                    </widget>
-                </widget>
-                <widget class="caFrame" name="caFrame_9">
-                    <property name="geometry">
-                        <rect>
                             <x>0</x>
-                            <y>38</y>
-                            <width>673</width>
-                            <height>17</height>
+                            <y>0</y>
+                            <width>37</width>
+                            <height>12</height>
                         </rect>
                     </property>
-                    <widget class="caFrame" name="caFrame_10">
-                        <property name="geometry">
-                            <rect>
-                                <x>0</x>
-                                <y>0</y>
-                                <width>22</width>
-                                <height>17</height>
-                            </rect>
-                        </property>
-                        <widget class="caPolyLine" name="caPolyLine_4">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>21</width>
-                                    <height>9</height>
-                                </rect>
-                            </property>
-                            <property name="lineSize">
-                                <number>2</number>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="fillstyle">
-                                <enum>Filled</enum>
-                            </property>
-                            <property name="lineColor">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="linestyle">
-                                <enum>Solid</enum>
-                            </property>
-                            <property name="channel">
-                                <string>$(P)$(R)EnergyLocal</string>
-                            </property>
-                            <property name="xyPairs">
-                                <string>1,8;20,1;</string>
-                            </property>
-                        </widget>
-                        <widget class="caPolyLine" name="caPolyLine_5">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>6</y>
-                                    <width>21</width>
-                                    <height>9</height>
-                                </rect>
-                            </property>
-                            <property name="lineSize">
-                                <number>2</number>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="fillstyle">
-                                <enum>Filled</enum>
-                            </property>
-                            <property name="lineColor">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="linestyle">
-                                <enum>Solid</enum>
-                            </property>
-                            <property name="channel">
-                                <string>$(P)$(R)EnergyLocal</string>
-                            </property>
-                            <property name="xyPairs">
-                                <string>1,1;20,8;</string>
-                            </property>
-                        </widget>
-                    </widget>
-                    <widget class="caFrame" name="caFrame_11">
-                        <property name="geometry">
-                            <rect>
-                                <x>330</x>
-                                <y>0</y>
-                                <width>22</width>
-                                <height>17</height>
-                            </rect>
-                        </property>
-                        <widget class="caPolyLine" name="caPolyLine_6">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>21</width>
-                                    <height>9</height>
-                                </rect>
-                            </property>
-                            <property name="lineSize">
-                                <number>2</number>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="fillstyle">
-                                <enum>Filled</enum>
-                            </property>
-                            <property name="lineColor">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="linestyle">
-                                <enum>Solid</enum>
-                            </property>
-                            <property name="channel">
-                                <string>$(P)$(R)EnergyLocal</string>
-                            </property>
-                            <property name="xyPairs">
-                                <string>1,8;20,1;</string>
-                            </property>
-                        </widget>
-                        <widget class="caPolyLine" name="caPolyLine_7">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>6</y>
-                                    <width>21</width>
-                                    <height>9</height>
-                                </rect>
-                            </property>
-                            <property name="lineSize">
-                                <number>2</number>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="fillstyle">
-                                <enum>Filled</enum>
-                            </property>
-                            <property name="lineColor">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="linestyle">
-                                <enum>Solid</enum>
-                            </property>
-                            <property name="channel">
-                                <string>$(P)$(R)EnergyLocal</string>
-                            </property>
-                            <property name="xyPairs">
-                                <string>1,1;20,8;</string>
-                            </property>
-                        </widget>
-                    </widget>
-                    <widget class="caFrame" name="caFrame_12">
-                        <property name="geometry">
-                            <rect>
-                                <x>646</x>
-                                <y>0</y>
-                                <width>22</width>
-                                <height>17</height>
-                            </rect>
-                        </property>
-                        <widget class="caPolyLine" name="caPolyLine_8">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>21</width>
-                                    <height>9</height>
-                                </rect>
-                            </property>
-                            <property name="lineSize">
-                                <number>2</number>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="fillstyle">
-                                <enum>Filled</enum>
-                            </property>
-                            <property name="lineColor">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="linestyle">
-                                <enum>Solid</enum>
-                            </property>
-                            <property name="channel">
-                                <string>$(P)$(R)EnergyLocal</string>
-                            </property>
-                            <property name="xyPairs">
-                                <string>1,8;20,1;</string>
-                            </property>
-                        </widget>
-                        <widget class="caPolyLine" name="caPolyLine_9">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>6</y>
-                                    <width>21</width>
-                                    <height>9</height>
-                                </rect>
-                            </property>
-                            <property name="lineSize">
-                                <number>2</number>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="fillstyle">
-                                <enum>Filled</enum>
-                            </property>
-                            <property name="lineColor">
-                                <color alpha="255">
-                                    <red>253</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="linestyle">
-                                <enum>Solid</enum>
-                            </property>
-                            <property name="channel">
-                                <string>$(P)$(R)EnergyLocal</string>
-                            </property>
-                            <property name="xyPairs">
-                                <string>1,1;20,8;</string>
-                            </property>
-                        </widget>
-                    </widget>
-                    <widget class="caPolyLine" name="caPolyLine_10">
-                        <property name="geometry">
-                            <rect>
-                                <x>0</x>
-                                <y>7</y>
-                                <width>671</width>
-                                <height>2</height>
-                            </rect>
-                        </property>
-                        <property name="lineSize">
-                            <number>2</number>
+                    <widget class="caLabel" name="caLabel_4">
+                        <property name="frameShape">
+                            <enum>QFrame::NoFrame</enum>
                         </property>
                         <property name="foreground">
                             <color alpha="255">
@@ -983,162 +635,34 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                                 <blue>0</blue>
                             </color>
                         </property>
-                        <property name="fillstyle">
-                            <enum>Filled</enum>
-                        </property>
-                        <property name="lineColor">
-                            <color alpha="255">
+                        <property name="background">
+                            <color alpha="0">
                                 <red>253</red>
                                 <green>0</green>
                                 <blue>0</blue>
                             </color>
                         </property>
-                        <property name="linestyle">
-                            <enum>Solid</enum>
+                        <property name="text">
+                            <string>lock</string>
                         </property>
-                        <property name="xyPairs">
-                            <string>1,1;670,1;</string>
+                        <property name="fontScaleMode">
+                            <enum>ESimpleLabel::WidthAndHeight</enum>
                         </property>
-                    </widget>
-                </widget>
-                <widget class="caFrame" name="caFrame_13">
-                    <property name="geometry">
-                        <rect>
-                            <x>298</x>
-                            <y>65</y>
-                            <width>81</width>
-                            <height>22</height>
-                        </rect>
-                    </property>
-                    <widget class="caPolyLine" name="caPolyLine_11">
                         <property name="geometry">
                             <rect>
                                 <x>0</x>
-                                <y>7</y>
-                                <width>19</width>
-                                <height>1</height>
-                            </rect>
-                        </property>
-                        <property name="lineSize">
-                            <number>1</number>
-                        </property>
-                        <property name="foreground">
-                            <color alpha="255">
-                                <red>0</red>
-                                <green>0</green>
-                                <blue>0</blue>
-                            </color>
-                        </property>
-                        <property name="fillstyle">
-                            <enum>Filled</enum>
-                        </property>
-                        <property name="lineColor">
-                            <color alpha="255">
-                                <red>0</red>
-                                <green>0</green>
-                                <blue>0</blue>
-                            </color>
-                        </property>
-                        <property name="linestyle">
-                            <enum>Solid</enum>
-                        </property>
-                        <property name="xyPairs">
-                            <string>0,0;18,0;</string>
-                        </property>
-                    </widget>
-                    <widget class="caFrame" name="caFrame_14">
-                        <property name="geometry">
-                            <rect>
-                                <x>17</x>
                                 <y>0</y>
-                                <width>47</width>
-                                <height>22</height>
+                                <width>21</width>
+                                <height>10</height>
                             </rect>
                         </property>
-                        <widget class="caLabel" name="caLabel_6">
-                            <property name="frameShape">
-                                <enum>QFrame::NoFrame</enum>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="background">
-                                <color alpha="0">
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="text">
-                                <string>remove</string>
-                            </property>
-                            <property name="fontScaleMode">
-                                <enum>ESimpleLabel::WidthAndHeight</enum>
-                            </property>
-                            <property name="alignment">
-                                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>45</width>
-                                    <height>10</height>
-                                </rect>
-                            </property>
-                        </widget>
-                        <widget class="caLabel" name="caLabel_7">
-                            <property name="frameShape">
-                                <enum>QFrame::NoFrame</enum>
-                            </property>
-                            <property name="foreground">
-                                <color alpha="255">
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="background">
-                                <color alpha="0">
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                            <property name="text">
-                                <string>insert</string>
-                            </property>
-                            <property name="fontScaleMode">
-                                <enum>ESimpleLabel::WidthAndHeight</enum>
-                            </property>
-                            <property name="alignment">
-                                <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>10</y>
-                                    <width>45</width>
-                                    <height>10</height>
-                                </rect>
-                            </property>
-                        </widget>
+                        <property name="alignment">
+                            <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+                        </property>
                     </widget>
-                    <widget class="caPolyLine" name="caPolyLine_12">
-                        <property name="geometry">
-                            <rect>
-                                <x>60</x>
-                                <y>7</y>
-                                <width>19</width>
-                                <height>1</height>
-                            </rect>
-                        </property>
-                        <property name="lineSize">
-                            <number>1</number>
+                    <widget class="caLabel" name="caLabel_5">
+                        <property name="frameShape">
+                            <enum>QFrame::NoFrame</enum>
                         </property>
                         <property name="foreground">
                             <color alpha="255">
@@ -1147,27 +671,581 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                                 <blue>0</blue>
                             </color>
                         </property>
-                        <property name="fillstyle">
-                            <enum>Filled</enum>
-                        </property>
-                        <property name="lineColor">
-                            <color alpha="255">
+                        <property name="background">
+                            <color alpha="0">
                                 <red>0</red>
                                 <green>0</green>
                                 <blue>0</blue>
                             </color>
                         </property>
-                        <property name="linestyle">
-                            <enum>Solid</enum>
+                        <property name="text">
+                            <string>/</string>
                         </property>
-                        <property name="xyPairs">
-                            <string>0,0;18,0;</string>
+                        <property name="fontScaleMode">
+                            <enum>ESimpleLabel::WidthAndHeight</enum>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>25</x>
+                                <y>0</y>
+                                <width>10</width>
+                                <height>10</height>
+                            </rect>
+                        </property>
+                        <property name="alignment">
+                            <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
                         </property>
                     </widget>
                 </widget>
             </widget>
+            <widget class="caPolyLine" name="caPolyLine_2">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>5</y>
+                        <width>19</width>
+                        <height>1</height>
+                    </rect>
+                </property>
+                <property name="lineSize">
+                    <number>1</number>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="fillstyle">
+                    <enum>Filled</enum>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="linestyle">
+                    <enum>Solid</enum>
+                </property>
+                <property name="xyPairs">
+                    <string>0,0;18,0;</string>
+                </property>
+            </widget>
+            <widget class="caPolyLine" name="caPolyLine_3">
+                <property name="geometry">
+                    <rect>
+                        <x>60</x>
+                        <y>5</y>
+                        <width>19</width>
+                        <height>1</height>
+                    </rect>
+                </property>
+                <property name="lineSize">
+                    <number>1</number>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="fillstyle">
+                    <enum>Filled</enum>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="linestyle">
+                    <enum>Solid</enum>
+                </property>
+                <property name="xyPairs">
+                    <string>0,0;18,0;</string>
+                </property>
+            </widget>
         </widget>
-        <widget class="caInclude" name="caInclude_15">
+        <widget class="caFrame" name="caFrame_7">
+            <property name="geometry">
+                <rect>
+                    <x>5</x>
+                    <y>318</y>
+                    <width>673</width>
+                    <height>17</height>
+                </rect>
+            </property>
+            <widget class="caFrame" name="caFrame_8">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>22</width>
+                        <height>17</height>
+                    </rect>
+                </property>
+                <widget class="caPolyLine" name="caPolyLine_4">
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>0</y>
+                            <width>21</width>
+                            <height>9</height>
+                        </rect>
+                    </property>
+                    <property name="lineSize">
+                        <number>2</number>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="fillstyle">
+                        <enum>Filled</enum>
+                    </property>
+                    <property name="lineColor">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="linestyle">
+                        <enum>Solid</enum>
+                    </property>
+                    <property name="channel">
+                        <string>$(P)$(R)EnergyLocal</string>
+                    </property>
+                    <property name="xyPairs">
+                        <string>1,8;20,1;</string>
+                    </property>
+                </widget>
+                <widget class="caPolyLine" name="caPolyLine_5">
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>6</y>
+                            <width>21</width>
+                            <height>9</height>
+                        </rect>
+                    </property>
+                    <property name="lineSize">
+                        <number>2</number>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="fillstyle">
+                        <enum>Filled</enum>
+                    </property>
+                    <property name="lineColor">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="linestyle">
+                        <enum>Solid</enum>
+                    </property>
+                    <property name="channel">
+                        <string>$(P)$(R)EnergyLocal</string>
+                    </property>
+                    <property name="xyPairs">
+                        <string>1,1;20,8;</string>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="caFrame" name="caFrame_9">
+                <property name="geometry">
+                    <rect>
+                        <x>330</x>
+                        <y>0</y>
+                        <width>22</width>
+                        <height>17</height>
+                    </rect>
+                </property>
+                <widget class="caPolyLine" name="caPolyLine_6">
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>0</y>
+                            <width>21</width>
+                            <height>9</height>
+                        </rect>
+                    </property>
+                    <property name="lineSize">
+                        <number>2</number>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="fillstyle">
+                        <enum>Filled</enum>
+                    </property>
+                    <property name="lineColor">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="linestyle">
+                        <enum>Solid</enum>
+                    </property>
+                    <property name="channel">
+                        <string>$(P)$(R)EnergyLocal</string>
+                    </property>
+                    <property name="xyPairs">
+                        <string>1,8;20,1;</string>
+                    </property>
+                </widget>
+                <widget class="caPolyLine" name="caPolyLine_7">
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>6</y>
+                            <width>21</width>
+                            <height>9</height>
+                        </rect>
+                    </property>
+                    <property name="lineSize">
+                        <number>2</number>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="fillstyle">
+                        <enum>Filled</enum>
+                    </property>
+                    <property name="lineColor">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="linestyle">
+                        <enum>Solid</enum>
+                    </property>
+                    <property name="channel">
+                        <string>$(P)$(R)EnergyLocal</string>
+                    </property>
+                    <property name="xyPairs">
+                        <string>1,1;20,8;</string>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="caFrame" name="caFrame_10">
+                <property name="geometry">
+                    <rect>
+                        <x>646</x>
+                        <y>0</y>
+                        <width>22</width>
+                        <height>17</height>
+                    </rect>
+                </property>
+                <widget class="caPolyLine" name="caPolyLine_8">
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>0</y>
+                            <width>21</width>
+                            <height>9</height>
+                        </rect>
+                    </property>
+                    <property name="lineSize">
+                        <number>2</number>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="fillstyle">
+                        <enum>Filled</enum>
+                    </property>
+                    <property name="lineColor">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="linestyle">
+                        <enum>Solid</enum>
+                    </property>
+                    <property name="channel">
+                        <string>$(P)$(R)EnergyLocal</string>
+                    </property>
+                    <property name="xyPairs">
+                        <string>1,8;20,1;</string>
+                    </property>
+                </widget>
+                <widget class="caPolyLine" name="caPolyLine_9">
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>6</y>
+                            <width>21</width>
+                            <height>9</height>
+                        </rect>
+                    </property>
+                    <property name="lineSize">
+                        <number>2</number>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="fillstyle">
+                        <enum>Filled</enum>
+                    </property>
+                    <property name="lineColor">
+                        <color alpha="255">
+                            <red>253</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="linestyle">
+                        <enum>Solid</enum>
+                    </property>
+                    <property name="channel">
+                        <string>$(P)$(R)EnergyLocal</string>
+                    </property>
+                    <property name="xyPairs">
+                        <string>1,1;20,8;</string>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="caPolyLine" name="caPolyLine_10">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>7</y>
+                        <width>671</width>
+                        <height>2</height>
+                    </rect>
+                </property>
+                <property name="lineSize">
+                    <number>2</number>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>253</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="fillstyle">
+                    <enum>Filled</enum>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>253</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="linestyle">
+                    <enum>Solid</enum>
+                </property>
+                <property name="xyPairs">
+                    <string>1,1;670,1;</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="caFrame" name="caFrame_11">
+            <property name="geometry">
+                <rect>
+                    <x>303</x>
+                    <y>345</y>
+                    <width>81</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <widget class="caPolyLine" name="caPolyLine_11">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>7</y>
+                        <width>19</width>
+                        <height>1</height>
+                    </rect>
+                </property>
+                <property name="lineSize">
+                    <number>1</number>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="fillstyle">
+                    <enum>Filled</enum>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="linestyle">
+                    <enum>Solid</enum>
+                </property>
+                <property name="xyPairs">
+                    <string>0,0;18,0;</string>
+                </property>
+            </widget>
+            <widget class="caFrame" name="caFrame_12">
+                <property name="geometry">
+                    <rect>
+                        <x>17</x>
+                        <y>0</y>
+                        <width>47</width>
+                        <height>22</height>
+                    </rect>
+                </property>
+                <widget class="caLabel" name="caLabel_6">
+                    <property name="frameShape">
+                        <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="background">
+                        <color alpha="0">
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="text">
+                        <string>remove</string>
+                    </property>
+                    <property name="fontScaleMode">
+                        <enum>ESimpleLabel::WidthAndHeight</enum>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>0</y>
+                            <width>45</width>
+                            <height>10</height>
+                        </rect>
+                    </property>
+                </widget>
+                <widget class="caLabel" name="caLabel_7">
+                    <property name="frameShape">
+                        <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="foreground">
+                        <color alpha="255">
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="background">
+                        <color alpha="0">
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="text">
+                        <string>insert</string>
+                    </property>
+                    <property name="fontScaleMode">
+                        <enum>ESimpleLabel::WidthAndHeight</enum>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignAbsolute|Qt::AlignHCenter|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>0</x>
+                            <y>10</y>
+                            <width>45</width>
+                            <height>10</height>
+                        </rect>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="caPolyLine" name="caPolyLine_12">
+                <property name="geometry">
+                    <rect>
+                        <x>60</x>
+                        <y>7</y>
+                        <width>19</width>
+                        <height>1</height>
+                    </rect>
+                </property>
+                <property name="lineSize">
+                    <number>1</number>
+                </property>
+                <property name="foreground">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="fillstyle">
+                    <enum>Filled</enum>
+                </property>
+                <property name="lineColor">
+                    <color alpha="255">
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="linestyle">
+                    <enum>Solid</enum>
+                </property>
+                <property name="xyPairs">
+                    <string>0,0;18,0;</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="caInclude" name="caInclude_13">
             <property name="geometry">
                 <rect>
                     <x>175</x>
@@ -1197,38 +1275,36 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
         <zorder>caLabel_0</zorder>
         <zorder>caLabel_1</zorder>
         <zorder>caLabel_2</zorder>
+        <zorder>caInclude_0</zorder>
         <zorder>caInclude_1</zorder>
         <zorder>caInclude_2</zorder>
         <zorder>caInclude_3</zorder>
-        <zorder>caInclude_4</zorder>
         <zorder>caLabel_3</zorder>
         <zorder>caLabel_4</zorder>
         <zorder>caLabel_5</zorder>
-        <zorder>caFrame_8</zorder>
-        <zorder>caFrame_7</zorder>
+        <zorder>caFrame_6</zorder>
+        <zorder>caFrame_5</zorder>
         <zorder>caPolyLine_2</zorder>
         <zorder>caPolyLine_3</zorder>
-        <zorder>caFrame_6</zorder>
+        <zorder>caFrame_4</zorder>
         <zorder>caPolyLine_4</zorder>
         <zorder>caPolyLine_5</zorder>
-        <zorder>caFrame_10</zorder>
+        <zorder>caFrame_8</zorder>
         <zorder>caPolyLine_6</zorder>
         <zorder>caPolyLine_7</zorder>
-        <zorder>caFrame_11</zorder>
+        <zorder>caFrame_9</zorder>
         <zorder>caPolyLine_8</zorder>
         <zorder>caPolyLine_9</zorder>
-        <zorder>caFrame_12</zorder>
+        <zorder>caFrame_10</zorder>
         <zorder>caPolyLine_10</zorder>
-        <zorder>caFrame_9</zorder>
+        <zorder>caFrame_7</zorder>
         <zorder>caPolyLine_11</zorder>
         <zorder>caLabel_6</zorder>
         <zorder>caLabel_7</zorder>
-        <zorder>caFrame_14</zorder>
+        <zorder>caFrame_12</zorder>
         <zorder>caPolyLine_12</zorder>
-        <zorder>caFrame_13</zorder>
-        <zorder>caFrame_5</zorder>
-        <zorder>caFrame_0</zorder>
-        <zorder>caInclude_15</zorder>
+        <zorder>caFrame_11</zorder>
+        <zorder>caInclude_13</zorder>
         <zorder>caLineEdit_0</zorder>
         <zorder>caRelatedDisplay_0</zorder>
         <zorder>caRelatedDisplay_1</zorder>
