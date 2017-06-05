@@ -18,6 +18,6 @@ TESTSPEC_vxWorks = opticsTestHarness.munch; runTests
 PROD_LIBS += optics
 PROD_LIBS += $(EPICS_BASE_IOC_LIBS)
 
-#TESTSCRIPTS_HOST += $(TESTS:%=%.t)
+TESTSCRIPTS_HOST += $(TESTS:%=%.t)
 
 include $(TOP)/configure/RULES
