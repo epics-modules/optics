@@ -290,7 +290,7 @@ void testInvertArray(double arr[3][3], double expected[3][3])
 	}
 }
 
-MAIN(acalcTest)
+MAIN(matrixTest)
 {
 	testPlan(56);
 	
