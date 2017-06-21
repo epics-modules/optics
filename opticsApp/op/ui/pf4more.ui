@@ -91,171 +91,167 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>1,1;325,1;</string>
             </property>
         </widget>
-        <widget class="caFrame" name="caFrame_0">
+        <widget class="caGraphics" name="caRectangle_1">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
             <property name="geometry">
                 <rect>
                     <x>6</x>
                     <y>220</y>
-                    <width>66</width>
-                    <height>348</height>
+                    <width>64</width>
+                    <height>346</height>
                 </rect>
             </property>
-            <widget class="caGraphics" name="caRectangle_1">
-                <property name="form">
-                    <enum>caGraphics::Rectangle</enum>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>64</width>
-                        <height>346</height>
-                    </rect>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>52</red>
-                        <green>51</green>
-                        <blue>134</blue>
-                    </color>
-                </property>
-                <property name="fillstyle">
-                    <enum>Filled</enum>
-                </property>
-                <property name="lineColor">
-                    <color alpha="255">
-                        <red>52</red>
-                        <green>51</green>
-                        <blue>134</blue>
-                    </color>
-                </property>
-                <property name="linestyle">
-                    <enum>Solid</enum>
-                </property>
-                <property name="visibility">
-                    <enum>caGraphics::IfNotZero</enum>
-                </property>
-                <property name="channel">
-                    <string>$(P)$(H)fPos$(B)</string>
-                </property>
-            </widget>
-            <widget class="caGraphics" name="caRectangle_2">
-                <property name="form">
-                    <enum>caGraphics::Rectangle</enum>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>64</width>
-                        <height>346</height>
-                    </rect>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>30</red>
-                        <green>187</green>
-                        <blue>0</blue>
-                    </color>
-                </property>
-                <property name="fillstyle">
-                    <enum>Filled</enum>
-                </property>
-                <property name="lineColor">
-                    <color alpha="255">
-                        <red>30</red>
-                        <green>187</green>
-                        <blue>0</blue>
-                    </color>
-                </property>
-                <property name="linestyle">
-                    <enum>Solid</enum>
-                </property>
-                <property name="visibility">
-                    <enum>caGraphics::IfZero</enum>
-                </property>
-                <property name="channel">
-                    <string>$(P)$(H)fPos$(B)</string>
-                </property>
-            </widget>
-            <widget class="caGraphics" name="caRectangle_3">
-                <property name="form">
-                    <enum>caGraphics::Rectangle</enum>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>64</width>
-                        <height>346</height>
-                    </rect>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>222</red>
-                        <green>19</green>
-                        <blue>9</blue>
-                    </color>
-                </property>
-                <property name="fillstyle">
-                    <enum>Filled</enum>
-                </property>
-                <property name="lineColor">
-                    <color alpha="255">
-                        <red>222</red>
-                        <green>19</green>
-                        <blue>9</blue>
-                    </color>
-                </property>
-                <property name="linestyle">
-                    <enum>Solid</enum>
-                </property>
-                <property name="visibility">
-                    <enum>caGraphics::IfZero</enum>
-                </property>
-                <property name="channel">
-                    <string>$(P)$(H)bank$(B)</string>
-                </property>
-            </widget>
-            <widget class="caByte" name="caByte_0">
-                <property name="geometry">
-                    <rect>
-                        <x>4</x>
-                        <y>4</y>
-                        <width>10</width>
-                        <height>336</height>
-                    </rect>
-                </property>
-                <property name="channel">
-                    <string>$(P)$(H)bitFlag$(B)</string>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>139</red>
-                        <green>26</green>
-                        <blue>150</blue>
-                    </color>
-                </property>
-                <property name="background">
-                    <color alpha="255">
-                        <red>218</red>
-                        <green>218</green>
-                        <blue>218</blue>
-                    </color>
-                </property>
-                <property name="startBit">
-                    <number>0</number>
-                </property>
-                <property name="endBit">
-                    <number>15</number>
-                </property>
-                <property name="colorMode">
-                    <enum>caByte::Static</enum>
-                </property>
-                <property name="direction">
-                    <enum>Down</enum>
-                </property>
-            </widget>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>52</red>
+                    <green>51</green>
+                    <blue>134</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>52</red>
+                    <green>51</green>
+                    <blue>134</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)$(H)fPos$(B)</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caRectangle_2">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>6</x>
+                    <y>220</y>
+                    <width>64</width>
+                    <height>346</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>30</red>
+                    <green>187</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)$(H)fPos$(B)</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caRectangle_3">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>6</x>
+                    <y>220</y>
+                    <width>64</width>
+                    <height>346</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>222</red>
+                    <green>19</green>
+                    <blue>9</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>222</red>
+                    <green>19</green>
+                    <blue>9</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)$(H)bank$(B)</string>
+            </property>
+        </widget>
+        <widget class="caByte" name="caByte_0">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>224</y>
+                    <width>10</width>
+                    <height>336</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(H)bitFlag$(B)</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>139</red>
+                    <green>26</green>
+                    <blue>150</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>218</red>
+                    <green>218</green>
+                    <blue>218</blue>
+                </color>
+            </property>
+            <property name="startBit">
+                <number>0</number>
+            </property>
+            <property name="endBit">
+                <number>15</number>
+            </property>
+            <property name="colorMode">
+                <enum>caByte::Static</enum>
+            </property>
+            <property name="startBit">
+                <number>0</number>
+            </property>
+            <property name="endBit">
+                <number>15</number>
+            </property>
+            <property name="direction">
+                <enum>Down</enum>
+            </property>
         </widget>
         <widget class="caLineEdit" name="caLineEdit_0">
             <property name="geometry">
@@ -1897,6 +1893,12 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
             <property name="colorMode">
                 <enum>caByte::Static</enum>
             </property>
+            <property name="startBit">
+                <number>0</number>
+            </property>
+            <property name="endBit">
+                <number>15</number>
+            </property>
             <property name="direction">
                 <enum>Down</enum>
             </property>
@@ -3461,7 +3463,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>1,1;324,1;</string>
             </property>
         </widget>
-        <widget class="caInclude" name="caInclude_1">
+        <widget class="caInclude" name="caInclude_0">
             <property name="geometry">
                 <rect>
                     <x>5</x>
@@ -3574,13 +3576,12 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
         <zorder>caRectangle_1</zorder>
         <zorder>caRectangle_2</zorder>
         <zorder>caRectangle_3</zorder>
-        <zorder>caFrame_0</zorder>
         <zorder>caRectangle_4</zorder>
         <zorder>caRectangle_5</zorder>
         <zorder>caRectangle_6</zorder>
         <zorder>caLabel_0</zorder>
         <zorder>caPolyLine_1</zorder>
-        <zorder>caInclude_1</zorder>
+        <zorder>caInclude_0</zorder>
         <zorder>caByte_0</zorder>
         <zorder>caLineEdit_0</zorder>
         <zorder>caLineEdit_1</zorder>

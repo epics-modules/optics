@@ -149,7 +149,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>132</width>
+                    <width>130</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -196,104 +196,93 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>false</string>
             </property>
         </widget>
-        <widget class="caFrame" name="caFrame_0">
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_1">
+            <property name="geometry">
+                <rect>
+                    <x>90</x>
+                    <y>75</y>
+                    <width>40</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>51</red>
+                    <green>153</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="label">
+                <string>-More</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Menu</enum>
+            </property>
+            <property name="labels">
+                <string>Graphic of stage</string>
+            </property>
+            <property name="files">
+                <string>CoarseFineMotorShow.adl</string>
+            </property>
+            <property name="args">
+                <string>P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)</string>
+            </property>
+            <property name="removeParent">
+                <string>true</string>
+            </property>
+        </widget>
+        <widget class="caRelatedDisplay" name="caRelatedDisplay_2">
             <property name="geometry">
                 <rect>
                     <x>5</x>
                     <y>75</y>
-                    <width>127</width>
-                    <height>22</height>
+                    <width>55</width>
+                    <height>20</height>
                 </rect>
             </property>
-            <widget class="caRelatedDisplay" name="caRelatedDisplay_1">
-                <property name="geometry">
-                    <rect>
-                        <x>85</x>
-                        <y>0</y>
-                        <width>40</width>
-                        <height>20</height>
-                    </rect>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>255</red>
-                        <green>255</green>
-                        <blue>255</blue>
-                    </color>
-                </property>
-                <property name="background">
-                    <color alpha="255">
-                        <red>51</red>
-                        <green>153</green>
-                        <blue>0</blue>
-                    </color>
-                </property>
-                <property name="label">
-                    <string>-More</string>
-                </property>
-                <property name="stackingMode">
-                    <enum>Menu</enum>
-                </property>
-                <property name="labels">
-                    <string>Graphic of stage</string>
-                </property>
-                <property name="files">
-                    <string>CoarseFineMotorShow.adl</string>
-                </property>
-                <property name="args">
-                    <string>P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)</string>
-                </property>
-                <property name="removeParent">
-                    <string>true</string>
-                </property>
-            </widget>
-            <widget class="caRelatedDisplay" name="caRelatedDisplay_2">
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>55</width>
-                        <height>20</height>
-                    </rect>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>255</red>
-                        <green>255</green>
-                        <blue>255</blue>
-                    </color>
-                </property>
-                <property name="background">
-                    <color alpha="255">
-                        <red>40</red>
-                        <green>147</green>
-                        <blue>21</blue>
-                    </color>
-                </property>
-                <property name="label">
-                    <string>-Motors</string>
-                </property>
-                <property name="stackingMode">
-                    <enum>Menu</enum>
-                </property>
-                <property name="labels">
-                    <string>Combined (soft) motor;Actual motors</string>
-                </property>
-                <property name="files">
-                    <string>motorx.adl;motor2x.adl</string>
-                </property>
-                <property name="args">
-                    <string>P=$(P),M=MOT;P=$(PM),M1=$(CM),M2=$(FM)</string>
-                </property>
-                <property name="removeParent">
-                    <string>false;false</string>
-                </property>
-            </widget>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>40</red>
+                    <green>147</green>
+                    <blue>21</blue>
+                </color>
+            </property>
+            <property name="label">
+                <string>-Motors</string>
+            </property>
+            <property name="stackingMode">
+                <enum>Menu</enum>
+            </property>
+            <property name="labels">
+                <string>Combined (soft) motor;Actual motors</string>
+            </property>
+            <property name="files">
+                <string>motorx.adl;motor2x.adl</string>
+            </property>
+            <property name="args">
+                <string>P=$(P),M=MOT;P=$(PM),M1=$(CM),M2=$(FM)</string>
+            </property>
+            <property name="removeParent">
+                <string>false;false</string>
+            </property>
         </widget>
         <zorder>caLabel_0</zorder>
         <zorder>caRectangle_0</zorder>
         <zorder>caLabel_1</zorder>
-        <zorder>caFrame_0</zorder>
         <zorder>caMenu_0</zorder>
         <zorder>caRelatedDisplay_0</zorder>
         <zorder>caRelatedDisplay_1</zorder>

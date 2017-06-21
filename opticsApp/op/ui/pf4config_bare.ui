@@ -47,7 +47,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>30</x>
                     <y>240</y>
-                    <width>302</width>
+                    <width>220</width>
                     <height>14</height>
                 </rect>
             </property>
@@ -83,7 +83,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>10</x>
                     <y>225</y>
-                    <width>302</width>
+                    <width>220</width>
                     <height>14</height>
                 </rect>
             </property>
@@ -209,7 +209,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>97</x>
                     <y>30</y>
-                    <width>42</width>
+                    <width>40</width>
                     <height>14</height>
                 </rect>
             </property>
@@ -275,7 +275,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>97</x>
                     <y>1</y>
-                    <width>50</width>
+                    <width>40</width>
                     <height>14</height>
                 </rect>
             </property>
@@ -406,93 +406,83 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
         </widget>
-        <widget class="caFrame" name="caFrame_0">
+        <widget class="caGraphics" name="caRectangle_0">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
             <property name="geometry">
                 <rect>
                     <x>77</x>
                     <y>65</y>
-                    <width>68</width>
-                    <height>22</height>
+                    <width>66</width>
+                    <height>20</height>
                 </rect>
             </property>
-            <widget class="caGraphics" name="caRectangle_0">
-                <property name="form">
-                    <enum>caGraphics::Rectangle</enum>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>66</width>
-                        <height>20</height>
-                    </rect>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>253</red>
-                        <green>0</green>
-                        <blue>0</blue>
-                    </color>
-                </property>
-                <property name="fillstyle">
-                    <enum>Filled</enum>
-                </property>
-                <property name="lineColor">
-                    <color alpha="255">
-                        <red>253</red>
-                        <green>0</green>
-                        <blue>0</blue>
-                    </color>
-                </property>
-                <property name="linestyle">
-                    <enum>Solid</enum>
-                </property>
-                <property name="visibility">
-                    <enum>caGraphics::IfZero</enum>
-                </property>
-                <property name="channel">
-                    <string>$(P)$(H)bank$(B)</string>
-                </property>
-            </widget>
-            <widget class="caGraphics" name="caRectangle_1">
-                <property name="form">
-                    <enum>caGraphics::Rectangle</enum>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>66</width>
-                        <height>20</height>
-                    </rect>
-                </property>
-                <property name="foreground">
-                    <color alpha="255">
-                        <red>45</red>
-                        <green>127</green>
-                        <blue>0</blue>
-                    </color>
-                </property>
-                <property name="fillstyle">
-                    <enum>Filled</enum>
-                </property>
-                <property name="lineColor">
-                    <color alpha="255">
-                        <red>45</red>
-                        <green>127</green>
-                        <blue>0</blue>
-                    </color>
-                </property>
-                <property name="linestyle">
-                    <enum>Solid</enum>
-                </property>
-                <property name="visibility">
-                    <enum>caGraphics::IfNotZero</enum>
-                </property>
-                <property name="channel">
-                    <string>$(P)$(H)bank$(B)</string>
-                </property>
-            </widget>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>253</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>253</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)$(H)bank$(B)</string>
+            </property>
+        </widget>
+        <widget class="caGraphics" name="caRectangle_1">
+            <property name="form">
+                <enum>caGraphics::Rectangle</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>77</x>
+                    <y>65</y>
+                    <width>66</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>45</red>
+                    <green>127</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="fillstyle">
+                <enum>Filled</enum>
+            </property>
+            <property name="lineColor">
+                <color alpha="255">
+                    <red>45</red>
+                    <green>127</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="linestyle">
+                <enum>Solid</enum>
+            </property>
+            <property name="visibility">
+                <enum>caGraphics::IfNotZero</enum>
+            </property>
+            <property name="channel">
+                <string>$(P)$(H)bank$(B)</string>
+            </property>
         </widget>
         <widget class="caMessageButton" name="caMessageButton_0">
             <property name="geometry">
@@ -1004,7 +994,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caInclude" name="caInclude_1">
+        <widget class="caInclude" name="caInclude_0">
             <property name="geometry">
                 <rect>
                     <x>110</x>
@@ -1028,7 +1018,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>P=$(P),H=$(H),N=1,B=B</string>
             </property>
         </widget>
-        <widget class="caInclude" name="caInclude_2">
+        <widget class="caInclude" name="caInclude_1">
             <property name="geometry">
                 <rect>
                     <x>110</x>
@@ -1052,7 +1042,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>P=$(P),H=$(H),N=2,B=B</string>
             </property>
         </widget>
-        <widget class="caInclude" name="caInclude_3">
+        <widget class="caInclude" name="caInclude_2">
             <property name="geometry">
                 <rect>
                     <x>110</x>
@@ -1076,7 +1066,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <string>P=$(P),H=$(H),N=3,B=B</string>
             </property>
         </widget>
-        <widget class="caInclude" name="caInclude_4">
+        <widget class="caInclude" name="caInclude_3">
             <property name="geometry">
                 <rect>
                     <x>110</x>
@@ -1161,7 +1151,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>194</x>
                     <y>198</y>
-                    <width>42</width>
+                    <width>40</width>
                     <height>14</height>
                 </rect>
             </property>
@@ -1634,111 +1624,101 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>decimal</enum>
             </property>
         </widget>
-        <widget class="caFrame" name="caFrame_5">
+        <widget class="caInclude" name="caInclude_4">
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>165</y>
+                    <width>52</width>
+                    <height>24</height>
+                </rect>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>165</y>
+                    <width>50</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>pf4_other_bare.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),H=$(H),N=1,B=A</string>
+            </property>
+        </widget>
+        <widget class="caInclude" name="caInclude_5">
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>145</y>
+                    <width>52</width>
+                    <height>24</height>
+                </rect>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>145</y>
+                    <width>50</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>pf4_other_bare.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),H=$(H),N=2,B=A</string>
+            </property>
+        </widget>
+        <widget class="caInclude" name="caInclude_6">
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>125</y>
+                    <width>52</width>
+                    <height>24</height>
+                </rect>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>125</y>
+                    <width>50</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>pf4_other_bare.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),H=$(H),N=3,B=A</string>
+            </property>
+        </widget>
+        <widget class="caInclude" name="caInclude_7">
             <property name="geometry">
                 <rect>
                     <x>275</x>
                     <y>105</y>
                     <width>52</width>
-                    <height>84</height>
+                    <height>24</height>
                 </rect>
             </property>
-            <widget class="caInclude" name="caInclude_6">
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>60</y>
-                        <width>52</width>
-                        <height>24</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>60</y>
-                        <width>50</width>
-                        <height>22</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>pf4_other_bare.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),H=$(H),N=1,B=A</string>
-                </property>
-            </widget>
-            <widget class="caInclude" name="caInclude_7">
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>40</y>
-                        <width>52</width>
-                        <height>24</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>40</y>
-                        <width>50</width>
-                        <height>22</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>pf4_other_bare.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),H=$(H),N=2,B=A</string>
-                </property>
-            </widget>
-            <widget class="caInclude" name="caInclude_8">
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>20</y>
-                        <width>52</width>
-                        <height>24</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>20</y>
-                        <width>50</width>
-                        <height>22</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>pf4_other_bare.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),H=$(H),N=3,B=A</string>
-                </property>
-            </widget>
-            <widget class="caInclude" name="caInclude_9">
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>52</width>
-                        <height>24</height>
-                    </rect>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>50</width>
-                        <height>22</height>
-                    </rect>
-                </property>
-                <property name="filename">
-                    <string>pf4_other_bare.adl</string>
-                </property>
-                <property name="macro">
-                    <string>P=$(P),H=$(H),N=4,B=A</string>
-                </property>
-            </widget>
+            <property name="geometry">
+                <rect>
+                    <x>275</x>
+                    <y>105</y>
+                    <width>50</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="filename">
+                <string>pf4_other_bare.adl</string>
+            </property>
+            <property name="macro">
+                <string>P=$(P),H=$(H),N=4,B=A</string>
+            </property>
         </widget>
         <widget class="caMenu" name="caMenu_5">
             <property name="geometry">
@@ -2035,7 +2015,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>29</x>
                     <y>198</y>
-                    <width>42</width>
+                    <width>35</width>
                     <height>14</height>
                 </rect>
             </property>
@@ -2343,19 +2323,17 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
         <zorder>caLabel_6</zorder>
         <zorder>caRectangle_0</zorder>
         <zorder>caRectangle_1</zorder>
-        <zorder>caFrame_0</zorder>
+        <zorder>caInclude_0</zorder>
         <zorder>caInclude_1</zorder>
         <zorder>caInclude_2</zorder>
         <zorder>caInclude_3</zorder>
-        <zorder>caInclude_4</zorder>
         <zorder>caLabel_7</zorder>
         <zorder>caRectangle_2</zorder>
         <zorder>caRectangle_3</zorder>
+        <zorder>caInclude_4</zorder>
+        <zorder>caInclude_5</zorder>
         <zorder>caInclude_6</zorder>
         <zorder>caInclude_7</zorder>
-        <zorder>caInclude_8</zorder>
-        <zorder>caInclude_9</zorder>
-        <zorder>caFrame_5</zorder>
         <zorder>caLabel_8</zorder>
         <zorder>caLabel_9</zorder>
         <zorder>caLabel_10</zorder>
