@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/pf4Bank_bare.adl"
-	version=030105
+	version=030111
 }
 display {
 	object {
@@ -363,118 +363,81 @@ polygon {
 		(8,70)
 	}
 }
-composite {
+text {
+	object {
+		x=105
+		y=80
+		width=10
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="1"
+}
+text {
+	object {
+		x=75
+		y=80
+		width=10
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="2"
+}
+text {
+	object {
+		x=45
+		y=80
+		width=10
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="3"
+}
+text {
 	object {
 		x=15
 		y=80
-		width=100
+		width=10
 		height=12
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=105
-				y=80
-				width=10
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="1"
-		}
-		text {
-			object {
-				x=75
-				y=80
-				width=10
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="2"
-		}
-		text {
-			object {
-				x=45
-				y=80
-				width=10
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="3"
-		}
-		text {
-			object {
-				x=15
-				y=80
-				width=10
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="4"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="4"
 }
-composite {
+"message button" {
+	object {
+		x=65
+		y=90
+		width=20
+		height=15
+	}
+	control {
+		chan="$(P)$(H)ftweak$(B).A"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+}
+"message button" {
 	object {
 		x=45
 		y=90
-		width=40
+		width=20
 		height=15
 	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=45
-				y=90
-				width=40
-				height=15
-			}
-			"composite name"=""
-			children {
-				"message button" {
-					object {
-						x=65
-						y=90
-						width=20
-						height=15
-					}
-					control {
-						chan="$(P)$(H)ftweak$(B).A"
-						clr=14
-						bclr=51
-					}
-					label="+"
-					press_msg="1"
-				}
-				"message button" {
-					object {
-						x=45
-						y=90
-						width=20
-						height=15
-					}
-					control {
-						chan="$(P)$(H)ftweak$(B).B"
-						clr=14
-						bclr=51
-					}
-					label="-"
-					press_msg="1"
-				}
-			}
-		}
+	control {
+		chan="$(P)$(H)ftweak$(B).B"
+		clr=14
+		bclr=51
 	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(H)bank$(B)"
-	}
+	label="-"
+	press_msg="1"
 }

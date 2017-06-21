@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/hr_symmetric.adl"
-	version=030004
+	version=030111
 }
 display {
 	object {
@@ -244,157 +244,135 @@ text {
 	textix="Theta2"
 	align="horiz. centered"
 }
-composite {
+rectangle {
 	object {
 		x=145
 		y=235
 		width=64
 		height=38
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=145
-				y=235
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		rectangle {
-			object {
-				x=145
-				y=235
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		"text update" {
-			object {
-				x=147
-				y=251
-				width=61
-				height=10
-			}
-			monitor {
-				chan="$(P)HR$(N)_phi1RdbkAI"
-				clr=53
-				bclr=2
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=147
-				y=235
-				width=60
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Phi1"
-			align="horiz. centered"
-		}
-		"text update" {
-			object {
-				x=147
-				y=261
-				width=61
-				height=10
-			}
-			monitor {
-				chan="$(P)HR$(N)_phi1AO"
-				clr=53
-				bclr=0
-			}
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=0
 	}
 }
-composite {
+rectangle {
+	object {
+		x=145
+		y=235
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+"text update" {
+	object {
+		x=147
+		y=251
+		width=61
+		height=10
+	}
+	monitor {
+		chan="$(P)HR$(N)_phi1RdbkAI"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=147
+		y=235
+		width=60
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Phi1"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=147
+		y=261
+		width=61
+		height=10
+	}
+	monitor {
+		chan="$(P)HR$(N)_phi1AO"
+		clr=53
+		bclr=0
+	}
+	limits {
+	}
+}
+rectangle {
 	object {
 		x=215
 		y=235
 		width=64
 		height=38
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=215
-				y=235
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		rectangle {
-			object {
-				x=215
-				y=235
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		"text update" {
-			object {
-				x=217
-				y=251
-				width=61
-				height=10
-			}
-			monitor {
-				chan="$(P)HR$(N)_phi2RdbkAI"
-				clr=53
-				bclr=2
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=217
-				y=235
-				width=60
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Phi2"
-			align="horiz. centered"
-		}
-		"text update" {
-			object {
-				x=217
-				y=261
-				width=61
-				height=10
-			}
-			monitor {
-				chan="$(P)HR$(N)_phi2AO"
-				clr=53
-				bclr=0
-			}
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=0
+	}
+}
+rectangle {
+	object {
+		x=215
+		y=235
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+"text update" {
+	object {
+		x=217
+		y=251
+		width=61
+		height=10
+	}
+	monitor {
+		chan="$(P)HR$(N)_phi2RdbkAI"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=217
+		y=235
+		width=60
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Phi2"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=217
+		y=261
+		width=61
+		height=10
+	}
+	monitor {
+		chan="$(P)HR$(N)_phi2AO"
+		clr=53
+		bclr=0
+	}
+	limits {
 	}
 }

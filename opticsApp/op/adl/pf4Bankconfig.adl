@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/pf4Bankconfig.adl"
-	version=030105
+	version=030111
 }
 display {
 	object {
@@ -166,48 +166,37 @@ polyline {
 		(223,176)
 	}
 }
-composite {
+"related display" {
+	object {
+		x=115
+		y=155
+		width=50
+		height=20
+	}
+	display[0] {
+		label="PF4 mono filter computed controls"
+		name="pf4Bankmore.adl"
+		args="P=$(P),H=$(H),B=$(B)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=17
+	label="-more"
+}
+"related display" {
 	object {
 		x=60
 		y=155
-		width=105
+		width=55
 		height=20
 	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=115
-				y=155
-				width=50
-				height=20
-			}
-			display[0] {
-				label="PF4 mono filter computed controls"
-				name="pf4Bankmore.adl"
-				args="P=$(P),H=$(H),B=$(B)"
-				policy="replace display"
-			}
-			clr=0
-			bclr=17
-			label="-more"
-		}
-		"related display" {
-			object {
-				x=60
-				y=155
-				width=55
-				height=20
-			}
-			display[0] {
-				label="all"
-				name="pf4Bank.adl"
-				args="P=$(P),H=$(H),B=$(B)"
-				policy="replace display"
-			}
-			clr=0
-			bclr=17
-			label="--config"
-		}
+	display[0] {
+		label="all"
+		name="pf4Bank.adl"
+		args="P=$(P),H=$(H),B=$(B)"
+		policy="replace display"
 	}
+	clr=0
+	bclr=17
+	label="--config"
 }

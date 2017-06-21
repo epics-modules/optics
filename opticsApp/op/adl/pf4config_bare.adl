@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/pf4config_bare.adl"
-	version=030105
+	version=030111
 }
 display {
 	object {
@@ -217,45 +217,34 @@ text {
 	}
 	textix="Ge Mo Ag Sn Ta W Pt Au Pb"
 }
-composite {
+rectangle {
 	object {
 		x=77
 		y=65
 		width=66
 		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=77
-				y=65
-				width=66
-				height=20
-			}
-			"basic attribute" {
-				clr=20
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(H)bank$(B)"
-			}
-		}
-		rectangle {
-			object {
-				x=77
-				y=65
-				width=66
-				height=20
-			}
-			"basic attribute" {
-				clr=18
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(H)bank$(B)"
-			}
-		}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(H)bank$(B)"
+	}
+}
+rectangle {
+	object {
+		x=77
+		y=65
+		width=66
+		height=20
+	}
+	"basic attribute" {
+		clr=18
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(H)bank$(B)"
 	}
 }
 "message button" {
@@ -653,53 +642,42 @@ rectangle {
 composite {
 	object {
 		x=275
-		y=105
+		y=165
 		width=50
-		height=82
+		height=22
 	}
 	"composite name"=""
-	children {
-		composite {
-			object {
-				x=275
-				y=165
-				width=50
-				height=22
-			}
-			"composite name"=""
-			"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=1,B=A"
-		}
-		composite {
-			object {
-				x=275
-				y=145
-				width=50
-				height=22
-			}
-			"composite name"=""
-			"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=2,B=A"
-		}
-		composite {
-			object {
-				x=275
-				y=125
-				width=50
-				height=22
-			}
-			"composite name"=""
-			"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=3,B=A"
-		}
-		composite {
-			object {
-				x=275
-				y=105
-				width=50
-				height=22
-			}
-			"composite name"=""
-			"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=4,B=A"
-		}
+	"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=1,B=A"
+}
+composite {
+	object {
+		x=275
+		y=145
+		width=50
+		height=22
 	}
+	"composite name"=""
+	"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=2,B=A"
+}
+composite {
+	object {
+		x=275
+		y=125
+		width=50
+		height=22
+	}
+	"composite name"=""
+	"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=3,B=A"
+}
+composite {
+	object {
+		x=275
+		y=105
+		width=50
+		height=22
+	}
+	"composite name"=""
+	"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=4,B=A"
 }
 menu {
 	object {

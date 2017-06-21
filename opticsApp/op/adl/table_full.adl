@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/2-4/opticsApp/op/adl/table_full.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/table_full.adl"
+	version=030111
 }
 display {
 	object {
-		x=100
-		y=484
+		x=964
+		y=512
 		width=490
 		height=400
 	}
@@ -1271,83 +1271,72 @@ rectangle {
 	label=">"
 	press_msg="1"
 }
-composite {
+polyline {
 	object {
 		x=4
 		y=86
 		width=224
-		height=272
+		height=2
 	}
-	"composite name"=""
-	children {
-		polyline {
-			object {
-				x=4
-				y=86
-				width=224
-				height=2
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-			points {
-				(5,87)
-				(227,87)
-			}
-		}
-		polyline {
-			object {
-				x=4
-				y=176
-				width=223
-				height=2
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-			points {
-				(5,177)
-				(226,177)
-			}
-		}
-		polyline {
-			object {
-				x=4
-				y=266
-				width=223
-				height=2
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-			points {
-				(5,267)
-				(226,267)
-			}
-		}
-		polyline {
-			object {
-				x=4
-				y=356
-				width=225
-				height=2
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-			points {
-				(5,357)
-				(228,357)
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+	points {
+		(5,87)
+		(227,87)
+	}
+}
+polyline {
+	object {
+		x=4
+		y=176
+		width=223
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+	points {
+		(5,177)
+		(226,177)
+	}
+}
+polyline {
+	object {
+		x=4
+		y=266
+		width=223
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+	points {
+		(5,267)
+		(226,267)
+	}
+}
+polyline {
+	object {
+		x=4
+		y=356
+		width=225
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+	points {
+		(5,357)
+		(228,357)
 	}
 }
 text {
@@ -2295,64 +2284,53 @@ polyline {
 	limits {
 	}
 }
-composite {
+"message button" {
 	object {
 		x=460
 		y=153
 		width=20
-		height=200
+		height=20
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=460
-				y=153
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(M2X).TWF"
-				clr=14
-				bclr=51
-			}
-			label=">"
-			press_msg="1"
-			release_msg="0"
-		}
-		"message button" {
-			object {
-				x=460
-				y=243
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(M2Y).TWF"
-				clr=14
-				bclr=51
-			}
-			label=">"
-			press_msg="1"
-			release_msg="0"
-		}
-		"message button" {
-			object {
-				x=460
-				y=333
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(M2Z).TWF"
-				clr=14
-				bclr=51
-			}
-			label=">"
-			press_msg="1"
-			release_msg="0"
-		}
+	control {
+		chan="$(P)$(M2X).TWF"
+		clr=14
+		bclr=51
 	}
+	label=">"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=460
+		y=243
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(M2Y).TWF"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=460
+		y=333
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(M2Z).TWF"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+	release_msg="0"
 }
 rectangle {
 	object {
@@ -2521,78 +2499,56 @@ polyline {
 		(483,357)
 	}
 }
-composite {
+polyline {
 	object {
 		x=482
 		y=85
 		width=2
 		height=273
 	}
-	"composite name"=""
-	children {
-		polyline {
-			object {
-				x=482
-				y=85
-				width=2
-				height=273
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-			points {
-				(483,86)
-				(483,357)
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+	points {
+		(483,86)
+		(483,357)
 	}
 }
-composite {
+text {
 	object {
 		x=220
 		y=365
 		width=75
 		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=220
-				y=365
-				width=75
-				height=20
-			}
-			"basic attribute" {
-				clr=30
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(Q):done.VAL"
-			}
-			textix="Moving"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=220
-				y=365
-				width=75
-				height=20
-			}
-			"basic attribute" {
-				clr=60
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(Q):done.VAL"
-			}
-			textix="Done"
-			align="horiz. centered"
-		}
+	"basic attribute" {
+		clr=30
 	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(Q):done.VAL"
+	}
+	textix="Moving"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=220
+		y=365
+		width=75
+		height=20
+	}
+	"basic attribute" {
+		clr=60
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(Q):done.VAL"
+	}
+	textix="Done"
+	align="horiz. centered"
 }
 "related display" {
 	object {
@@ -2947,98 +2903,76 @@ composite {
 	bclr=17
 	label="-Less"
 }
-composite {
+"text entry" {
+	object {
+		x=43
+		y=155
+		width=44
+		height=18
+	}
+	control {
+		chan="$(P)$(Q):x_tweakVal.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=87
+		y=153
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(Q):x_tweak.A"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
 	object {
 		x=23
 		y=153
-		width=84
+		width=20
 		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=43
-				y=155
-				width=44
-				height=18
-			}
-			control {
-				chan="$(P)$(Q):x_tweakVal.VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"message button" {
-			object {
-				x=87
-				y=153
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(Q):x_tweak.A"
-				clr=14
-				bclr=51
-			}
-			label=">"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=23
-				y=153
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(Q):x_tweak.B"
-				clr=14
-				bclr=51
-			}
-			label="<"
-			press_msg="1"
-		}
+	control {
+		chan="$(P)$(Q):x_tweak.B"
+		clr=14
+		bclr=51
 	}
+	label="<"
+	press_msg="1"
 }
-composite {
+text {
 	object {
 		x=0
 		y=387
-		width=120
+		width=90
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Record version:"
+}
+"text update" {
+	object {
+		x=90
+		y=387
+		width=30
 		height=12
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=0
-				y=387
-				width=90
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Record version:"
-		}
-		"text update" {
-			object {
-				x=90
-				y=387
-				width=30
-				height=12
-			}
-			monitor {
-				chan="$(P)$(T).VERS"
-				clr=54
-				bclr=3
-			}
-			limits {
-			}
-		}
+	monitor {
+		chan="$(P)$(T).VERS"
+		clr=54
+		bclr=3
+	}
+	limits {
 	}
 }
 "related display" {

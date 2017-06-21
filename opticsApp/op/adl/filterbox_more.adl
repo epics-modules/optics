@@ -1,7 +1,7 @@
 
 file {
-	name="/xorApps/epics/synApps_5_6/ioc/33bmTEST/33bmTESTApp/op/adl/filterbox_more.adl"
-	version=030102
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/filterbox_more.adl"
+	version=030111
 }
 display {
 	object {
@@ -87,28 +87,17 @@ display {
 		1a7309,
 	}
 }
-composite {
+rectangle {
 	object {
 		x=5
 		y=48
 		width=130
 		height=100
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=5
-				y=48
-				width=130
-				height=100
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
 	}
 }
 "related display" {
@@ -191,304 +180,244 @@ text {
 	}
 	textix="$(N4): Disabled"
 }
-composite {
+text {
 	object {
 		x=5
 		y=12
-		width=127
+		width=15
 		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=5
-				y=12
-				width=15
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N2):"
-		}
-		"text update" {
-			object {
-				x=24
-				y=12
-				width=12
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N2):Material"
-				clr=14
-				bclr=3
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=40
-				y=12
-				width=38
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N2):Thickness"
-				clr=14
-				bclr=3
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=82
-				y=12
-				width=50
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N2):Transmission"
-				clr=54
-				bclr=3
-			}
-			format="exponential"
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
 	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)Fi$(N2):Enable"
+	textix="$(N2):"
+}
+"text update" {
+	object {
+		x=24
+		y=12
+		width=12
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N2):Material"
+		clr=14
+		bclr=3
+	}
+	format="string"
+	limits {
 	}
 }
-composite {
+"text update" {
+	object {
+		x=40
+		y=12
+		width=38
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N2):Thickness"
+		clr=14
+		bclr=3
+	}
+	format="compact"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=82
+		y=12
+		width=50
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N2):Transmission"
+		clr=54
+		bclr=3
+	}
+	format="exponential"
+	limits {
+	}
+}
+text {
 	object {
 		x=5
 		y=0
-		width=127
+		width=15
 		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=5
-				y=0
-				width=15
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N1):"
-		}
-		"text update" {
-			object {
-				x=24
-				y=0
-				width=12
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N1):Material"
-				clr=14
-				bclr=3
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=40
-				y=0
-				width=38
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N1):Thickness"
-				clr=14
-				bclr=3
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=82
-				y=0
-				width=50
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N1):Transmission"
-				clr=54
-				bclr=3
-			}
-			format="exponential"
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
 	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)Fi$(N1):Enable"
+	textix="$(N1):"
+}
+"text update" {
+	object {
+		x=24
+		y=0
+		width=12
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N1):Material"
+		clr=14
+		bclr=3
+	}
+	format="string"
+	limits {
 	}
 }
-composite {
+"text update" {
+	object {
+		x=40
+		y=0
+		width=38
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N1):Thickness"
+		clr=14
+		bclr=3
+	}
+	format="compact"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=82
+		y=0
+		width=50
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N1):Transmission"
+		clr=54
+		bclr=3
+	}
+	format="exponential"
+	limits {
+	}
+}
+text {
 	object {
 		x=5
 		y=24
-		width=127
+		width=15
 		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=5
-				y=24
-				width=15
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N3):"
-		}
-		"text update" {
-			object {
-				x=24
-				y=24
-				width=12
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N3):Material"
-				clr=14
-				bclr=3
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=40
-				y=24
-				width=38
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N3):Thickness"
-				clr=14
-				bclr=3
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=82
-				y=24
-				width=50
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N3):Transmission"
-				clr=54
-				bclr=3
-			}
-			format="exponential"
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
 	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)Fi$(N3):Enable"
+	textix="$(N3):"
+}
+"text update" {
+	object {
+		x=24
+		y=24
+		width=12
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N3):Material"
+		clr=14
+		bclr=3
+	}
+	format="string"
+	limits {
 	}
 }
-composite {
+"text update" {
+	object {
+		x=40
+		y=24
+		width=38
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N3):Thickness"
+		clr=14
+		bclr=3
+	}
+	format="compact"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=82
+		y=24
+		width=50
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N3):Transmission"
+		clr=54
+		bclr=3
+	}
+	format="exponential"
+	limits {
+	}
+}
+text {
 	object {
 		x=5
 		y=36
-		width=127
+		width=15
 		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=5
-				y=36
-				width=15
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(N4):"
-		}
-		"text update" {
-			object {
-				x=24
-				y=36
-				width=12
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N4):Material"
-				clr=14
-				bclr=3
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=40
-				y=36
-				width=38
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N4):Thickness"
-				clr=14
-				bclr=3
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=82
-				y=36
-				width=50
-				height=10
-			}
-			monitor {
-				chan="$(P)$(R)Fi$(N4):Transmission"
-				clr=54
-				bclr=3
-			}
-			format="exponential"
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
 	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)Fi$(N4):Enable"
+	textix="$(N4):"
+}
+"text update" {
+	object {
+		x=24
+		y=36
+		width=12
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N4):Material"
+		clr=14
+		bclr=3
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=40
+		y=36
+		width=38
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N4):Thickness"
+		clr=14
+		bclr=3
+	}
+	format="compact"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=82
+		y=36
+		width=50
+		height=10
+	}
+	monitor {
+		chan="$(P)$(R)Fi$(N4):Transmission"
+		clr=54
+		bclr=3
+	}
+	format="exponential"
+	limits {
 	}
 }
 composite {

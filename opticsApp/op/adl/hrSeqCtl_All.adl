@@ -1,7 +1,7 @@
 
 file {
-	name="/home/oxygen4/MOONEY/epics/3.13.2/tmm/tmmApp/op/adl/hrSeqCtl_All_3.2.adl"
-	version=030000
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/hrSeqCtl_All.adl"
+	version=030111
 }
 display {
 	object {
@@ -672,196 +672,185 @@ text {
 	textix="Lambda (A)"
 	align="horiz. centered"
 }
-composite {
+rectangle {
 	object {
 		x=220
 		y=0
 		width=80
 		height=110
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=220
-				y=0
-				width=80
-				height=110
-			}
-			"basic attribute" {
-				clr=5
-				width=2
-			}
-		}
-		text {
-			object {
-				x=275
-				y=2
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			textix="L1"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=275
-				y=20
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)HR$(N)_L1AO.VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=250
-				y=2
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			textix="K1"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=250
-				y=20
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)HR$(N)_K1AO.VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=225
-				y=2
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			textix="H1"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=225
-				y=20
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)HR$(N)_H1AO.VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=225
-				y=43
-				width=20
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			textix="a"
-		}
-		"text entry" {
-			object {
-				x=240
-				y=40
-				width=55
-				height=20
-			}
-			control {
-				chan="$(P)HR$(N)_A1AO.VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=240
-				y=63
-				width=55
-				height=20
-			}
-			control {
-				chan="$(P)HR$(N)_2d1AO"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=225
-				y=66
-				width=20
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			textix="2d"
-		}
-		menu {
-			object {
-				x=225
-				y=85
-				width=70
-				height=16
-			}
-			control {
-				chan="$(P)HR$(N)_1TypeMO"
-				clr=14
-				bclr=51
-			}
-		}
-		rectangle {
-			object {
-				x=220
-				y=0
-				width=80
-				height=110
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-		}
+	"basic attribute" {
+		clr=5
+		width=2
+	}
+}
+text {
+	object {
+		x=275
+		y=2
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="L1"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=275
+		y=20
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)HR$(N)_L1AO.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=250
+		y=2
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="K1"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=250
+		y=20
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)HR$(N)_K1AO.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=225
+		y=2
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="H1"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=225
+		y=20
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)HR$(N)_H1AO.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=225
+		y=43
+		width=20
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="a"
+}
+"text entry" {
+	object {
+		x=240
+		y=40
+		width=55
+		height=20
+	}
+	control {
+		chan="$(P)HR$(N)_A1AO.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=240
+		y=63
+		width=55
+		height=20
+	}
+	control {
+		chan="$(P)HR$(N)_2d1AO"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=225
+		y=66
+		width=20
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="2d"
+}
+menu {
+	object {
+		x=225
+		y=85
+		width=70
+		height=16
+	}
+	control {
+		chan="$(P)HR$(N)_1TypeMO"
+		clr=14
+		bclr=51
+	}
+}
+rectangle {
+	object {
+		x=220
+		y=0
+		width=80
+		height=110
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
 	}
 }
 rectangle {
@@ -1199,77 +1188,55 @@ text {
 	limits {
 	}
 }
-composite {
+arc {
+	object {
+		x=96
+		y=193
+		width=25
+		height=18
+	}
+	"basic attribute" {
+		clr=33
+		fill="outline"
+		width=2
+	}
+	begin=5760
+	path=11520
+}
+polyline {
+	object {
+		x=103
+		y=190
+		width=8
+		height=10
+	}
+	"basic attribute" {
+		clr=33
+		fill="outline"
+		width=2
+	}
+	points {
+		(104,191)
+		(110,194)
+		(104,199)
+	}
+}
+polyline {
 	object {
 		x=74
-		y=190
-		width=47
-		height=21
+		y=204
+		width=20
+		height=2
 	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=96
-				y=190
-				width=25
-				height=21
-			}
-			"composite name"=""
-			children {
-				arc {
-					object {
-						x=96
-						y=193
-						width=25
-						height=18
-					}
-					"basic attribute" {
-						clr=33
-						fill="outline"
-						width=2
-					}
-					begin=5760
-					path=11520
-				}
-				polyline {
-					object {
-						x=103
-						y=190
-						width=8
-						height=10
-					}
-					"basic attribute" {
-						clr=33
-						fill="outline"
-						width=2
-					}
-					points {
-						(104,191)
-						(110,194)
-						(104,199)
-					}
-				}
-			}
-		}
-		polyline {
-			object {
-				x=74
-				y=204
-				width=20
-				height=2
-			}
-			"basic attribute" {
-				clr=33
-				style="dash"
-				fill="outline"
-				width=2
-			}
-			points {
-				(93,205)
-				(75,205)
-			}
-		}
+	"basic attribute" {
+		clr=33
+		style="dash"
+		fill="outline"
+		width=2
+	}
+	points {
+		(93,205)
+		(75,205)
 	}
 }
 text {
@@ -1837,46 +1804,35 @@ text {
 	bclr=17
 	label="-ScanParm"
 }
-composite {
+"message button" {
+	object {
+		x=82
+		y=111
+		width=21
+		height=20
+	}
+	control {
+		chan="$(P)HR$(N)_E:scanParms.GO"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	press_msg="1"
+}
+"message button" {
 	object {
 		x=62
 		y=111
-		width=41
+		width=21
 		height=20
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=82
-				y=111
-				width=21
-				height=20
-			}
-			control {
-				chan="$(P)HR$(N)_E:scanParms.GO"
-				clr=14
-				bclr=51
-			}
-			label="Go"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=62
-				y=111
-				width=21
-				height=20
-			}
-			control {
-				chan="$(P)HR$(N)_E:scanParms.LOAD"
-				clr=14
-				bclr=51
-			}
-			label="Ld"
-			press_msg="1"
-		}
+	control {
+		chan="$(P)HR$(N)_E:scanParms.LOAD"
+		clr=14
+		bclr=51
 	}
+	label="Ld"
+	press_msg="1"
 }
 "choice button" {
 	object {

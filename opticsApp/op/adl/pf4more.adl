@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/pf4more.adl"
-	version=030105
+	version=030111
 }
 display {
 	object {
@@ -117,77 +117,66 @@ polyline {
 		(325,216)
 	}
 }
-composite {
+rectangle {
 	object {
 		x=6
 		y=220
 		width=64
 		height=346
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=6
-				y=220
-				width=64
-				height=346
-			}
-			"basic attribute" {
-				clr=44
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(H)fPos$(B)"
-			}
-		}
-		rectangle {
-			object {
-				x=6
-				y=220
-				width=64
-				height=346
-			}
-			"basic attribute" {
-				clr=16
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(H)fPos$(B)"
-			}
-		}
-		rectangle {
-			object {
-				x=6
-				y=220
-				width=64
-				height=346
-			}
-			"basic attribute" {
-				clr=21
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(H)bank$(B)"
-			}
-		}
-		byte {
-			object {
-				x=10
-				y=224
-				width=10
-				height=336
-			}
-			monitor {
-				chan="$(P)$(H)bitFlag$(B)"
-				clr=38
-				bclr=2
-			}
-			direction="down"
-			sbit=0
-			ebit=15
-		}
+	"basic attribute" {
+		clr=44
 	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(H)fPos$(B)"
+	}
+}
+rectangle {
+	object {
+		x=6
+		y=220
+		width=64
+		height=346
+	}
+	"basic attribute" {
+		clr=16
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(H)fPos$(B)"
+	}
+}
+rectangle {
+	object {
+		x=6
+		y=220
+		width=64
+		height=346
+	}
+	"basic attribute" {
+		clr=21
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(H)bank$(B)"
+	}
+}
+byte {
+	object {
+		x=10
+		y=224
+		width=10
+		height=336
+	}
+	monitor {
+		chan="$(P)$(H)bitFlag$(B)"
+		clr=38
+		bclr=2
+	}
+	direction="down"
+	sbit=0
+	ebit=15
 }
 "text update" {
 	object {
@@ -1339,8 +1328,8 @@ composite {
 	object {
 		x=5
 		y=25
-		width=305
-		height=189
+		width=288
+		height=182
 	}
 	"composite name"=""
 	"composite file"="pf4_bare.adl;"

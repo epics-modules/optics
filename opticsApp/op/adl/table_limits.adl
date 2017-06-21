@@ -1,12 +1,12 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/table_limits.adl"
-	version=030107
+	version=030111
 }
 display {
 	object {
-		x=174
-		y=242
+		x=800
+		y=532
 		width=700
 		height=130
 	}
@@ -441,231 +441,220 @@ text {
 	limits {
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=110
+		y=74
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).UHX"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=195
+		y=74
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).UHY"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+text {
 	object {
 		x=60
 		y=74
-		width=595
-		height=40
+		width=40
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=110
-				y=74
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).UHX"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=195
-				y=74
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).UHY"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=60
-				y=74
-				width=40
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="High"
-		}
-		"text entry" {
-			object {
-				x=110
-				y=94
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).ULX"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=195
-				y=94
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).ULY"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=60
-				y=94
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Low"
-		}
-		"text entry" {
-			object {
-				x=280
-				y=94
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).ULZ"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=280
-				y=74
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).UHZ"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=405
-				y=94
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).ULAX"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=405
-				y=74
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).UHAX"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=490
-				y=94
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).ULAY"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=490
-				y=74
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).UHAY"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=575
-				y=94
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).ULAZ"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=575
-				y=74
-				width=80
-				height=18
-			}
-			control {
-				chan="$(P)$(T).UHAZ"
-				clr=14
-				bclr=51
-			}
-			format="compact"
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="High"
+}
+"text entry" {
+	object {
+		x=110
+		y=94
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).ULX"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=195
+		y=94
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).ULY"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+text {
+	object {
+		x=60
+		y=94
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Low"
+}
+"text entry" {
+	object {
+		x=280
+		y=94
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).ULZ"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=280
+		y=74
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).UHZ"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=405
+		y=94
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).ULAX"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=405
+		y=74
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).UHAX"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=490
+		y=94
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).ULAY"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=490
+		y=74
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).UHAY"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=575
+		y=94
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).ULAZ"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=575
+		y=74
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)$(T).UHAZ"
+		clr=14
+		bclr=51
+	}
+	format="compact"
+	limits {
 	}
 }
 text {

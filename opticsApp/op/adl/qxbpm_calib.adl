@@ -1,7 +1,7 @@
 
 file {
-	name="c:\Apps\epics\ioc\local\oxfordApp\op\adl\qxbpm_calib.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/qxbpm_calib.adl"
+	version=030111
 }
 display {
 	object {
@@ -183,47 +183,36 @@ text {
 	limits {
 	}
 }
-composite {
+"message button" {
+	object {
+		x=142
+		y=148
+		width=130
+		height=20
+	}
+	control {
+		chan="$(P)set_defaults"
+		clr=14
+		bclr=58
+	}
+	label="set defaults"
+	release_msg="1"
+}
+rectangle {
 	object {
 		x=135
 		y=144
 		width=144
 		height=28
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=142
-				y=148
-				width=130
-				height=20
-			}
-			control {
-				chan="$(P)set_defaults"
-				clr=14
-				bclr=58
-			}
-			label="set defaults"
-			release_msg="1"
-		}
-		rectangle {
-			object {
-				x=135
-				y=144
-				width=144
-				height=28
-			}
-			"basic attribute" {
-				clr=61
-				fill="outline"
-				width=8
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)set_defaults"
-			}
-		}
+	"basic attribute" {
+		clr=61
+		fill="outline"
+		width=8
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)set_defaults"
 	}
 }
 rectangle {
@@ -252,40 +241,29 @@ text {
 	textix="default calibration"
 	align="horiz. centered"
 }
-composite {
+text {
 	object {
 		x=32
 		y=99
 		width=350
-		height=37
+		height=16
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=32
-				y=99
-				width=350
-				height=16
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Set amplifier gains and other settings"
-		}
-		text {
-			object {
-				x=32
-				y=120
-				width=350
-				height=16
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="to factory defaults."
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="Set amplifier gains and other settings"
+}
+text {
+	object {
+		x=32
+		y=120
+		width=350
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="to factory defaults."
 }
 rectangle {
 	object {
@@ -337,89 +315,67 @@ text {
 	}
 	textix="Make SURE that the X-ray beam is OFF."
 }
-composite {
+"message button" {
+	object {
+		x=204
+		y=265
+		width=130
+		height=20
+	}
+	control {
+		chan="$(P)set_offsets"
+		clr=14
+		bclr=58
+	}
+	label="set offsets"
+	release_msg="1"
+}
+rectangle {
 	object {
 		x=197
 		y=261
 		width=144
 		height=28
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=204
-				y=265
-				width=130
-				height=20
-			}
-			control {
-				chan="$(P)set_offsets"
-				clr=14
-				bclr=58
-			}
-			label="set offsets"
-			release_msg="1"
-		}
-		rectangle {
-			object {
-				x=197
-				y=261
-				width=144
-				height=28
-			}
-			"basic attribute" {
-				clr=61
-				fill="outline"
-				width=8
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)set_offsets"
-			}
-		}
+	"basic attribute" {
+		clr=61
+		fill="outline"
+		width=8
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)set_offsets"
 	}
 }
-composite {
+"message button" {
+	object {
+		x=88
+		y=265
+		width=68
+		height=20
+	}
+	control {
+		chan="$(P)set_offsets"
+		clr=14
+		bclr=58
+	}
+	label="idle"
+	release_msg="0"
+}
+rectangle {
 	object {
 		x=82
 		y=261
 		width=80
 		height=28
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=88
-				y=265
-				width=68
-				height=20
-			}
-			control {
-				chan="$(P)set_offsets"
-				clr=14
-				bclr=58
-			}
-			label="idle"
-			release_msg="0"
-		}
-		rectangle {
-			object {
-				x=82
-				y=261
-				width=80
-				height=28
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=8
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)set_offsets"
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=8
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)set_offsets"
 	}
 }

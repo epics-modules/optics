@@ -1,7 +1,7 @@
 
 file {
-	name="/xorApps/epics/synApps_5_6/ioc/33bmTEST/33bmTESTApp/op/adl/filterbox_less.adl"
-	version=030102
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/filterbox_less.adl"
+	version=030111
 }
 display {
 	object {
@@ -87,94 +87,72 @@ display {
 		1a7309,
 	}
 }
-composite {
+rectangle {
 	object {
 		x=5
 		y=5
 		width=130
 		height=100
 	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+}
+composite {
+	object {
+		x=12
+		y=11
+		width=26
+		height=88
+	}
 	"composite name"=""
-	children {
-		composite {
-			object {
-				x=5
-				y=5
-				width=130
-				height=100
-			}
-			"composite name"=""
-			children {
-				rectangle {
-					object {
-						x=5
-						y=5
-						width=130
-						height=100
-					}
-					"basic attribute" {
-						clr=14
-						fill="outline"
-						width=2
-					}
-				}
-			}
-		}
-		composite {
-			object {
-				x=12
-				y=11
-				width=26
-				height=88
-			}
-			"composite name"=""
-			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N4)"
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N4):Enable"
-			}
-		}
-		composite {
-			object {
-				x=43
-				y=11
-				width=26
-				height=88
-			}
-			"composite name"=""
-			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N3)"
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N3):Enable"
-			}
-		}
-		composite {
-			object {
-				x=74
-				y=11
-				width=26
-				height=88
-			}
-			"composite name"=""
-			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N2)"
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N2):Enable"
-			}
-		}
-		composite {
-			object {
-				x=105
-				y=11
-				width=26
-				height=88
-			}
-			"composite name"=""
-			"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N1)"
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(R)Fi$(N1):Enable"
-			}
-		}
+	"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N4)"
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(R)Fi$(N4):Enable"
+	}
+}
+composite {
+	object {
+		x=43
+		y=11
+		width=26
+		height=88
+	}
+	"composite name"=""
+	"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N3)"
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(R)Fi$(N3):Enable"
+	}
+}
+composite {
+	object {
+		x=74
+		y=11
+		width=26
+		height=88
+	}
+	"composite name"=""
+	"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N2)"
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(R)Fi$(N2):Enable"
+	}
+}
+composite {
+	object {
+		x=105
+		y=11
+		width=26
+		height=88
+	}
+	"composite name"=""
+	"composite file"="filter_blade.adl;P=$(P),R=$(R),N=$(N1)"
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(R)Fi$(N1):Enable"
 	}
 }

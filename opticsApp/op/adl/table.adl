@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/2-4/opticsApp/op/adl/table.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/table.adl"
+	version=030111
 }
 display {
 	object {
-		x=10
-		y=214
+		x=1119
+		y=494
 		width=230
 		height=390
 	}
@@ -665,129 +665,118 @@ rectangle {
 		chan="$(P)$(T).SET"
 	}
 }
-composite {
+"related display" {
+	object {
+		x=8
+		y=230
+		width=35
+		height=20
+	}
+	display[0] {
+		label="Setup scan parameters"
+		name="scanParmsCustom.adl"
+		args="P=$(P),Q=$(Q)Y,NAME=$(Q)Y,DESC=$(Q)Y,EGU=$(T).LEGU"
+	}
+	clr=0
+	bclr=17
+	label="-Scan"
+}
+"message button" {
+	object {
+		x=45
+		y=230
+		width=21
+		height=20
+	}
+	control {
+		chan="$(P)$(Q)Y:scanParms.GO"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=68
+		y=230
+		width=35
+		height=20
+	}
+	control {
+		chan="$(P)allstop.VAL"
+		clr=30
+		bclr=20
+	}
+	label="Kill"
+	press_msg="1"
+}
+rectangle {
 	object {
 		x=5
 		y=228
-		width=215
+		width=100
 		height=24
 	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=8
-				y=230
-				width=35
-				height=20
-			}
-			display[0] {
-				label="Setup scan parameters"
-				name="scanParmsCustom.adl"
-				args="P=$(P),Q=$(Q)Y,NAME=$(Q)Y,DESC=$(Q)Y,EGU=$(T).LEGU"
-			}
-			clr=0
-			bclr=17
-			label="-Scan"
-		}
-		"message button" {
-			object {
-				x=45
-				y=230
-				width=21
-				height=20
-			}
-			control {
-				chan="$(P)$(Q)Y:scanParms.GO"
-				clr=14
-				bclr=51
-			}
-			label="Go"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=68
-				y=230
-				width=35
-				height=20
-			}
-			control {
-				chan="$(P)allstop.VAL"
-				clr=30
-				bclr=20
-			}
-			label="Kill"
-			press_msg="1"
-		}
-		rectangle {
-			object {
-				x=5
-				y=228
-				width=100
-				height=24
-			}
-			"basic attribute" {
-				clr=14
-			}
-		}
-		"related display" {
-			object {
-				x=123
-				y=230
-				width=35
-				height=20
-			}
-			display[0] {
-				label="Setup scan parameters"
-				name="scanParmsCustom.adl"
-				args="P=$(P),Q=$(Q)AY,NAME=$(Q)AY,DESC=$(Q)AY,EGU=$(T).AEGU"
-			}
-			clr=0
-			bclr=17
-			label="-Scan"
-		}
-		"message button" {
-			object {
-				x=160
-				y=230
-				width=21
-				height=20
-			}
-			control {
-				chan="$(P)$(Q)AY:scanParms.GO"
-				clr=14
-				bclr=51
-			}
-			label="Go"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=183
-				y=230
-				width=35
-				height=20
-			}
-			control {
-				chan="$(P)allstop.VAL"
-				clr=30
-				bclr=20
-			}
-			label="Kill"
-			press_msg="1"
-		}
-		rectangle {
-			object {
-				x=120
-				y=228
-				width=100
-				height=24
-			}
-			"basic attribute" {
-				clr=14
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+}
+"related display" {
+	object {
+		x=123
+		y=230
+		width=35
+		height=20
+	}
+	display[0] {
+		label="Setup scan parameters"
+		name="scanParmsCustom.adl"
+		args="P=$(P),Q=$(Q)AY,NAME=$(Q)AY,DESC=$(Q)AY,EGU=$(T).AEGU"
+	}
+	clr=0
+	bclr=17
+	label="-Scan"
+}
+"message button" {
+	object {
+		x=160
+		y=230
+		width=21
+		height=20
+	}
+	control {
+		chan="$(P)$(Q)AY:scanParms.GO"
+		clr=14
+		bclr=51
+	}
+	label="Go"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=183
+		y=230
+		width=35
+		height=20
+	}
+	control {
+		chan="$(P)allstop.VAL"
+		clr=30
+		bclr=20
+	}
+	label="Kill"
+	press_msg="1"
+}
+rectangle {
+	object {
+		x=120
+		y=228
+		width=100
+		height=24
+	}
+	"basic attribute" {
+		clr=14
 	}
 }
 "choice button" {
@@ -804,46 +793,35 @@ composite {
 	}
 	stacking="column"
 }
-composite {
+"message button" {
 	object {
 		x=0
 		y=370
-		width=100
+		width=50
 		height=20
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=0
-				y=370
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(T).SYNC"
-				clr=14
-				bclr=51
-			}
-			label="Sync"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=50
-				y=370
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(T).INIT"
-				clr=14
-				bclr=51
-			}
-			label="Init"
-			press_msg="1"
-		}
+	control {
+		chan="$(P)$(T).SYNC"
+		clr=14
+		bclr=51
 	}
+	label="Sync"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=50
+		y=370
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)$(T).INIT"
+		clr=14
+		bclr=51
+	}
+	label="Init"
+	press_msg="1"
 }
 "message button" {
 	object {
@@ -875,50 +853,39 @@ composite {
 	label="Stop"
 	press_msg="1"
 }
-composite {
+text {
 	object {
 		x=120
 		y=345
 		width=60
 		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=120
-				y=345
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=55
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(Q):done.VAL"
-			}
-			textix="Done"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=120
-				y=345
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=55
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(Q):done.VAL"
-			}
-			textix="Moving"
-			align="horiz. centered"
-		}
+	"basic attribute" {
+		clr=55
 	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(Q):done.VAL"
+	}
+	textix="Done"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=120
+		y=345
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=55
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(Q):done.VAL"
+	}
+	textix="Moving"
+	align="horiz. centered"
 }
 "related display" {
 	object {

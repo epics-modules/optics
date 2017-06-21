@@ -1,7 +1,7 @@
 
 file {
-	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/stdApp/op/adl/kohzuGraphicLarge.adl"
-	version=020205
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/kohzuGraphicLarge.adl"
+	version=030111
 }
 display {
 	object {
@@ -13,6 +13,9 @@ display {
 	clr=14
 	bclr=4
 	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
 }
 "color map" {
 	ncolors=65
@@ -94,264 +97,218 @@ image {
 	type="gif"
 	"image name"="kohzu.gif"
 }
-composite {
+"text update" {
+	object {
+		x=454
+		y=197
+		width=40
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mZ2).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=474
+		y=207
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mZ2).JOGF"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=454
+		y=207
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mZ2).JOGR"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+	release_msg="0"
+}
+rectangle {
+	object {
+		x=453
+		y=196
+		width=42
+		height=32
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+text {
 	object {
 		x=453
 		y=186
-		width=42
-		height=42
+		width=40
+		height=10
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		composite {
-			object {
-				x=453
-				y=196
-				width=42
-				height=32
-			}
-			"composite name"=""
-			vis="static"
-			chan=""
-			children {
-				"text update" {
-					object {
-						x=454
-						y=197
-						width=40
-						height=10
-					}
-					monitor {
-						chan="$(P)$(mZ2).RBV"
-						clr=53
-						bclr=2
-					}
-				}
-				"message button" {
-					object {
-						x=474
-						y=207
-						width=20
-						height=20
-					}
-					control {
-						chan="$(P)$(mZ2).JOGF"
-						clr=14
-						bclr=51
-					}
-					label="+"
-					press_msg="1"
-					release_msg="0"
-				}
-				"message button" {
-					object {
-						x=454
-						y=207
-						width=20
-						height=20
-					}
-					control {
-						chan="$(P)$(mZ2).JOGR"
-						clr=14
-						bclr=51
-					}
-					label="-"
-					press_msg="1"
-					release_msg="0"
-				}
-				rectangle {
-					object {
-						x=453
-						y=196
-						width=42
-						height=32
-					}
-					"basic attribute" {
-						clr=14
-						fill="outline"
-					}
-				}
-			}
-		}
-		text {
-			object {
-				x=453
-				y=186
-				width=40
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mZ2)"
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mZ2)"
+}
+"text update" {
+	object {
+		x=390
+		y=354
+		width=40
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mY1).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
 	}
 }
-composite {
+"message button" {
+	object {
+		x=410
+		y=364
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mY1).JOGF"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=390
+		y=364
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mY1).JOGR"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+	release_msg="0"
+}
+rectangle {
 	object {
 		x=389
-		y=343
+		y=353
 		width=42
-		height=42
+		height=32
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		"text update" {
-			object {
-				x=390
-				y=354
-				width=40
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mY1).RBV"
-				clr=53
-				bclr=2
-			}
-		}
-		"message button" {
-			object {
-				x=410
-				y=364
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(mY1).JOGF"
-				clr=14
-				bclr=51
-			}
-			label="+"
-			press_msg="1"
-			release_msg="0"
-		}
-		"message button" {
-			object {
-				x=390
-				y=364
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(mY1).JOGR"
-				clr=14
-				bclr=51
-			}
-			label="-"
-			press_msg="1"
-			release_msg="0"
-		}
-		rectangle {
-			object {
-				x=389
-				y=353
-				width=42
-				height=32
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		text {
-			object {
-				x=390
-				y=343
-				width=40
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mY1)"
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
 	}
 }
-composite {
+text {
+	object {
+		x=390
+		y=343
+		width=40
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mY1)"
+}
+"text update" {
+	object {
+		x=209
+		y=444
+		width=40
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mTH).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=229
+		y=454
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mTH).JOGF"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=209
+		y=454
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mTH).JOGR"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+	release_msg="0"
+}
+rectangle {
 	object {
 		x=208
-		y=433
+		y=443
 		width=42
-		height=42
+		height=32
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		"text update" {
-			object {
-				x=209
-				y=444
-				width=40
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mTH).RBV"
-				clr=53
-				bclr=2
-			}
-		}
-		"message button" {
-			object {
-				x=229
-				y=454
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(mTH).JOGF"
-				clr=14
-				bclr=51
-			}
-			label="+"
-			press_msg="1"
-			release_msg="0"
-		}
-		"message button" {
-			object {
-				x=209
-				y=454
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(mTH).JOGR"
-				clr=14
-				bclr=51
-			}
-			label="-"
-			press_msg="1"
-			release_msg="0"
-		}
-		rectangle {
-			object {
-				x=208
-				y=443
-				width=42
-				height=32
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		text {
-			object {
-				x=209
-				y=433
-				width=40
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mTH)"
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
 	}
+}
+text {
+	object {
+		x=209
+		y=433
+		width=40
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mTH)"
 }
 "text update" {
 	object {
@@ -364,6 +321,8 @@ composite {
 		chan="$(P)$(mCHI2).RBV"
 		clr=53
 		bclr=2
+	}
+	limits {
 	}
 }
 "message button" {
@@ -422,87 +381,76 @@ text {
 	}
 	textix="$(P)$(mCHI2)"
 }
-composite {
+"text update" {
+	object {
+		x=321
+		y=134
+		width=40
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mTH2).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=341
+		y=144
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mTH2).JOGF"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=321
+		y=144
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)$(mTH2).JOGR"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+	release_msg="0"
+}
+rectangle {
 	object {
 		x=320
-		y=123
+		y=133
 		width=42
-		height=42
+		height=32
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		"text update" {
-			object {
-				x=321
-				y=134
-				width=40
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mTH2).RBV"
-				clr=53
-				bclr=2
-			}
-		}
-		"message button" {
-			object {
-				x=341
-				y=144
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(mTH2).JOGF"
-				clr=14
-				bclr=51
-			}
-			label="+"
-			press_msg="1"
-			release_msg="0"
-		}
-		"message button" {
-			object {
-				x=321
-				y=144
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)$(mTH2).JOGR"
-				clr=14
-				bclr=51
-			}
-			label="-"
-			press_msg="1"
-			release_msg="0"
-		}
-		rectangle {
-			object {
-				x=320
-				y=133
-				width=42
-				height=32
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		text {
-			object {
-				x=321
-				y=123
-				width=40
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mTH2)"
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
 	}
+}
+text {
+	object {
+		x=321
+		y=123
+		width=40
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mTH2)"
 }
 "text update" {
 	object {
@@ -515,6 +463,8 @@ composite {
 		chan="$(P)$(mX2).RBV"
 		clr=53
 		bclr=2
+	}
+	limits {
 	}
 }
 "message button" {
@@ -585,6 +535,8 @@ text {
 		clr=53
 		bclr=2
 	}
+	limits {
+	}
 }
 "message button" {
 	object {
@@ -653,6 +605,8 @@ text {
 		chan="$(P)$(mX).RBV"
 		clr=53
 		bclr=2
+	}
+	limits {
 	}
 }
 "message button" {

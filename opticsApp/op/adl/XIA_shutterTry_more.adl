@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/XIA_shutterTry_more.adl"
-	version=030101
+	version=030111
 }
 display {
 	object {
@@ -202,101 +202,90 @@ text {
 	textix="ADDRESS"
 	align="horiz. centered"
 }
-composite {
+"message button" {
 	object {
 		x=15
 		y=40
-		width=205
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)$(S):expose.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Expose"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=65
+		y=40
+		width=50
+		height=20
+	}
+	control {
+		chan="$(P)$(S):exposeTime"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=115
+		y=42
+		width=10
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(s)"
+}
+composite {
+	object {
+		x=140
+		y=40
+		width=80
 		height=20
 	}
 	"composite name"=""
 	children {
-		"message button" {
-			object {
-				x=15
-				y=40
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(S):expose.PROC"
-				clr=14
-				bclr=51
-			}
-			label="Expose"
-			press_msg="1"
-		}
-		"text entry" {
-			object {
-				x=65
-				y=40
-				width=50
-				height=20
-			}
-			control {
-				chan="$(P)$(S):exposeTime"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
 		text {
-			object {
-				x=115
-				y=42
-				width=10
-				height=16
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="(s)"
-		}
-		composite {
 			object {
 				x=140
 				y=40
 				width=80
 				height=20
 			}
-			"composite name"=""
-			children {
-				text {
-					object {
-						x=140
-						y=40
-						width=80
-						height=20
-					}
-					"basic attribute" {
-						clr=17
-					}
-					"dynamic attribute" {
-						vis="if not zero"
-						chan="$(P)$(S):busy"
-					}
-					textix="EXPOSING"
-					align="horiz. centered"
-				}
-				text {
-					object {
-						x=140
-						y=40
-						width=80
-						height=20
-					}
-					"basic attribute" {
-						clr=54
-					}
-					"dynamic attribute" {
-						vis="if zero"
-						chan="$(P)$(S):busy"
-					}
-					textix="DONE"
-					align="horiz. centered"
-				}
+			"basic attribute" {
+				clr=17
 			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(S):busy"
+			}
+			textix="EXPOSING"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=140
+				y=40
+				width=80
+				height=20
+			}
+			"basic attribute" {
+				clr=54
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)$(S):busy"
+			}
+			textix="DONE"
+			align="horiz. centered"
 		}
 	}
 }

@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/table_tiny_soft.adl"
-	version=030107
+	version=030111
 }
 display {
 	object {
@@ -315,50 +315,39 @@ polyline {
 	label="Stop"
 	press_msg="1"
 }
-composite {
+text {
 	object {
 		x=110
 		y=225
 		width=60
 		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=110
-				y=225
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=55
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(Q):done.VAL"
-			}
-			textix="Done"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=110
-				y=225
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=55
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(Q):done.VAL"
-			}
-			textix="Moving"
-			align="horiz. centered"
-		}
+	"basic attribute" {
+		clr=55
 	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(Q):done.VAL"
+	}
+	textix="Done"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=110
+		y=225
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=55
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(Q):done.VAL"
+	}
+	textix="Moving"
+	align="horiz. centered"
 }
 "text entry" {
 	object {
@@ -437,66 +426,55 @@ composite {
 	limits {
 	}
 }
-composite {
+rectangle {
 	object {
 		x=25
 		y=40
 		width=80
-		height=128
+		height=18
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=25
-				y=40
-				width=80
-				height=18
-			}
-			"basic attribute" {
-				clr=30
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(T).SET"
-			}
-		}
-		rectangle {
-			object {
-				x=25
-				y=95
-				width=80
-				height=18
-			}
-			"basic attribute" {
-				clr=30
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(T).SET"
-			}
-		}
-		rectangle {
-			object {
-				x=25
-				y=150
-				width=80
-				height=18
-			}
-			"basic attribute" {
-				clr=30
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(T).SET"
-			}
-		}
+	"basic attribute" {
+		clr=30
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(T).SET"
+	}
+}
+rectangle {
+	object {
+		x=25
+		y=95
+		width=80
+		height=18
+	}
+	"basic attribute" {
+		clr=30
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(T).SET"
+	}
+}
+rectangle {
+	object {
+		x=25
+		y=150
+		width=80
+		height=18
+	}
+	"basic attribute" {
+		clr=30
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(T).SET"
 	}
 }
 rectangle {

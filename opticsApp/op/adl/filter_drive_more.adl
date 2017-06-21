@@ -1,7 +1,7 @@
 
 file {
-	name="/net/s33dserv/xorApps/epics/synApps_5_6/ioc/33bmTEST/33bmTESTApp/op/adl/filter_drive_more.adl"
-	version=030107
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/filter_drive_more.adl"
+	version=030111
 }
 display {
 	object {
@@ -244,241 +244,230 @@ text {
 	}
 	textix="keV"
 }
-composite {
+"message button" {
 	object {
 		x=230
 		y=0
-		width=155
-		height=108
+		width=45
+		height=20
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=230
-				y=0
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="/1000"
-			press_msg="0.001"
-		}
-		"message button" {
-			object {
-				x=340
-				y=0
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionSetpoint"
-				clr=14
-				bclr=51
-			}
-			label="1e-2"
-			press_msg="1.0e-2"
-		}
-		"message button" {
-			object {
-				x=340
-				y=22
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionSetpoint"
-				clr=14
-				bclr=51
-			}
-			label="1e-4"
-			press_msg="1.0e-4"
-		}
-		"message button" {
-			object {
-				x=340
-				y=44
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionSetpoint"
-				clr=14
-				bclr=51
-			}
-			label="1e-6"
-			press_msg="1.0e-6"
-		}
-		"message button" {
-			object {
-				x=340
-				y=66
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionSetpoint"
-				clr=14
-				bclr=51
-			}
-			label="1e-8"
-			press_msg="1.0e-8"
-		}
-		"message button" {
-			object {
-				x=340
-				y=88
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionSetpoint"
-				clr=14
-				bclr=51
-			}
-			label="1e-10"
-			press_msg="1.0e-10"
-		}
-		"message button" {
-			object {
-				x=230
-				y=22
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="/10"
-			press_msg="0.1"
-		}
-		"message button" {
-			object {
-				x=230
-				y=44
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="/2"
-			press_msg=".5"
-		}
-		"message button" {
-			object {
-				x=230
-				y=66
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="-10%"
-			press_msg="0.9"
-		}
-		"message button" {
-			object {
-				x=230
-				y=88
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionStepDown"
-				clr=14
-				bclr=51
-			}
-			label="-"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=280
-				y=88
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionStepUp"
-				clr=14
-				bclr=51
-			}
-			label="+"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=280
-				y=0
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="*1000"
-			press_msg="1000"
-		}
-		"message button" {
-			object {
-				x=280
-				y=22
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="*10"
-			press_msg="10"
-		}
-		"message button" {
-			object {
-				x=280
-				y=44
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="*2"
-			press_msg="2"
-		}
-		"message button" {
-			object {
-				x=280
-				y=66
-				width=45
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TransmissionFactor"
-				clr=14
-				bclr=51
-			}
-			label="+10%"
-			press_msg="1.1"
-		}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
 	}
+	label="/1000"
+	press_msg="0.001"
+}
+"message button" {
+	object {
+		x=340
+		y=0
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionSetpoint"
+		clr=14
+		bclr=51
+	}
+	label="1e-2"
+	press_msg="1.0e-2"
+}
+"message button" {
+	object {
+		x=340
+		y=22
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionSetpoint"
+		clr=14
+		bclr=51
+	}
+	label="1e-4"
+	press_msg="1.0e-4"
+}
+"message button" {
+	object {
+		x=340
+		y=44
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionSetpoint"
+		clr=14
+		bclr=51
+	}
+	label="1e-6"
+	press_msg="1.0e-6"
+}
+"message button" {
+	object {
+		x=340
+		y=66
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionSetpoint"
+		clr=14
+		bclr=51
+	}
+	label="1e-8"
+	press_msg="1.0e-8"
+}
+"message button" {
+	object {
+		x=340
+		y=88
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionSetpoint"
+		clr=14
+		bclr=51
+	}
+	label="1e-10"
+	press_msg="1.0e-10"
+}
+"message button" {
+	object {
+		x=230
+		y=22
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
+	}
+	label="/10"
+	press_msg="0.1"
+}
+"message button" {
+	object {
+		x=230
+		y=44
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
+	}
+	label="/2"
+	press_msg=".5"
+}
+"message button" {
+	object {
+		x=230
+		y=66
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
+	}
+	label="-10%"
+	press_msg="0.9"
+}
+"message button" {
+	object {
+		x=230
+		y=88
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionStepDown"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=280
+		y=88
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionStepUp"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=280
+		y=0
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
+	}
+	label="*1000"
+	press_msg="1000"
+}
+"message button" {
+	object {
+		x=280
+		y=22
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
+	}
+	label="*10"
+	press_msg="10"
+}
+"message button" {
+	object {
+		x=280
+		y=44
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
+	}
+	label="*2"
+	press_msg="2"
+}
+"message button" {
+	object {
+		x=280
+		y=66
+		width=45
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TransmissionFactor"
+		clr=14
+		bclr=51
+	}
+	label="+10%"
+	press_msg="1.1"
 }
 "text update" {
 	object {

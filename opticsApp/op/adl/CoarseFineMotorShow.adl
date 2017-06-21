@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/CoarseFineMotorShow.adl"
-	version=030004
+	version=030111
 }
 display {
 	object {
@@ -153,74 +153,63 @@ text {
 	bclr=63
 	label="-?"
 }
-composite {
+indicator {
+	object {
+		x=178
+		y=52
+		width=250
+		height=25
+	}
+	monitor {
+		chan="$(PM)$(CM).RBV"
+		clr=14
+		bclr=51
+	}
+	label="no decorations"
+	limits {
+	}
+}
+indicator {
+	object {
+		x=228
+		y=24
+		width=150
+		height=25
+	}
+	monitor {
+		chan="$(PM)$(FM).RBV"
+		clr=14
+		bclr=51
+	}
+	label="no decorations"
+	limits {
+	}
+}
+text {
+	object {
+		x=213
+		y=27
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="F"
+	align="horiz. centered"
+}
+text {
 	object {
 		x=163
-		y=24
-		width=265
-		height=53
+		y=57
+		width=10
+		height=20
 	}
-	"composite name"=""
-	children {
-		indicator {
-			object {
-				x=178
-				y=52
-				width=250
-				height=25
-			}
-			monitor {
-				chan="$(PM)$(CM).RBV"
-				clr=14
-				bclr=51
-			}
-			label="no decorations"
-			limits {
-			}
-		}
-		indicator {
-			object {
-				x=228
-				y=24
-				width=150
-				height=25
-			}
-			monitor {
-				chan="$(PM)$(FM).RBV"
-				clr=14
-				bclr=51
-			}
-			label="no decorations"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=213
-				y=27
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="F"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=163
-				y=57
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="C"
-			align="horiz. centered"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="C"
+	align="horiz. centered"
 }
 "related display" {
 	object {
@@ -263,52 +252,41 @@ composite {
 	bclr=2
 	label="-DEBUG"
 }
-composite {
+"related display" {
 	object {
 		x=5
 		y=75
-		width=125
+		width=55
 		height=20
 	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=5
-				y=75
-				width=55
-				height=20
-			}
-			display[0] {
-				label="Combined (soft) motor"
-				name="motorx.adl"
-				args="P=$(P),M=MOT"
-			}
-			display[1] {
-				label="Actual motors"
-				name="motor2x.adl"
-				args="P=$(PM),M1=$(CM),M2=$(FM)"
-			}
-			clr=0
-			bclr=63
-			label="-Motors"
-		}
-		"related display" {
-			object {
-				x=90
-				y=75
-				width=40
-				height=20
-			}
-			display[0] {
-				label="Small display"
-				name="CoarseFineMotor.adl"
-				args="P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)"
-				policy="replace display"
-			}
-			clr=0
-			bclr=17
-			label="-Less"
-		}
+	display[0] {
+		label="Combined (soft) motor"
+		name="motorx.adl"
+		args="P=$(P),M=MOT"
 	}
+	display[1] {
+		label="Actual motors"
+		name="motor2x.adl"
+		args="P=$(PM),M1=$(CM),M2=$(FM)"
+	}
+	clr=0
+	bclr=63
+	label="-Motors"
+}
+"related display" {
+	object {
+		x=90
+		y=75
+		width=40
+		height=20
+	}
+	display[0] {
+		label="Small display"
+		name="CoarseFineMotor.adl"
+		args="P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=17
+	label="-Less"
 }

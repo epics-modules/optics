@@ -1,7 +1,7 @@
 
 file {
-	name="/home/beams/BCDA/epics/synApps_R3.13.2_R4.3/share/stdApp/op/adl/SGM_tiny_1.4.adl"
-	version=020306
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/SGM_tiny.adl"
+	version=030111
 }
 display {
 	object {
@@ -262,46 +262,35 @@ menu {
 		bclr=51
 	}
 }
-composite {
+"message button" {
 	object {
 		x=80
 		y=144
-		width=75
+		width=35
 		height=20
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=80
-				y=144
-				width=35
-				height=20
-			}
-			control {
-				chan="$(P)SGM$(N):move.PROC"
-				clr=14
-				bclr=51
-			}
-			label="Move"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=120
-				y=144
-				width=35
-				height=20
-			}
-			control {
-				chan="$(P)SGM$(N):sync.PROC"
-				clr=14
-				bclr=51
-			}
-			label="Sync"
-			press_msg="1"
-		}
+	control {
+		chan="$(P)SGM$(N):move.PROC"
+		clr=14
+		bclr=51
 	}
+	label="Move"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=120
+		y=144
+		width=35
+		height=20
+	}
+	control {
+		chan="$(P)SGM$(N):sync.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Sync"
+	press_msg="1"
 }
 rectangle {
 	object {

@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/orient_HKL.adl"
-	version=030004
+	version=030111
 }
 display {
 	object {
@@ -244,259 +244,226 @@ rectangle {
 		chan="$(P)orient$(O):H_busy"
 	}
 }
-composite {
+text {
 	object {
 		x=120
-		y=37
-		width=97
-		height=24
+		y=40
+		width=10
+		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=120
-				y=40
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="K"
-		}
-		"text entry" {
-			object {
-				x=135
-				y=39
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):K"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=133
-				y=37
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):K_busy"
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="K"
+}
+"text entry" {
+	object {
+		x=135
+		y=39
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):K"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+rectangle {
+	object {
+		x=133
+		y=37
+		width=84
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):K_busy"
+	}
+}
+text {
 	object {
 		x=230
-		y=37
-		width=97
-		height=24
+		y=40
+		width=10
+		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=230
-				y=40
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="L"
-		}
-		"text entry" {
-			object {
-				x=245
-				y=39
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):L"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=243
-				y=37
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):L_busy"
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="L"
+}
+"text entry" {
+	object {
+		x=245
+		y=39
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):L"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+rectangle {
+	object {
+		x=243
+		y=37
+		width=84
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):L_busy"
+	}
+}
+"message button" {
+	object {
+		x=85
+		y=59
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):H_tweak.A"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+}
+"message button" {
 	object {
 		x=25
 		y=59
-		width=300
+		width=20
 		height=20
 	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=85
-				y=59
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):H_tweak.A"
-				clr=14
-				bclr=51
-			}
-			label="+"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=25
-				y=59
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):H_tweak.B"
-				clr=14
-				bclr=51
-			}
-			label="-"
-			press_msg="1"
-		}
-		"text entry" {
-			object {
-				x=45
-				y=61
-				width=40
-				height=18
-			}
-			control {
-				chan="$(P)orient$(O):H_tweak.C"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"message button" {
-			object {
-				x=195
-				y=59
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):K_tweak.A"
-				clr=14
-				bclr=51
-			}
-			label="+"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=135
-				y=59
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):K_tweak.B"
-				clr=14
-				bclr=51
-			}
-			label="-"
-			press_msg="1"
-		}
-		"text entry" {
-			object {
-				x=155
-				y=61
-				width=40
-				height=18
-			}
-			control {
-				chan="$(P)orient$(O):K_tweak.C"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"message button" {
-			object {
-				x=305
-				y=59
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):L_tweak.A"
-				clr=14
-				bclr=51
-			}
-			label="+"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=245
-				y=59
-				width=20
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):L_tweak.B"
-				clr=14
-				bclr=51
-			}
-			label="-"
-			press_msg="1"
-		}
-		"text entry" {
-			object {
-				x=265
-				y=61
-				width=40
-				height=18
-			}
-			control {
-				chan="$(P)orient$(O):L_tweak.C"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	control {
+		chan="$(P)orient$(O):H_tweak.B"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=45
+		y=61
+		width=40
+		height=18
+	}
+	control {
+		chan="$(P)orient$(O):H_tweak.C"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=195
+		y=59
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):K_tweak.A"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=135
+		y=59
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):K_tweak.B"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=155
+		y=61
+		width=40
+		height=18
+	}
+	control {
+		chan="$(P)orient$(O):K_tweak.C"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=305
+		y=59
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):L_tweak.A"
+		clr=14
+		bclr=51
+	}
+	label="+"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=245
+		y=59
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):L_tweak.B"
+		clr=14
+		bclr=51
+	}
+	label="-"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=265
+		y=61
+		width=40
+		height=18
+	}
+	control {
+		chan="$(P)orient$(O):L_tweak.C"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }

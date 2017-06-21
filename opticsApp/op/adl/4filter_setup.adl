@@ -1,7 +1,7 @@
 
 file {
-	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/stdApp/op/adl/4filter_setup_4.1.adl"
-	version=020205
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/4filter_setup.adl"
+	version=030111
 }
 display {
 	object {
@@ -13,6 +13,9 @@ display {
 	clr=14
 	bclr=4
 	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
 }
 "color map" {
 	ncolors=65
@@ -133,6 +136,8 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
 text {
 	object {
@@ -162,6 +167,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -174,6 +181,8 @@ text {
 		chan="$(P)$(Q1)pos4.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -188,6 +197,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -200,6 +211,8 @@ text {
 		chan="$(P)$(Q1)pos2.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -214,6 +227,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -226,6 +241,8 @@ text {
 		chan="$(P)$(Q1)pos1.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "choice button" {
@@ -305,96 +322,97 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
-composite {
+"text entry" {
 	object {
 		x=385
 		y=125
 		width=70
-		height=120
+		height=20
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		"text entry" {
-			object {
-				x=385
-				y=125
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)$(Q2)pos5.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		"text entry" {
-			object {
-				x=385
-				y=145
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)$(Q2)pos4.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		"text entry" {
-			object {
-				x=385
-				y=165
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)$(Q2)pos3.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		"text entry" {
-			object {
-				x=385
-				y=185
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)$(Q2)pos2.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		"text entry" {
-			object {
-				x=385
-				y=225
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)$(Q2)posHome.VAL"
-				clr=14
-				bclr=51
-			}
-		}
-		"text entry" {
-			object {
-				x=385
-				y=205
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)$(Q2)pos1.VAL"
-				clr=14
-				bclr=51
-			}
-		}
+	control {
+		chan="$(P)$(Q2)pos5.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=385
+		y=145
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)$(Q2)pos4.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=385
+		y=165
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)$(Q2)pos3.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=385
+		y=185
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)$(Q2)pos2.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=385
+		y=225
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)$(Q2)posHome.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=385
+		y=205
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)$(Q2)pos1.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
 text {
@@ -425,6 +443,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -437,6 +457,8 @@ text {
 		chan="$(P)$(Q2)name4"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -451,6 +473,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -463,6 +487,8 @@ text {
 		chan="$(P)$(Q2)name2"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -477,6 +503,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -489,6 +517,8 @@ text {
 		chan="$(P)$(Q2)name1"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 text {
@@ -627,6 +657,8 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
 text {
 	object {
@@ -652,6 +684,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -664,6 +698,8 @@ text {
 		chan="$(P)$(Q1)name4"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -678,6 +714,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -690,6 +728,8 @@ text {
 		chan="$(P)$(Q1)name2"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -704,6 +744,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -716,6 +758,8 @@ text {
 		chan="$(P)$(Q1)name1"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 text {
@@ -851,6 +895,8 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
 text {
 	object {
@@ -950,6 +996,8 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -962,6 +1010,8 @@ text {
 		chan="$(P)$(Q3)pos5.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -976,6 +1026,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -988,6 +1040,8 @@ text {
 		chan="$(P)$(Q3)pos3.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -1002,6 +1056,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1015,6 +1071,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1027,6 +1085,8 @@ text {
 		chan="$(P)$(Q3)pos1.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 text {
@@ -1057,6 +1117,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1069,6 +1131,8 @@ text {
 		chan="$(P)$(Q3)name4"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -1083,6 +1147,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1095,6 +1161,8 @@ text {
 		chan="$(P)$(Q3)name2"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -1109,6 +1177,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1121,6 +1191,8 @@ text {
 		chan="$(P)$(Q3)name1"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 text {
@@ -1259,6 +1331,8 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
 text {
 	object {
@@ -1297,6 +1371,8 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1309,6 +1385,8 @@ text {
 		chan="$(P)$(Q4)pos5.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -1323,6 +1401,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1335,6 +1415,8 @@ text {
 		chan="$(P)$(Q4)pos3.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -1349,6 +1431,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1362,6 +1446,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1374,6 +1460,8 @@ text {
 		chan="$(P)$(Q4)pos1.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 text {
@@ -1404,6 +1492,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1416,6 +1506,8 @@ text {
 		chan="$(P)$(Q4)name4"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -1430,6 +1522,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1442,6 +1536,8 @@ text {
 		chan="$(P)$(Q4)name2"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 "text entry" {
@@ -1456,6 +1552,8 @@ text {
 		clr=14
 		bclr=16
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -1468,6 +1566,8 @@ text {
 		chan="$(P)$(Q4)name1"
 		clr=14
 		bclr=16
+	}
+	limits {
 	}
 }
 text {
@@ -1619,6 +1719,8 @@ text {
 		bclr=35
 	}
 	format="string"
+	limits {
+	}
 }
 text {
 	object {

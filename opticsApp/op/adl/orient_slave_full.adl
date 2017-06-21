@@ -1,7 +1,7 @@
 
 file {
-	name="/APSshare/epics/synApps_cvs/support/optics/opticsApp/op/adl/orient_slave_full.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/orient_slave_full.adl"
+	version=030111
 }
 display {
 	object {
@@ -305,110 +305,77 @@ text {
 	}
 	textix="gamma"
 }
-composite {
+text {
 	object {
 		x=78
+		y=460
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+}
+text {
+	object {
+		x=80
 		y=455
-		width=12
-		height=25
+		width=10
+		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=78
-				y=460
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="A"
-		}
-		text {
-			object {
-				x=80
-				y=455
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="o"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="o"
 }
-composite {
+text {
 	object {
 		x=78
+		y=480
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+}
+text {
+	object {
+		x=80
 		y=475
-		width=12
-		height=25
+		width=10
+		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=78
-				y=480
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="A"
-		}
-		text {
-			object {
-				x=80
-				y=475
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="o"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="o"
 }
-composite {
+text {
 	object {
 		x=78
+		y=500
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+}
+text {
+	object {
+		x=80
 		y=495
-		width=12
-		height=25
+		width=10
+		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=78
-				y=500
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="A"
-		}
-		text {
-			object {
-				x=80
-				y=495
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="o"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="o"
 }
 rectangle {
 	object {
@@ -1130,59 +1097,48 @@ rectangle {
 	limits {
 	}
 }
-composite {
+text {
 	object {
 		x=10
+		y=131
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="K"
+}
+"text entry" {
+	object {
+		x=25
+		y=130
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):K"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=23
 		y=128
-		width=97
+		width=84
 		height=24
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=10
-				y=131
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="K"
-		}
-		"text entry" {
-			object {
-				x=25
-				y=130
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):K"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=23
-				y=128
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):K_busy"
-			}
-		}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):K_busy"
 	}
 }
 "message button" {
@@ -1335,40 +1291,29 @@ rectangle {
 		chan="$(P)orient$(O):H_busy"
 	}
 }
-composite {
+text {
 	object {
 		x=10
 		y=258
 		width=55
-		height=20
+		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=10
-				y=258
-				width=55
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="PRIMARY"
-		}
-		text {
-			object {
-				x=10
-				y=268
-				width=55
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="REFLECTION"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="PRIMARY"
+}
+text {
+	object {
+		x=10
+		y=268
+		width=55
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="REFLECTION"
 }
 text {
 	object {
@@ -1497,351 +1442,274 @@ rectangle {
 	limits {
 	}
 }
-composite {
+"text entry" {
 	object {
 		x=379
 		y=336
 		width=70
-		height=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=379
-				y=336
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_12"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=379
-				y=356
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_22"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=379
-				y=376
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_32"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	control {
+		chan="$(P)orient$(O):OMTX_12"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=379
+		y=356
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):OMTX_22"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=379
+		y=376
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):OMTX_32"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
 	object {
 		x=449
 		y=336
 		width=70
-		height=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=449
-				y=336
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_13"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=449
-				y=356
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_23"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=449
-				y=376
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_33"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	control {
+		chan="$(P)orient$(O):OMTX_13"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=449
+		y=356
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):OMTX_23"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=449
+		y=376
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):OMTX_33"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
 	object {
 		x=309
 		y=336
 		width=70
-		height=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=309
-				y=336
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_11"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=309
-				y=356
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_21"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=309
-				y=376
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):OMTX_31"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	control {
+		chan="$(P)orient$(O):OMTX_11"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=309
+		y=356
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):OMTX_21"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=309
+		y=376
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):OMTX_31"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
 	object {
 		x=313
 		y=454
 		width=70
-		height=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=313
-				y=454
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):A0_11"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=313
-				y=474
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):A0_21"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=313
-				y=494
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):A0_31"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	control {
+		chan="$(P)orient$(O):A0_11"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=313
+		y=474
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):A0_21"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=313
+		y=494
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):A0_31"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
 	object {
 		x=383
 		y=454
 		width=70
-		height=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=383
-				y=454
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):A0_12"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=383
-				y=474
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):A0_22"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=383
-				y=494
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):A0_32"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	control {
+		chan="$(P)orient$(O):A0_12"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=383
+		y=474
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):A0_22"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=383
+		y=494
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):A0_32"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
 	object {
 		x=453
 		y=454
 		width=70
-		height=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=453
-				y=454
-				width=70
-				height=60
-			}
-			"composite name"=""
-			children {
-				"text entry" {
-					object {
-						x=453
-						y=454
-						width=70
-						height=20
-					}
-					control {
-						chan="$(P)orient$(O):A0_13"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=453
-						y=474
-						width=70
-						height=20
-					}
-					control {
-						chan="$(P)orient$(O):A0_23"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=453
-						y=494
-						width=70
-						height=20
-					}
-					control {
-						chan="$(P)orient$(O):A0_33"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-			}
-		}
+	control {
+		chan="$(P)orient$(O):A0_13"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=453
+		y=474
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):A0_23"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=453
+		y=494
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):A0_33"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
 text {
@@ -1880,107 +1748,85 @@ text {
 	}
 	textix="o"
 }
-composite {
+"text entry" {
 	object {
 		x=155
 		y=457
 		width=70
-		height=60
-	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=155
-				y=457
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):alpha"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=155
-				y=477
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):beta"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=155
-				y=497
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):gamma"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=246
-		y=475
-		width=47
 		height=20
 	}
-	"composite name"=""
-	children {
-		polyline {
-			object {
-				x=246
-				y=482
-				width=31
-				height=6
-			}
-			"basic attribute" {
-				clr=17
-				fill="outline"
-				width=6
-			}
-			points {
-				(274,485)
-				(249,485)
-			}
-		}
-		polygon {
-			object {
-				x=273
-				y=475
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=17
-				width=1
-			}
-			points {
-				(273,475)
-				(293,485)
-				(273,494)
-				(273,495)
-				(273,475)
-			}
-		}
+	control {
+		chan="$(P)orient$(O):alpha"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=155
+		y=477
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):beta"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=155
+		y=497
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):gamma"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+polyline {
+	object {
+		x=246
+		y=482
+		width=31
+		height=6
+	}
+	"basic attribute" {
+		clr=17
+		fill="outline"
+		width=6
+	}
+	points {
+		(274,485)
+		(249,485)
+	}
+}
+polygon {
+	object {
+		x=273
+		y=475
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=17
+		width=1
+	}
+	points {
+		(273,475)
+		(293,485)
+		(273,494)
+		(273,495)
+		(273,475)
 	}
 }
 text {
@@ -1996,79 +1842,57 @@ text {
 	textix="AUTO"
 	align="horiz. centered"
 }
-composite {
+text {
 	object {
 		x=13
+		y=522
+		width=75
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Wavelength:"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=94
+		y=521
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):lambda"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=165
+		y=523
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+}
+text {
+	object {
+		x=167
 		y=518
-		width=164
-		height=25
+		width=10
+		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=13
-				y=522
-				width=75
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Wavelength:"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=94
-				y=521
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):lambda"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		composite {
-			object {
-				x=165
-				y=518
-				width=12
-				height=25
-			}
-			"composite name"=""
-			children {
-				text {
-					object {
-						x=165
-						y=523
-						width=10
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="A"
-				}
-				text {
-					object {
-						x=167
-						y=518
-						width=10
-						height=10
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="o"
-				}
-			}
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="o"
 }
 text {
 	object {
@@ -2110,267 +1934,245 @@ text {
 	}
 	textix="keV"
 }
-composite {
+text {
 	object {
-		x=180
+		x=181
 		y=66
-		width=121
-		height=131
+		width=120
+		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=181
-				y=66
-				width=120
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="HKL/ANGLE CONSTRAINT:"
-			align="horiz. centered"
-		}
-		menu {
-			object {
-				x=181
-				y=77
-				width=120
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):Mode"
-				clr=14
-				bclr=51
-			}
-		}
-		"text entry" {
-			object {
-				x=213
-				y=129
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):TH"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=213
-				y=152
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):CHI"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=213
-				y=175
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):PHI"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=180
-				y=130
-				width=30
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="TH"
-		}
-		text {
-			object {
-				x=180
-				y=153
-				width=30
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="CHI"
-		}
-		text {
-			object {
-				x=180
-				y=176
-				width=30
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="PHI"
-		}
-		rectangle {
-			object {
-				x=210
-				y=128
-				width=85
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):TH_busy"
-			}
-		}
-		rectangle {
-			object {
-				x=210
-				y=150
-				width=85
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):CHI_busy"
-			}
-		}
-		rectangle {
-			object {
-				x=210
-				y=173
-				width=85
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):PHI_busy"
-			}
-		}
-		"text entry" {
-			object {
-				x=213
-				y=106
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):TTH"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=210
-				y=104
-				width=85
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):TTH_busy"
-			}
-		}
-		text {
-			object {
-				x=180
-				y=107
-				width=30
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="TTH"
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="HKL/ANGLE CONSTRAINT:"
+	align="horiz. centered"
+}
+menu {
+	object {
+		x=181
+		y=77
+		width=120
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):Mode"
+		clr=14
+		bclr=51
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=213
+		y=129
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):TH"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=213
+		y=152
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):CHI"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=213
+		y=175
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):PHI"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=180
+		y=130
+		width=30
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="TH"
+}
+text {
+	object {
+		x=180
+		y=153
+		width=30
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="CHI"
+}
+text {
+	object {
+		x=180
+		y=176
+		width=30
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="PHI"
+}
+rectangle {
+	object {
+		x=210
+		y=128
+		width=85
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):TH_busy"
+	}
+}
+rectangle {
+	object {
+		x=210
+		y=150
+		width=85
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):CHI_busy"
+	}
+}
+rectangle {
+	object {
+		x=210
+		y=173
+		width=85
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):PHI_busy"
+	}
+}
+"text entry" {
+	object {
+		x=213
+		y=106
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):TTH"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=210
+		y=104
+		width=85
+		height=24
+	}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):TTH_busy"
+	}
+}
+text {
+	object {
+		x=180
+		y=107
+		width=30
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="TTH"
+}
+text {
+	object {
+		x=136
+		y=138
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="OM"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=136
+		y=149
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A0"
+	align="horiz. centered"
+}
+rectangle {
 	object {
 		x=132
 		y=135
 		width=20
 		height=25
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=136
-				y=138
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="OM"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=136
-				y=149
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="A0"
-			align="horiz. centered"
-		}
-		rectangle {
-			object {
-				x=132
-				y=135
-				width=20
-				height=25
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=2
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
 	}
 }
 polygon {

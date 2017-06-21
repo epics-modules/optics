@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/CoarseFineMotor.adl"
-	version=030004
+	version=030111
 }
 display {
 	object {
@@ -153,52 +153,41 @@ text {
 	bclr=63
 	label="-?"
 }
-composite {
+"related display" {
+	object {
+		x=90
+		y=75
+		width=40
+		height=20
+	}
+	display[0] {
+		label="Graphic of stage"
+		name="CoarseFineMotorShow.adl"
+		args="P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=17
+	label="-More"
+}
+"related display" {
 	object {
 		x=5
 		y=75
-		width=125
+		width=55
 		height=20
 	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=90
-				y=75
-				width=40
-				height=20
-			}
-			display[0] {
-				label="Graphic of stage"
-				name="CoarseFineMotorShow.adl"
-				args="P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)"
-				policy="replace display"
-			}
-			clr=0
-			bclr=17
-			label="-More"
-		}
-		"related display" {
-			object {
-				x=5
-				y=75
-				width=55
-				height=20
-			}
-			display[0] {
-				label="Combined (soft) motor"
-				name="motorx.adl"
-				args="P=$(P),M=MOT"
-			}
-			display[1] {
-				label="Actual motors"
-				name="motor2x.adl"
-				args="P=$(PM),M1=$(CM),M2=$(FM)"
-			}
-			clr=0
-			bclr=63
-			label="-Motors"
-		}
+	display[0] {
+		label="Combined (soft) motor"
+		name="motorx.adl"
+		args="P=$(P),M=MOT"
 	}
+	display[1] {
+		label="Actual motors"
+		name="motor2x.adl"
+		args="P=$(PM),M1=$(CM),M2=$(FM)"
+	}
+	clr=0
+	bclr=63
+	label="-Motors"
 }

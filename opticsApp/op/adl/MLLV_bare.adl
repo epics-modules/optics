@@ -1,7 +1,7 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/xxx/xxxApp/op/adl/MLLV_bare.adl"
-	version=030107
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/MLLV_bare.adl"
+	version=030111
 }
 display {
 	object {
@@ -141,32 +141,21 @@ composite {
 	object {
 		x=135
 		y=30
-		width=241
+		width=116
 		height=176
 	}
 	"composite name"=""
-	children {
-		composite {
-			object {
-				x=135
-				y=30
-				width=116
-				height=176
-			}
-			"composite name"=""
-			"composite file"="motorx_bare.adl;P=$(P),M=$(Q)z"
-		}
-		composite {
-			object {
-				x=260
-				y=30
-				width=116
-				height=176
-			}
-			"composite name"=""
-			"composite file"="motorx_bare.adl;P=$(P),M=$(Q)y"
-		}
+	"composite file"="motorx_bare.adl;P=$(P),M=$(Q)z"
+}
+composite {
+	object {
+		x=260
+		y=30
+		width=116
+		height=176
 	}
+	"composite name"=""
+	"composite file"="motorx_bare.adl;P=$(P),M=$(Q)y"
 }
 composite {
 	object {

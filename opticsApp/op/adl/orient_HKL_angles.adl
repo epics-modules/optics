@@ -1,12 +1,12 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/orient_HKL_angles.adl"
-	version=030004
+	version=030111
 }
 display {
 	object {
-		x=73
-		y=547
+		x=690
+		y=570
 		width=700
 		height=65
 	}
@@ -184,59 +184,48 @@ rectangle {
 		chan="$(P)orient$(O):H_busy"
 	}
 }
-composite {
+text {
 	object {
 		x=120
+		y=42
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="K"
+}
+"text entry" {
+	object {
+		x=135
+		y=41
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):K"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=133
 		y=39
-		width=97
+		width=84
 		height=24
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=120
-				y=42
-				width=10
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="K"
-		}
-		"text entry" {
-			object {
-				x=135
-				y=41
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):K"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=133
-				y=39
-				width=84
-				height=24
-			}
-			"basic attribute" {
-				clr=16
-				fill="outline"
-				width=2
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)orient$(O):K_busy"
-			}
-		}
+	"basic attribute" {
+		clr=16
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)orient$(O):K_busy"
 	}
 }
 "text update" {
@@ -373,44 +362,33 @@ text {
 	limits {
 	}
 }
-composite {
+text {
 	object {
 		x=340
 		y=25
 		width=80
-		height=34
+		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=340
-				y=25
-				width=80
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="TTH"
-			align="horiz. centered"
-		}
-		"text update" {
-			object {
-				x=340
-				y=45
-				width=80
-				height=14
-			}
-			monitor {
-				chan="$(P)orient$(O):TTH"
-				clr=54
-				bclr=2
-			}
-			align="horiz. centered"
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="TTH"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=340
+		y=45
+		width=80
+		height=14
+	}
+	monitor {
+		chan="$(P)orient$(O):TTH"
+		clr=54
+		bclr=2
+	}
+	align="horiz. centered"
+	limits {
 	}
 }
 text {

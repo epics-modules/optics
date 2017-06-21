@@ -1,7 +1,7 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/2-4/opticsApp/op/adl/table_fixedPoints.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/table_fixedPoints.adl"
+	version=030111
 }
 display {
 	object {
@@ -936,47 +936,36 @@ text {
 	limits {
 	}
 }
-composite {
+"text update" {
+	object {
+		x=1
+		y=0
+		width=328
+		height=20
+	}
+	monitor {
+		chan="$(P)$(T).DESC"
+		clr=54
+		bclr=0
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+polyline {
 	object {
 		x=0
-		y=0
-		width=330
-		height=23
+		y=20
+		width=329
+		height=3
 	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=1
-				y=0
-				width=328
-				height=20
-			}
-			monitor {
-				chan="$(P)$(T).DESC"
-				clr=54
-				bclr=0
-			}
-			align="horiz. centered"
-			limits {
-			}
-		}
-		polyline {
-			object {
-				x=0
-				y=20
-				width=329
-				height=3
-			}
-			"basic attribute" {
-				clr=54
-				width=3
-			}
-			points {
-				(1,21)
-				(327,21)
-			}
-		}
+	"basic attribute" {
+		clr=54
+		width=3
+	}
+	points {
+		(1,21)
+		(327,21)
 	}
 }
 text {

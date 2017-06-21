@@ -1,12 +1,12 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/pf4Bankconfig_bare.adl"
-	version=030105
+	version=030111
 }
 display {
 	object {
-		x=439
-		y=700
+		x=950
+		y=581
 		width=225
 		height=250
 	}
@@ -205,45 +205,34 @@ text {
 	}
 	textix="keV"
 }
-composite {
+rectangle {
 	object {
 		x=77
 		y=65
 		width=66
 		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=77
-				y=65
-				width=66
-				height=20
-			}
-			"basic attribute" {
-				clr=20
-			}
-			"dynamic attribute" {
-				vis="if zero"
-				chan="$(P)$(H)bank$(B)"
-			}
-		}
-		rectangle {
-			object {
-				x=77
-				y=65
-				width=66
-				height=20
-			}
-			"basic attribute" {
-				clr=18
-			}
-			"dynamic attribute" {
-				vis="if not zero"
-				chan="$(P)$(H)bank$(B)"
-			}
-		}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(H)bank$(B)"
+	}
+}
+rectangle {
+	object {
+		x=77
+		y=65
+		width=66
+		height=20
+	}
+	"basic attribute" {
+		clr=18
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(H)bank$(B)"
 	}
 }
 "message button" {
@@ -450,15 +439,36 @@ composite {
 	"composite name"=""
 	"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=3,B=B"
 }
-composite {
+"text entry" {
 	object {
 		x=110
 		y=105
-		width=50
-		height=22
+		width=40
+		height=20
 	}
-	"composite name"=""
-	"composite file"="pf4_other_bare.adl;P=$(P),H=$(H),N=4,B=B"
+	control {
+		chan="$(P)$(H)Other4B"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=150
+		y=107
+		width=10
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)$(H)OtherLegal4B"
+	}
+	textix="X"
 }
 text {
 	object {

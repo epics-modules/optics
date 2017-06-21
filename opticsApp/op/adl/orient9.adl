@@ -1,12 +1,12 @@
 
 file {
-	name="/APSshare/epics/synApps_cvs/support/optics/opticsApp/op/adl/orient9.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/orient9.adl"
+	version=030111
 }
 display {
 	object {
-		x=274
-		y=33
+		x=729
+		y=568
 		width=675
 		height=280
 	}
@@ -163,68 +163,57 @@ text {
 	textix="L"
 	align="horiz. centered"
 }
-composite {
+text {
 	object {
 		x=315
 		y=25
-		width=350
+		width=80
 		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=315
-				y=25
-				width=80
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="TTH"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=405
-				y=25
-				width=80
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="TH"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=495
-				y=25
-				width=80
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="CHI"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=585
-				y=25
-				width=80
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="PHI"
-			align="horiz. centered"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="TTH"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=405
+		y=25
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="TH"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=495
+		y=25
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="CHI"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=585
+		y=25
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="PHI"
+	align="horiz. centered"
 }
 "related display" {
 	object {
@@ -1641,236 +1630,203 @@ rectangle {
 	label="Stop Motors"
 	press_msg="1"
 }
-composite {
+polyline {
 	object {
 		x=405
 		y=48
 		width=260
-		height=69
+		height=1
 	}
-	"composite name"=""
-	children {
-		polyline {
-			object {
-				x=405
-				y=48
-				width=260
-				height=1
-			}
-			"basic attribute" {
-				clr=0
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(405,48)
-				(664,48)
-			}
-		}
-		polyline {
-			object {
-				x=405
-				y=116
-				width=260
-				height=1
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(405,116)
-				(664,116)
-			}
-		}
-		polyline {
-			object {
-				x=405
-				y=48
-				width=1
-				height=69
-			}
-			"basic attribute" {
-				clr=0
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(405,48)
-				(405,116)
-			}
-		}
-		polyline {
-			object {
-				x=663
-				y=48
-				width=1
-				height=69
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(663,48)
-				(663,116)
-			}
-		}
+	"basic attribute" {
+		clr=0
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(405,48)
+		(664,48)
 	}
 }
-composite {
+polyline {
+	object {
+		x=405
+		y=116
+		width=260
+		height=1
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(405,116)
+		(664,116)
+	}
+}
+polyline {
+	object {
+		x=405
+		y=48
+		width=1
+		height=69
+	}
+	"basic attribute" {
+		clr=0
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(405,48)
+		(405,116)
+	}
+}
+polyline {
+	object {
+		x=663
+		y=48
+		width=1
+		height=69
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(663,48)
+		(663,116)
+	}
+}
+polyline {
 	object {
 		x=405
 		y=205
 		width=260
-		height=69
+		height=1
 	}
-	"composite name"=""
-	children {
-		polyline {
-			object {
-				x=405
-				y=205
-				width=260
-				height=1
-			}
-			"basic attribute" {
-				clr=0
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(405,205)
-				(664,205)
-			}
-		}
-		polyline {
-			object {
-				x=405
-				y=273
-				width=260
-				height=1
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(405,273)
-				(664,273)
-			}
-		}
-		polyline {
-			object {
-				x=405
-				y=205
-				width=1
-				height=69
-			}
-			"basic attribute" {
-				clr=0
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(405,205)
-				(405,273)
-			}
-		}
-		polyline {
-			object {
-				x=663
-				y=205
-				width=1
-				height=69
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-				width=1
-			}
-			"dynamic attribute" {
-				chan="$(P)orient$(O):stopMotors"
-			}
-			points {
-				(663,205)
-				(663,273)
-			}
-		}
+	"basic attribute" {
+		clr=0
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(405,205)
+		(664,205)
 	}
 }
-composite {
+polyline {
+	object {
+		x=405
+		y=273
+		width=260
+		height=1
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(405,273)
+		(664,273)
+	}
+}
+polyline {
+	object {
+		x=405
+		y=205
+		width=1
+		height=69
+	}
+	"basic attribute" {
+		clr=0
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(405,205)
+		(405,273)
+	}
+}
+polyline {
+	object {
+		x=663
+		y=205
+		width=1
+		height=69
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=1
+	}
+	"dynamic attribute" {
+		chan="$(P)orient$(O):stopMotors"
+	}
+	points {
+		(663,205)
+		(663,273)
+	}
+}
+text {
 	object {
 		x=456
 		y=233
-		width=175
+		width=70
 		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=456
-				y=233
-				width=70
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Energy:"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=530
-				y=233
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)orient$(O):energy"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=601
-				y=233
-				width=30
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="keV"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="Energy:"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=530
+		y=233
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)orient$(O):energy"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=601
+		y=233
+		width=30
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="keV"
 }

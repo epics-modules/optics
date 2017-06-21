@@ -1,7 +1,7 @@
 
 file {
-	name="/home/jemian/epics/ioc/prj/prjApp/op/adl/fb_epid.adl"
-	version=030104
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/fb_epid.adl"
+	version=030111
 }
 display {
 	object {
@@ -818,166 +818,136 @@ text {
 	limits {
 	}
 }
-composite {
+"text update" {
 	object {
 		x=164
-		y=200
-		width=338
-		height=52
+		y=238
+		width=80
+		height=14
 	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=164
-				y=238
-				width=80
-				height=14
-			}
-			monitor {
-				chan="$(P).D"
-				clr=14
-				bclr=50
-			}
-			align="horiz. centered"
-			format="compact"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=164
-				y=217
-				width=80
-				height=16
-			}
-			control {
-				chan="$(P).I"
-				clr=14
-				bclr=50
-			}
-			format="compact"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=282
-				y=220
-				width=220
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="I = KP * KI * sum(FE*DT)"
-		}
-		text {
-			object {
-				x=282
-				y=200
-				width=220
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="P = KP * FE"
-		}
-		text {
-			object {
-				x=282
-				y=241
-				width=220
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="D = KP * KD * (FE[i] - FE[i-1])/DT"
-		}
+	monitor {
+		chan="$(P).D"
+		clr=14
+		bclr=50
 	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P).FMOD"
+	align="horiz. centered"
+	format="compact"
+	limits {
 	}
 }
-composite {
+"text entry" {
+	object {
+		x=164
+		y=217
+		width=80
+		height=16
+	}
+	control {
+		chan="$(P).I"
+		clr=14
+		bclr=50
+	}
+	format="compact"
+	limits {
+	}
+}
+text {
+	object {
+		x=282
+		y=220
+		width=220
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="I = KP * KI * sum(FE*DT)"
+}
+text {
+	object {
+		x=282
+		y=200
+		width=220
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="P = KP * FE"
+}
+text {
+	object {
+		x=282
+		y=241
+		width=220
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="D = KP * KD * (FE[i] - FE[i-1])/DT"
+}
+text {
 	object {
 		x=199
+		y=217
+		width=12
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="0"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=199
+		y=238
+		width=12
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="0"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=282
+		y=241
+		width=220
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="D = 0"
+}
+text {
+	object {
+		x=282
+		y=220
+		width=220
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="I = 0"
+}
+text {
+	object {
+		x=282
 		y=200
-		width=303
-		height=52
+		width=220
+		height=10
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=199
-				y=217
-				width=12
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="0"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=199
-				y=238
-				width=12
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="0"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=282
-				y=241
-				width=220
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="D = 0"
-		}
-		text {
-			object {
-				x=282
-				y=220
-				width=220
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="I = 0"
-		}
-		text {
-			object {
-				x=282
-				y=200
-				width=220
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="P = KP * (INP[i] - INP[i-1])/DT"
-		}
+	"basic attribute" {
+		clr=14
 	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P).FMOD"
-	}
+	textix="P = KP * (INP[i] - INP[i-1])/DT"
 }
 text {
 	object {

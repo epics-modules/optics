@@ -1,7 +1,7 @@
 
 file {
-	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/stdApp/op/adl/table_help_3.0.adl"
-	version=020205
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/table_help.adl"
+	version=030111
 }
 display {
 	object {
@@ -13,6 +13,9 @@ display {
 	clr=14
 	bclr=2
 	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
 }
 "color map" {
 	ncolors=65
@@ -147,42 +150,29 @@ text {
 	}
 	stacking="column"
 }
-composite {
+text {
 	object {
 		x=101
 		y=170
 		width=300
-		height=29
+		height=14
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		text {
-			object {
-				x=101
-				y=170
-				width=300
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Redefine current table coordinates as zero"
-		}
-		text {
-			object {
-				x=101
-				y=185
-				width=300
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="(without moving any motors)"
-		}
+	"basic attribute" {
+		clr=14
 	}
+	textix="Redefine current table coordinates as zero"
+}
+text {
+	object {
+		x=101
+		y=185
+		width=300
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(without moving any motors)"
 }
 "message button" {
 	object {
@@ -303,6 +293,8 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 text {
 	object {
@@ -327,6 +319,8 @@ text {
 		clr=14
 		bclr=4
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -339,6 +333,8 @@ text {
 		chan="$(P)$(Q):x_tweak.C"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 "message button" {
@@ -386,6 +382,8 @@ text {
 		bclr=3
 	}
 	align="horiz. centered"
+	limits {
+	}
 }
 text {
 	object {
@@ -451,6 +449,8 @@ polyline {
 		bclr=3
 	}
 	align="horiz. centered"
+	limits {
+	}
 }
 "text update" {
 	object {
@@ -465,6 +465,8 @@ polyline {
 		bclr=3
 	}
 	align="horiz. centered"
+	limits {
+	}
 }
 text {
 	object {
@@ -503,6 +505,8 @@ text {
 		bclr=3
 	}
 	align="horiz. centered"
+	limits {
+	}
 }
 text {
 	object {

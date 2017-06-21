@@ -1,7 +1,7 @@
 
 file {
 	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/MLLH_more.adl"
-	version=030107
+	version=030111
 }
 display {
 	object {
@@ -87,381 +87,370 @@ display {
 		1a7309,
 	}
 }
-composite {
+rectangle {
+	object {
+		x=104
+		y=347
+		width=237
+		height=33
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+oval {
+	object {
+		x=115
+		y=357
+		width=12
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+oval {
+	object {
+		x=318
+		y=357
+		width=12
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+arc {
+	object {
+		x=120
+		y=290
+		width=23
+		height=21
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	begin=7680
+	path=8000
+}
+arc {
+	object {
+		x=91
+		y=291
+		width=23
+		height=21
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	begin=18880
+	path=8000
+}
+polyline {
+	object {
+		x=107
+		y=311
+		width=0
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	points {
+		(107,311)
+		(107,347)
+	}
+}
+polyline {
+	object {
+		x=128
+		y=311
+		width=0
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	points {
+		(128,311)
+		(128,347)
+	}
+}
+polyline {
+	object {
+		x=107
+		y=271
+		width=0
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	points {
+		(107,271)
+		(107,291)
+	}
+}
+polyline {
+	object {
+		x=128
+		y=271
+		width=0
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	points {
+		(128,271)
+		(128,291)
+	}
+}
+polyline {
+	object {
+		x=108
+		y=270
+		width=20
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	points {
+		(108,270)
+		(128,270)
+	}
+}
+"text entry" {
+	object {
+		x=191
+		y=306
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)$(Q)xLen"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
 	object {
 		x=28
-		y=270
-		width=313
-		height=141
+		y=324
+		width=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=104
-				y=347
-				width=237
-				height=33
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		oval {
-			object {
-				x=115
-				y=357
-				width=12
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		oval {
-			object {
-				x=318
-				y=357
-				width=12
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		arc {
-			object {
-				x=120
-				y=290
-				width=23
-				height=21
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			begin=7680
-			path=8000
-		}
-		arc {
-			object {
-				x=91
-				y=291
-				width=23
-				height=21
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			begin=18880
-			path=8000
-		}
-		polyline {
-			object {
-				x=107
-				y=311
-				width=0
-				height=36
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			points {
-				(107,311)
-				(107,347)
-			}
-		}
-		polyline {
-			object {
-				x=128
-				y=311
-				width=0
-				height=36
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			points {
-				(128,311)
-				(128,347)
-			}
-		}
-		polyline {
-			object {
-				x=107
-				y=271
-				width=0
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			points {
-				(107,271)
-				(107,291)
-			}
-		}
-		polyline {
-			object {
-				x=128
-				y=271
-				width=0
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			points {
-				(128,271)
-				(128,291)
-			}
-		}
-		polyline {
-			object {
-				x=108
-				y=270
-				width=20
-				height=0
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			points {
-				(108,270)
-				(128,270)
-			}
-		}
-		"text entry" {
-			object {
-				x=191
-				y=306
-				width=60
-				height=20
-			}
-			control {
-				chan="$(P)$(Q)xLen"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=28
-				y=324
-				width=60
-				height=20
-			}
-			control {
-				chan="$(P)$(Q)zBendLen"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		polyline {
-			object {
-				x=92
-				y=303
-				width=0
-				height=60
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)xLen"
-			}
-			points {
-				(92,303)
-				(92,363)
-			}
-		}
-		polyline {
-			object {
-				x=215
-				y=384
-				width=0
-				height=16
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)xLen"
-			}
-			points {
-				(215,384)
-				(215,400)
-			}
-		}
-		"text entry" {
-			object {
-				x=233
-				y=391
-				width=60
-				height=20
-			}
-			control {
-				chan="$(P)$(Q)zNoseLen"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		polyline {
-			object {
-				x=119
-				y=331
-				width=202
-				height=0
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)xLen"
-			}
-			points {
-				(119,331)
-				(321,331)
-			}
-		}
-		polygon {
-			object {
-				x=210
-				y=381
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)zBendLen"
-			}
-			points {
-				(210,391)
-				(214,381)
-				(220,391)
-				(210,391)
-			}
-		}
-		polygon {
-			object {
-				x=312
-				y=326
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)zBendLen"
-			}
-			points {
-				(312,326)
-				(322,330)
-				(312,336)
-				(312,326)
-			}
-		}
-		polygon {
-			object {
-				x=120
-				y=326
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)zBendLen"
-			}
-			points {
-				(130,326)
-				(120,330)
-				(130,336)
-				(130,326)
-			}
-		}
-		polygon {
-			object {
-				x=210
-				y=393
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)zBendLen"
-			}
-			points {
-				(220,393)
-				(216,403)
-				(210,393)
-				(220,393)
-			}
-		}
-		polygon {
-			object {
-				x=86
-				y=354
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)zBendLen"
-			}
-			points {
-				(96,354)
-				(92,364)
-				(86,354)
-				(96,354)
-			}
-		}
-		polygon {
-			object {
-				x=87
-				y=301
-				width=10
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				chan="$(P)$(Q)zBendLen"
-			}
-			points {
-				(87,311)
-				(91,301)
-				(97,311)
-				(87,311)
-			}
-		}
+	control {
+		chan="$(P)$(Q)zBendLen"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+polyline {
+	object {
+		x=92
+		y=303
+		width=0
+		height=60
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)xLen"
+	}
+	points {
+		(92,303)
+		(92,363)
+	}
+}
+polyline {
+	object {
+		x=215
+		y=384
+		width=0
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)xLen"
+	}
+	points {
+		(215,384)
+		(215,400)
+	}
+}
+"text entry" {
+	object {
+		x=233
+		y=391
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)$(Q)zNoseLen"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+polyline {
+	object {
+		x=119
+		y=331
+		width=202
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)xLen"
+	}
+	points {
+		(119,331)
+		(321,331)
+	}
+}
+polygon {
+	object {
+		x=210
+		y=381
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)zBendLen"
+	}
+	points {
+		(210,391)
+		(214,381)
+		(220,391)
+		(210,391)
+	}
+}
+polygon {
+	object {
+		x=312
+		y=326
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)zBendLen"
+	}
+	points {
+		(312,326)
+		(322,330)
+		(312,336)
+		(312,326)
+	}
+}
+polygon {
+	object {
+		x=120
+		y=326
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)zBendLen"
+	}
+	points {
+		(130,326)
+		(120,330)
+		(130,336)
+		(130,326)
+	}
+}
+polygon {
+	object {
+		x=210
+		y=393
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)zBendLen"
+	}
+	points {
+		(220,393)
+		(216,403)
+		(210,393)
+		(220,393)
+	}
+}
+polygon {
+	object {
+		x=86
+		y=354
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)zBendLen"
+	}
+	points {
+		(96,354)
+		(92,364)
+		(86,354)
+		(96,354)
+	}
+}
+polygon {
+	object {
+		x=87
+		y=301
+		width=10
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		chan="$(P)$(Q)zBendLen"
+	}
+	points {
+		(87,311)
+		(91,301)
+		(97,311)
+		(87,311)
 	}
 }
 composite {

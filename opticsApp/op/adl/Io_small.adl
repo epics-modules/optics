@@ -1,7 +1,7 @@
 
 file {
-	name="/export/home/laser/femto/7idD/7idDApp/op/adl/Io_small.adl"
-	version=020305
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/Io_small.adl"
+	version=030111
 }
 display {
 	object {
@@ -113,67 +113,54 @@ text {
 	textix="Io_small.adl"
 	align="horiz. right"
 }
-composite {
+"text update" {
 	object {
 		x=1
+		y=35
+		width=113
+		height=18
+	}
+	monitor {
+		chan="$(P)flux.DESC"
+		clr=14
+		bclr=2
+	}
+	align="horiz. right"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=115
 		y=33
-		width=299
+		width=100
 		height=23
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		"text update" {
-			object {
-				x=1
-				y=35
-				width=113
-				height=18
-			}
-			monitor {
-				chan="$(P)flux.DESC"
-				clr=14
-				bclr=2
-			}
-			align="horiz. right"
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=115
-				y=33
-				width=100
-				height=23
-			}
-			monitor {
-				chan="$(P)flux"
-				clr=14
-				bclr=51
-			}
-			align="horiz. right"
-			format="exponential"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=220
-				y=37
-				width=80
-				height=15
-			}
-			monitor {
-				chan="$(P)flux.EGU"
-				clr=14
-				bclr=2
-			}
-			format="string"
-			limits {
-			}
-		}
+	monitor {
+		chan="$(P)flux"
+		clr=14
+		bclr=51
+	}
+	align="horiz. right"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=220
+		y=37
+		width=80
+		height=15
+	}
+	monitor {
+		chan="$(P)flux.EGU"
+		clr=14
+		bclr=2
+	}
+	format="string"
+	limits {
 	}
 }
 "related display" {
@@ -193,67 +180,54 @@ composite {
 	bclr=2
 	label="all"
 }
-composite {
+"text update" {
 	object {
 		x=1
+		y=63
+		width=113
+		height=18
+	}
+	monitor {
+		chan="$(P)detector.DESC"
+		clr=14
+		bclr=2
+	}
+	align="horiz. right"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=115
 		y=61
-		width=299
+		width=100
 		height=23
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		"text update" {
-			object {
-				x=1
-				y=63
-				width=113
-				height=18
-			}
-			monitor {
-				chan="$(P)detector.DESC"
-				clr=14
-				bclr=2
-			}
-			align="horiz. right"
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=115
-				y=61
-				width=100
-				height=23
-			}
-			monitor {
-				chan="$(P)detector"
-				clr=14
-				bclr=51
-			}
-			align="horiz. right"
-			format="exponential"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=220
-				y=65
-				width=80
-				height=15
-			}
-			monitor {
-				chan="$(P)detector.EGU"
-				clr=14
-				bclr=2
-			}
-			format="string"
-			limits {
-			}
-		}
+	monitor {
+		chan="$(P)detector"
+		clr=14
+		bclr=51
+	}
+	align="horiz. right"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=220
+		y=65
+		width=80
+		height=15
+	}
+	monitor {
+		chan="$(P)detector.EGU"
+		clr=14
+		bclr=2
+	}
+	format="string"
+	limits {
 	}
 }
 text {

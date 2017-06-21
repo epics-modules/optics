@@ -1,7 +1,7 @@
 
 file {
-	name="/net/s7dserv/xorApps/epics/synApps_5_2_1/ioc/7bma1/7bma1App/op/adl/ml_monoGraphic.adl"
-	version=030003
+	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/ml_monoGraphic.adl"
+	version=030111
 }
 display {
 	object {
@@ -274,96 +274,85 @@ rectangle {
 	bclr=17
 	label="-Z1"
 }
-composite {
+rectangle {
+	object {
+		x=235
+		y=190
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+text {
+	object {
+		x=237
+		y=192
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mY1)"
+}
+"text update" {
+	object {
+		x=237
+		y=202
+		width=60
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mY1).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=237
+		y=212
+		width=60
+		height=15
+	}
+	control {
+		chan="$(P)$(mY1).VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=235
+		y=190
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+"related display" {
 	object {
 		x=235
 		y=170
 		width=64
-		height=58
+		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=235
-				y=190
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		text {
-			object {
-				x=237
-				y=192
-				width=60
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mY1)"
-		}
-		"text update" {
-			object {
-				x=237
-				y=202
-				width=60
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mY1).RBV"
-				clr=53
-				bclr=2
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=237
-				y=212
-				width=60
-				height=15
-			}
-			control {
-				chan="$(P)$(mY1).VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=235
-				y=190
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		"related display" {
-			object {
-				x=235
-				y=170
-				width=64
-				height=20
-			}
-			display[0] {
-				name="motorx.adl"
-				args="P=$(P),M=$(mY1)"
-			}
-			clr=0
-			bclr=17
-			label="-Y1"
-		}
+	display[0] {
+		name="motorx.adl"
+		args="P=$(P),M=$(mY1)"
 	}
+	clr=0
+	bclr=17
+	label="-Y1"
 }
 rectangle {
 	object {
@@ -525,289 +514,245 @@ rectangle {
 	bclr=17
 	label="-Phi2"
 }
-composite {
+"related display" {
 	object {
 		x=15
 		y=170
 		width=64
-		height=58
+		height=20
 	}
-	"composite name"=""
-	children {
-		"related display" {
-			object {
-				x=15
-				y=170
-				width=64
-				height=20
-			}
-			display[0] {
-				name="motorx.adl"
-				args="P=$(P),M=$(mB)"
-			}
-			clr=0
-			bclr=17
-			label="-Bend"
-		}
-		composite {
-			object {
-				x=15
-				y=190
-				width=64
-				height=38
-			}
-			"composite name"=""
-			children {
-				rectangle {
-					object {
-						x=15
-						y=190
-						width=64
-						height=38
-					}
-					"basic attribute" {
-						clr=0
-					}
-				}
-				text {
-					object {
-						x=17
-						y=192
-						width=60
-						height=10
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="$(P)$(mB)"
-				}
-				"text update" {
-					object {
-						x=17
-						y=202
-						width=60
-						height=10
-					}
-					monitor {
-						chan="$(P)$(mB).RBV"
-						clr=53
-						bclr=2
-					}
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=17
-						y=212
-						width=60
-						height=15
-					}
-					control {
-						chan="$(P)$(mB).VAL"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				rectangle {
-					object {
-						x=15
-						y=190
-						width=64
-						height=38
-					}
-					"basic attribute" {
-						clr=14
-						fill="outline"
-					}
-				}
-			}
-		}
+	display[0] {
+		name="motorx.adl"
+		args="P=$(P),M=$(mB)"
+	}
+	clr=0
+	bclr=17
+	label="-Bend"
+}
+rectangle {
+	object {
+		x=15
+		y=190
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=0
 	}
 }
-composite {
+text {
+	object {
+		x=17
+		y=192
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mB)"
+}
+"text update" {
+	object {
+		x=17
+		y=202
+		width=60
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mB).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=17
+		y=212
+		width=60
+		height=15
+	}
+	control {
+		chan="$(P)$(mB).VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=15
+		y=190
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+rectangle {
+	object {
+		x=90
+		y=190
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+text {
+	object {
+		x=92
+		y=192
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mY2)"
+}
+"text update" {
+	object {
+		x=92
+		y=202
+		width=60
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mY2).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=92
+		y=212
+		width=60
+		height=15
+	}
+	control {
+		chan="$(P)$(mY2).VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=90
+		y=190
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+"related display" {
 	object {
 		x=90
 		y=170
 		width=64
-		height=58
+		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=90
-				y=190
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		text {
-			object {
-				x=92
-				y=192
-				width=60
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mY2)"
-		}
-		"text update" {
-			object {
-				x=92
-				y=202
-				width=60
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mY2).RBV"
-				clr=53
-				bclr=2
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=92
-				y=212
-				width=60
-				height=15
-			}
-			control {
-				chan="$(P)$(mY2).VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=90
-				y=190
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		"related display" {
-			object {
-				x=90
-				y=170
-				width=64
-				height=20
-			}
-			display[0] {
-				name="motorx.adl"
-				args="P=$(P),M=$(mY2)"
-			}
-			clr=0
-			bclr=17
-			label="-Y2"
-		}
+	display[0] {
+		name="motorx.adl"
+		args="P=$(P),M=$(mY2)"
+	}
+	clr=0
+	bclr=17
+	label="-Y2"
+}
+rectangle {
+	object {
+		x=90
+		y=255
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=0
 	}
 }
-composite {
+text {
+	object {
+		x=92
+		y=257
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mZ2)"
+}
+"text update" {
+	object {
+		x=92
+		y=267
+		width=60
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mZ2).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=92
+		y=277
+		width=60
+		height=15
+	}
+	control {
+		chan="$(P)$(mZ2).VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=90
+		y=255
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+"related display" {
 	object {
 		x=90
 		y=235
 		width=64
-		height=58
+		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=90
-				y=255
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		text {
-			object {
-				x=92
-				y=257
-				width=60
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mZ2)"
-		}
-		"text update" {
-			object {
-				x=92
-				y=267
-				width=60
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mZ2).RBV"
-				clr=53
-				bclr=2
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=92
-				y=277
-				width=60
-				height=15
-			}
-			control {
-				chan="$(P)$(mZ2).VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=90
-				y=255
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		"related display" {
-			object {
-				x=90
-				y=235
-				width=64
-				height=20
-			}
-			display[0] {
-				name="motorx.adl"
-				args="P=$(P),M=$(mZ2)"
-			}
-			clr=0
-			bclr=17
-			label="-Z2"
-		}
+	display[0] {
+		name="motorx.adl"
+		args="P=$(P),M=$(mZ2)"
 	}
+	clr=0
+	bclr=17
+	label="-Z2"
 }
 rectangle {
 	object {
@@ -969,96 +914,85 @@ rectangle {
 	bclr=17
 	label="-X2"
 }
-composite {
+rectangle {
+	object {
+		x=63
+		y=104
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+text {
+	object {
+		x=65
+		y=106
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mT2)"
+}
+"text update" {
+	object {
+		x=65
+		y=116
+		width=60
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mT2).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=65
+		y=126
+		width=60
+		height=15
+	}
+	control {
+		chan="$(P)$(mT2).VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=63
+		y=104
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+"related display" {
 	object {
 		x=63
 		y=84
 		width=64
-		height=58
+		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=63
-				y=104
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		text {
-			object {
-				x=65
-				y=106
-				width=60
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mT2)"
-		}
-		"text update" {
-			object {
-				x=65
-				y=116
-				width=60
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mT2).RBV"
-				clr=53
-				bclr=2
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=65
-				y=126
-				width=60
-				height=15
-			}
-			control {
-				chan="$(P)$(mT2).VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=63
-				y=104
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		"related display" {
-			object {
-				x=63
-				y=84
-				width=64
-				height=20
-			}
-			display[0] {
-				name="motorx.adl"
-				args="P=$(P),M=$(mT2)"
-			}
-			clr=0
-			bclr=17
-			label="-Theta2"
-		}
+	display[0] {
+		name="motorx.adl"
+		args="P=$(P),M=$(mT2)"
 	}
+	clr=0
+	bclr=17
+	label="-Theta2"
 }
 rectangle {
 	object {
@@ -1140,94 +1074,83 @@ rectangle {
 	bclr=17
 	label="-X1"
 }
-composite {
+rectangle {
+	object {
+		x=261
+		y=67
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+text {
+	object {
+		x=263
+		y=69
+		width=60
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(mT1)"
+}
+"text update" {
+	object {
+		x=263
+		y=79
+		width=60
+		height=10
+	}
+	monitor {
+		chan="$(P)$(mT1).RBV"
+		clr=53
+		bclr=2
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=263
+		y=89
+		width=60
+		height=15
+	}
+	control {
+		chan="$(P)$(mT1).VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=261
+		y=67
+		width=64
+		height=38
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+"related display" {
 	object {
 		x=261
 		y=47
 		width=64
-		height=58
+		height=20
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=261
-				y=67
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=0
-			}
-		}
-		text {
-			object {
-				x=263
-				y=69
-				width=60
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="$(P)$(mT1)"
-		}
-		"text update" {
-			object {
-				x=263
-				y=79
-				width=60
-				height=10
-			}
-			monitor {
-				chan="$(P)$(mT1).RBV"
-				clr=53
-				bclr=2
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=263
-				y=89
-				width=60
-				height=15
-			}
-			control {
-				chan="$(P)$(mT1).VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=261
-				y=67
-				width=64
-				height=38
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		"related display" {
-			object {
-				x=261
-				y=47
-				width=64
-				height=20
-			}
-			display[0] {
-				name="motorx.adl"
-				args="P=$(P),M=$(mT1)"
-			}
-			clr=0
-			bclr=17
-			label="-Theta1"
-		}
+	display[0] {
+		name="motorx.adl"
+		args="P=$(P),M=$(mT1)"
 	}
+	clr=0
+	bclr=17
+	label="-Theta1"
 }
