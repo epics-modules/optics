@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/virtualChannelCutMono.adl"
+	name="/net/s27dserv/xorApps/epics/synApps_5_8/ioc/27idmot1/27idmot1App/op/adl/virtualChannelCutMono.adl"
 	version=030111
 }
 display {
 	object {
-		x=652
-		y=56
+		x=992
+		y=294
 		width=400
 		height=152
 	}
@@ -87,21 +87,6 @@ display {
 		1a7309,
 	}
 }
-"text entry" {
-	object {
-		x=135
-		y=40
-		width=100
-		height=20
-	}
-	control {
-		chan="$(P)VCCMono:Energy"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
 text {
 	object {
 		x=10
@@ -114,37 +99,10 @@ text {
 	}
 	textix="Energy (keV)"
 }
-"text entry" {
-	object {
-		x=135
-		y=65
-		width=100
-		height=20
-	}
-	control {
-		chan="$(P)VCCMono:offset"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=10
-		y=65
-		width=120
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Offset (mm)"
-}
 "related display" {
 	object {
-		x=194
-		y=98
+		x=337
+		y=125
 		width=45
 		height=20
 	}
@@ -176,4 +134,125 @@ text {
 	clr=0
 	bclr=17
 	label="-debug"
+}
+text {
+	object {
+		x=10
+		y=65
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Offset (mm)"
+}
+text {
+	object {
+		x=10
+		y=90
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="deltaD"
+}
+text {
+	object {
+		x=10
+		y=115
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="d spacing (A)"
+}
+"choice button" {
+	object {
+		x=280
+		y=40
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)VCCMono:set"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+composite {
+	object {
+		x=145
+		y=40
+		width=130
+		height=95
+	}
+	"composite name"=""
+	children {
+		"text entry" {
+			object {
+				x=145
+				y=40
+				width=130
+				height=20
+			}
+			control {
+				chan="$(P)VCCMono:Energy"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=145
+				y=65
+				width=130
+				height=20
+			}
+			control {
+				chan="$(P)VCCMono:offset"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=145
+				y=90
+				width=130
+				height=20
+			}
+			control {
+				chan="$(P)VCCMono:deltaD"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=145
+				y=115
+				width=130
+				height=20
+			}
+			control {
+				chan="$(P)VCCMono:d_spacing"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+	}
 }
