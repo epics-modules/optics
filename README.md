@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/epics-modules/optics.svg?branch=master)](https://travis-ci.org/epics-modules/optics)
+
 # optics
 APS BCDA synApps module: optics
 
