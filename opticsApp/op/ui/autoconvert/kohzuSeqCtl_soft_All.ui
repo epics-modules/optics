@@ -4,10 +4,10 @@
 <widget class="QMainWindow" name="MainWindow">
     <property name="geometry">
         <rect>
-            <x>816</x>
-            <y>481</y>
+            <x>951</x>
+            <y>454</y>
             <width>535</width>
-            <height>342</height>
+            <height>365</height>
         </rect>
     </property>
     <property name="styleSheet">
@@ -3979,6 +3979,75 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 </rect>
             </property>
         </widget>
+        <widget class="caLabel" name="caLabel_26">
+            <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>45</red>
+                    <green>45</green>
+                    <blue>45</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="0">
+                    <red>45</red>
+                    <green>45</green>
+                    <blue>45</blue>
+                </color>
+            </property>
+            <property name="text">
+                <string>Speed Control:</string>
+            </property>
+            <property name="fontScaleMode">
+                <enum>ESimpleLabel::WidthAndHeight</enum>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>21</x>
+                    <y>344</y>
+                    <width>100</width>
+                    <height>14</height>
+                </rect>
+            </property>
+            <property name="alignment">
+                <set>Qt::AlignAbsolute|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+        </widget>
+        <widget class="caChoice" name="caChoice_3">
+            <property name="geometry">
+                <rect>
+                    <x>126</x>
+                    <y>343</y>
+                    <width>150</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="channel">
+                <string>$(P)$(MONO)SpeedCtrl</string>
+            </property>
+            <property name="foreground">
+                <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                </color>
+            </property>
+            <property name="background">
+                <color alpha="255">
+                    <red>115</red>
+                    <green>223</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+            <property name="stackingMode">
+                <enum>Column</enum>
+            </property>
+            <property name="colorMode">
+                <enum>caChoice::Static</enum>
+            </property>
+        </widget>
         <zorder>caRectangle_0</zorder>
         <zorder>caRectangle_1</zorder>
         <zorder>caLabel_0</zorder>
@@ -4017,6 +4086,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
         <zorder>caLabel_23</zorder>
         <zorder>caLabel_24</zorder>
         <zorder>caLabel_25</zorder>
+        <zorder>caLabel_26</zorder>
         <zorder>caTextEntry_0</zorder>
         <zorder>caTextEntry_1</zorder>
         <zorder>caTextEntry_2</zorder>
@@ -4068,6 +4138,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
         <zorder>caLineEdit_25</zorder>
         <zorder>caChoice_2</zorder>
         <zorder>caTextEntry_11</zorder>
+        <zorder>caChoice_3</zorder>
     </widget>
 </widget>
 </ui>
