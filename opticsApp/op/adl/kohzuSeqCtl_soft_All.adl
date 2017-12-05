@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=816
-		y=481
+		x=951
+		y=454
 		width=535
-		height=342
+		height=365
 	}
 	clr=14
 	bclr=3
@@ -1405,4 +1405,31 @@ text {
 	}
 	textix="Y1 and Z2 motors"
 	align="horiz. centered"
+}
+text {
+	object {
+		x=21
+		y=344
+		width=100
+		height=14
+	}
+	"basic attribute" {
+		clr=13
+		fill="outline"
+	}
+	textix="Speed Control:"
+}
+"choice button" {
+	object {
+		x=126
+		y=343
+		width=150
+		height=22
+	}
+	control {
+		chan="$(P)$(MONO)SpeedCtrl"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
 }
