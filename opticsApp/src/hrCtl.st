@@ -36,6 +36,9 @@ option +r;
  * 12-15-03 tmm   v3.4 Converted to EPICS 3.14 OSI.
  */
 
+#define MAX(a,b) ((a)>(b)?(a):(b))
+#define MIN(a,b) ((a)<(b)?(a):(b))
+
 /* General Purpose PV's used by sequence */
 short hrCtlDebug;
 assign  hrCtlDebug to "{P}HR{N}CtlDebug"; 
@@ -858,11 +861,13 @@ ss hr_Ctl
 
 				/* translate phi2 motor limits into phi2, theta2 limits */
 				if (Geom == 0) {
+					/* nested */
 					phi2Hi = phi2MotHiLim * uR2D + phi2Off + worldOff*uR2D;
 					phi2Lo = phi2MotLoLim * uR2D + phi2Off + worldOff*uR2D;
 					theta2Hi = phi2Hi - phi1Lo - theta1Lo;
 					theta2Lo = phi2Lo - phi1Hi - theta1Hi;
 				} else {
+					/* symmetric */
 					phi2Hi = phi2MotHiLim * uR2D + phi2Off - worldOff*uR2D;
 					phi2Lo = phi2MotLoLim * uR2D + phi2Off - worldOff*uR2D;
 					theta2Hi = phi2Hi;
@@ -881,10 +886,10 @@ ss hr_Ctl
 				pvPut(theta2Hi);
 				pvPut(theta2Lo);
 
-				/* calc limits on lambda, energy from theta 1 limits */
-				lambdaHi = D1*sin(theta1Hi*D2R);
+				/* calc limits on lambda, energy from theta 1/2 limits */
+				lambdaHi = MIN(D1*sin(theta1Hi*D2R), D2*sin(theta2Hi*D2R));
 				pvPut(lambdaHi);
-				lambdaLo = D1*sin(theta1Lo*D2R);
+				lambdaLo = MAX(D1*sin(theta1Lo*D2R), D2*sin(theta2Lo*D2R));
 				pvPut(lambdaLo);
 				EHi = hc/lambdaLo;
 				pvPut(EHi);
