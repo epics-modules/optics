@@ -10,6 +10,21 @@
 <BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
 <H1 ALIGN=CENTER>optics Release Notes</H1>
 
+<h2 ALIGN=CENTER>Release 2-13 (Dec 5, 2017)</h2>
+<ul>
+
+<li>Modified hrCtl.st so that limits for energy and wavelength are calculated
+from limits of both phy1 and phi2 motors - whichever limit is more restrictive
+rules.
+
+<li>Modified kohzuCtl.st and kohzuCtl_soft.st so user can disable speed control.
+
+<li>Modified kohzuCtl.st and kohzuCtl_soft.st so entering a value for energy,
+lambda, or theta that will violate a limit doesn't put the mono into manual
+mode.
+
+</ul>
+
 <h2 ALIGN=CENTER>Release 2-12</h2>
 <ul>
 <li>Added iocsh files for all support that require more than just a database.
