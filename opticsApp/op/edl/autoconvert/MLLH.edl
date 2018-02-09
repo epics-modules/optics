@@ -1,0 +1,202 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 503
+y 49
+w 390
+h 250
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 390
+h 206
+
+beginGroup
+
+# (Embedded Window)
+object activePipClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 390
+h 206
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+noScroll
+displaySource "file"
+file "	composite file MLLH_bare.edl;P=$(P),Q=$(Q)"
+sizeOfs 5
+numDsps 0
+endObjectProperties
+
+endGroup
+
+visPv ""
+visMin "A"
+visMax "1"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 290
+y 215
+w 45
+h 20
+fgColor index 0
+bgColor index 17
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "debug"
+numPvs 16
+numDsps 8
+displayFileName {
+  0 motorx.adl
+  1 motorx.adl
+  2 motorx.adl
+  3 yyTransform.adl
+  4 yyTransform.adl
+  5 yyTransform.adl
+  6 yyCalcoutRecord.adl
+  7 yySeq.adl
+}
+menuLabel {
+  0 th
+  1 z
+  2 x
+  3 t1
+  4 t2
+  5 t3
+  6 calcDone
+  7 softPut
+}
+symbols {
+  0 "P=$(P),M=$(Q)th"
+  1 "P=$(P),M=$(Q)z"
+  2 "P=$(P),M=$(Q)x"
+  3 "P=$(P),T=$(Q)t1"
+  4 "P=$(P),T=$(Q)t2"
+  5 "P=$(P),T=$(Q)t3"
+  6 "P=$(P),C=$(Q)calcDone"
+  7 "P=$(P),S=$(Q)softPut"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 340
+y 215
+w 40
+h 20
+fgColor index 0
+bgColor index 17
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "More"
+numPvs 2
+numDsps 1
+displayFileName {
+  0 MLLH_more.edl
+}
+menuLabel {
+  0 more
+}
+symbols {
+  0 "P=$(P),Q=$(Q)"
+}
+closeAction {
+  0 1
+}
+closeDisplay {
+  0 1
+}
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 20
+y 215
+w 110
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(Q)sync"
+pressValue "1"
+releaseValue 
+onLabel "Sync to Motors"
+offLabel "Sync to Motors"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 160
+y 215
+w 100
+h 30
+fgColor index 30
+onColor index 20
+offColor index 20
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(Q)stop"
+pressValue "1"
+releaseValue 
+onLabel "Stop MLLH"
+offLabel "Stop MLLH"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

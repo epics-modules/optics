@@ -1,0 +1,217 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 261
+y 346
+w 640
+h 250
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 640
+h 206
+
+beginGroup
+
+# (Embedded Window)
+object activePipClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 640
+h 206
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+noScroll
+displaySource "file"
+file "	composite file MLLV_bare.edl;P=$(P),Q=$(Q)"
+sizeOfs 5
+numDsps 0
+endObjectProperties
+
+endGroup
+
+visPv ""
+visMin "A"
+visMax "1"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 480
+y 215
+w 70
+h 20
+fgColor index 0
+bgColor index 17
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "debug"
+numPvs 26
+numDsps 13
+displayFileName {
+  0 motorx.adl
+  1 motorx.adl
+  2 motorx.adl
+  3 motorx.adl
+  4 motorx.adl
+  5 yyTransform.adl
+  6 yyTransform.adl
+  7 yyTransform.adl
+  8 yyTransform.adl
+  9 yyCalcoutRecord.adl
+  10 yyCalcoutRecord.adl
+  11 MLLV_misc.adl
+  12 yySeq.adl
+}
+menuLabel {
+  0 th
+  1 z
+  2 y
+  3 chi
+  4 x
+  5 tFwd
+  6 tRev
+  7 tLimits
+  8 tLimits1
+  9 calcDone
+  10 closeGate
+  11 misc
+  12 softPut
+}
+symbols {
+  0 "P=$(P),M=$(Q)th"
+  1 "P=$(P),M=$(Q)z"
+  2 "P=$(P),M=$(Q)y"
+  3 "P=$(P),M=$(Q)chi"
+  4 "P=$(P),M=$(Q)x"
+  5 "P=$(P),T=$(Q)tFwd"
+  6 "P=$(P),T=$(Q)tRev"
+  7 "P=$(P),T=$(Q)tLimits"
+  8 "P=$(P),T=$(Q)tLimits1"
+  9 "P=$(P),C=$(Q)calcDone"
+  10 "P=$(P),C=$(Q)closeGate"
+  11 "P=$(P),Q=$(Q)"
+  12 "P=$(P),S=$(Q)softPut"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 555
+y 215
+w 70
+h 20
+fgColor index 0
+bgColor index 17
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "More"
+numPvs 2
+numDsps 1
+displayFileName {
+  0 MLLV_more.edl
+}
+menuLabel {
+  0 more
+}
+symbols {
+  0 "P=$(P),Q=$(Q)"
+}
+closeAction {
+  0 1
+}
+closeDisplay {
+  0 1
+}
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 20
+y 215
+w 110
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(Q)sync"
+pressValue "1"
+releaseValue 
+onLabel "Sync to motors"
+offLabel "Sync to motors"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 270
+y 215
+w 100
+h 30
+fgColor index 30
+onColor index 20
+offColor index 20
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(Q)stop"
+pressValue "1"
+releaseValue 
+onLabel "Stop MLLV"
+offLabel "Stop MLLV"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

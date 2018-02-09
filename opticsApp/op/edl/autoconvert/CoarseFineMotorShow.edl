@@ -1,0 +1,322 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 375
+y 268
+w 470
+h 100
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 2
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 25
+w 100
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Mode"
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 129
+h 22
+lineColor index 0
+fill
+fillColor index 0
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 130
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Coarse/Fine"
+}
+endObjectProperties
+# (Bar)
+object activeBarClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 178
+y 52
+w 250
+h 25
+indicatorColor index 14
+fgColor index 14
+bgColor index 51
+indicatorPv "$(PM)$(CM).RBV"
+font "helvetica-medium-r-8.0"
+labelTicks 1
+majorTicks 10
+minorTicks 0
+border
+scaleFormat "FFloat"
+orientation "horizontal"
+endObjectProperties
+# (Bar)
+object activeBarClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 228
+y 24
+w 150
+h 25
+indicatorColor index 14
+fgColor index 14
+bgColor index 51
+indicatorPv "$(PM)$(FM).RBV"
+font "helvetica-medium-r-8.0"
+labelTicks 1
+majorTicks 10
+minorTicks 0
+border
+scaleFormat "FFloat"
+orientation "horizontal"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 213
+y 27
+w 10
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "F"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 163
+y 57
+w 10
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "C"
+}
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 45
+w 95
+h 20
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)mode"
+indicatorPv "$(P)mode"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 102
+y 35
+w 25
+h 30
+fgColor index 0
+bgColor index 63
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "?"
+numPvs 2
+numDsps 1
+displayFileName {
+  0 CoarseFineMotorHelp.edl
+}
+menuLabel {
+  0 help
+}
+symbols {
+  0 "P=$(P)"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 430
+y 85
+w 40
+h 15
+fgColor index 10
+bgColor index 2
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "DEBUG"
+numPvs 12
+numDsps 6
+displayFileName {
+  0 yyTransform_full.adl
+  1 yyTransform_full.adl
+  2 yyCalcoutRecord.adl
+  3 yyCalcoutRecord.adl
+  4 yyCalcoutRecord.adl
+  5 yyCalcoutRecord.adl
+}
+menuLabel {
+  0 limitProc
+  1 moveCF
+  2 closeGate calc
+  3 fineModeCalc
+  4 done calc
+  5 RBV calc
+}
+symbols {
+  0 "P=$(P),T=limitProc"
+  1 "P=$(P),T=moveCF"
+  2 "P=$(P),C=closeGate"
+  3 "P=$(P),C=fineModeCalc"
+  4 "P=$(P),C=doneCalc"
+  5 "P=$(P),C=RBV"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 75
+w 55
+h 20
+fgColor index 0
+bgColor index 63
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "Motors"
+numPvs 4
+numDsps 2
+displayFileName {
+  0 motorx.adl
+  1 motor2x.adl
+}
+menuLabel {
+  0 Combined (soft) motor
+  1 Actual motors
+}
+symbols {
+  0 "P=$(P),M=MOT"
+  1 "P=$(PM),M1=$(CM),M2=$(FM)"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 90
+y 75
+w 40
+h 20
+fgColor index 0
+bgColor index 17
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "Less"
+numPvs 2
+numDsps 1
+displayFileName {
+  0 CoarseFineMotor.edl
+}
+menuLabel {
+  0 Small display
+}
+symbols {
+  0 "P=$(P),M=MOT,PM=$(PM),CM=$(CM),FM=$(FM)"
+}
+closeAction {
+  0 1
+}
+closeDisplay {
+  0 1
+}
+endObjectProperties
+

@@ -1,0 +1,292 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 28
+y 59
+w 260
+h 200
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 57
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 4
+w 200
+h 10
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "fb_epid_basic.adl"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 14
+w 200
+h 10
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "last update: 2012-02-28 (prj)"
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 37
+y 195
+w 139
+h 13
+lineColor index 57
+fill
+fillColor index 57
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 34
+w 240
+h 24
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "feedback   $(P)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 64
+w 240
+h 20
+controlPv "$(P).DESC"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 0
+bgColor index 54
+autoHeight
+format "decimal"
+precision 2
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 90
+w 240
+h 28
+controlPv "$(P).CVAL"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 50
+autoHeight
+format "decimal"
+precision 2
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 130
+w 240
+h 28
+controlPv "$(P).VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 50
+editable
+autoHeight
+format "decimal"
+precision 2
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 175
+y 170
+w 50
+h 18
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 19
+useDisplayBg
+value {
+ "On"
+}
+visPv "CALC\\\{(A)\}($(P).FBON)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 152
+y 166
+w 96
+h 26
+lineColor index 14
+fillColor index 14
+lineWidth 4
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 175
+y 170
+w 50
+h 18
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 20
+useDisplayBg
+value {
+ "Off"
+}
+visPv "CALC\\\{(A)\}($(P).FBON)"
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 4
+w 50
+h 18
+fgColor index 0
+bgColor index 63
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "more"
+numPvs 2
+numDsps 1
+displayFileName {
+  0 fb_epid.edl
+}
+menuLabel {
+  0 standard screen
+}
+symbols {
+  0 "P=$(P)"
+}
+closeAction {
+  0 1
+}
+closeDisplay {
+  0 1
+}
+endObjectProperties
+
+# (Choice Button)
+object activeChoiceButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 170
+w 132
+h 18
+fgColor index 0
+bgColor index 63
+selectColor index 63
+inconsistentColor index 0
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P):on"
+font "helvetica-medium-r-10.0"
+orientation "horizontal"
+endObjectProperties
+
