@@ -379,6 +379,10 @@ monitor zSpeed;
 evflag  zMotVel_mon;
 sync    zSpeed zMotVel_mon;
 
+short speedControl;
+assign  speedControl to "{P}{MONO}SpeedCtrl";
+monitor speedControl;
+
 double  thetaMotRdbk;
 assign  thetaMotRdbk to "{P}{M_THETA}.RBV";
 monitor thetaMotRdbk;
@@ -902,15 +906,17 @@ state moveKohzu {
 			pvPut(seqMsg2);
 		} else {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:moveKohzu:auto|put\n");
-			thSpeed = newThSpeed;
-			ySpeed = newYSpeed;
-			zSpeed = newZSpeed;
-			pvPut(thSpeed);
-			if (ccMode == 0 || ccMode == 2) {
-				pvPut(ySpeed);
-			}
-			if (ccMode == 0 || ccMode == 3) {
-				pvPut(zSpeed);
+			if (speedControl) {
+				thSpeed = newThSpeed;
+				ySpeed = newYSpeed;
+				zSpeed = newZSpeed;
+				pvPut(thSpeed);
+				if (ccMode == 0 || ccMode == 2) {
+					pvPut(ySpeed);
+				}
+				if (ccMode == 0 || ccMode == 3) {
+					pvPut(zSpeed);
+				}
 			}
 			thetaMotCmd = thetaMotDesired;
 			yMotCmd = yMotDesired;
@@ -1031,13 +1037,15 @@ state updateRdbk {
 state thetaMotStopped {
 	when (causedMove) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:thetaMotStopped:causedMove (done=%d,moving=%d)\n", kohzuDone, kohzuMoving);
-		thSpeed = oldThSpeed;
-		ySpeed = oldYSpeed;
-		zSpeed = oldZSpeed;
-		pvPut(thSpeed);
-		pvPut(ySpeed);
+		if (speedControl) {
+			thSpeed = oldThSpeed;
+			ySpeed = oldYSpeed;
+			zSpeed = oldZSpeed;
+			pvPut(thSpeed);
+			pvPut(ySpeed);
+			pvPut(zSpeed);
+		}
 		if (kohzuCtlDebug) %%printf("kohzuCtl:thetaMotStopped: ySpeed = %f\n", ySpeed);
-		pvPut(zSpeed);
 		causedMove = 0;
 	} state waitForCmndEnter
 
