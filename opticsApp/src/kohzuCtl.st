@@ -994,54 +994,55 @@ state calcMovements {
 }
 
 state moveKohzu {
+	when (willViolateLimit) {
+		E = prev_E;
+		pvPut(E);
+		theta = prev_theta;
+		pvPut(theta);
+		lambda = prev_lambda;
+		pvPut(lambda);
+		thetaMotDesired = prev_thetaMotDesired;
+		pvPut(thetaMotDesired);
+		yMotDesired = prev_yMotDesired;
+		pvPut(yMotDesired);
+		zMotDesired = prev_zMotDesired;
+		pvPut(zMotDesired);
+		sprintf(seqMsg2, "Command ignored");
+		pvPut(seqMsg2);
+		kohzuDone = 1;
+	} state waitForCmndEnter
+
 	when (autoMode || putVals || useSetMode) {
-		if (willViolateLimit) {
-			E = prev_E;
-			pvPut(E);
-			theta = prev_theta;
-			pvPut(theta);
-			lambda = prev_lambda;
-			pvPut(lambda);
-			thetaMotDesired = prev_thetaMotDesired;
-			pvPut(thetaMotDesired);
-			yMotDesired = prev_yMotDesired;
-			pvPut(yMotDesired);
-			zMotDesired = prev_zMotDesired;
-			pvPut(zMotDesired);
-			sprintf(seqMsg2, "Command ignored");
-			pvPut(seqMsg2);
-		} else {
-			if (kohzuCtlDebug) %%printf("kohzuCtl:moveKohzu:auto|put\n");
-			if (speedControl) {
-				thSpeed = newThSpeed;
-				ySpeed = newYSpeed;
-				zSpeed = newZSpeed;
-				pvPut(thSpeed);
-				if (ccMode == 0 || ccMode == 2) {
-					pvPut(ySpeed);
-				}
-				if (ccMode == 0 || ccMode == 3) {
-					pvPut(zSpeed);
-				}
+		if (kohzuCtlDebug) %%printf("kohzuCtl:moveKohzu:auto|put\n");
+		if (speedControl) {
+			thSpeed = newThSpeed;
+			ySpeed = newYSpeed;
+			zSpeed = newZSpeed;
+			pvPut(thSpeed);
+			if (ccMode == 0 || ccMode == 2) {
+				pvPut(ySpeed);
 			}
-			thetaMotCmd = thetaMotDesired;
-			yMotCmd = yMotDesired;
-			zMotCmd = zMotDesired;
-			pvPut(thetaMotCmd);
-			if (ccMode == 0) {
-				pvPut(yMotCmd);
-				pvPut(zMotCmd);
-			} else if (ccMode == 1) {
-				;
-			} else if (ccMode == 2) {
-				pvPut(yMotCmd);
-			} else if (ccMode == 3) {
-				pvPut(zMotCmd);
+			if (ccMode == 0 || ccMode == 3) {
+				pvPut(zSpeed);
 			}
-			putVals = 0;
-			pvPut(putVals);
-			causedMove = 1;
 		}
+		thetaMotCmd = thetaMotDesired;
+		yMotCmd = yMotDesired;
+		zMotCmd = zMotDesired;
+		pvPut(thetaMotCmd);
+		if (ccMode == 0) {
+			pvPut(yMotCmd);
+			pvPut(zMotCmd);
+		} else if (ccMode == 1) {
+			;
+		} else if (ccMode == 2) {
+			pvPut(yMotCmd);
+		} else if (ccMode == 3) {
+			pvPut(zMotCmd);
+		}
+		putVals = 0;
+		pvPut(putVals);
+		causedMove = 1;
 	} state updateRdbk
 
 	when (1) {
