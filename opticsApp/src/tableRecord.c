@@ -163,21 +163,21 @@ epicsExportAddress(int, tableRecordDebug);
 /* Create RSET - Record Support Entry Table*/
 #define report NULL
 #define initialize NULL
-static long     init_record(tableRecord *ptbl, int pass);
-static long     process();
-static long     special();
+static long     init_record(dbCommon *ptbl, int pass);
+static long     process(dbCommon *);
+static long     special(const DBADDR *paddr, int after);
 #define get_value NULL
-static long     cvt_dbaddr();
+static long     cvt_dbaddr(DBADDR *paddr);
 #define get_array_info NULL
 #define put_array_info NULL
-static long		get_units(struct dbAddr * paddr, char *units);
+static long		get_units(const DBADDR * paddr, char *units);
 static long     get_precision();
 #define get_enum_str NULL
 #define get_enum_strs NULL
 #define put_enum_str NULL
-static long     get_graphic_double(struct dbAddr * paddr,
+static long     get_graphic_double(const DBADDR * paddr,
 					struct dbr_grDouble * pcd);
-static long     get_control_double(struct dbAddr * paddr,
+static long     get_control_double(const DBADDR * paddr,
 					struct dbr_ctrlDouble * pcd);
 #define get_alarm_double NULL
 
@@ -288,8 +288,9 @@ SaveRecordValues(tableRecord *ptbl)
 
 
 static long 
-init_record(tableRecord *ptbl, int pass)
+init_record(dbCommon *pcommon, int pass)
 {
+	tableRecord *ptbl = (tableRecord *) pcommon;
 	short  i;
 	double *ax = &ptbl->ax;
 	double *axrb = &ptbl->axrb;
@@ -408,8 +409,9 @@ init_record(tableRecord *ptbl, int pass)
 
 
 static long 
-process(tableRecord *ptbl)
+process(dbCommon *pcommon)
 {
+	tableRecord *ptbl = (tableRecord *) pcommon;
 	int               i;
 	unsigned short	  motor_move_mask;
 	long              err;
@@ -600,7 +602,7 @@ process(tableRecord *ptbl)
 
 
 static long
-special(struct dbAddr *paddr, int after)
+special(const DBADDR *paddr, int after)
 {
 	tableRecord *ptbl = (tableRecord *) (paddr->precord);
     int fieldIndex = dbGetFieldIndex(paddr);
@@ -722,7 +724,7 @@ special(struct dbAddr *paddr, int after)
 
 
 static long 
-cvt_dbaddr(struct dbAddr *paddr)
+cvt_dbaddr(DBADDR *paddr)
 {
 	tableRecord *ptbl = (tableRecord *) paddr->precord;
 	double      **pfield = paddr->pfield;
@@ -748,7 +750,7 @@ cvt_dbaddr(struct dbAddr *paddr)
 
 
 static long
-get_units(struct dbAddr *paddr, char *units)
+get_units(const DBADDR *paddr, char *units)
 {
 	tableRecord *ptbl = (tableRecord *) paddr->precord;
     int fieldIndex = dbGetFieldIndex(paddr);
@@ -774,7 +776,7 @@ get_units(struct dbAddr *paddr, char *units)
 
 
 static long 
-get_graphic_double(struct dbAddr *paddr, struct dbr_grDouble *pgd)
+get_graphic_double(const DBADDR *paddr, struct dbr_grDouble *pgd)
 {
 	tableRecord *ptbl = (tableRecord *) paddr->precord;
     int i, fieldIndex = dbGetFieldIndex(paddr);
@@ -791,7 +793,7 @@ get_graphic_double(struct dbAddr *paddr, struct dbr_grDouble *pgd)
 
 
 static long 
-get_control_double(struct dbAddr *paddr, struct dbr_ctrlDouble *pcd)
+get_control_double(const DBADDR *paddr, struct dbr_ctrlDouble *pcd)
 {
 	tableRecord *ptbl = (tableRecord *) paddr->precord;
     int i, fieldIndex = dbGetFieldIndex(paddr);
@@ -809,7 +811,7 @@ get_control_double(struct dbAddr *paddr, struct dbr_ctrlDouble *pcd)
 
 
 static long 
-get_precision(struct dbAddr *paddr, long *precision)
+get_precision(const DBADDR *paddr, long *precision)
 {
 	tableRecord *ptbl = (tableRecord *) paddr->precord;
     int fieldIndex = dbGetFieldIndex(paddr);
@@ -2188,6 +2190,8 @@ UserLimits_LocalToLab(tableRecord *ptbl)
 		lo_lab[Z_6] = sa*hu[X_6] + ca*hu[Z_6];
 		break;
 	case 0x01:
+	default: /* There is no default, but compiler complains because I didn't tell it
+				that there are only four possible values of quadrant. */
 		/* local's +z is in lab's (+x,+z) quadrant */
 		hi_lab[X_6] = ca*hu[X_6] - sa*hu[Z_6];
 		lo_lab[X_6] = ca*lu[X_6] - sa*lu[Z_6];
