@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>fb_epid_basic</name>
+  <x>28</x>
+  <y>59</y>
+  <width>260</width>
+  <height>200</height>
+  <background_color>
+    <color red="187" green="193" blue="135">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>fb_epid_basic.adl</text>
+    <x>16</x>
+    <y>4</y>
+    <width>200</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #9</name>
+    <text>last update: 2012-02-28 (prj)</text>
+    <x>16</x>
+    <y>14</y>
+    <width>200</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #12</name>
+    <x>37</x>
+    <y>195</y>
+    <width>140</width>
+    <height>14</height>
+    <line_color>
+      <color red="187" green="193" blue="135">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="187" green="193" blue="135">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #15</name>
+    <actions>
+      <action type="open_display">
+        <file>fb_epid.opi</file>
+        <target>replace</target>
+        <description>standard screen</description>
+      </action>
+    </actions>
+    <text>more</text>
+    <x>200</x>
+    <y>4</y>
+    <width>50</width>
+    <height>18</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="40" green="147" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #18</name>
+    <text>feedback   $(P)</text>
+    <x>10</x>
+    <y>34</y>
+    <width>240</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #21</name>
+    <pv_name>$(P).DESC</pv_name>
+    <x>10</x>
+    <y>64</y>
+    <width>240</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </background_color>
+    <format>5</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #25</name>
+    <pv_name>$(P).CVAL</pv_name>
+    <x>10</x>
+    <y>90</y>
+    <width>240</width>
+    <height>28</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="28.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>5</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #29</name>
+    <pv_name>$(P).VAL</pv_name>
+    <x>10</x>
+    <y>130</y>
+    <width>240</width>
+    <height>28</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="28.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>5</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #33</name>
+    <pv_name>$(P):on</pv_name>
+    <x>10</x>
+    <y>170</y>
+    <width>132</width>
+    <height>18</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="40" green="147" blue="21">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #36</name>
+    <text>On</text>
+    <x>175</x>
+    <y>170</y>
+    <width>50</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="33" green="108" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FBON</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #40</name>
+    <x>150</x>
+    <y>164</y>
+    <height>30</height>
+    <line_width>4</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #43</name>
+    <text>Off</text>
+    <x>175</x>
+    <y>170</y>
+    <width>50</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FBON</pv_name>
+      </rule>
+    </rules>
+  </widget>
+</display>

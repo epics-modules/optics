@@ -1,0 +1,2184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>2postMirror</name>
+  <x>263</x>
+  <y>27</y>
+  <width>460</width>
+  <height>290</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <x>350</x>
+    <y>225</y>
+    <width>105</width>
+    <height>38</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <x>235</x>
+    <y>225</y>
+    <width>105</width>
+    <height>38</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #12</name>
+    <x>125</x>
+    <y>225</y>
+    <width>105</width>
+    <height>38</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #15</name>
+    <x>10</x>
+    <y>110</y>
+    <width>106</width>
+    <height>155</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #18</name>
+    <x>140</x>
+    <y>112</y>
+    <width>70</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>text #21</name>
+      <text>Y</text>
+      <width>10</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #24</name>
+      <text>AVERAGE</text>
+      <x>10</x>
+      <y>8</y>
+      <width>60</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #27</name>
+    <pv_name>$(P)$(Q)t2.D</pv_name>
+    <x>128</x>
+    <y>145</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #30</name>
+    <pv_name>$(P)$(Q)avg.VAL</pv_name>
+    <x>128</x>
+    <y>165</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #33</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)avg_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)avg_tweak.A</pv_name>
+    <text>&lt;</text>
+    <x>128</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #36</name>
+    <pv_name>$(P)$(Q)avg_tweakVal</pv_name>
+    <x>148</x>
+    <y>205</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #39</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)avg_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)avg_tweak.B</pv_name>
+    <text>&gt;</text>
+    <x>208</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #42</name>
+    <pv_name>$(P)$(Q)t3.G</pv_name>
+    <x>128</x>
+    <y>190</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #45</name>
+    <pv_name>$(P)$(Q)t3.H</pv_name>
+    <x>128</x>
+    <y>130</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #48</name>
+    <pv_name>$(P)$(Q)avg.EGU</pv_name>
+    <x>200</x>
+    <y>115</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #51</name>
+    <text>Angle</text>
+    <x>237</x>
+    <y>112</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #54</name>
+    <pv_name>$(P)$(Q)t2.C</pv_name>
+    <x>237</x>
+    <y>145</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #57</name>
+    <pv_name>$(P)$(Q)angl.VAL</pv_name>
+    <x>237</x>
+    <y>165</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #60</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)angl_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)angl_tweak.A</pv_name>
+    <text>&lt;</text>
+    <x>237</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #63</name>
+    <pv_name>$(P)$(Q)angl_tweakVal</pv_name>
+    <x>257</x>
+    <y>205</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #66</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)angl_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)angl_tweak.B</pv_name>
+    <text>&gt;</text>
+    <x>317</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #69</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)up_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)up_tweak.A</pv_name>
+    <text>&lt;</text>
+    <x>352</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #72</name>
+    <pv_name>$(P)$(Q)up_tweakVal</pv_name>
+    <x>372</x>
+    <y>205</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #75</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)up_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)up_tweak.B</pv_name>
+    <text>&gt;</text>
+    <x>432</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #78</name>
+    <pv_name>$(P)$(Q)t3.E</pv_name>
+    <x>238</x>
+    <y>190</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #81</name>
+    <pv_name>$(P)$(Q)t3.F</pv_name>
+    <x>238</x>
+    <y>130</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #84</name>
+    <pv_name>$(P)$(Q)angl.EGU</pv_name>
+    <x>297</x>
+    <y>115</y>
+    <width>40</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #87</name>
+    <x>15</x>
+    <y>112</y>
+    <width>70</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>text #90</name>
+      <text>Y</text>
+      <width>10</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #93</name>
+      <text>DOWNSTREAM</text>
+      <x>10</x>
+      <y>8</y>
+      <width>60</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #96</name>
+    <pv_name>$(P)$(Q)t2.A</pv_name>
+    <x>13</x>
+    <y>145</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #99</name>
+    <pv_name>$(P)$(Q)dn.VAL</pv_name>
+    <x>13</x>
+    <y>165</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #102</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)dn_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)dn_tweak.A</pv_name>
+    <text>&lt;</text>
+    <x>13</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #105</name>
+    <pv_name>$(P)$(Q)dn_tweakVal</pv_name>
+    <x>33</x>
+    <y>205</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #108</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)dn_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)dn_tweak.B</pv_name>
+    <text>&gt;</text>
+    <x>93</x>
+    <y>205</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #111</name>
+    <pv_name>$(P)$(mDn).LLM</pv_name>
+    <x>13</x>
+    <y>190</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #114</name>
+    <pv_name>$(P)$(mDn).HLM</pv_name>
+    <x>13</x>
+    <y>130</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #117</name>
+    <x>10</x>
+    <y>225</y>
+    <width>105</width>
+    <height>38</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #120</name>
+    <pv_name>$(P)$(mDn).EGU</pv_name>
+    <x>90</x>
+    <y>115</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #123</name>
+    <x>360</x>
+    <y>112</y>
+    <width>70</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>text #126</name>
+      <text>Y</text>
+      <width>10</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #129</name>
+      <text>UPSTREAM</text>
+      <x>10</x>
+      <y>8</y>
+      <width>60</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #132</name>
+    <pv_name>$(P)$(Q)t2.B</pv_name>
+    <x>352</x>
+    <y>145</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #135</name>
+    <pv_name>$(P)$(Q)up.VAL</pv_name>
+    <x>352</x>
+    <y>165</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #138</name>
+    <pv_name>$(P)$(mUp).LLM</pv_name>
+    <x>353</x>
+    <y>190</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #141</name>
+    <pv_name>$(P)$(mUp).HLM</pv_name>
+    <x>353</x>
+    <y>130</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #144</name>
+    <pv_name>$(P)$(mUp).EGU</pv_name>
+    <x>424</x>
+    <y>115</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #147</name>
+    <x>118</x>
+    <y>35</y>
+    <width>276</width>
+    <height>71</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #150</name>
+      <y>17</y>
+      <width>234</width>
+      <height>33</height>
+      <line_width>7</line_width>
+      <line_color>
+        <color red="105" green="105" blue="105">
+        </color>
+      </line_color>
+      <points>
+        <point x="3.0" y="3.0">
+        </point>
+        <point x="230.0" y="29.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #154</name>
+      <x>120</x>
+      <y>28</y>
+      <width>156</width>
+      <height>2</height>
+      <line_width>2</line_width>
+      <line_color>
+        <color red="255" green="255" blue="255">
+        </color>
+      </line_color>
+      <points>
+        <point x="155.0" y="1.0">
+        </point>
+        <point x="1.0" y="1.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #158</name>
+      <x>17</x>
+      <y>25</y>
+      <width>10</width>
+      <height>24</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #161</name>
+        <width>0</width>
+        <height>24</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="0.0" y="24.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #165</name>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #169</name>
+        <y>21</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #173</name>
+        <y>15</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #177</name>
+        <y>18</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #181</name>
+        <y>3</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #185</name>
+        <y>6</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #189</name>
+        <y>9</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #193</name>
+        <y>12</y>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #197</name>
+        <y>24</y>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #201</name>
+      <x>120</x>
+      <y>37</y>
+      <width>10</width>
+      <height>24</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #204</name>
+        <width>0</width>
+        <height>24</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="0.0" y="24.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #208</name>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #212</name>
+        <y>21</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #216</name>
+        <y>15</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #220</name>
+        <y>18</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #224</name>
+        <y>3</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #228</name>
+        <y>6</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #232</name>
+        <y>9</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #236</name>
+        <y>12</y>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #240</name>
+        <y>24</y>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #244</name>
+      <x>210</x>
+      <y>47</y>
+      <width>10</width>
+      <height>24</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #247</name>
+        <width>0</width>
+        <height>24</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="0.0" y="24.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #251</name>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #255</name>
+        <y>21</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #259</name>
+        <y>15</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #263</name>
+        <y>18</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #267</name>
+        <y>3</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #271</name>
+        <y>6</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #275</name>
+        <y>9</y>
+        <width>5</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="5.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #279</name>
+        <y>12</y>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #283</name>
+        <y>24</y>
+        <width>10</width>
+        <height>0</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="0.0" y="0.0">
+          </point>
+          <point x="10.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #287</name>
+      <x>13</x>
+      <width>107</width>
+      <height>29</height>
+      <line_width>2</line_width>
+      <line_color>
+        <color red="253" green="0" blue="0">
+        </color>
+      </line_color>
+      <points>
+        <point x="106.0" y="28.0">
+        </point>
+        <point x="1.0" y="1.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #291</name>
+      <x>173</x>
+      <y>14</y>
+      <width>101</width>
+      <height>10</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #294</name>
+        <y>5</y>
+        <height>5</height>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </line_color>
+        <points>
+          <point x="100.0" y="5.0">
+          </point>
+          <point x="0.0" y="5.0">
+          </point>
+          <point x="15.0" y="0.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #298</name>
+        <text>INCIDENT BEAM</text>
+        <x>21</x>
+        <width>80</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </foreground_color>
+        <auto_size>true</auto_size>
+      </widget>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #301</name>
+      <x>13</x>
+      <width>21</width>
+      <height>3</height>
+      <line_width>2</line_width>
+      <line_color>
+        <color red="253" green="0" blue="0">
+        </color>
+      </line_color>
+      <points>
+        <point x="20.0" y="2.0">
+        </point>
+        <point x="1.0" y="1.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="arc" version="2.0.0">
+      <name>arc #305</name>
+      <x>172</x>
+      <y>23</y>
+      <width>20</width>
+      <height>20</height>
+      <start_angle>328.0</start_angle>
+      <total_angle>65.0</total_angle>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="30" green="144" blue="255">
+        </color>
+      </line_color>
+      <transparent>true</transparent>
+    </widget>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #308</name>
+    <x>59</x>
+    <y>72</y>
+    <width>76</width>
+    <height>38</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="38.0">
+      </point>
+      <point x="0.0" y="30.0">
+      </point>
+      <point x="76.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #312</name>
+    <x>173</x>
+    <y>84</y>
+    <width>65</width>
+    <height>26</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="26.0">
+      </point>
+      <point x="0.0" y="19.0">
+      </point>
+      <point x="65.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #316</name>
+    <x>337</x>
+    <y>93</y>
+    <width>66</width>
+    <height>18</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </line_color>
+    <points>
+      <point x="66.0" y="18.0">
+      </point>
+      <point x="66.0" y="10.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #320</name>
+    <x>283</x>
+    <y>67</y>
+    <width>27</width>
+    <height>43</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="43.0">
+      </point>
+      <point x="0.0" y="17.0">
+      </point>
+      <point x="27.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #324</name>
+    <pv_name>$(P)$(Q)set.VAL</pv_name>
+    <y>270</y>
+    <width>78</width>
+    <height>21</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #327</name>
+    <text>length</text>
+    <x>240</x>
+    <y>270</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #330</name>
+    <pv_name>$(P)$(Q)length.EGU</pv_name>
+    <x>350</x>
+    <y>273</y>
+    <width>15</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #333</name>
+    <actions>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>$(mUp)</M>
+        </macros>
+        <target>tab</target>
+        <description>Up motor</description>
+      </action>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>$(mDn)</M>
+        </macros>
+        <target>tab</target>
+        <description>Dn motor</description>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>150</x>
+    <y>270</y>
+    <width>40</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #337</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)sync.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)sync.PROC</pv_name>
+    <text>Sync</text>
+    <x>90</x>
+    <y>270</y>
+    <width>50</width>
+    <height>21</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #340</name>
+    <pv_name>$(P)$(Q)length.VAL</pv_name>
+    <x>300</x>
+    <y>273</y>
+    <width>45</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #343</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>All Stop</text>
+    <x>380</x>
+    <y>270</y>
+    <width>79</width>
+    <height>21</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #346</name>
+    <x>125</x>
+    <y>110</y>
+    <width>106</width>
+    <height>155</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #349</name>
+    <x>235</x>
+    <y>110</y>
+    <width>106</width>
+    <height>155</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #352</name>
+    <x>350</x>
+    <y>110</y>
+    <width>106</width>
+    <height>155</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #355</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(Q)avg</DESC>
+          <EGU>$(Q)avg.EGU</EGU>
+          <NAME>$(Q)avg</NAME>
+          <Q>$(Q)avg</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>SCAN CONTROL</text>
+    <x>131</x>
+    <y>228</y>
+    <width>94</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #358</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(Q)dn</DESC>
+          <EGU>$(Q)dn.EGU</EGU>
+          <NAME>$(Q)dn</NAME>
+          <Q>$(Q)dn</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>SCAN CONTROL</text>
+    <x>16</x>
+    <y>228</y>
+    <width>94</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #361</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(Q)angl</DESC>
+          <EGU>$(Q)angl.EGU</EGU>
+          <NAME>$(Q)angl</NAME>
+          <Q>$(Q)angl</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>SCAN CONTROL</text>
+    <x>239</x>
+    <y>228</y>
+    <width>94</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #364</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(Q)up</DESC>
+          <EGU>$(Q)up.EGU</EGU>
+          <NAME>$(Q)up</NAME>
+          <Q>$(Q)up</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>SCAN CONTROL</text>
+    <x>356</x>
+    <y>228</y>
+    <width>94</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #367</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)avg:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)avg:scanParms.LOAD</pv_name>
+    <text>LD</text>
+    <x>131</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #370</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)avg:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)avg:scanParms.GO</pv_name>
+    <text>GO</text>
+    <x>158</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #373</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>ABORT</text>
+    <x>185</x>
+    <y>245</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #376</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)angl:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)angl:scanParms.LOAD</pv_name>
+    <text>LD</text>
+    <x>241</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #379</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)angl:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)angl:scanParms.GO</pv_name>
+    <text>GO</text>
+    <x>268</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #382</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>ABORT</text>
+    <x>295</x>
+    <y>245</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #385</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)up:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)up:scanParms.LOAD</pv_name>
+    <text>LD</text>
+    <x>356</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #388</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)up:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)up:scanParms.GO</pv_name>
+    <text>GO</text>
+    <x>383</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #391</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>ABORT</text>
+    <x>410</x>
+    <y>245</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #394</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>ABORT</text>
+    <x>70</x>
+    <y>245</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #397</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)dn:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)dn:scanParms.GO</pv_name>
+    <text>GO</text>
+    <x>43</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #400</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)dn:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)dn:scanParms.LOAD</pv_name>
+    <text>LD</text>
+    <x>16</x>
+    <y>245</y>
+    <width>22</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #403</name>
+    <width>460</width>
+    <height>31</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #406</name>
+    <pv_name>$(P)mirror-$(Q).DESC</pv_name>
+    <x>2</x>
+    <width>350</width>
+    <height>30</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="30.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #409</name>
+    <text>Mirror $(Q)</text>
+    <x>355</x>
+    <y>4</y>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #412</name>
+    <y>31</y>
+    <width>461</width>
+    <height>3</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="459.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+</display>

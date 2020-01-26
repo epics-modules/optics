@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>pf4Bankmore</name>
+  <x>862</x>
+  <y>500</y>
+  <width>140</width>
+  <height>535</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <width>140</width>
+    <height>25</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #9</name>
+    <y>180</y>
+    <width>141</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="140.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #14</name>
+    <text>PF4 filter</text>
+    <width>135</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #17</name>
+    <y>22</y>
+    <width>142</width>
+    <height>3</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="140.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #21</name>
+    <file>pf4Bank_bare.bob</file>
+    <x>5</x>
+    <y>25</y>
+    <width>125</width>
+    <height>130</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #23</name>
+    <actions>
+      <action type="open_display">
+        <file>pf4Bankconfig.opi</file>
+        <target>replace</target>
+        <description>all</description>
+      </action>
+    </actions>
+    <text>config</text>
+    <x>30</x>
+    <y>155</y>
+    <width>55</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #26</name>
+    <actions>
+      <action type="open_display">
+        <file>pf4Bank.opi</file>
+        <target>replace</target>
+        <description>PF4 mono filter computed controls</description>
+      </action>
+    </actions>
+    <text>less</text>
+    <x>85</x>
+    <y>155</y>
+    <width>50</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #29</name>
+    <x>6</x>
+    <y>185</y>
+    <width>64</width>
+    <height>346</height>
+    <line_color>
+      <color red="52" green="51" blue="134">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="52" green="51" blue="134">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)fPos$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #33</name>
+    <x>6</x>
+    <y>185</y>
+    <width>64</width>
+    <height>346</height>
+    <line_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)fPos$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #37</name>
+    <x>6</x>
+    <y>185</y>
+    <width>64</width>
+    <height>346</height>
+    <line_color>
+      <color red="222" green="19" blue="9">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="222" green="19" blue="9">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)bank$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="byte_monitor" version="2.0.0">
+    <name>bar #41</name>
+    <pv_name>$(P)$(H)bitFlag$(B)</pv_name>
+    <x>10</x>
+    <y>189</y>
+    <width>10</width>
+    <height>336</height>
+    <numBits>16</numBits>
+    <bitReverse>true</bitReverse>
+    <horizontal>false</horizontal>
+    <square>true</square>
+    <foreground_color>
+      <color red="139" green="26" blue="150">
+      </color>
+    </foreground_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #44</name>
+    <pv_name>$(P)$(H)fPos$(B).THST</pv_name>
+    <x>74</x>
+    <y>254</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #48</name>
+    <pv_name>$(P)$(H)fPos$(B).TWST</pv_name>
+    <x>74</x>
+    <y>233</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #52</name>
+    <pv_name>$(P)$(H)fPos$(B).ONST</pv_name>
+    <x>74</x>
+    <y>212</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #56</name>
+    <pv_name>$(P)$(H)fPos$(B).ZRST</pv_name>
+    <x>74</x>
+    <y>191</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #60</name>
+    <pv_name>$(P)$(H)fPos$(B).FRST</pv_name>
+    <x>74</x>
+    <y>276</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #64</name>
+    <pv_name>$(P)$(H)fPos$(B).FVST</pv_name>
+    <x>74</x>
+    <y>297</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #68</name>
+    <pv_name>$(P)$(H)fPos$(B).SXST</pv_name>
+    <x>74</x>
+    <y>318</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #72</name>
+    <pv_name>$(P)$(H)fPos$(B).SVST</pv_name>
+    <x>74</x>
+    <y>339</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #76</name>
+    <pv_name>$(P)$(H)fPos$(B).EIST</pv_name>
+    <x>74</x>
+    <y>360</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #80</name>
+    <pv_name>$(P)$(H)fPos$(B).NIST</pv_name>
+    <x>74</x>
+    <y>381</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #84</name>
+    <pv_name>$(P)$(H)fPos$(B).TEST</pv_name>
+    <x>74</x>
+    <y>402</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #88</name>
+    <pv_name>$(P)$(H)fPos$(B).ELST</pv_name>
+    <x>74</x>
+    <y>423</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #92</name>
+    <pv_name>$(P)$(H)fPos$(B).TVST</pv_name>
+    <x>74</x>
+    <y>444</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #96</name>
+    <pv_name>$(P)$(H)fPos$(B).TTST</pv_name>
+    <x>74</x>
+    <y>465</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #100</name>
+    <pv_name>$(P)$(H)fPos$(B).FTST</pv_name>
+    <x>74</x>
+    <y>486</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #104</name>
+    <pv_name>$(P)$(H)fPos$(B).FFST</pv_name>
+    <x>74</x>
+    <y>507</y>
+    <width>70</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #108</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 0</text>
+    <x>24</x>
+    <y>191</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #111</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 1</text>
+    <x>24</x>
+    <y>212</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #114</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 2</text>
+    <x>24</x>
+    <y>233</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #117</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 3</text>
+    <x>24</x>
+    <y>254</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #120</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 4</text>
+    <x>24</x>
+    <y>276</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #123</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 5</text>
+    <x>24</x>
+    <y>297</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #126</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 6</text>
+    <x>24</x>
+    <y>318</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #129</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 7</text>
+    <x>24</x>
+    <y>339</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #132</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 8</text>
+    <x>24</x>
+    <y>360</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #135</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 9</text>
+    <x>24</x>
+    <y>381</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #138</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 10</text>
+    <x>24</x>
+    <y>402</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #141</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 11</text>
+    <x>24</x>
+    <y>423</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #144</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 12</text>
+    <x>24</x>
+    <y>444</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #147</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 13</text>
+    <x>24</x>
+    <y>465</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #150</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 14</text>
+    <x>24</x>
+    <y>486</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #153</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)fPos$(B)</pv_name>
+    <text>B 15</text>
+    <x>24</x>
+    <y>507</y>
+    <width>40</width>
+    <height>18</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+</display>

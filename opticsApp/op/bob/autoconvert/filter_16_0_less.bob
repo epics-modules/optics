@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>filter_16_0_less</name>
+  <x>600</x>
+  <y>666</y>
+  <width>680</width>
+  <height>285</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <x>5</x>
+    <y>40</y>
+    <width>150</width>
+    <height>21</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <x>245</x>
+    <y>60</y>
+    <width>10</width>
+    <height>15</height>
+    <line_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(R)EnergySelect</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #13</name>
+    <x>245</x>
+    <y>40</y>
+    <width>10</width>
+    <height>15</height>
+    <line_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(R)EnergySelect</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #17</name>
+    <pv_name>$(P)$(R)EnergySelect</pv_name>
+    <x>175</x>
+    <y>40</y>
+    <width>65</width>
+    <height>37</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <horizontal>false</horizontal>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #20</name>
+    <pv_name>$(P)$(R)EnergyBeamline</pv_name>
+    <x>260</x>
+    <y>40</y>
+    <width>85</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #24</name>
+    <pv_name>$(P)$(R)EnergyLocal</pv_name>
+    <x>260</x>
+    <y>57</y>
+    <width>85</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #28</name>
+    <text>Message:</text>
+    <x>176</x>
+    <y>153</y>
+    <width>60</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #31</name>
+    <pv_name>$(P)$(R)Message</pv_name>
+    <x>250</x>
+    <y>153</y>
+    <width>415</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #35</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+        <value>0</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+    <text>ALL IN</text>
+    <x>570</x>
+    <y>40</y>
+    <width>95</width>
+    <height>28</height>
+    <foreground_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #38</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+    <text>ALL OUT</text>
+    <x>570</x>
+    <y>70</y>
+    <width>95</width>
+    <height>28</height>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #41</name>
+    <text>Setpoint:</text>
+    <x>570</x>
+    <y>105</y>
+    <width>86</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #44</name>
+    <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+    <x>570</x>
+    <y>123</y>
+    <width>95</width>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>5</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #48</name>
+    <text>Mask:</text>
+    <x>175</x>
+    <y>133</y>
+    <width>60</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #51</name>
+    <text>Transm:</text>
+    <x>175</x>
+    <y>111</y>
+    <width>60</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #54</name>
+    <pv_name>$(P)$(R)FilterMask</pv_name>
+    <x>245</x>
+    <y>134</y>
+    <width>60</width>
+    <height>13</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #58</name>
+    <pv_name>$(P)$(R)Transmission</pv_name>
+    <x>245</x>
+    <y>108</y>
+    <width>140</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </background_color>
+    <format>2</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #62</name>
+    <text>Status:</text>
+    <x>175</x>
+    <y>89</y>
+    <width>60</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #65</name>
+    <pv_name>$(P)$(R)Status</pv_name>
+    <x>245</x>
+    <y>86</y>
+    <width>140</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #69</name>
+    <pv_name>$(P)$(R)FilterMask</pv_name>
+    <x>325</x>
+    <y>134</y>
+    <width>60</width>
+    <height>13</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>4</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #73</name>
+    <text>=</text>
+    <x>310</x>
+    <y>134</y>
+    <width>10</width>
+    <height>13</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #76</name>
+    <text>keV</text>
+    <x>350</x>
+    <y>40</y>
+    <width>34</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #79</name>
+    <text>keV</text>
+    <x>350</x>
+    <y>60</y>
+    <width>34</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #82</name>
+    <x>400</x>
+    <y>40</y>
+    <width>155</width>
+    <height>108</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #85</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>0.001</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>/1000</text>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #88</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+          <value>1.0e-2</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+      <text>1e-2</text>
+      <x>110</x>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #91</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+          <value>1.0e-4</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+      <text>1e-4</text>
+      <x>110</x>
+      <y>22</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #94</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+          <value>1.0e-6</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+      <text>1e-6</text>
+      <x>110</x>
+      <y>44</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #97</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+          <value>1.0e-8</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+      <text>1e-8</text>
+      <x>110</x>
+      <y>66</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #100</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+          <value>1.0e-10</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionSetpoint</pv_name>
+      <text>1e-10</text>
+      <x>110</x>
+      <y>88</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #103</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>0.1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>/10</text>
+      <y>22</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #106</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>.5</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>/2</text>
+      <y>44</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #109</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>0.9</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>-10%</text>
+      <y>66</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #112</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionStepDown</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionStepDown</pv_name>
+      <text>-</text>
+      <y>88</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #115</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionStepUp</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionStepUp</pv_name>
+      <text>+</text>
+      <x>50</x>
+      <y>88</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #118</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>1000</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>*1000</text>
+      <x>50</x>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #121</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>10</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>*10</text>
+      <x>50</x>
+      <y>22</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #124</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>2</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>*2</text>
+      <x>50</x>
+      <y>44</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #127</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+          <value>1.1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)TransmissionFactor</pv_name>
+      <text>+10%</text>
+      <x>50</x>
+      <y>66</y>
+      <width>45</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #130</name>
+    <y>175</y>
+    <width>680</width>
+    <height>1</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="70" green="70" blue="70">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="679.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #134</name>
+    <file>filterbox_less.bob</file>
+    <macros>
+      <N1>13</N1>
+      <N2>14</N2>
+      <N3>15</N3>
+      <N4>16</N4>
+    </macros>
+    <x>40</x>
+    <y>180</y>
+    <width>130</width>
+    <height>100</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #136</name>
+    <file>filterbox_less.bob</file>
+    <macros>
+      <N1>9</N1>
+      <N2>10</N2>
+      <N3>11</N3>
+      <N4>12</N4>
+    </macros>
+    <x>180</x>
+    <y>180</y>
+    <width>130</width>
+    <height>100</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #138</name>
+    <file>filterbox_less.bob</file>
+    <macros>
+      <N1>5</N1>
+      <N2>6</N2>
+      <N3>7</N3>
+      <N4>8</N4>
+    </macros>
+    <x>375</x>
+    <y>180</y>
+    <width>130</width>
+    <height>100</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #140</name>
+    <file>filterbox_less.bob</file>
+    <macros>
+      <N1>1</N1>
+      <N2>2</N2>
+      <N3>3</N3>
+      <N4>4</N4>
+    </macros>
+    <x>515</x>
+    <y>180</y>
+    <width>130</width>
+    <height>100</height>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #142</name>
+    <pv_name>$(P)$(R)Description</pv_name>
+    <x>5</x>
+    <y>5</y>
+    <width>670</width>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #146</name>
+    <x>165</x>
+    <y>30</y>
+    <width>0</width>
+    <height>145</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="70" green="70" blue="70">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="145.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #150</name>
+    <text>$(P)$(R)</text>
+    <x>5</x>
+    <y>44</y>
+    <width>150</width>
+    <height>13</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #153</name>
+    <text>filter_16_0_less.adl</text>
+    <x>5</x>
+    <y>95</y>
+    <width>118</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #156</name>
+    <text>2013-01-24 (CMS)</text>
+    <x>5</x>
+    <y>110</y>
+    <width>118</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #159</name>
+    <actions>
+      <action type="open_display">
+        <file>filter_drive_config.opi</file>
+        <target>tab</target>
+        <description>configure</description>
+      </action>
+    </actions>
+    <text>configure</text>
+    <x>85</x>
+    <y>70</y>
+    <width>70</width>
+    <height>18</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="88" green="52" blue="15">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #162</name>
+    <actions>
+      <action type="open_display">
+        <file>filter_16_0_more.opi</file>
+        <target>replace</target>
+        <description>more</description>
+      </action>
+    </actions>
+    <text>more</text>
+    <x>5</x>
+    <y>70</y>
+    <width>70</width>
+    <height>18</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="88" green="52" blue="15">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #165</name>
+    <x>303</x>
+    <y>188</y>
+    <width>79</width>
+    <height>19</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>composite #168</name>
+      <x>22</x>
+      <width>35</width>
+      <height>19</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>text #171</name>
+        <text>free</text>
+        <x>1</x>
+        <y>9</y>
+        <width>21</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="33" green="108" blue="0">
+          </color>
+        </foreground_color>
+        <auto_size>true</auto_size>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>composite #174</name>
+        <width>35</width>
+        <height>10</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="label" version="2.0.0">
+          <name>text #177</name>
+          <text>lock</text>
+          <width>21</width>
+          <height>10</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="10.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="253" green="0" blue="0">
+            </color>
+          </foreground_color>
+          <auto_size>true</auto_size>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>text #180</name>
+          <text>/</text>
+          <x>25</x>
+          <width>10</width>
+          <height>10</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="10.0">
+            </font>
+          </font>
+          <auto_size>true</auto_size>
+        </widget>
+      </widget>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #183</name>
+      <y>5</y>
+      <width>19</width>
+      <height>1</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="18.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #187</name>
+      <x>60</x>
+      <y>5</y>
+      <width>19</width>
+      <height>1</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="18.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #191</name>
+    <x>5</x>
+    <y>226</y>
+    <width>671</width>
+    <height>15</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>composite #194</name>
+      <width>20</width>
+      <height>15</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #197</name>
+        <width>21</width>
+        <height>9</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="1.0" y="8.0">
+          </point>
+          <point x="20.0" y="1.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #202</name>
+        <y>6</y>
+        <width>21</width>
+        <height>9</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="1.0" y="1.0">
+          </point>
+          <point x="20.0" y="8.0">
+          </point>
+        </points>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #207</name>
+      <x>330</x>
+      <width>20</width>
+      <height>15</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #210</name>
+        <width>21</width>
+        <height>9</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="1.0" y="8.0">
+          </point>
+          <point x="20.0" y="1.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #215</name>
+        <y>6</y>
+        <width>21</width>
+        <height>9</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="1.0" y="1.0">
+          </point>
+          <point x="20.0" y="8.0">
+          </point>
+        </points>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #220</name>
+      <x>646</x>
+      <width>20</width>
+      <height>15</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #223</name>
+        <width>21</width>
+        <height>9</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="1.0" y="8.0">
+          </point>
+          <point x="20.0" y="1.0">
+          </point>
+        </points>
+      </widget>
+      <widget type="polyline" version="2.0.0">
+        <name>polyline #228</name>
+        <y>6</y>
+        <width>21</width>
+        <height>9</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <points>
+          <point x="1.0" y="1.0">
+          </point>
+          <point x="20.0" y="8.0">
+          </point>
+        </points>
+      </widget>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #233</name>
+      <y>7</y>
+      <width>671</width>
+      <height>2</height>
+      <line_width>2</line_width>
+      <line_color>
+        <color red="253" green="0" blue="0">
+        </color>
+      </line_color>
+      <points>
+        <point x="1.0" y="1.0">
+        </point>
+        <point x="670.0" y="1.0">
+        </point>
+      </points>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #237</name>
+    <x>303</x>
+    <y>253</y>
+    <width>79</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #240</name>
+      <y>7</y>
+      <width>19</width>
+      <height>1</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="18.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #244</name>
+      <x>17</x>
+      <width>45</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>text #247</name>
+        <text>remove</text>
+        <width>45</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #250</name>
+        <text>insert</text>
+        <y>10</y>
+        <width>45</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>polyline #253</name>
+      <x>60</x>
+      <y>7</y>
+      <width>19</width>
+      <height>1</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <points>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="18.0" y="0.0">
+        </point>
+      </points>
+    </widget>
+  </widget>
+</display>

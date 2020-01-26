@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>orient_HKL_angles</name>
+  <x>690</x>
+  <y>570</y>
+  <width>700</width>
+  <height>65</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <width>700</width>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <y>20</y>
+    <width>700</width>
+    <height>3</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #12</name>
+    <text>Diffractometer $(P)orient$(O)</text>
+    <width>700</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #15</name>
+    <pv_name>$(P)orient$(O):H_RBV</pv_name>
+    <x>26</x>
+    <y>25</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #19</name>
+    <pv_name>$(P)orient$(O):H</pv_name>
+    <x>25</x>
+    <y>40</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #23</name>
+    <text>H</text>
+    <x>10</x>
+    <y>41</y>
+    <width>10</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #26</name>
+    <x>23</x>
+    <y>38</y>
+    <width>84</width>
+    <height>24</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)orient$(O):H_busy</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #30</name>
+    <text>K</text>
+    <x>120</x>
+    <y>42</y>
+    <width>10</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #33</name>
+    <pv_name>$(P)orient$(O):K</pv_name>
+    <x>135</x>
+    <y>41</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #37</name>
+    <x>133</x>
+    <y>39</y>
+    <width>84</width>
+    <height>24</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)orient$(O):K_busy</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #41</name>
+    <pv_name>$(P)orient$(O):K_RBV</pv_name>
+    <x>136</x>
+    <y>25</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #45</name>
+    <text>L</text>
+    <x>230</x>
+    <y>42</y>
+    <width>10</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #48</name>
+    <pv_name>$(P)orient$(O):L</pv_name>
+    <x>245</x>
+    <y>41</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #52</name>
+    <x>243</x>
+    <y>39</y>
+    <width>84</width>
+    <height>24</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)orient$(O):L_busy</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #56</name>
+    <pv_name>$(P)orient$(O):L_RBV</pv_name>
+    <x>246</x>
+    <y>25</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #60</name>
+    <text>CHI</text>
+    <x>520</x>
+    <y>25</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #63</name>
+    <pv_name>$(P)orient$(O):CHI</pv_name>
+    <x>520</x>
+    <y>45</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #67</name>
+    <text>PHI</text>
+    <x>610</x>
+    <y>25</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #70</name>
+    <pv_name>$(P)orient$(O):PHI</pv_name>
+    <x>610</x>
+    <y>45</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #74</name>
+    <text>TTH</text>
+    <x>340</x>
+    <y>25</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #77</name>
+    <pv_name>$(P)orient$(O):TTH</pv_name>
+    <x>340</x>
+    <y>45</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #81</name>
+    <text>TH</text>
+    <x>430</x>
+    <y>25</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #84</name>
+    <pv_name>$(P)orient$(O):TH</pv_name>
+    <x>430</x>
+    <y>45</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+</display>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>virtualChannelCutMono</name>
+  <x>992</x>
+  <y>294</y>
+  <width>400</width>
+  <height>152</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>Energy (keV)</text>
+    <x>10</x>
+    <y>40</y>
+    <width>120</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #9</name>
+    <actions>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>VCCMono:Energy</M>
+        </macros>
+        <target>tab</target>
+        <description>Energy</description>
+      </action>
+      <action type="open_display">
+        <file>yyTransform.opi</file>
+        <macros>
+          <T>VCCMono:tFwd</T>
+        </macros>
+        <target>tab</target>
+        <description>tFwd</description>
+      </action>
+      <action type="open_display">
+        <file>yyTransform.opi</file>
+        <macros>
+          <T>VCCMono:tRev</T>
+        </macros>
+        <target>tab</target>
+        <description>tRev</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>VCCMono:calcDone</C>
+        </macros>
+        <target>tab</target>
+        <description>calcDone</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>VCCMono:closeGate</C>
+        </macros>
+        <target>tab</target>
+        <description>closeGate</description>
+      </action>
+    </actions>
+    <text>debug</text>
+    <x>337</x>
+    <y>125</y>
+    <width>45</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #16</name>
+    <text>Offset (mm)</text>
+    <x>10</x>
+    <y>65</y>
+    <width>120</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #19</name>
+    <text>deltaD</text>
+    <x>10</x>
+    <y>90</y>
+    <width>120</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #22</name>
+    <text>d spacing (A)</text>
+    <x>10</x>
+    <y>115</y>
+    <width>120</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #25</name>
+    <pv_name>$(P)VCCMono:set</pv_name>
+    <x>280</x>
+    <y>40</y>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #28</name>
+    <x>145</x>
+    <y>40</y>
+    <width>130</width>
+    <height>95</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #31</name>
+      <pv_name>$(P)VCCMono:Energy</pv_name>
+      <width>130</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #35</name>
+      <pv_name>$(P)VCCMono:offset</pv_name>
+      <y>25</y>
+      <width>130</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #39</name>
+      <pv_name>$(P)VCCMono:deltaD</pv_name>
+      <y>50</y>
+      <width>130</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #43</name>
+      <pv_name>$(P)VCCMono:d_spacing</pv_name>
+      <y>75</y>
+      <width>130</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+</display>

@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>pf4Bankconfig_bare</name>
+  <x>950</x>
+  <y>581</y>
+  <width>225</width>
+  <height>250</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>Be B C Al Si Ti Cr Mn Fe Co Ni</text>
+    <x>5</x>
+    <y>220</y>
+    <width>195</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #9</name>
+    <text>Choices for filter material</text>
+    <x>10</x>
+    <y>190</y>
+    <width>215</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #12</name>
+    <pv_name>$(P)$(H)E:local</pv_name>
+    <x>108</x>
+    <y>26</y>
+    <width>90</width>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #16</name>
+    <text>keV</text>
+    <x>200</x>
+    <y>30</y>
+    <width>25</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #19</name>
+    <text>using</text>
+    <x>66</x>
+    <y>30</y>
+    <width>40</width>
+    <height>14</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #22</name>
+    <pv_name>$(P)$(H)useMono</pv_name>
+    <x>5</x>
+    <y>7</y>
+    <width>55</width>
+    <height>36</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <horizontal>false</horizontal>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #25</name>
+    <text>Energy</text>
+    <x>66</x>
+    <y>1</y>
+    <width>40</width>
+    <height>14</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #28</name>
+    <pv_name>$(P)$(H)displayEnergy</pv_name>
+    <x>108</x>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #32</name>
+    <text>keV</text>
+    <x>200</x>
+    <y>1</y>
+    <width>25</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #35</name>
+    <x>77</x>
+    <y>65</y>
+    <width>66</width>
+    <line_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)bank$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #39</name>
+    <x>77</x>
+    <y>65</y>
+    <width>66</width>
+    <line_color>
+      <color red="45" green="127" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="45" green="127" blue="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)bank$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #43</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)bank$(B)</pv_name>
+    <text>off</text>
+    <x>49</x>
+    <y>64</y>
+    <width>30</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="190" green="25" blue="11">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #46</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)$(H)bank$(B)</pv_name>
+    <text>on</text>
+    <x>22</x>
+    <y>64</y>
+    <width>30</width>
+    <height>20</height>
+    <background_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #49</name>
+    <pv_name>$(P)$(H)bank$(B)</pv_name>
+    <x>80</x>
+    <y>68</y>
+    <width>60</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #53</name>
+    <pv_name>$(P)$(H)f4$(B).EGU</pv_name>
+    <x>15</x>
+    <y>91</y>
+    <width>40</width>
+    <height>14</height>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #57</name>
+    <pv_name>$(P)$(H)Z4$(B)</pv_name>
+    <x>55</x>
+    <y>104</y>
+    <width>54</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #60</name>
+    <pv_name>$(P)$(H)Z3$(B)</pv_name>
+    <x>55</x>
+    <y>124</y>
+    <width>54</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #63</name>
+    <pv_name>$(P)$(H)Z2$(B)</pv_name>
+    <x>55</x>
+    <y>144</y>
+    <width>54</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #66</name>
+    <pv_name>$(P)$(H)Z1$(B)</pv_name>
+    <x>55</x>
+    <y>164</y>
+    <width>54</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #69</name>
+    <pv_name>$(P)$(H)f3$(B)</pv_name>
+    <x>15</x>
+    <y>125</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #73</name>
+    <pv_name>$(P)$(H)f4$(B)</pv_name>
+    <x>15</x>
+    <y>105</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #77</name>
+    <pv_name>$(P)$(H)f2$(B)</pv_name>
+    <x>15</x>
+    <y>145</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #81</name>
+    <pv_name>$(P)$(H)f1$(B)</pv_name>
+    <x>15</x>
+    <y>165</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #85</name>
+    <file>pf4_other_bare.bob</file>
+    <macros>
+      <B>B</B>
+      <N>1</N>
+    </macros>
+    <x>110</x>
+    <y>165</y>
+    <width>50</width>
+    <height>22</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #87</name>
+    <file>pf4_other_bare.bob</file>
+    <macros>
+      <B>B</B>
+      <N>2</N>
+    </macros>
+    <x>110</x>
+    <y>145</y>
+    <width>50</width>
+    <height>22</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #89</name>
+    <file>pf4_other_bare.bob</file>
+    <macros>
+      <B>B</B>
+      <N>3</N>
+    </macros>
+    <x>110</x>
+    <y>125</y>
+    <width>50</width>
+    <height>22</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #91</name>
+    <pv_name>$(P)$(H)Other4B</pv_name>
+    <x>110</x>
+    <y>105</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #95</name>
+    <text>X</text>
+    <x>150</x>
+    <y>107</y>
+    <width>10</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)OtherLegal4B</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #99</name>
+    <text>debug</text>
+    <x>182</x>
+    <y>78</y>
+    <width>35</width>
+    <height>14</height>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #102</name>
+    <pv_name>$(P)$(H)debug$(B)</pv_name>
+    <x>179</x>
+    <y>93</y>
+    <width>40</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #105</name>
+    <text>4</text>
+    <y>107</y>
+    <width>10</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #108</name>
+    <text>3</text>
+    <y>127</y>
+    <width>10</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #111</name>
+    <text>2</text>
+    <y>147</y>
+    <width>10</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #114</name>
+    <text>1</text>
+    <y>167</y>
+    <width>10</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #117</name>
+    <y>55</y>
+    <width>225</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="224.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #121</name>
+    <actions>
+      <action type="open_display">
+        <file>pf4_otherHelp.opi</file>
+        <target>tab</target>
+        <description>all</description>
+      </action>
+    </actions>
+    <text>mu</text>
+    <x>110</x>
+    <y>89</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #124</name>
+    <text>'Other':</text>
+    <x>10</x>
+    <y>205</y>
+    <width>215</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #127</name>
+    <text>Cu Zn Ge Mo Ag Sn Ta W Pt Au Pb</text>
+    <x>5</x>
+    <y>235</y>
+    <width>220</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+</display>

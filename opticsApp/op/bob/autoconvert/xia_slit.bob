@@ -1,0 +1,2043 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>xia_slit</name>
+  <x>556</x>
+  <y>211</y>
+  <width>300</width>
+  <height>340</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <width>300</width>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #9</name>
+    <y>20</y>
+    <width>299</width>
+    <height>3</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="297.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #13</name>
+    <text>$(SLIT)</text>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #16</name>
+    <text>(Looking upstream)</text>
+    <x>170</x>
+    <y>6</y>
+    <width>110</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #19</name>
+    <actions>
+      <action type="open_display">
+        <file>xia_slit_full.opi</file>
+        <target>replace</target>
+        <description>more</description>
+      </action>
+    </actions>
+    <text>MORE</text>
+    <x>250</x>
+    <y>324</y>
+    <width>50</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #22</name>
+    <pv_name>$(P)$(HSC)v0.DRVH</pv_name>
+    <x>204</x>
+    <y>242</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #26</name>
+    <pv_name>$(P)$(HSC)height.DRVH</pv_name>
+    <x>14</x>
+    <y>242</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #30</name>
+    <pv_name>$(P)$(HSC)h0.DRVH</pv_name>
+    <x>204</x>
+    <y>37</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #34</name>
+    <pv_name>$(P)$(HSC)width.DRVH</pv_name>
+    <x>14</x>
+    <y>37</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #38</name>
+    <x>99</x>
+    <y>125</y>
+    <height>100</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #41</name>
+    <x>99</x>
+    <y>200</y>
+    <height>100</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #44</name>
+    <x>99</x>
+    <y>200</y>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #47</name>
+    <x>99</x>
+    <y>50</y>
+    <height>100</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #50</name>
+    <x>99</x>
+    <y>50</y>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #53</name>
+    <x>19</x>
+    <y>125</y>
+    <height>100</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #56</name>
+    <x>19</x>
+    <y>125</y>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #59</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)l_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)l_tweak.A</pv_name>
+    <text>&lt;</text>
+    <x>25</x>
+    <y>184</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #62</name>
+    <pv_name>$(P)$(HSC)l_tweakVal.VAL</pv_name>
+    <x>44</x>
+    <y>186</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #66</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)l_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)l_tweak.B</pv_name>
+    <text>&gt;</text>
+    <x>93</x>
+    <y>184</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #69</name>
+    <pv_name>$(P)$(HSC)l.DRVH</pv_name>
+    <x>29</x>
+    <y>135</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #73</name>
+    <pv_name>$(P)$(HSC)lRB</pv_name>
+    <x>29</x>
+    <y>143</y>
+    <width>60</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #77</name>
+    <pv_name>$(P)$(HSC)l.VAL</pv_name>
+    <x>29</x>
+    <y>156</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #81</name>
+    <pv_name>$(P)$(HSC)l.DRVL</pv_name>
+    <x>29</x>
+    <y>176</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #85</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)l</DESC>
+          <EGU>$(HSC)l.EGU</EGU>
+          <NAME>$(HSC)l</NAME>
+          <Q>$(HSC)l</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>44</x>
+    <y>205</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #88</name>
+    <text>Scan</text>
+    <x>64</x>
+    <y>206</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #91</name>
+    <x>179</x>
+    <y>125</y>
+    <height>100</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #94</name>
+    <x>179</x>
+    <y>125</y>
+    <height>100</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #97</name>
+    <pv_name>$(P)$(HSC)r.VAL</pv_name>
+    <x>189</x>
+    <y>156</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #101</name>
+    <pv_name>$(P)$(HSC)r.DRVL</pv_name>
+    <x>189</x>
+    <y>176</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #105</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)r_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)r_tweak.A</pv_name>
+    <text>&lt;</text>
+    <x>185</x>
+    <y>184</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #108</name>
+    <pv_name>$(P)$(HSC)r_tweakVal.VAL</pv_name>
+    <x>204</x>
+    <y>186</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #112</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)r_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)r_tweak.B</pv_name>
+    <text>&gt;</text>
+    <x>253</x>
+    <y>184</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #115</name>
+    <pv_name>$(P)$(HSC)r.DRVH</pv_name>
+    <x>189</x>
+    <y>135</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #119</name>
+    <pv_name>$(P)$(HSC)rRB</pv_name>
+    <x>189</x>
+    <y>143</y>
+    <width>60</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #123</name>
+    <text>Scan</text>
+    <x>224</x>
+    <y>206</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #126</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)r</DESC>
+          <EGU>$(HSC)r.EGU</EGU>
+          <NAME>$(HSC)r</NAME>
+          <Q>$(HSC)r</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>204</x>
+    <y>205</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #129</name>
+    <pv_name>$(P)$(HSC)t.VAL</pv_name>
+    <x>109</x>
+    <y>76</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #133</name>
+    <pv_name>$(P)$(HSC)t.DRVL</pv_name>
+    <x>109</x>
+    <y>96</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #137</name>
+    <pv_name>$(P)$(HSC)t.DRVH</pv_name>
+    <x>109</x>
+    <y>55</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #141</name>
+    <pv_name>$(P)$(HSC)tRB</pv_name>
+    <x>109</x>
+    <y>63</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #145</name>
+    <pv_name>$(P)$(HSC)b.VAL</pv_name>
+    <x>109</x>
+    <y>251</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #149</name>
+    <pv_name>$(P)$(HSC)b.DRVL</pv_name>
+    <x>109</x>
+    <y>271</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #153</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)b_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)b_tweak.A</pv_name>
+    <text>DN</text>
+    <x>104</x>
+    <y>279</y>
+    <width>20</width>
+    <height>19</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #156</name>
+    <pv_name>$(P)$(HSC)b_tweakVal.VAL</pv_name>
+    <x>124</x>
+    <y>280</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #160</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)b_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)b_tweak.B</pv_name>
+    <text>UP</text>
+    <x>174</x>
+    <y>279</y>
+    <width>20</width>
+    <height>19</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #163</name>
+    <pv_name>$(P)$(HSC)b.DRVH</pv_name>
+    <x>109</x>
+    <y>230</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #167</name>
+    <pv_name>$(P)$(HSC)bRB</pv_name>
+    <x>109</x>
+    <y>238</y>
+    <width>60</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #171</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)width_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)width_tweak.A</pv_name>
+    <text>-</text>
+    <x>10</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #174</name>
+    <pv_name>$(P)$(HSC)width_tweakVal.VAL</pv_name>
+    <x>29</x>
+    <y>88</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #178</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)width_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)width_tweak.B</pv_name>
+    <text>+</text>
+    <x>78</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #181</name>
+    <pv_name>$(P)$(HSC)width.VAL</pv_name>
+    <x>14</x>
+    <y>58</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #185</name>
+    <pv_name>$(P)$(HSC)width.DRVL</pv_name>
+    <x>14</x>
+    <y>78</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #189</name>
+    <pv_name>$(P)$(HSC)widthRB</pv_name>
+    <x>14</x>
+    <y>45</y>
+    <width>60</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #193</name>
+    <text>H SIZE</text>
+    <x>14</x>
+    <y>25</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="130" green="4" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #196</name>
+    <text>Scan</text>
+    <x>239</x>
+    <y>106</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #199</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)h0</DESC>
+          <EGU>$(HSC)h0.EGU</EGU>
+          <NAME>$(HSC)h0</NAME>
+          <Q>$(HSC)h0</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>219</x>
+    <y>105</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #202</name>
+    <text>Scan</text>
+    <x>49</x>
+    <y>106</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #205</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)width</DESC>
+          <EGU>$(HSC)width.EGU</EGU>
+          <NAME>$(HSC)width</NAME>
+          <Q>$(HSC)width</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>29</x>
+    <y>105</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #208</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)h0_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)h0_tweak.A</pv_name>
+    <text>&lt;</text>
+    <x>200</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #211</name>
+    <pv_name>$(P)$(HSC)h0_tweakVal.VAL</pv_name>
+    <x>219</x>
+    <y>88</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #215</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)h0_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)h0_tweak.B</pv_name>
+    <text>&gt;</text>
+    <x>268</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #218</name>
+    <pv_name>$(P)$(HSC)h0.VAL</pv_name>
+    <x>204</x>
+    <y>58</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #222</name>
+    <pv_name>$(P)$(HSC)h0.DRVL</pv_name>
+    <x>204</x>
+    <y>78</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #226</name>
+    <pv_name>$(P)$(HSC)h0RB</pv_name>
+    <x>204</x>
+    <y>45</y>
+    <width>60</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #230</name>
+    <text>H CENTER</text>
+    <x>204</x>
+    <y>25</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="130" green="4" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #233</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)v0_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)v0_tweak.A</pv_name>
+    <text>DN</text>
+    <x>200</x>
+    <y>291</y>
+    <width>20</width>
+    <height>19</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #236</name>
+    <pv_name>$(P)$(HSC)v0_tweakVal.VAL</pv_name>
+    <x>219</x>
+    <y>292</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #240</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)v0_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)v0_tweak.B</pv_name>
+    <text>UP</text>
+    <x>268</x>
+    <y>291</y>
+    <width>20</width>
+    <height>19</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #243</name>
+    <pv_name>$(P)$(HSC)v0.VAL</pv_name>
+    <x>204</x>
+    <y>263</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #247</name>
+    <pv_name>$(P)$(HSC)v0.DRVL</pv_name>
+    <x>204</x>
+    <y>283</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #251</name>
+    <pv_name>$(P)$(HSC)v0RB</pv_name>
+    <x>204</x>
+    <y>250</y>
+    <width>60</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #255</name>
+    <text>V CENTER</text>
+    <x>204</x>
+    <y>230</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="130" green="4" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #258</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)height_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)height_tweak.A</pv_name>
+    <text>-</text>
+    <x>10</x>
+    <y>291</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #261</name>
+    <pv_name>$(P)$(HSC)height_tweakVal.VAL</pv_name>
+    <x>29</x>
+    <y>293</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #265</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)height_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)height_tweak.B</pv_name>
+    <text>+</text>
+    <x>78</x>
+    <y>291</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #268</name>
+    <pv_name>$(P)$(HSC)height.VAL</pv_name>
+    <x>14</x>
+    <y>263</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #272</name>
+    <pv_name>$(P)$(HSC)height.DRVL</pv_name>
+    <x>14</x>
+    <y>283</y>
+    <width>80</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #276</name>
+    <pv_name>$(P)$(HSC)heightRB</pv_name>
+    <x>14</x>
+    <y>250</y>
+    <width>60</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #280</name>
+    <text>V SIZE</text>
+    <x>14</x>
+    <y>230</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="130" green="4" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #283</name>
+    <text>Scan</text>
+    <x>144</x>
+    <y>131</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #286</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)t</DESC>
+          <EGU>$(HSC)t.EGU</EGU>
+          <NAME>$(HSC)t</NAME>
+          <Q>$(HSC)t</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>124</x>
+    <y>130</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #289</name>
+    <text>Scan</text>
+    <x>144</x>
+    <y>206</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #292</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)b</DESC>
+          <EGU>$(HSC)b.EGU</EGU>
+          <NAME>$(HSC)b</NAME>
+          <Q>$(HSC)b</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>124</x>
+    <y>205</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #295</name>
+    <text>Scan</text>
+    <x>239</x>
+    <y>311</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #298</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)v0</DESC>
+          <EGU>$(HSC)v0.EGU</EGU>
+          <NAME>$(HSC)v0</NAME>
+          <Q>$(HSC)v0</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>219</x>
+    <y>310</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #301</name>
+    <text>Scan</text>
+    <x>49</x>
+    <y>311</y>
+    <width>30</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #304</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(HSC)height</DESC>
+          <EGU>$(HSC)height.EGU</EGU>
+          <NAME>$(HSC)height</NAME>
+          <Q>$(HSC)height</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>29</x>
+    <y>310</y>
+    <width>16</width>
+    <height>16</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #307</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)locate</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)locate</pv_name>
+    <text>Sync</text>
+    <x>119</x>
+    <y>303</y>
+    <width>60</width>
+    <height>22</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #310</name>
+    <pv_name>$(P)$(HSC)h_Busy</pv_name>
+    <x>120</x>
+    <y>155</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #314</name>
+    <pv_name>$(P)$(HSC)widthRB.EGU</pv_name>
+    <x>75</x>
+    <y>45</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #318</name>
+    <pv_name>$(P)$(HSC)lRB.EGU</pv_name>
+    <x>90</x>
+    <y>143</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #322</name>
+    <pv_name>$(P)$(HSC)heightRB.EGU</pv_name>
+    <x>75</x>
+    <y>250</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #326</name>
+    <pv_name>$(P)$(HSC)tRB.EGU</pv_name>
+    <x>170</x>
+    <y>63</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #330</name>
+    <pv_name>$(P)$(HSC)h0RB.EGU</pv_name>
+    <x>265</x>
+    <y>45</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #334</name>
+    <pv_name>$(P)$(HSC)rRB.EGU</pv_name>
+    <x>250</x>
+    <y>143</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #338</name>
+    <pv_name>$(P)$(HSC)bRB.EGU</pv_name>
+    <x>170</x>
+    <y>238</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #342</name>
+    <pv_name>$(P)$(HSC)v0RB.EGU</pv_name>
+    <x>265</x>
+    <y>250</y>
+    <width>20</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #346</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)stop</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)stop</pv_name>
+    <text>STOP</text>
+    <x>119</x>
+    <y>23</y>
+    <width>60</width>
+    <height>27</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #349</name>
+    <pv_name>$(P)$(HSC)v_Busy</pv_name>
+    <x>120</x>
+    <y>181</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #353</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)t_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)t_tweak.B</pv_name>
+    <text>UP</text>
+    <x>174</x>
+    <y>104</y>
+    <width>20</width>
+    <height>19</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #356</name>
+    <pv_name>$(P)$(HSC)t_tweakVal.VAL</pv_name>
+    <x>124</x>
+    <y>105</y>
+    <width>50</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #360</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(HSC)t_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(HSC)t_tweak.A</pv_name>
+    <text>DN</text>
+    <x>104</x>
+    <y>104</y>
+    <width>20</width>
+    <height>19</height>
+    <background_color>
+      <color red="235" green="241" blue="181">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #363</name>
+    <x>99</x>
+    <y>50</y>
+    <height>75</height>
+    <line_width>4</line_width>
+    <line_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(HSC)v_Busy</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #367</name>
+    <x>99</x>
+    <y>225</y>
+    <height>75</height>
+    <line_width>4</line_width>
+    <line_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(HSC)v_Busy</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #371</name>
+    <x>19</x>
+    <y>125</y>
+    <height>82</height>
+    <line_width>4</line_width>
+    <line_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(HSC)h_Busy</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #375</name>
+    <x>179</x>
+    <y>125</y>
+    <height>82</height>
+    <line_width>4</line_width>
+    <line_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(HSC)h_Busy</pv_name>
+      </rule>
+    </rules>
+  </widget>
+</display>

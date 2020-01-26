@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>table_help</name>
+  <x>10</x>
+  <y>10</y>
+  <width>410</width>
+  <height>360</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <x>1</x>
+    <y>1</y>
+    <width>122</width>
+    <height>103</height>
+    <line_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <x>1</x>
+    <y>1</y>
+    <width>122</width>
+    <height>103</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #12</name>
+    <text>Use: Changes to X, Y, etc. will move table</text>
+    <x>101</x>
+    <y>115</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #15</name>
+    <text>Set: Changes to X, Y, etc. will change table</text>
+    <x>101</x>
+    <y>130</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #18</name>
+    <pv_name>$(P)$(T).SET</pv_name>
+    <x>3</x>
+    <y>115</y>
+    <width>83</width>
+    <height>20</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #21</name>
+    <text>Redefine current table coordinates as zero</text>
+    <x>101</x>
+    <y>170</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #24</name>
+    <text>(without moving any motors)</text>
+    <x>101</x>
+    <y>185</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #27</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(T).ZERO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(T).ZERO</pv_name>
+    <text>Zero</text>
+    <x>6</x>
+    <y>170</y>
+    <width>40</width>
+    <height>20</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #30</name>
+    <text>calibration without moving motors</text>
+    <x>101</x>
+    <y>145</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #33</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(T).SYNC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(T).SYNC</pv_name>
+    <text>Sync</text>
+    <x>6</x>
+    <y>220</y>
+    <width>40</width>
+    <height>20</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #36</name>
+    <text>Update table coordinates from current</text>
+    <x>101</x>
+    <y>220</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #39</name>
+    <text>motor positions; maintain calibration</text>
+    <x>101</x>
+    <y>235</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #42</name>
+    <text>motor positions; abandon calibration</text>
+    <x>101</x>
+    <y>275</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #45</name>
+    <text>Update table coordinates from current</text>
+    <x>101</x>
+    <y>260</y>
+    <width>300</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #48</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(T).INIT</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(T).INIT</pv_name>
+    <text>Init</text>
+    <x>6</x>
+    <y>260</y>
+    <width>40</width>
+    <height>20</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #51</name>
+    <pv_name>$(P)$(T).X</pv_name>
+    <x>19</x>
+    <y>49</y>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #55</name>
+    <text>X</text>
+    <x>4</x>
+    <y>49</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #58</name>
+    <x>19</x>
+    <y>84</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #62</name>
+    <pv_name>$(P)$(Q):x_tweak.C</pv_name>
+    <x>39</x>
+    <y>84</y>
+    <width>60</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #66</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q):x_inc.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q):x_inc.VAL</pv_name>
+    <text>&gt;</text>
+    <x>99</x>
+    <y>84</y>
+    <width>20</width>
+    <height>18</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #69</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q):x_dec.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q):x_dec.VAL</pv_name>
+    <text>&lt;</text>
+    <x>19</x>
+    <y>84</y>
+    <width>20</width>
+    <height>18</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #72</name>
+    <pv_name>$(P)$(T).LLX</pv_name>
+    <x>19</x>
+    <y>69</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #76</name>
+    <text>Drive value (--{transform}--&gt; motors)</text>
+    <x>130</x>
+    <y>52</y>
+    <width>275</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #79</name>
+    <text>Low limit (calc'd from motor limits)</text>
+    <x>130</x>
+    <y>70</y>
+    <width>275</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #82</name>
+    <text>Tweak (type in step size, press buttons)</text>
+    <x>130</x>
+    <y>87</y>
+    <width>275</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #85</name>
+    <x>4</x>
+    <y>108</y>
+    <width>397</width>
+    <height>0</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="397.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #89</name>
+    <pv_name>$(P)$(T).HLX</pv_name>
+    <x>19</x>
+    <y>4</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #93</name>
+    <pv_name>$(P)$(T).XRB</pv_name>
+    <x>19</x>
+    <y>34</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #97</name>
+    <text>Drive-value readback</text>
+    <x>130</x>
+    <y>34</y>
+    <width>275</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #100</name>
+    <text>High limit (calc'd from motor limits)</text>
+    <x>130</x>
+    <y>3</y>
+    <width>275</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #103</name>
+    <pv_name>$(P)$(T).EX</pv_name>
+    <x>19</x>
+    <y>20</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #107</name>
+    <text>Encoder readback</text>
+    <x>130</x>
+    <y>20</y>
+    <width>275</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #110</name>
+    <x>4</x>
+    <y>210</y>
+    <width>397</width>
+    <height>0</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </line_color>
+    <line_style>1</line_style>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="397.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #114</name>
+    <x>4</x>
+    <y>300</y>
+    <width>397</width>
+    <height>0</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </line_color>
+    <line_style>1</line_style>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="397.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #118</name>
+    <text>A positive-sense rotation turns table clockwise when</text>
+    <x>10</x>
+    <y>310</y>
+    <width>390</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #121</name>
+    <text>viewed from the + axis.  (For example, increasing AY</text>
+    <x>10</x>
+    <y>325</y>
+    <width>390</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #124</name>
+    <text>rotates the table clockwise, as seen from above.)</text>
+    <x>10</x>
+    <y>340</y>
+    <width>390</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+</display>

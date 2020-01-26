@@ -1,0 +1,1488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>ml_monoSeqCtl_All</name>
+  <x>516</x>
+  <y>290</y>
+  <width>635</width>
+  <height>342</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <x>84</x>
+    <y>294</y>
+    <width>366</width>
+    <height>47</height>
+    <line_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)ml_monoAlert</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #10</name>
+    <width>115</width>
+    <height>94</height>
+    <line_color>
+      <color red="174" green="174" blue="174">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #13</name>
+    <text>Order</text>
+    <x>9</x>
+    <y>5</y>
+    <width>50</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #16</name>
+    <pv_name>$(P)ml_monoOrder.VAL</pv_name>
+    <x>65</x>
+    <y>5</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #20</name>
+    <text>d</text>
+    <x>9</x>
+    <y>28</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #23</name>
+    <pv_name>$(P)ml_monoD.VAL</pv_name>
+    <x>29</x>
+    <y>28</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #27</name>
+    <pv_name>$(P)ml_monoMode.VAL</pv_name>
+    <x>6</x>
+    <y>142</y>
+    <width>75</width>
+    <height>45</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+    <horizontal>false</horizontal>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #30</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoPut</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoPut</pv_name>
+    <text>Move</text>
+    <x>6</x>
+    <y>190</y>
+    <width>75</width>
+    <height>25</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #33</name>
+    <text>TH (deg.)</text>
+    <x>347</x>
+    <y>1</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #36</name>
+    <pv_name>$(P)ml_monoThetaRdbk</pv_name>
+    <x>347</x>
+    <y>35</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #40</name>
+    <pv_name>$(P)ml_monoTheta.VAL</pv_name>
+    <x>347</x>
+    <y>55</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #44</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoThetaInc.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoThetaInc.VAL</pv_name>
+    <text>&gt;</text>
+    <x>427</x>
+    <y>95</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #47</name>
+    <pv_name>$(P)ml_monoThetaTweak</pv_name>
+    <x>367</x>
+    <y>95</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #51</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoThetaDec.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoThetaDec.VAL</pv_name>
+    <text>&lt;</text>
+    <x>347</x>
+    <y>95</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #54</name>
+    <pv_name>$(P)ml_monoTheta.DRVH</pv_name>
+    <x>347</x>
+    <y>20</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #58</name>
+    <pv_name>$(P)ml_monoTheta.DRVL</pv_name>
+    <x>347</x>
+    <y>80</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #62</name>
+    <pv_name>$(P)ml_monoLambda.DRVL</pv_name>
+    <x>237</x>
+    <y>80</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #66</name>
+    <pv_name>$(P)ml_monoE.DRVL</pv_name>
+    <x>127</x>
+    <y>80</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #70</name>
+    <pv_name>$(P)ml_monoLambdaRdbk</pv_name>
+    <x>237</x>
+    <y>35</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #74</name>
+    <pv_name>$(P)ml_monoLambda.VAL</pv_name>
+    <x>237</x>
+    <y>55</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #78</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoLambdaInc.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoLambdaInc.VAL</pv_name>
+    <text>&gt;</text>
+    <x>317</x>
+    <y>95</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #81</name>
+    <pv_name>$(P)ml_monoLambdaTweak</pv_name>
+    <x>257</x>
+    <y>95</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #85</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoLambdaDec.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoLambdaDec.VAL</pv_name>
+    <text>&lt;</text>
+    <x>237</x>
+    <y>95</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #88</name>
+    <pv_name>$(P)ml_monoLambda.DRVH</pv_name>
+    <x>237</x>
+    <y>20</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #92</name>
+    <pv_name>$(P)ml_monoE.VAL</pv_name>
+    <x>127</x>
+    <y>55</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #96</name>
+    <pv_name>$(P)ml_monoETweak</pv_name>
+    <x>147</x>
+    <y>95</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #100</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoEDec.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoEDec.VAL</pv_name>
+    <text>&lt;</text>
+    <x>127</x>
+    <y>95</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #103</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoEInc.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoEInc.VAL</pv_name>
+    <text>&gt;</text>
+    <x>207</x>
+    <y>95</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #106</name>
+    <pv_name>$(P)ml_monoE.DRVH</pv_name>
+    <x>127</x>
+    <y>20</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #110</name>
+    <pv_name>$(P)ml_monoERdbk</pv_name>
+    <x>127</x>
+    <y>35</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #114</name>
+    <text>lambda (A)</text>
+    <x>237</x>
+    <y>1</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #117</name>
+    <text>E (keV)</text>
+    <x>127</x>
+    <y>1</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #120</name>
+    <text>Low Limit</text>
+    <x>460</x>
+    <y>80</y>
+    <width>75</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #123</name>
+    <text>Desired</text>
+    <x>460</x>
+    <y>60</y>
+    <width>75</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #126</name>
+    <text>Actual</text>
+    <x>460</x>
+    <y>38</y>
+    <width>75</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #129</name>
+    <text>High Limit</text>
+    <x>460</x>
+    <y>20</y>
+    <width>75</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #132</name>
+    <x>-1</x>
+    <y>118</y>
+    <width>536</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="1.0">
+      </point>
+      <point x="534.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #136</name>
+    <width>118</width>
+    <height>97</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="arc" version="2.0.0">
+    <name>arc #139</name>
+    <x>100</x>
+    <y>180</y>
+    <width>25</width>
+    <height>18</height>
+    <start_angle>90.0</start_angle>
+    <total_angle>180.0</total_angle>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="30" green="144" blue="255">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #142</name>
+    <x>107</x>
+    <y>177</y>
+    <width>8</width>
+    <height>10</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="7.0" y="4.0">
+      </point>
+      <point x="1.0" y="9.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #146</name>
+    <x>78</x>
+    <y>188</y>
+    <width>20</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </line_color>
+    <line_style>1</line_style>
+    <points>
+      <point x="19.0" y="1.0">
+      </point>
+      <point x="1.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #150</name>
+    <x>4</x>
+    <y>137</y>
+    <width>84</width>
+    <height>83</height>
+    <line_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #153</name>
+    <pv_name>$(P)ml_monoSeqMsg1</pv_name>
+    <x>98</x>
+    <y>299</y>
+    <width>339</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #157</name>
+    <x>-2</x>
+    <y>288</y>
+    <width>536</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="-1.0" y="1.0">
+      </point>
+      <point x="533.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #161</name>
+    <pv_name>$(P)ml_monoSeqMsg2</pv_name>
+    <x>98</x>
+    <y>319</y>
+    <width>339</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #165</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)ml_monoOperAck</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)ml_monoOperAck</pv_name>
+    <text>OK</text>
+    <x>21</x>
+    <y>300</y>
+    <width>54</width>
+    <height>34</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #168</name>
+    <pv_name>$(P)ml_monoUseSet.VAL</pv_name>
+    <x>5</x>
+    <y>260</y>
+    <height>22</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #171</name>
+    <text>Calibration:</text>
+    <x>5</x>
+    <y>244</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #174</name>
+    <text>Y2</text>
+    <x>300</x>
+    <y>123</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #177</name>
+    <text>Actual Pos.</text>
+    <x>495</x>
+    <y>155</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #180</name>
+    <text>Motor Command</text>
+    <x>495</x>
+    <y>173</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #183</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>All Stop</text>
+    <x>540</x>
+    <y>189</y>
+    <width>88</width>
+    <height>38</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #186</name>
+    <text>Motor PV</text>
+    <x>496</x>
+    <y>138</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #189</name>
+    <pv_name>$(P)ml_monoMode2.VAL</pv_name>
+    <x>385</x>
+    <y>245</y>
+    <width>106</width>
+    <height>35</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <horizontal>false</horizontal>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #192</name>
+    <text>Moving</text>
+    <x>540</x>
+    <y>230</y>
+    <width>88</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)ml_monoMoving</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #196</name>
+    <text>Done</text>
+    <x>540</x>
+    <y>230</y>
+    <width>88</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)ml_monoMoving</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #200</name>
+    <text>(y offset)</text>
+    <x>310</x>
+    <y>176</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #203</name>
+    <text>Z2</text>
+    <x>395</x>
+    <y>123</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #206</name>
+    <pv_name>$(P)ml_monoZRdbk</pv_name>
+    <x>402</x>
+    <y>155</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #210</name>
+    <pv_name>$(P)ml_monoZPv</pv_name>
+    <x>401</x>
+    <y>140</y>
+    <width>89</width>
+    <height>13</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #214</name>
+    <pv_name>$(P)ml_mono_yOffset</pv_name>
+    <x>310</x>
+    <y>155</y>
+    <width>80</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #218</name>
+    <pv_name>$(P)ml_monoYPv</pv_name>
+    <x>306</x>
+    <y>140</y>
+    <width>89</width>
+    <height>13</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #222</name>
+    <text>Theta</text>
+    <x>110</x>
+    <y>123</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #225</name>
+    <pv_name>$(P)ml_monoThetaRdbk</pv_name>
+    <x>115</x>
+    <y>155</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #229</name>
+    <pv_name>$(P)ml_monoThetaPv</pv_name>
+    <x>114</x>
+    <y>140</y>
+    <width>89</width>
+    <height>13</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #233</name>
+    <text>Theta2</text>
+    <x>205</x>
+    <y>123</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #236</name>
+    <pv_name>$(P)ml_monoTheta2RdbkEcho</pv_name>
+    <x>210</x>
+    <y>155</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #240</name>
+    <pv_name>$(P)ml_monoTheta2Pv</pv_name>
+    <x>209</x>
+    <y>140</y>
+    <width>89</width>
+    <height>13</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #244</name>
+    <pv_name>$(P)ml_monoThetaSet</pv_name>
+    <x>115</x>
+    <y>192</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="205" green="97" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #248</name>
+    <pv_name>$(P)ml_monoThetaVel</pv_name>
+    <x>115</x>
+    <y>208</y>
+    <width>89</width>
+    <height>13</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #252</name>
+    <pv_name>$(P)ml_monoTheta2Set</pv_name>
+    <x>210</x>
+    <y>192</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="205" green="97" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #256</name>
+    <pv_name>$(P)ml_monoTheta2Vel</pv_name>
+    <x>210</x>
+    <y>208</y>
+    <width>89</width>
+    <height>13</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #260</name>
+    <pv_name>$(P)ml_monoZSet</pv_name>
+    <x>402</x>
+    <y>192</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="205" green="97" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #264</name>
+    <pv_name>$(P)ml_monoZVel</pv_name>
+    <x>402</x>
+    <y>208</y>
+    <width>89</width>
+    <height>13</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #268</name>
+    <text>Ideal</text>
+    <x>495</x>
+    <y>192</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #271</name>
+    <text>Speed</text>
+    <x>495</x>
+    <y>207</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #274</name>
+    <x>113</x>
+    <y>154</y>
+    <width>94</width>
+    <height>37</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)ml_monoThetaDmov</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #278</name>
+    <x>208</x>
+    <y>154</y>
+    <width>94</width>
+    <height>37</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)ml_monoTheta2Dmov</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #282</name>
+    <x>401</x>
+    <y>154</y>
+    <width>94</width>
+    <height>37</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)ml_monoZDmov</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #286</name>
+    <pv_name>$(P)ml_monoThetaCmd</pv_name>
+    <x>115</x>
+    <y>173</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #290</name>
+    <pv_name>$(P)ml_monoTheta2Cmd</pv_name>
+    <x>210</x>
+    <y>173</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #294</name>
+    <pv_name>$(P)ml_monoZCmd</pv_name>
+    <x>402</x>
+    <y>173</y>
+    <width>89</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+</display>

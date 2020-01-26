@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>MLLV_more</name>
+  <x>905</x>
+  <y>346</y>
+  <width>640</width>
+  <height>250</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #6</name>
+    <file>MLLV_bare.bob</file>
+    <width>640</width>
+    <height>206</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #8</name>
+    <actions>
+      <action type="open_display">
+        <file>MLLV.opi</file>
+        <target>replace</target>
+        <description>more</description>
+      </action>
+    </actions>
+    <text>Less</text>
+    <x>555</x>
+    <y>215</y>
+    <width>70</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #11</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)sync</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)sync</pv_name>
+    <text>Sync to motors</text>
+    <x>20</x>
+    <y>215</y>
+    <width>110</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #14</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(Q)stop</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(Q)stop</pv_name>
+    <text>Stop MLLV</text>
+    <x>270</x>
+    <y>215</y>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #17</name>
+    <actions>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>$(Q)th</M>
+        </macros>
+        <target>tab</target>
+        <description>th</description>
+      </action>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>$(Q)z</M>
+        </macros>
+        <target>tab</target>
+        <description>z</description>
+      </action>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>$(Q)y</M>
+        </macros>
+        <target>tab</target>
+        <description>y</description>
+      </action>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>$(Q)chi</M>
+        </macros>
+        <target>tab</target>
+        <description>chi</description>
+      </action>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>$(Q)x</M>
+        </macros>
+        <target>tab</target>
+        <description>x</description>
+      </action>
+      <action type="open_display">
+        <file>yyTransform.opi</file>
+        <macros>
+          <T>$(Q)tFwd</T>
+        </macros>
+        <target>tab</target>
+        <description>tFwd</description>
+      </action>
+      <action type="open_display">
+        <file>yyTransform.opi</file>
+        <macros>
+          <T>$(Q)tRev</T>
+        </macros>
+        <target>tab</target>
+        <description>tRev</description>
+      </action>
+      <action type="open_display">
+        <file>yyTransform.opi</file>
+        <macros>
+          <T>$(Q)tLimits</T>
+        </macros>
+        <target>tab</target>
+        <description>tLimits</description>
+      </action>
+      <action type="open_display">
+        <file>yyTransform.opi</file>
+        <macros>
+          <T>$(Q)tLimits1</T>
+        </macros>
+        <target>tab</target>
+        <description>tLimits1</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>$(Q)calcDone</C>
+        </macros>
+        <target>tab</target>
+        <description>calcDone</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>$(Q)closeGate</C>
+        </macros>
+        <target>tab</target>
+        <description>closeGate</description>
+      </action>
+      <action type="open_display">
+        <file>MLLV_misc.opi</file>
+        <target>tab</target>
+        <description>misc</description>
+      </action>
+      <action type="open_display">
+        <file>yySeq.opi</file>
+        <macros>
+          <S>$(Q)softPut</S>
+        </macros>
+        <target>tab</target>
+        <description>softPut</description>
+      </action>
+    </actions>
+    <text>debug</text>
+    <x>480</x>
+    <y>215</y>
+    <width>70</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+</display>

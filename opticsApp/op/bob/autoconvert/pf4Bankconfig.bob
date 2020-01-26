@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>pf4Bankconfig</name>
+  <x>6</x>
+  <y>540</y>
+  <width>225</width>
+  <height>445</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <width>225</width>
+    <height>25</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #9</name>
+    <text>PF4 filter</text>
+    <x>4</x>
+    <y>3</y>
+    <width>220</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #12</name>
+    <y>22</y>
+    <width>225</width>
+    <height>3</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="223.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #16</name>
+    <file>pf4Bank_bare.bob</file>
+    <x>50</x>
+    <y>25</y>
+    <width>125</width>
+    <height>130</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>composite #18</name>
+    <file>pf4Bankconfig_bare.bob</file>
+    <y>188</y>
+    <width>225</width>
+    <height>249</height>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #20</name>
+    <y>175</y>
+    <width>225</width>
+    <height>3</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="223.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #25</name>
+    <actions>
+      <action type="open_display">
+        <file>pf4Bankmore.opi</file>
+        <target>replace</target>
+        <description>PF4 mono filter computed controls</description>
+      </action>
+    </actions>
+    <text>more</text>
+    <x>115</x>
+    <y>155</y>
+    <width>50</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #28</name>
+    <actions>
+      <action type="open_display">
+        <file>pf4Bank.opi</file>
+        <target>replace</target>
+        <description>all</description>
+      </action>
+    </actions>
+    <text>-config</text>
+    <x>60</x>
+    <y>155</y>
+    <width>55</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+</display>

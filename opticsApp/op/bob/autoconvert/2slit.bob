@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>2slit</name>
+  <x>44</x>
+  <y>34</y>
+  <width>435</width>
+  <height>205</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <x>7</x>
+    <y>42</y>
+    <width>102</width>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <x>111</x>
+    <y>42</y>
+    <width>102</width>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #12</name>
+    <x>222</x>
+    <y>42</y>
+    <width>102</width>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #15</name>
+    <x>326</x>
+    <y>42</y>
+    <width>102</width>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #18</name>
+    <text>$(SLIT) -</text>
+    <x>5</x>
+    <y>42</y>
+    <width>106</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #21</name>
+    <pv_name>$(P)$(SLIT)set.VAL</pv_name>
+    <y>185</y>
+    <width>78</width>
+    <height>21</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #24</name>
+    <x>324</x>
+    <y>40</y>
+    <width>106</width>
+    <height>145</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #27</name>
+    <text>Center</text>
+    <x>326</x>
+    <y>42</y>
+    <width>106</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #30</name>
+    <pv_name>$(P)$(SLIT)t2.D</pv_name>
+    <x>332</x>
+    <y>75</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #34</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)center_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)center_tweak.A</pv_name>
+    <text>-</text>
+    <x>327</x>
+    <y>135</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #37</name>
+    <pv_name>$(P)$(SLIT)center_tweakVal.VAL</pv_name>
+    <x>347</x>
+    <y>135</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #41</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)center_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)center_tweak.B</pv_name>
+    <text>+</text>
+    <x>407</x>
+    <y>135</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #44</name>
+    <pv_name>$(P)$(SLIT)center.DRVL</pv_name>
+    <x>327</x>
+    <y>120</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #48</name>
+    <pv_name>$(P)$(SLIT)center.DRVH</pv_name>
+    <x>327</x>
+    <y>60</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #52</name>
+    <x>220</x>
+    <y>40</y>
+    <width>106</width>
+    <height>145</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #55</name>
+    <text>Size</text>
+    <x>220</x>
+    <y>42</y>
+    <width>106</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #58</name>
+    <pv_name>$(P)$(SLIT)t2.C</pv_name>
+    <x>227</x>
+    <y>75</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #62</name>
+    <pv_name>$(P)$(SLIT)size.VAL</pv_name>
+    <x>222</x>
+    <y>95</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #66</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)size_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)size_tweak.A</pv_name>
+    <text>-</text>
+    <x>222</x>
+    <y>136</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #69</name>
+    <pv_name>$(P)$(SLIT)size_tweakVal.VAL</pv_name>
+    <x>242</x>
+    <y>136</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #73</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)size_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)size_tweak.B</pv_name>
+    <text>+</text>
+    <x>302</x>
+    <y>136</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #76</name>
+    <pv_name>$(P)$(SLIT)size.DRVL</pv_name>
+    <x>223</x>
+    <y>120</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #80</name>
+    <pv_name>$(P)$(SLIT)size.DRVH</pv_name>
+    <x>223</x>
+    <y>60</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #84</name>
+    <x>109</x>
+    <y>40</y>
+    <width>106</width>
+    <height>145</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #87</name>
+    <text>$(SLIT) +</text>
+    <x>109</x>
+    <y>42</y>
+    <width>106</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #90</name>
+    <pv_name>$(P)$(SLIT)t2.A</pv_name>
+    <x>117</x>
+    <y>75</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #94</name>
+    <pv_name>$(P)$(SLIT)xp.VAL</pv_name>
+    <x>112</x>
+    <y>95</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #98</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)xp_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)xp_tweak.A</pv_name>
+    <text>-</text>
+    <x>112</x>
+    <y>135</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #101</name>
+    <pv_name>$(P)$(SLIT)xp_tweakVal.VAL</pv_name>
+    <x>132</x>
+    <y>135</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #105</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)xp_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)xp_tweak.B</pv_name>
+    <text>+</text>
+    <x>192</x>
+    <y>135</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #108</name>
+    <pv_name>$(P)$(SLIT)xp.DRVL</pv_name>
+    <x>112</x>
+    <y>120</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #112</name>
+    <pv_name>$(P)$(SLIT)xp.DRVH</pv_name>
+    <x>112</x>
+    <y>60</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #116</name>
+    <x>5</x>
+    <y>40</y>
+    <width>106</width>
+    <height>145</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #119</name>
+    <pv_name>$(P)$(SLIT)t2.B</pv_name>
+    <x>12</x>
+    <y>75</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #123</name>
+    <pv_name>$(P)$(SLIT)xn.VAL</pv_name>
+    <x>7</x>
+    <y>95</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #127</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)xn_tweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)xn_tweak.A</pv_name>
+    <text>-</text>
+    <x>7</x>
+    <y>136</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #130</name>
+    <pv_name>$(P)$(SLIT)xn_tweakVal.VAL</pv_name>
+    <x>27</x>
+    <y>136</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #134</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)xn_tweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)xn_tweak.B</pv_name>
+    <text>+</text>
+    <x>87</x>
+    <y>136</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #137</name>
+    <pv_name>$(P)$(SLIT)xn.DRVL</pv_name>
+    <x>8</x>
+    <y>120</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #141</name>
+    <pv_name>$(P)$(SLIT)xn.DRVH</pv_name>
+    <x>8</x>
+    <y>60</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #145</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(SLIT)n</DESC>
+          <EGU>$(SLIT)xn.EGU</EGU>
+          <NAME>$(SLIT)xn</NAME>
+          <Q>$(SLIT)n</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>ScanParms</text>
+    <x>27</x>
+    <y>160</y>
+    <width>60</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #148</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>All Stop</text>
+    <x>350</x>
+    <y>185</y>
+    <width>79</width>
+    <height>21</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #151</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(SLIT)sync.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(SLIT)sync.PROC</pv_name>
+    <text>Sync to motors</text>
+    <x>85</x>
+    <y>185</y>
+    <width>110</width>
+    <height>21</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #154</name>
+    <text>-</text>
+    <y>7</y>
+    <width>5</width>
+    <height>21</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #157</name>
+    <actions>
+      <action type="open_display">
+        <file>motorx_more.opi</file>
+        <macros>
+          <M>$(mXn)</M>
+        </macros>
+        <target>tab</target>
+        <description>X- motor</description>
+      </action>
+      <action type="open_display">
+        <file>motorx_more.opi</file>
+        <macros>
+          <M>$(mXp)</M>
+        </macros>
+        <target>tab</target>
+        <description>X+ motor</description>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>305</x>
+    <y>185</y>
+    <width>40</width>
+    <height>21</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #161</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(SLIT)center</DESC>
+          <EGU>$(SLIT)center.EGU</EGU>
+          <NAME>$(SLIT)center</NAME>
+          <Q>$(SLIT)center</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>ScanParms</text>
+    <x>347</x>
+    <y>160</y>
+    <width>60</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #164</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(SLIT)size</DESC>
+          <EGU>$(SLIT)size.EGU</EGU>
+          <NAME>$(SLIT)size</NAME>
+          <Q>$(SLIT)size</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>ScanParms</text>
+    <x>242</x>
+    <y>160</y>
+    <width>60</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #167</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParmsCustom.opi</file>
+        <macros>
+          <DESC>$(SLIT)p</DESC>
+          <EGU>$(SLIT)xp.EGU</EGU>
+          <NAME>$(SLIT)xp</NAME>
+          <Q>$(SLIT)p</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>ScanParms</text>
+    <x>132</x>
+    <y>160</y>
+    <width>60</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #170</name>
+    <pv_name>$(P)$(SLIT)center.VAL</pv_name>
+    <x>327</x>
+    <y>95</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #174</name>
+    <text>LOOKING UPSTREAM</text>
+    <x>10</x>
+    <y>25</y>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #177</name>
+    <text>+</text>
+    <x>-1</x>
+    <y>-3</y>
+    <width>5</width>
+    <height>21</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="progressbar" version="2.0.0">
+    <name>bar #180</name>
+    <pv_name>$(P)$(SLIT)xp.VAL</pv_name>
+    <x>10</x>
+    <y>3</y>
+    <width>420</width>
+    <height>10</height>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #184</name>
+    <x>10</x>
+    <y>13</y>
+    <width>420</width>
+    <height>10</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(SLIT)CoordSys</pv_name>
+      </rule>
+    </rules>
+    <widget type="progressbar" version="2.0.0">
+      <name>bar #187</name>
+      <pv_name>$(P)$(SLIT)xn.VAL</pv_name>
+      <width>420</width>
+      <height>10</height>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #192</name>
+    <x>10</x>
+    <y>13</y>
+    <width>420</width>
+    <height>10</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(SLIT)CoordSys</pv_name>
+      </rule>
+    </rules>
+    <widget type="progressbar" version="2.0.0">
+      <name>bar #195</name>
+      <pv_name>$(P)$(SLIT)xn.VAL</pv_name>
+      <width>420</width>
+      <height>10</height>
+    </widget>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #200</name>
+    <pv_name>$(P)$(SLIT)CoordSys</pv_name>
+    <x>245</x>
+    <y>25</y>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #204</name>
+    <text>COORDINATE SYSTEM:</text>
+    <x>130</x>
+    <y>25</y>
+    <width>110</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+</display>

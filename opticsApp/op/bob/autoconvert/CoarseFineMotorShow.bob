@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>CoarseFineMotorShow</name>
+  <x>375</x>
+  <y>268</y>
+  <width>470</width>
+  <height>100</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="combo" version="2.0.0">
+    <name>menu #6</name>
+    <pv_name>$(P)mode</pv_name>
+    <x>5</x>
+    <y>45</y>
+    <width>95</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #9</name>
+    <text>Mode</text>
+    <x>5</x>
+    <y>25</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #12</name>
+    <width>130</width>
+    <height>23</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #15</name>
+    <text>Coarse/Fine</text>
+    <width>130</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #18</name>
+    <actions>
+      <action type="open_display">
+        <file>CoarseFineMotorHelp.opi</file>
+        <target>tab</target>
+        <description>help</description>
+      </action>
+    </actions>
+    <text>?</text>
+    <x>102</x>
+    <y>35</y>
+    <width>25</width>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="40" green="147" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>indicator</name>
+    <text>{indicator}</text>
+    <x>178</x>
+    <y>52</y>
+    <width>250</width>
+    <height>25</height>
+    <transparent>false</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>indicator</name>
+    <text>{indicator}</text>
+    <x>228</x>
+    <y>24</y>
+    <width>150</width>
+    <height>25</height>
+    <transparent>false</transparent>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #29</name>
+    <text>F</text>
+    <x>213</x>
+    <y>27</y>
+    <width>10</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #32</name>
+    <text>C</text>
+    <x>163</x>
+    <y>57</y>
+    <width>10</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #35</name>
+    <actions>
+      <action type="open_display">
+        <file>yyTransform_full.opi</file>
+        <macros>
+          <T>limitProc</T>
+        </macros>
+        <target>tab</target>
+        <description>limitProc</description>
+      </action>
+      <action type="open_display">
+        <file>yyTransform_full.opi</file>
+        <macros>
+          <T>moveCF</T>
+        </macros>
+        <target>tab</target>
+        <description>moveCF</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>closeGate</C>
+        </macros>
+        <target>tab</target>
+        <description>closeGate calc</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>fineModeCalc</C>
+        </macros>
+        <target>tab</target>
+        <description>fineModeCalc</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>doneCalc</C>
+        </macros>
+        <target>tab</target>
+        <description>done calc</description>
+      </action>
+      <action type="open_display">
+        <file>yyCalcoutRecord.opi</file>
+        <macros>
+          <C>RBV</C>
+        </macros>
+        <target>tab</target>
+        <description>RBV calc</description>
+      </action>
+    </actions>
+    <text>DEBUG</text>
+    <x>430</x>
+    <y>85</y>
+    <width>40</width>
+    <height>15</height>
+    <foreground_color>
+      <color red="105" green="105" blue="105">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #43</name>
+    <actions>
+      <action type="open_display">
+        <file>motorx.opi</file>
+        <macros>
+          <M>MOT</M>
+        </macros>
+        <target>tab</target>
+        <description>Combined (soft) motor</description>
+      </action>
+      <action type="open_display">
+        <file>motor2x.opi</file>
+        <macros>
+          <M1>$(CM)</M1>
+          <M2>$(FM)</M2>
+          <P>$(PM)</P>
+        </macros>
+        <target>tab</target>
+        <description>Actual motors</description>
+      </action>
+    </actions>
+    <text>Motors</text>
+    <x>5</x>
+    <y>75</y>
+    <width>55</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="40" green="147" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #47</name>
+    <actions>
+      <action type="open_display">
+        <file>CoarseFineMotor.opi</file>
+        <macros>
+          <M>MOT</M>
+        </macros>
+        <target>replace</target>
+        <description>Small display</description>
+      </action>
+    </actions>
+    <text>Less</text>
+    <x>90</x>
+    <y>75</y>
+    <width>40</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+</display>

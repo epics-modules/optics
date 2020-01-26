@@ -1,0 +1,2096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>hrSeqCtl_All</name>
+  <x>159</x>
+  <y>54</y>
+  <width>650</width>
+  <height>310</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #6</name>
+    <y>133</y>
+    <width>649</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="648.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #10</name>
+    <pv_name>$(P)HR$(N)_Theta2AO.VAL</pv_name>
+    <x>490</x>
+    <y>50</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #14</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_Theta2IncBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_Theta2IncBO.VAL</pv_name>
+    <text>&gt;</text>
+    <x>570</x>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #17</name>
+    <pv_name>$(P)HR$(N)_Theta2TweakAI</pv_name>
+    <x>510</x>
+    <y>90</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #21</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_Theta2DecBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_Theta2DecBO.VAL</pv_name>
+    <text>&lt;</text>
+    <x>490</x>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #24</name>
+    <pv_name>$(P)HR$(N)_Theta2AO.DRVL</pv_name>
+    <x>490</x>
+    <y>75</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #28</name>
+    <text>TH2 (deg.)</text>
+    <x>490</x>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #31</name>
+    <pv_name>$(P)HR$(N)_Theta2RdbkAO</pv_name>
+    <x>490</x>
+    <y>34</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #35</name>
+    <pv_name>$(P)HR$(N)_Theta2AO.DRVH</pv_name>
+    <x>490</x>
+    <y>19</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #39</name>
+    <text>LowLim</text>
+    <x>593</x>
+    <y>75</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #42</name>
+    <text>Desired</text>
+    <x>593</x>
+    <y>55</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #45</name>
+    <text>Actual</text>
+    <x>593</x>
+    <y>37</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #48</name>
+    <text>HighLim</text>
+    <x>593</x>
+    <y>19</y>
+    <width>50</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #51</name>
+    <pv_name>$(P)HR$(N)_Theta1AO.VAL</pv_name>
+    <x>300</x>
+    <y>50</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #55</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_Theta1IncBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_Theta1IncBO.VAL</pv_name>
+    <text>&gt;</text>
+    <x>380</x>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #58</name>
+    <pv_name>$(P)HR$(N)_Theta1TweakAI</pv_name>
+    <x>320</x>
+    <y>90</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #62</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_Theta1DecBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_Theta1DecBO.VAL</pv_name>
+    <text>&lt;</text>
+    <x>300</x>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #65</name>
+    <pv_name>$(P)HR$(N)_Theta1AO.DRVL</pv_name>
+    <x>300</x>
+    <y>75</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #69</name>
+    <text>TH1 (deg.)</text>
+    <x>300</x>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #72</name>
+    <pv_name>$(P)HR$(N)_Theta1RdbkAO</pv_name>
+    <x>300</x>
+    <y>34</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #76</name>
+    <pv_name>$(P)HR$(N)_Theta1AO.DRVH</pv_name>
+    <x>300</x>
+    <y>19</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #80</name>
+    <pv_name>$(P)HR$(N)_LambdaAO.DRVL</pv_name>
+    <x>110</x>
+    <y>75</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #84</name>
+    <pv_name>$(P)HR$(N)_LambdaAO.VAL</pv_name>
+    <x>110</x>
+    <y>50</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>5</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #88</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_LambdaIncBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_LambdaIncBO.VAL</pv_name>
+    <text>&gt;</text>
+    <x>190</x>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #91</name>
+    <pv_name>$(P)HR$(N)_LambdaTweakAI</pv_name>
+    <x>130</x>
+    <y>90</y>
+    <width>45</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #95</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_LambdaDecBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_LambdaDecBO.VAL</pv_name>
+    <text>&lt;</text>
+    <x>110</x>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #98</name>
+    <pv_name>$(P)HR$(N)_LambdaTweakAI.EGU</pv_name>
+    <x>175</x>
+    <y>92</y>
+    <width>15</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #102</name>
+    <pv_name>$(P)HR$(N)_EAO.DRVL</pv_name>
+    <y>75</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #106</name>
+    <pv_name>$(P)HR$(N)_EAO.VAL</pv_name>
+    <y>50</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #110</name>
+    <pv_name>$(P)HR$(N)_ETweakAI</pv_name>
+    <x>20</x>
+    <y>90</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #114</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_EDecBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_EDecBO.VAL</pv_name>
+    <text>&lt;</text>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #117</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_EIncBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_EIncBO.VAL</pv_name>
+    <text>&gt;</text>
+    <x>80</x>
+    <y>90</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #120</name>
+    <pv_name>$(P)HR$(N)_ETweakAI.EGU</pv_name>
+    <x>60</x>
+    <y>92</y>
+    <width>20</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #124</name>
+    <pv_name>$(P)HR$(N)_EAO.DRVH</pv_name>
+    <y>19</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #128</name>
+    <pv_name>$(P)HR$(N)_ERdbkAO</pv_name>
+    <y>34</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #132</name>
+    <text>E (keV)</text>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #135</name>
+    <pv_name>$(P)HR$(N)_LambdaRdbkAO</pv_name>
+    <x>110</x>
+    <y>34</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #139</name>
+    <pv_name>$(P)HR$(N)_LambdaAO.DRVH</pv_name>
+    <x>110</x>
+    <y>19</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #143</name>
+    <text>Lambda (A)</text>
+    <x>110</x>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #146</name>
+    <x>220</x>
+    <width>80</width>
+    <height>110</height>
+    <line_color>
+      <color red="174" green="174" blue="174">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #149</name>
+    <text>L1</text>
+    <x>275</x>
+    <y>2</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #152</name>
+    <pv_name>$(P)HR$(N)_L1AO.VAL</pv_name>
+    <x>275</x>
+    <y>20</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #156</name>
+    <text>K1</text>
+    <x>250</x>
+    <y>2</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #159</name>
+    <pv_name>$(P)HR$(N)_K1AO.VAL</pv_name>
+    <x>250</x>
+    <y>20</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #163</name>
+    <text>H1</text>
+    <x>225</x>
+    <y>2</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #166</name>
+    <pv_name>$(P)HR$(N)_H1AO.VAL</pv_name>
+    <x>225</x>
+    <y>20</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #170</name>
+    <text>a</text>
+    <x>225</x>
+    <y>43</y>
+    <width>20</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #173</name>
+    <pv_name>$(P)HR$(N)_A1AO.VAL</pv_name>
+    <x>240</x>
+    <y>40</y>
+    <width>55</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #177</name>
+    <pv_name>$(P)HR$(N)_2d1AO</pv_name>
+    <x>240</x>
+    <y>63</y>
+    <width>55</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #181</name>
+    <text>2d</text>
+    <x>225</x>
+    <y>66</y>
+    <width>20</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #184</name>
+    <pv_name>$(P)HR$(N)_1TypeMO</pv_name>
+    <x>225</x>
+    <y>85</y>
+    <width>70</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #187</name>
+    <x>220</x>
+    <width>80</width>
+    <height>110</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #190</name>
+    <x>410</x>
+    <width>80</width>
+    <height>110</height>
+    <line_color>
+      <color red="174" green="174" blue="174">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #193</name>
+    <text>L2</text>
+    <x>465</x>
+    <y>2</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #196</name>
+    <pv_name>$(P)HR$(N)_L2AO.VAL</pv_name>
+    <x>465</x>
+    <y>20</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #200</name>
+    <text>K2</text>
+    <x>440</x>
+    <y>2</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #203</name>
+    <pv_name>$(P)HR$(N)_K2AO.VAL</pv_name>
+    <x>440</x>
+    <y>20</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #207</name>
+    <text>H2</text>
+    <x>415</x>
+    <y>2</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #210</name>
+    <pv_name>$(P)HR$(N)_H2AO.VAL</pv_name>
+    <x>415</x>
+    <y>20</y>
+    <width>20</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #214</name>
+    <text>a</text>
+    <x>415</x>
+    <y>43</y>
+    <width>15</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #217</name>
+    <pv_name>$(P)HR$(N)_A2AO.VAL</pv_name>
+    <x>430</x>
+    <y>40</y>
+    <width>55</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #221</name>
+    <pv_name>$(P)HR$(N)_2d2AO</pv_name>
+    <x>430</x>
+    <y>63</y>
+    <width>55</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #225</name>
+    <text>2d</text>
+    <x>415</x>
+    <y>66</y>
+    <width>15</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #228</name>
+    <pv_name>$(P)HR$(N)_2TypeMO</pv_name>
+    <x>415</x>
+    <y>85</y>
+    <width>70</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #231</name>
+    <x>410</x>
+    <width>80</width>
+    <height>110</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #234</name>
+    <text>Moving</text>
+    <x>553</x>
+    <y>246</y>
+    <width>70</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)HR$(N)_Moving</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #238</name>
+    <pv_name>$(P)HR$(N)_phi1CmdAO</pv_name>
+    <x>111</x>
+    <y>187</y>
+    <width>89</width>
+    <height>14</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #242</name>
+    <pv_name>$(P)HR$(N)_phi1RdbkAI</pv_name>
+    <x>116</x>
+    <y>173</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #246</name>
+    <x>109</x>
+    <y>172</y>
+    <width>94</width>
+    <height>30</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)HR$(N)_phi1DmovBI</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #250</name>
+    <text>Phi 1</text>
+    <x>106</x>
+    <y>140</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #253</name>
+    <pv_name>$(P)HR$(N)_phi2SetAO</pv_name>
+    <x>205</x>
+    <y>202</y>
+    <width>94</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="205" green="97" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #257</name>
+    <pv_name>$(P)HR$(N)_phi1SetAO</pv_name>
+    <x>110</x>
+    <y>202</y>
+    <width>94</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="205" green="97" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #261</name>
+    <pv_name>$(P)HR$(N)_phi1OffAO</pv_name>
+    <x>110</x>
+    <y>215</y>
+    <width>94</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #265</name>
+    <pv_name>$(P)HR$(N)_phi2OffAO</pv_name>
+    <x>205</x>
+    <y>215</y>
+    <width>94</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #269</name>
+    <pv_name>$(P)HR$(N)_phi2RdbkAI</pv_name>
+    <x>211</x>
+    <y>172</y>
+    <width>80</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="arc" version="2.0.0">
+    <name>arc #273</name>
+    <x>96</x>
+    <y>193</y>
+    <width>25</width>
+    <height>18</height>
+    <start_angle>90.0</start_angle>
+    <total_angle>180.0</total_angle>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="30" green="144" blue="255">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #276</name>
+    <x>103</x>
+    <y>190</y>
+    <width>8</width>
+    <height>10</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="7.0" y="4.0">
+      </point>
+      <point x="1.0" y="9.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #280</name>
+    <x>74</x>
+    <y>204</y>
+    <width>20</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </line_color>
+    <line_style>1</line_style>
+    <points>
+      <point x="19.0" y="1.0">
+      </point>
+      <point x="1.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #284</name>
+    <text>Phi 2</text>
+    <x>211</x>
+    <y>140</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #287</name>
+    <pv_name>$(P)HR$(N)_phi1PvSI</pv_name>
+    <x>110</x>
+    <y>157</y>
+    <width>89</width>
+    <height>14</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #291</name>
+    <pv_name>$(P)HR$(N)_phi2PvSI</pv_name>
+    <x>206</x>
+    <y>157</y>
+    <width>89</width>
+    <height>14</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #295</name>
+    <pv_name>$(P)HR$(N)_phi2CmdAO</pv_name>
+    <x>207</x>
+    <y>187</y>
+    <width>89</width>
+    <height>14</height>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #299</name>
+    <x>204</x>
+    <y>172</y>
+    <width>94</width>
+    <height>30</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="115" green="255" blue="107">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)HR$(N)_phi2DmovBI</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #303</name>
+    <pv_name>$(P)HR$(N)_ModeBO.VAL</pv_name>
+    <x>2</x>
+    <y>162</y>
+    <width>75</width>
+    <height>45</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+    <horizontal>false</horizontal>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #306</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_PutBO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_PutBO</pv_name>
+    <text>Move</text>
+    <x>2</x>
+    <y>210</y>
+    <width>75</width>
+    <height>25</height>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #309</name>
+    <text>Motor Write</text>
+    <x>305</x>
+    <y>202</y>
+    <width>70</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="205" green="97" blue="0">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #312</name>
+    <text>Motor Read</text>
+    <x>305</x>
+    <y>172</y>
+    <width>70</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #315</name>
+    <text>Motor Write</text>
+    <x>305</x>
+    <y>187</y>
+    <width>70</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #318</name>
+    <text>Motor PV name</text>
+    <x>305</x>
+    <y>157</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #321</name>
+    <text>Offset</text>
+    <x>305</x>
+    <y>218</y>
+    <width>70</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #324</name>
+    <text>Angle</text>
+    <x>305</x>
+    <y>234</y>
+    <width>70</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #327</name>
+    <pv_name>$(P)HR$(N)_phi1RdbkAI.EGU</pv_name>
+    <x>385</x>
+    <y>172</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #331</name>
+    <pv_name>$(P)HR$(N)_phi1CmdAO.EGU</pv_name>
+    <x>385</x>
+    <y>187</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #335</name>
+    <pv_name>$(P)HR$(N)_phi1SetAO.EGU</pv_name>
+    <x>385</x>
+    <y>202</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #339</name>
+    <pv_name>$(P)HR$(N)_phi1OffAO.EGU</pv_name>
+    <x>360</x>
+    <y>218</y>
+    <width>50</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #343</name>
+    <pv_name>$(P)HR$(N)_phi1AO.EGU</pv_name>
+    <x>360</x>
+    <y>234</y>
+    <width>50</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #347</name>
+    <y>157</y>
+    <width>84</width>
+    <height>83</height>
+    <line_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="225" green="144" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #350</name>
+    <pv_name>$(P)HR$(N)_phi2AO</pv_name>
+    <x>205</x>
+    <y>234</y>
+    <width>94</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #354</name>
+    <pv_name>$(P)HR$(N)_phi1AO</pv_name>
+    <x>110</x>
+    <y>234</y>
+    <width>94</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #358</name>
+    <text>Done</text>
+    <x>553</x>
+    <y>246</y>
+    <width>70</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="77" green="82" blue="164">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)HR$(N)_Moving</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #362</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>All Stop</text>
+    <x>546</x>
+    <y>209</y>
+    <width>88</width>
+    <height>38</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #365</name>
+    <pv_name>$(P)HR$(N)_Mode2MO.VAL</pv_name>
+    <x>430</x>
+    <y>195</y>
+    <height>55</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <horizontal>false</horizontal>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #368</name>
+    <pv_name>$(P)HR$(N)_UseSetBO.VAL</pv_name>
+    <x>430</x>
+    <y>160</y>
+    <height>22</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #371</name>
+    <text>Calibration</text>
+    <x>430</x>
+    <y>145</y>
+    <height>14</height>
+    <foreground_color>
+      <color red="45" green="45" blue="45">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #374</name>
+    <x>68</x>
+    <y>260</y>
+    <width>366</width>
+    <height>47</height>
+    <line_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)HR$(N)_AlertBO</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #378</name>
+    <pv_name>$(P)HR$(N)_SeqMsg1SI</pv_name>
+    <x>82</x>
+    <y>265</y>
+    <width>339</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #382</name>
+    <pv_name>$(P)HR$(N)_SeqMsg2SI</pv_name>
+    <x>82</x>
+    <y>285</y>
+    <width>339</width>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #386</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_OperAckBO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_OperAckBO</pv_name>
+    <text>OK</text>
+    <x>5</x>
+    <y>266</y>
+    <width>54</width>
+    <height>34</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #389</name>
+    <y>255</y>
+    <width>536</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="535.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #393</name>
+    <pv_name>$(P)HR$(N)_worldOffAO.VAL</pv_name>
+    <x>545</x>
+    <y>157</y>
+    <width>85</width>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>5</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #397</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_worldIncBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_worldIncBO.VAL</pv_name>
+    <text>&gt;</text>
+    <x>610</x>
+    <y>182</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #400</name>
+    <pv_name>$(P)HR$(N)_worldTweakAI</pv_name>
+    <x>565</x>
+    <y>182</y>
+    <width>45</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #404</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_worldDecBO.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_worldDecBO.VAL</pv_name>
+    <text>&lt;</text>
+    <x>545</x>
+    <y>182</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #407</name>
+    <text>world</text>
+    <x>545</x>
+    <y>140</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #410</name>
+    <pv_name>$(P)HR$(N)_worldOffAO.EGU</pv_name>
+    <x>605</x>
+    <y>144</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #414</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParms.opi</file>
+        <macros>
+          <PV>HR$(N)_EAO</PV>
+          <Q>HR$(N)_E</Q>
+        </macros>
+        <target>tab</target>
+        <description>Setup scan parameters</description>
+      </action>
+    </actions>
+    <text>ScanParm</text>
+    <y>111</y>
+    <width>60</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #417</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_E:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_E:scanParms.GO</pv_name>
+    <text>Go</text>
+    <x>82</x>
+    <y>111</y>
+    <width>21</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #420</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)HR$(N)_E:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)HR$(N)_E:scanParms.LOAD</pv_name>
+    <text>Ld</text>
+    <x>62</x>
+    <y>111</y>
+    <width>21</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>choice button #423</name>
+    <pv_name>$(P)HR$(N)_GeomMO.VAL</pv_name>
+    <x>409</x>
+    <y>112</y>
+    <width>200</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </items>
+  </widget>
+</display>

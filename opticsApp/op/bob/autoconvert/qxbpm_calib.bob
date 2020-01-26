@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>qxbpm_calib</name>
+  <x>31</x>
+  <y>151</y>
+  <width>430</width>
+  <height>370</height>
+  <background_color>
+    <color red="187" green="193" blue="135">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>qxbpm_calib.adl</text>
+    <x>2</x>
+    <y>3</y>
+    <width>200</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #9</name>
+    <text>last edited: 2007-Feb-12 (prj)</text>
+    <x>2</x>
+    <y>18</y>
+    <width>200</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #12</name>
+    <text>Oxford Quad Beam Position Monitor</text>
+    <x>8</x>
+    <y>35</y>
+    <width>400</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #15</name>
+    <actions>
+      <action type="open_display">
+        <file>qxbpm_config.opi</file>
+        <target>tab</target>
+        <description>configure</description>
+      </action>
+    </actions>
+    <text>configure</text>
+    <x>311</x>
+    <y>3</y>
+    <width>93</width>
+    <height>14</height>
+    <foreground_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="125" green="86" blue="39">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #18</name>
+    <pv_name>$(P)settling</pv_name>
+    <x>91</x>
+    <y>321</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="212" green="219" blue="157">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #22</name>
+    <text>settling time after each gain change before offset is read.</text>
+    <x>29</x>
+    <y>306</y>
+    <width>150</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #25</name>
+    <pv_name>$(P)settling.EGU</pv_name>
+    <x>196</x>
+    <y>321</y>
+    <height>18</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="212" green="219" blue="157">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #29</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)set_defaults</pv_name>
+    <text>set defaults</text>
+    <x>142</x>
+    <y>148</y>
+    <width>130</width>
+    <height>20</height>
+    <background_color>
+      <color red="166" green="164" blue="98">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #32</name>
+    <x>135</x>
+    <y>144</y>
+    <width>144</width>
+    <height>28</height>
+    <line_width>8</line_width>
+    <line_color>
+      <color red="82" green="218" blue="59">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="82" green="218" blue="59">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)set_defaults</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #36</name>
+    <x>22</x>
+    <y>69</y>
+    <width>370</width>
+    <height>109</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #39</name>
+    <text>default calibration</text>
+    <x>29</x>
+    <y>74</y>
+    <width>150</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #42</name>
+    <text>Set amplifier gains and other settings</text>
+    <x>32</x>
+    <y>99</y>
+    <width>350</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #45</name>
+    <text>to factory defaults.</text>
+    <x>32</x>
+    <y>120</y>
+    <width>350</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #48</name>
+    <x>22</x>
+    <y>186</y>
+    <width>370</width>
+    <height>170</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #51</name>
+    <text>amplifier offsets</text>
+    <x>29</x>
+    <y>191</y>
+    <width>150</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #54</name>
+    <text>Discover amplifier offsets for each range.</text>
+    <x>29</x>
+    <y>216</y>
+    <width>350</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #57</name>
+    <text>Make SURE that the X-ray beam is OFF.</text>
+    <x>29</x>
+    <y>237</y>
+    <width>350</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #60</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)set_offsets</pv_name>
+    <text>set offsets</text>
+    <x>204</x>
+    <y>265</y>
+    <width>130</width>
+    <height>20</height>
+    <background_color>
+      <color red="166" green="164" blue="98">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #63</name>
+    <x>197</x>
+    <y>261</y>
+    <width>144</width>
+    <height>28</height>
+    <line_width>8</line_width>
+    <line_color>
+      <color red="82" green="218" blue="59">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="82" green="218" blue="59">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)set_offsets</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #67</name>
+    <actions>
+    </actions>
+    <pv_name>$(P)set_offsets</pv_name>
+    <text>idle</text>
+    <x>88</x>
+    <y>265</y>
+    <width>68</width>
+    <height>20</height>
+    <background_color>
+      <color red="166" green="164" blue="98">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #70</name>
+    <x>82</x>
+    <y>261</y>
+    <width>80</width>
+    <height>28</height>
+    <line_width>8</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)set_offsets</pv_name>
+      </rule>
+    </rules>
+  </widget>
+</display>

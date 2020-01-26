@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>SGM_tiny</name>
+  <x>118</x>
+  <y>76</y>
+  <width>320</width>
+  <height>173</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_rOut).LLS</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #10</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_rOut).HLS</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #14</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_rOut).LVIO</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #18</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_rIn).LVIO</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #22</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_x).LVIO</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #26</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_x).HLS</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #30</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_rIn).HLS</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #34</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_rIn).LLS</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #38</name>
+    <text>Motor limit</text>
+    <x>80</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(M_x).LLS</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #42</name>
+    <pv_name>$(P)SGM$(N):rTrack</pv_name>
+    <x>200</x>
+    <y>144</y>
+    <width>55</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #45</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):move.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):move.PROC</pv_name>
+    <text>Move</text>
+    <x>80</x>
+    <y>144</y>
+    <width>35</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #48</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):sync.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):sync.PROC</pv_name>
+    <text>Sync</text>
+    <x>120</x>
+    <y>144</y>
+    <width>35</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #51</name>
+    <x>5</x>
+    <y>107</y>
+    <height>32</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #54</name>
+    <text>SCAN CONTROL</text>
+    <x>5</x>
+    <y>107</y>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #57</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>Stop</text>
+    <x>69</x>
+    <y>117</y>
+    <width>35</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #60</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):Energy:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):Energy:scanParms.GO</pv_name>
+    <text>Go</text>
+    <x>48</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #63</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):Energy:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):Energy:scanParms.LOAD</pv_name>
+    <text>Ld</text>
+    <x>27</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #66</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParms.opi</file>
+        <macros>
+          <PV>SGM$(N):Energy</PV>
+          <Q>SGM$(N):Energy</Q>
+        </macros>
+        <target>tab</target>
+        <description>Energy-scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>6</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #69</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):EnergyTweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):EnergyTweak.A</pv_name>
+    <text>&gt;</text>
+    <x>85</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #72</name>
+    <pv_name>$(P)SGM$(N):EnergyTweak.C</pv_name>
+    <x>25</x>
+    <y>86</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #76</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):EnergyTweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):EnergyTweak.B</pv_name>
+    <text>&lt;</text>
+    <x>5</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #79</name>
+    <x>-1</x>
+    <y>140</y>
+    <width>321</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="0.0" y="1.0">
+      </point>
+      <point x="319.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #83</name>
+    <actions>
+      <action type="open_display">
+        <file>SGM.opi</file>
+        <target>replace</target>
+        <description>SGM (more)</description>
+      </action>
+      <action type="open_display">
+        <file>SGM_gratings.opi</file>
+        <target>tab</target>
+        <description>Gratings</description>
+      </action>
+      <action type="open_display">
+        <file>motorx_more.opi</file>
+        <macros>
+          <M>$(M_rIn)</M>
+        </macros>
+        <target>tab</target>
+        <description>r  motor (entrance slit)</description>
+      </action>
+      <action type="open_display">
+        <file>motorx_more.opi</file>
+        <macros>
+          <M>$(M_x)</M>
+        </macros>
+        <target>tab</target>
+        <description>x  motor (grating drive)</description>
+      </action>
+      <action type="open_display">
+        <file>motorx_more.opi</file>
+        <macros>
+          <M>$(M_rOut)</M>
+        </macros>
+        <target>tab</target>
+        <description>r' motor (exit slit)</description>
+      </action>
+      <action type="open_display">
+        <file>motorx_more.opi</file>
+        <macros>
+          <M>$(M_g)</M>
+        </macros>
+        <target>tab</target>
+        <description>index motor (grating index)</description>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>279</x>
+    <y>152</y>
+    <width>40</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #91</name>
+    <x>110</x>
+    <y>107</y>
+    <height>32</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #94</name>
+    <text>SCAN CONTROL</text>
+    <x>110</x>
+    <y>107</y>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #97</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)AbortScans.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)AbortScans.VAL</pv_name>
+    <text>Stop</text>
+    <x>174</x>
+    <y>117</y>
+    <width>35</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #100</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):Lambda:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):Lambda:scanParms.GO</pv_name>
+    <text>Go</text>
+    <x>153</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #103</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):Lambda:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):Lambda:scanParms.LOAD</pv_name>
+    <text>Ld</text>
+    <x>132</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #106</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParms.opi</file>
+        <macros>
+          <PV>SGM$(N):Lambda</PV>
+          <Q>SGM$(N):Lambda</Q>
+        </macros>
+        <target>tab</target>
+        <description>Wavelength-scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>111</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #109</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):LambdaTweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):LambdaTweak.A</pv_name>
+    <text>&gt;</text>
+    <x>190</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #112</name>
+    <pv_name>$(P)SGM$(N):LambdaTweak.C</pv_name>
+    <x>130</x>
+    <y>86</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #116</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):LambdaTweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):LambdaTweak.B</pv_name>
+    <text>&lt;</text>
+    <x>110</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #119</name>
+    <x>215</x>
+    <y>107</y>
+    <height>32</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #122</name>
+    <text>SCAN CONTROL</text>
+    <x>215</x>
+    <y>107</y>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="0" green="216" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #125</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)allstop.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)allstop.VAL</pv_name>
+    <text>Stop</text>
+    <x>279</x>
+    <y>117</y>
+    <width>35</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #128</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):phi:scanParms.GO</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):phi:scanParms.GO</pv_name>
+    <text>Go</text>
+    <x>258</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #131</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):phi:scanParms.LOAD</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):phi:scanParms.LOAD</pv_name>
+    <text>Ld</text>
+    <x>237</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #134</name>
+    <actions>
+      <action type="open_display">
+        <file>scanParms.opi</file>
+        <macros>
+          <PV>SGM$(N):phi</PV>
+          <Q>SGM$(N):phi</Q>
+        </macros>
+        <target>tab</target>
+        <description>Grating angle scan parameters</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>216</x>
+    <y>117</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #137</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):phiTweak.A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):phiTweak.A</pv_name>
+    <text>&gt;</text>
+    <x>295</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #140</name>
+    <pv_name>$(P)SGM$(N):phiTweak.C</pv_name>
+    <x>235</x>
+    <y>86</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #144</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)SGM$(N):phiTweak.B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)SGM$(N):phiTweak.B</pv_name>
+    <text>&lt;</text>
+    <x>215</x>
+    <y>86</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #147</name>
+    <text>EXIT</text>
+    <x>175</x>
+    <y>144</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #150</name>
+    <text>SLIT</text>
+    <x>175</x>
+    <y>154</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #153</name>
+    <pv_name>$(P)SGM$(N):auto</pv_name>
+    <x>2</x>
+    <y>144</y>
+    <width>75</width>
+    <height>16</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #156</name>
+    <pv_name>$(P)SGM$(N):EnergyRBV</pv_name>
+    <x>5</x>
+    <y>45</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #160</name>
+    <pv_name>$(P)SGM$(N):Energy</pv_name>
+    <x>5</x>
+    <y>61</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #164</name>
+    <pv_name>$(P)SGM$(N):LambdaRBV</pv_name>
+    <x>110</x>
+    <y>45</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #168</name>
+    <pv_name>$(P)SGM$(N):Lambda</pv_name>
+    <x>110</x>
+    <y>61</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #172</name>
+    <pv_name>$(P)SGM$(N):phiRBV</pv_name>
+    <x>215</x>
+    <y>45</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #176</name>
+    <pv_name>$(P)SGM$(N):phi</pv_name>
+    <x>215</x>
+    <y>61</y>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #180</name>
+    <width>320</width>
+    <height>25</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #183</name>
+    <text>Spherical Grating Monochromator</text>
+    <y>3</y>
+    <width>320</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #186</name>
+    <text>Energy(eV)</text>
+    <x>5</x>
+    <y>25</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #189</name>
+    <text>Wavelen(A)</text>
+    <x>110</x>
+    <y>25</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #192</name>
+    <text>Phi(deg)</text>
+    <x>215</x>
+    <y>25</y>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #195</name>
+    <y>22</y>
+    <width>321</width>
+    <height>3</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="319.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #199</name>
+    <text>r' AT LIMIT</text>
+    <x>175</x>
+    <y>164</y>
+    <width>75</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="251" green="243" blue="74">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)SGM$(N):T2.M</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #203</name>
+    <text>V1.4</text>
+    <x>1</x>
+    <y>165</y>
+    <width>20</width>
+    <height>8</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+</display>

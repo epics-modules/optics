@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>pf4Bank_bare</name>
+  <x>1039</x>
+  <y>692</y>
+  <width>125</width>
+  <height>135</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>BEAM</text>
+    <x>89</x>
+    <y>22</y>
+    <width>30</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #9</name>
+    <text>$(P)$(H)$(B)</text>
+    <x>10</x>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #12</name>
+    <y>19</y>
+    <width>125</width>
+    <height>90</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #15</name>
+    <pv_name>$(P)$(H)trans$(B)</pv_name>
+    <y>110</y>
+    <width>125</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="236" green="236" blue="236">
+      </color>
+    </background_color>
+    <format>2</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #19</name>
+    <x>4</x>
+    <y>32</y>
+    <width>119</width>
+    <height>2</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="118.0" y="1.0">
+      </point>
+      <point x="1.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #23</name>
+    <x>3</x>
+    <y>26</y>
+    <width>13</width>
+    <height>13</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </line_color>
+    <points>
+      <point x="12.0" y="1.0">
+      </point>
+      <point x="1.0" y="7.0">
+      </point>
+      <point x="12.0" y="12.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #27</name>
+    <x>7</x>
+    <y>37</y>
+    <width>20</width>
+    <height>46</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </background_color>
+    <points>
+      <point x="0.0" y="33.0">
+      </point>
+      <point x="20.0" y="46.0">
+      </point>
+      <point x="20.0" y="8.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="33.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit4$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #32</name>
+    <x>37</x>
+    <y>37</y>
+    <width>20</width>
+    <height>46</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="78" green="165" blue="249">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="78" green="165" blue="249">
+      </color>
+    </background_color>
+    <points>
+      <point x="0.0" y="33.0">
+      </point>
+      <point x="20.0" y="46.0">
+      </point>
+      <point x="20.0" y="8.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="33.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit3$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #37</name>
+    <x>97</x>
+    <y>37</y>
+    <width>20</width>
+    <height>46</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </background_color>
+    <points>
+      <point x="0.0" y="33.0">
+      </point>
+      <point x="20.0" y="46.0">
+      </point>
+      <point x="20.0" y="8.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="33.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit1$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #42</name>
+    <x>67</x>
+    <y>37</y>
+    <width>20</width>
+    <height>46</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <points>
+      <point x="0.0" y="33.0">
+      </point>
+      <point x="20.0" y="46.0">
+      </point>
+      <point x="20.0" y="8.0">
+      </point>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="0.0" y="33.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit2$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #47</name>
+    <x>97</x>
+    <y>37</y>
+    <width>21</width>
+    <height>47</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </background_color>
+    <points>
+      <point x="1.0" y="33.0">
+      </point>
+      <point x="20.0" y="46.0">
+      </point>
+      <point x="20.0" y="9.0">
+      </point>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="1.0" y="33.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit1$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #52</name>
+    <x>67</x>
+    <y>37</y>
+    <width>21</width>
+    <height>47</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <points>
+      <point x="1.0" y="33.0">
+      </point>
+      <point x="20.0" y="46.0">
+      </point>
+      <point x="20.0" y="9.0">
+      </point>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="1.0" y="33.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit2$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #57</name>
+    <x>36</x>
+    <y>36</y>
+    <width>22</width>
+    <height>48</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="78" green="165" blue="249">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="78" green="165" blue="249">
+      </color>
+    </background_color>
+    <points>
+      <point x="1.0" y="34.0">
+      </point>
+      <point x="21.0" y="47.0">
+      </point>
+      <point x="21.0" y="9.0">
+      </point>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="1.0" y="34.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit3$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="polygon" version="2.0.0">
+    <name>polygon #62</name>
+    <x>7</x>
+    <y>37</y>
+    <width>21</width>
+    <height>47</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </background_color>
+    <points>
+      <point x="1.0" y="33.0">
+      </point>
+      <point x="20.0" y="46.0">
+      </point>
+      <point x="20.0" y="9.0">
+      </point>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="1.0" y="33.0">
+      </point>
+    </points>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(H)displayBit4$(B)</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #67</name>
+    <text>1</text>
+    <x>105</x>
+    <y>80</y>
+    <width>10</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #70</name>
+    <text>2</text>
+    <x>75</x>
+    <y>80</y>
+    <width>10</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #73</name>
+    <text>3</text>
+    <x>45</x>
+    <y>80</y>
+    <width>10</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #76</name>
+    <text>4</text>
+    <x>15</x>
+    <y>80</y>
+    <width>10</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #79</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(H)ftweak$(B).A</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(H)ftweak$(B).A</pv_name>
+    <text>+</text>
+    <x>65</x>
+    <y>90</y>
+    <width>20</width>
+    <height>15</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #82</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(H)ftweak$(B).B</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(H)ftweak$(B).B</pv_name>
+    <text>-</text>
+    <x>45</x>
+    <y>90</y>
+    <width>20</width>
+    <height>15</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+</display>

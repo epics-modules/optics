@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>XIA_shutterTry_more</name>
+  <x>75</x>
+  <y>477</y>
+  <width>310</width>
+  <height>190</height>
+  <background_color>
+    <color red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <width>310</width>
+    <height>25</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #9</name>
+    <y>25</y>
+    <width>310</width>
+    <height>3</height>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="308.0" y="1.0">
+      </point>
+    </points>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #13</name>
+    <text>XIA Shutter</text>
+    <y>4</y>
+    <width>310</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #16</name>
+    <actions>
+      <action type="open_display">
+        <file>XIA_shutterTry_small.opi</file>
+        <target>replace</target>
+        <description>XIA shutter (small)</description>
+      </action>
+    </actions>
+    <text>Less</text>
+    <x>230</x>
+    <y>170</y>
+    <width>40</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="40" green="147" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #19</name>
+    <actions>
+      <action type="open_display">
+        <file>XIA_shutterTry.opi</file>
+        <target>replace</target>
+        <description>XIA shutter (small)</description>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>270</x>
+    <y>170</y>
+    <width>40</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="40" green="147" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #22</name>
+    <pv_name>$(P)$(S):address</pv_name>
+    <x>65</x>
+    <y>170</y>
+    <width>50</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #26</name>
+    <text>MODULE</text>
+    <x>10</x>
+    <y>170</y>
+    <width>50</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #29</name>
+    <text>ADDRESS</text>
+    <x>10</x>
+    <y>180</y>
+    <width>50</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #32</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):expose.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):expose.PROC</pv_name>
+    <text>Expose</text>
+    <x>15</x>
+    <y>40</y>
+    <width>50</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #35</name>
+    <pv_name>$(P)$(S):exposeTime</pv_name>
+    <x>65</x>
+    <y>40</y>
+    <width>50</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #39</name>
+    <text>(s)</text>
+    <x>115</x>
+    <y>42</y>
+    <width>10</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #42</name>
+    <x>140</x>
+    <y>40</y>
+    <width>80</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>text #45</name>
+      <text>EXPOSING</text>
+      <width>80</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="51" green="153" blue="0">
+        </color>
+      </foreground_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <rules>
+        <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+          <exp bool_exp="!(pv0!=0)">
+            <value>false</value>
+          </exp>
+          <pv_name>$(P)$(S):busy</pv_name>
+        </rule>
+      </rules>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #49</name>
+      <text>DONE</text>
+      <width>80</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <rules>
+        <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+          <exp bool_exp="!(pv0==0)">
+            <value>false</value>
+          </exp>
+          <pv_name>$(P)$(S):busy</pv_name>
+        </rule>
+      </rules>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #53</name>
+    <text>In</text>
+    <x>275</x>
+    <y>145</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="60" green="180" blue="32">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status4</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #57</name>
+    <text>In</text>
+    <x>275</x>
+    <y>125</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="60" green="180" blue="32">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status3</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #61</name>
+    <text>In</text>
+    <x>275</x>
+    <y>105</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="60" green="180" blue="32">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status2</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #65</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):openShutter.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):openShutter.PROC</pv_name>
+    <text>Open shutter</text>
+    <x>140</x>
+    <y>65</y>
+    <width>130</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #68</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):closeShutter.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):closeShutter.PROC</pv_name>
+    <text>Close shutter</text>
+    <x>10</x>
+    <y>65</y>
+    <width>120</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #71</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>I1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Insert Filter 1</text>
+    <x>10</x>
+    <y>85</y>
+    <width>120</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #74</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>I2</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Insert Filter 2</text>
+    <x>10</x>
+    <y>105</y>
+    <width>120</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #77</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>R1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Remove Filter 1</text>
+    <x>140</x>
+    <y>85</y>
+    <width>130</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #80</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>R2</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Remove Filter 2</text>
+    <x>140</x>
+    <y>105</y>
+    <width>130</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #83</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>I3</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Insert Filter 3</text>
+    <x>10</x>
+    <y>125</y>
+    <width>120</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #86</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>I4</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Insert Filter 4</text>
+    <x>10</x>
+    <y>145</y>
+    <width>120</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #89</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>R3</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Remove Filter 3</text>
+    <x>140</x>
+    <y>125</y>
+    <width>130</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #92</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+        <value>R4</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(S):sendCommand.VAL</pv_name>
+    <text>Remove Filter 4</text>
+    <x>140</x>
+    <y>145</y>
+    <width>130</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #95</name>
+    <text>Out</text>
+    <x>275</x>
+    <y>85</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status1</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #99</name>
+    <text>In</text>
+    <x>275</x>
+    <y>85</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="60" green="180" blue="32">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status1</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #103</name>
+    <text>Out</text>
+    <x>275</x>
+    <y>105</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status2</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #107</name>
+    <text>Out</text>
+    <x>275</x>
+    <y>125</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status3</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #111</name>
+    <text>Out</text>
+    <x>275</x>
+    <y>145</y>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(S):Status4</pv_name>
+      </rule>
+    </rules>
+  </widget>
+</display>
