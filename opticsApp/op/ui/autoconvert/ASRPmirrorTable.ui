@@ -14,7 +14,94 @@
         <string>
 
 QWidget#centralWidget {background: rgba(218, 218, 218, 255);}
-QPushButton::menu-indicator {image: url(none.png); width: 0}
+
+caTable {
+       font: 10pt;
+       background: cornsilk;
+       alternate-background-color: wheat;
+}
+
+caLineEdit {
+     border-radius: 1px;
+     background: lightyellow;
+     color: black;
+ }
+
+caTextEntry {
+    color: rgb(127, 0, 63);
+    background-color: cornsilk;
+    selection-color: #0a214c;
+    selection-background-color: wheat;
+    border: 1px groove black;
+    border-radius: 1px;
+    padding: 1px;
+}
+
+caTextEntry:focus {
+    padding: 0px;
+    border: 2px groove darkred;
+    border-radius: 1px;
+}
+
+QPushButton {
+      border-color: #00b;
+      border-radius: 2px;
+      padding: 3px;
+      border-width: 1px;
+
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						   stop:0   rgba(224, 239, 255, 255),
+						   stop:0.5 rgba(199, 215, 230, 255),
+						   stop:1   rgba(184, 214, 236, 255));
+}
+QPushButton:hover {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(201, 226, 255, 255),
+						stop:0.5 rgba(177, 204, 230, 255),
+						stop:1   rgba(163, 205, 236, 255));
+}
+QPushButton:pressed {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+QPushButton:disabled {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+caChoice {
+      background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                  stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                  stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+}
+
+caChoice &gt; QPushButton {
+      text-align: left;
+      padding: 1px;
+}
+
+caSlider::groove:horizontal {
+border: 1px solid #bbb;
+background: lightgrey;
+height: 20px;
+border-radius: 4px;
+}
+
+caSlider::handle:horizontal {
+background: red;
+border: 1px solid #777;
+width: 13px;
+margin-top: -2px;
+margin-bottom: -2px;
+border-radius: 2px;
+}
+
+
 
 </string>
     </property>
@@ -287,7 +374,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>0,40;15,40;6,0;0,40;</string>
+                <string>0,40;</string>
             </property>
             <property name="polystyle">
                 <enum>caPolyLine::Polygon</enum>
@@ -332,7 +419,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>0,10;10,10;4,0;0,10;</string>
+                    <string>0,10;</string>
                 </property>
                 <property name="polystyle">
                     <enum>caPolyLine::Polygon</enum>
@@ -368,7 +455,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>0,0;10,0;4,10;0,0;</string>
+                    <string>0,0;</string>
                 </property>
                 <property name="polystyle">
                     <enum>caPolyLine::Polygon</enum>
@@ -407,7 +494,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>1,1;1,24;</string>
+                    <string>1,24;</string>
                 </property>
             </widget>
         </widget>
@@ -487,7 +574,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>0,10;10,10;4,0;0,10;</string>
+                    <string>0,10;</string>
                 </property>
                 <property name="polystyle">
                     <enum>caPolyLine::Polygon</enum>
@@ -523,7 +610,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>0,0;10,0;4,10;0,0;</string>
+                    <string>0,0;</string>
                 </property>
                 <property name="polystyle">
                     <enum>caPolyLine::Polygon</enum>
@@ -562,7 +649,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>1,1;1,24;</string>
+                    <string>1,24;</string>
                 </property>
             </widget>
         </widget>
@@ -824,7 +911,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Dash</enum>
             </property>
             <property name="xyPairs">
-                <string>38,0;0,0;</string>
+                <string>0,0;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_3">
@@ -860,7 +947,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,1;10,6;1,10;</string>
+                <string>1,10;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_4">
@@ -896,7 +983,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Dash</enum>
             </property>
             <property name="xyPairs">
-                <string>38,0;0,0;</string>
+                <string>0,0;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_5">
@@ -932,7 +1019,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>10,1;1,6;10,10;</string>
+                <string>10,10;</string>
             </property>
         </widget>
         <widget class="caTextEntry" name="caTextEntry_4">
@@ -1052,7 +1139,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>0,19;0,0;</string>
+                <string>0,0;</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_5">
@@ -1169,7 +1256,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Dash</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>38,0;0,0;</string>
+                    <string>0,0;</string>
                 </property>
             </widget>
             <widget class="caPolyLine" name="caPolyLine_8">
@@ -1205,7 +1292,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>10,1;1,6;10,10;</string>
+                    <string>10,10;</string>
                 </property>
             </widget>
             <widget class="caPolyLine" name="caPolyLine_9">
@@ -1241,7 +1328,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Dash</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>0,0;38,0;</string>
+                    <string>38,0;</string>
                 </property>
             </widget>
             <widget class="caPolyLine" name="caPolyLine_10">
@@ -1277,7 +1364,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                     <enum>Solid</enum>
                 </property>
                 <property name="xyPairs">
-                    <string>1,1;10,6;1,10;</string>
+                    <string>1,10;</string>
                 </property>
             </widget>
         </widget>
@@ -1314,7 +1401,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>0,0;34,0;</string>
+                <string>34,0;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_12">
@@ -1351,7 +1438,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Dash</enum>
             </property>
             <property name="xyPairs">
-                <string>0,0;0,44;</string>
+                <string>0,44;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_13">
@@ -1387,7 +1474,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>10,1;5,10;1,1;</string>
+                <string>1,1;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_14">
@@ -1423,7 +1510,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>10,10;5,1;1,10;</string>
+                <string>1,10;</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_7">
@@ -1571,7 +1658,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,62;1,1;160,1;</string>
+                <string>160,1;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_16">
@@ -1611,7 +1698,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>159,1;159,59;1,59;</string>
+                <string>1,59;</string>
             </property>
         </widget>
         <widget class="caRelatedDisplay" name="caRelatedDisplay_1">
