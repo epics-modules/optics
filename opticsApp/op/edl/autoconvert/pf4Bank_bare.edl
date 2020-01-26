@@ -1,44 +1,45 @@
-4 0 0
+4 0 1
 beginScreenProperties
 major 4
 minor 0
-release 0
+release 1
 x 1039
 y 692
 w 125
 h 135
 font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-8.0"
+ctlFont "helvetica-bold-r-10.0"
 btnFont "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 2
-textColor index 14
-ctlFgColor1 index 30
-ctlFgColor2 index 32
-ctlBgColor1 index 34
-ctlBgColor2 index 35
-topShadowColor index 37
-botShadowColor index 44
+fgColor rgb 0 0 0
+bgColor rgb 55808 55808 55808
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
 snapToGrid
-gridSize 5
+gridSize 4
 endScreenProperties
-
 
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 89
 y 22
-w 30
+w 33
 h 10
 font "helvetica-medium-r-8.0"
-fgColor index 20
+fgColor rgb 64768 0 0
+bgColor index 3
 useDisplayBg
 value {
- "BEAM"
+  "BEAM"
 }
 endObjectProperties
 
@@ -46,18 +47,19 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 10
 y 0
 w 100
 h 20
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "$(P)$(H)$(B)"
+  "$(P)$(H)$(B)"
 }
 endObjectProperties
 
@@ -71,34 +73,33 @@ x 1
 y 20
 w 123
 h 88
-lineColor index 14
-fillColor index 14
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
 lineWidth 2
 endObjectProperties
 
-# (Text Control)
-object activeXTextDspClass
+# (Text Monitor)
+object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 0
 y 110
 w 125
 h 20
 controlPv "$(P)$(H)trans$(B)"
-font "helvetica-medium-r-8.0"
+format "exponential"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
+fgColor rgb 2560 0 47104
+bgColor rgb 60416 60416 60416
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 54
-bgColor index 1
-autoHeight
-format "exponential"
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
 # (Lines)
@@ -111,8 +112,8 @@ x 4
 y 32
 w 119
 h 2
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -135,8 +136,8 @@ x 3
 y 26
 w 13
 h 13
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 3 {
 xPoints  {
@@ -161,9 +162,9 @@ x 7
 y 37
 w 20
 h 46
-lineColor index 53
+lineColor rgb 10752 25344 58368
 fill
-fillColor index 53
+fillColor rgb 10752 25344 58368
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -197,9 +198,9 @@ x 37
 y 37
 w 20
 h 46
-lineColor index 52
+lineColor rgb 19968 42240 63744
 fill
-fillColor index 52
+fillColor rgb 19968 42240 63744
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -233,9 +234,9 @@ x 97
 y 37
 w 20
 h 46
-lineColor index 50
+lineColor rgb 39168 65280 65280
 fill
-fillColor index 50
+fillColor rgb 39168 65280 65280
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -269,9 +270,9 @@ x 67
 y 37
 w 20
 h 46
-lineColor index 51
+lineColor rgb 29440 57088 65280
 fill
-fillColor index 51
+fillColor rgb 29440 57088 65280
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -305,8 +306,8 @@ x 97
 y 37
 w 21
 h 47
-lineColor index 50
-fillColor index 50
+lineColor rgb 39168 65280 65280
+fillColor rgb 39168 65280 65280
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -339,8 +340,8 @@ x 67
 y 37
 w 21
 h 47
-lineColor index 51
-fillColor index 51
+lineColor rgb 29440 57088 65280
+fillColor rgb 29440 57088 65280
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -373,8 +374,8 @@ x 36
 y 36
 w 22
 h 48
-lineColor index 52
-fillColor index 52
+lineColor rgb 19968 42240 63744
+fillColor rgb 19968 42240 63744
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -407,8 +408,8 @@ x 7
 y 37
 w 21
 h 47
-lineColor index 53
-fillColor index 53
+lineColor rgb 10752 25344 58368
+fillColor rgb 10752 25344 58368
 lineWidth 2
 closePolygon
 numPoints 5 {
@@ -435,17 +436,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 105
 y 80
-w 10
+w 17
 h 12
-font "helvetica-medium-r-8.0"
-fgColor index 14
+font "helvetica-medium-r-10.0"
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "1"
+  "1"
 }
 endObjectProperties
 
@@ -453,17 +455,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 75
 y 80
-w 10
+w 17
 h 12
-font "helvetica-medium-r-8.0"
-fgColor index 14
+font "helvetica-medium-r-10.0"
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "2"
+  "2"
 }
 endObjectProperties
 
@@ -471,17 +474,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 45
 y 80
-w 10
+w 17
 h 12
-font "helvetica-medium-r-8.0"
-fgColor index 14
+font "helvetica-medium-r-10.0"
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "3"
+  "3"
 }
 endObjectProperties
 
@@ -489,17 +493,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 15
 y 80
-w 10
+w 17
 h 12
-font "helvetica-medium-r-8.0"
-fgColor index 14
+font "helvetica-medium-r-10.0"
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "4"
+  "4"
 }
 endObjectProperties
 
@@ -513,11 +518,11 @@ x 65
 y 90
 w 20
 h 15
-fgColor index 14
-onColor index 51
-offColor index 51
-topShadowColor index 0
-botShadowColor index 14
+fgColor rgb 0 0 0
+onColor rgb 29440 57088 65280
+offColor rgb 29440 57088 65280
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 controlPv "$(P)$(H)ftweak$(B).A"
 pressValue "1"
 releaseValue 
@@ -525,7 +530,7 @@ onLabel "+"
 offLabel "+"
 3d
 useEnumNumeric
-font "helvetica-medium-r-10.0"
+font "helvetica-medium-r-8.0"
 endObjectProperties
 
 # (Message Button)
@@ -538,11 +543,11 @@ x 45
 y 90
 w 20
 h 15
-fgColor index 14
-onColor index 51
-offColor index 51
-topShadowColor index 0
-botShadowColor index 14
+fgColor rgb 0 0 0
+onColor rgb 29440 57088 65280
+offColor rgb 29440 57088 65280
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 controlPv "$(P)$(H)ftweak$(B).B"
 pressValue "1"
 releaseValue 
@@ -550,6 +555,6 @@ onLabel "-"
 offLabel "-"
 3d
 useEnumNumeric
-font "helvetica-medium-r-10.0"
+font "helvetica-medium-r-8.0"
 endObjectProperties
 

@@ -1,45 +1,46 @@
-4 0 0
+4 0 1
 beginScreenProperties
 major 4
 minor 0
-release 0
+release 1
 x 8
 y 56
 w 400
 h 400
 font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-8.0"
+ctlFont "helvetica-bold-r-10.0"
 btnFont "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 57
-textColor index 14
-ctlFgColor1 index 30
-ctlFgColor2 index 32
-ctlBgColor1 index 34
-ctlBgColor2 index 35
-topShadowColor index 37
-botShadowColor index 44
+fgColor rgb 0 0 0
+bgColor rgb 47872 49408 34560
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
 snapToGrid
-gridSize 5
+gridSize 4
 endScreenProperties
-
 
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 20
 y 6
 w 360
 h 20
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "$(P) fb_epid simulator chart"
+  "$(P) fb_epid simulator chart"
 }
 endObjectProperties
 
@@ -60,9 +61,9 @@ plotAreaBorder
 graphTitle "signal (R) & set point (Y)"
 xLabel 
 yLabel 
-fgColor index 14
-bgColor index 4
-gridColor index 14
+fgColor rgb 0 0 0
+bColor rgb 47872 47872 47872
+gridColor rgb 0 0 0
 font "helvetica-medium-r-18.0"
 # Operating Modes
 plotMode "plotLastNPts"
@@ -94,8 +95,8 @@ opMode {
   1 "plot"
 }
 plotColor {
-  0 index 20
-  1 index 31
+  0 rgb 64768 0 0
+  1 rgb 63744 55808 15360
 }
 endObjectProperties
 
@@ -116,9 +117,9 @@ plotAreaBorder
 graphTitle "following error"
 xLabel 
 yLabel 
-fgColor index 14
-bgColor index 4
-gridColor index 14
+fgColor rgb 0 0 0
+bColor rgb 47872 47872 47872
+gridColor rgb 0 0 0
 font "helvetica-medium-r-18.0"
 # Operating Modes
 plotMode "plotLastNPts"
@@ -147,7 +148,7 @@ opMode {
   0 "plot"
 }
 plotColor {
-  0 index 20
+  0 rgb 64768 0 0
 }
 endObjectProperties
 

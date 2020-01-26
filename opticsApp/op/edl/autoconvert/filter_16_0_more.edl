@@ -1,28 +1,28 @@
-4 0 0
+4 0 1
 beginScreenProperties
 major 4
 minor 0
-release 0
+release 1
 x 300
 y 300
 w 680
 h 400
 font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-8.0"
+ctlFont "helvetica-bold-r-10.0"
 btnFont "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 3
-textColor index 14
-ctlFgColor1 index 30
-ctlFgColor2 index 32
-ctlBgColor1 index 34
-ctlBgColor2 index 35
-topShadowColor index 37
-botShadowColor index 44
+fgColor rgb 0 0 0
+bgColor rgb 51200 51200 51200
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
 snapToGrid
-gridSize 5
+gridSize 4
 endScreenProperties
-
 
 # (Rectangle)
 object activeRectangleClass
@@ -34,9 +34,9 @@ x 5
 y 40
 w 149
 h 20
-lineColor index 54
+lineColor rgb 2560 0 47104
 fill
-fillColor index 54
+fillColor rgb 2560 0 47104
 lineWidth 0
 endObjectProperties
 
@@ -50,8 +50,8 @@ x 0
 y 220
 w 680
 h 1
-lineColor index 12
-fillColor index 12
+lineColor rgb 17920 17920 17920
+fillColor rgb 17920 17920 17920
 numPoints 2 {
 xPoints  {
 0 0
@@ -63,29 +63,28 @@ yPoints  {
 }
 endObjectProperties
 
-# (Text Control)
-object activeXTextDspClass
+# (Text Monitor)
+object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 5
 y 5
 w 670
 h 25
 controlPv "$(P)$(R)Description"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "helvetica-medium-r-18.0"
 fontAlign "center"
+fgColor rgb 65280 65280 65280
+bgColor rgb 2560 0 47104
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 0
-bgColor index 54
-autoHeight
-format decimal
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
 # (Lines)
@@ -98,8 +97,8 @@ x 165
 y 30
 w 0
 h 190
-lineColor index 12
-fillColor index 12
+lineColor rgb 17920 17920 17920
+fillColor rgb 17920 17920 17920
 lineWidth 0
 numPoints 2 {
 xPoints  {
@@ -116,18 +115,19 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 5
 y 44
 w 150
 h 13
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-10.0"
 fontAlign "center"
-fgColor index 0
+fgColor rgb 65280 65280 65280
+bgColor index 3
 useDisplayBg
 value {
- "$(P)$(R)"
+  "$(P)$(R)"
 }
 endObjectProperties
 
@@ -135,17 +135,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 5
 y 95
 w 118
 h 10
 font "helvetica-medium-r-8.0"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "filter_16_0_more.adl"
+  "filter_16_0_more.adl"
 }
 endObjectProperties
 
@@ -153,17 +154,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 5
 y 110
 w 118
 h 10
 font "helvetica-medium-r-8.0"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "2013-01-31 (CMS)"
+  "2013-01-31 (CMS)"
 }
 endObjectProperties
 
@@ -184,26 +186,28 @@ beginGroup
 object activePipClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 40
 y 225
 w 130
 h 170
-fgColor index 14
-bgColor index 0
-topShadowColor index 0
-botShadowColor index 14
-noScroll
+fgColor rgb 0 0 0
+bgColor rgb 65280 65280 65280
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 displaySource "file"
-file "	composite file filterbox_more.edl;P=$(P),R=$(R),N1=13,N2=14,N3=15,N4=16"
+file "filterbox_more.edl;P=$(P),R=$(R),N1=13,N2=14,N3=15,N4=16"
 sizeOfs 5
-numDsps 0
+numDsps 1
+displayFileName {
+  0 "filterbox_more.edl;P=$(P),R=$(R),N1=13,N2=14,N3=15,N4=16"
+}
+noScroll
 endObjectProperties
 
 endGroup
 
-visPv ""
 visMin "A"
 visMax "1"
 endObjectProperties
@@ -225,26 +229,28 @@ beginGroup
 object activePipClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 180
 y 225
 w 130
 h 170
-fgColor index 14
-bgColor index 0
-topShadowColor index 0
-botShadowColor index 14
-noScroll
+fgColor rgb 0 0 0
+bgColor rgb 65280 65280 65280
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 displaySource "file"
-file "	composite file filterbox_more.edl;P=$(P),R=$(R),N1=9,N2=10,N3=11,N4=12"
+file "filterbox_more.edl;P=$(P),R=$(R),N1=9,N2=10,N3=11,N4=12"
 sizeOfs 5
-numDsps 0
+numDsps 1
+displayFileName {
+  0 "filterbox_more.edl;P=$(P),R=$(R),N1=9,N2=10,N3=11,N4=12"
+}
+noScroll
 endObjectProperties
 
 endGroup
 
-visPv ""
 visMin "A"
 visMax "1"
 endObjectProperties
@@ -266,26 +272,28 @@ beginGroup
 object activePipClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 375
 y 225
 w 130
 h 170
-fgColor index 14
-bgColor index 0
-topShadowColor index 0
-botShadowColor index 14
-noScroll
+fgColor rgb 0 0 0
+bgColor rgb 65280 65280 65280
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 displaySource "file"
-file "	composite file filterbox_more.edl;P=$(P),R=$(R),N1=5,N2=6,N3=7,N4=8"
+file "filterbox_more.edl;P=$(P),R=$(R),N1=5,N2=6,N3=7,N4=8"
 sizeOfs 5
-numDsps 0
+numDsps 1
+displayFileName {
+  0 "filterbox_more.edl;P=$(P),R=$(R),N1=5,N2=6,N3=7,N4=8"
+}
+noScroll
 endObjectProperties
 
 endGroup
 
-visPv ""
 visMin "A"
 visMax "1"
 endObjectProperties
@@ -307,26 +315,28 @@ beginGroup
 object activePipClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 515
 y 225
 w 130
 h 170
-fgColor index 14
-bgColor index 0
-topShadowColor index 0
-botShadowColor index 14
-noScroll
+fgColor rgb 0 0 0
+bgColor rgb 65280 65280 65280
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 displaySource "file"
-file "	composite file filterbox_more.edl;P=$(P),R=$(R),N1=1,N2=2,N3=3,N4=4"
+file "filterbox_more.edl;P=$(P),R=$(R),N1=1,N2=2,N3=3,N4=4"
 sizeOfs 5
-numDsps 0
+numDsps 1
+displayFileName {
+  0 "filterbox_more.edl;P=$(P),R=$(R),N1=1,N2=2,N3=3,N4=4"
+}
+noScroll
 endObjectProperties
 
 endGroup
 
-visPv ""
 visMin "A"
 visMax "1"
 endObjectProperties
@@ -344,7 +354,6 @@ h 19
 
 beginGroup
 
-
 # (Group)
 object activeGroupClass
 beginObjectProperties
@@ -358,22 +367,22 @@ h 19
 
 beginGroup
 
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 326
 y 289
-w 21
+w 22
 h 10
 font "helvetica-medium-r-8.0"
-fgColor index 19
+fgColor rgb 8448 27648 0
+bgColor index 3
 useDisplayBg
 value {
- "free"
+  "free"
 }
 endObjectProperties
 
@@ -390,22 +399,22 @@ h 10
 
 beginGroup
 
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 325
 y 280
-w 21
+w 23
 h 10
 font "helvetica-medium-r-8.0"
-fgColor index 20
+fgColor rgb 64768 0 0
+bgColor index 3
 useDisplayBg
 value {
- "lock"
+  "lock"
 }
 endObjectProperties
 
@@ -413,17 +422,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 350
 y 280
 w 10
 h 10
 font "helvetica-medium-r-8.0"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "/"
+  "/"
 }
 endObjectProperties
 
@@ -447,8 +457,8 @@ x 303
 y 285
 w 19
 h 1
-lineColor index 14
-fillColor index 14
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
 numPoints 2 {
 xPoints  {
 0 303
@@ -470,8 +480,8 @@ x 363
 y 285
 w 19
 h 1
-lineColor index 14
-fillColor index 14
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
 numPoints 2 {
 xPoints  {
 0 363
@@ -501,7 +511,6 @@ h 15
 
 beginGroup
 
-
 # (Group)
 object activeGroupClass
 beginObjectProperties
@@ -515,7 +524,6 @@ h 15
 
 beginGroup
 
-
 # (Lines)
 object activeLineClass
 beginObjectProperties
@@ -526,8 +534,8 @@ x 5
 y 318
 w 21
 h 9
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -550,8 +558,8 @@ x 5
 y 324
 w 21
 h 9
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -582,7 +590,6 @@ h 15
 
 beginGroup
 
-
 # (Lines)
 object activeLineClass
 beginObjectProperties
@@ -593,8 +600,8 @@ x 335
 y 318
 w 21
 h 9
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -617,8 +624,8 @@ x 335
 y 324
 w 21
 h 9
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -649,7 +656,6 @@ h 15
 
 beginGroup
 
-
 # (Lines)
 object activeLineClass
 beginObjectProperties
@@ -660,8 +666,8 @@ x 651
 y 318
 w 21
 h 9
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -684,8 +690,8 @@ x 651
 y 324
 w 21
 h 9
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -713,8 +719,8 @@ x 5
 y 325
 w 671
 h 2
-lineColor index 20
-fillColor index 20
+lineColor rgb 64768 0 0
+fillColor rgb 64768 0 0
 lineWidth 2
 numPoints 2 {
 xPoints  {
@@ -745,7 +751,6 @@ h 20
 
 beginGroup
 
-
 # (Lines)
 object activeLineClass
 beginObjectProperties
@@ -756,8 +761,8 @@ x 303
 y 352
 w 19
 h 1
-lineColor index 14
-fillColor index 14
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
 numPoints 2 {
 xPoints  {
 0 303
@@ -782,23 +787,23 @@ h 20
 
 beginGroup
 
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 320
 y 345
 w 45
 h 10
 font "helvetica-medium-r-8.0"
 fontAlign "center"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "remove"
+  "remove"
 }
 endObjectProperties
 
@@ -806,18 +811,19 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 320
 y 355
 w 45
 h 10
 font "helvetica-medium-r-8.0"
 fontAlign "center"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "insert"
+  "insert"
 }
 endObjectProperties
 
@@ -836,8 +842,8 @@ x 363
 y 352
 w 19
 h 1
-lineColor index 14
-fillColor index 14
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
 numPoints 2 {
 xPoints  {
 0 363
@@ -871,26 +877,28 @@ beginGroup
 object activePipClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 175
 y 40
 w 490
 h 168
-fgColor index 14
-bgColor index 0
-topShadowColor index 0
-botShadowColor index 14
-noScroll
+fgColor rgb 0 0 0
+bgColor rgb 65280 65280 65280
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 displaySource "file"
-file "	composite file filter_drive_more.edl;P=$(P),R=$(R)"
+file "filter_drive_more.edl;P=$(P),R=$(R)"
 sizeOfs 5
-numDsps 0
+numDsps 1
+displayFileName {
+  0 "filter_drive_more.edl;P=$(P),R=$(R)"
+}
+noScroll
 endObjectProperties
 
 endGroup
 
-visPv ""
 visMin "A"
 visMax "1"
 endObjectProperties
@@ -905,10 +913,10 @@ x 85
 y 70
 w 70
 h 18
-fgColor index 0
-bgColor index 49
-topShadowColor index 2
-botShadowColor index 12
+fgColor rgb 65280 65280 65280
+bgColor rgb 22528 13312 3840
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
 font "helvetica-medium-r-10.0"
 buttonLabel "configure"
 numPvs 2
@@ -922,6 +930,9 @@ menuLabel {
 symbols {
   0 "P=$(P),R=$(R)"
 }
+replaceSymbols {
+  0 1
+}
 endObjectProperties
 
 # (Related Display)
@@ -934,10 +945,10 @@ x 5
 y 70
 w 70
 h 18
-fgColor index 0
-bgColor index 49
-topShadowColor index 2
-botShadowColor index 12
+fgColor rgb 65280 65280 65280
+bgColor rgb 22528 13312 3840
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
 font "helvetica-medium-r-10.0"
 buttonLabel "less"
 numPvs 2
@@ -952,6 +963,9 @@ symbols {
   0 "P=$(P),R=$(R)"
 }
 closeAction {
+  0 1
+}
+replaceSymbols {
   0 1
 }
 closeDisplay {
@@ -970,7 +984,6 @@ w 79
 h 19
 
 beginGroup
-
 # (Group)
 object activeGroupClass
 beginObjectProperties
@@ -983,7 +996,6 @@ w 35
 h 19
 
 beginGroup
-
 # (Group)
 object activeGroupClass
 beginObjectProperties
@@ -996,7 +1008,6 @@ w 35
 h 10
 
 beginGroup
-
 
 endGroup
 
@@ -1024,7 +1035,6 @@ w 671
 h 15
 
 beginGroup
-
 # (Group)
 object activeGroupClass
 beginObjectProperties
@@ -1037,7 +1047,6 @@ w 20
 h 15
 
 beginGroup
-
 
 endGroup
 
@@ -1056,7 +1065,6 @@ h 15
 
 beginGroup
 
-
 endGroup
 
 endObjectProperties
@@ -1073,7 +1081,6 @@ w 20
 h 15
 
 beginGroup
-
 
 endGroup
 
@@ -1096,7 +1103,6 @@ w 79
 h 20
 
 beginGroup
-
 # (Group)
 object activeGroupClass
 beginObjectProperties
@@ -1109,7 +1115,6 @@ w 45
 h 20
 
 beginGroup
-
 
 endGroup
 

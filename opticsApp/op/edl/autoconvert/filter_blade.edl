@@ -1,28 +1,28 @@
-4 0 0
+4 0 1
 beginScreenProperties
 major 4
 minor 0
-release 0
+release 1
 x 990
 y 150
 w 72
 h 88
 font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-8.0"
+ctlFont "helvetica-bold-r-10.0"
 btnFont "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 3
-textColor index 14
-ctlFgColor1 index 30
-ctlFgColor2 index 32
-ctlBgColor1 index 34
-ctlBgColor2 index 35
-topShadowColor index 37
-botShadowColor index 44
+fgColor rgb 0 0 0
+bgColor rgb 51200 51200 51200
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
 snapToGrid
-gridSize 5
+gridSize 4
 endScreenProperties
-
 
 # (Group)
 object activeGroupClass
@@ -37,7 +37,6 @@ h 14
 
 beginGroup
 
-
 endGroup
 
 visPv "CALC\\\{(A)\}($(P)$(R)Fi$(N):Lock)"
@@ -51,18 +50,19 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
-x 3
+minor 1
+release 1
+x 1
 y 16
-w 20
+w 25
 h 10
 font "helvetica-medium-r-8.0"
 fontAlign "center"
-fgColor index 14
+fgColor rgb 0 0 0
+bgColor index 3
 useDisplayBg
 value {
- "$(N)"
+  "$(N)"
 }
 endObjectProperties
 
@@ -76,9 +76,9 @@ x 9
 y 39
 w 7
 h 15
-lineColor index 15
+lineColor rgb 0 55296 0
 fill
-fillColor index 15
+fillColor rgb 0 55296 0
 lineWidth 0
 visPv "CALC\\\{(A)\}($(P)$(R)Fi$(N):Set)"
 visInvert
@@ -98,7 +98,6 @@ w 14
 h 14
 
 beginGroup
-
 
 endGroup
 
@@ -118,9 +117,9 @@ x 9
 y 27
 w 7
 h 15
-lineColor index 20
+lineColor rgb 64768 0 0
 fill
-fillColor index 20
+fillColor rgb 64768 0 0
 lineWidth 0
 visPv "CALC\\\{(A)\}($(P)$(R)Fi$(N):Set)"
 visMin 0
@@ -139,7 +138,6 @@ h 14
 
 beginGroup
 
-
 # (Message Button)
 object activeMessageButtonClass
 beginObjectProperties
@@ -150,11 +148,11 @@ x 6
 y 0
 w 14
 h 14
-fgColor index 14
-onColor index 21
-offColor index 21
-topShadowColor index 0
-botShadowColor index 14
+fgColor rgb 0 0 0
+onColor rgb 56832 4864 2304
+offColor rgb 56832 4864 2304
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 controlPv "$(P)$(R)Fi$(N):Lock"
 pressValue "0"
 releaseValue 
@@ -162,7 +160,7 @@ onLabel "L"
 offLabel "L"
 3d
 useEnumNumeric
-font "helvetica-medium-r-10.0"
+font "helvetica-bold-r-12.0"
 endObjectProperties
 
 endGroup
@@ -184,12 +182,12 @@ x 0
 y 60
 w 26
 h 28
-fgColor index 14
-bgColor index 51
-selectColor index 51
-inconsistentColor index 14
-topShadowColor index 0
-botShadowColor index 14
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+selectColor rgb 29440 57088 65280
+inconsistentColor rgb 0 0 0
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 controlPv "$(P)$(R)Fi$(N):Set"
 font "helvetica-medium-r-10.0"
 endObjectProperties
@@ -206,7 +204,6 @@ h 14
 
 beginGroup
 
-
 # (Message Button)
 object activeMessageButtonClass
 beginObjectProperties
@@ -217,11 +214,11 @@ x 6
 y 0
 w 14
 h 14
-fgColor index 14
-onColor index 15
-offColor index 15
-topShadowColor index 0
-botShadowColor index 14
+fgColor rgb 0 0 0
+onColor rgb 0 55296 0
+offColor rgb 0 55296 0
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 controlPv "$(P)$(R)Fi$(N):Lock"
 pressValue "1"
 releaseValue 
@@ -229,7 +226,7 @@ onLabel "F"
 offLabel "F"
 3d
 useEnumNumeric
-font "helvetica-medium-r-10.0"
+font "helvetica-bold-r-12.0"
 endObjectProperties
 
 endGroup
