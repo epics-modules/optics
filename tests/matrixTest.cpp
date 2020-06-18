@@ -1,6 +1,7 @@
 #include <cmath>
 #include <vector>
 #include <numeric>
+#include <cstddef>
 
 #include <epicsMath.h>
 #include <epicsUnitTest.h>
