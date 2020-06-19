@@ -1,5 +1,7 @@
 #include <math.h>
 #include <stdio.h>
+#include <epicsExport.h>
+
 #include "matrix3.h"
 
 volatile int matrix3Debug = 0;

@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <errno.h>
 #include <epicsMath.h>
+#include <epicsExport.h>
+
 #include "matrix3.h"
 #include "orient.h"
 
