@@ -7,10 +7,7 @@
 #include <epicsUnitTest.h>
 #include <testMain.h>
 
-extern "C"
-{
-	#include "matrix3.h"
-}
+#include "matrix3.h"
 
 void testDot(double x1, double y1, double z1, double x2, double y2, double z2)
 {
