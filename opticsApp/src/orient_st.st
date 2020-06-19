@@ -296,6 +296,7 @@ ASSIGN_MONITOR(double, errAngleThresh, "{P}errAngleThresh")
 
 %%#include <string.h>
 %%#include <math.h>
+%%#include <epicsExport.h>
 %%#include "matrix3.h"
 %%#include "orient.h"
 
