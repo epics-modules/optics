@@ -1,10 +1,12 @@
 #include <cmath>
 #include <vector>
 #include <numeric>
+#include <cstddef>
 
 #include <epicsMath.h>
 #include <epicsUnitTest.h>
 #include <testMain.h>
+#include <epicsExport.h>
 
 extern "C"
 {
@@ -29,7 +31,7 @@ void testDot(double x1, double y1, double z1, double x2, double y2, double z2)
 	
 	bool pass;
 	
-	if (finite(expected) and finite(result))
+	if (finite(expected) && finite(result))
 	{
 		pass = fabs(expected - result) < 1e-8;
 	}
@@ -60,7 +62,7 @@ void testCross(double v1[3], double v2[3], double expected[3])
 	
 	for (i = 0; i < 3; i += 1)
 	{
-		if (finite(expected[i]) and finite(result[i]))
+		if (finite(expected[i]) && finite(result[i]))
 		{
 			if (fabs(expected[i] - result[i]) > 1e-8)
 			{
@@ -68,7 +70,7 @@ void testCross(double v1[3], double v2[3], double expected[3])
 				break;
 			}
 		}
-		else if (isnan(expected[i]) and not isnan(result[i]))
+		else if (isnan(expected[i]) && !isnan(result[i]))
 		{
 			pass = false;
 			break;
@@ -97,7 +99,7 @@ void testDotCross(double v1[3], double v2[3], double v3[3])
 
 	bool pass;
 	
-	if (finite(expected) and finite(result))
+	if (finite(expected) && finite(result))
 	{
 		pass = fabs(expected - result) < 1e-8;
 	}
@@ -130,7 +132,7 @@ void testMultArrayArray(double m1[3][3], double m2[3][3], double expected[3][3])
 	{
 		for (j = 0; j < 3; j += 1)
 		{
-			if (finite(expected[i][j]) and finite(result[i][j]))
+			if (finite(expected[i][j]) && finite(result[i][j]))
 			{
 				if (fabs(expected[i][j] - result[i][j]) > 1e-8)
 				{
@@ -138,7 +140,7 @@ void testMultArrayArray(double m1[3][3], double m2[3][3], double expected[3][3])
 					break;
 				}
 			}
-			else if (isnan(expected[i][j]) and not isnan(result[i][j]))
+			else if (isnan(expected[i][j]) && !isnan(result[i][j]))
 			{
 				pass = false;
 				break;
@@ -174,7 +176,7 @@ void testMultArrayVector(double m1[3][3], double v2[3], double expected[3])
 	
 	for (i = 0; i < 3; i += 1)
 	{
-		if (finite(expected[i]) and finite(result[i]))
+		if (finite(expected[i]) && finite(result[i]))
 		{
 			if (fabs(expected[i] - result[i]) > 1e-8)
 			{
@@ -182,7 +184,7 @@ void testMultArrayVector(double m1[3][3], double v2[3], double expected[3])
 				break;
 			}
 		}
-		else if (isnan(expected[i]) and not isnan(result[i]))
+		else if (isnan(expected[i]) && !isnan(result[i]))
 		{
 			pass = false;
 			break;
@@ -209,7 +211,7 @@ void testDeterminant(double arr[3][3], double expected)
 	
 	bool pass;
 	
-	if (finite(expected) and finite(result))
+	if (finite(expected) && finite(result))
 	{
 		pass = fabs(expected - result) < 1e-8;
 	}
@@ -258,7 +260,7 @@ void testInvertArray(double arr[3][3], double expected[3][3])
 	{
 		for (j = 0; j < 3; j += 1)
 		{
-			if (finite(expected[i][j]) and finite(result[i][j]))
+			if (finite(expected[i][j]) && finite(result[i][j]))
 			{
 				if (fabs(expected[i][j] - result[i][j]) > 1e-8)
 				{
@@ -266,7 +268,7 @@ void testInvertArray(double arr[3][3], double expected[3][3])
 					break;
 				}
 			}
-			else if (isnan(expected[i][j]) and not isnan(result[i][j]))
+			else if (isnan(expected[i][j]) && !isnan(result[i][j]))
 			{
 				pass = false;
 				break;
