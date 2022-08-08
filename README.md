@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/epics-modules/optics.svg?branch=master)](https://travis-ci.org/epics-modules/optics)
+[![OPTICS](https://github.com/epics-modules/optics/actions/workflows/ci-scripts-build.yml/badge.svg)](https://github.com/epics-modules/optics/actions/workflows/ci-scripts-build.yml)
 
 # optics
 APS BCDA synApps module: optics
