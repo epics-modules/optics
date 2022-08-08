@@ -5,7 +5,7 @@
 
 # Set the 'name:' properties to values that work for you (MYMODULE)
 
-name: MYMODULE
+name: OPTICS
 
 # Trigger on pushes and PRs to any branch
 on:
@@ -14,10 +14,12 @@ on:
       - 'documentation/*'
       - '**/*.html'
       - '**/*.md'
+    branches:
+      - master
   pull_request:
 
 env:
-  SETUP_PATH: .ci-local:.ci
+  SETUP_PATH: .github/workflows:.ci
   # For the sequencer on Linux/Windows/MacOS
   APT: re2c
   CHOCO: re2c
@@ -36,6 +38,7 @@ jobs:
       RTEMS_TARGET: ${{ matrix.rtems_target }}
       EXTRA: ${{ matrix.extra }}
       TEST: ${{ matrix.test }}
+      SET: ${{ matrix.set }}
     strategy:
       fail-fast: false
       matrix:
@@ -44,120 +47,50 @@ jobs:
           - os: ubuntu-20.04
             cmp: gcc
             configuration: default
-            wine: "64"
-            name: "Ub-20 gcc-9 + MinGW"
+            set: stable_7_0
+            name: "Linux stable 7.0"
 
           - os: ubuntu-20.04
             cmp: gcc
-            configuration: static
-            wine: "64"
-            name: "Ub-20 gcc-9 + MinGW, static"
+            configuration: default
+            set: stable_3_16
+            name: "Linux stable 3.16"
+            
+          - os: ubuntu-20.04
+            cmp: gcc
+            configuration: default
+            set: stable_3_15
+            name: "Linux stable 3.15"
+            
+          - os: ubuntu-20.04
+            cmp: gcc
+            configuration: default
+            set: master_7_0
+            name: "Linux master 7.0"
 
           - os: ubuntu-20.04
             cmp: gcc
-            configuration: static
-            extra: "CMD_CXXFLAGS=-std=c++11"
-            name: "Ub-20 gcc-9 C++11, static"
-
-          - os: ubuntu-18.04
+            configuration: default
+            set: master_3_16
+            name: "Linux master 3.16"
+            
+          - os: ubuntu-20.04
+            cmp: gcc
+            configuration: default
+            set: master_3_15
+            name: "Linux master 3.15"
+            
+          - os: macos-latest
             cmp: clang
             configuration: default
-            name: "Ub-18 clang-9"
-
-          - os: ubuntu-20.04
-            cmp: clang
-            configuration: default
-            extra: "CMD_CXXFLAGS=-std=c++11"
-            name: "Ub-20 clang-10 C++11"
-
-          - os: ubuntu-20.04
-            cmp: gcc
-            configuration: default
-            rtems: "4.10"
-            name: "Ub-20 gcc-9 + RT-4.10"
-
-          - os: ubuntu-20.04
-            cmp: gcc
-            configuration: default
-            rtems: "4.9"
-            name: "Ub-20 gcc-9 + RT-4.9"
-
-          - os: ubuntu-20.04
-            cmp: gcc
-            configuration: default
-            rtems: "5"
-            rtems_target: RTEMS-pc686-qemu
-            name: "Ub-20 gcc-9 + RT-5.1 pc686"
-
-          - os: ubuntu-20.04
-            cmp: gcc
-            configuration: default
-            rtems: "5"
-            rtems_target: RTEMS-beatnik
-            test: NO
-            name: "Ub-20 gcc-9 + RT-5.1 beatnik"
-
-          - os: ubuntu-18.04
-            cmp: gcc
-            configuration: default
-            name: "Ub-18 gcc-7"
-
-          - os: ubuntu-18.04
-            cmp: gcc-8
-            utoolchain: true
-            configuration: default
-            name: "Ub-18 gcc-8"
-
-          - os: ubuntu-20.04
-            cmp: gcc-8
-            utoolchain: true
-            configuration: default
-            name: "Ub-20 gcc-8"
-
-          - os: ubuntu-20.04
-            cmp: clang
-            configuration: default
-            name: "Ub-20 clang-10"
-
-          - os: macos-11
-            cmp: clang
-            configuration: default
-            name: "MacOS clang-13"
-
-          - os: macos-12
-            cmp: clang
-            configuration: default
-            name: "MacOS clang-13"
-
-          - os: windows-2019
-            cmp: gcc
-            configuration: default
-            name: "Win2019 MinGW"
-
-          - os: windows-2019
-            cmp: gcc
-            configuration: static
-            name: "Win2019 MinGW, static"
-
-          - os: windows-2019
-            cmp: vs2019
-            configuration: default
-            name: "Win2019 MSC-19"
-
-          - os: windows-2019
-            cmp: vs2019
-            configuration: static
-            name: "Win2019 MSC-19, static"
-
-          - os: windows-2022
-            cmp: vs2022
-            configuration: default
-            name: "Win2022 MSC-22"
+            set: master_7_0
+            name: "MacOS master 7.0"
 
           - os: windows-2022
             cmp: vs2022
             configuration: static
-            name: "Win2022 MSC-22, static"
+            set: master_7_0
+            name: "Windows master 7.0"
 
     steps:
     - uses: actions/checkout@v2
@@ -191,37 +124,4 @@ jobs:
     - name: Collect and show test results
       run: python .ci/cue.py test-results
 
-  build-cross:
-    name: cross ${{ matrix.cross }} / ${{ matrix.cmp }} / ${{ matrix.configuration }}
-    runs-on: ubuntu-20.04
-    env:
-      CMP: gcc
-      BCFG: default
-      CI_CROSS_TARGETS: ${{ matrix.cross }}
-      APT: re2c
-    strategy:
-      fail-fast: false
-      matrix:
-        # configuration: [default, static, debug, static-debug]
-        configuration: [default]
-        cross:
-        - linux-aarch64
-        - linux-arm@arm-linux-gnueabi
-        - linux-arm@arm-linux-gnueabihf
-        - linux-ppc
-        - linux-ppc64
-        - win32-x86-mingw
-        - windows-x64-mingw
-        - RTEMS-pc386-qemu@4.9
-        - RTEMS-pc386-qemu@4.10
-        - RTEMS-pc686-qemu@5
-    steps:
-    - uses: actions/checkout@v2
-    - name: Prepare and compile dependencies
-      run: python cue.py prepare
-    - name: Build main module
-      run: python cue.py build
-    - name: Run main module tests
-      run: python cue.py -T 15M test
-    - name: Collect and show test results
-      run: python cue.py test-results
+  
