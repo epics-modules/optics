@@ -1,6 +1,6 @@
 ---
 layout: default
-title: fb_epid
+title: EPID Feedback
 nav_order: 6
 has_children: true
 ---
@@ -10,7 +10,6 @@ EPICS fb\_epid feedback controls
 ================================
 
 | __Purpose__ | use the EPICS epid [\[2\]](#epid) record for generic software feedback |
-|---|---|
 | __Author__ | Pete R. Jemian |
 | __SVN__ | $Id$ |
 
@@ -91,7 +90,6 @@ Follow these steps to install the fb\_epid support:
 To install this software, make changes in the IOC's st.cmd file, adding this line anywhere between the calls to dbLoadDatabase and iocInit:
 
 ```
-<pre class="literal-block">
 ### PID_based feedback
 dbLoadTemplate("fb_epid.substitutions")
 ```
@@ -104,9 +102,6 @@ dbLoadTemplate("fb_epid.substitutions")
 Create the fb\_epid.substitutions file in the same directory as st.cmd with content such as:
 
 ```
-<pre class="literal-block">
-# $Id$
-
 file "$(OPTICS)/opticsApp/Db/fb_epid.db"
   {
     {
@@ -150,7 +145,6 @@ There are several macro substitutions in the fb\_epid support database (fb\_epid
 To ensure that changed values will be restored after reboot, add lines such as this to the auto\_settings.req file (usually found in the same directory with the st.cmd file).
 
 ```
-<pre class="literal-block">
 ### PID_based feedback
 file fb_epid.req P=$(P)epid1
 ```
@@ -163,7 +157,6 @@ file fb_epid.req P=$(P)epid1
 Add commands to the GUI displays to call each configured instance of the fb\_epid support. Such as this *related display*widget in MEDM:
 
 ```
-<pre class="literal-block">
 "related display" {
         object {
                 x=10
@@ -190,7 +183,6 @@ Add commands to the GUI displays to call each configured instance of the fb\_epi
 Or start MEDM using a command line such as:
 
 ```
-<pre class="literal-block">
 medm -x -macro "P=prj:epid1" fb_epid.adl &
 ```
 
@@ -201,10 +193,6 @@ For the MEDM provided, the macro substitutions are:
 | macro | description |
 |---|---|
 | $(P) | Prefix for this instance of support. |
-
-
-
-
 
 
 
@@ -228,7 +216,8 @@ The features of the fb\_epid software are accessed from the main control screen 
 
 The MEDM screen provides access to all the controls of the epid [\[2\]](#epid) record. To add some flexibility for configuration at run time by beam line users, an EPICS interface database has been created. The user can change the input variable(s) through a calculation (swait [\[5\]](#swait) record).
 
-![main MEDM control screen](fb_epid_adl.png)Figure: Main fb\_epid control screen
+![main MEDM control screen](fb_epid_adl.png)  
+Figure: Main fb\_epid control screen
 
 
 
@@ -242,7 +231,8 @@ The enable calculation can be used to provide automated on/off features with det
 
 There are many controls on the main screen. For routine operations, it may be more desirable to display just the basic controls (and less of the tuning infrastructure).
 
-![basic MEDM control screen](fb_epid_basic_adl.png)Figure: Basic fb\_epid control screen
+![basic MEDM control screen](fb_epid_basic_adl.png)  
+Figure: Basic fb\_epid control screen
 
 
 
@@ -252,7 +242,8 @@ There are many controls on the main screen. For routine operations, it may be mo
 
 The configuration screen provides top-level access to the main components that must be addressed for basic configuration. Note that advanced situations must use the calculation screens to access the complete interfaces of the swait records.
 
-![``fb_epid`` configuration screen](fb_epid_config_adl.png)Figure: fb\_epid configuration screen
+![``fb_epid`` configuration screen](fb_epid_config_adl.png)  
+Figure: fb\_epid configuration screen
 
 
 
@@ -274,7 +265,8 @@ The limits on the two charts need to be set before this screen is of any real us
 
 
 
-![``fb_epid`` chart screen](fb_epid_chart_adl.png)Figure: fb\_epid configuration screen
+![``fb_epid`` chart screen](fb_epid_chart_adl.png)  
+Figure: fb\_epid configuration screen
 
 
 
@@ -284,7 +276,8 @@ The limits on the two charts need to be set before this screen is of any real us
 
 The main control screen for the [Simulator](#simulator) is shown:
 
-![main MEDM control screen for simulator](fb_epid_sim_adl.png)Figure: fb\_epid temperature simulator controls
+![main MEDM control screen for simulator](fb_epid_sim_adl.png)  
+Figure: fb\_epid temperature simulator controls
 
 
 
@@ -453,7 +446,6 @@ A figure was produced to show how these records are connected. Note that the sim
 The database file has many comments. The text of the file is included here:
 
 ```
-<pre class="literal-block">
 ########### SVN repository information ###################
 # $Date$
 # $Author$
@@ -738,30 +730,12 @@ Documentation of the simulator is provided on a [related page](simulator.html).
 
 Footnotes
 
-| \[1\] | EPICS calc Record: [http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html](http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html) |
-|---|---|
-
-| \[2\] | *([1](#id1), [2](#id3), [3](#id9), [4](#id11))* EPICS epid Record: [http://cars9.uchicago.edu/software/epics/epidRecord.html](http://cars9.uchicago.edu/software/epics/epidRecord.html) |
-|---|---|
-
-| [\[3\]](#id12) | epid source code: [https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c](https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c) |
-|---|---|
-
-| \[4\] | *([1](#id2), [2](#id5))* EPICS synApps optics module: [http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html](http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html) |
-|---|---|
-
-| [\[5\]](#id10) | EPICS swait Record: [http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html](http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html) |
-|---|---|
-
-| [\[6\]](#id4) | EPICS synApps: [http://www.aps.anl.gov/bcda/synApps](http://www.aps.anl.gov/bcda/synApps) |
-|---|---|
-
-
-
-
-
+* \[1\] - EPICS calc Record: [http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html](http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html) 
+* \[2\] - *([1](#id1), [2](#id3), [3](#id9), [4](#id11))* EPICS epid Record: [http://cars9.uchicago.edu/software/epics/epidRecord.html](http://cars9.uchicago.edu/software/epics/epidRecord.html) 
+* \[3\] - epid source code: [https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c](https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c) 
+* \[4\] - *([1](#id2), [2](#id5))* EPICS synApps optics module: [http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html](http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html) 
+* \[5\] - EPICS swait Record: [http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html](http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html) 
+* \[6\] - EPICS synApps: [http://www.aps.anl.gov/bcda/synApps](http://www.aps.anl.gov/bcda/synApps) |
 
 
 - - - - - -
-
-[View document source](index.rst). Generated on: 2012-03-02.

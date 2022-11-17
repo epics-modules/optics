@@ -1,7 +1,7 @@
 ---
 layout: default
-title: epid simulator
-parent: fb_epid
+title: EPID simulator
+parent: EPID Feedback
 nav_order: 2
 ---
 
@@ -10,7 +10,6 @@ fb\_epid simulator
 ==================
 
 | __Purpose__ | describe the simulator in the fb\_epid support |
-|---|---|
 | __Author__ | Pete R. Jemian |
 | __SVN__ | $Id: simulator.rst 14555 2012-03-02 20:21:10Z jemian $ |
 
@@ -55,7 +54,6 @@ The fb\_epid support should be configured like this:
 This configuration is defined in the supplied fb\_epid.substitutions file.
 
 ```
-<pre class="literal-block">
 # $Id: fb_epid.substitutions 14504 2012-02-29 21:11:18Z jemian $
 
 file "$(OPTICS)/opticsApp/Db/fb_epid.db"
@@ -81,25 +79,27 @@ file "$(OPTICS)/opticsApp/Db/fb_epid.db"
 start a MEDM session with a command such as:
 
 ```
-<pre class="literal-block">
 medm -x -macro "P=prj:epid1,C=:sim" fb_epid_sim.adl &
 ```
 
 This screen provides access to the simulator, the swait calculation record, and the fb\_epid controls that support it.
 
-![main MEDM control screen for simulator](fb_epid_sim_adl.png)Figure: fb\_epid temperature simulator controls
+![main MEDM control screen for simulator](fb_epid_sim_adl.png)  
+Figure: fb\_epid temperature simulator controls
 
 
 
 The calc button brings up this screen:
 
-![simulator calculation](userCalc_adl.png)Figure: temperature simulator calculation
+![simulator calculation](userCalc_adl.png)  
+Figure: temperature simulator calculation
 
 
 
 The controls button brings up the standard fb\_epid controls:
 
-![simulator calculation](fb_epid_adl.png)Figure: fb\_epid` main control screen
+![simulator calculation](fb_epid_adl.png)  
+Figure: fb\_epid` main control screen
 
 
 
@@ -111,16 +111,8 @@ The controls button brings up the standard fb\_epid controls:
 to be written
 
 Footnotes
-
-| [\[1\]](#id1) | EPICS swait record: [http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html](http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html) |
-|---|---|
-
-
-
-
-
+*  \[1\] - EPICS swait record: [http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html](http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html)
 
 
 - - - - - -
 
-[View document source](simulator.rst). Generated on: 2012-03-02.
