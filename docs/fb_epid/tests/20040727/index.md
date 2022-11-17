@@ -1,3 +1,9 @@
+---
+layout: default
+title: 2004-07-27
+parent: Tests
+nav_order: 2
+---
 
 2004 July 27  Observations
 ==========================

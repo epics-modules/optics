@@ -1,3 +1,10 @@
+---
+layout: default
+title: 2004-06-23
+parent: Tests
+nav_order: 1
+---
+
 Use of the EPID record for feedback at UNICAT (2004-06-23)
 ==========================================================  
 An swait (calculation) record was used to simulate a crystal reflection (Lorentzian peak shape) and to calculate the response of the crystal to different parameters using EPICS records. The various ananlog output (ao) records are used (by name) as inputs to the swait record. A state notation (SNL) program was written to generate Gaussian-probability (zero mean, unit standard deviation) random numbers to simulate experimental noise. The ideal position of the reflection is also adjusted by the SNL program to simulate drift in the ideal tuning position for the crystal element. An additional Gaussian random number was used to provide a small amplitude of jitter to the ideal position.   

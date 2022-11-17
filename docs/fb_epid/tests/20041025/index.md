@@ -1,3 +1,10 @@
+---
+layout: default
+title: 2004-10-25
+parent: Tests
+nav_order: 3
+---
+
 Tests (10-25-2004)
 ==================
 
