@@ -34,7 +34,7 @@ As the monochromator rotates from a Bragg angle (Theta) of zero, the first cryst
 
  
 ```
-<pre style="margin-bottom: 0.2in">Y = -offset/cos(Theta).
+Y = -offset/cos(Theta).
 ```
 
   
@@ -44,7 +44,7 @@ At the same time, the second crystal moves toward the rotation point along a lin
 
  
 ```
-<pre style="margin-bottom: 0.2in">Z = offset/sin(Theta).
+Z = offset/sin(Theta).
 ```
 
   
@@ -67,7 +67,7 @@ The software can be in Manual-Move, or Auto\_Move mode. In Manual-Move mode, cha
 
 The manner in which 'Y', and 'Z' motions of monochromator crystals are calculated depends on the setting of a second mode switch, with the following options:
 
-  | Normal | - | Y,Z driven per equations described above. |
+| Normal | - | Y,Z driven per equations described above. |
 |---|---|---|
 | Channel Cut | - | Y,Z are left at their current positions |
 | Freeze Z | - | Z is left at its current position |
@@ -90,14 +90,14 @@ As the monochromator rotates from a Bragg angle (Theta) of zero, the second crys
 
  
 ```
-<pre style="margin-bottom: 0.2in">Y = -offset/(2*cos(Theta)).
+Y = -offset/(2*cos(Theta)).
 ```
 
 At the same time, the second crystal moves toward the rotation point along a line which is parallel to the crystal's diffracting planes, according to the equation
 
  
 ```
-<pre style="margin-bottom: 0.2in">Z = offset/(2*sin(Theta)).
+Z = offset/(2*sin(Theta)).
 ```
 
   
@@ -111,7 +111,7 @@ Because the Y and Z motions are nonlinear functions of Theta, their speeds ideal
 
 synApps currently supports two geometries of a high energy-resolution, dispersive double crystal monochromator. Both geometries actually employ four crystals, but two of the crystals are channel-cut partners of the other two, and therefore are not driven. Crystal angles for these monochromators are described and controlled with three sets of variables:
 
-  | Thetan | - | Bragg angle, the angle between beam incident on a crystal and the crystal's diffracting planes. |
+| Thetan | - | Bragg angle, the angle between beam incident on a crystal and the crystal's diffracting planes. |
 |---|---|---|
 | Phi | - | The angle between the crystal's diffracting planes and the horizontal. (By definition here, the beam incident on the monochromator is "horizontal". Note that small changes in incident-beam direction can be accommodated by the "world" offset, shown in the control displays below.) |
 | dPhi | - | (not shown in the diagram below) The difference between the actual angle, Phi, and the nominal value of this angle, Phi0. These are the motors actually driven by the software. The hardware for which this software was designed has extremely high resolution (nanoradian) rotation stages with very limited angular ranges. |
@@ -248,7 +248,6 @@ To load an instance of this support, add the following lines to the ioc startup 
 
 
 ```
-
 ### Load database records for dual PF4 filters
 dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4common.db","P=xxx:,H=pf4:,A=A,B=B")
 dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4bank.db","P=xxx:,H=pf4:,B=A")
@@ -259,7 +258,6 @@ and add the following lines after the call to `iocInit()`:
 
 
 ```
-
 # Start PF4 filter sequence program
 #        name = what user will call it
 #        P    = prefix of database and sequencer
@@ -279,7 +277,6 @@ For autosave suppport, add the following lines to `auto_settings.req`:
 
 
 ```
-
 ## PF4 dual filter
 file pf4common.req P=$(P),H=pf4:
 file pf4bank.req   P=$(P),H=pf4:,B=A
@@ -298,20 +295,20 @@ This software calculates the x-ray transmission for all combinations of all filt
 
 ![](filterbox_config.adl.jpg)
 
-To Load an instance of this support, add the following lines to the ioc startup file, st.cmd, before the call to iocInit(): ```
-
+To Load an instance of this support, add the following lines to the ioc startup file, st.cmd, before the call to iocInit():   
+```
 ### Load database records for alternative PF4-filter support
 dbLoadTemplate "filter.substitutions"
 ```
 
-and add the following lines after the call to iocInit(): ```
-
+and add the following lines after the call to iocInit():  
+```
 # Alternative pf4 filter seq program
 seq filterDrive,"NAME=filterDrive,P=xxx:,R=filter:,NUM_FILTERS=16"
 ```
 
-Here's a sample filter.substitutions file: ```
-
+Here's a sample filter.substitutions file:  
+```
 # filter.substitutions
 
 file "$(OPTICS)/opticsApp/Db/filterBladeNoSensor.db" {
@@ -340,8 +337,8 @@ file "$(OPTICS)/opticsApp/Db/filterDrive.db" {
 }
 ```
 
-and here are lines added to auto\_settings.req for these filters: ```
-
+and here are lines added to auto\_settings.req for these filters:  
+```
 file filterDrive.req "P=xxx:,R=filter:"
 file filterBladeNoSensor.req "P=xxx:,R=filter:,N=1"
 file filterBladeNoSensor.req "P=xxx:,R=filter:,N=2"
@@ -362,8 +359,8 @@ file filterBladeNoSensor.req "P=xxx:,R=filter:,N=16"
 
 ```
 
-Top level MEDM display files for this support are filter\_8\_0\_more.adl for two PF4 4-filter units filter\_8\_8\_more.adl for four PF4 4-filter units To load the MEDM display file, specify a related display button with something like the following entries: ```
-
+Top level MEDM display files for this support are filter\_8\_0\_more.adl for two PF4 4-filter units filter\_8\_8\_more.adl for four PF4 4-filter units To load the MEDM display file, specify a related display button with something like the following entries:  
+```
 Display Label: PF4 filter 16
 Display File: filter_8_8_more.adl
 Arguments: P=xxx:,R=filter
