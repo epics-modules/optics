@@ -1,7 +1,7 @@
 ---
 layout: default
-title: epid usage
-parent: fb_epid
+title: Usage
+parent: EPID Feedback
 nav_order: 1
 ---
 
