@@ -1,68 +1,49 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
-   <META NAME="GENERATOR" CONTENT="Mozilla/4.06 [en] (X11; U; SunOS 5.6 sun4u) [Netscape]">
-   <TITLE>Oxford 4-channel X-ray Beam Position Monitor</TITLE>
-</HEAD>
-<BODY>
+Support for the Oxford 4-channel X-ray Beam Position Monitor
+============================================================
 
-<H1>
-Support for the Oxford 4-channel X-ray Beam Position Monitor</H1>
+Pete Jemian  
+- - - - - -
 
-<ADDRESS>
-Pete Jemian</ADDRESS>
+Contents
+--------
 
-<BR />
-<HR />
-<H2>Contents</H2>
+- [Overview](#Overview)
+- [Differences from previous versions](#Differences)
+- [Usage](#Usage)
+- [Beam line installation](#BL_install)
+- [IOC installation](#IOC_install)
+- [Restrictions](#Restrictions)
 
-<UL>
-  <LI><A HREF="#Overview">Overview</A></LI>
-  <LI><A HREF="#Differences">Differences from previous versions</A></LI>
-  <LI><A HREF="#Usage">Usage</A></LI>
-  <LI><A HREF="#BL_install">Beam line installation</A></LI>
-  <LI><A HREF="#IOC_install">IOC installation</A></LI>
-  <LI><A HREF="#Restrictions">Restrictions</A></LI>
-</UL>
+- - - - - -
 
-<HR />
+<a name="Overview"></a>Overview
+--------
 
+Need to write this section   
+<a name="Differences"></a>
 
-<A NAME="Overview"></A>
-<H2>
-Overview</H2>
+Differences from previous versions
+----------------------------------
 
-Need to write this section
+- 2007-05: first version in synApps
 
-<BR \>
+<a name="BL_install"></a>
 
+Beam line installation
+----------------------
 
-<P><A NAME="Differences"></A>
-<H2>Differences from previous versions</H2>
-<UL>
-  <LI>2007-05: first version in synApps</LI><P>
-</UL>
+Need to write this section <a name="IOC_install"></a>
 
-<P><A NAME="BL_install"></A>
-<H2>Beam line installation</H2>
+IOC installation of the software support
+----------------------------------------
 
-Need to write this section
+Need to write this section - - - - - -
 
-<P><A NAME="IOC_install"></A>
-<H2>IOC installation of the software support</H2>
+<a name="Restrictions"></a>Restrictions
+------------
 
-Need to write this section
+- - - - - -
 
-<HR><A NAME="Restrictions"></A>
-<H2>Restrictions</H2>
-
-<HR />
-<ADDRESS>Suggestions and comments to:</ADDRESS>
-
-<BR />
-<A HREF="mailto:jemian@anl.gov">Pete Jemian</A> : (jemian@anl.gov)
-<BR />
+Suggestions and comments to:  
+[Pete Jemian](mailto:jemian@anl.gov) : (jemian@anl.gov)   
 Last modified: 2007-05-04
-</BODY>
-</HTML>
