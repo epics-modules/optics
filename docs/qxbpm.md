@@ -1,3 +1,10 @@
+---
+layout: default
+title: Oxford BPM
+nav_order: 4
+---
+
+
 Support for the Oxford 4-channel X-ray Beam Position Monitor
 ============================================================
 
@@ -37,7 +44,9 @@ Need to write this section <a name="IOC_install"></a>
 IOC installation of the software support
 ----------------------------------------
 
-Need to write this section - - - - - -
+Need to write this section
+
+- - - - - -
 
 <a name="Restrictions"></a>Restrictions
 ------------
