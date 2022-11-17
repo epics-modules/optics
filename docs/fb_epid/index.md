@@ -1,3 +1,11 @@
+---
+layout: default
+title: fb_epid
+nav_order: 6
+has_children: true
+---
+
+
 EPICS fb\_epid feedback controls
 ================================
 
