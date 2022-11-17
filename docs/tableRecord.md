@@ -62,7 +62,9 @@ Differences from previous versions
 Field Descriptions
 ------------------
 
-In addition to fields common to all record types (see the [EPICS Record Reference Manual](http://www.aps.anl.gov/asd/controls/epics/EpicsDocumentation/AppDevManuals/RecordRef/Recordref-1.html) for these) the table record has the fields described below. | [Alphabetical listing of all fields](#Fields_alphabetical) | with *terse* descriptions |
+In addition to fields common to all record types (see the [EPICS Record Reference Manual](http://www.aps.anl.gov/asd/controls/epics/EpicsDocumentation/AppDevManuals/RecordRef/Recordref-1.html) for these) the table record has the fields described below. 
+
+| [Alphabetical listing of all fields](#Fields_alphabetical) | with *terse* descriptions |
 |---|---|
 | [Calibration fields](#Fields_calib) | allow you to redefine the table position |
 | [Setup fields](#Fields_setup) | specify the table dimensions and the location of the "fixed point" |
@@ -78,7 +80,7 @@ In addition to fields common to all record types (see the [EPICS Record Referenc
 - - - - - -
 
 | Name | Access | Prompt | Data type | Comment |
-|---|---|---|---|---|
+|---|---|---|---|------------|
 | [A](#Fields_prvt) | R | x to m matrix | DOUBLE\* | 3x3 rotation matrix |
 | [AEGU](#Fields_misc) | R/W | Angular Units Name | MENU | Engineering units for angles (16-chars). This field will be filled in by the record according to AUNIT |
 | [AUNIT](#Fields_misc) | R/W | Angular Units Menu | STRING | Engineering units for angles: "degrees" or microradians ("ur") |
@@ -256,15 +258,29 @@ In addition to fields common to all record types (see the [EPICS Record Referenc
 | [ZERO](#Fields_calib) | R/W\* | zero table | SHORT | Command: call current table position and angle 'zero' |
 | [ZL](#Fields_calib) | R | z true value | DOUBLE | True z translation |
 | [ZRB](#Fields_readback) | R | z readback value | DOUBLE | z translation calc'd from motor drive values |
-| <a name="Fields_alphabetical"></a>Alphabetical list of record-specific fields -------------------------------------------  NOTE: Links in this table take you only to the *section* in which the linked item is described in detail. You'll probably have to scroll down to find the actual item. \| Note: In the __Access__ column above: \| \| R \| Read only \|  \| \| r \| Read only, not posted \|  \| \| R/W \| Read and write are allowed \| \| R/W\* \| Read and write are allowed; write triggers record processing if the record's SCAN field is set to "Passive." \| |
-|---|
+
+
+<a name="Fields_alphabetical"></a>
+
+Alphabetical list of record-specific fields 
+-------------------------------------------  
+
+NOTE: Links in this table take you only to the *section* in which the linked item is described in detail. You'll probably have to scroll down to find the actual item. 
+Note: In the __Access__ column above: 
+
+* R \| Read only \|  
+* r \| Read only, not posted \| 
+* R/W \| Read and write are allowed \| 
+* R/W\* \| Read and write are allowed; write triggers record processing if the record's SCAN field is set to "Passive." \|
 
 - - - - - -
 
 <a name="Fields_calib"></a>Calibration fields
 ------------------
 
-The table record allows you to redefine any table position (or angle) to any value you want. It implements this by maintaining an offset for each virtual motor. To redefine X, for example, put the table into "Set" mode (write "Set" or "1" to the SET field) and write the new value to X. You cal also redefine all positions/angles to be zero by writing "1" to the ZERO field. | Name | Access | Prompt | Data type | Comments |
+The table record allows you to redefine any table position (or angle) to any value you want. It implements this by maintaining an offset for each virtual motor. To redefine X, for example, put the table into "Set" mode (write "Set" or "1" to the SET field) and write the new value to X. You cal also redefine all positions/angles to be zero by writing "1" to the ZERO field. 
+
+| Name | Access | Prompt | Data type | Comments |
 |---|---|---|---|---|
 | AX0 | R/W | x-angle offset | DOUBLE | True table position - reported table position |
 | AXL | R | x angle true value | DOUBLE | True x angle |
@@ -293,15 +309,23 @@ Three operations are required to set up the table. (Though simple, this is kind 
 
 Select a table geometry by setting the field GEOM to "SRI", "GEOCARS", "NEWPORT", or "PNC".
 
- SRI geometry
+### SRI geometry
 
- The distance between M0 and M1 is specified with the field LX. (A line from M1 to M0 defines the positive x direction of the table's local coordinate system. The perpendicular distance from M2 to the line M1-M0 is specified with the field LZ. GEOCARS geometry
+The distance between M0 and M1 is specified with the field LX. (A line from M1 to M0 defines the positive x direction of the table's local coordinate system. The perpendicular distance from M2 to the line M1-M0 is specified with the field LZ. 
+    
+### GEOCARS geometry
 
-The distance between M0 and the line M1-M2 is specified with the field LX. (A line through M0 and perpendicular to M1-M2 defines the positive x direction of the table's local coordinate system. The distance from M1 to M2 is specified with the field LZ. NEWPORT geometry
+The distance between M0 and the line M1-M2 is specified with the field LX. (A line through M0 and perpendicular to M1-M2 defines the positive x direction of the table's local coordinate system. The distance from M1 to M2 is specified with the field LZ. 
 
- The distance between M1 and the line M0-M2 is specified with the field LX. (A line perpendicular to M0-M2 defines the x direction of the table's local coordinate system. The distance from M0 to M2 is specified with the field LZ. PNC geometry
+### NEWPORT geometry
 
- The distance between M0 and M1 is specified with the field LX. (A line from M0 to M1 defines the positive x direction of the table's local coordinate system. The perpendicular distance from M2 to the line M0-M1 is specified with the field LZ. __Specify the orientation of the table with respect to the laboratory coordinate system.__
+The distance between M1 and the line M0-M2 is specified with the field LX. (A line perpendicular to M0-M2 defines the x direction of the table's local coordinate system. The distance from M0 to M2 is specified with the field LZ. 
+
+### PNC geometry
+
+ The distance between M0 and M1 is specified with the field LX. (A line from M0 to M1 defines the positive x direction of the table's local coordinate system. The perpendicular distance from M2 to the line M0-M1 is specified with the field LZ. 
+    
+__Specify the orientation of the table with respect to the laboratory coordinate system.__
 
 The table orientation is specified with YANG, the angle through which the table must be rotated from an arbitrarily chosen "standard" position to the position in which you are going to use it. For the SRI and PNC geometries, when YANG=0, M2 is downstream. For the GEOCARS geometry, when YANG=0, M1 is directly downstream from M2. For the NEWPORT geometry, when YANG=0, M2 is directly downstream from M0. As the table rotates clockwise (as seen from above) YANG increases. (These standard positions are illustrated in Figs. 1-4.)
 
@@ -329,7 +353,9 @@ This point is specified by (RZ, RY, RZ) and (SX, SY, SZ), as shown in Figs. 1-3,
 <a name="Fields_link"></a>Link fields
 -----------
 
-The table record makes eight links with each of the six motor records it controls. For each motor, the table record reads and writes the drive and speed fields, and it reads the position-readback and limit fields. | Name | Access | Prompt | Data type | Comments |
+The table record makes eight links with each of the six motor records it controls. For each motor, the table record reads and writes the drive and speed fields, and it reads the position-readback and limit fields. 
+
+| Name | Access | Prompt | Data type | Comments |
 |---|---|---|---|---|
 | E0XI | R/W | encoder 0X inlink | INLINK | Link from M0X motor's readback |
 | E0YI | R/W | encoder 0Y inlink | INLINK | Link from M0Y motor's readback |
@@ -440,7 +466,9 @@ Note that there are both absolute and relative user-limit fields. Absolute limit
 <a name="Fields_speed"></a>Speed-related fields
 --------------------
 
-The table record sets motor speeds immediately before commanding motors to move, so that all involved motors will start and stop at the same time. (Immediately after move commands are issued--while motors are still moving--the motor speeds are returned to their original values. The table record assumes that motors do not honor speed changes made while motors are moving.) For small moves, this speed setting has the effect of keeping the "fixed" point fixed *during* rotations, but for longer moves, motor speeds would have to be varied on the fly to really keep the "fixed point" fixed, and the motor record does not attempt to do this. In addition, motor gearing, and the limited speed range over which most motors operate reliably, can prevent those motors from moving at speeds that would keep the "fixed" point fixed even during small rotations. You should ensure that any motor controlled by the table record really does move reliably at any speed between its base speed and nominal (top) speed. | Name | Access | Prompt | Data type | Comments |
+The table record sets motor speeds immediately before commanding motors to move, so that all involved motors will start and stop at the same time. (Immediately after move commands are issued--while motors are still moving--the motor speeds are returned to their original values. The table record assumes that motors do not honor speed changes made while motors are moving.) For small moves, this speed setting has the effect of keeping the "fixed" point fixed *during* rotations, but for longer moves, motor speeds would have to be varied on the fly to really keep the "fixed point" fixed, and the motor record does not attempt to do this. In addition, motor gearing, and the limited speed range over which most motors operate reliably, can prevent those motors from moving at speeds that would keep the "fixed" point fixed even during small rotations. You should ensure that any motor controlled by the table record really does move reliably at any speed between its base speed and nominal (top) speed. 
+
+| Name | Access | Prompt | Data type | Comments |
 |---|---|---|---|---|
 | V0X | R | speed 0X val | DOUBLE | Speed to be written to motor (for duration of commanded move) |
 | V0Y | R | speed 0Y val | DOUBLE | Speed to be written to motor (for duration of commanded move) |
@@ -454,7 +482,9 @@ The table record sets motor speeds immediately before commanding motors to move,
 <a name="Fields_tblDrv"></a>Table drive fields
 ------------------
 
-These are the fields by which you drive the table. | Name | Access | Prompt | Data type | Comments |
+These are the fields by which you drive the table. 
+
+| Name | Access | Prompt | Data type | Comments |
 |---|---|---|---|---|
 | AX | R/W\* | x angle | DOUBLE | x-angle drive field |
 | AY | R/W\* | y angle | DOUBLE | y-angle drive field |
@@ -468,7 +498,9 @@ These are the fields by which you drive the table. | Name | Access | Prompt | Da
 <a name="Fields_motDrv"></a>Motor drive fields
 ------------------
 
-These are the fields by which the table record drives the motors. | Name | Access | Prompt | Data type | Comments |
+These are the fields by which the table record drives the motors. 
+
+| Name | Access | Prompt | Data type | Comments |
 |---|---|---|---|---|
 | M0X | R | motor 0X val | DOUBLE | Desired motor position |
 | M0Y | R | motor 0Y val | DOUBLE | Desired motor position |
@@ -482,7 +514,8 @@ These are the fields by which the table record drives the motors. | Name | Acces
 <a name="Fields_readback"></a>Readback fields
 ---------------
 
-There are four varieties of readback fields. 1. Readbacks from the motor-drive fields (e.g., R0X). These are used only to determine how fast motors must move to keep the "fixed" point fixed during moves.
+There are four varieties of readback fields. 
+1. Readbacks from the motor-drive fields (e.g., R0X). These are used only to determine how fast motors must move to keep the "fixed" point fixed during moves.
 2. Readbacks from motor-readback fields (e.g., E0X). These are shoved through a 6x6 matrix to get raw virtual-motor readbacks
 3. Raw virtual-motor readbacks (e.g., XRB) tell you where the table really is.
 4. Adjusted virtual-motor readbacks (e.g., EX) tell you where the table is, keeping in mind any recalibration you may have done.
@@ -555,39 +588,53 @@ There are four varieties of readback fields. 1. Readbacks from the motor-drive f
 Files
 -----
 
-The following table briefly describes the files required to implement and use the table record. | SOURCE CODE    files to be placed in &lt;top&gt;/&lt;app&gt;App/src/ |
-|---|
-| tableRecord.c | Record support code |
-| tableRecord.dbd | Database definition file |
-|  |  |
-| Makefile | Make sure the following lines occur in the file: ```  DBDINC += tableRecord SRCS += tableRecord.c ``` |
-|  |  |
-| &lt;app&gt;Include.dbd | Make sure the following line occurs in the file: ``` include "tableRecord.dbd" ``` |
+The following table briefly describes the files required to implement and use the table record. 
 
-| DATABASES    files to be placed in &lt;top&gt;/&lt;app&gt;App/Db/ |
-|---|
-| table.db | Table database |
-| The database file contains one table record linked with up to six motor records defined in some other database. The motor records are referred to as $(P)$(M0X), $(P)$(M0Y), $(P)$(M1Y), $(P)$(M2X), $(P)$(M2Y), and $(P)$(M2Z). This database allows you to give names of motors that don't actually exist, to support tables that have fewer than six motors. __This database works with fewer than six motors only if you have version 3.6 or later of the transform record.__ Earlier versions of the transform record refuse to operate unless all of their non-blank link fields contain valid links. |
-| table\_settings.req | Autosave request file, which names the PV's in table.db that should be preserved across a reboot of the computer on which this software runs. |
+### SOURCE CODE files in <top>/opticsApp/src/ 
 
-| MEDM DISPLAY FILES    files to be placed in &lt;top&gt;/&lt;app&gt;App/op/adl/ |
-|---|
-| table.adl | Small control display |
-| table\_setup\_SRI.adl | Setup display for SRI geometry |
-| table\_setup\_GEOCARS.adl | Setup display for GEOCARS geometry |
-| table\_setup\_NEWPORT.adl | Setup display for NEWPORT geometry |
-| table\_setup\_PNC.adl | Setup display for PNC geometry |
-| table\_full.adl | Full control display |
-| These files build medm screens to access the table record. To use one of them from the command line, type, for example ``` medm -x -macro "P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6" table.adl ```  where xxx:table1 is the name of the table record, and xxx:Table1:is the prefix attached to all other records in the table database. |
+* tableRecord.c - Record support code
+* tableRecord.dbd - Database definition file
+* Makefile - Make sure the following lines occur in the file: 
+    ```  
+    DBDINC += tableRecord 
+    SRCS += tableRecord.c 
+    ``` 
+* <app>Include.dbd - Make sure the following line occurs in the file: 
+    ``` 
+    include "tableRecord.dbd" 
+    ``` 
+   
+### DATABASE files in <top>/opticsApp/Db/
 
-| EPICS STARTUP FILES    files to be placed in &lt;top&gt;/iocBoot/ioc&lt;name&gt;/ |
-|---|
-| st.cmd | Startup script |
-| This file is not included in the distribution. The following line added to st.cmd loads a single table. Note that the NEWPORT geometry normally does not have a motor associated with M2Z. Indicate this by setting M2Z to some string (e.g., "junk") that will not resolve to the name of an existing record. ``` dbLoadRecords("xxxApp/Db/table.db","P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI") ``` |
+* table.db - Table database 
+    * The database file contains one table record linked with up to six motor records defined in some other database. The motor records are referred to as $(P)$(M0X), $(P)$(M0Y), $(P)$(M1Y), $(P)$(M2X), $(P)$(M2Y), and $(P)$(M2Z). This database allows you to give names of motors that don't actually exist, to support tables that have fewer than six motors. __This database works with fewer than six motors only if you have version 3.6 or later of the transform record. Earlier versions of the transform record refuse to operate unless all of their non-blank link fields contain valid links.
+* table\_settings.req - Autosave request file, which names the PV's in table.db that should be preserved across a reboot of the computer on which this software runs.
 
-| BACKUP/RESTORE (BURT) REQUEST FILES    files to be placed in &lt;top&gt;/&lt;app&gt;App/op/burt/ |
-|---|
-| yyTableSettings.req | save settings of a specified table. This file is normally \#include'd (once for each table) by other request files. |
+### MEDM DISPLAY FILES in <top>/opticsApp/op/adl/
+
+* table.adl - Small control display 
+* table\_setup\_SRI.adl - Setup display for SRI geometry 
+* table\_setup\_GEOCARS.adl - Setup display for GEOCARS geometry 
+* table\_setup\_NEWPORT.adl - Setup display for NEWPORT geometry 
+* table\_setup\_PNC.adl - Setup display for PNC geometry 
+* table\_full.adl - Full control display 
+
+These files build medm screens to access the table record. To use one of them from the command line, type, for example 
+``` 
+medm -x -macro "P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6" table.adl 
+```  
+where xxx:table1 is the name of the table record, and xxx:Table1:is the prefix attached to all other records in the table database.
+
+### EPICS STARTUP FILES in <top>/iocBoot/ioc<name>/
+* st.cmd - Startup script
+    * This file is not included in the distribution. The following line added to st.cmd loads a single table. Note that the NEWPORT geometry normally does not have a motor associated with M2Z. Indicate this by setting M2Z to some string (e.g., "junk") that will not resolve to the name of an existing record. 
+    ``` 
+    dbLoadRecords("xxxApp/Db/table.db","P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI") 
+    ```
+
+### BACKUP/RESTORE (BURT) REQUEST FILES in <top>/opticsApp/op/burt/ 
+
+* yyTableSettings.req - save settings of a specified table. This file is normally \#include'd (once for each table) by other request files. 
 
 - - - - - -
 
