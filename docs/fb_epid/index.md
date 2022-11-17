@@ -1,481 +1,105 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils 0.7: http://docutils.sourceforge.net/" />
-<title>EPICS fb_epid feedback controls</title>
-<style type="text/css">
-
-/*
-:Author: David Goodger (goodger@python.org)
-:Id: $Id$
-:Copyright: This stylesheet has been placed in the public domain.
-
-Default cascading style sheet for the HTML output of Docutils.
-
-See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
-customize this style sheet.
-*/
-
-/* used to remove borders from tables and images */
-.borderless, table.borderless td, table.borderless th {
-  border: 0 }
-
-table.borderless td, table.borderless th {
-  /* Override padding for "table.docutils td" with "! important".
-     The right padding separates the table cells. */
-  padding: 0 0.5em 0 0 ! important }
-
-.first {
-  /* Override more specific margin styles with "! important". */
-  margin-top: 0 ! important }
-
-.last, .with-subtitle {
-  margin-bottom: 0 ! important }
-
-.hidden {
-  display: none }
-
-a.toc-backref {
-  text-decoration: none ;
-  color: black }
-
-blockquote.epigraph {
-  margin: 2em 5em ; }
-
-dl.docutils dd {
-  margin-bottom: 0.5em }
-
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
-
-div.abstract {
-  margin: 2em 5em }
-
-div.abstract p.topic-title {
-  font-weight: bold ;
-  text-align: center }
-
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em ;
-  border: medium outset ;
-  padding: 1em }
-
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold ;
-  font-family: sans-serif }
-
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title {
-  color: red ;
-  font-weight: bold ;
-  font-family: sans-serif }
-
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
-
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
-
-div.dedication {
-  margin: 2em 5em ;
-  text-align: center ;
-  font-style: italic }
-
-div.dedication p.topic-title {
-  font-weight: bold ;
-  font-style: normal }
-
-div.figure {
-  margin-left: 2em ;
-  margin-right: 2em }
-
-div.footer, div.header {
-  clear: both;
-  font-size: smaller }
-
-div.line-block {
-  display: block ;
-  margin-top: 1em ;
-  margin-bottom: 1em }
-
-div.line-block div.line-block {
-  margin-top: 0 ;
-  margin-bottom: 0 ;
-  margin-left: 1.5em }
-
-div.sidebar {
-  margin: 0 0 0.5em 1em ;
-  border: medium outset ;
-  padding: 1em ;
-  background-color: #ffffee ;
-  width: 40% ;
-  float: right ;
-  clear: right }
-
-div.sidebar p.rubric {
-  font-family: sans-serif ;
-  font-size: medium }
-
-div.system-messages {
-  margin: 5em }
-
-div.system-messages h1 {
-  color: red }
-
-div.system-message {
-  border: medium outset ;
-  padding: 1em }
-
-div.system-message p.system-message-title {
-  color: red ;
-  font-weight: bold }
-
-div.topic {
-  margin: 2em }
-
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em }
-
-h1.title {
-  text-align: center }
-
-h2.subtitle {
-  text-align: center }
-
-hr.docutils {
-  width: 75% }
-
-img.align-left, .figure.align-left, object.align-left {
-  clear: left ;
-  float: left ;
-  margin-right: 1em }
-
-img.align-right, .figure.align-right, object.align-right {
-  clear: right ;
-  float: right ;
-  margin-left: 1em }
-
-img.align-center, .figure.align-center, object.align-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.align-left {
-  text-align: left }
-
-.align-center {
-  clear: both ;
-  text-align: center }
-
-.align-right {
-  text-align: right }
-
-/* reset inner alignment in figures */
-div.align-right {
-  text-align: left }
-
-/* div.align-center * { */
-/*   text-align: left } */
-
-ol.simple, ul.simple {
-  margin-bottom: 1em }
-
-ol.arabic {
-  list-style: decimal }
-
-ol.loweralpha {
-  list-style: lower-alpha }
-
-ol.upperalpha {
-  list-style: upper-alpha }
-
-ol.lowerroman {
-  list-style: lower-roman }
-
-ol.upperroman {
-  list-style: upper-roman }
-
-p.attribution {
-  text-align: right ;
-  margin-left: 50% }
-
-p.caption {
-  font-style: italic }
-
-p.credits {
-  font-style: italic ;
-  font-size: smaller }
-
-p.label {
-  white-space: nowrap }
-
-p.rubric {
-  font-weight: bold ;
-  font-size: larger ;
-  color: maroon ;
-  text-align: center }
-
-p.sidebar-title {
-  font-family: sans-serif ;
-  font-weight: bold ;
-  font-size: larger }
-
-p.sidebar-subtitle {
-  font-family: sans-serif ;
-  font-weight: bold }
-
-p.topic-title {
-  font-weight: bold }
-
-pre.address {
-  margin-bottom: 0 ;
-  margin-top: 0 ;
-  font: inherit }
-
-pre.literal-block, pre.doctest-block {
-  margin-left: 2em ;
-  margin-right: 2em }
-
-span.classifier {
-  font-family: sans-serif ;
-  font-style: oblique }
-
-span.classifier-delimiter {
-  font-family: sans-serif ;
-  font-weight: bold }
-
-span.interpreted {
-  font-family: sans-serif }
-
-span.option {
-  white-space: nowrap }
-
-span.pre {
-  white-space: pre }
-
-span.problematic {
-  color: red }
-
-span.section-subtitle {
-  /* font-size relative to parent (h1..h6 element) */
-  font-size: 80% }
-
-table.citation {
-  border-left: solid 1px gray;
-  margin-left: 1px }
-
-table.docinfo {
-  margin: 2em 4em }
-
-table.docutils {
-  margin-top: 0.5em ;
-  margin-bottom: 0.5em }
-
-table.footnote {
-  border-left: solid 1px black;
-  margin-left: 1px }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em ;
-  padding-right: 0.5em ;
-  vertical-align: top }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: bold ;
-  text-align: left ;
-  white-space: nowrap ;
-  padding-left: 0 }
-
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100% }
-
-ul.auto-toc {
-  list-style-type: none }
-
-</style>
-</head>
-<body>
-<div class="document" id="epics-fb-epid-feedback-controls">
-<h1 class="title">EPICS <tt class="docutils literal">fb_epid</tt> feedback controls</h1>
-
-<!-- $Id$
-.
-cmd>  rst2html -s -d index.{rst,html} -->
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="85%" />
-</colgroup>
-<tbody valign="top">
-<tr><td><strong>Purpose</strong></td>
-<td>use the EPICS epid <a class="footnote-reference" href="#epid" id="id1">[2]</a> record for generic software feedback</td>
-</tr>
-<tr><td><strong>Author</strong></td>
-<td>Pete R. Jemian</td>
-</tr>
-<tr><td><strong>SVN</strong></td>
-<td>$Id$</td>
-</tr>
-</tbody>
-</table>
-<div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
-<ul class="auto-toc simple">
-<li><a class="reference internal" href="#overview" id="id13">1&nbsp;&nbsp;&nbsp;Overview</a><ul class="auto-toc">
-<li><a class="reference internal" href="#theory-of-operation" id="id14">1.1&nbsp;&nbsp;&nbsp;Theory of operation</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#installation" id="id15">2&nbsp;&nbsp;&nbsp;Installation</a><ul class="auto-toc">
-<li><a class="reference internal" href="#modify-the-ioc-s-st-cmd-file" id="id16">2.1&nbsp;&nbsp;&nbsp;modify the IOC's <tt class="docutils literal">st.cmd</tt> file</a></li>
-<li><a class="reference internal" href="#id6" id="id17">2.2&nbsp;&nbsp;&nbsp;add <tt class="docutils literal">fb_epid.substitutions</tt> file</a><ul class="auto-toc">
-<li><a class="reference internal" href="#macro-substitutions-in-the-fb-epid-db-file" id="id18">2.2.1&nbsp;&nbsp;&nbsp;Macro substitutions in the fb_epid.db file</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id7" id="id19">2.3&nbsp;&nbsp;&nbsp;modify <tt class="docutils literal">auto_settings.req</tt> file</a></li>
-<li><a class="reference internal" href="#id8" id="id20">2.4&nbsp;&nbsp;&nbsp;add configuration to GUI to access the new support</a><ul class="auto-toc">
-<li><a class="reference internal" href="#macro-substitutions-in-the-fb-epid-adl-file" id="id21">2.4.1&nbsp;&nbsp;&nbsp;Macro substitutions in the <tt class="docutils literal">fb_epid.adl</tt> file</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#use" id="id22">3&nbsp;&nbsp;&nbsp;Use</a><ul class="auto-toc">
-<li><a class="reference internal" href="#medm-screens" id="id23">3.1&nbsp;&nbsp;&nbsp;MEDM screens</a><ul class="auto-toc">
-<li><a class="reference internal" href="#fb-epid-main-control-screen" id="id24">3.1.1&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> main control screen</a></li>
-<li><a class="reference internal" href="#fb-epid-basic-control-screen" id="id25">3.1.2&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> basic control screen</a></li>
-<li><a class="reference internal" href="#fb-epid-configuration-screen" id="id26">3.1.3&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> configuration screen</a></li>
-<li><a class="reference internal" href="#fb-epid-chart-screen" id="id27">3.1.4&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> chart screen</a></li>
-<li><a class="reference internal" href="#fb-epid-simulator-control-screen" id="id28">3.1.5&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> simulator control screen</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#setup-of-the-calculations" id="id29">3.2&nbsp;&nbsp;&nbsp;Setup of the calculations</a><ul class="auto-toc">
-<li><a class="reference internal" href="#setting-the-enable-calculation" id="id30">3.2.1&nbsp;&nbsp;&nbsp;Setting the enable calculation</a></li>
-<li><a class="reference internal" href="#setting-the-input-calculation" id="id31">3.2.2&nbsp;&nbsp;&nbsp;Setting the input calculation</a></li>
-<li><a class="reference internal" href="#setting-the-limits-on-the-output" id="id32">3.2.3&nbsp;&nbsp;&nbsp;Setting the limits on the output</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#tuning-of-the-epid-record" id="id33">3.3&nbsp;&nbsp;&nbsp;Tuning of the epid record</a><ul class="auto-toc">
-<li><a class="reference internal" href="#max-min-mode" id="id34">3.3.1&nbsp;&nbsp;&nbsp;Max/Min mode</a></li>
-<li><a class="reference internal" href="#pid-mode" id="id35">3.3.2&nbsp;&nbsp;&nbsp;PID mode</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#example-using-the-simulator" id="id36">3.4&nbsp;&nbsp;&nbsp;Example using the simulator</a></li>
-<li><a class="reference internal" href="#example-dcm-feedback-from-x-ray-beam-position-monitor" id="id37">3.5&nbsp;&nbsp;&nbsp;Example DCM feedback from X-ray Beam Position Monitor</a></li>
-<li><a class="reference internal" href="#example-monochromator-feedback-from-beam-intensity-monitor" id="id38">3.6&nbsp;&nbsp;&nbsp;Example Monochromator feedback from beam intensity monitor</a></li>
-<li><a class="reference internal" href="#previous-observations-during-initial-development" id="id39">3.7&nbsp;&nbsp;&nbsp;Previous observations During Initial Development</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#infrastructure" id="id40">4&nbsp;&nbsp;&nbsp;Infrastructure</a><ul class="auto-toc">
-<li><a class="reference internal" href="#structure-of-the-epics-database" id="id41">4.1&nbsp;&nbsp;&nbsp;Structure of the EPICS Database</a></li>
-<li><a class="reference internal" href="#simulator" id="id42">4.2&nbsp;&nbsp;&nbsp;Simulator</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="sidebar">
-<p class="first sidebar-title">About ...</p>
-<p class="last">This simulator is part of the <tt class="docutils literal">fb_epid</tt> support in
-the synApps optics <a class="footnote-reference" href="#optics" id="id2">[4]</a> module.</p>
-</div>
-<div class="section" id="overview">
-<h1><a class="toc-backref" href="#id13">1&nbsp;&nbsp;&nbsp;Overview</a></h1>
-<p>The <tt class="docutils literal">fb_epid</tt> support provides a database centered around the EPICS
-<tt class="docutils literal">epid</tt> <a class="footnote-reference" href="#epid" id="id3">[2]</a> record.
-The versatility of the <tt class="docutils literal">fb_epid</tt> support lies in the
-various calculations that can be reconfigured by the user
-while the IOC is operating.
-These calculations allow the user to configure the input and output
-of the PID loop, as well as to apply complex conditions on when the
-PID loop should be allowed to drive the output or be switched off.</p>
-<p>The <tt class="docutils literal">fb_epid</tt> support is part of the synApps <a class="footnote-reference" href="#synapps" id="id4">[6]</a>
-optics <a class="footnote-reference" href="#optics" id="id5">[4]</a> module.</p>
-<div class="section" id="theory-of-operation">
-<h2><a class="toc-backref" href="#id14">1.1&nbsp;&nbsp;&nbsp;Theory of operation</a></h2>
-<ol class="arabic simple">
-<li>A signal is provided as an EPICS process variable (macro parameter IN).
-The signal source can be in the same IOC with the feedback
-software or in another EPICS IOC available on the network.
-The variable should be a floating point.  (In principle, it
-<em>could</em> be an integer but the feedback may not be so smooth.)</li>
-<li>The input calculation (swait record) provides some
-flexibility for conditioning the input signal to the feedback.</li>
-<li>An epid record provides real-time feedback and
-recalculate the output variable.</li>
-<li>The output from the epid record is buffered by the <tt class="docutils literal">obuf</tt>
-calculation which watches the Feedback ON (FBON) switch
-and retains the previous output value if the feedback
-software is switched off.</li>
-<li>The output calculation allows some flexibility
-for conditioning the output signal to the positioner (OUT).
-The conditioned epid result is pushed to the positioner.</li>
-<li>A positioner responds to the result from the epid record
-and thus further modifies the input signal.</li>
-<li>The feedback can be switched on manually or automatically,
-subject to the logic of some other calculation (CALC).
-For example, a shutter closed signal could suspend feedback.
-In this case, the output is not driven.</li>
-<li>When the feedback is switched on, the positioner should
-not jerk to a different position. The feedback software
-must be prepared to start moving the positioner from
-its present location.</li>
-</ol>
-</div>
-</div>
-<div class="section" id="installation">
-<h1><a class="toc-backref" href="#id15">2&nbsp;&nbsp;&nbsp;Installation</a></h1>
-<p>Install one instance of this database for each feedback channel.
-If two different methods for feedback are desired for a given axis,
-create two instances of this database.
-See below for details of these configurations.</p>
-<blockquote>
-Clever adjustments to the <tt class="docutils literal">enable</tt> calculations can allow
-for automated switching, if that is desired.
-For example, at APS beam line 33ID for feedback of the DCM crystal 2 PZT,
-one instance would use the XBPM <em>y</em> position signal
-while another instance would use the D3 graphite foil intensity
-as input signals.  Both would be configured to drive the DCM
-second crystal PZT.  Choice of the <em>active</em> <tt class="docutils literal">fb_epid</tt> instance
-was obtained by adding values to the <tt class="docutils literal">enable</tt> calculation,
-watching the FBON field of the other feedback.</blockquote>
-<p>Follow these steps to install the <tt class="docutils literal">fb_epid</tt> support:</p>
-<ol class="arabic simple">
-<li><a class="reference internal" href="#modify-the-st-cmd-file">modify the st.cmd file</a></li>
-<li><a class="reference internal" href="#add-fb-epid-substitutions-file">add fb_epid.substitutions file</a></li>
-<li><a class="reference internal" href="#modify-auto-settings-req-file">modify auto_settings.req file</a></li>
-<li><a class="reference internal" href="#add-configuration-to-gui-to-access-the-new-support">add configuration to GUI to access the new support</a></li>
-</ol>
-<div class="section" id="modify-the-ioc-s-st-cmd-file">
-<span id="modify-the-st-cmd-file"></span><h2><a class="toc-backref" href="#id16">2.1&nbsp;&nbsp;&nbsp;modify the IOC's <tt class="docutils literal">st.cmd</tt> file</a></h2>
-<p>To install this software, make changes in the IOC's <tt class="docutils literal">st.cmd</tt> file,
-adding this line anywhere between the calls to
-<tt class="docutils literal">dbLoadDatabase</tt> and <tt class="docutils literal">iocInit</tt>:</p>
+EPICS fb\_epid feedback controls
+================================
+
+| __Purpose__ | use the EPICS epid [\[2\]](#epid) record for generic software feedback |
+|---|---|
+| __Author__ | Pete R. Jemian |
+| __SVN__ | $Id$ |
+
+Contents
+
+- [1 Overview](#overview)
+    - [1.1 Theory of operation](#theory-of-operation)
+- [2 Installation](#installation)
+    - [2.1 modify the IOC's st.cmd file](#modify-the-ioc-s-st-cmd-file)
+    - [2.2 add fb\_epid.substitutions file](#id6)
+        - [2.2.1 Macro substitutions in the fb\_epid.db file](#macro-substitutions-in-the-fb-epid-db-file)
+    - [2.3 modify auto\_settings.req file](#id7)
+    - [2.4 add configuration to GUI to access the new support](#id8)
+        - [2.4.1 Macro substitutions in the fb\_epid.adl file](#macro-substitutions-in-the-fb-epid-adl-file)
+- [3 Use](#use)
+    - [3.1 MEDM screens](#medm-screens)
+        - [3.1.1 fb\_epid main control screen](#fb-epid-main-control-screen)
+        - [3.1.2 fb\_epid basic control screen](#fb-epid-basic-control-screen)
+        - [3.1.3 fb\_epid configuration screen](#fb-epid-configuration-screen)
+        - [3.1.4 fb\_epid chart screen](#fb-epid-chart-screen)
+        - [3.1.5 fb\_epid simulator control screen](#fb-epid-simulator-control-screen)
+    - [3.2 Setup of the calculations](#setup-of-the-calculations)
+        - [3.2.1 Setting the enable calculation](#setting-the-enable-calculation)
+        - [3.2.2 Setting the input calculation](#setting-the-input-calculation)
+        - [3.2.3 Setting the limits on the output](#setting-the-limits-on-the-output)
+    - [3.3 Tuning of the epid record](#tuning-of-the-epid-record)
+        - [3.3.1 Max/Min mode](#max-min-mode)
+        - [3.3.2 PID mode](#pid-mode)
+    - [3.4 Example using the simulator](#example-using-the-simulator)
+    - [3.5 Example DCM feedback from X-ray Beam Position Monitor](#example-dcm-feedback-from-x-ray-beam-position-monitor)
+    - [3.6 Example Monochromator feedback from beam intensity monitor](#example-monochromator-feedback-from-beam-intensity-monitor)
+    - [3.7 Previous observations During Initial Development](#previous-observations-during-initial-development)
+- [4 Infrastructure](#infrastructure)
+    - [4.1 Structure of the EPICS Database](#structure-of-the-epics-database)
+    - [4.2 Simulator](#simulator)
+
+
+[1 Overview](#id13)
+===================
+
+The fb\_epid support provides a database centered around the EPICS epid [\[2\]](#epid) record. The versatility of the fb\_epid support lies in the various calculations that can be reconfigured by the user while the IOC is operating. These calculations allow the user to configure the input and output of the PID loop, as well as to apply complex conditions on when the PID loop should be allowed to drive the output or be switched off.
+
+The fb\_epid support is part of the synApps [\[6\]](#synapps)optics [\[4\]](#optics) module.
+
+[1.1 Theory of operation](#id14)
+--------------------------------
+
+1. A signal is provided as an EPICS process variable (macro parameter IN). The signal source can be in the same IOC with the feedback software or in another EPICS IOC available on the network. The variable should be a floating point. (In principle, it *could* be an integer but the feedback may not be so smooth.)
+2. The input calculation (swait record) provides some flexibility for conditioning the input signal to the feedback.
+3. An epid record provides real-time feedback and recalculate the output variable.
+4. The output from the epid record is buffered by the obufcalculation which watches the Feedback ON (FBON) switch and retains the previous output value if the feedback software is switched off.
+5. The output calculation allows some flexibility for conditioning the output signal to the positioner (OUT). The conditioned epid result is pushed to the positioner.
+6. A positioner responds to the result from the epid record and thus further modifies the input signal.
+7. The feedback can be switched on manually or automatically, subject to the logic of some other calculation (CALC). For example, a shutter closed signal could suspend feedback. In this case, the output is not driven.
+8. When the feedback is switched on, the positioner should not jerk to a different position. The feedback software must be prepared to start moving the positioner from its present location.
+
+
+
+
+
+[2 Installation](#id15)
+=======================
+
+Install one instance of this database for each feedback channel. If two different methods for feedback are desired for a given axis, create two instances of this database. See below for details of these configurations.
+
+> Clever adjustments to the enable calculations can allow for automated switching, if that is desired. For example, at APS beam line 33ID for feedback of the DCM crystal 2 PZT, one instance would use the XBPM *y* position signal while another instance would use the D3 graphite foil intensity as input signals. Both would be configured to drive the DCM second crystal PZT. Choice of the *active* fb\_epid instance was obtained by adding values to the enable calculation, watching the FBON field of the other feedback.
+
+Follow these steps to install the fb\_epid support:
+
+1. [modify the st.cmd file](#modify-the-st-cmd-file)
+2. [add fb\_epid.substitutions file](#add-fb-epid-substitutions-file)
+3. [modify auto\_settings.req file](#modify-auto-settings-req-file)
+4. [add configuration to GUI to access the new support](#add-configuration-to-gui-to-access-the-new-support)
+
+[2.1 modify the IOC's st.cmd file](#id16)
+-----------------------------------------
+
+To install this software, make changes in the IOC's st.cmd file, adding this line anywhere between the calls to dbLoadDatabase and iocInit:
+
+```
 <pre class="literal-block">
 ### PID_based feedback
-dbLoadTemplate(&quot;fb_epid.substitutions&quot;)
-</pre>
-</div>
-<div class="section" id="id6">
-<span id="add-fb-epid-substitutions-file"></span><h2><a class="toc-backref" href="#id17">2.2&nbsp;&nbsp;&nbsp;add <tt class="docutils literal">fb_epid.substitutions</tt> file</a></h2>
-<p>Create the <tt class="docutils literal">fb_epid.substitutions</tt> file in the same
-directory as <tt class="docutils literal">st.cmd</tt> with content such as:</p>
+dbLoadTemplate("fb_epid.substitutions")
+```
+
+
+
+[2.2 add fb\_epid.substitutions file](#id17)
+--------------------------------------------
+
+Create the fb\_epid.substitutions file in the same directory as st.cmd with content such as:
+
+```
 <pre class="literal-block">
 # $Id$
 
-file &quot;$(OPTICS)/opticsApp/Db/fb_epid.db&quot;
+file "$(OPTICS)/opticsApp/Db/fb_epid.db"
   {
     {
         P=xxx:epid1,  
@@ -483,91 +107,56 @@ file &quot;$(OPTICS)/opticsApp/Db/fb_epid.db&quot;
         OUT=xxx:epid1:sim.D, 
         MODE=PID,   
         CALC=A,    
-        PERMIT1=&quot;xxx:epid1:on.VAL&quot;,      
-        PERMIT2=&quot;&quot;,      
-        PERMIT3=&quot;&quot;,      
-        PERMIT4=&quot;&quot;
+        PERMIT1="xxx:epid1:on.VAL",      
+        PERMIT2="",      
+        PERMIT3="",      
+        PERMIT4=""
     }
   }
 
-</pre>
-<div class="section" id="macro-substitutions-in-the-fb-epid-db-file">
-<h3><a class="toc-backref" href="#id18">2.2.1&nbsp;&nbsp;&nbsp;Macro substitutions in the fb_epid.db file</a></h3>
-<p>There are several macro substitutions in the
-<tt class="docutils literal">fb_epid</tt> support database (<tt class="docutils literal">fb_epid.db</tt>) to simplify its installation .</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">macro</th>
-<th class="head">description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td><tt class="docutils literal">$(P)</tt></td>
-<td>Prefix for this instance of this database.
-Note that <tt class="docutils literal"><span class="pre">$(P):in.INAN</span></tt> holds PV name of
-input PV (by default)</td>
-</tr>
-<tr><td><tt class="docutils literal">$(IN)</tt></td>
-<td>PV name: input signal</td>
-</tr>
-<tr><td><tt class="docutils literal">$(OUT)</tt></td>
-<td>PV name: output positioner</td>
-</tr>
-<tr><td><tt class="docutils literal">$(MODE)</tt></td>
-<td>either <tt class="docutils literal">PID</tt> or <tt class="docutils literal">Max/Min</tt></td>
-</tr>
-<tr><td><tt class="docutils literal">$(CALC)</tt></td>
-<td><p class="first">string: actual calculation to go in
-<tt class="docutils literal"><span class="pre">$(P):enable.CALC</span></tt>,</p>
-<ul class="simple">
-<li>1=feedback on</li>
-<li>0=feedback off</li>
-</ul>
-<p class="last">A trivial value might be &quot;<tt class="docutils literal">A</tt>&quot; which only
-watches the value of <tt class="docutils literal"><span class="pre">$(P):on</span></tt>.</p>
-</td>
-</tr>
-<tr><td><tt class="docutils literal">$(PERMIT1)</tt></td>
-<td>PV name: boolean value to permit operations;
-value becomes <tt class="docutils literal"><span class="pre">$(P):enable.B</span></tt></td>
-</tr>
-<tr><td><tt class="docutils literal">$(PERMIT2)</tt></td>
-<td>PV name: boolean value to permit operations;
-value becomes <tt class="docutils literal"><span class="pre">$(P):enable.C</span></tt></td>
-</tr>
-<tr><td><tt class="docutils literal">$(PERMIT3)</tt></td>
-<td>PV name: boolean value to permit operations;
-value becomes <tt class="docutils literal"><span class="pre">$(P):enable.D</span></tt></td>
-</tr>
-<tr><td><tt class="docutils literal">$(PERMIT4)</tt></td>
-<td>PV name: boolean value to permit operations;
-value becomes <tt class="docutils literal"><span class="pre">$(P):enable.E</span></tt></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="id7">
-<span id="modify-auto-settings-req-file"></span><h2><a class="toc-backref" href="#id19">2.3&nbsp;&nbsp;&nbsp;modify <tt class="docutils literal">auto_settings.req</tt> file</a></h2>
-<p>To ensure that changed values will be restored after reboot,
-add lines such as this to the <tt class="docutils literal">auto_settings.req</tt> file
-(usually found in the same directory with the <tt class="docutils literal">st.cmd</tt> file).</p>
+```
+
+### [2.2.1 Macro substitutions in the fb\_epid.db file](#id18)
+
+There are several macro substitutions in the fb\_epid support database (fb\_epid.db) to simplify its installation .
+
+| macro | description |
+|---|---|
+| $(P) | Prefix for this instance of this database. Note that $(P):in.INAN holds PV name of input PV (by default) |
+| $(IN) | PV name: input signal |
+| $(OUT) | PV name: output positioner |
+| $(MODE) | either PID or Max/Min |
+| $(CALC) | string: actual calculation to go in $(P):enable.CALC,  - 1=feedback on - 0=feedback off  A trivial value might be "A" which only watches the value of $(P):on. |
+| $(PERMIT1) | PV name: boolean value to permit operations; value becomes $(P):enable.B |
+| $(PERMIT2) | PV name: boolean value to permit operations; value becomes $(P):enable.C |
+| $(PERMIT3) | PV name: boolean value to permit operations; value becomes $(P):enable.D |
+| $(PERMIT4) | PV name: boolean value to permit operations; value becomes $(P):enable.E |
+
+
+
+
+
+[2.3 modify auto\_settings.req file](#id19)
+-------------------------------------------
+
+To ensure that changed values will be restored after reboot, add lines such as this to the auto\_settings.req file (usually found in the same directory with the st.cmd file).
+
+```
 <pre class="literal-block">
 ### PID_based feedback
 file fb_epid.req P=$(P)epid1
-</pre>
-</div>
-<div class="section" id="id8">
-<span id="add-configuration-to-gui-to-access-the-new-support"></span><h2><a class="toc-backref" href="#id20">2.4&nbsp;&nbsp;&nbsp;add configuration to GUI to access the new support</a></h2>
-<p>Add commands to the GUI displays to call each configured
-instance of the <tt class="docutils literal">fb_epid</tt> support.  Such as this <em>related display</em>
-widget in MEDM:</p>
+```
+
+
+
+[2.4 add configuration to GUI to access the new support](#id20)
+---------------------------------------------------------------
+
+Add commands to the GUI displays to call each configured instance of the fb\_epid support. Such as this *related display*widget in MEDM:
+
+```
 <pre class="literal-block">
-&quot;related display&quot; {
+"related display" {
         object {
                 x=10
                 y=10
@@ -575,483 +164,287 @@ widget in MEDM:</p>
                 height=20
         }
         display[0] {
-                label=&quot;fb_epid&quot;
-                name=&quot;fb_epid.adl&quot;
-                args=&quot;P=prj:epid1&quot;
+                label="fb_epid"
+                name="fb_epid.adl"
+                args="P=prj:epid1"
         }
         display[1] {
-                label=&quot;simulator&quot;
-                name=&quot;fb_epid_sim.adl&quot;
-                args=&quot;P=prj:epid1,C=sim&quot;
+                label="simulator"
+                name="fb_epid_sim.adl"
+                args="P=prj:epid1,C=sim"
         }
         clr=0
         bclr=17
-        label=&quot;-prj:epid1&quot;
+        label="-prj:epid1"
 }
-</pre>
-<p>Or start MEDM using a command line such as:</p>
+```
+
+Or start MEDM using a command line such as:
+
+```
 <pre class="literal-block">
-medm -x -macro &quot;P=prj:epid1&quot; fb_epid.adl &amp;
-</pre>
-<div class="section" id="macro-substitutions-in-the-fb-epid-adl-file">
-<h3><a class="toc-backref" href="#id21">2.4.1&nbsp;&nbsp;&nbsp;Macro substitutions in the <tt class="docutils literal">fb_epid.adl</tt> file</a></h3>
-<p>For the MEDM provided, the macro substitutions are:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">macro</th>
-<th class="head">description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td><tt class="docutils literal">$(P)</tt></td>
-<td>Prefix for this instance of support.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="section" id="use">
-<h1><a class="toc-backref" href="#id22">3&nbsp;&nbsp;&nbsp;Use</a></h1>
-<p>Once the software has been installed (IOC configured with
-database and autosave/restore configured to retain settings
-across restarts of the IOC), some careful setup needs to happen
-before the software is ready to be used.</p>
-<p>First, it is necessary to identify the EPICS PVs for the
-control variable (such as a positioner or the power to a
-heating element) and the signal variable (the PV that is
-sampled for the PID loop). These may have been configured
-in the IOC but it is possible to change them while the
-IOC is running. They can be changed without need to recompile
-or restart the EPICS IOC.</p>
-<p>To avoid any unexpected consequences, be sure the <tt class="docutils literal">fb_epid</tt>
-software is switched off before changing any PVs or changing
-between modes of operation. In the MEDM screen, in the EPID
-output section, press the button marked off.</p>
-<p>It is most important to make sure that the input signal is
-updated faster than the recalculation interval for the <tt class="docutils literal">fb_epid</tt>
-software or instability will occur. A factor of 3 to 10 input
-updates per output update is reasonable. The output will be
-updated each time the epid is processed.</p>
-<div class="section" id="medm-screens">
-<h2><a class="toc-backref" href="#id23">3.1&nbsp;&nbsp;&nbsp;MEDM screens</a></h2>
-<p>The features of the <tt class="docutils literal">fb_epid</tt> software are accessed
-from the main control screen in MEDM: <tt class="docutils literal">fb_epid.adl</tt>.
-Controls for the <a class="reference internal" href="#simulator">Simulator</a> are provided from a
-<tt class="docutils literal">fb_epid_sim.adl</tt> screen.</p>
-<div class="section" id="fb-epid-main-control-screen">
-<h3><a class="toc-backref" href="#id24">3.1.1&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> main control screen</a></h3>
-<p>The MEDM screen provides access to all the controls of the
-epid <a class="footnote-reference" href="#epid" id="id9">[2]</a> record. To add some flexibility for configuration
-at run time by beam line users, an EPICS interface database
-has been created. The user can change the input variable(s)
-through a calculation (swait <a class="footnote-reference" href="#swait" id="id10">[5]</a> record).</p>
-<div class="figure">
-<img alt="main MEDM control screen" src="fb_epid_adl.png" />
-<p class="caption">Figure: Main <tt class="docutils literal">fb_epid</tt> control screen</p>
-</div>
-<p>Control of the output variable will be permitted between
-the software limits shown at the bottom of the control screen.
-From the output calc, it is possible to change the PV which
-will be directed by this database.</p>
-<p>The enable calculation can be used to provide automated on/off
-features with details specific to the particular installation.</p>
-</div>
-<div class="section" id="fb-epid-basic-control-screen">
-<h3><a class="toc-backref" href="#id25">3.1.2&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> basic control screen</a></h3>
-<p>There are many controls on the main screen.  For routine
-operations, it may be more desirable to display just
-the basic controls (and less of
-the tuning infrastructure).</p>
-<div class="figure">
-<img alt="basic MEDM control screen" src="fb_epid_basic_adl.png" />
-<p class="caption">Figure: Basic <tt class="docutils literal">fb_epid</tt> control screen</p>
-</div>
-</div>
-<div class="section" id="fb-epid-configuration-screen">
-<h3><a class="toc-backref" href="#id26">3.1.3&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> configuration screen</a></h3>
-<p>The configuration screen provides top-level
-access to the main components that must be addressed
-for basic configuration.
-Note that advanced situations must use the calculation screens
-to access the complete interfaces of the swait records.</p>
-<div class="figure">
-<img alt="``fb_epid`` configuration screen" src="fb_epid_config_adl.png" />
-<p class="caption">Figure: <tt class="docutils literal">fb_epid</tt> configuration screen</p>
-</div>
-<div class="caution">
-<p class="first admonition-title">Caution!</p>
-<p class="last">The buttons marked <em>output buffer calc</em> and
-<em>resume calc</em> in the lower right corner are for
-internal use only.
-<strong>Do not change anything on these screens.</strong></p>
-</div>
-</div>
-<div class="section" id="fb-epid-chart-screen">
-<h3><a class="toc-backref" href="#id27">3.1.4&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> chart screen</a></h3>
-<p>The chart screen provides a view to the recent progress.
-There are two strip charts (value v. time).
-The upper chart shows the set point (.VAL)
-and current value (.CVAL).
-The lower chart shows the following error (.ERR).</p>
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">The limits on the two charts need to be set
-before this screen is of any real use.
-Right-click and select &quot;PV limits&quot; from the pop-up menu.
-Don't forget to apply any changes.</p>
-</div>
-<div class="figure">
-<img alt="``fb_epid`` chart screen" src="fb_epid_chart_adl.png" />
-<p class="caption">Figure: <tt class="docutils literal">fb_epid</tt> configuration screen</p>
-</div>
-</div>
-<div class="section" id="fb-epid-simulator-control-screen">
-<h3><a class="toc-backref" href="#id28">3.1.5&nbsp;&nbsp;&nbsp;<tt class="docutils literal">fb_epid</tt> simulator control screen</a></h3>
-<p>The main control screen for the <a class="reference internal" href="#simulator">Simulator</a> is shown:</p>
-<div class="figure">
-<img alt="main MEDM control screen for simulator" src="fb_epid_sim_adl.png" />
-<p class="caption">Figure: <tt class="docutils literal">fb_epid</tt> temperature simulator controls</p>
-</div>
-</div>
-</div>
-<div class="section" id="setup-of-the-calculations">
-<h2><a class="toc-backref" href="#id29">3.2&nbsp;&nbsp;&nbsp;Setup of the calculations</a></h2>
-<p>As stated above,
-the versatility of the <tt class="docutils literal">fb_epid</tt> support lies in the
-various calculations that can be reconfigured by the user
-while the IOC is operating.</p>
-<div class="section" id="setting-the-enable-calculation">
-<h3><a class="toc-backref" href="#id30">3.2.1&nbsp;&nbsp;&nbsp;Setting the enable calculation</a></h3>
-<p>The operation of <tt class="docutils literal">fb_epid</tt> is permitted when the
-result of the enable calculation is 1.0. The first,
-obvious, choice is that bo record is provided to the
-user to switch the <tt class="docutils literal">fb_epid</tt> software on and off.
-But the software should also disable itself when the
-input signal goes out of range or also due to
-some other operating parameters.</p>
-<blockquote>
-Other factors can be built into the enable calculation.
-For example, on undulator beam lines, it is not useful
-to run the feedback if the undulator is not operating
-(gap is closed or magnets are energized). In such a case,
-monitor the PV for the undulator gap (APS undulator A)
-and enable only if the gap is below some reasonable
-number such as 50 mm.</blockquote>
-<p>One should also factor the <tt class="docutils literal">fb_epid</tt> input signal into
-the enable calculation by checking that is within a valid
-operating range.</p>
-</div>
-<div class="section" id="setting-the-input-calculation">
-<h3><a class="toc-backref" href="#id31">3.2.2&nbsp;&nbsp;&nbsp;Setting the input calculation</a></h3>
-<p>It is possible to perform limited math on the input signal
-to be used. For example, when the goal is to maximize the
-conductance through a crystal pair, such as a monochromator,
-the best signal would be a ratio between detector immediately
-before and after the pair of crystals. The control variable
-would be the rotation angle of either of the two crystals
-(usually a fine rotation of the second crystal). The input
-calculation would then monitor the PVs for both detectors
-and calculate the ratio of the two: A/B. In this example,
-it would also be useful to include the PV of this calculation
-in the enable calculation and ensure that the ratio is acceptable.</p>
-</div>
-<div class="section" id="setting-the-limits-on-the-output">
-<h3><a class="toc-backref" href="#id32">3.2.3&nbsp;&nbsp;&nbsp;Setting the limits on the output</a></h3>
-<p>To prevent the epid record from driving the control variable
-out of bounds, there are limits for low and high (using the
-epid record's .DRVL and .DRVH field). The epid record software
-will not allow the positioner to drive outside of these limits.</p>
-</div>
-</div>
-<div class="section" id="tuning-of-the-epid-record">
-<h2><a class="toc-backref" href="#id33">3.3&nbsp;&nbsp;&nbsp;Tuning of the epid record</a></h2>
-<p>In the <tt class="docutils literal">epid</tt> record documentation <a class="footnote-reference" href="#epid" id="id11">[2]</a>,
-there is a special discussion on feedback tuning in PID mode.
-Refer to the documentation for more information on the
-EPICS <tt class="docutils literal">epid</tt> record.</p>
-<p>The epid record can run in either Max/Min or PID mode.
-Max/Min is used to maximize a positive input signal or
-minimize a negative input signal such as from a beam
-line detector. PID mode is used to keep the input signal
-at constant value such as holding a sample's temperature constant.</p>
-<div class="section" id="max-min-mode">
-<h3><a class="toc-backref" href="#id34">3.3.1&nbsp;&nbsp;&nbsp;Max/Min mode</a></h3>
-<p>Max/Min mode is useful for monochromator feedback or
-other situations where a positive signal is to be maximized
-(or a negative signal is to be minimized). The online epid
-record documentation is lacking details about this mode
-so one is referred to inspecting the source code <a class="footnote-reference" href="#epid-source" id="id12">[3]</a>.</p>
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">In Max/Min mode, the Set Point is ignored.</p>
-</div>
-</div>
-<div class="section" id="pid-mode">
-<h3><a class="toc-backref" href="#id35">3.3.2&nbsp;&nbsp;&nbsp;PID mode</a></h3>
-<p>PID mode is useful for holding the input signal to the
-<em>Set Point</em> by adjusting the control variable.
-The epid record documentation provides a good description
-of how to set the PID constants.</p>
-</div>
-</div>
-<div class="section" id="example-using-the-simulator">
-<h2><a class="toc-backref" href="#id36">3.4&nbsp;&nbsp;&nbsp;Example using the simulator</a></h2>
-<p>An example demonstrating the simulator is provided in the
-<a class="reference external" href="simulator.html">simulator documentation</a>.</p>
-</div>
-<div class="section" id="example-dcm-feedback-from-x-ray-beam-position-monitor">
-<h2><a class="toc-backref" href="#id37">3.5&nbsp;&nbsp;&nbsp;Example DCM feedback from X-ray Beam Position Monitor</a></h2>
-<p>Consider the case of an X-ray beam line with a double crystal
-monochromator (DCM) and an X-ray Beam Position Monitor (XBPM)
-after the DCM.  The XBPM provides a signal that can be used
-to maintain the throughput of the DCM if the DCM allows an adjustment
-of either first or second crystal Bragg rotation independent of
-the other crystal.</p>
-<p>For synchrotron beam lines, the vertical position from the XBPM
-provides the input signal to the epid loop.  The DCM often has a
-piezoelectric transducer (PZT) that is used to control the fine rotation
-of the second crystal.  The second crystal rotation is controlled
-by a low voltage (such as -2 .. +9 VDC) sent to the PZT's amplifier.
-(The purpose of this amplifier is to supply the operating voltage to the
-PZT and optionally account for the hysteresis of the PZT as used
-in positioner applications.)</p>
-<p>This example shows the startup configuration used to maintain
-the XBPM vertical beam position by controlling the DCM second
-crystal PZT voltage.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="10%" />
-<col width="40%" />
-<col width="50%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">macro</th>
-<th class="head">configured value</th>
-<th class="head">meaning</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>P</td>
-<td><tt class="docutils literal">iad:fbe:xbpm:y</tt></td>
-<td>PV of this <tt class="docutils literal">fb_epid</tt> instance</td>
-</tr>
-<tr><td>IN</td>
-<td><tt class="docutils literal">iad:xbpm:pos:y</tt></td>
-<td>Y position from the XBPM</td>
-</tr>
-<tr><td>OUT</td>
-<td><tt class="docutils literal">iad:540:c0:out0</tt></td>
-<td>control voltage of the PZT</td>
-</tr>
-<tr><td>MODE</td>
-<td><tt class="docutils literal">PID</tt></td>
-<td>hold position steady using PID</td>
-</tr>
-<tr><td>CALC</td>
-<td><tt class="docutils literal"><span class="pre">A&amp;&amp;B&amp;&amp;C</span></tt></td>
-<td>only when EPID is ON and both permits</td>
-</tr>
-<tr><td>PERMIT1</td>
-<td><tt class="docutils literal">iad:beamAvailable.VAL</tt></td>
-<td>require X-ray beam to be ready</td>
-</tr>
-<tr><td>PERMIT2</td>
-<td><tt class="docutils literal">iad:xbpm:current:ok.VAL</tt></td>
-<td>require XBPM signal to be valid</td>
-</tr>
-<tr><td>PERMIT3</td>
-<td>&nbsp;</td>
-<td>unused</td>
-</tr>
-<tr><td>PERMIT4</td>
-<td>&nbsp;</td>
-<td>unused</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="example-monochromator-feedback-from-beam-intensity-monitor">
-<h2><a class="toc-backref" href="#id38">3.6&nbsp;&nbsp;&nbsp;Example Monochromator feedback from beam intensity monitor</a></h2>
-<p>Consider another beam line with a DCM and then a monitor of the beam
-intensity (reported as a floating-point or large integer number).
-A list of suitable such monitors might include ionization chambers
-graphite foils, or fluorescent materials with photodiodes.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%" />
-<col width="36%" />
-<col width="53%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">macro</th>
-<th class="head">configured value</th>
-<th class="head">meaning</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>P</td>
-<td><tt class="docutils literal">iad:fbe:D3:y</tt></td>
-<td>PV of this <tt class="docutils literal">fb_epid</tt> instance</td>
-</tr>
-<tr><td>IN</td>
-<td><tt class="docutils literal">iad:540:c0:in10</tt></td>
-<td>signal from the beam intensity monitor</td>
-</tr>
-<tr><td>OUT</td>
-<td><tt class="docutils literal">iad:540:c0:out0</tt></td>
-<td>control voltage of the PZT</td>
-</tr>
-<tr><td>MODE</td>
-<td><tt class="docutils literal">Max/Min</tt></td>
-<td>maximize beam intensity</td>
-</tr>
-<tr><td>CALC</td>
-<td><tt class="docutils literal"><span class="pre">A&amp;&amp;B</span></tt></td>
-<td>only when EPID is ON and one permit</td>
-</tr>
-<tr><td>PERMIT1</td>
-<td><tt class="docutils literal">iad:beamAvailable.VAL</tt></td>
-<td>require X-ray beam to be ready</td>
-</tr>
-<tr><td>PERMIT2</td>
-<td>&nbsp;</td>
-<td>unused</td>
-</tr>
-<tr><td>PERMIT3</td>
-<td>&nbsp;</td>
-<td>unused</td>
-</tr>
-<tr><td>PERMIT4</td>
-<td>&nbsp;</td>
-<td>unused</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="previous-observations-during-initial-development">
-<h2><a class="toc-backref" href="#id39">3.7&nbsp;&nbsp;&nbsp;Previous observations During Initial Development</a></h2>
-<p>Notes from the early stages of development show motivations for
-the construction of this database support.</p>
-<ol class="arabic simple">
-<li><a class="reference external" href="tests/index.html">Notes from initial epid record testing in 2004-06</a></li>
-<li><a class="reference external" href="docv1.html">Early notes on the fb_epid support from 2004-06</a></li>
-</ol>
-</div>
-</div>
-<div class="section" id="infrastructure">
-<h1><a class="toc-backref" href="#id40">4&nbsp;&nbsp;&nbsp;Infrastructure</a></h1>
-<p>The <tt class="docutils literal">fb_epid</tt> support consists of several components:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="54%" />
-<col width="46%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">file</th>
-<th class="head">description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td><tt class="docutils literal">opticsApp/Db/fb_epid.db</tt></td>
-<td>EPICS database</td>
-</tr>
-<tr><td><tt class="docutils literal">opticsApp/Db/fb_epid.req</tt></td>
-<td>request file for autosave/restore</td>
-</tr>
-<tr><td><tt class="docutils literal">opticsApp/Db/epid.req</tt></td>
-<td>request file for autosave/restore</td>
-</tr>
-<tr><td><tt class="docutils literal">iocBoot/iocAny/fb_epid.substitutions</tt></td>
-<td>creates specific instances</td>
-</tr>
-<tr><td><tt class="docutils literal">opticsApp/op/adl/fb_epid.adl</tt></td>
-<td>main MEDM screen</td>
-</tr>
-<tr><td><tt class="docutils literal">opticsApp/op/adl/fb_epid_basic.adl</tt></td>
-<td>basic MEDM screen</td>
-</tr>
-<tr><td><tt class="docutils literal">opticsApp/op/adl/fb_epid_chart.adl</tt></td>
-<td>charts VAL and CVAL, also ERR</td>
-</tr>
-<tr><td><tt class="docutils literal">opticsApp/op/adl/fb_epid_config.adl</tt></td>
-<td>simplified configuration screen</td>
-</tr>
-<tr><td><tt class="docutils literal">opticsApp/op/adl/fb_epid_sim.adl</tt></td>
-<td>simulator controls</td>
-</tr>
-<tr><td><tt class="docutils literal">documentation/fb_epid/index.html</tt></td>
-<td>documentation</td>
-</tr>
-</tbody>
-</table>
-<div class="section" id="structure-of-the-epics-database">
-<h2><a class="toc-backref" href="#id41">4.1&nbsp;&nbsp;&nbsp;Structure of the EPICS Database</a></h2>
-<p>The EPICS database was constructed in 2004.
-The records of the database are defined in this table:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="20%" />
-<col width="65%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">record type</th>
-<th class="head">name</th>
-<th class="head">description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>epid</td>
-<td><tt class="docutils literal">$(P)</tt></td>
-<td>Epid record instance</td>
-</tr>
-<tr><td>swait</td>
-<td><tt class="docutils literal"><span class="pre">$(P):in</span></tt></td>
-<td>Input signal collector</td>
-</tr>
-<tr><td>swait</td>
-<td><tt class="docutils literal"><span class="pre">$(P):obuf</span></tt></td>
-<td>Enforces <tt class="docutils literal"><span class="pre">$(P).FBON</span></tt> to disconnect epid
-record from output so <tt class="docutils literal">$(OUT)</tt> is not changed</td>
-</tr>
-<tr><td>swait</td>
-<td><tt class="docutils literal"><span class="pre">$(P):out</span></tt></td>
-<td>Output signal collector</td>
-</tr>
-<tr><td>sseq</td>
-<td><tt class="docutils literal"><span class="pre">$(P):outpv</span></tt></td>
-<td>Part of bumpless start feature</td>
-</tr>
-<tr><td>swait</td>
-<td><tt class="docutils literal"><span class="pre">$(P):resume</span></tt></td>
-<td>Part of bumpless start feature</td>
-</tr>
-<tr><td>bo</td>
-<td><tt class="docutils literal"><span class="pre">$(P):on</span></tt></td>
-<td>User switch to turn epid ON or OFF</td>
-</tr>
-<tr><td>swait</td>
-<td><tt class="docutils literal"><span class="pre">$(P):enable</span></tt></td>
-<td>Automatic ON/OFF feature</td>
-</tr>
-<tr><td>swait</td>
-<td><tt class="docutils literal"><span class="pre">$(P):sim</span></tt></td>
-<td>Simulated temperature reading and heater</td>
-</tr>
-</tbody>
-</table>
-<p>A figure was produced to show how these records are connected.
-Note that the simulator record (<tt class="docutils literal"><span class="pre">$(P):sim</span></tt>)is not shown in this figure.</p>
-<div class="figure">
-<img alt="structure of fb_epid database" src="fb_epid.png" style="width: 90%;" />
-<p class="caption">Figure: Structure of the <tt class="docutils literal">fb_epid</tt> database</p>
-</div>
-<p>The database file has many comments.  The text of the file is included here:</p>
+medm -x -macro "P=prj:epid1" fb_epid.adl &
+```
+
+### [2.4.1 Macro substitutions in the fb\_epid.adl file](#id21)
+
+For the MEDM provided, the macro substitutions are:
+
+| macro | description |
+|---|---|
+| $(P) | Prefix for this instance of support. |
+
+
+
+
+
+
+
+[3 Use](#id22)
+==============
+
+Once the software has been installed (IOC configured with database and autosave/restore configured to retain settings across restarts of the IOC), some careful setup needs to happen before the software is ready to be used.
+
+First, it is necessary to identify the EPICS PVs for the control variable (such as a positioner or the power to a heating element) and the signal variable (the PV that is sampled for the PID loop). These may have been configured in the IOC but it is possible to change them while the IOC is running. They can be changed without need to recompile or restart the EPICS IOC.
+
+To avoid any unexpected consequences, be sure the fb\_epidsoftware is switched off before changing any PVs or changing between modes of operation. In the MEDM screen, in the EPID output section, press the button marked off.
+
+It is most important to make sure that the input signal is updated faster than the recalculation interval for the fb\_epidsoftware or instability will occur. A factor of 3 to 10 input updates per output update is reasonable. The output will be updated each time the epid is processed.
+
+[3.1 MEDM screens](#id23)
+-------------------------
+
+The features of the fb\_epid software are accessed from the main control screen in MEDM: fb\_epid.adl. Controls for the [Simulator](#simulator) are provided from a fb\_epid\_sim.adl screen.
+
+### [3.1.1 fb\_epid main control screen](#id24)
+
+The MEDM screen provides access to all the controls of the epid [\[2\]](#epid) record. To add some flexibility for configuration at run time by beam line users, an EPICS interface database has been created. The user can change the input variable(s) through a calculation (swait [\[5\]](#swait) record).
+
+![main MEDM control screen](fb_epid_adl.png)Figure: Main fb\_epid control screen
+
+
+
+Control of the output variable will be permitted between the software limits shown at the bottom of the control screen. From the output calc, it is possible to change the PV which will be directed by this database.
+
+The enable calculation can be used to provide automated on/off features with details specific to the particular installation.
+
+
+
+### [3.1.2 fb\_epid basic control screen](#id25)
+
+There are many controls on the main screen. For routine operations, it may be more desirable to display just the basic controls (and less of the tuning infrastructure).
+
+![basic MEDM control screen](fb_epid_basic_adl.png)Figure: Basic fb\_epid control screen
+
+
+
+
+
+### [3.1.3 fb\_epid configuration screen](#id26)
+
+The configuration screen provides top-level access to the main components that must be addressed for basic configuration. Note that advanced situations must use the calculation screens to access the complete interfaces of the swait records.
+
+![``fb_epid`` configuration screen](fb_epid_config_adl.png)Figure: fb\_epid configuration screen
+
+
+
+Caution!
+
+The buttons marked *output buffer calc* and *resume calc* in the lower right corner are for internal use only. __Do not change anything on these screens.__
+
+
+
+
+
+### [3.1.4 fb\_epid chart screen](#id27)
+
+The chart screen provides a view to the recent progress. There are two strip charts (value v. time). The upper chart shows the set point (.VAL) and current value (.CVAL). The lower chart shows the following error (.ERR).
+
+Note
+
+The limits on the two charts need to be set before this screen is of any real use. Right-click and select "PV limits" from the pop-up menu. Don't forget to apply any changes.
+
+
+
+![``fb_epid`` chart screen](fb_epid_chart_adl.png)Figure: fb\_epid configuration screen
+
+
+
+
+
+### [3.1.5 fb\_epid simulator control screen](#id28)
+
+The main control screen for the [Simulator](#simulator) is shown:
+
+![main MEDM control screen for simulator](fb_epid_sim_adl.png)Figure: fb\_epid temperature simulator controls
+
+
+
+
+
+
+
+[3.2 Setup of the calculations](#id29)
+--------------------------------------
+
+As stated above, the versatility of the fb\_epid support lies in the various calculations that can be reconfigured by the user while the IOC is operating.
+
+### [3.2.1 Setting the enable calculation](#id30)
+
+The operation of fb\_epid is permitted when the result of the enable calculation is 1.0. The first, obvious, choice is that bo record is provided to the user to switch the fb\_epid software on and off. But the software should also disable itself when the input signal goes out of range or also due to some other operating parameters.
+
+> Other factors can be built into the enable calculation. For example, on undulator beam lines, it is not useful to run the feedback if the undulator is not operating (gap is closed or magnets are energized). In such a case, monitor the PV for the undulator gap (APS undulator A) and enable only if the gap is below some reasonable number such as 50 mm.
+
+One should also factor the fb\_epid input signal into the enable calculation by checking that is within a valid operating range.
+
+
+
+### [3.2.2 Setting the input calculation](#id31)
+
+It is possible to perform limited math on the input signal to be used. For example, when the goal is to maximize the conductance through a crystal pair, such as a monochromator, the best signal would be a ratio between detector immediately before and after the pair of crystals. The control variable would be the rotation angle of either of the two crystals (usually a fine rotation of the second crystal). The input calculation would then monitor the PVs for both detectors and calculate the ratio of the two: A/B. In this example, it would also be useful to include the PV of this calculation in the enable calculation and ensure that the ratio is acceptable.
+
+
+
+### [3.2.3 Setting the limits on the output](#id32)
+
+To prevent the epid record from driving the control variable out of bounds, there are limits for low and high (using the epid record's .DRVL and .DRVH field). The epid record software will not allow the positioner to drive outside of these limits.
+
+
+
+
+
+[3.3 Tuning of the epid record](#id33)
+--------------------------------------
+
+In the epid record documentation [\[2\]](#epid), there is a special discussion on feedback tuning in PID mode. Refer to the documentation for more information on the EPICS epid record.
+
+The epid record can run in either Max/Min or PID mode. Max/Min is used to maximize a positive input signal or minimize a negative input signal such as from a beam line detector. PID mode is used to keep the input signal at constant value such as holding a sample's temperature constant.
+
+### [3.3.1 Max/Min mode](#id34)
+
+Max/Min mode is useful for monochromator feedback or other situations where a positive signal is to be maximized (or a negative signal is to be minimized). The online epid record documentation is lacking details about this mode so one is referred to inspecting the source code [\[3\]](#epid-source).
+
+Note
+
+In Max/Min mode, the Set Point is ignored.
+
+
+
+
+
+### [3.3.2 PID mode](#id35)
+
+PID mode is useful for holding the input signal to the *Set Point* by adjusting the control variable. The epid record documentation provides a good description of how to set the PID constants.
+
+
+
+
+
+[3.4 Example using the simulator](#id36)
+----------------------------------------
+
+An example demonstrating the simulator is provided in the [simulator documentation](simulator.html).
+
+
+
+[3.5 Example DCM feedback from X-ray Beam Position Monitor](#id37)
+------------------------------------------------------------------
+
+Consider the case of an X-ray beam line with a double crystal monochromator (DCM) and an X-ray Beam Position Monitor (XBPM) after the DCM. The XBPM provides a signal that can be used to maintain the throughput of the DCM if the DCM allows an adjustment of either first or second crystal Bragg rotation independent of the other crystal.
+
+For synchrotron beam lines, the vertical position from the XBPM provides the input signal to the epid loop. The DCM often has a piezoelectric transducer (PZT) that is used to control the fine rotation of the second crystal. The second crystal rotation is controlled by a low voltage (such as -2 .. +9 VDC) sent to the PZT's amplifier. (The purpose of this amplifier is to supply the operating voltage to the PZT and optionally account for the hysteresis of the PZT as used in positioner applications.)
+
+This example shows the startup configuration used to maintain the XBPM vertical beam position by controlling the DCM second crystal PZT voltage.
+
+| macro | configured value | meaning |
+|---|---|---|
+| P | iad:fbe:xbpm:y | PV of this fb\_epid instance |
+| IN | iad:xbpm:pos:y | Y position from the XBPM |
+| OUT | iad:540:c0:out0 | control voltage of the PZT |
+| MODE | PID | hold position steady using PID |
+| CALC | A&amp;&amp;B&amp;&amp;C | only when EPID is ON and both permits |
+| PERMIT1 | iad:beamAvailable.VAL | require X-ray beam to be ready |
+| PERMIT2 | iad:xbpm:current:ok.VAL | require XBPM signal to be valid |
+| PERMIT3 |  | unused |
+| PERMIT4 |  | unused |
+
+
+
+[3.6 Example Monochromator feedback from beam intensity monitor](#id38)
+-----------------------------------------------------------------------
+
+Consider another beam line with a DCM and then a monitor of the beam intensity (reported as a floating-point or large integer number). A list of suitable such monitors might include ionization chambers graphite foils, or fluorescent materials with photodiodes.
+
+| macro | configured value | meaning |
+|---|---|---|
+| P | iad:fbe:D3:y | PV of this fb\_epid instance |
+| IN | iad:540:c0:in10 | signal from the beam intensity monitor |
+| OUT | iad:540:c0:out0 | control voltage of the PZT |
+| MODE | Max/Min | maximize beam intensity |
+| CALC | A&amp;&amp;B | only when EPID is ON and one permit |
+| PERMIT1 | iad:beamAvailable.VAL | require X-ray beam to be ready |
+| PERMIT2 |  | unused |
+| PERMIT3 |  | unused |
+| PERMIT4 |  | unused |
+
+
+
+[3.7 Previous observations During Initial Development](#id39)
+-------------------------------------------------------------
+
+Notes from the early stages of development show motivations for the construction of this database support.
+
+1. [Notes from initial epid record testing in 2004-06](tests/index.html)
+2. [Early notes on the fb\_epid support from 2004-06](docv1.html)
+
+
+
+
+
+[4 Infrastructure](#id40)
+=========================
+
+The fb\_epid support consists of several components:
+
+| file | description |
+|---|---|
+| opticsApp/Db/fb\_epid.db | EPICS database |
+| opticsApp/Db/fb\_epid.req | request file for autosave/restore |
+| opticsApp/Db/epid.req | request file for autosave/restore |
+| iocBoot/iocAny/fb\_epid.substitutions | creates specific instances |
+| opticsApp/op/adl/fb\_epid.adl | main MEDM screen |
+| opticsApp/op/adl/fb\_epid\_basic.adl | basic MEDM screen |
+| opticsApp/op/adl/fb\_epid\_chart.adl | charts VAL and CVAL, also ERR |
+| opticsApp/op/adl/fb\_epid\_config.adl | simplified configuration screen |
+| opticsApp/op/adl/fb\_epid\_sim.adl | simulator controls |
+| documentation/fb\_epid/index.html | documentation |
+
+[4.1 Structure of the EPICS Database](#id41)
+--------------------------------------------
+
+The EPICS database was constructed in 2004. The records of the database are defined in this table:
+
+| record type | name | description |
+|---|---|---|
+| epid | $(P) | Epid record instance |
+| swait | $(P):in | Input signal collector |
+| swait | $(P):obuf | Enforces $(P).FBON to disconnect epid record from output so $(OUT) is not changed |
+| swait | $(P):out | Output signal collector |
+| sseq | $(P):outpv | Part of bumpless start feature |
+| swait | $(P):resume | Part of bumpless start feature |
+| bo | $(P):on | User switch to turn epid ON or OFF |
+| swait | $(P):enable | Automatic ON/OFF feature |
+| swait | $(P):sim | Simulated temperature reading and heater |
+
+A figure was produced to show how these records are connected. Note that the simulator record ($(P):sim)is not shown in this figure.
+
+![structure of fb_epid database](fb_epid.png)Figure: Structure of the fb\_epid database
+
+
+
+The database file has many comments. The text of the file is included here:
+
+```
 <pre class="literal-block">
 ########### SVN repository information ###################
 # $Date$
@@ -1089,7 +482,7 @@ Note that the simulator record (<tt class="docutils literal"><span class="pre">$
 #    IN      = iad:xbpm:pos:y
 #    OUT     = iad:540:c0:out0
 #    MODE    = PID
-#    CALC    = A&amp;&amp;B&amp;&amp;C
+#    CALC    = A&&B&&C
 #    PERMIT1 = iad:beamAvailable.VAL
 #    PERMIT2 = iad:xbpm:current:ok.VAL
 #    PERMIT3 = 
@@ -1100,7 +493,7 @@ Note that the simulator record (<tt class="docutils literal"><span class="pre">$
 #    IN      = iad:540:c0:in10
 #    OUT     = iad:540:c0:out0
 #    MODE    = Max/Min
-#    CALC    = A&amp;&amp;B
+#    CALC    = A&&B
 #    PERMIT1 = iad:beamAvailable.VAL
 #    PERMIT2 = 
 #    PERMIT3 = 
@@ -1108,11 +501,11 @@ Note that the simulator record (<tt class="docutils literal"><span class="pre">$
 
 # For each channel:
 #  signal(ao or other)
-#    -&gt; in(swait)
-#    --&gt; epid
-#    ---&gt; obuf(swait) 
-#    ----&gt; out(swait)
-#    -----&gt; positioner(motor or ao)
+#    -> in(swait)
+#    --> epid
+#    ---> obuf(swait) 
+#    ----> out(swait)
+#    -----> positioner(motor or ao)
 
 # Theory of operation:
 # 1. A signal is available as an EPICS process variable.
@@ -1151,20 +544,20 @@ Note that the simulator record (<tt class="docutils literal"><span class="pre">$
    # epid record to actually calculate the 
    # feedback response to the input
    #
-grecord(epid, &quot;$(P)&quot;) {
-        field(DESC, &quot;EPID feedback&quot;)
-        field(INP,  &quot;$(P):in&quot;)
-        field(FMOD, &quot;$(MODE)&quot;)
-        field(FBON, &quot;Off&quot;)
-        field(SCAN, &quot;Passive&quot;)
-        field(KP,   &quot;0&quot;)
-        field(KI,   &quot;0&quot;)
-        field(KD,   &quot;0&quot;)
-        field(I,    &quot;0&quot;)
-        field(DRVL, &quot;0&quot;)
-        field(DRVH, &quot;0&quot;)
-        field(EGU,  &quot;feedback&quot;)
-        field(PREC, &quot;4&quot;)
+grecord(epid, "$(P)") {
+        field(DESC, "EPID feedback")
+        field(INP,  "$(P):in")
+        field(FMOD, "$(MODE)")
+        field(FBON, "Off")
+        field(SCAN, "Passive")
+        field(KP,   "0")
+        field(KI,   "0")
+        field(KD,   "0")
+        field(I,    "0")
+        field(DRVL, "0")
+        field(DRVH, "0")
+        field(EGU,  "feedback")
+        field(PREC, "4")
 }
    #
    # Input calculation to the epid record
@@ -1172,13 +565,13 @@ grecord(epid, &quot;$(P)&quot;) {
    # or a more complex database resulting in this simple calculation
    # By default, $(P):in.INAN is the PV name of the input signal
    #
-grecord(swait, &quot;$(P):in&quot;) {
-        field(DESC, &quot;EPID feedback input&quot;)
-        field(PREC, &quot;5&quot;)
-        field(SCAN, &quot;I/O Intr&quot;)
-        field(CALC, &quot;A&quot;)
-        field(INAN, &quot;$(IN)&quot;)
-        field(INAP, &quot;1&quot;)
+grecord(swait, "$(P):in") {
+        field(DESC, "EPID feedback input")
+        field(PREC, "5")
+        field(SCAN, "I/O Intr")
+        field(CALC, "A")
+        field(INAN, "$(IN)")
+        field(INAP, "1")
 }
    #
    # Output buffer from epid record
@@ -1186,17 +579,17 @@ grecord(swait, &quot;$(P):in&quot;) {
    # epid record when $(P).FBON=0 but $(P).OVAL is changed anyway.
    # In this record, $(P):obuf.VAL will not change when $(P).FBON=0
    #
-grecord(swait, &quot;$(P):obuf&quot;) {
-        field(DESC, &quot;EPID FBON output buffer&quot;)
-        field(PREC, &quot;5&quot;)
-        field(SCAN, &quot;I/O Intr&quot;)
-        field(CALC, &quot;B?A:C&quot;)
-        field(INAN, &quot;$(P).OVAL&quot;)
-        field(INAP, &quot;1&quot;)
-        field(INBN, &quot;$(P).FBON&quot;)
-        field(INBP, &quot;1&quot;)
-        field(INCN, &quot;$(P):obuf.VAL&quot;)
-        field(INCP, &quot;1&quot;)
+grecord(swait, "$(P):obuf") {
+        field(DESC, "EPID FBON output buffer")
+        field(PREC, "5")
+        field(SCAN, "I/O Intr")
+        field(CALC, "B?A:C")
+        field(INAN, "$(P).OVAL")
+        field(INAP, "1")
+        field(INBN, "$(P).FBON")
+        field(INBP, "1")
+        field(INCN, "$(P):obuf.VAL")
+        field(INCP, "1")
 }
    #
    # Provide the output from the epid record (through the output buffer)
@@ -1208,14 +601,14 @@ grecord(swait, &quot;$(P):obuf&quot;) {
    #
    # Instead, could make this a seq record, eliminating the calculation.
    #
-grecord(swait, &quot;$(P):out&quot;) {
-        field(DESC, &quot;EPID feedback output&quot;)
-        field(PREC, &quot;5&quot;)
-        field(SCAN, &quot;I/O Intr&quot;)
-        field(CALC, &quot;A&quot;)
-        field(INAN, &quot;$(P):obuf.VAL&quot;)
-        field(INAP, &quot;1&quot;)
-        field(OUTN, &quot;$(OUT)&quot;)
+grecord(swait, "$(P):out") {
+        field(DESC, "EPID feedback output")
+        field(PREC, "5")
+        field(SCAN, "I/O Intr")
+        field(CALC, "A")
+        field(INAN, "$(P):obuf.VAL")
+        field(INAP, "1")
+        field(OUTN, "$(OUT)")
 }
 
    #
@@ -1228,28 +621,28 @@ grecord(swait, &quot;$(P):out&quot;) {
    # $(P):outpv detects this change and rewrites $(P):resume.INBN.
    # $(P):resume.INBN holds the PV name of the output positioner
    #
-grecord(sseq, &quot;$(P):outpv&quot;) {
-        field(DESC, &quot;follow OUT PV name&quot;)
-        field(SCAN, &quot;I/O Intr&quot;)
-        field(DOL1, &quot;$(P):out.OUTN&quot;)
-        field(DLY1, &quot;0&quot;)
-        field(LNK1, &quot;$(P):resume.INBN&quot;)
+grecord(sseq, "$(P):outpv") {
+        field(DESC, "follow OUT PV name")
+        field(SCAN, "I/O Intr")
+        field(DOL1, "$(P):out.OUTN")
+        field(DLY1, "0")
+        field(LNK1, "$(P):resume.INBN")
 }
-grecord(swait, &quot;$(P):resume&quot;) {
-        field(DESC, &quot;EPID feedback input&quot;)
-        field(PREC, &quot;5&quot;)
-        field(SCAN, &quot;I/O Intr&quot;)
-        field(CALC, &quot;!C&amp;&amp;D?B:A&quot;)
-        field(INAN, &quot;$(P):resume.VAL&quot;)
-        field(INAP, &quot;1&quot;)
-        field(INBN, &quot;$(OUT)&quot;)
-        field(INBP, &quot;1&quot;)
-        field(INCN, &quot;$(P):resume.D&quot;)
-        field(INCP, &quot;0&quot;)
-        field(INDN, &quot;$(P).FBON&quot;)
-        field(INDP, &quot;1&quot;)
-        field(OOPT, &quot;On Change&quot;)
-        field(OUTN, &quot;$(P).I&quot;)
+grecord(swait, "$(P):resume") {
+        field(DESC, "EPID feedback input")
+        field(PREC, "5")
+        field(SCAN, "I/O Intr")
+        field(CALC, "!C&&D?B:A")
+        field(INAN, "$(P):resume.VAL")
+        field(INAP, "1")
+        field(INBN, "$(OUT)")
+        field(INBP, "1")
+        field(INCN, "$(P):resume.D")
+        field(INCP, "0")
+        field(INDN, "$(P).FBON")
+        field(INDP, "1")
+        field(OOPT, "On Change")
+        field(OUTN, "$(P).I")
 }
 
    #
@@ -1261,123 +654,106 @@ grecord(swait, &quot;$(P):resume&quot;) {
    # resulting in this simple calculation.
    # $(P):enable drives the $(P).FBON field
    #
-grecord(bo, &quot;$(P):on&quot;)
+grecord(bo, "$(P):on")
 {
-        field(DESC, &quot;off/on&quot;)
-        field(ZNAM, &quot;off&quot;)
-        field(ONAM, &quot;on&quot;)
+        field(DESC, "off/on")
+        field(ZNAM, "off")
+        field(ONAM, "on")
 }
-grecord(swait, &quot;$(P):enable&quot;) {
-        field(DESC, &quot;EPID feedback permit&quot;)
-        field(PREC, &quot;5&quot;)
-        field(SCAN, &quot;I/O Intr&quot;)
-        field(CALC, &quot;A&amp;&amp;B&quot;)
-        field(INAN, &quot;$(P):on.VAL&quot;)
-        field(INAP, &quot;1&quot;)
-        field(INBN, &quot;$(PERMIT1)&quot;)
-        field(INBP, &quot;1&quot;)
-        field(INCN, &quot;$(PERMIT2)&quot;)
-        field(INCP, &quot;1&quot;)
-        field(INDN, &quot;$(PERMIT3)&quot;)
-        field(INDP, &quot;1&quot;)
-        field(INEN, &quot;$(PERMIT4)&quot;)
-        field(INEP, &quot;1&quot;)
-        field(OOPT, &quot;On Change&quot;)
+grecord(swait, "$(P):enable") {
+        field(DESC, "EPID feedback permit")
+        field(PREC, "5")
+        field(SCAN, "I/O Intr")
+        field(CALC, "A&&B")
+        field(INAN, "$(P):on.VAL")
+        field(INAP, "1")
+        field(INBN, "$(PERMIT1)")
+        field(INBP, "1")
+        field(INCN, "$(PERMIT2)")
+        field(INCP, "1")
+        field(INDN, "$(PERMIT3)")
+        field(INDP, "1")
+        field(INEN, "$(PERMIT4)")
+        field(INEP, "1")
+        field(OOPT, "On Change")
         # drive the epid FBON field
-        field(OUTN, &quot;$(P).FBON&quot;)
+        field(OUTN, "$(P).FBON")
 }
 
 
 #--------------------------------------------
 # simulate a temperature sensor and heater
 #----------------------
-# A : minimum &quot;temperature&quot; allowed
+# A : minimum "temperature" allowed
 # B : cooling rate parameter
 # C : heater power
 # D : output of PID loop
-# E : heater relay closes when D &gt; E
-# F : current &quot;temperature&quot;
+# E : heater relay closes when D > E
+# F : current "temperature"
 #----------------------
 # PID loop terms:
-#   $(P):in.INAN = &quot;$(P):sim&quot;
-#   $(P):out.OUTN = &quot;$(P):sim.D&quot;
-#   $(P):enable.INAN = &quot;$(P):on.VAL&quot;
-#   $(P).KP = &quot;0.01&quot;
-#   $(P).KI = &quot;0.1&quot;
-#   $(P).I = &quot;0.0&quot;
-#   $(P).KD = &quot;0.0&quot;
-#   $(P).DRVL = &quot;0.0&quot;
-#   $(P).DRVH = &quot;1.0&quot;
-#   $(P).FMOD = &quot;PID&quot;
+#   $(P):in.INAN = "$(P):sim"
+#   $(P):out.OUTN = "$(P):sim.D"
+#   $(P):enable.INAN = "$(P):on.VAL"
+#   $(P).KP = "0.01"
+#   $(P).KI = "0.1"
+#   $(P).I = "0.0"
+#   $(P).KD = "0.0"
+#   $(P).DRVL = "0.0"
+#   $(P).DRVH = "1.0"
+#   $(P).FMOD = "PID"
 #----------------------
-grecord(swait, &quot;$(P):sim&quot;) {
-        field(DESC, &quot;EPID Temperature Controller simulator&quot;)
-        field(PREC, &quot;5&quot;)
-        field(SCAN, &quot;.1 second&quot;)
-        field(CALC, &quot;max(A,F*(1-B)+C*D*G)&quot;)
-        field(A,    &quot;0.1&quot;)      # minimum &quot;temperature&quot;
-        field(B,    &quot;0.05&quot;)     # cooling rate parameter
-        field(C,    &quot;30&quot;)       # heater power
-        field(D,    &quot;0&quot;)        # driven by epid loop
-        field(E,    &quot;0.8&quot;)      # relay close threshold
-        field(INFN, &quot;$(P):sim.VAL&quot;)
-        field(INGN, &quot;$(P).FBON&quot;)# is feedback ON?
+grecord(swait, "$(P):sim") {
+        field(DESC, "EPID Temperature Controller simulator")
+        field(PREC, "5")
+        field(SCAN, ".1 second")
+        field(CALC, "max(A,F*(1-B)+C*D*G)")
+        field(A,    "0.1")      # minimum "temperature"
+        field(B,    "0.05")     # cooling rate parameter
+        field(C,    "30")       # heater power
+        field(D,    "0")        # driven by epid loop
+        field(E,    "0.8")      # relay close threshold
+        field(INFN, "$(P):sim.VAL")
+        field(INGN, "$(P).FBON")# is feedback ON?
 }
 
-</pre>
-</div>
-<div class="section" id="simulator">
-<h2><a class="toc-backref" href="#id42">4.2&nbsp;&nbsp;&nbsp;Simulator</a></h2>
-<p>To help learn how to use the <tt class="docutils literal">fb_epid</tt> support, an swait
-record was added to simulate the temperature reading of an object
-that is exposed to some cooling power.  A heater with adjustable power
-may applied, either as adjustable power or as a switched power.</p>
-<p>Documentation of the simulator is provided on a <a class="reference external" href="simulator.html">related page</a>.</p>
-<p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="calc" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td>EPICS calc Record:           <a class="reference external" href="http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html">http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="epid" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id9">3</a>, <a class="fn-backref" href="#id11">4</a>)</em> EPICS epid Record:           <a class="reference external" href="http://cars9.uchicago.edu/software/epics/epidRecord.html">http://cars9.uchicago.edu/software/epics/epidRecord.html</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="epid-source" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[3]</a></td><td>epid source code:         <a class="reference external" href="https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c">https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="optics" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> EPICS synApps optics module: <a class="reference external" href="http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html">http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="swait" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[5]</a></td><td>EPICS swait Record:          <a class="reference external" href="http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html">http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="synapps" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[6]</a></td><td>EPICS synApps:               <a class="reference external" href="http://www.aps.anl.gov/bcda/synApps">http://www.aps.anl.gov/bcda/synApps</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="footer">
-<hr class="footer" />
-<a class="reference external" href="index.rst">View document source</a>.
-Generated on: 2012-03-02.
+```
 
-</div>
-</body>
-</html>
+
+
+[4.2 Simulator](#id42)
+----------------------
+
+To help learn how to use the fb\_epid support, an swait record was added to simulate the temperature reading of an object that is exposed to some cooling power. A heater with adjustable power may applied, either as adjustable power or as a switched power.
+
+Documentation of the simulator is provided on a [related page](simulator.html).
+
+Footnotes
+
+| \[1\] | EPICS calc Record: [http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html](http://www.aps.anl.gov/bcda/synApps/calc/calcDocs.html) |
+|---|---|
+
+| \[2\] | *([1](#id1), [2](#id3), [3](#id9), [4](#id11))* EPICS epid Record: [http://cars9.uchicago.edu/software/epics/epidRecord.html](http://cars9.uchicago.edu/software/epics/epidRecord.html) |
+|---|---|
+
+| [\[3\]](#id12) | epid source code: [https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c](https://subversion.xray.aps.anl.gov/trac/synApps/browser/std/trunk/stdApp/src/devEpidSoft.c) |
+|---|---|
+
+| \[4\] | *([1](#id2), [2](#id5))* EPICS synApps optics module: [http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html](http://www.aps.anl.gov/bcda/synApps/optics/opticsDocs.html) |
+|---|---|
+
+| [\[5\]](#id10) | EPICS swait Record: [http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html](http://www.aps.anl.gov/bcda/synApps/calc/swaitRecord.html) |
+|---|---|
+
+| [\[6\]](#id4) | EPICS synApps: [http://www.aps.anl.gov/bcda/synApps](http://www.aps.anl.gov/bcda/synApps) |
+|---|---|
+
+
+
+
+
+
+
+- - - - - -
+
+[View document source](index.rst). Generated on: 2012-03-02.
