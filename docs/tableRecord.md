@@ -262,16 +262,15 @@ In addition to fields common to all record types (see the [EPICS Record Referenc
 
 <a name="Fields_alphabetical"></a>
 
-Alphabetical list of record-specific fields 
--------------------------------------------  
+### Alphabetical list of record-specific fields 
 
 NOTE: Links in this table take you only to the *section* in which the linked item is described in detail. You'll probably have to scroll down to find the actual item. 
 Note: In the __Access__ column above: 
 
-* R \| Read only \|  
-* r \| Read only, not posted \| 
-* R/W \| Read and write are allowed \| 
-* R/W\* \| Read and write are allowed; write triggers record processing if the record's SCAN field is set to "Passive." \|
+* R - Read only 
+* r - Read only, not posted 
+* R/W - Read and write are allowed 
+* R/W\* - Read and write are allowed; write triggers record processing if the record's SCAN field is set to "Passive."
 
 - - - - - -
 
@@ -599,18 +598,18 @@ The following table briefly describes the files required to implement and use th
     DBDINC += tableRecord 
     SRCS += tableRecord.c 
     ``` 
-* <app>Include.dbd - Make sure the following line occurs in the file: 
+* \<app\>Include.dbd - Make sure the following line occurs in the file:  
     ``` 
     include "tableRecord.dbd" 
     ``` 
    
-### DATABASE files in <top>/opticsApp/Db/
+### DATABASE files in \<top\>/opticsApp/Db/
 
 * table.db - Table database 
-    * The database file contains one table record linked with up to six motor records defined in some other database. The motor records are referred to as $(P)$(M0X), $(P)$(M0Y), $(P)$(M1Y), $(P)$(M2X), $(P)$(M2Y), and $(P)$(M2Z). This database allows you to give names of motors that don't actually exist, to support tables that have fewer than six motors. __This database works with fewer than six motors only if you have version 3.6 or later of the transform record. Earlier versions of the transform record refuse to operate unless all of their non-blank link fields contain valid links.
+    * The database file contains one table record linked with up to six motor records defined in some other database. The motor records are referred to as $(P)$(M0X), $(P)$(M0Y), $(P)$(M1Y), $(P)$(M2X), $(P)$(M2Y), and $(P)$(M2Z). This database allows you to give names of motors that don't actually exist, to support tables that have fewer than six motors. This database works with fewer than six motors only if you have version 3.6 or later of the transform record. Earlier versions of the transform record refuse to operate unless all of their non-blank link fields contain valid links.
 * table\_settings.req - Autosave request file, which names the PV's in table.db that should be preserved across a reboot of the computer on which this software runs.
 
-### MEDM DISPLAY FILES in <top>/opticsApp/op/adl/
+### MEDM DISPLAY FILES in \<top\>/opticsApp/op/adl/
 
 * table.adl - Small control display 
 * table\_setup\_SRI.adl - Setup display for SRI geometry 
@@ -625,14 +624,14 @@ medm -x -macro "P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=
 ```  
 where xxx:table1 is the name of the table record, and xxx:Table1:is the prefix attached to all other records in the table database.
 
-### EPICS STARTUP FILES in <top>/iocBoot/ioc<name>/
+### EPICS STARTUP FILES in \<top\>/iocBoot/ioc\<name\>/
 * st.cmd - Startup script
     * This file is not included in the distribution. The following line added to st.cmd loads a single table. Note that the NEWPORT geometry normally does not have a motor associated with M2Z. Indicate this by setting M2Z to some string (e.g., "junk") that will not resolve to the name of an existing record. 
     ``` 
     dbLoadRecords("xxxApp/Db/table.db","P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI") 
     ```
 
-### BACKUP/RESTORE (BURT) REQUEST FILES in <top>/opticsApp/op/burt/ 
+### BACKUP/RESTORE (BURT) REQUEST FILES in \<top\>/opticsApp/op/burt/ 
 
 * yyTableSettings.req - save settings of a specified table. This file is normally \#include'd (once for each table) by other request files. 
 
