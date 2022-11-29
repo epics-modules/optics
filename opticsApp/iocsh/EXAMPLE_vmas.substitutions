@@ -18,17 +18,17 @@ file "$(MOTOR)/motorApp/Db/pseudoMotor.db"
 {
 pattern
 {M,         DINP,                    	OUT,                     		RDBL,                          		STOO,    						DESC, 					EGU, 	DIR, VELO, VBAS, ACCL, BDST, BVEL, BACC, MRES,   RRES, PREC,  DHLM, DLLM}
-{hSize, 	"xxx:size1Done NPP NMS",	"xxx:hSizeDVAL.VAL PP MS", 		"xxx:size1Readback.G NPP NMS", 		"xxx:US:size1Stop PP MS", 		"Slits hor size",  		mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
-{vSize,		"xxx:size2Done NPP NMS",	"xxx:vSizeDVAL.VAL PP MS", 		"xxx:size2Readback.G NPP NMS", 		"xxx:US:size2Stop PP MS", 		"Slits vert size", 		mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
-{hCenter, 	"xxx:centerDone NPP NMS",	"xxx:hCenterDVAL.VAL PP MS", 	"xxx:centerReadback.G NPP NMS", 	"xxx:US:centerStop PP MS", 		"Slits hor center",  	mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
-{vCenter,	"xxx:centerDone NPP NMS",	"xxx:vCenterDVAL.VAL PP MS", 	"xxx:centerReadback.H NPP NMS", 	"xxx:US:centerStop PP MS", 		"Slits vert center", 	mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+{hSize, 	"xxx:size1Done NPP NMS",	"xxx:hSizeDVAL.VAL PP MS", 		"xxx:size1Readback.G NPP NMS", 		"xxx:size1Stop PP MS", 		"Slits hor size",  		mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+{vSize,		"xxx:size2Done NPP NMS",	"xxx:vSizeDVAL.VAL PP MS", 		"xxx:size2Readback.G NPP NMS", 		"xxx:size2Stop PP MS", 		"Slits vert size", 		mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+{hCenter, 	"xxx:centerDone NPP NMS",	"xxx:hCenterDVAL.VAL PP MS", 	"xxx:centerReadback.G NPP NMS", 	"xxx:centerStop PP MS", 		"Slits hor center",  	mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+{vCenter,	"xxx:centerDone NPP NMS",	"xxx:vCenterDVAL.VAL PP MS", 	"xxx:centerReadback.H NPP NMS", 	"xxx:centerStop PP MS", 		"Slits vert center", 	mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
 
 
 file "$(TOP)/db/transform2D.db"
 {
 pattern
-{T,   		HOR, 		VERT,		M1DRV,     			M1RBV,    				M2DRV,    			M2RBV,    			M1STOP,    			M1DONE,    			M2STOP,    			M2DONE,  			PREC}
-{center,  	hCenter,	vCenter,	$(HORIZONTAL).VAL, 	$(HORIZONTAL).RBV,  	$(DIAGONAL).VAL, 	$(DIAGONAL).RBV,  	$(HORIZONTAL).STOP,	$(HORIZONTAL).DMOV, $(DIAGONAL).STOP, 	$(DIAGONAL).DMOV,   8}
+{T,   		HOR, 		VERT,		M1DRV,     		M1RBV,    		M2DRV,    		M2RBV,    		M1STOP,    		M1DONE,    		M2STOP,    		M2DONE,  		PREC}
+{center,  	hCenter,	vCenter,	$(HOR).VAL, 	$(HOR).RBV,  	$(DIA).VAL, 	$(DIA).RBV,  	$(HOR).STOP,	$(HOR).DMOV, 	$(DIA).STOP, 	$(DIA).DMOV,   	8}
 }
 
 file "$(TOP)/db/transformVMAS.db"
