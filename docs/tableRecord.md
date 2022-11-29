@@ -8,9 +8,6 @@ nav_order: 4
 Table Record and related software
 =================================
 
-Tim Mooney  
-- - - - - -
-
 Contents
 --------
 
@@ -643,4 +640,4 @@ where xxx:table1 is the name of the table record, and xxx:Table1:is the prefix a
 - - - - - -
 
 Suggestions and comments to:  
-[Tim Mooney](mailto:mooney@aps.anl.gov) : (mooney@aps.anl.gov)
+[Keenan Lang](mailto:klang@anl.gov) : (klang@anl.gov)

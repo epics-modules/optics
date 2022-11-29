@@ -201,4 +201,4 @@ This version is intended to build with EPICS base 3.14.5, mpf 2.4.2, and std 2.3
 - hrSeq.db - added debug PV $(P)HR$(N)CtlDebug. Fixed long-standing bug: if a theta motor was moved by a very small amount (by external client not working through hrCtl) this software would sometimes ignore the notification it received from EPICS.
 
 Suggestions and Comments to:   
-[Tim Mooney ](mailto:mooney@aps.anl.gov): (mooney@aps.anl.gov)
+[ Keenan Lang ](mailto:klang@anl.gov): (klang@anl.gov)
