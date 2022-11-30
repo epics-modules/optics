@@ -25,20 +25,20 @@ dbLoadTemplate("EXAMPLE_vmas.substitutions","P=$(PREFIX),YAW=$(YAW),PITCH=$(PITC
 ########################################################################
 # Set the weighting to account for the angle of the diagonal stage
 # used in the slits (14 degrees).  
-doAfterIocInit("dbpf('xxx:hCenterC1', '1.0')")
-doAfterIocInit("dbpf('xxx:hCenterC2', '0.97029573')")
-doAfterIocInit("dbpf('xxx:vCenterC1', '0.0')")
-doAfterIocInit("dbpf('xxx:vCenterC2', '0.24192189')")
+doAfterIocInit("dbpf('$(PREFIX)hCenterC1', '1.0')")
+doAfterIocInit("dbpf('$(PREFIX)hCenterC2', '0.97029573')")
+doAfterIocInit("dbpf('$(PREFIX)vCenterC1', '0.0')")
+doAfterIocInit("dbpf('$(PREFIX)vCenterC2', '0.24192189')")
 
 ########################################################################
 # C1 = aperture size when mask angle is 0 degrees
 # C2 = ratio of edge separation to motor lever arm 
 
-doAfterIocInit("dbpf('xxx:hSizeC1', '4.03')")
+doAfterIocInit("dbpf('$(PREFIX)hSizeC1', '4.03')")
 #Using Motor coord: 0.8889; Using encoder coord: 0.9364
-doAfterIocInit("dbpf('xxx:hSizeC2', '0.9364')")
+doAfterIocInit("dbpf('$(PREFIX)hSizeC2', '0.9364')")
 
-doAfterIocInit("dbpf('xxx:vSizeC1', '3.01')")
+doAfterIocInit("dbpf('$(PREFIX)vSizeC1', '3.01')")
 #Using Motor coord: 0.3534 or 0.4008; Using encoder coord: 
-doAfterIocInit("dbpf('xxx:vSizeC2', '0.4008')")
+doAfterIocInit("dbpf('$(PREFIX)vSizeC2', '0.4008')")
 
