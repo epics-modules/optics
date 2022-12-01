@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>643</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="caFrame" name="caframe_8">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>861</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="background">
+     <color>
+      <red>0</red>
+      <green>53</green>
+      <blue>132</blue>
+     </color>
+    </property>
+    <property name="backgroundMode">
+     <enum>caFrame::Filled</enum>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>2</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>2</number>
+     </property>
+     <item>
+      <widget class="caLabel" name="calabel">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>$(P)$(SLITS)</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="fontScaleMode">
+        <enum>ESimpleLabel::Height</enum>
+       </property>
+       <property name="foreground">
+        <color>
+         <red>228</red>
+         <green>228</green>
+         <blue>228</blue>
+        </color>
+       </property>
+       <property name="background">
+        <color alpha="0">
+         <red>160</red>
+         <green>160</green>
+         <blue>164</blue>
+        </color>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="caMessageButton" name="caMessageButton_0">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>570</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="fontScaleMode">
+     <enum>EPushButton::WidthAndHeight</enum>
+    </property>
+    <property name="channel" stdset="0">
+     <string>25ida:allstop.VAL</string>
+    </property>
+    <property name="label">
+     <string>All Stop</string>
+    </property>
+    <property name="foreground">
+     <color>
+      <red>228</red>
+      <green>228</green>
+      <blue>30</blue>
+     </color>
+    </property>
+    <property name="background">
+     <color>
+      <red>228</red>
+      <green>30</green>
+      <blue>30</blue>
+     </color>
+    </property>
+    <property name="pressMessage">
+     <string>1</string>
+    </property>
+    <property name="colorMode">
+     <enum>caMessageButton::Static</enum>
+    </property>
+   </widget>
+   <widget class="caFrame" name="caframe_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>531</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <widget class="caLabel" name="calabel_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>310</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Horizontal</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_3">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>310</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Diagonal</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_4">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>310</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pitch</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_5">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>310</y>
+       <width>121</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Yaw</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caRelatedDisplay" name="carelateddisplay">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>270</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="label">
+      <string notr="true">-  Transforms</string>
+     </property>
+     <property name="foreground">
+      <color>
+       <red>228</red>
+       <green>228</green>
+       <blue>228</blue>
+      </color>
+     </property>
+     <property name="background">
+      <color>
+       <red>53</red>
+       <green>132</green>
+       <blue>0</blue>
+      </color>
+     </property>
+     <property name="labels">
+      <string>Center Drive;Center Readback;Hor. Size Drive;Hor. Size Readback;Vert. Size Drive;Vert. Size Readback</string>
+     </property>
+     <property name="files">
+      <string>yyTransform_full.ui;yyTransform_full.ui;yyTransform_full.ui;yyTransform_full.ui;yyTransform_full.ui;yyTransform_full.ui</string>
+     </property>
+     <property name="args">
+      <string>P=$(P),T=$(SLITS):centerDrive;P=$(P),T=$(SLITS):centerReadback;P=$(P),T=$(SLITS):size1Drive;P=$(P),T=$(SLITS):size1Readback;P=$(P),T=$(SLITS):size2Drive;P=$(P),T=$(SLITS):size2Readback</string>
+     </property>
+     <property name="stackingMode" stdset="0">
+      <enum>caRowColMenu::Menu</enum>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_12">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>30</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Center</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_11">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Center</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_6">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>30</y>
+       <width>121</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Size</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_7">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>30</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Size</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_13">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>5</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Horizontal</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caLabel" name="calabel_14">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>5</y>
+       <width>90</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Vertical</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="caRelatedDisplay" name="carelateddisplay_2">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>270</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="label">
+      <string notr="true">-  Calibration</string>
+     </property>
+     <property name="foreground">
+      <color>
+       <red>228</red>
+       <green>228</green>
+       <blue>228</blue>
+      </color>
+     </property>
+     <property name="background">
+      <color>
+       <red>53</red>
+       <green>132</green>
+       <blue>0</blue>
+      </color>
+     </property>
+     <property name="labels">
+      <string>Main</string>
+     </property>
+     <property name="files">
+      <string>maskApertureSlit_calibration.ui</string>
+     </property>
+     <property name="args">
+      <string>P=$(P),SLITS=$(SLITS),HOR=$(HOR),DIAG=$(DIAG),PITCH=$(PITCH),YAW=$(YAW)</string>
+     </property>
+     <property name="stackingMode" stdset="0">
+      <enum>caRowColMenu::Menu</enum>
+     </property>
+    </widget>
+    <widget class="caInclude" name="cainclude_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>491</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <property name="macro">
+      <string>P=$(P),M1=$(SLITS):hCenter,M2=$(SLITS):hSize,M3=$(SLITS):vCenter,M4=$(SLITS):vSize</string>
+     </property>
+     <property name="filename" stdset="0">
+      <string notr="true">motor4x.ui</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="caInclude" name="cainclude">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>370</y>
+      <width>491</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="macro">
+     <string>P=$(P),M1=$(HOR),M2=$(DIAG),M3=$(PITCH),M4=$(YAW)</string>
+    </property>
+    <property name="filename" stdset="0">
+     <string notr="true">motor4x.ui</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>caRelatedDisplay</class>
+   <extends>QWidget</extends>
+   <header>caRelatedDisplay</header>
+  </customwidget>
+  <customwidget>
+   <class>caMessageButton</class>
+   <extends>QPushButton</extends>
+   <header>caMessageButton</header>
+  </customwidget>
+  <customwidget>
+   <class>caFrame</class>
+   <extends>QFrame</extends>
+   <header>caFrame</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>caLabel</class>
+   <extends>QLabel</extends>
+   <header>caLabel</header>
+  </customwidget>
+  <customwidget>
+   <class>caInclude</class>
+   <extends>QWidget</extends>
+   <header>caInclude</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

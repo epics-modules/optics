@@ -1,0 +1,41 @@
+# The new slits (variable mask aperture slits) in the APS Upgrade 
+# use a combination of stages to create both the horizontal
+# and vertical center position of the aperture.  Pitch and yaw stages 
+# determine aperture size. 
+
+# transform2D handles the center position
+# transformVMAS turns the pitch and yaw stages into vertical and 
+# horizontal sizes, respectively
+#
+# hSize 	- horizontal size pseudomotor
+# vSize 	- vertical size pseudomotor
+# hCenter 	- horizontal position pseudomotor
+# vCenter 	- vertical postion pseudomotor
+#
+
+
+file "$(MOTOR)/motorApp/Db/pseudoMotor.db"
+{
+pattern
+{M,         DINP,                    	OUT,                     		RDBL,                          		STOO,    						DESC, 					EGU, 	DIR, VELO, VBAS, ACCL, BDST, BVEL, BACC, MRES,   RRES, PREC,  DHLM, DLLM}
+{hSize, 	"$(P)size1Done NPP NMS",	"$(P)hSizeDVAL.VAL PP MS", 		"$(P)size1Readback.G NPP NMS", 		"$(P)size1Stop PP MS", 		"Slits hor size",  		mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+{vSize,		"$(P)size2Done NPP NMS",	"$(P)vSizeDVAL.VAL PP MS", 		"$(P)size2Readback.G NPP NMS", 		"$(P)size2Stop PP MS", 		"Slits vert size", 		mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+{hCenter, 	"$(P)centerDone NPP NMS",	"$(P)hCenterDVAL.VAL PP MS", 	"$(P)centerReadback.G NPP NMS", 	"$(P)centerStop PP MS", 		"Slits hor center",  	mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+{vCenter,	"$(P)centerDone NPP NMS",	"$(P)vCenterDVAL.VAL PP MS", 	"$(P)centerReadback.H NPP NMS", 	"$(P)centerStop PP MS", 		"Slits vert center", 	mm,  	Pos,   1,    .1,   .1,    0,    1,   .1, .1,     1.0,  6,    100, -100}
+
+
+file "$(TOP)/db/transform2D.db"
+{
+pattern
+{T,   		HOR, 		VERT,		M1DRV,     		M1RBV,    		M2DRV,    		M2RBV,    		M1STOP,    		M1DONE,    		M2STOP,    		M2DONE,  		PREC}
+{center,  	hCenter,	vCenter,	$(HOR).VAL, 	$(HOR).RBV,  	$(DIA).VAL, 	$(DIA).RBV,  	$(HOR).STOP,	$(HOR).DMOV, 	$(DIA).STOP, 	$(DIA).DMOV,   	8}
+}
+
+file "$(TOP)/db/transformVMAS.db"
+{
+pattern
+{T,   		VMAS,	M1DRV,     		M1RBV,    		M1STOP,    		M1DONE,    			PREC}
+{size1,  	hSize,	$(YAW).VAL, 	$(YAW).RBV,  	$(YAW).STOP,  	$(YAW).DMOV, 	 	8}
+{size2,  	vSize,	$(PITCH).VAL, 	$(PITCH).RBV,  	$(PITCH).STOP,  $(PITCH).DMOV, 	 	8}
+}
+
