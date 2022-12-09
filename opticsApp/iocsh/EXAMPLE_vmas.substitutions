@@ -28,14 +28,14 @@ file "$(TOP)/db/transform2D.db"
 {
 pattern
 {T,   		HOR, 		VERT,		M1DRV,     		M1RBV,    		M2DRV,    		M2RBV,    		M1STOP,    		M1DONE,    		M2STOP,    		M2DONE,  		PREC}
-{center,  	hCenter,	vCenter,	$(HOR).VAL, 	$(HOR).RBV,  	$(DIA).VAL, 	$(DIA).RBV,  	$(HOR).STOP,	$(HOR).DMOV, 	$(DIA).STOP, 	$(DIA).DMOV,   	8}
+{center,  	hCenter,	vCenter,	"$(HOR).VAL", 	"$(HOR).RBV",  	"$(DIA).VAL", 	"$(DIA).RBV",  	"$(HOR).STOP",	"$(HOR).DMOV", 	"$(DIA).STOP", 	"$(DIA).DMOV",   	8}
 }
 
 file "$(TOP)/db/transformVMAS.db"
 {
 pattern
 {T,   		VMAS,	M1DRV,     		M1RBV,    		M1STOP,    		M1DONE,    			PREC}
-{size1,  	hSize,	$(YAW).VAL, 	$(YAW).RBV,  	$(YAW).STOP,  	$(YAW).DMOV, 	 	8}
-{size2,  	vSize,	$(PITCH).VAL, 	$(PITCH).RBV,  	$(PITCH).STOP,  $(PITCH).DMOV, 	 	8}
+{size1,  	hSize,	"$(YAW).VAL", 	"$(YAW).RBV",  	"$(YAW).STOP",  	"$(YAW).DMOV", 	 	8}
+{size2,  	vSize,	"$(PITCH).VAL", 	"$(PITCH).RBV",  	"$(PITCH).STOP",  "$(PITCH).DMOV", 	 	8}
 }
 
