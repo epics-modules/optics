@@ -55,6 +55,9 @@ optics_SRCS += filterDrive.st
 # Pete Jemian's (SNL program) support for
 #    Oxford Quad X-ray Beam Position Monitor
 optics_SRCS   += sncqxbpm.st
+
+# Support for APS flexure stages
+optics_SRCS   += flexCombinedMotion.st
  
 optics_LIBS += seq pv
 optics_LIBS += $(EPICS_BASE_IOC_LIBS)
