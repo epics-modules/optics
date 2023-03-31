@@ -1,0 +1,32 @@
+# ### flexCombinedMotion.iocsh ###
+
+#- ###################################################
+#- PREFIX           - IOC Prefix
+#- M                - Cap sensor motor name (m1)
+#- DESC             - Cap sensor motor description ("flexure motor")
+#- C                - Cap sensor name (cap1)
+#- V                - Cap sensor voltage PV (PREFIX:LJT8:1:Ai0)
+#- UMV              - Cap sensor microns per volt (32.5)
+#- OFF              - Optional: Cap sensor voltage offset
+#-                    Default: 0.0
+#-
+#- PREC             - Optional: Cap Sensor precision
+#-                    Default: 5
+#-
+#- EGU              - Optional: Cap Sensor and cap sensor motor EGU
+#-                    Default: um
+#-
+#- LLM              - Fine motor lower limit (in EGU)
+#- HOME             - Fine motor parked position (in EGU)
+#- HLM              - Fine motor high limit (in EGU)
+#-
+#- FM               - Fine motor name (pi:c0:m1)
+#- CM               - Coarse motor name (nf:c0:m1)
+#-
+#- ###################################################
+
+### APS flexure combined motion support ###
+dbLoadRecords("$(OPTICS)/db/flexCombinedMotion.db","P=$(PREFIX),M=$(M),DESC=$(DESC),C=$(C),V=$(V),UMV=$(UMV),OFF=$(OFF=0.0),PREC=$(PREC=5),EGU=$(EGU=um),LLM=$(LLM),HOME=$(HOME),HLM=$(HLM)")
+doAfterIocInit("seq(flexCombinedMotion,'P=$(PREFIX),M=$(M),C=$(C),FM=$(FM),CM=$(CM)')")
+#- Sync the target position, which is not autosaved, with the readback
+doAfterIocInit("dbpf '$(P)$(M).SYNC', '1'")
