@@ -2,8 +2,6 @@
 
 #- ###################################################
 #- PREFIX           - IOC Prefix
-#- M                - Cap sensor motor name (m1)
-#- DESC             - Cap sensor motor description ("flexure motor")
 #- C                - Cap sensor name (cap1)
 #- V                - Cap sensor voltage PV (PREFIX:LJT8:1:Ai0)
 #- UMV              - Cap sensor microns per volt (32.5)
@@ -16,6 +14,9 @@
 #- EGU              - Optional: Cap Sensor and cap sensor motor EGU
 #-                    Default: um
 #-
+#- M                - Cap sensor motor name (m1)
+#- DESC             - Cap sensor motor description ("flexure motor")
+#-
 #- LLM              - Fine motor lower limit (in EGU)
 #- HOME             - Fine motor parked position (in EGU)
 #- HLM              - Fine motor high limit (in EGU)
@@ -26,7 +27,11 @@
 #- ###################################################
 
 ### APS flexure combined motion support ###
-dbLoadRecords("$(OPTICS)/db/flexCombinedMotion.db","P=$(PREFIX),M=$(M),DESC=$(DESC),C=$(C),V=$(V),UMV=$(UMV),OFF=$(OFF=0.0),PREC=$(PREC=5),EGU=$(EGU=um),LLM=$(LLM),HOME=$(HOME),HLM=$(HLM)")
+#-
+dbLoadRecords("$(OPTICS)/db/flexCapSensor.db","P=$(PREFIX),C=$(C),V=$(V),UMV=$(UMV),OFF=$(OFF=0.0),PREC=$(PREC=5),EGU=$(EGU=um)")
+#-
+dbLoadRecords("$(OPTICS)/db/flexCombinedMotion.db","P=$(PREFIX),M=$(M),DESC=$(DESC),C=$(C),EGU=$(EGU=um),LLM=$(LLM),HOME=$(HOME),HLM=$(HLM)")
+#-
 doAfterIocInit("seq(flexCombinedMotion,'P=$(PREFIX),M=$(M),C=$(C),FM=$(FM),CM=$(CM)')")
 #- Sync the target position, which is not autosaved, with the readback
 doAfterIocInit("dbpf '$(P)$(M).SYNC', '1'")
