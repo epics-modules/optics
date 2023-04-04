@@ -1,0 +1,768 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 616
+y 127
+w 210
+h 302
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-bold-r-10.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 5
+y 5
+w 200
+h 45
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Combined Motion $(P)$(M)"
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 60
+w 180
+h 18
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 60
+w 100
+h 18
+controlPv "$(P)$(M):setPoint"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 2560 0 47104
+bgColor rgb 51200 51200 51200
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 60
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Set Point"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 106
+w 176
+h 18
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 106
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Upper Lim"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 106
+w 96
+h 18
+controlPv "$(P)$(M):upperLimit"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 39168 65280 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 129
+w 176
+h 18
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 129
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Home Pos"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 129
+w 96
+h 18
+controlPv "$(P)$(M):homePos"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 39168 65280 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 83
+w 176
+h 18
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 83
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Deadband"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 83
+w 96
+h 18
+controlPv "$(P)$(M):deadband"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 39168 65280 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 175
+w 176
+h 18
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 175
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Lower Lim"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 175
+w 96
+h 18
+controlPv "$(P)$(M):lowerLimit"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 39168 65280 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 267
+w 180
+h 18
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 267
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Mode"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 244
+w 176
+h 18
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 244
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Debug"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 244
+w 96
+h 18
+controlPv "$(P)$(M):debug"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 39168 65280 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 198
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Busy"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 198
+w 100
+h 18
+controlPv "$(P)$(M):busy"
+format "string"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 2560 0 47104
+bgColor rgb 51200 51200 51200
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 221
+w 180
+h 18
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 221
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Retries"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 221
+w 100
+h 18
+controlPv "$(P)$(M):retries"
+format "string"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 2560 0 47104
+bgColor rgb 51200 51200 51200
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 152
+w 100
+h 18
+controlPv "$(P)$(M):rehome"
+format "string"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 2560 0 47104
+bgColor rgb 51200 51200 51200
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 60
+w 180
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 106
+w 176
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 129
+w 176
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 83
+w 176
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 175
+w 176
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 267
+w 180
+h 18
+
+beginGroup
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 93
+y 267
+w 100
+h 18
+fgColor rgb 0 0 0
+bgColor rgb 51200 51200 51200
+inconsistentColor rgb 17920 17920 17920
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+controlPv "$(P)$(M):mode"
+indicatorPv "$(P)$(M):mode"
+font "helvetica-bold-r-12.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 244
+w 176
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 221
+w 180
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 13
+y 152
+w 75
+h 18
+fgColor rgb 2560 0 47104
+onColor rgb 51200 51200 51200
+offColor rgb 51200 51200 51200
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
+controlPv "$(P)$(M):rehome"
+pressValue "1"
+releaseValue 
+onLabel "Rehome"
+offLabel "Rehome"
+3d
+useEnumNumeric
+font "helvetica-bold-r-12.0"
+endObjectProperties
+

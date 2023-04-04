@@ -1,0 +1,277 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 643
+y 151
+w 210
+h 210
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-bold-r-10.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 5
+y 5
+w 200
+h 45
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Cap Sensor $(P)$(C)"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 57
+w 100
+h 18
+controlPv "$(P)$(C):pos"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 2560 0 47104
+bgColor rgb 51200 51200 51200
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 57
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Position"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 80
+w 100
+h 18
+controlPv "$(P)$(C):voltage"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 2560 0 47104
+bgColor rgb 51200 51200 51200
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 80
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Voltage"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 103
+w 100
+h 18
+controlPv "$(P)$(C):umPerV"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 2560 0 47104
+bgColor rgb 51200 51200 51200
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 103
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "um per V"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 13
+y 126
+w 75
+h 18
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Offset"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 93
+y 126
+w 96
+h 18
+controlPv "$(P)$(C):offset"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 39168 65280 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 107
+y 160
+w 80
+h 28
+fgColor rgb 65280 65280 65280
+bgColor rgb 10240 37632 5376
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-bold-r-12.0"
+buttonLabel "Pos Calc"
+numPvs 2
+numDsps 1
+displayFileName {
+  0 "yyCalcoutRecord.edl"
+}
+menuLabel {
+  0 "Position Calc"
+}
+symbols {
+  0 "P=$(P),C=$(C):posCalc"
+}
+replaceSymbols {
+  0 1
+}
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 11
+y 160
+w 80
+h 28
+fgColor rgb 65280 65280 65280
+onColor rgb 10752 25344 58368
+offColor rgb 10752 25344 58368
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
+controlPv "$(P)$(C):zero.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Zero Pos"
+offLabel "Zero Pos"
+3d
+useEnumNumeric
+font "helvetica-bold-r-12.0"
+endObjectProperties
+
