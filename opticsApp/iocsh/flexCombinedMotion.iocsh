@@ -1,7 +1,7 @@
 # ### flexCombinedMotion.iocsh ###
 
 #- ###################################################
-#- PREFIX           - IOC Prefix
+#- P                - IOC Prefix
 #- C                - Cap sensor name (cap1)
 #- V                - Cap sensor voltage PV (PREFIX:LJT8:1:Ai0)
 #- UMV              - Cap sensor microns per volt (32.5)
@@ -28,10 +28,10 @@
 
 ### APS flexure combined motion support ###
 #-
-dbLoadRecords("$(OPTICS)/db/flexCapSensor.db","P=$(PREFIX),C=$(C),V=$(V),UMV=$(UMV),OFF=$(OFF=0.0),PREC=$(PREC=5),EGU=$(EGU=um)")
+dbLoadRecords("$(OPTICS)/db/flexCapSensor.db","P=$(P),C=$(C),V=$(V),UMV=$(UMV),OFF=$(OFF=0.0),PREC=$(PREC=5),EGU=$(EGU=um)")
 #-
-dbLoadRecords("$(OPTICS)/db/flexCombinedMotion.db","P=$(PREFIX),M=$(M),DESC=$(DESC),C=$(C),EGU=$(EGU=um),LLM=$(LLM),HOME=$(HOME),HLM=$(HLM)")
+dbLoadRecords("$(OPTICS)/db/flexCombinedMotion.db","P=$(P),M=$(M),DESC=$(DESC),C=$(C),EGU=$(EGU=um),LLM=$(LLM),HOME=$(HOME),HLM=$(HLM)")
 #-
-doAfterIocInit("seq(flexCombinedMotion,'P=$(PREFIX),M=$(M),C=$(C),FM=$(FM),CM=$(CM)')")
+doAfterIocInit("seq(flexCombinedMotion,'P=$(P),M=$(M),C=$(C),FM=$(FM),CM=$(CM)')")
 #- Sync the target position, which is not autosaved, with the readback
 doAfterIocInit("dbpf '$(P)$(M).SYNC', '1'")
