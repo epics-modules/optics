@@ -41,7 +41,7 @@ The existing [CoarseFineMotor.db](../opticsApp/Db/CoarseFineMotor.db) could not 
 
 ### IOC config
 
-The [flexCombinedMotion.iocsh](../opticsApp/iocsh/flexCombinedMotion.iocsh) file describes the required and option macros it accepts.  This example includes only the required macros:
+The [flexCombinedMotion.iocsh](../opticsApp/iocsh/flexCombinedMotion.iocsh) file describes the required and optional macros it accepts.  This example includes only the required macros:
 
 ```
 iocshLoad("$(OPTICS)/iocsh/flexCombinedMotion.iocsh","P=$(PREFIX),C=cap1,V=$(PREFIX)LJT8:1:Ai1,UMV=32.59,M=m1,DESC='Cap Sensor Position',LLM=0.0,HOME=7.5,HLM=15.0,FM=pi:c0:m1,CM=nf:c0:m1")
