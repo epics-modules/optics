@@ -36,7 +36,6 @@ The existing [CoarseFineMotor.db](../opticsApp/Db/CoarseFineMotor.db) could not 
 * Analog input reading cap sensor voltage: $(PREFIX):LJT8:1:Ai0
 * Cap sensor conversion factor (um/V): 32.59
 * Desired cap sensor name: cap1
-* Desired cap sensor description: "Cap Sensor Position"
 * Desired combo motor name: m1
 
 ### IOC config
@@ -44,7 +43,7 @@ The existing [CoarseFineMotor.db](../opticsApp/Db/CoarseFineMotor.db) could not 
 The [flexCombinedMotion.iocsh](../opticsApp/iocsh/flexCombinedMotion.iocsh) file describes the required and optional macros it accepts.  This example includes only the required macros:
 
 ```
-iocshLoad("$(OPTICS)/iocsh/flexCombinedMotion.iocsh","P=$(PREFIX),C=cap1,V=$(PREFIX)LJT8:1:Ai1,UMV=32.59,M=m1,DESC='Cap Sensor Position',LLM=0.0,HOME=7.5,HLM=15.0,FM=pi:c0:m1,CM=nf:c0:m1")
+iocshLoad("$(OPTICS)/iocsh/flexCombinedMotion.iocsh","P=$(PREFIX),C=cap1,V=$(PREFIX)LJT8:1:Ai1,UMV=32.59,M=m1,LLM=0.0,HOME=7.5,HLM=15.0,FM=pi:c0:m1,CM=nf:c0:m1")
 ```
 
 Notes: The LLM/HLM values can be used to restrict the usable range of the piezo.  The HOME can be near LLM or HLM to allow more fine steps in one direction before a coarse move is needed.
