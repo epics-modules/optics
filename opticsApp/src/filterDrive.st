@@ -179,9 +179,11 @@ monitor ENBL;
 sync ENBL needRecalc;
 
 /* Define array for the output channels, UNUSED */
-#int     OUT[MAX_FILTERS];
-#assign  OUT to {};
-                
+/*
+**int     OUT[MAX_FILTERS];
+**assign  OUT to {};
+*/
+
 /* Define array for the readback of the output channels */
 int     OUTGET[MAX_FILTERS];
 assign  OUTGET to {};
@@ -352,8 +354,10 @@ static double calcTrans(double keV,
           pvAssign(SET[i], str);
           sprintf(str, "%s%sFi%d:Enable", prefix, record, i+1);
           pvAssign(ENBL[i], str);
-          #sprintf(str, "%s%sFi%d:Set", prefix, record, i+1);
-          #pvAssign(OUT[i], str);
+          /*
+          **sprintf(str, "%s%sFi%d:Set", prefix, record, i+1);
+          **pvAssign(OUT[i], str);
+          */
           sprintf(str, "%s%sFi%d:OutGet", prefix, record, i+1);
           pvAssign(OUTGET[i], str);
           
