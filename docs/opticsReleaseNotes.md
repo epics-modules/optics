@@ -8,6 +8,14 @@ nav_order: 3
 optics Release Notes
 ====================
 
+Release 2-14 (Jun. 5 2023)
+--------------------------
+
+- Added support for APSU variable mask aperture slits
+- Added support for APS combined motion flexture stages
+- Fixed unused variables in filterDrive.st
+- Updated documentation to github pages
+
 Release 2-13-5 (Oct, 5 2020)
 ----------------------------
 
