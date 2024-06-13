@@ -5,6 +5,7 @@
 #- determine aperture size. 
 #
 #- PREFIX           - IOC Prefix (e.g. xxx:)
+#- S				- slit assembly (e.g. US or DS)
 #- YAW				- yaw motor (horizontal size)
 #- PITCH			- pitch motor (vertical size)
 #- HORIZONTAL		- horizontal motor (horizontal position)
@@ -20,25 +21,32 @@
 
 
 # Load motor records
-dbLoadTemplate("EXAMPLE_vmas.substitutions","P=$(PREFIX),YAW=$(YAW),PITCH=$(PITCH),HOR=$(HORIZONTAL),DIA=$(DIAGONAL)")
+dbLoadTemplate("substitutions/vmas.substitutions","P=$(PREFIX),S=$(S),YAW=$(YAW),PITCH=$(PITCH),H=$(HORIZONTAL),DIA=$(DIAGONAL)")
 
 ########################################################################
 # Set the weighting to account for the angle of the diagonal stage
 # used in the slits (14 degrees).  
-doAfterIocInit("dbpf('$(PREFIX)hCenterC1', '1.0')")
-doAfterIocInit("dbpf('$(PREFIX)hCenterC2', '0.97029573')")
-doAfterIocInit("dbpf('$(PREFIX)vCenterC1', '0.0')")
-doAfterIocInit("dbpf('$(PREFIX)vCenterC2', '0.24192189')")
+doAfterIocInit("dbpf('$(PREFIX)$(S):hCenterC1', '1.0')")
+doAfterIocInit("dbpf('$(PREFIX)$(S):hCenterC2', '0.97029573')")
+doAfterIocInit("dbpf('$(PREFIX)$(S):vCenterC1', '0.0')")
+doAfterIocInit("dbpf('$(PREFIX)$(S):vCenterC2', '0.24192189')")
 
 ########################################################################
-# C1 = aperture size when mask angle is 0 degrees
+# C1 = aperture size when mask fully open
 # C2 = ratio of edge separation to motor lever arm 
 
-doAfterIocInit("dbpf('$(PREFIX)hSizeC1', '4.03')")
-#Using Motor coord: 0.8889; Using encoder coord: 0.9364
-doAfterIocInit("dbpf('$(PREFIX)hSizeC2', '0.9364')")
+#Canted: Using Motor coord: 0.8889; Using encoder coord: 0.9364 (1.231?)
+#doAfterIocInit("dbpf('$(PREFIX)$(S):hSizeC1', '4')")
+#doAfterIocInit("dbpf('$(PREFIX)$(S):hSizeC2', '1.231')")
 
-doAfterIocInit("dbpf('$(PREFIX)vSizeC1', '3.01')")
-#Using Motor coord: 0.3534 or 0.4008; Using encoder coord: 
-doAfterIocInit("dbpf('$(PREFIX)vSizeC2', '0.4008')")
+#HHL: Using Motor coord: 1.335; Using encoder coord: 1.843
+doAfterIocInit("dbpf('$(PREFIX)$(S):hSizeC1', '2')")
+doAfterIocInit("dbpf('$(PREFIX)$(S):hSizeC2', '1.843')")
 
+#Canted: Using Motor coord: 0.3534; Using encoder coord: 0.615  
+#doAfterIocInit("dbpf('$(PREFIX)$(S):vSizeC1', '3')")
+#doAfterIocInit("dbpf('$(PREFIX)$(S):vSizeC2', '0.615')")
+
+#HHL: Using Motor coord: 0.515; Using encoder coord: 1.096
+doAfterIocInit("dbpf('$(PREFIX)$(S):vSizeC1', '2')")
+doAfterIocInit("dbpf('$(PREFIX)$(S):vSizeC2', '1.091')")
