@@ -28,6 +28,7 @@ PV(double,  set_point,       "{P}{M}:setPoint.VAL",      EvFlag);
 PV(double,  mode,            "{P}{M}:mode.VAL",          Monitor);
 PV(double,  deadband,        "{P}{M}:deadband.VAL",      Monitor);
 PV(double,  retries,         "{P}{M}:retries.VAL",       NoMon);
+PV(double,  max_retries,     "{P}{M}:maxRetries.VAL",    Monitor);
 PV(double,  pos_monitor,     "{P}{C}:pos",               Monitor);
 PV(double,  fine_val_put,    "{P}{FM}.VAL",              NoMon);
 PV(double,  fine_rbv,        "{P}{FM}.RBV",              Monitor);
@@ -267,6 +268,12 @@ ss combinedMotionMain
         act_db = deadband;
       DEBUG_PRINT2(5, "pos_error=%f, deadband=%f", pos_error, act_db);
     }
+    
+    when ( num_retries >= max_retries )
+    {
+      DEBUG_PRINT(1, "Max retries reached; Giving up.\n");
+      DEBUG_PRINT(3, "maybeRetry -> resetBusy\n");
+    } state resetBusy
     
     when ( fabs(pos_error) > act_db )
     {

@@ -65,6 +65,12 @@ record(longout, "$(P)$(M):retries")
   field(VAL,  "0")
 }
 
+record(longout, "$(P)$(M):maxRetries")
+{
+  field(DESC, "Coarse motor max retries")
+  field(VAL,  "10")
+}
+
 record(ao, "$(P)$(M):setPoint")
 {
   field(DESC, "Combined-motion target")
