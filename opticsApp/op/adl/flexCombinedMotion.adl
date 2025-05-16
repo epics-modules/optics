@@ -1,14 +1,14 @@
 
 file {
-	name="/home/beams3/KPETERSN/development/github-forks/optics/opticsApp/op/adl/flexCombinedMotion.adl"
+	name="/net/s9dserv/xorApps/epics/synApps_6_3/support/optics-git/opticsApp/op/adl/flexCombinedMotion.adl"
 	version=030111
 }
 display {
 	object {
-		x=616
-		y=127
+		x=606
+		y=119
 		width=210
-		height=302
+		height=325
 	}
 	clr=14
 	bclr=4
@@ -295,82 +295,6 @@ composite {
 		}
 	}
 }
-composite {
-	object {
-		x=13
-		y=267
-		width=180
-		height=18
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=13
-				y=267
-				width=75
-				height=18
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			textix="Mode"
-		}
-		menu {
-			object {
-				x=93
-				y=267
-				width=100
-				height=18
-			}
-			control {
-				chan="$(P)$(M):mode"
-				clr=14
-				bclr=3
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=13
-		y=244
-		width=176
-		height=18
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=13
-				y=244
-				width=75
-				height=18
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			textix="Debug"
-		}
-		"text entry" {
-			object {
-				x=93
-				y=244
-				width=96
-				height=18
-			}
-			control {
-				chan="$(P)$(M):debug"
-				clr=14
-				bclr=50
-			}
-			limits {
-			}
-		}
-	}
-}
 text {
 	object {
 		x=13
@@ -470,4 +394,108 @@ composite {
 	}
 	label="Rehome"
 	press_msg="1"
+}
+composite {
+	object {
+		x=13
+		y=267
+		width=176
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=13
+				y=267
+				width=75
+				height=18
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+			textix="Debug"
+		}
+		"text entry" {
+			object {
+				x=93
+				y=267
+				width=96
+				height=18
+			}
+			control {
+				chan="$(P)$(M):debug"
+				clr=14
+				bclr=50
+			}
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=13
+		y=290
+		width=180
+		height=18
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=13
+				y=290
+				width=75
+				height=18
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+			textix="Mode"
+		}
+		menu {
+			object {
+				x=93
+				y=290
+				width=100
+				height=18
+			}
+			control {
+				chan="$(P)$(M):mode"
+				clr=14
+				bclr=3
+			}
+		}
+	}
+}
+text {
+	object {
+		x=13
+		y=244
+		width=75
+		height=18
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Max Retries"
+}
+"text entry" {
+	object {
+		x=93
+		y=244
+		width=96
+		height=18
+	}
+	control {
+		chan="$(P)$(M):maxRetries"
+		clr=14
+		bclr=50
+	}
+	limits {
+	}
 }
