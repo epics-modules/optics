@@ -21,5 +21,5 @@
 
 ### Monochromator support ###
 # Kohzu and PSL monochromators: Bragg and theta/Y/Z motors
-dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq.db","P=$(PREFIX),M_THETA=$(M_THETA),M_Y=$(M_Y),M_Z=$(M_Z),yOffLo=$(YOFF_LO),yOffHi=$(YOFF_HI=0)")
+dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq.db","P=$(PREFIX),M_THETA=$(M_THETA),M_Y=$(M_Y),M_Z=$(M_Z),yOffLo=$(YOFF_LO=0),yOffHi=$(YOFF_HI=0)")
 doAfterIocInit("seq &kohzuCtl, 'P=$(PREFIX), M_THETA=$(M_THETA), M_Y=$(M_Y), M_Z=$(M_Z), GEOM=$(GEOM=1), logfile=$(LOG=kohzuCtl.log)'")
