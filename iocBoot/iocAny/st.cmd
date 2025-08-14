@@ -21,6 +21,9 @@ iocxxxLinux_registerRecordDeviceDriver(pdbbase)
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit.db","P=xxx:,SLIT=Slit1V,mXp=m3,mXn=m4")
 #dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit.db","P=xxx:,SLIT=Slit1H,mXp=m5,mXn=m6")
 
+## VMAS (white beam slits)
+iocshLoad("$(OPTICS)/opticsApp/iocsh/vmas.iocsh", "P=$(PREFIX),S=slits,HORIZONTAL=m1,DIAGONAL=m2,PITCH=m3,YAW=m4")
+
 ### soft motor slits
 dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2V,mXp=m3,mXn=m4")
 dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2H,mXp=m5,mXn=m6")
