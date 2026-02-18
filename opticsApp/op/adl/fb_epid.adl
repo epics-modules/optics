@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/fb_epid.adl"
+	name="/home/beams1/KLANG/Documents/Projects/Repository/git/optics/opticsApp/op/adl/fb_epid.adl"
 	version=030111
 }
 display {
 	object {
-		x=26
-		y=59
+		x=904
+		y=307
 		width=518
 		height=330
 	}
@@ -86,6 +86,23 @@ display {
 		289315,
 		1a7309,
 	}
+}
+text {
+	object {
+		x=282
+		y=200
+		width=220
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		calc="A"
+		chan="$(P).FMOD"
+	}
+	textix="P = KP * (INP[i] - INP[i-1])/DT"
 }
 text {
 	object {
@@ -861,6 +878,11 @@ text {
 	"basic attribute" {
 		clr=14
 	}
+	"dynamic attribute" {
+		vis="if zero"
+		calc="A"
+		chan="$(P).FMOD"
+	}
 	textix="I = KP * KI * sum(FE*DT)"
 }
 text {
@@ -873,6 +895,11 @@ text {
 	"basic attribute" {
 		clr=14
 	}
+	"dynamic attribute" {
+		vis="if zero"
+		calc="A"
+		chan="$(P).FMOD"
+	}
 	textix="P = KP * FE"
 }
 text {
@@ -884,6 +911,11 @@ text {
 	}
 	"basic attribute" {
 		clr=14
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		calc="A"
+		chan="$(P).FMOD"
 	}
 	textix="D = KP * KD * (FE[i] - FE[i-1])/DT"
 }
@@ -923,6 +955,11 @@ text {
 	"basic attribute" {
 		clr=14
 	}
+	"dynamic attribute" {
+		vis="if not zero"
+		calc="A"
+		chan="$(P).FMOD"
+	}
 	textix="D = 0"
 }
 text {
@@ -935,19 +972,12 @@ text {
 	"basic attribute" {
 		clr=14
 	}
+	"dynamic attribute" {
+		vis="if not zero"
+		calc="A"
+		chan="$(P).FMOD"
+	}
 	textix="I = 0"
-}
-text {
-	object {
-		x=282
-		y=200
-		width=220
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="P = KP * (INP[i] - INP[i-1])/DT"
 }
 text {
 	object {

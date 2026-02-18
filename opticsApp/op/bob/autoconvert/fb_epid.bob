@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2026-02-18 14:48:52 by klang-->
 <display version="2.0.0">
   <name>fb_epid</name>
-  <x>26</x>
-  <y>59</y>
+  <x>904</x>
+  <y>307</y>
   <width>518</width>
   <height>330</height>
   <background_color>
@@ -13,6 +14,27 @@
   <grid_step_x>5</grid_step_x>
   <widget type="label" version="2.0.0">
     <name>text #6</name>
+    <text>P = KP * (INP[i] - INP[i-1])/DT</text>
+    <x>282</x>
+    <y>200</y>
+    <width>220</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FMOD</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #10</name>
     <text>fb_epid.adl</text>
     <x>16</x>
     <y>4</y>
@@ -25,7 +47,7 @@
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #9</name>
+    <name>text #13</name>
     <text>last update: 2012-03-01 (prj)</text>
     <x>16</x>
     <y>14</y>
@@ -38,7 +60,7 @@
     <auto_size>true</auto_size>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #12</name>
+    <name>text #16</name>
     <text>feedback   $(P)</text>
     <x>164</x>
     <y>3</y>
@@ -51,13 +73,13 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>related display #15</name>
+    <name>related display #19</name>
     <actions>
       <action type="open_display">
         <file>userCalc.opi</file>
         <macros>
-          <C>enable</C>
           <P>$(P):</P>
+          <C>enable</C>
         </macros>
         <target>tab</target>
         <description>calculation</description>
@@ -78,7 +100,7 @@
     </background_color>
   </widget>
   <widget type="combo" version="2.0.0">
-    <name>menu #18</name>
+    <name>menu #22</name>
     <pv_name>$(P).SCAN</pv_name>
     <x>132</x>
     <y>299</y>
@@ -91,7 +113,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>related display #21</name>
+    <name>related display #25</name>
     <actions>
       <action type="open_display">
         <file>fb_epid_chart.opi</file>
@@ -114,7 +136,7 @@
     </background_color>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>related display #24</name>
+    <name>related display #28</name>
     <actions>
       <action type="open_display">
         <file>fb_epid_basic.opi</file>
@@ -137,7 +159,7 @@
     </background_color>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>related display #27</name>
+    <name>related display #31</name>
     <actions>
       <action type="open_display">
         <file>fb_epid_config.opi</file>
@@ -160,7 +182,7 @@
     </background_color>
   </widget>
   <widget type="rectangle" version="2.0.0">
-    <name>rectangle #30</name>
+    <name>rectangle #34</name>
     <x>8</x>
     <y>62</y>
     <width>500</width>
@@ -177,7 +199,7 @@
     <transparent>true</transparent>
   </widget>
   <widget type="rectangle" version="2.0.0">
-    <name>rectangle #33</name>
+    <name>rectangle #37</name>
     <x>37</x>
     <y>57</y>
     <width>140</width>
@@ -192,7 +214,7 @@
     </background_color>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #36</name>
+    <name>text #40</name>
     <text>EPID input</text>
     <x>47</x>
     <y>57</y>
@@ -201,7 +223,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #39</name>
+    <name>text update #43</name>
     <pv_name>$(P).CVAL</pv_name>
     <x>49</x>
     <y>99</y>
@@ -217,7 +239,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #43</name>
+    <name>text entry #47</name>
     <pv_name>$(P).VAL</pv_name>
     <x>49</x>
     <y>77</y>
@@ -236,7 +258,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #47</name>
+    <name>text #51</name>
     <text>-</text>
     <x>17</x>
     <y>99</y>
@@ -245,25 +267,25 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="polyline" version="2.0.0">
-    <name>polyline #50</name>
+    <name>polyline #54</name>
     <x>36</x>
     <y>119</y>
     <width>121</width>
     <height>2</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color red="0" green="0" blue="0">
-      </color>
-    </line_color>
     <points>
       <point x="1.0" y="1.0">
       </point>
       <point x="120.0" y="1.0">
       </point>
     </points>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #54</name>
+    <name>text #58</name>
     <text>following error (FE)</text>
     <x>156</x>
     <y>126</y>
@@ -272,7 +294,7 @@
     <auto_size>true</auto_size>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #57</name>
+    <name>text update #61</name>
     <pv_name>$(P).ERR</pv_name>
     <x>49</x>
     <y>126</y>
@@ -288,13 +310,13 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>related display #61</name>
+    <name>related display #65</name>
     <actions>
       <action type="open_display">
         <file>userCalc.opi</file>
         <macros>
-          <C>in</C>
           <P>$(P):</P>
+          <C>in</C>
         </macros>
         <target>tab</target>
         <description>calculation</description>
@@ -315,7 +337,7 @@
     </background_color>
   </widget>
   <widget type="rectangle" version="2.0.0">
-    <name>rectangle #64</name>
+    <name>rectangle #68</name>
     <x>8</x>
     <y>164</y>
     <width>500</width>
@@ -332,7 +354,7 @@
     <transparent>true</transparent>
   </widget>
   <widget type="rectangle" version="2.0.0">
-    <name>rectangle #67</name>
+    <name>rectangle #71</name>
     <x>37</x>
     <y>159</y>
     <width>140</width>
@@ -347,7 +369,7 @@
     </background_color>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #70</name>
+    <name>text #74</name>
     <text>EPID output</text>
     <x>47</x>
     <y>159</y>
@@ -356,7 +378,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="choice" version="2.0.0">
-    <name>choice button #73</name>
+    <name>choice button #77</name>
     <pv_name>$(P).FMOD</pv_name>
     <x>339</x>
     <y>176</y>
@@ -373,25 +395,25 @@
     </items>
   </widget>
   <widget type="polyline" version="2.0.0">
-    <name>polyline #76</name>
+    <name>polyline #80</name>
     <x>141</x>
     <y>257</y>
     <width>124</width>
     <height>2</height>
-    <line_width>2</line_width>
-    <line_color>
-      <color red="0" green="0" blue="0">
-      </color>
-    </line_color>
     <points>
       <point x="1.0" y="1.0">
       </point>
       <point x="123.0" y="1.0">
       </point>
     </points>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #80</name>
+    <name>text update #84</name>
     <pv_name>$(P).OVAL</pv_name>
     <x>153</x>
     <y>265</y>
@@ -406,7 +428,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #84</name>
+    <name>text #88</name>
     <text>&lt;=</text>
     <x>124</x>
     <y>265</y>
@@ -415,7 +437,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #87</name>
+    <name>text #91</name>
     <text>&lt;=</text>
     <x>258</x>
     <y>265</y>
@@ -424,7 +446,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #90</name>
+    <name>text entry #94</name>
     <pv_name>$(P).DRVL</pv_name>
     <x>39</x>
     <y>264</y>
@@ -443,7 +465,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #94</name>
+    <name>text entry #98</name>
     <pv_name>$(P).DRVH</pv_name>
     <x>287</x>
     <y>264</y>
@@ -462,7 +484,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #98</name>
+    <name>text #102</name>
     <text>P</text>
     <x>249</x>
     <y>198</y>
@@ -471,7 +493,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #101</name>
+    <name>text #105</name>
     <text></text>
     <x>145</x>
     <y>198</y>
@@ -480,7 +502,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #104</name>
+    <name>text #108</name>
     <text>D</text>
     <x>249</x>
     <y>238</y>
@@ -489,7 +511,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #107</name>
+    <name>text #111</name>
     <text>+</text>
     <x>145</x>
     <y>238</y>
@@ -498,7 +520,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #110</name>
+    <name>text #114</name>
     <text>I</text>
     <x>249</x>
     <y>217</y>
@@ -507,7 +529,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #113</name>
+    <name>text #117</name>
     <text>+</text>
     <x>145</x>
     <y>217</y>
@@ -516,7 +538,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #116</name>
+    <name>text #120</name>
     <text>KP</text>
     <x>14</x>
     <y>197</y>
@@ -525,7 +547,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #119</name>
+    <name>text entry #123</name>
     <pv_name>$(P).KI</pv_name>
     <x>38</x>
     <y>217</y>
@@ -544,7 +566,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #123</name>
+    <name>text #127</name>
     <text>KI</text>
     <x>15</x>
     <y>218</y>
@@ -553,7 +575,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #126</name>
+    <name>text entry #130</name>
     <pv_name>$(P).KD</pv_name>
     <x>39</x>
     <y>238</y>
@@ -572,7 +594,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #130</name>
+    <name>text #134</name>
     <text>KD</text>
     <x>14</x>
     <y>238</y>
@@ -581,7 +603,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #133</name>
+    <name>text entry #137</name>
     <pv_name>$(P).KP</pv_name>
     <x>38</x>
     <y>196</y>
@@ -600,7 +622,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #137</name>
+    <name>text #141</name>
     <text>KP</text>
     <x>14</x>
     <y>197</y>
@@ -609,7 +631,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #140</name>
+    <name>text #144</name>
     <text>I</text>
     <x>249</x>
     <y>217</y>
@@ -618,7 +640,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #143</name>
+    <name>text #147</name>
     <text>+</text>
     <x>145</x>
     <y>217</y>
@@ -627,7 +649,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #146</name>
+    <name>text #150</name>
     <text>P</text>
     <x>249</x>
     <y>198</y>
@@ -636,7 +658,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #149</name>
+    <name>text #153</name>
     <text></text>
     <x>145</x>
     <y>198</y>
@@ -645,7 +667,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #152</name>
+    <name>text #156</name>
     <text>D</text>
     <x>249</x>
     <y>238</y>
@@ -654,7 +676,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #155</name>
+    <name>text #159</name>
     <text>+</text>
     <x>145</x>
     <y>238</y>
@@ -663,7 +685,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #158</name>
+    <name>text #162</name>
     <text>feedback</text>
     <x>125</x>
     <y>177</y>
@@ -676,7 +698,7 @@
     <auto_size>true</auto_size>
   </widget>
   <widget type="choice" version="2.0.0">
-    <name>choice button #161</name>
+    <name>choice button #165</name>
     <pv_name>$(P):on</pv_name>
     <x>40</x>
     <y>176</y>
@@ -697,13 +719,13 @@
     </items>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>related display #164</name>
+    <name>related display #168</name>
     <actions>
       <action type="open_display">
         <file>userCalc.opi</file>
         <macros>
-          <C>out</C>
           <P>$(P):</P>
+          <C>out</C>
         </macros>
         <target>tab</target>
         <description>calculation</description>
@@ -724,7 +746,7 @@
     </background_color>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #167</name>
+    <name>text update #171</name>
     <pv_name>$(P).FBON</pv_name>
     <x>236</x>
     <y>175</y>
@@ -740,7 +762,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #171</name>
+    <name>text update #175</name>
     <pv_name>$(P).P</pv_name>
     <x>164</x>
     <y>198</y>
@@ -756,7 +778,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #175</name>
+    <name>text update #179</name>
     <pv_name>$(P).D</pv_name>
     <x>164</x>
     <y>238</y>
@@ -772,7 +794,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>text entry #179</name>
+    <name>text entry #183</name>
     <pv_name>$(P).I</pv_name>
     <x>164</x>
     <y>217</y>
@@ -791,7 +813,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #183</name>
+    <name>text #187</name>
     <text>I = KP * KI * sum(FE*DT)</text>
     <x>282</x>
     <y>220</y>
@@ -802,9 +824,17 @@
       </font>
     </font>
     <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FMOD</pv_name>
+      </rule>
+    </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #186</name>
+    <name>text #191</name>
     <text>P = KP * FE</text>
     <x>282</x>
     <y>200</y>
@@ -815,9 +845,17 @@
       </font>
     </font>
     <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FMOD</pv_name>
+      </rule>
+    </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #189</name>
+    <name>text #195</name>
     <text>D = KP * KD * (FE[i] - FE[i-1])/DT</text>
     <x>282</x>
     <y>241</y>
@@ -828,9 +866,17 @@
       </font>
     </font>
     <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0==0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FMOD</pv_name>
+      </rule>
+    </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #192</name>
+    <name>text #199</name>
     <text>0</text>
     <x>199</x>
     <y>217</y>
@@ -839,7 +885,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #195</name>
+    <name>text #202</name>
     <text>0</text>
     <x>199</x>
     <y>238</y>
@@ -848,7 +894,7 @@
     <horizontal_alignment>1</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #198</name>
+    <name>text #205</name>
     <text>D = 0</text>
     <x>282</x>
     <y>241</y>
@@ -859,9 +905,17 @@
       </font>
     </font>
     <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FMOD</pv_name>
+      </rule>
+    </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #201</name>
+    <name>text #209</name>
     <text>I = 0</text>
     <x>282</x>
     <y>220</y>
@@ -872,22 +926,17 @@
       </font>
     </font>
     <auto_size>true</auto_size>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P).FMOD</pv_name>
+      </rule>
+    </rules>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #204</name>
-    <text>P = KP * (INP[i] - INP[i-1])/DT</text>
-    <x>282</x>
-    <y>200</y>
-    <width>220</width>
-    <height>10</height>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="10.0">
-      </font>
-    </font>
-    <auto_size>true</auto_size>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #207</name>
+    <name>text #213</name>
     <text>DESC</text>
     <x>17</x>
     <y>34</y>
@@ -900,7 +949,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #210</name>
+    <name>text #216</name>
     <text>EGU</text>
     <x>277</x>
     <y>34</y>
@@ -913,7 +962,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #213</name>
+    <name>text #219</name>
     <text>PREC</text>
     <x>408</x>
     <y>34</y>
@@ -926,7 +975,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #216</name>
+    <name>text update #222</name>
     <pv_name>$(P).DESC</pv_name>
     <x>55</x>
     <y>34</y>
@@ -945,7 +994,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #220</name>
+    <name>text update #226</name>
     <pv_name>$(P).EGU</pv_name>
     <x>310</x>
     <y>34</y>
@@ -964,7 +1013,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #224</name>
+    <name>text update #230</name>
     <pv_name>$(P).PREC</pv_name>
     <x>451</x>
     <y>34</y>
@@ -984,7 +1033,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #228</name>
+    <name>text #234</name>
     <text>set point</text>
     <x>156</x>
     <y>77</y>
