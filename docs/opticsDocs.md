@@ -202,14 +202,9 @@ These are the control displays for a multilayer monochromator, comprised of two 
 
 The display pictured above uses EPICS analog output records for virtual motors "-", "+", "size", and "center". Taking "size" as an example, the PV names for drive and readback are "$(P)$(SLIT)xn" and "$(P)$(SLIT)t2.B". These PV names are inconvenient for users (particularly, spec users) who would prefer to talk to soft motor records, rather than separate ao records. There is a second version of the 2slit software that uses soft motor records for virtual motions. See 2slit\*soft\* in src, Db, and op directories.
 
-
-#### 4slitGraphic.adl
-
-![](4slitGraphic.adl.jpg)
-
-#### xia\_slit\_full.adl
-
-![](xia_slit_full.adl.jpg)
+|:--------:|:--------:|
+| 4slitGraphic.adl | xia\_slit\_full.adl |
+| ![](4slitGraphic.adl.jpg) | ![](xia_slit_full.adl.jpg) |
 
 
 ## Mirrors
@@ -274,7 +269,7 @@ file pf4bank.req   P=$(P),H=pf4:,B=A
 file pf4bank.req   P=$(P),H=pf4:,B=B
 ```
 
-###XIA PF4 multiple filter
+### XIA PF4 multiple filter
 
 This software treats two or four XIA (X-Ray Instrumentation Associates) PF4 four-filter units as a single device. It drives the filters via digital I/O PVs. It also also monitors those PVs, and behaves correctly when they are changed by some external agent.
 
