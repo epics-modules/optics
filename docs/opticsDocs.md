@@ -23,8 +23,10 @@ synApps supports the following monochromator types/geometries:
 
 ### Kohzu/PSL geometry 1 (Theta, Y1, Z2)
 
+
+#### kohzuGraphic.adl
+
 ![](kohzuGraphic.adl.gif)
-kohzuGraphic.adl
 
 This MEDM display is a picture of Kohzu/PSL geometry 1, with white beam entering from the left, monochromatized radiation diffracting upward from the first crystal and then forward from the second crystal. The crystal stages are mounted on a plate which rotates about a point midway, vertically, between the incident and exiting beam.
 
@@ -54,8 +56,10 @@ Because the Y and Z motions are nonlinear functions of Theta, their speeds ideal
 
 - - - - - -
 
+#### kohzuSeqCtl\_All.adl
+
 ![](kohzuSeqCtl_All.adl.gif)
-kohzuSeqCtl\_All.adl
+
 
 This MEDM display serves both geometries, and contains all of the user-modifiable fields that control and set them up. Smaller, less complicated displays are also provided.
 
@@ -67,8 +71,8 @@ The software can be in Manual-Move, or Auto\_Move mode. In Manual-Move mode, cha
 
 The manner in which 'Y', and 'Z' motions of monochromator crystals are calculated depends on the setting of a second mode switch, with the following options:
 
-| Normal | - | Y,Z driven per equations described above. |
 |---|---|---|
+| Normal | - | Y,Z driven per equations described above. |
 | Channel Cut | - | Y,Z are left at their current positions |
 | Freeze Z | - | Z is left at its current position |
 | Freeze Y | - | Y is left at its current position |
@@ -77,8 +81,10 @@ The display pictured above uses EPICS analog output records for virtual motors s
 
 ### Kohzu geometry 2 (Theta, Y2, Z2)
 
+#### kohzu2Graphic.adl
+
 ![](kohzu2Graphic.adl.gif)
-kohzu2Graphic.adl
+
 
 This MEDM display is a picture of Kohzu/PSL geometry 2, with white beam entering from the left, monochromatized radiation diffracting upward from the first crystal and then forward from the second crystal. The crystal stages are mounted on a plate which rotates about a point on the surface on of the first crystal.
 
@@ -108,13 +114,15 @@ Because the Y and Z motions are nonlinear functions of Theta, their speeds ideal
 
 synApps currently supports two geometries of a high energy-resolution, dispersive double crystal monochromator. Both geometries actually employ four crystals, but two of the crystals are channel-cut partners of the other two, and therefore are not driven. Crystal angles for these monochromators are described and controlled with three sets of variables:
 
-| Thetan | - | Bragg angle, the angle between beam incident on a crystal and the crystal's diffracting planes. |
 |---|---|---|
+| Thetan | - | Bragg angle, the angle between beam incident on a crystal and the crystal's diffracting planes. |
 | Phi | - | The angle between the crystal's diffracting planes and the horizontal. (By definition here, the beam incident on the monochromator is "horizontal". Note that small changes in incident-beam direction can be accommodated by the "world" offset, shown in the control displays below.) |
 | dPhi | - | (not shown in the diagram below) The difference between the actual angle, Phi, and the nominal value of this angle, Phi0. These are the motors actually driven by the software. The hardware for which this software was designed has extremely high resolution (nanoradian) rotation stages with very limited angular ranges. |
 
+
+#### hr\_nested.adl (nested geometry)
+
 ![](hr_nested.adl.gif)
-hr\_nested.adl (nested geometry)
 
 This display is a cartoon of the nested high-resolution monochromator geometry, defining the meanings of the angles Theta and Phi.
 
@@ -122,8 +130,10 @@ In this diagram, the crystals are drawn as if their diffracting planes were para
 
 - - - - - -
 
+#### hrSeqCtl\_All.adl (nested geometry)
+
 ![](hrSeqCtl_All_nested.adl.gif)
-hrSeqCtl\_All.adl (nested geometry)
+
 
 This is the full control display for a high-resolution monochromator in the "nested" geometry. At top left are energy and wavelength drive areas, with columns of numbers in the standard form for motors. From the top: HighLimit, Readback, Drive, LowLimit, and Tweak. In the middle are the crystal parameters and Bragg-angle drive area for the first crystal, 'TH1' (i.e., the crystal surface that the beam hits first, and its channel-cut pair, if any). At right are the crystal parameters and drive area for the second crystal, 'TH2'. The software makes sure all these fields are consistent with each other, so you can control the monochromator with any of them.
 
@@ -135,31 +145,36 @@ After new Phi-motor values have been calculated, they are adjusted by the "world
 
 When new, adjusted Phi-motor values have been calculated, they are displayed in the orange "Motor Write" row under the "Phi 1" and "Phi 2" headings. If the "Manual"/Auto" switch is set to "Auto", the new values will also be written to the motors. If the "Manual"/Auto" switch is set to "Manual", this will happen only when the "Move" button is pressed.
 
+#### hr\_symmetric.adl (symmetric geometry)
+
 ![](hr_symmetric.adl.gif)
-hr\_symmetric.adl (symmetric geometry)
 
 This display is a cartoon of the symmetric high-resolution monochromator geometry, defining the meanings of the angles Theta and Phi. Although this diagram shows two channel-cut pairs of identical crystals, the crystals needn't be identical.
 
+
+#### hrSeqCtl\_All.adl (symmetric geometry)
+
 ![](hrSeqCtl_All_symmetric.adl.gif)
-hrSeqCtl\_All.adl (symmetric geometry)
 
 This display shows the symmetric geometry in use.
 
+
 ### Spherical Grating (Phi, rentrance, rexit)
 
-![](SGM.adl.jpg)
-SGM.adl
-
-![](SGM_tiny.adl.jpg)
-SGM\_tiny.adl
+|:--------:|:--------:|
+| SGM.adl | SGM\_tiny.adl |
+| ![](SGM.adl.jpg) | ![](SGM_tiny.adl.jpg) |
 
 These are the control displays for a spherical grating monochromator. The supported geometry comprises an input slit, a grating driven by a tangent arm, and an exit slit. The angle between the incoming and outgoing beams is fixed. The grating may have up to 16 stripes, whose properties are specified in the following control display:
 
-![](SGM_gratings.adl.jpg)
-SGM\_gratings.adl
+#### SGM\_gratings.adl
 
-| Description | Anything the user wants to write |
+![](SGM_gratings.adl.jpg)
+
+
+| Column | Info |
 |---|---|
+| Description | Anything the user wants to write |
 | Diffraction order | "Grating", as used here, means a physical grating stripe and a particular diffraction order |
 | Line density | Number of gratings lines per mm. |
 | Radius of curvature | stripes can have different radii |
@@ -171,39 +186,45 @@ SGM\_gratings.adl
 
 ### Multilayer (Theta1, Theta2, Y2, Z2)
 
-![](ml_monoGraphic.adl.gif)
-ml\_monoGraphic.adl
-
-![](ml_monoSeqCtl.adl.gif)
-ml\_monoSeqCtl.adl.gif
+|:--------:|:--------:|
+| ml\_monoGraphic.adl | ml\_monoSeqCtl.adl.gif |
+| ![](ml_monoGraphic.adl.gif) | ![](ml_monoSeqCtl.adl.gif) |
 
 These are the control displays for a multilayer monochromator, comprised of two independently supported multilayers with the same __d__ spacing and diffraction order, in a nondispersive configuration . Both multilayers have Theta, X, Y, Z, and Chi motors; the downstream multilayer also has Phi and bend motors. The software drives Theta motors to an angle calculated from the multilayer __d__ spacing and diffraction-order number, reads the Y offset as the position of the second multilayer's Y motor, and drives the second multilayer's Z motor so that beam diffracted from the first multilayer intersects the second multilayer in the same spot, as the selected beam energy is varied.
 
+
 ## Slits
 
+#### 2slit.adl
+
 ![](2slit.adl.jpg)
-2slit.adl
+
 
 The display pictured above uses EPICS analog output records for virtual motors "-", "+", "size", and "center". Taking "size" as an example, the PV names for drive and readback are "$(P)$(SLIT)xn" and "$(P)$(SLIT)t2.B". These PV names are inconvenient for users (particularly, spec users) who would prefer to talk to soft motor records, rather than separate ao records. There is a second version of the 2slit software that uses soft motor records for virtual motions. See 2slit\*soft\* in src, Db, and op directories.
 
+
+#### 4slitGraphic.adl
+
 ![](4slitGraphic.adl.jpg)
-4slitGraphic.adl
+
+#### xia\_slit\_full.adl
 
 ![](xia_slit_full.adl.jpg)
-xia\_slit\_full.adl
+
 
 ## Mirrors
 
+#### 2postMirror.adl
+
 ![](2postMirror.adl.jpg)
-2postMirror.adl
+
 
 ## Filters
 
-![](2filter.adl.jpg)
-2filter.adl
+|:--------:|:--------:|
+| 2filter.adl | 2filter\_setup.adl |
+| ![](2filter.adl.jpg) | ![](2filter_setup.adl.jpg) |
 
-![](2filter_setup.adl.jpg)
-2filter\_setup.adl
 
 XIA PF4 dual filter
 
@@ -342,26 +363,25 @@ Note that there are two versions of the optical table software. The original ver
 
 ## Orientation matrix (diffractometer control)
 
-![](orient_full.adl.jpg)
-orient\_full.adl
+|:--------:|:--------:|
+| 2filter\_setup.adl | orient\_XTALS.adl |
+| ![](orient_full.adl.jpg) | ![](orient_XTALS.adl.jpg) |
 
-![](orient_XTALS.adl.jpg)
-orient\_XTALS.adl
 
 ## Io calculation (Jon Tischler)
 
-![](Io.adl.jpg)
-Io.adl
-
-![](Io_small.adl.jpg)
-Io\_small.adl
+|:--------:|:--------:|
+| Io.adl | Io\_small.adl |
+| ![](Io.adl.jpg) | ![](Io_small.adl.jpg) |
 
 This software calculates the photon flux through an ion chamber, given the counts recorded in scaler channels, and data describing the ionization chamber, the beam energy, and the signal path from ionization chamber to scaler.
 
 ## PID loop support
 
+#### fb\_epid.adl
+
 ![](fb_epid/fb_epid_adl.png)
-fb\_epid.adl
+
 
 The fb\_epid support provides a database centered around the EPICS [epid](http://cars9.uchicago.edu/software/epics/epidRecord.html) record. [Documentation](fb_epid/index.html) is provided on a separate page.
 
