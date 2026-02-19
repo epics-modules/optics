@@ -5,12 +5,12 @@ nav_order: 2
 ---
 
 
-The synApps Optics module 
+The synApps Optics module
 =========================
 
 The optics module contains support for devices used to modify the x-ray beam from a synchrotron source and apply it in experimentally useful ways, including a variety of monochromators, slits, filters, mirrors, diffractometers, and optical tables.
 
-### Monochromators
+## Monochromators
 
 synApps supports the following monochromator types/geometries:
 
@@ -21,9 +21,9 @@ synApps supports the following monochromator types/geometries:
 - spherical grating
 - multilayer
 
-#### Kohzu/PSL geometry 1 (Theta, Y1, Z2)
+### Kohzu/PSL geometry 1 (Theta, Y1, Z2)
 
-![](kohzuGraphic.adl.gif)  
+![](kohzuGraphic.adl.gif)
 kohzuGraphic.adl
 
 This MEDM display is a picture of Kohzu/PSL geometry 1, with white beam entering from the left, monochromatized radiation diffracting upward from the first crystal and then forward from the second crystal. The crystal stages are mounted on a plate which rotates about a point midway, vertically, between the incident and exiting beam.
@@ -32,29 +32,29 @@ The difference in height between the incident beam and the point about which the
 
 As the monochromator rotates from a Bragg angle (Theta) of zero, the first crystal moves away from the rotation point along a line normal to its diffracting planes, executing the equation
 
- 
+
 ```
 Y = -offset/cos(Theta).
 ```
 
-  
+
 Thus, `Y(Theta=0) = -offset`, and a positive- sense motion would move the crystal toward the rotation point.
 
 At the same time, the second crystal moves toward the rotation point along a line which is parallel to the crystal's diffracting planes, and which intersects the rotation point, according to the equation
 
- 
+
 ```
 Z = offset/sin(Theta).
 ```
 
-  
+
 Thus, a positive-sense motion of the second crystal moves it in the direction of the exiting beam.
 
 Because the Y and Z motions are nonlinear functions of Theta, their speeds ideally should vary as they move. The software doesn't attempt this, but it does attempt to set motor speeds to the closest linear approximation to ideal behavior. This means that it attempts to set motor speeds so that Theta, Y, and Z all move for the same length of time. The attempt may not succeed, however, because the motors have high and low speed limits, and will refuse commands to violate them.
 
 - - - - - -
 
-![](kohzuSeqCtl_All.adl.gif)  
+![](kohzuSeqCtl_All.adl.gif)
 kohzuSeqCtl\_All.adl
 
 This MEDM display serves both geometries, and contains all of the user-modifiable fields that control and set them up. Smaller, less complicated displays are also provided.
@@ -75,11 +75,9 @@ The manner in which 'Y', and 'Z' motions of monochromator crystals are calculate
 
 The display pictured above uses EPICS analog output records for virtual motors such as Energy, Lambda, etc. Taking Energy as an example, the PV names for drive and readback are "$(P)BraggEAO" and "$(P)BraggERdbkAO". These PV names are inconvenient for users (particularly, spec users) who would prefer to talk to soft motor records, rather than separate ao records. There is a second version of the Kohzu monochromator software that uses soft motor records for virtual motions. See kohzu\*soft\* in src, Db, and op directories.
 
-![](colorLine.gif)
+### Kohzu geometry 2 (Theta, Y2, Z2)
 
-#### Kohzu geometry 2 (Theta, Y2, Z2)
-
-![](kohzu2Graphic.adl.gif)  
+![](kohzu2Graphic.adl.gif)
 kohzu2Graphic.adl
 
 This MEDM display is a picture of Kohzu/PSL geometry 2, with white beam entering from the left, monochromatized radiation diffracting upward from the first crystal and then forward from the second crystal. The crystal stages are mounted on a plate which rotates about a point on the surface on of the first crystal.
@@ -88,26 +86,25 @@ The difference in height between the entrance and exit beams is called the monoc
 
 As the monochromator rotates from a Bragg angle (Theta) of zero, the second crystal moves upward along a line normal to its diffracting planes, executing the equation
 
- 
+
 ```
 Y = -offset/(2*cos(Theta)).
 ```
 
 At the same time, the second crystal moves toward the rotation point along a line which is parallel to the crystal's diffracting planes, according to the equation
 
- 
+
 ```
 Z = offset/(2*sin(Theta)).
 ```
 
-  
+
 Thus, a positive-sense motion of the second crystal moves it in the direction of the exiting beam.
 
 Because the Y and Z motions are nonlinear functions of Theta, their speeds ideally should vary as they move. The software doesn't attempt this, but it does attempt to set motor speeds to the closest linear approximation to ideal behavior. This means that it attempts to set motor speeds so that Theta, Y, and Z all move for the same length of time. The attempt may not succeed, however, because the motors have high and low speed limits, and will refuse commands to violate them.
 
-![](colorLine.gif)
 
-#### High-resolution double-crystal (Theta1, Theta2)
+### High-resolution double-crystal (Theta1, Theta2)
 
 synApps currently supports two geometries of a high energy-resolution, dispersive double crystal monochromator. Both geometries actually employ four crystals, but two of the crystals are channel-cut partners of the other two, and therefore are not driven. Crystal angles for these monochromators are described and controlled with three sets of variables:
 
@@ -116,7 +113,7 @@ synApps currently supports two geometries of a high energy-resolution, dispersiv
 | Phi | - | The angle between the crystal's diffracting planes and the horizontal. (By definition here, the beam incident on the monochromator is "horizontal". Note that small changes in incident-beam direction can be accommodated by the "world" offset, shown in the control displays below.) |
 | dPhi | - | (not shown in the diagram below) The difference between the actual angle, Phi, and the nominal value of this angle, Phi0. These are the motors actually driven by the software. The hardware for which this software was designed has extremely high resolution (nanoradian) rotation stages with very limited angular ranges. |
 
-![](hr_nested.adl.gif)  
+![](hr_nested.adl.gif)
 hr\_nested.adl (nested geometry)
 
 This display is a cartoon of the nested high-resolution monochromator geometry, defining the meanings of the angles Theta and Phi.
@@ -125,7 +122,7 @@ In this diagram, the crystals are drawn as if their diffracting planes were para
 
 - - - - - -
 
-![](hrSeqCtl_All_nested.adl.gif)  
+![](hrSeqCtl_All_nested.adl.gif)
 hrSeqCtl\_All.adl (nested geometry)
 
 This is the full control display for a high-resolution monochromator in the "nested" geometry. At top left are energy and wavelength drive areas, with columns of numbers in the standard form for motors. From the top: HighLimit, Readback, Drive, LowLimit, and Tweak. In the middle are the crystal parameters and Bragg-angle drive area for the first crystal, 'TH1' (i.e., the crystal surface that the beam hits first, and its channel-cut pair, if any). At right are the crystal parameters and drive area for the second crystal, 'TH2'. The software makes sure all these fields are consistent with each other, so you can control the monochromator with any of them.
@@ -138,29 +135,27 @@ After new Phi-motor values have been calculated, they are adjusted by the "world
 
 When new, adjusted Phi-motor values have been calculated, they are displayed in the orange "Motor Write" row under the "Phi 1" and "Phi 2" headings. If the "Manual"/Auto" switch is set to "Auto", the new values will also be written to the motors. If the "Manual"/Auto" switch is set to "Manual", this will happen only when the "Move" button is pressed.
 
-![](hr_symmetric.adl.gif)  
+![](hr_symmetric.adl.gif)
 hr\_symmetric.adl (symmetric geometry)
 
 This display is a cartoon of the symmetric high-resolution monochromator geometry, defining the meanings of the angles Theta and Phi. Although this diagram shows two channel-cut pairs of identical crystals, the crystals needn't be identical.
 
-![](hrSeqCtl_All_symmetric.adl.gif)  
+![](hrSeqCtl_All_symmetric.adl.gif)
 hrSeqCtl\_All.adl (symmetric geometry)
 
 This display shows the symmetric geometry in use.
 
-![](colorLine.gif)
+### Spherical Grating (Phi, rentrance, rexit)
 
-#### Spherical Grating (Phi, rentrance, rexit)
-
-![](SGM.adl.jpg)  
+![](SGM.adl.jpg)
 SGM.adl
 
-![](SGM_tiny.adl.jpg)  
+![](SGM_tiny.adl.jpg)
 SGM\_tiny.adl
 
 These are the control displays for a spherical grating monochromator. The supported geometry comprises an input slit, a grating driven by a tangent arm, and an exit slit. The angle between the incoming and outgoing beams is fixed. The grating may have up to 16 stripes, whose properties are specified in the following control display:
 
-![](SGM_gratings.adl.jpg)  
+![](SGM_gratings.adl.jpg)
 SGM\_gratings.adl
 
 | Description | Anything the user wants to write |
@@ -174,63 +169,41 @@ SGM\_gratings.adl
 | Grating-motor offset | Correction to be applied to the calculated tangent-arm motor while this stripe is in use. |
 | OK to use | If this field is zero, the user will not be permitted to select this stripe for use. |
 
-![](colorLine.gif)
+### Multilayer (Theta1, Theta2, Y2, Z2)
 
-#### Multilayer (Theta1, Theta2, Y2, Z2)
-
-![](ml_monoGraphic.adl.gif)  
+![](ml_monoGraphic.adl.gif)
 ml\_monoGraphic.adl
 
-![](ml_monoSeqCtl.adl.gif)  
+![](ml_monoSeqCtl.adl.gif)
 ml\_monoSeqCtl.adl.gif
 
 These are the control displays for a multilayer monochromator, comprised of two independently supported multilayers with the same __d__ spacing and diffraction order, in a nondispersive configuration . Both multilayers have Theta, X, Y, Z, and Chi motors; the downstream multilayer also has Phi and bend motors. The software drives Theta motors to an angle calculated from the multilayer __d__ spacing and diffraction-order number, reads the Y offset as the position of the second multilayer's Y motor, and drives the second multilayer's Z motor so that beam diffracted from the first multilayer intersects the second multilayer in the same spot, as the selected beam energy is varied.
 
-![](colorLine.gif)
+## Slits
 
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-### Slits
-
-![](2slit.adl.jpg)  
+![](2slit.adl.jpg)
 2slit.adl
 
 The display pictured above uses EPICS analog output records for virtual motors "-", "+", "size", and "center". Taking "size" as an example, the PV names for drive and readback are "$(P)$(SLIT)xn" and "$(P)$(SLIT)t2.B". These PV names are inconvenient for users (particularly, spec users) who would prefer to talk to soft motor records, rather than separate ao records. There is a second version of the 2slit software that uses soft motor records for virtual motions. See 2slit\*soft\* in src, Db, and op directories.
 
-![](4slitGraphic.adl.jpg)  
+![](4slitGraphic.adl.jpg)
 4slitGraphic.adl
 
-![](xia_slit_full.adl.jpg)  
+![](xia_slit_full.adl.jpg)
 xia\_slit\_full.adl
 
-![](colorLine.gif)
+## Mirrors
 
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-### Mirrors
-
-![](2postMirror.adl.jpg)  
+![](2postMirror.adl.jpg)
 2postMirror.adl
 
-![](colorLine.gif)
+## Filters
 
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-### Filters
-
-![](2filter.adl.jpg)  
+![](2filter.adl.jpg)
 2filter.adl
 
-![](2filter_setup.adl.jpg)  
+![](2filter_setup.adl.jpg)
 2filter\_setup.adl
-
-![](colorLine.gif)
 
 XIA PF4 dual filter
 
@@ -238,11 +211,8 @@ This software treats two XIA (X-Ray Instrumentation Associates) PF4 four-filter 
 
 This software calculates the x-ray transmission for each combination of filters in one unit, given the current x-ray beam energy, and permits either direct setting of the desired transmission, or selection of the next higher, or next lower, transmission.
 
-![](pf4.jpg)
-
-![](pf4more.jpg)
-
-![](pf4config.jpg)
+:-------------------------:|:-------------------------:|:-----------------------:|
+![](pf4.jpg)  | ![](pf4more.jpg)  | ![](pf4config.jpg)
 
 To load an instance of this support, add the following lines to the ioc startup file, `st.cmd`, before the call to `iocInit()`:
 
@@ -283,31 +253,29 @@ file pf4bank.req   P=$(P),H=pf4:,B=A
 file pf4bank.req   P=$(P),H=pf4:,B=B
 ```
 
-![](colorLine.gif)
-
-XIA PF4 multiple filter
+###XIA PF4 multiple filter
 
 This software treats two or four XIA (X-Ray Instrumentation Associates) PF4 four-filter units as a single device. It drives the filters via digital I/O PVs. It also also monitors those PVs, and behaves correctly when they are changed by some external agent.
 
 This software calculates the x-ray transmission for all combinations of all filters in all units, given the current x-ray beam energy. It permits direct setting of the desired transmission, setting the transmission relative to the current value (e.g., down by 10%, up by a factor of 2, etc.), and selection of the next higher, or next lower, transmission. It also permits individual filters to be removed from consideration, and locked in or out of the x-ray beam.
 
-![](filter.adl.jpg)
 
-![](filterbox_config.adl.jpg)
+:-------------------------:|:-------------------------:
+![](filter.adl.jpg) | ![](filterbox_config.adl.jpg)
 
-To Load an instance of this support, add the following lines to the ioc startup file, st.cmd, before the call to iocInit():   
+To Load an instance of this support, add the following lines to the ioc startup file, st.cmd, before the call to iocInit():
 ```
 ### Load database records for alternative PF4-filter support
 dbLoadTemplate "filter.substitutions"
 ```
 
-and add the following lines after the call to iocInit():  
+and add the following lines after the call to iocInit():
 ```
 # Alternative pf4 filter seq program
 seq filterDrive,"NAME=filterDrive,P=xxx:,R=filter:,NUM_FILTERS=16"
 ```
 
-Here's a sample filter.substitutions file:  
+Here's a sample filter.substitutions file:
 ```
 # filter.substitutions
 
@@ -337,7 +305,7 @@ file "$(OPTICS)/opticsApp/Db/filterDrive.db" {
 }
 ```
 
-and here are lines added to auto\_settings.req for these filters:  
+and here are lines added to auto\_settings.req for these filters:
 ```
 file filterDrive.req "P=xxx:,R=filter:"
 file filterBladeNoSensor.req "P=xxx:,R=filter:,N=1"
@@ -359,69 +327,45 @@ file filterBladeNoSensor.req "P=xxx:,R=filter:,N=16"
 
 ```
 
-Top level MEDM display files for this support are filter\_8\_0\_more.adl for two PF4 4-filter units filter\_8\_8\_more.adl for four PF4 4-filter units To load the MEDM display file, specify a related display button with something like the following entries:  
+Top level MEDM display files for this support are filter\_8\_0\_more.adl for two PF4 4-filter units filter\_8\_8\_more.adl for four PF4 4-filter units To load the MEDM display file, specify a related display button with something like the following entries:
 ```
 Display Label: PF4 filter 16
 Display File: filter_8_8_more.adl
 Arguments: P=xxx:,R=filter
 ```
 
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-### Optical table
+## Optical table
 
 The optical-table software is documented separately. See [tableRecord.html](tableRecord.html)
 
 Note that there are two versions of the optical table software. The original version uses EPICS analog output records for virtual motors. This is inconvenient for users (particularly, spec users) who would prefer to talk to soft motor records, rather than separate ao records. There is a new version of the optical table software software that uses soft motor records for virtual motions. See table\*soft\* in src, Db, and op directories.
 
-![](colorLine.gif)
+## Orientation matrix (diffractometer control)
 
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-### Orientation matrix (diffractometer control)
-
-![](orient_full.adl.jpg)  
+![](orient_full.adl.jpg)
 orient\_full.adl
 
-![](orient_XTALS.adl.jpg)  
+![](orient_XTALS.adl.jpg)
 orient\_XTALS.adl
 
-![](colorLine.gif)
+## Io calculation (Jon Tischler)
 
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-### Io calculation (Jon Tischler)
-
-![](Io.adl.jpg)  
+![](Io.adl.jpg)
 Io.adl
 
-![](Io_small.adl.jpg)  
+![](Io_small.adl.jpg)
 Io\_small.adl
 
 This software calculates the photon flux through an ion chamber, given the counts recorded in scaler channels, and data describing the ionization chamber, the beam energy, and the signal path from ionization chamber to scaler.
 
-![](colorLine.gif)
+## PID loop support
 
-![](colorLine.gif)
-
-![](colorLine.gif)
-
-### PID loop support
-
-![](fb_epid/fb_epid_adl.png)  
+![](fb_epid/fb_epid_adl.png)
 fb\_epid.adl
 
 The fb\_epid support provides a database centered around the EPICS [epid](http://cars9.uchicago.edu/software/epics/epidRecord.html) record. [Documentation](fb_epid/index.html) is provided on a separate page.
 
 ![](colorLine.gif)
 
-Suggestions and Comments to:   
+Suggestions and Comments to:
 [ Keenan Lang ](mailto:klang@anl.gov): (klang@anl.gov)
