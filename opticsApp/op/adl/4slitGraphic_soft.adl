@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/optics/opticsApp/op/adl/4slitGraphic_soft.adl"
-	version=030107
+	name="/home/beams1/KLANG/Documents/Projects/Repository/git/optics/opticsApp/op/adl/4slitGraphic_soft.adl"
+	version=030111
 }
 display {
 	object {
-		x=212
-		y=66
+		x=202
+		y=58
 		width=280
 		height=325
 	}
@@ -1313,4 +1313,25 @@ text {
 	}
 	label="STOP"
 	press_msg="1"
+}
+"related display" {
+	object {
+		x=120
+		y=30
+		width=40
+		height=16
+	}
+	display[0] {
+		label="H-Slit Control"
+		name="2slit_soft.adl"
+		args="P=$(P),SLIT=$(H)"
+	}
+	display[1] {
+		label="V-Slit Control"
+		name="2slit_soft.adl"
+		args="P=$(P),SLIT=$(V)"
+	}
+	clr=0
+	bclr=17
+	label="- More"
 }

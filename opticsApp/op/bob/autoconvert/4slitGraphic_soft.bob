@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2026-02-20 14:39:06 by klang-->
 <display version="2.0.0">
   <name>4slitGraphic_soft</name>
-  <x>212</x>
-  <y>66</y>
+  <x>202</x>
+  <y>58</y>
   <width>280</width>
   <height>325</height>
   <background_color>
@@ -28,16 +29,16 @@
     <y>20</y>
     <width>281</width>
     <height>3</height>
-    <line_color>
-      <color red="10" green="0" blue="184">
-      </color>
-    </line_color>
     <points>
       <point x="1.0" y="1.0">
       </point>
       <point x="279.0" y="1.0">
       </point>
     </points>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
   </widget>
   <widget type="label" version="2.0.0">
     <name>text #13</name>
@@ -409,8 +410,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(H)xn</PV>
           <Q>$(H)xn</Q>
+          <PV>$(H)xn</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -610,8 +611,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(H)xp</PV>
           <Q>$(H)xp</Q>
+          <PV>$(H)xp</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -1058,8 +1059,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(H)center</PV>
           <Q>$(H)center</Q>
+          <PV>$(H)center</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -1085,8 +1086,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(H)size</PV>
           <Q>$(H)size</Q>
+          <PV>$(H)size</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -1511,8 +1512,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(V)xp</PV>
           <Q>$(V)xp</Q>
+          <PV>$(V)xp</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -1538,8 +1539,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(V)xn</PV>
           <Q>$(V)xn</Q>
+          <PV>$(V)xn</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -1565,8 +1566,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(V)center</PV>
           <Q>$(V)center</Q>
+          <PV>$(V)center</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -1592,8 +1593,8 @@
       <action type="open_display">
         <file>scanParms.opi</file>
         <macros>
-          <PV>$(V)size</PV>
           <Q>$(V)size</Q>
+          <PV>$(V)size</PV>
         </macros>
         <target>tab</target>
         <description>Setup scan parameters</description>
@@ -1634,6 +1635,40 @@
     </foreground_color>
     <background_color>
       <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #296</name>
+    <actions>
+      <action type="open_display">
+        <file>2slit_soft.opi</file>
+        <macros>
+          <SLIT>$(H)</SLIT>
+        </macros>
+        <target>tab</target>
+        <description>H-Slit Control</description>
+      </action>
+      <action type="open_display">
+        <file>2slit_soft.opi</file>
+        <macros>
+          <SLIT>$(V)</SLIT>
+        </macros>
+        <target>tab</target>
+        <description>V-Slit Control</description>
+      </action>
+    </actions>
+    <text> More</text>
+    <x>120</x>
+    <y>30</y>
+    <width>40</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="51" green="153" blue="0">
       </color>
     </background_color>
   </widget>
