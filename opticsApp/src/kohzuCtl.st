@@ -82,6 +82,8 @@ monitor ccMode;
 short   kohzuMoving; 
 assign  kohzuMoving to "{P}KohzuMoving";
 monitor kohzuMoving;
+evflag  kMbusy;
+sync    kohzuMoving kMbusy;
 
 short   kohzuDone; 
 
@@ -605,6 +607,7 @@ state waitForCmndEnter {
 		efClear(L_mon);
 		efClear(A_mon);
 		efClear(E_mon);
+		efClear(kMbusy);
 		efClear(lambda_mon);
 		efClear(theta_mon);
 
@@ -701,6 +704,10 @@ state waitForCmnd {
 	when (efTestAndClear(theta_mon)) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:waitForCmnd:theta_mon\n");
 	} state thChanged
+
+	when (efTestAndClear(kMbusy)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:waitForCmnd:kMbusy\n");
+	} state busyChanged
 
 	when (putVals && delay(.1)) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:waitForCmnd:putVals\n");
@@ -846,6 +853,31 @@ state thetaLimits {
 	} state checkDone
 }
 
+/* When any of the controls (E, lambda, theta)  have values set that are equal
+ * to the previous value, PV monitors aren't called (unless the MDEL field set 
+ * to -1) but the Busy PV does get activated. A SNL evflag has been added
+ * for the busy and the following state added to handle this situation.       */
+state busyChanged {
+	when (kohzuMoving > 0 && efTest(E_mon)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving and E changed");
+		efClear(E_mon);
+	} state eChanged
+	when (kohzuMoving > 0 && efTest(lambda_mon)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving and lambda changed");
+		efClear(lambda_mon);
+	} state lChanged
+	when (kohzuMoving > 0 && efTest(theta_mon)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving and theta changed");
+		efClear(theta_mon);
+	} state thChanged
+	when (kohzuMoving > 0) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving but unclear why");
+	} state eChanged
+	when (kohzuMoving == 0) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Done");
+	} state waitForCmndEnter
+}
+	
 state eChanged {
 	when () { 
 		if (kohzuCtlDebug) %%printf("kohzuCtl:eChanged\n");
