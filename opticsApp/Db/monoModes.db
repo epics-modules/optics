@@ -1,0 +1,257 @@
+################################################################################
+# Miller indices (H,K,L) -- using same convention as Optics' Kohzu support
+
+record(ao,"$(P)$(MN):BraggHAO") {
+	field(DESC,"Miller index H")
+	field(PINI,"YES")
+	field(DOL,"1")
+	field(DRVH,"15")
+	field(DRVL,"0")
+	field(HOPR,"15")
+	field(LOPR,"0")
+}
+record(ao,"$(P)$(MN):BraggKAO") {
+	field(DESC,"Miller index K")
+	field(PINI,"YES")
+	field(DOL,"1")
+	field(DRVH,"15")
+	field(DRVL,"0")
+	field(HOPR,"15")
+	field(LOPR,"0")
+}
+record(ao,"$(P)$(MN):BraggLAO") {
+	field(DESC,"Miller index L")
+	field(PINI,"YES")
+	field(DOL,"1")
+	field(DRVH,"15")
+	field(DRVL,"0")
+	field(HOPR,"15")
+	field(LOPR,"0")
+}
+record(ao,"$(P)$(MN):BraggAAO") {
+	field(DESC,"Lattice constant")
+	field(PINI,"YES")
+	field(DOL,"5.43102")
+	field(PREC,"5")
+	field(EGUF,"20")
+	field(EGUL,"0.1")
+	field(EGU,"Angstroms")
+	field(DRVH,"20")
+	field(DRVL,"0.1")
+	field(HOPR,"20")
+	field(LOPR,"0.1")
+}
+
+record(ao,"$(P)$(MN):Bragg2dSpacingAO") {
+	field(DESC,"Crystal 2d spacing")
+	field(PINI,"YES")
+	field(DOL,"1")
+	field(PREC,"5")
+	field(EGU,"Angstroms")
+}
+
+record(calcout,"$(P)$(MN):dspacing_calc") {
+	field(DESC,"Update offset boolean")
+	field(INPA, "$(P)$(MN):Bragg2dSpacingAO CP")
+	field(CALC, "A/2")
+	field(OUT, "$(P)$(MN):dspacing PP")
+	field(PREC,"5")
+}
+
+record(ao, "$(P)$(MN):dspacing") {
+	field(DESC, "D-spacing")
+	field(EGU, "Angstroms")
+	field(OUT, "$(P)$(MN):$(ENERGY)C1 PP")
+	field(PREC, "6")
+}
+
+
+record(transform,"$(P)$(MN):calc2dSpacing") {
+	field(INPA,"$(P)$(MN):BraggHAO CP NMS")
+	field(CMTA,"Miller index H")
+	field(INPB,"$(P)$(MN):BraggKAO CP NMS")
+	field(CMTB,"Miller index K")
+	field(INPC,"$(P)$(MN):BraggLAO CP NMS")
+	field(CMTC,"Miller index L")
+	field(INPD,"$(P)$(MN):BraggAAO CP NMS")
+	field(CMTD,"Lattice Constant")
+	field(CMTE,"")
+	field(CLCE,"")
+	field(OUTE,"")
+	field(CMTF,"")
+	field(CLCF,"((A%2 != B%2) || (A%2 != C%2))?1:0")
+	field(OUTF,"")
+	field(CMTG,"Average Miller index")
+	field(CLCG,"(A+B+C)/2.0")
+	field(OUTG,"")
+	field(CMTH,"Nearest integer to average")
+	field(CLCH,"NINT(G)")
+	field(OUTH,"")
+	field(CMTI,"Forbidden Reflection")
+	field(CLCI,"(F || ((ABS(G-H) <= 0.25) && (H%2)))?1:0")
+	field(OUTI,"$(P)$(MN):forbidden_reflection PP")
+	field(CMTJ,"2D spacing")
+	field(CLCJ,"(2*D)/sqrt(A*A+B*B+C*C)")
+	field(OUTJ,"$(P)$(MN):Bragg2dSpacingAO PP")
+	field(PREC,"8")
+}
+
+record(bi, "$(P)$(MN):forbidden_reflection") {
+	field(DESC, "Forbidden reflection")
+	field(ZNAM, "Valid")
+	field(ONAM, "Forbidden")
+}
+
+################################################################################
+# TODO check that wavelength is shorter than d-spacing
+record(bi, "$(P)$(MN):forbidden_wavelength") {
+	field(DESC, "Wavelength too long")
+	field(ZNAM, "Valid")
+	field(ONAM, "Invalid")
+}
+
+record(calcout,"$(P)$(MN):check_lambda") {
+	field(DESC,"Update validity boolean")
+	field(INPA, "$(P)$(MN):Bragg2dSpacingAO CP")
+	field(INPB, "$(P)$(MN):Lambda CP")
+	field(CALC, "B>A?1:0")
+	field(OUT, "$(P)$(MN):forbidden_wavelength PP")
+}
+
+record(bo,"$(P)$(MN):offset_mode") {
+	field(DESC,"Offset mode")
+	field(ZNAM,"Fixed Offset")
+	field(ONAM,"Channel-cut")
+	field(VAL, "1")
+}
+
+record(mbbo,"$(P)$(MN):crystal_mode") {
+	field(DESC,"Crystal choice")
+	field(ZRVL,"0x0")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(FRVL,"0x4")
+	field(FVVL,"0x5")
+	field(SXVL,"0x6")
+	field(SVVL,"0x7")
+	field(EIVL,"0x8")
+	field(NIVL,"0x9")
+	field(TEVL,"0xA")
+	field(ELVL,"0xB")
+	field(TVVL,"0xC")
+	field(TTVL,"0xD")
+	field(FTVL,"0xE")
+	field(FFVL,"0xF")
+	field(ZRST,"Silicon")
+	field(ONST,"Germanium")
+	field(TWST,"Diamond")
+	field(THST,"Si (77K)")
+	field(FRST,"Unused")
+	field(FVST,"Unused")
+	field(SXST,"Unused")
+	field(SVST,"Unused")
+	field(EIST,"Unused")
+	field(NIST,"Unused")
+	field(TEST,"Unused")
+	field(ELST,"Unused")
+	field(TVST,"Unused")
+	field(TTST,"Unused")
+	field(FTST,"Unused")
+	field(FFST,"Unused")
+	field(FLNK, "$(P)$(MN):LatticeConstants.PROC")
+# TODO May need to process LatticeConstants PV?
+	field(PINI, "YES")
+}
+
+record(seq,"$(P)$(MN):LatticeConstants") {
+	field(SELM,"Specified")
+	field(SELL,"$(P)$(MN):crystal_mode NPP NMS")
+	field(PREC,"7")
+	field(DO0,"5.4310196")
+	field(LNK0,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO1,"5.657952")
+	field(LNK1,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO2,"3.56688")
+	field(LNK2,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO3,"5.4295")
+	field(LNK3,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO4,"5.4310196")
+	field(LNK4,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO5,"5.657952")
+	field(LNK5,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO6,"3.56688")
+	field(LNK6,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO7,"5.4295")
+	field(LNK7,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO8,"5.4310196")
+	field(LNK8,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DO9,"5.657952")
+	field(LNK9,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DOA,"3.56688")
+	field(LNKA,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DOB,"5.4295")
+	field(LNKB,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DOC,"5.4310196")
+	field(LNKC,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DOD,"5.657952")
+	field(LNKD,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DOE,"3.56688")
+	field(LNKE,"$(P)$(MN):BraggAAO.VAL  PP MS")
+	field(DOF,"5.4295")
+	field(LNKF,"$(P)$(MN):BraggAAO.VAL  PP MS")
+
+}
+# use calcout to store/set lattice constant ?
+
+
+# Calibration -- need "cross-checks" for putting system/motors into USE/SET mode
+record(bo,"$(P)$(MN):UseSet") {
+	field(DESC,"Put motors in Use/Set mode")
+	field(ZNAM,"Use")
+	field(ONAM,"Set")
+}
+
+record(calcout,"$(P)$(MN):UseSet_sysBragg") {
+	field(DESC,"Update Use-Set boolean")
+	field(INPA, "$(P)$(MN):UseSet CP")
+	field(INPB, "$(BRAGG).SET NPP")
+	field(CALC, "A!=B")
+	field(OOPT, "When Non-zero")
+	field(DOPT, "Use OCAL")
+	field(OCAL, "A")
+	field(OUT, "$(BRAGG).SET PP")
+}
+
+record(calcout,"$(P)$(MN):UseSet_sysGap") {
+	field(DESC,"Update Use-Set boolean")
+	field(INPA, "$(P)$(MN):UseSet CP")
+	field(INPB, "$(GAP).SET NPP")
+	field(CALC, "A!=B")
+	field(OOPT, "When Non-zero")
+	field(DOPT, "Use OCAL")
+	field(OCAL, "A")
+	field(OUT, "$(GAP).SET PP")
+}
+
+record(calcout,"$(P)$(MN):UseSet_braggSys") {
+	field(DESC,"Update Use-Set boolean")
+	field(INPA, "$(BRAGG).SET CP")
+	field(INPB, "$(P)$(MN):UseSet NPP")
+	field(CALC, "A!=B")
+	field(OOPT, "When Non-zero")
+	field(DOPT, "Use OCAL")
+	field(OCAL, "A")
+	field(OUT, "$(P)$(MN):UseSet PP")
+}
+
+record(calcout,"$(P)$(MN):UseSet_gapSys") {
+	field(DESC,"Update Use-Set boolean")
+	field(INPA, "$(GAP).SET CP")
+	field(INPB, "$(P)$(MN):UseSet NPP")
+	field(CALC, "A!=B")
+	field(OOPT, "When Non-zero")
+	field(DOPT, "Use OCAL")
+	field(OCAL, "A")
+	field(OUT, "$(P)$(MN):UseSet PP")
+}

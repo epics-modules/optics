@@ -1,0 +1,216 @@
+# This database implements an transformation to/from Energy and Offset 
+# from motor position (bragg angle and gap)
+#
+# 
+# ENERGY = 12.39842/ C1 / (sin ( C2 * BRAGG + C3 ) / 3600 * pi / 180))
+# 
+# C1: d_spacing in nm 
+# C2: 1 or -1 (if Bragg properly calibrated, should be 1)
+# C3: Bragg motor calibration in arc-sec -- if calibrated in motor 
+#     record, C2 = 0,  otherwise represents an angular offset from horizontal 
+# C4: Only need for fixed-offset mode and if gap motor isn't calibrated
+#
+# M2 is included in order to handle fixed offset mode.  In fixed offset mode,
+# the gap needs to be adjust to maintain a constant offset when the bragg 
+# angle (i.e. Energy) is changed:
+#
+# OFFSET = 2*(GAP - C4)*cos(C2*BRAGG + C3)
+# 
+# M1 will be GAP motor (um)
+# M2 will be BRAGG motor in um (only need RBV, won't be driven by OFFSET or GAP)
+# BRAGG/M2 assumed to be arc-sec
+#
+# C2-C4 are used as motors aren't assumed to be calibrated.  If properly
+# calibrated, C3 = C4 = 0 and C2 = 1
+#
+# C2: 1 or -1 (if Bragg properly calibrated, should be 1)
+# C3: Bragg motor calibration in arc-sec -- if calibrated in motor 
+#     record, C2 = 0,  otherwise represents an angular offset from horizontal 
+# C4: Only need for fixed-offset mode and if gap motor isn't calibrated
+#
+# These records ares where the soft motors write their output.
+# They are needed because writing to a transform record field does not
+# cause the record to process?
+# We use forward links to the transform record (rather than making the INPA and
+# INPB fields of the transform record CP) so that the scan record waits 
+# for the motors to move.
+
+record(ao,"$(P)$(ENERGY)DVAL") {
+	field(FLNK, "$(P)E:Drive")
+}
+
+record(ao,"$(P)$(OFFSET)DVAL") {
+	field(FLNK, "$(P)BG:Drive")
+}
+
+record(ao,"$(P)$(GAP_PM)DVAL") {
+	field(FLNK, "$(P)G:Drive")
+}
+
+record(ao,"$(P)$(BRAGG_PM)DVAL") {
+	field(FLNK, "$(P)BraggFO.PROC CA")
+}
+
+record(fanout,"$(P)BraggFO") {
+	field(SELM, "Specified")
+	field(SELL, "$(OFFSET_BINARY)")
+	field(LNK0, "$(P)BG:Drive")
+	field(LNK1, "$(P)B:Drive")
+}
+
+record(transform,"$(P)E:Drive") {
+	field(INPA,"$(P)$(ENERGY).DVAL NPP NMS")
+	field(INPB,"$(P)$(OFFSET).DVAL NPP NMS")
+
+	field(INPC,"$(P)$(ENERGY)C1.VAL NPP NMS")
+	field(INPD,"$(P)$(ENERGY)C2.VAL NPP NMS")
+	field(INPE,"$(P)$(ENERGY)C3.VAL NPP NMS")
+	field(INPF,"12.39842")
+	field(CLCG,"(180/pi*asin(F/2/C/A)-E)/D")
+    field(OUTG,"$(P)$(BRAGG_PM).VAL PP MS")
+        
+	field(PREC,"$(PREC)")
+}
+
+record(transform,"$(P)B:Drive") {
+	field(INPA,"$(P)$(BRAGG_PM).DVAL NPP NMS")
+
+	field(CLCG,"A")
+    field(OUTG,"$(BRAGG_MOT).VAL PP MS")
+        
+	field(PREC,"$(PREC)")
+}
+
+record(transform,"$(P)G:Drive") {
+	field(INPA,"$(P)$(GAP_PM).DVAL NPP NMS")
+
+	field(CLCG,"A")
+    field(OUTG,"$(GAP_MOT).VAL PP MS")
+        
+	field(PREC,"$(PREC)")
+}
+
+record(transform,"$(P)BG:Drive") {
+	field(INPA,"$(P)$(BRAGG_PM).DVAL NPP NMS")
+	field(INPB,"$(P)$(OFFSET).DVAL NPP NMS")
+
+	field(CLCG,"A")
+    field(OUTG,"$(BRAGG_MOT).VAL PP MS")
+    
+	field(INPH, "$(OFFSET_BINARY) NPP")
+	field(INPJ,"$(P)$(OFFSET)C2.VAL NPP NMS")
+	field(INPK,"$(P)$(OFFSET)C3.VAL NPP NMS")
+	field(INPL,"$(P)$(OFFSET)C4.VAL NPP NMS")
+	field(CLCM,"B/(2*cos((J*G+K) * pi / 180)) + L")
+    field(OUTM,"$(GAP_MOT).VAL PP MS")
+    
+	field(PREC,"$(PREC)")
+}
+
+record(transform,"$(P)$(T)Readback") {
+	field(INPA,"$(BRAGG_MOT).RBV CP MS")
+	field(INPB,"$(P)$(ENERGY)C1.VAL CP")
+	field(INPC,"$(P)$(ENERGY)C2.VAL CP")
+	field(INPD,"$(P)$(ENERGY)C3.VAL CP")
+	field(INPE,"12.39842")
+	field(CMTF, "Energy pseudomotor")
+	field(CLCF,"E/2/B/sin((C*A+D) * pi / 180)")
+
+	field(INPG,"$(GAP_MOT).RBV CP MS")
+	field(INPH,"$(P)$(OFFSET)C2.VAL NPP NMS")
+	field(INPI,"$(P)$(OFFSET)C3.VAL NPP NMS")
+	field(INPJ,"$(P)$(OFFSET)C4.VAL NPP NMS")
+	field(CMTK, "Offset pseudomotor")
+	field(CLCK,"2*(G-J)*cos((H*A+I) * pi / 180)")
+
+	field(CMTL, "Bragg pseudomotor")
+	field(CLCL, "A")
+	field(CMTM, "Gap pseudomotor")
+	field(CLCM, "G")
+	
+	field(IVLA,"Do Nothing")
+	field(PREC,"$(PREC)")
+}
+
+# This record processes if either of the soft motor STOP fields is set.
+record(dfanout,"$(P)$(T)Stop") {
+        field(VAL,"1")
+        field(OUTA,"$(BRAGG_MOT).STOP PP MS")
+        field(OUTB,"$(GAP_MOT).STOP) PP MS")
+}
+
+# This record computes whether the compound motor is done moving.  
+# It goes to 1 when both real motors are done moving.
+# positions of the real motors.
+record(calcout,"$(P)$(T)Done") {
+        field(INPA,"$(GAP_MOT).DMOV CP MS")
+        field(INPB,"$(BRAGG_MOT).DMOV CP MS")
+        field(CALC,"A && B")
+}
+
+# This record updates the Dial limits of the bragg and energy pseudomotor when 
+# the bragg angle soft limits update
+record(transform,"$(P)$(T)E:Limits") {
+	field(INPA,"$(BRAGG_MOT).LLM CP MS")
+	field(INPB,"$(BRAGG_MOT).HLM CP MS")
+	field(INPC,"$(P)$(ENERGY)C1.VAL CP")
+	field(INPD,"$(P)$(ENERGY)C2.VAL CP")
+	field(INPE,"$(P)$(ENERGY)C3.VAL CP")
+	field(INPF,"12.39842")
+
+	field(CMTG,"Bragg Low -- Energy High")
+#	field(CLCG,"F/2/C/sin((D*A+E) * pi / 180)")
+	field(CLCG,"F/2/C/sin((D*MAX(A,0.25)+E)*pi/180)")
+	field(OUTG,"$(P)$(ENERGY).DHLM PP")
+
+	field(CMTH,"Bragg High -- Energy Low")
+	field(CLCH,"F/2/C/sin((D*B+E) * pi / 180)")
+	field(OUTH,"$(P)$(ENERGY).DLLM PP")
+
+	field(CMTI,"Bragg PM Low limit")
+	field(CLCI,"A")
+	field(OUTI,"$(P)$(BRAGG_PM).DLLM PP")
+
+	field(CMTJ,"Bragg PM high limit")
+	field(CLCJ,"B")
+	field(OUTJ,"$(P)$(BRAGG_PM).DHLM PP")
+
+
+	field(IVLA,"Do Nothing")
+	field(PREC,"$(PREC)")
+}
+
+# This record updates the Dial limits of the gap and offset pseudomotors when 
+# the bragg angle soft limits update
+# Note: due to the limits updating when the bragg motor position changes,
+# OUT links to the gap/offset pseudomotors need to be NPP links so as not
+# process the pseudomotor records (can cause moves restoring the offset when 
+# in channel-cut mode)
+record(transform,"$(P)$(T)O:Limits") {
+	field(INPA,"$(GAP_MOT).LLM CP MS")
+	field(INPB,"$(GAP_MOT).HLM CP MS")
+	field(INPC,"$(BRAGG_MOT).RBV CP MS")
+	field(INPD,"$(P)$(OFFSET)C2.VAL NPP NMS")
+	field(INPE,"$(P)$(OFFSET)C3.VAL NPP NMS")
+	field(INPF,"$(P)$(OFFSET)C4.VAL NPP NMS")
+
+	field(CMTG,"Offset low limit")
+	field(CLCG,"2*(A-F)*cos((D*C+E) * pi / 180)")
+	field(OUTG,"$(P)$(OFFSET).DLLM NPP")
+
+	field(CMTH,"Offset high limit")
+	field(CLCH,"2*(B-F)*cos((D*C+E) * pi / 180)")
+	field(OUTH,"$(P)$(OFFSET).DHLM NPP")
+
+	field(CMTI,"Gap PM Low limit")
+	field(CLCI,"A")
+	field(OUTI,"$(P)$(GAP_PM).DLLM NPP")
+
+	field(CMTJ,"GAP PM high limit")
+	field(CLCJ,"B")
+	field(OUTJ,"$(P)$(GAP_PM).DHLM NPP")
+
+	field(IVLA,"Do Nothing")
+	field(PREC,"$(PREC)")
+}
+

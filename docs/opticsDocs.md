@@ -16,6 +16,7 @@ synApps supports the following monochromator types/geometries:
 
 - non-dispersive double-crystal with symmetric offset -- rotates about a point midway between the entrance and exit beams.
 - non-dispersive double-crystal with asymmetric offset -- rotates about a point on the first crystal's surface.
+- non-dispersive double-crystal with bragg and gap control -- rotates about point on first crystal's surface; two motors (bragg, gap)
 - dispersive double crystal -- nested geometry
 - dispersive double crystal -- symmetric geometry
 - spherical grating
@@ -108,6 +109,16 @@ Z = offset/(2*sin(Theta)).
 Thus, a positive-sense motion of the second crystal moves it in the direction of the exiting beam.
 
 Because the Y and Z motions are nonlinear functions of Theta, their speeds ideally should vary as they move. The software doesn't attempt this, but it does attempt to set motor speeds to the closest linear approximation to ideal behavior. This means that it attempts to set motor speeds so that Theta, Y, and Z all move for the same length of time. The attempt may not succeed, however, because the motors have high and low speed limits, and will refuse commands to violate them.
+
+### Bragg-Gap (Theta, Y)
+
+#### bragg_gap_mono_main.ui
+
+![](BraggGapMono.jpg)
+
+Similar to Kohzu Geometry 2 with Z-frozen.  However, relies on pseudomotors and DB programming instead of SNL to handle motion/limits.
+
+The monochromator can be driven in energy, wavelength, or angle. Undriven fields are kept consistent automatically with driven fields.
 
 
 ### High-resolution double-crystal (Theta1, Theta2)
