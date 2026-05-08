@@ -1,0 +1,75 @@
+# This database implements an transformation to/from wavelength from energy
+# pseudomotor 
+# 
+# LAMBDA = 12.39842 /  ENERGY 
+# 
+# LAMBDA in Angstrom
+# ENERGY in keV
+#
+#
+# This record is where the soft motors writes their output.
+# They are needed because writing to a transform record field does not
+# cause the record to process?
+# We use forward links to the transform record (rather than making the INPA and
+# INPB fields of the transform record CP) so that the scan record waits 
+# for the motors to move.
+record(ao,"$(P)$(LAMBDA)DVAL") {
+	field(FLNK, "$(P)$(T)Drive")
+}
+
+# This record is processed whenever the soft motor record LAMBDA writes
+# new values to the DVAL records above.
+# Note: the INPA field gets its values directly from the .DVAL
+# fields of the soft motor records, rather than from the DVAL record above.
+# This is because the .DVAL fields are always correct, while the DVAL records
+# do not get updated when the soft motor .DVAL fields are modified in SET mode.
+grecord(transform,"$(P)$(T)Drive") {
+	field(INPA,"$(P)$(LAMBDA).DVAL NPP NMS")
+	field(INPF,"12.39842")
+	field(CLCG,"F/A")
+    field(OUTG,"$(ENERGY_DRV) PP MS")
+	field(PREC,"$(PREC)")
+}
+
+# This record calculates the readback positions of the soft motor.  It 
+# processes whenever the readbacks of the energy pseudomotor changes
+grecord(transform,"$(P)$(T)Readback") {
+	field(INPA,"$(ENERGY_RBV) CP MS")
+	field(INPF,"12.39842")
+	field(CLCG,"F/A")
+	field(IVLA,"Do Nothing")
+	field(PREC,"$(PREC)")
+}
+
+# This record processes if either of the soft motor STOP fields is set.
+grecord(dfanout,"$(P)$(T)Stop") {
+        field(VAL,"1")
+        field(OUTA,"$(ENERGY_STOP) PP MS")
+}
+
+# This record computes whether the compound motor is done moving.  
+# It goes to 1 when both real motors are done moving.
+# positions of the real motors.
+grecord(calcout,"$(P)$(T)Done") {
+        field(INPA,"$(ENERGY_DONE) CP MS")
+        field(CALC,"A")
+}
+
+# This record updates the Dial limits of the Lambda pseudomotor when 
+# the bragg angle soft limits update (comes in via the energy soft limits)
+grecord(transform,"$(P)$(T)Limits") {
+	field(INPA,"$(ENERGY_LO) CP MS")
+	field(INPB,"$(ENERGY_HI) CP MS")
+	field(INPF,"12.39842")
+
+	field(CMTG,"Energy Low -- Lambda High")
+	field(CLCG,"F/A")
+	field(OUTG,"$(P)$(LAMBDA).DHLM PP")
+
+	field(CMTH,"Energy High -- Lambda Low")
+	field(CLCH,"F/B")
+	field(OUTH,"$(P)$(LAMBDA).DLLM PP")
+
+	field(IVLA,"Do Nothing")
+	field(PREC,"$(PREC)")
+}

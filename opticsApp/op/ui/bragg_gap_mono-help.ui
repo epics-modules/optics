@@ -1,0 +1,755 @@
+<ui version="4.0">
+  <class>Form</class>
+  <widget class="QMainWindow" name="Form">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>470</width>
+        <height>945</height>
+      </rect>
+    </property>
+    <property name="background">
+      <color alpha="0">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+      </color>
+    </property>
+    <property name="styleSheet">
+      <string>QWidget#centralwidget {background: rgba(187,187,187,255);}
+QPushButton::menu-indicator {image: url(none.png); width: 0}</string>
+    </property>
+    <property name="windowTitle">
+      <string>Bragg-gap mono Help</string>
+    </property>
+    <widget class="QWidget" name="centralwidget">
+      <property name="geometry">
+        <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>0</width>
+          <height>0</height>
+        </rect>
+      </property>
+      <property name="background">
+        <color alpha="0">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+        </color>
+      </property>
+      <widget class="caFrame" name="content">
+        <property name="geometry">
+          <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>945</height>
+          </rect>
+        </property>
+        <widget class="caLabel" name="caLabel1">
+          <property name="text">
+            <string>General Notes</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>60</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString1">
+          <property name="plainText">
+            <string>Bragg-Gap Mono support provides energy/lambda/offset 
+ control for double crystal monochromators with only the 
+ bragg and gap stages. 
+
+ It's different from the optics' modules Kohzu support 
+ in that it doesn't use state notation language and simplifies 
+ modes of operation. Bragg-Gap support has fixed-offset 
+ and channel-cut modes (No Freeze-Z or Freeze-Y)</string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>80</y>
+              <width>420</width>
+              <height>140</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel2">
+          <property name="text">
+            <string>PseudoMotors</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>225</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString2">
+          <property name="plainText">
+            <string>There are 5 pseudomotors for the system: Bragg, Lambda, 
+ Offset, Bragg and Gap. Both the Bragg and Gap have hard 
+ motor equivalents</string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>245</y>
+              <width>420</width>
+              <height>60</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel3">
+          <property name="text">
+            <string>Crystal setup</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>310</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString3">
+          <property name="plainText">
+            <string>User can choose desired HKL indices and lattice spacing. 
+ D-spacing is then recalculated and energy/wavelength 
+ readbacks are updated. 
+
+ Other crystal materials can be added via the Crystal Modes 
+ button.  Once added, the main screen needs reloading for 
+ the new crystals to be available. </string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>330</y>
+              <width>420</width>
+              <height>125</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel4">
+          <property name="text">
+            <string>Offset Mode</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>460</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString4">
+          <property name="plainText">
+            <string>In fixed offset mode, the offset is maintained as energy, 
+ wavelength, or bragg angle is changed by adjusting the gap. 
+
+ In Channel cut mode, gap and bragg motions are independent.</string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>480</y>
+              <width>420</width>
+              <height>75</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel5">
+          <property name="text">
+            <string>Calibration</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>560</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString5">
+          <property name="plainText">
+            <string>There are 2 ways to calibrate the system: USE/SET (recommended) 
+ or via the Energy/Offset Calibration screens (NOT recommended). 
+
+ For the USE/SET method, put system into SET mode (can also be 
+ done via the hard motors' SET button as well), enter the energy 
+ (or lambda) value and/or the offset, the put back to use.  This 
+ will add the necessary offsets the user value(s) of the 
+ bragg and/or gap motors.</string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>580</y>
+              <width>420</width>
+              <height>140</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel6">
+          <property name="text">
+            <string>Buttons - E, O Tranforms</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>725</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString6">
+          <property name="plainText">
+            <string>Access to transforms and calcs for drive, readbacks, and 
+ limits of the energy and offset pseudomotors</string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>745</y>
+              <width>420</width>
+              <height>45</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel7">
+          <property name="text">
+            <string>Buttons - L Tranforms</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>795</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString7">
+          <property name="plainText">
+            <string>Access to transforms and calcs for drive, readbacks, and 
+ limits of the lambda pseudomotors</string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>815</y>
+              <width>420</width>
+              <height>45</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel8">
+          <property name="text">
+            <string>Buttons - Motors</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>11</pointsize>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>865</y>
+              <width>180</width>
+              <height>20</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>0</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+        <widget class="caMultiLineString" name="caMultiLineString8">
+          <property name="plainText">
+            <string>Access to the hard motors in the system (Bragg and Gap)</string>
+          </property>
+          <property name="font">
+            <string>-Liberation Sans -Regular -14</string>
+          </property>
+          <property name="fontScaleMode">
+            <string>None</string>
+          </property>
+          <property name="colorMode">
+            <string>Static</string>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>885</y>
+              <width>420</width>
+              <height>30</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+            </color>
+          </property>
+        </widget>
+        <widget class="caLabel" name="caLabel9">
+          <property name="text">
+            <string>$(P)$(MN) - Help</string>
+          </property>
+          <property name="foreground">
+            <color alpha="255">
+              <red>228</red>
+              <green>228</green>
+              <blue>228</blue>
+            </color>
+          </property>
+          <property name="font">
+            <font>
+              <family>Liberation Sans</family>
+              <pointsize>16</pointsize>
+              <bold>true</bold>
+            </font>
+          </property>
+          <property name="geometry">
+            <rect>
+              <x>10</x>
+              <y>0</y>
+              <width>450</width>
+              <height>45</height>
+            </rect>
+          </property>
+          <property name="background">
+            <color alpha="255">
+              <red>0</red>
+              <green>53</green>
+              <blue>132</blue>
+            </color>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+          </property>
+          <property name="borderColor">
+            <color alpha="255">
+              <red>36</red>
+              <green>36</green>
+              <blue>36</blue>
+            </color>
+          </property>
+          <property name="borderWidth">
+            <number>3</number>
+          </property>
+          <property name="fontScaleMode">
+            <enum>ESimpleLabel::Height</enum>
+          </property>
+        </widget>
+      </widget>
+    </widget>
+  </widget>
+</ui>

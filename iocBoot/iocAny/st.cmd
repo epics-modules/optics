@@ -24,6 +24,9 @@ iocxxxLinux_registerRecordDeviceDriver(pdbbase)
 ## VMAS (white beam slits)
 iocshLoad("$(OPTICS)/opticsApp/iocsh/vmas.iocsh", "P=$(PREFIX),S=slits,HORIZONTAL=m1,DIAGONAL=m2,PITCH=m3,YAW=m4")
 
+# Simple mono (Bragg and Gap) - Creates energy and offset positioners
+iocshLoad("simpleMono.iocsh", "PREFIX=$(PREFIX), INSTANCE=MN1, BRAGGMOTOR=$(PREFIX)m1, GAPMOTOR=$(PREFIX)m2")
+
 ### soft motor slits
 dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2V,mXp=m3,mXn=m4")
 dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2H,mXp=m5,mXn=m6")
