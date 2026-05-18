@@ -14,7 +14,8 @@
 # Load mono records
 dbLoadRecords("$(TOP)/db/monoModes.db","P=$(PREFIX), MN=$(INSTANCE), GAP=$(GAPMOTOR), BRAGG=$(BRAGGMOTOR), ENERGY=$(ENERGY=Energy)")
 
-# Load pseudo-motor records
-dbLoadTemplate("pseudoMotor_monos.substitutions","P=$(PREFIX)$(INSTANCE):,BRAGG_HM=$(BRAGGMOTOR),GAP_HM=$(GAPMOTOR)")
+# Load motor records
+dbLoadTemplate("substitutions/pseudoMotor_monos.substitutions","P=$(PREFIX)$(INSTANCE):,BRAGG_HM=$(BRAGGMOTOR),GAP_HM=$(GAPMOTOR)")
 
-
+# Load pseudomotor Sync synchronization
+dbLoadRecords("$(TOP)/db/monoSyncPM.db","P=$(PREFIX)$(INSTANCE):,BRAGG_PM=Bragg,ENERGY_PM=Energy,LAMBDA_PM=Lambda,GAP_PM=Gap,OFFSET_PM=Offset")
