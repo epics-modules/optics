@@ -38,6 +38,11 @@ program kohzuCtl  ("P=nda, M_THETA=m9, M_Y=m10, M_Z=m11, GEOM=1")
  *                (though cleared in only one).  Now only one ss tests the event
  *                and it posts a different event thetaMotRdbkPseudo_mon to alert
  *                the other ss.
+ * 05-22-26 mdw   Added monitor for busy for case when user set energy, lambda,
+ *                or theta to old value (happends in Bluesky).  Previously, 
+ *                system would hang when user set control value to old control:
+ *                system busy would be set, ST program wouldn't run as the value
+ *                of the control hadn't changed so busy would never be unset.
  */
 
 /* General Purpose PV's used by sequence */
