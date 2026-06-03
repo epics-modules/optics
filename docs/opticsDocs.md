@@ -213,6 +213,19 @@ These are the control displays for a multilayer monochromator, comprised of two 
 
 The display pictured above uses EPICS analog output records for virtual motors "-", "+", "size", and "center". Taking "size" as an example, the PV names for drive and readback are "$(P)$(SLIT)xn" and "$(P)$(SLIT)t2.B". These PV names are inconvenient for users (particularly, spec users) who would prefer to talk to soft motor records, rather than separate ao records. There is a second version of the 2slit software that uses soft motor records for virtual motions. See 2slit\*soft\* in src, Db, and op directories.
 
+#### RELTOCENTER macro
+
+The `2slit.db` database can operate in two modes, controlled by the `RELTOCENTER` macro:
+
+- **RELTOCENTER=0** (default) -- Both motors are in the same coordinate system. When the center position is increased, both motors' `.VAL` fields increase. Both motors must have the same engineering units.
+- **RELTOCENTER=1** -- Motor `.VAL` fields increase as the slit opens. Both motors must have the same engineering units.
+
+#### Calibration and synchronization
+
+The slit software keeps all readback values current regardless of how the actual motors are moved or recalibrated, but it does not automatically reset the slit drive values when the underlying motors are moved directly. To synchronize, use the "SYNC" button on the display, which reads the actual motor drive values and sets the slit drive values accordingly.
+
+To recalibrate slit positions, press "Set", type in the desired current position, and press "Use". This uses the "Set" buttons and user/dial offsets of both underlying motors.
+
 |:--------:|:--------:|
 | 4slitGraphic.adl | xia\_slit\_full.adl |
 | ![](4slitGraphic.adl.jpg) | ![](xia_slit_full.adl.jpg) |
@@ -226,6 +239,12 @@ The display pictured above uses EPICS analog output records for virtual motors "
 
 
 ## Filters
+
+#### filterMotor.db
+
+`filterMotor.db` provides basic motor-driven filter support, using motor records to position individual filter blades in or out of the beam path. The related database `filterLock.db` provides interlock functionality to prevent filter changes during data acquisition.
+
+#### 2filter.adl
 
 |:--------:|:--------:|
 | 2filter.adl | 2filter\_setup.adl |
