@@ -38,6 +38,11 @@ program kohzuCtl  ("P=nda, M_THETA=m9, M_Y=m10, M_Z=m11, GEOM=1")
  *                (though cleared in only one).  Now only one ss tests the event
  *                and it posts a different event thetaMotRdbkPseudo_mon to alert
  *                the other ss.
+ * 05-22-26 mdw   Added monitor for busy for case when user set energy, lambda,
+ *                or theta to old value (happends in Bluesky).  Previously, 
+ *                system would hang when user set control value to old control:
+ *                system busy would be set, ST program wouldn't run as the value
+ *                of the control hadn't changed so busy would never be unset.
  */
 
 /* General Purpose PV's used by sequence */
@@ -82,6 +87,8 @@ monitor ccMode;
 short   kohzuMoving; 
 assign  kohzuMoving to "{P}KohzuMoving";
 monitor kohzuMoving;
+evflag  kMbusy;
+sync    kohzuMoving kMbusy;
 
 short   kohzuDone; 
 
@@ -605,6 +612,7 @@ state waitForCmndEnter {
 		efClear(L_mon);
 		efClear(A_mon);
 		efClear(E_mon);
+		efClear(kMbusy);
 		efClear(lambda_mon);
 		efClear(theta_mon);
 
@@ -701,6 +709,10 @@ state waitForCmnd {
 	when (efTestAndClear(theta_mon)) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:waitForCmnd:theta_mon\n");
 	} state thChanged
+
+	when (efTestAndClear(kMbusy)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:waitForCmnd:kMbusy\n");
+	} state busyChanged
 
 	when (putVals && delay(.1)) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:waitForCmnd:putVals\n");
@@ -846,6 +858,31 @@ state thetaLimits {
 	} state checkDone
 }
 
+/* When any of the controls (E, lambda, theta)  have values set that are equal
+ * to the previous value, PV monitors aren't called (unless the MDEL field set 
+ * to -1) but the Busy PV does get activated. A SNL evflag has been added
+ * for the busy and the following state added to handle this situation.       */
+state busyChanged {
+	when (kohzuMoving > 0 && efTest(E_mon)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving and E changed");
+		efClear(E_mon);
+	} state eChanged
+	when (kohzuMoving > 0 && efTest(lambda_mon)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving and lambda changed");
+		efClear(lambda_mon);
+	} state lChanged
+	when (kohzuMoving > 0 && efTest(theta_mon)) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving and theta changed");
+		efClear(theta_mon);
+	} state thChanged
+	when (kohzuMoving > 0) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Moving but unclear why");
+	} state eChanged
+	when (kohzuMoving == 0) {
+		if (kohzuCtlDebug) %%printf("kohzuCtl:busyChanged\n to Done");
+	} state waitForCmndEnter
+}
+	
 state eChanged {
 	when () { 
 		if (kohzuCtlDebug) %%printf("kohzuCtl:eChanged\n");
