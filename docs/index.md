@@ -73,8 +73,8 @@ The optics module requires the following EPICS modules:
 
 | Module | Purpose |
 | - | - |
-| EPICS Base | Core IOC infrastructure |
-| SNCSEQ | State Notation Language sequencer (monochromator, filter, and slit control programs) |
-| CALC | transform and swait records (coordinate transforms, slit math) |
-| BUSY | busy record |
-| ASYN | asyn communication driver |
+| [EPICS base](https://epics-controls.org/) | Core IOC infrastructure |
+| [seq](https://github.com/epics-modules/sequencer) | State Notation Language sequencer (monochromator, filter, and slit control programs) |
+| [calc](https://github.com/epics-modules/calc) | transform and swait records (coordinate transforms, slit math) |
+| [busy](https://github.com/epics-modules/busy) | busy record |
+| [asyn](https://github.com/epics-modules/asyn) | asyn communication driver |
