@@ -1,3 +1,5 @@
+#!../../bin/linux-x86_64/opticsExApp
+
 # Linux startup script
 
 < envPaths
@@ -14,44 +16,44 @@ epicsEnvSet EPICS_CA_MAX_ARRAY_BYTES 64008
 ################################################################################
 # Tell EPICS all about the record types, device-support modules, drivers,
 # etc. in the software we just loaded (xxx.munch)
-dbLoadDatabase("../../dbd/iocxxxLinux.dbd")
-iocxxxLinux_registerRecordDeviceDriver(pdbbase)
+dbLoadDatabase("dbd/opticsExApp.dbd")
+opticsExApp_registerRecordDeviceDriver(pdbbase)
 
 ### Slits
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit.db","P=xxx:,SLIT=Slit1V,mXp=m3,mXn=m4")
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit.db","P=xxx:,SLIT=Slit1H,mXp=m5,mXn=m6")
+#dbLoadRecords("$(OPTICS)/db/2slit.db","P=xxx:,SLIT=Slit1V,mXp=m3,mXn=m4")
+#dbLoadRecords("$(OPTICS)/db/2slit.db","P=xxx:,SLIT=Slit1H,mXp=m5,mXn=m6")
 
 ## VMAS (white beam slits)
-iocshLoad("$(OPTICS)/opticsApp/iocsh/vmas.iocsh", "P=$(PREFIX),S=slits,HORIZONTAL=m1,DIAGONAL=m2,PITCH=m3,YAW=m4")
+iocshLoad("$(OPTICS)/iocsh/vmas.iocsh", "P=$(PREFIX),S=slits,HORIZONTAL=m1,DIAGONAL=m2,PITCH=m3,YAW=m4")
 
 # Simple mono (Bragg and Gap) - Creates energy and offset positioners
 iocshLoad("simpleMono.iocsh", "PREFIX=$(PREFIX), INSTANCE=MN1, BRAGGMOTOR=$(PREFIX)m1, GAPMOTOR=$(PREFIX)m2")
 
 ### soft motor slits
-dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2V,mXp=m3,mXn=m4")
-dbLoadRecords("$(OPTICS)/opticsApp/Db/2slit_soft.vdb","P=xxx:,SLIT=Slit2H,mXp=m5,mXn=m6")
+dbLoadRecords("$(OPTICS)/db/2slit_soft.vdb","P=xxx:,SLIT=Slit2V,mXp=m3,mXn=m4")
+dbLoadRecords("$(OPTICS)/db/2slit_soft.vdb","P=xxx:,SLIT=Slit2H,mXp=m5,mXn=m6")
 
 # X-ray Instrumentation Associates Huber Slit Controller
 # supported by a customized version of the SNL program written by Pete Jemian
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/xia_slit.db", "P=xxx:, HSC=hsc1:")
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/xia_slit.db", "P=xxx:, HSC=hsc2:")
-#dbLoadRecords("$(IP)/ipApp/Db/generic_serial.db", "P=xxx:,C=0,SERVER=serial7")
+#dbLoadRecords("$(OPTICS)/db/xia_slit.db", "P=xxx:, HSC=hsc1:")
+#dbLoadRecords("$(OPTICS)/db/xia_slit.db", "P=xxx:, HSC=hsc2:")
+#dbLoadRecords("$(IP)/db/generic_serial.db", "P=xxx:,C=0,SERVER=serial7")
 
 
 ### 2-post mirror
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/2postMirror.db","P=xxx:,Q=M1,mDn=m1,mUp=m2,LENGTH=0.3")
+#dbLoadRecords("$(OPTICS)/db/2postMirror.db","P=xxx:,Q=M1,mDn=m1,mUp=m2,LENGTH=0.3")
 
 ### User filters
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/filterMotor.db","P=xxx:,Q=fltr1:,MOTOR=m1,LOCK=fltr_1_2:")
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/filterMotor.db","P=xxx:,Q=fltr2:,MOTOR=m2,LOCK=fltr_1_2:")
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/filterLock.db","P=xxx:,Q=fltr2:,LOCK=fltr_1_2:,LOCK_PV=xxx:DAC1_1.VAL")
+#dbLoadRecords("$(OPTICS)/db/filterMotor.db","P=xxx:,Q=fltr1:,MOTOR=m1,LOCK=fltr_1_2:")
+#dbLoadRecords("$(OPTICS)/db/filterMotor.db","P=xxx:,Q=fltr2:,MOTOR=m2,LOCK=fltr_1_2:")
+#dbLoadRecords("$(OPTICS)/db/filterLock.db","P=xxx:,Q=fltr2:,LOCK=fltr_1_2:,LOCK_PV=xxx:DAC1_1.VAL")
 
 ### Optical tables
 #tableRecordDebug=1
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/table.db","P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI")
+#dbLoadRecords("$(OPTICS)/db/table.db","P=xxx:,Q=Table1,T=table1,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI")
 
 # table with soft motors in front
-epicsEnvSet("DIR", "$(OPTICS)/opticsApp/Db")
+epicsEnvSet("DIR", "$(OPTICS)/db")
 configstr = malloc(300)
 strcpy configstr, "P=xxx:,Q=Table1s,T=table1s,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5,M2Z=m6,GEOM=SRI,PREC=4"
 #dbLoadRecords("$(DIR)/table_soft.vdb", configstr)
@@ -59,31 +61,31 @@ strcpy configstr, "P=xxx:,Q=Table1s,T=table1s,M0X=m1,M0Y=m2,M1Y=m3,M2X=m4,M2Y=m5
 ### Monochromator support ###
 # Kohzu and PSL monochromators: Bragg and theta/Y/Z motors
 # standard geometry (geometry 1)
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq.db","P=xxx:,M_THETA=m1,M_Y=m2,M_Z=m3,yOffLo=17.4999,yOffHi=17.5001")
+#dbLoadRecords("$(OPTICS)/db/kohzuSeq.db","P=xxx:,M_THETA=m1,M_Y=m2,M_Z=m3,yOffLo=17.4999,yOffHi=17.5001")
 # modified geometry (geometry 2)
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq.db","P=xxx:,M_THETA=m1,M_Y=m2,M_Z=m2,yOffLo=4,yOffHi=36")
+#dbLoadRecords("$(OPTICS)/db/kohzuSeq.db","P=xxx:,M_THETA=m1,M_Y=m2,M_Z=m2,yOffLo=4,yOffHi=36")
 
 # monochromator support with soft-motor-record front end
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/kohzuSeq_soft.db","P=xxx:,MONO=Kohzu1:,M_THETA=m1,M_Y=m2,M_Z=m3,yOffLo=17.4999,yOffHi=17.5001")
+#dbLoadRecords("$(OPTICS)/db/kohzuSeq_soft.db","P=xxx:,MONO=Kohzu1:,M_THETA=m1,M_Y=m2,M_Z=m3,yOffLo=17.4999,yOffHi=17.5001")
 #doAfterIocInit("seq &kohzuCtl_soft, 'P=xxx:, MONO=Kohzu1:, M_THETA=m1, M_Y=m2, M_Z=m3, GEOM=1, logfile=kohzuCtl.log'")
 
 # Spherical grating monochromator
-dbLoadRecords("$(OPTICS)/opticsApp/Db/SGM.db","P=xxx:,N=1,M_x=m7,M_rIn=m6,M_rOut=m8,M_g=m9")
+dbLoadRecords("$(OPTICS)/db/SGM.db","P=xxx:,N=1,M_x=m7,M_rIn=m6,M_rOut=m8,M_g=m9")
 
 # 4-bounce high-resolution monochromator
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/hrSeq.db","P=xxx:,N=1,M_PHI1=m1,M_PHI2=m2")
+#dbLoadRecords("$(OPTICS)/db/hrSeq.db","P=xxx:,N=1,M_PHI1=m1,M_PHI2=m2")
 
 ### Orientation matrix, four-circle diffractometer (see seq program 'orient' below)
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/orient.db", "P=xxx:,O=1,PREC=4")
+#dbLoadRecords("$(OPTICS)/db/orient.db", "P=xxx:,O=1,PREC=4")
 #dbLoadTemplate("orient_xtals.substitutions")
 
 # PID-based feedback
 #dbLoadTemplate "fb_epid.substitutions"
 
 ### Load database records for dual PF4 filters
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4common.db","P=xxx:,H=pf4:,A=A,B=B")
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4bank.db","P=xxx:,H=pf4:,B=A")
-#dbLoadRecords("$(OPTICS)/opticsApp/Db/pf4bank.db","P=xxx:,H=pf4:,B=B")
+#dbLoadRecords("$(OPTICS)/db/pf4common.db","P=xxx:,H=pf4:,A=A,B=B")
+#dbLoadRecords("$(OPTICS)/db/pf4bank.db","P=xxx:,H=pf4:,B=A")
+#dbLoadRecords("$(OPTICS)/db/pf4bank.db","P=xxx:,H=pf4:,B=B")
 
 ### Load database records for alternative PF4-filter support
 dbLoadTemplate "filter.substitutions"
