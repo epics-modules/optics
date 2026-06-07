@@ -20,6 +20,8 @@ DBDINC += tableRecord
 
 DBD += opticsSupport.dbd
 
+CFG += OPTICS_DEPS
+
 #=============================
 
 LIBRARY_IOC += optics
