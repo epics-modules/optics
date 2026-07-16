@@ -692,7 +692,7 @@ void RecalcFilters(double keV,short* bits,double* xmit,int d,int b,int z1,
             }
             xmit[i] =  exp(-xAl*1000./absLenAl);
             xmit[i] *= exp(-xTi*1000./absLenTi);
-            xmit[i] *= exp(-xGlass*1000./absLenGlass);
+            if (xGlass > 0) xmit[i] *= exp(-xGlass*1000./absLenGlass);
 			if (xOther1 > 0) xmit[i] *= exp(-xOther1*1000./absLenOther1);
 			if (xOther2 > 0) xmit[i] *= exp(-xOther2*1000./absLenOther2);
 			if (xOther3 > 0) xmit[i] *= exp(-xOther3*1000./absLenOther3);
