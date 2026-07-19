@@ -627,20 +627,27 @@ double OtherAbsorptionLength(double keV, char *species) {
 		if (strcmp(filtermat[i].name, species) == 0) break;
 	}
 	if (i >= NUM_SPECIES) {
-		/* printf("pf4.st: Filter material '%s' not found\n", species);*/
+		/* No data for this material: 0. is a "no data" sentinel, not a real
+		 * absorption length -- report it so a mistyped material is not silent. */
+		printf("pf4.st: Filter material '%s' not found\n", species);
 		return(0.);
 	}
 	/*printf("pf4.st: species='%s', index=%d\n", species, i);*/
 	for (j=0; j<filtermat[i].numEntries; j++) {
 		if (keV < filtermat[i].keV[j]) break;
 	}
-	if (j >= filtermat[i].numEntries) {
-		/*printf("pf4.st: Energy '%f' not found in filter data\n", keV);*/
+	if ((j < 1) | (j >= filtermat[i].numEntries)) {
+		/* Energy outside the table: 0. is a "no data" sentinel, not a real
+		 * absorption length -- report it so an out-of-range energy is not silent. */
+		printf("pf4.st: Energy '%f' not found in filter data\n", keV);
 		return(0.);
 	}
 	/* mu is in cm^2/g, matdensity is g/cm^3, want absorption length in microns */
-	frac = (keV - filtermat[i].keV[j]) / (filtermat[i].keV[j+1] - filtermat[i].keV[j]);
-	mu = filtermat[i].mu[j] + frac * (filtermat[i].mu[j+1] - filtermat[i].mu[j]);
+	/* interpolate on [j-1, j], the interval that brackets keV (keV[j-1] <= keV < keV[j]),
+	 * matching filterDrive.st calcTrans; the old [j, j+1] form extrapolated backwards
+	 * (frac < 0 by construction) and read keV[j+1]/mu[j+1] out of bounds at the top bin */
+	frac = (keV - filtermat[i].keV[j-1]) / (filtermat[i].keV[j] - filtermat[i].keV[j-1]);
+	mu = filtermat[i].mu[j-1] + frac * (filtermat[i].mu[j] - filtermat[i].mu[j-1]);
 	absLen = 1/(matdensity[i]*mu);
 	absLen *= 1.e4; /* cm to microns */
 	return(absLen);
@@ -693,10 +700,16 @@ void RecalcFilters(double keV,short* bits,double* xmit,int d,int b,int z1,
             xmit[i] =  exp(-xAl*1000./absLenAl);
             xmit[i] *= exp(-xTi*1000./absLenTi);
             xmit[i] *= exp(-xGlass*1000./absLenGlass);
-			if (xOther1 > 0) xmit[i] *= exp(-xOther1*1000./absLenOther1);
-			if (xOther2 > 0) xmit[i] *= exp(-xOther2*1000./absLenOther2);
-			if (xOther3 > 0) xmit[i] *= exp(-xOther3*1000./absLenOther3);
-			if (xOther4 > 0) xmit[i] *= exp(-xOther4*1000./absLenOther4);
+			/* absLenOtherN == 0 is OtherAbsorptionLength's "no data" sentinel
+			 * (unknown material or out-of-range energy). Skip the blade rather
+			 * than divide by 0 -- exp(-x/0) would silently report it as fully
+			 * opaque. Treating it as transparent leaves the diagnostic printed by
+			 * OtherAbsorptionLength as the signal; see PR note for the alternative
+			 * (flag/alarm) the maintainer may prefer. */
+			if (xOther1 > 0 && absLenOther1 > 0) xmit[i] *= exp(-xOther1*1000./absLenOther1);
+			if (xOther2 > 0 && absLenOther2 > 0) xmit[i] *= exp(-xOther2*1000./absLenOther2);
+			if (xOther3 > 0 && absLenOther3 > 0) xmit[i] *= exp(-xOther3*1000./absLenOther3);
+			if (xOther4 > 0 && absLenOther4 > 0) xmit[i] *= exp(-xOther4*1000./absLenOther4);
         }
         else
             xmit[i] =  1.;
