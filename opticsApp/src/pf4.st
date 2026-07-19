@@ -634,7 +634,7 @@ double OtherAbsorptionLength(double keV, char *species) {
 	for (j=0; j<filtermat[i].numEntries; j++) {
 		if (keV < filtermat[i].keV[j]) break;
 	}
-	if (j >= filtermat[i].numEntries) {
+	if (j >= filtermat[i].numEntries - 1) {
 		/*printf("pf4.st: Energy '%f' not found in filter data\n", keV);*/
 		return(0.);
 	}
