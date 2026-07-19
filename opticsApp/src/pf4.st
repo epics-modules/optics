@@ -634,13 +634,16 @@ double OtherAbsorptionLength(double keV, char *species) {
 	for (j=0; j<filtermat[i].numEntries; j++) {
 		if (keV < filtermat[i].keV[j]) break;
 	}
-	if (j >= filtermat[i].numEntries) {
+	if ((j < 1) | (j >= filtermat[i].numEntries)) {
 		/*printf("pf4.st: Energy '%f' not found in filter data\n", keV);*/
 		return(0.);
 	}
 	/* mu is in cm^2/g, matdensity is g/cm^3, want absorption length in microns */
-	frac = (keV - filtermat[i].keV[j]) / (filtermat[i].keV[j+1] - filtermat[i].keV[j]);
-	mu = filtermat[i].mu[j] + frac * (filtermat[i].mu[j+1] - filtermat[i].mu[j]);
+	/* interpolate on [j-1, j], the interval that brackets keV (keV[j-1] <= keV < keV[j]),
+	 * matching filterDrive.st calcTrans; the old [j, j+1] form extrapolated backwards
+	 * (frac < 0 by construction) and read keV[j+1]/mu[j+1] out of bounds at the top bin */
+	frac = (keV - filtermat[i].keV[j-1]) / (filtermat[i].keV[j] - filtermat[i].keV[j-1]);
+	mu = filtermat[i].mu[j-1] + frac * (filtermat[i].mu[j] - filtermat[i].mu[j-1]);
 	absLen = 1/(matdensity[i]*mu);
 	absLen *= 1.e4; /* cm to microns */
 	return(absLen);
