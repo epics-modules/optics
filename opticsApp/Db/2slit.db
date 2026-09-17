@@ -146,10 +146,10 @@ record(transform, "$(P)$(SLIT)t2") {
 
 record(transform, "$(P)$(SLIT)t3") {
   field(FLNK, "$(P)$(SLIT)putOPR.PROC  PP MS")
-  field(CLCE, "a-(i?-1:1)*d")
-  field(CLCF, "b-(i?-1:1)*c")
-  field(CLCG, "(a+(i?-1:1)*c)/2")
-  field(CLCH, "(b+(i?-1:1)*d)/2")
+  field(CLCE, "a-(i?-c:d)")
+  field(CLCF, "b-(i?-d:c)")
+  field(CLCG, "(a+(i?-d:c))/2")
+  field(CLCH, "(b+(i?-c:d))/2")
   field(INPA, "$(P)$(mXp).LLM  NPP NMS")
   field(INPB, "$(P)$(mXp).HLM  NPP NMS")
   field(INPC, "$(P)$(mXn).LLM  NPP NMS")
