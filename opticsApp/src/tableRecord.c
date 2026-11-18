@@ -100,8 +100,8 @@ struct trajectory {
 	short lvio;
 };
 
-static void     checkAlarms();
-static void     monitor();
+static void     checkAlarms(tableRecord *ptbl);
+static void     monitor(tableRecord *ptbl);
 static void		PrintValues(tableRecord *ptbl);
 static long     ProcessOutputLinks(tableRecord *ptbl,
 					unsigned short motor_move_mask);
@@ -171,7 +171,7 @@ static long     cvt_dbaddr(DBADDR *paddr);
 #define get_array_info NULL
 #define put_array_info NULL
 static long		get_units(const DBADDR * paddr, char *units);
-static long     get_precision();
+static long     get_precision(const DBADDR *paddr, long *precision);
 #define get_enum_str NULL
 #define get_enum_strs NULL
 #define put_enum_str NULL
@@ -183,23 +183,23 @@ static long     get_control_double(const DBADDR * paddr,
 
 struct rset     tableRSET = {
 	RSETNUMBER,
-	report,
-	initialize,
-	init_record,
-	process,
-	special,
-	get_value,
-	cvt_dbaddr,
-	get_array_info,
-	put_array_info,
-	get_units,
-	get_precision,
-	get_enum_str,
-	get_enum_strs,
-	put_enum_str,
-	get_graphic_double,
-	get_control_double,
-	get_alarm_double
+	(RECSUPFUN)report,
+	(RECSUPFUN)initialize,
+	(RECSUPFUN)init_record,
+	(RECSUPFUN)process,
+	(RECSUPFUN)special,
+	(RECSUPFUN)get_value,
+	(RECSUPFUN)cvt_dbaddr,
+	(RECSUPFUN)get_array_info,
+	(RECSUPFUN)put_array_info,
+	(RECSUPFUN)get_units,
+	(RECSUPFUN)get_precision,
+	(RECSUPFUN)get_enum_str,
+	(RECSUPFUN)get_enum_strs,
+	(RECSUPFUN)put_enum_str,
+	(RECSUPFUN)get_graphic_double,
+	(RECSUPFUN)get_control_double,
+	(RECSUPFUN)get_alarm_double
 };
 epicsExportAddress(rset, tableRSET);
 
